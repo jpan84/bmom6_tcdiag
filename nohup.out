@@ -1,0 +1,37 @@
+/glade/u/apps/opt/pbstools/util/parse_opts: line 65: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 1060585.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=10:mem=200GB -A UPSU0064 -q casper@casper-pbs -l walltime=00:30:00
+
+Opening history files...
+Traceback (most recent call last):
+File "/glade/u/home/jpan/aquaptc/mom6diag/proj3.py", line 118, in <module>
+main()
+File "/glade/u/home/jpan/aquaptc/mom6diag/proj3.py", line 19, in main
+ds = xr.open_mfdataset(os.path.join(ARCHV, CASE, HISTS, H0))
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/backends/api.py", line 1066, in open_mfdataset
+combined = combine_by_coords(
+^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/core/combine.py", line 973, in combine_by_coords
+concatenated_grouped_by_data_vars = tuple(
+^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/core/combine.py", line 974, in <genexpr>
+_combine_single_variable_hypercube(
+File "/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/core/combine.py", line 648, in _combine_single_variable_hypercube
+raise ValueError(
+ValueError: Resulting object does not have monotonic global indexes along dimension time
+/glade/u/apps/opt/pbstools/util/parse_opts: line 65: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 1061336.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=10:mem=200GB -A UPSU0064 -q casper@casper-pbs -l walltime=00:30:00
+
+Opening history files...
+Traceback (most recent call last):
+File "/glade/u/home/jpan/aquaptc/mom6diag/proj3.py", line 118, in <module>
+if __name__ == '__main__':
+^^^^^^
+File "/glade/u/home/jpan/aquaptc/mom6diag/proj3.py", line 19, in main
+print('Opening history files...')
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/backends/api.py", line 1003, in open_mfdataset
+raise OSError("no files to open")
+OSError: no files to open
