@@ -5,11 +5,12 @@
 #DIR1 = 'QPC5-ne30np4-aquap10-seed3x3/atm/hist'
 #DIR2 = 'QPC5-ne30np4-aquap10-unseed/atm/hist'
 #FN = 'QPC5-ne30np4-aquap10-*.cam.h0.*regrid.nc'
-OUTDIR = 'linevslat/'
+OUTDIR = 'linevslat_0515ctrl/'
 HISTDIMS = set(['time', 'lat', 'lon'])
 
 import proj3
 import os
+import sys
 import numpy as np
 import xarray as xr
 import matplotlib.pyplot as plt
@@ -25,6 +26,7 @@ tdel = proj3.tdel
 wtm = proj3.weighted_temporal_mean
 
 LATLAB = np.array([-90., -60., -30., 0., 30., 60., 90.])
+lncolors = plt.cm.jet(np.linspace(0, 1, 12))
 
 def main():
    pltsettings.set1()
@@ -35,31 +37,29 @@ def main():
    ds1 = ds1.assign(dict(U200=ds1.U.sel(lev=200, method='nearest')))
 
    for dv in ds1.data_vars:
-      if str(dv) <= 'FSDS':
-         print('Skipping %s...' % dv)
-         continue
+      #if str(dv) != 'TREFHT':
+      #   print('Skipping %s...' % dv)
+      #   continue
       if set(ds1[dv].dims) == HISTDIMS:
          print('Plotting %s...' % dv)
-         annmeans = wtm(ds1, dv)
-         line1 = annmeans.mean(dim=['time', 'lon'])
-         sinlat = np.sin(np.deg2rad(line1.lat))
-         plt.plot(sinlat, line1.values)
+         monmeans = ds1[dv].groupby('time.month').mean()
+         lines = monmeans.mean(dim='lon')
+         sinlat = np.sin(np.deg2rad(lines.lat))
+         for mo in lines.month:
+            plt.plot(sinlat, lines.sel(month=mo), label=mo.values, color=lncolors[mo.values-1])
+         #plt.plot(sinlat, line1.values)
+         if str(dv) == 'TS':
+            plt.hlines(273.15 + 26.5, -1, 1, colors='black', linestyles='dashed')
          plt.xlabel('Lat [°]')
          plt.ylabel(dv)
+         plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=4, prop=dict(size=8))
          plt.gca().set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB)
-         plt.savefig(os.path.join(OUTDIR, '%s.png' % dv), bbox_inches='tight')
+         plt.savefig(os.path.join(OUTDIR, '%s_sznl.png' % dv), bbox_inches='tight')
+         #plt.tight_layout()
+         #plt.show()
          plt.close()
 
-         '''
-         ax0 = plt.gca().twinx()
-         ax0.plot(sinlat, (line2-line1).values, color='green')
-         ax0.axhline(y=0, color='black', linestyle='--')
-         ax0.set_ylabel('Difference (unseed-seed)')
-         plt.savefig(os.path.join(OUTDIR, '%s.png' % dv), bbox_inches='tight')
-         plt.close()
-         '''
-
-   print('linevslat.py done.')
+   print('%s done.' % sys.argv[0])
 
 if __name__ == '__main__':
    main()
