@@ -5,8 +5,9 @@
 #DIR1 = 'QPC5-ne30np4-aquap10-seed3x3/atm/hist'
 #DIR2 = 'QPC5-ne30np4-aquap10-unseed/atm/hist'
 #FN = 'QPC5-ne30np4-aquap10-*.cam.h0.*regrid.nc'
-OUTDIR = 'linevslat_0515ctrl/'
-HISTDIMS = set(['time', 'lat', 'lon'])
+OUTDIR = 'linevslat/'
+HISTDIMS = set(['time', 'lat', 'lon']) #cam
+#HISTDIMS = set(['time', 'xh', 'yh']) #mom6 hm
 
 import proj3
 import os
@@ -32,9 +33,11 @@ def main():
    pltsettings.set1()
 
    print('Opening datasets...')
-   ds1 = xr.open_mfdataset(os.path.join(ARCHV, CASE, HISTS, H0))
+   ds1 = xr.open_mfdataset(os.path.join(ARCHV, CASE, HISTS, H0))#!OCEAN .rename(dict(xh='lon', yh='lat'))
    ds1 = ds1.assign_coords(coords=dict(time=ds1.time - tdel(days=1))) #timestamp of e.g., 0001-01.nc is Feb 1, so subtract a month from time coord
-   ds1 = ds1.assign(dict(U200=ds1.U.sel(lev=200, method='nearest')))
+   #ds1 = ds1.assign(dict(U200=ds1.U.sel(lev=200, method='nearest')))
+   #!OCEAN ds1 = ds1.isel(z_l=0)
+   print(ds1)
 
    for dv in ds1.data_vars:
       #if str(dv) != 'TREFHT':
@@ -58,6 +61,8 @@ def main():
          #plt.tight_layout()
          #plt.show()
          plt.close()
+      else:
+         print('Skipping %s...' % dv)
 
    print('%s done.' % sys.argv[0])
 
