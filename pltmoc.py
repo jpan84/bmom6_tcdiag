@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from xoverturning import calcmoc
 
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0606dlyout/'
+CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0530ywbranch/'
 HISTS = 'ocn/hist/'
 H0 = r'*mom6.hm_[0-9]*.nc'
 
@@ -26,6 +26,19 @@ def main():
 
    moc = calcmoc(xr.merge([ds, geo]))#, dsgrid=dsgrid)
    print(moc)
+   #print(moc.time.values)
+
+   moc_mean = None
+   with ProgressBar():
+      moc_mean = moc.isel(time=slice(0,60)).mean('time').load()
+
+   plt.contourf(moc.yq, moc.z_i, moc_mean.values, levels=np.arange(-50, 51, 5), cmap='RdBu_r', extend='both')
+   plt.gca().invert_yaxis()
+   plt.xlabel('lat')
+   plt.ylabel('z [m]')
+   plt.colorbar()
+   plt.savefig('%s_psieul.png' % CASE[:-1].split('.')[-1])
+   plt.show()
 
 if __name__ == '__main__':
    main()
