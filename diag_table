@@ -1,0 +1,140 @@
+"MOM6 diagnostic fields table for CESM case: b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn"
+1 1 1 0 0 0
+### Section-1: File List
+#========================
+"b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.rho2%4yr-%2mo",                 1,  "months", 1, "days",   "time", 1, "months"
+"b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo",                   1,  "months", 1, "days",   "time", 1, "months"
+"b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.h%4yr-%2mo",                    1,  "months", 1, "days",   "time", 1, "months"
+"b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.sfc%4yr",                       1,  "days",   1, "days",   "time", 1, "years"
+"b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hmd%4yr%2mo%2dy",               1,  "days",   1, "days",   "time" ,1, "days"
+"b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.static",                        -1, "days",   1, "days",   "time"
+
+### Section-2: Fields List
+#=========================
+# "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.rho2%4yr-%2mo"
+"ocean_model_rho2", "volcello","volcello","b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.rho2%4yr-%2mo", "all", "mean", "none", 2
+"ocean_model_rho2", "vmo",     "vmo",     "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.rho2%4yr-%2mo", "all", "mean", "none", 2
+"ocean_model_rho2", "vhGM",    "vhGM",    "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.rho2%4yr-%2mo", "all", "mean", "none", 2
+"ocean_model_rho2", "vhml",    "vhml",    "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.rho2%4yr-%2mo", "all", "mean", "none", 2
+"ocean_model_rho2", "umo",     "umo",     "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.rho2%4yr-%2mo", "all", "mean", "none", 2
+"ocean_model_rho2", "uhGM",    "uhGM",    "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.rho2%4yr-%2mo", "all", "mean", "none", 2
+"ocean_model_rho2", "uhml",    "uhml",    "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.rho2%4yr-%2mo", "all", "mean", "none", 2
+
+# "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo"
+"ocean_model", "uo",           "uo",           "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "vo",           "vo",           "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "h",            "h",            "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "e",            "e",            "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "thetao",       "thetao",       "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "so",           "so",           "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "rhoinsitu",    "rhoinsitu",    "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "KE",           "KE",           "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "rhopot0",      "rhopot0",      "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "soga",         "soga",         "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "thetaoga",     "thetaoga",     "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "uh",           "uh",           "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "vh",           "vh",           "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "vhbt",         "vhbt",         "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "uhbt",         "uhbt",         "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "KPP_OBLdepth", "oml",          "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "tauuo",        "tauuo",        "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "tauvo",        "tauvo",        "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "friver",       "friver",       "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "prsn",         "prsn",         "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "prlq",         "prlq",         "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "evs",          "evs",          "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "hfsso",        "hfsso",        "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "rlntds",       "rlntds",       "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "hfsnthermds",  "hfsnthermds",  "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "sfdsi",        "sfdsi",        "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "rsntds",       "rsntds",       "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "hfds",         "hfds",         "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "ustar",        "ustar",        "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "hfsifrazil",   "hfsifrazil",   "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "wfo",          "wfo",          "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "vprec",        "vprec",        "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "ficeberg",     "ficeberg",     "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "fsitherm",     "fsitherm",     "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "hflso",        "hflso",        "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "pso",          "pso",          "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "seaice_melt_heat","seaice_melt_heat","b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "Heat_PmE",     "Heat_PmE",     "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "salt_flux_added","salt_flux_added","b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "SSH",          "SSH",          "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "tos",          "tos",          "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "sos",          "sos",          "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "SSU",          "SSU",          "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "SSV",          "SSV",          "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "mass_wt",      "mass_wt",      "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "opottempmint", "opottempmint", "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "somint",       "somint",       "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "Rd_dx",        "Rd_dx",        "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "speed",        "speed",        "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "mlotst",       "mlotst",       "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "diftrelo",     "diftrelo",     "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "diftrblo",     "diftrblo",     "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "difmxybo",     "difmxybo",     "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "difmxylo",     "difmxylo",     "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "volcello",     "volcello",     "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "vmo",          "vmo",          "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "vhGM",         "vhGM",         "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "vhml",         "vhml",         "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "umo",          "umo",          "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "uhGM",         "uhGM",         "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "uhml",         "uhml",         "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "agessc",       "agessc",       "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "T_ady_2d",     "T_ady_2d",     "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "T_adx_2d",     "T_adx_2d",     "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "T_diffy_2d",   "T_diffy_2d",   "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model", "T_diffx_2d",   "T_diffx_2d",   "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hm%4yr-%2mo", "all", "mean", "none", 1
+
+# "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.h%4yr-%2mo"
+"ocean_model_z", "uo",       "uo",       "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.h%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model_z", "vo",       "vo",       "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.h%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model_z", "h",        "h",        "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.h%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model_z", "e",        "e",        "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.h%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model_z", "thetao",   "thetao",   "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.h%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model_z", "so",       "so",       "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.h%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model_z", "rhoinsitu","rhoinsitu","b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.h%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model_z", "KE",       "KE",       "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.h%4yr-%2mo", "all", "mean", "none", 1
+"ocean_model_z", "rhopot0",  "rhopot0",  "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.h%4yr-%2mo", "all", "mean", "none", 1
+
+# "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.sfc%4yr"
+"ocean_model", "SSH",          "SSH",          "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.sfc%4yr", "all", "mean", "none", 1
+"ocean_model", "tos",          "tos",          "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.sfc%4yr", "all", "mean", "none", 1
+"ocean_model", "sos",          "sos",          "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.sfc%4yr", "all", "mean", "none", 1
+"ocean_model", "SSU",          "SSU",          "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.sfc%4yr", "all", "mean", "none", 1
+"ocean_model", "SSV",          "SSV",          "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.sfc%4yr", "all", "mean", "none", 1
+"ocean_model", "mass_wt",      "mass_wt",      "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.sfc%4yr", "all", "mean", "none", 1
+"ocean_model", "opottempmint", "opottempmint", "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.sfc%4yr", "all", "mean", "none", 1
+"ocean_model", "somint",       "somint",       "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.sfc%4yr", "all", "mean", "none", 1
+"ocean_model", "Rd_dx",        "Rd_dx",        "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.sfc%4yr", "all", "mean", "none", 1
+"ocean_model", "speed",        "speed",        "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.sfc%4yr", "all", "mean", "none", 1
+"ocean_model", "mlotst",       "mlotst",       "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.sfc%4yr", "all", "mean", "none", 1
+"ocean_model", "KPP_OBLdepth", "oml",          "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.sfc%4yr", "all", "mean", "none", 1
+
+# "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hmd%4yr%2mo%2dy"
+"ocean_model", "vmo",          "vmo",          "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
+"ocean_model", "umo",          "umo",          "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
+"ocean_model", "vhml",         "vhml",         "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
+"ocean_model", "uhml",         "uhml",         "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
+"ocean_model", "T_ady_2d",     "T_ady_2d",     "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
+"ocean_model", "T_diffy_2d",   "T_diffy_2d",   "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
+
+# "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.static"
+"ocean_model", "geolon",     "geolon",     "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "geolat",     "geolat",     "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "geolon_c",   "geolon_c",   "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "geolat_c",   "geolat_c",   "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "geolon_u",   "geolon_u",   "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "geolat_u",   "geolat_u",   "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "geolon_v",   "geolon_v",   "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "geolat_v",   "geolat_v",   "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "area_t",     "area_t",     "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "depth_ocean","depth_ocean","b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "wet",        "wet",        "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "wet_c",      "wet_c",      "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "wet_u",      "wet_u",      "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "wet_v",      "wet_v",      "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "Coriolis",   "Coriolis",   "b.e23.BMOM.f09_sx0.66av1.aqua.production.0621dlyocn.mom6.static", "all", ".false.", "none", 1
+
