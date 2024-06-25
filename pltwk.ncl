@@ -21,7 +21,7 @@ load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/diagnostics_cam.ncl"
   latS     = -latN       ; symmetric about the equator
 
   nDayWin  = 96      ; Wheeler-Kiladis [WK] temporal window length (days)
-  nDaySkip = 30      ; time (days) between temporal windows [segments]
+  nDaySkip = -65      ; time (days) between temporal windows [segments]
                      ; negative means there will be overlapping 
                      ; temporal segments
 
@@ -36,10 +36,10 @@ load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/diagnostics_cam.ncl"
 
 ; diri     = "/project/cas/shea/WHEELER/"
   diri     = "./"    ; new input directory
-  fili     = "OMEGA.2001-2005.nc"    
+  ;fili     = "OMEGA.2001-2005.nc"    
 
 
-  f        = addfile (diri+fili, "r") 
+  ;f        = addfile (diri+fili, "r") 
   ;omega    = f->omega(:,0,{latS:latN},:)     ; (time,lat,lon)
   u200 = f[:]->U200
 
