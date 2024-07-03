@@ -18,7 +18,7 @@ DV = 'tos'
 
 def main():
    print('Opening datasets...')
-   dss = xr.open_mfdataset(hists, chunks={'time': 12})
+   ds = xr.open_mfdataset(hists, chunks={'time': 12})
 
    print('Selecting...')
    sst = ds[DV].sel(yh=slice(*latrng))
@@ -26,12 +26,12 @@ def main():
 
    print('Solving EOFs...')
    coslat = np.cos(np.deg2rad(sst.yh.values)).clip(0., 1.)
-   wgts = np.sqrt(coslat)
+   wgts = np.sqrt(coslat)[..., np.newaxis]
    solver = Eof(sst, weights=wgts)
 
    print('Extracting EOFs and PCs...')
-   eofs = solver.eofsAsCovariance(pcscaling=1, neofs=6) #pcs scaled to unit variance
-   pcs = solver.pcs(pcscaling=1, npcs=6)
+   eofs = solver.eofsAsCovariance(pcscaling=1, neofs=10) #pcs scaled to unit variance
+   pcs = solver.pcs(pcscaling=1, npcs=10)
    varfracs = solver.varianceFraction(neigs=10)
 
    print('Saving EOFs...')
@@ -52,15 +52,15 @@ def main():
    plt.rc('font', size=20)
    for nn in eofs.mode:
       ax = plt.axes(projection=ccrs.PlateCarree())
-      cset = ax.contourf(eofs.xq, eofs.yh, eofs.sel(mode=nn).values, cmap='RdBu_r')
+      cset = ax.contourf(eofs.xh, eofs.yh, eofs.sel(mode=nn).values, cmap='RdBu_r', norm=colors.TwoSlopeNorm(vcenter=0))
       ax.coastlines()
       plt.colorbar(cset)
       plt.savefig(os.path.join(OUTDIR, 'eof%d.png' % nn), bbox_inches='tight')
       plt.close()
 
-      plt.plot(pcs.time - pcs.time[0], pcs.sel(mode=nn).values)
+      plt.plot((pcs.time - pcs.time[0]) / 1e9, pcs.sel(mode=nn).values)
       plt.legend()
-      plt.xlabel('Month')
+      plt.xlabel('time [s]')
       plt.ylabel('pc%d' % nn)
       plt.savefig(os.path.join(OUTDIR, 'pc%d.png' % nn), bbox_inches='tight')
       plt.close()
@@ -69,7 +69,7 @@ def main():
    plt.plot(varfracs.mode, varfracs.values)
    plt.xlabel('Mode')
    plt.ylabel('Explained variance')
-   plt.legend()
+   plt.ylim(0, varfracs.sel(mode=1).values)
    plt.savefig(os.path.join(OUTDIR, 'expvar.png'), bbox_inches='tight')
    plt.close()
 

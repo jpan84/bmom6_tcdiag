@@ -581,3 +581,13 @@ Number Of Attributes: 4
 (0)	         Max=2.52504
 (0)	 
 (0)	********** FINISHED: Space-Time *****************
+Opening datasets...
+/glade/u/home/jpan/miniconda3/envs/old_base/lib/python3.9/site-packages/xarray/coding/times.py:526: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+Selecting...
+Traceback (most recent call last):
+  File "/glade/u/home/jpan/aquaptc/mom6diag/sst_eof.py", line 79, in <module>
+    main()
+  File "/glade/u/home/jpan/aquaptc/mom6diag/sst_eof.py", line 24, in main
+    sst = ds[DV].sel(yh=slice(*latrng))
+NameError: name 'ds' is not defined
