@@ -14,6 +14,7 @@ ARCHV = '/glade/derecho/scratch/jpan/archive/'
 CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0530ywbranch/'
 HISTS = 'ocn/hist/'
 H0 = r'*mom6.hm_[0-9]*.nc'
+diro = 'sstvar/'
 
 def main():
    print('Opening history files...')
@@ -25,8 +26,15 @@ def main():
    print(dsgrid.dims)
 
    moc = calcmoc(xr.merge([ds, geo]))#, dsgrid=dsgrid)
+   moc = moc.rename('psieul')
    print(moc)
+   #outds = xr.Dataset(data_vars=dict(psieul=moc))
+   #outds.to_netcdf(os.path.join(diro, '%s_moc.nc' % CASE[:-1].split('.')[-1]))
    #print(moc.time.values)
+   print('Saving moc to nc...') 
+   towrt = moc.to_netcdf(path=os.path.join(diro, '%s_moc.nc' % CASE[:-1].split('.')[-1]), compute=False)
+   with ProgressBar():
+      towrt.compute()
 
    moc_mean = None
    with ProgressBar():

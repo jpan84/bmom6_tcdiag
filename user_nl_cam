@@ -1,0 +1,34 @@
+! Users should add all user specific namelist changes below in the form of 
+! namelist_var = new_namelist_value 
+ 
+nhtfrq=0,-6
+mfilt=1,4
+
+fincl2='OMEGA500','OMEGA850','PRECT','PS','PSDRY','PSL','Q850','SST','T200','T500','T850','TBOT','TMQ','U200','U500','U850','UBOT','V200','V500','V850','VBOT','Z300','Z500','TAUX','TAUY'
+
+avgflag_pertape='A','I'
+
+prescribed_strataero_feedback             = .false.
+ch4vmr            = 1.650e-6
+n2ovmr    = 0.306e-6
+co2vmr    = 348.0e-6
+solar_const = 1365.0
+omega = 7.292115e-5
+prescribed_ozone_file     = 'apeozone_cam3_5_54.nc'
+prescribed_ozone_datapath = '/glade/campaign/cesm/cesmdata/inputdata/atm/cam/ozone'
+prescribed_ozone_name     = 'OZONE'
+prescribed_ozone_type     = 'CYCLICAL'
+prescribed_ozone_cycle_yr = 1990
+prescribed_aero_file = ''
+sday   = 86164.10063718943
+rearth = 6.37100e6        
+gravit = 9.79764          
+mwdry  = 28.96623324623746
+mwh2o  = 18.01618112892741
+cpwv   = 1.846e3          
+rad_climate = 'A:Q:H2O', 'N:O2:O2', 'N:CO2:CO2', 'N:ozone:O3', 'N:N2O:N2O', 'N:CH4:CH4', 'N:CFC11:CFC11','N:CFC12:CFC12'
+ncdata = '/glade/campaign/cesm/cesmdata/inputdata/atm/cam/inic/fv/aqua_0006-01-01_0.9x1.25_L26_c161020.nc'
+use_topo_file             = .false.
+aerodep_flx_file               = ''
+!scale_dry_air_mass             =  101080.0D0
+atm_dep_flux           = .false.
