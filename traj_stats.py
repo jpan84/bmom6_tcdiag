@@ -50,12 +50,17 @@ def main(FN):
       for ti in tr: #loop thru timesteps in trajectory
          [stat[vv].append(ti[jj + 1]) for jj, vv in enumerate(COLS[1:])]
       tcdf = pd.DataFrame.from_dict(stat).astype(CTYP)
-      dfs.append(tcdf.assign(dt=pd.to_datetime(tcdf[COLS[-4:]])))
+      tcdf = tcdf.assign(dt=pd.to_datetime(tcdf[COLS[-4:]]))
+      tcdf = tcdf.assign(mdstr=tcdf[COLS[-3:-1]].astype(str).agg('-'.join, axis=1))
+      #dfs.append(tcdf.assign(dt=tcdf['dtstr'].astype(dt.datetime)))
+      tcdf = tcdf.assign(doy=tcdf['mdstr'].apply(lambda x: int(dt.datetime.strptime(x, '%m-%d').strftime('%j'))))
+      dfs.append(tcdf)
 
    print('Computing stats...')
+   print(dfs[0])
    tc_stats = dict()
-   tc_stats['genday'] = [tc['dt'].iloc[0].timetuple().tm_yday for tc in dfs]
-   tc_stats['dura'] = [((tc['dt'].iloc[-1] - tc['dt'].iloc[0]) + (tc['dt'].iloc[1] - tc['dt'].iloc[0])).days for tc in dfs] #last-1st time plus 1 timestep
+   tc_stats['genday'] = [tc['doy'].iloc[0] for tc in dfs]
+   #tc_stats['dura'] = [((tc['dt'].iloc[-1] - tc['dt'].iloc[0]) + (tc['dt'].iloc[1] - tc['dt'].iloc[0])).days for tc in dfs] #last-1st time plus 1 timestep
    tc_stats['pmins'] = [tc['pres'].min() for tc in dfs]
    tc_stats['genlat'] = [tc['lat'].iloc[0] for tc in dfs]
    tc_stats['lyslat'] = [tc['lat'].iloc[-1] for tc in dfs]
@@ -71,6 +76,7 @@ def main(FN):
    #FN = 'tcstats-QPC4ctrl'
    print('Hists and scatters...')
    for k in tc_stats:
+      print(k)
       plt.hist(tc_stats[k], density=True, bins=15, edgecolor='black')
       plt.title(k)
       plt.ylabel('Probability density')
