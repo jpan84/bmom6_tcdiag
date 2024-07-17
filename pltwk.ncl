@@ -6,9 +6,10 @@
 ; This file still has to be loaded manually
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/diagnostics_cam.ncl"
 
-  cdf_path="/glade/derecho/scratch/jpan/archive/b.e23.BMOM.f09_sx0.66av1.aqua.production.0606dlyout/atm/hist/"
+  cdf_path="/glade/derecho/scratch/jpan/archive/b.e23.BMOM.f09_sx0.66av1.aqua.production.0711dlyout/atm/hist/"
   ;cdf_path="/glade/derecho/scratch/zarzycki/archive/QPC5-ne30np4-aquap10-seed3x3/atm/hist/"
   ;cdf_path="/glade/derecho/scratch/jpan/QPC5-ne30np4-aquap10-seed3x3_regrid/"
+
   ; opening up 6 hourly files 
   ncfiles=systemfunc("ls "+cdf_path+"*h1*.nc")
   ;ncfiles=systemfunc("ls "+cdf_path+"*h1*2002-0*00.nc")
@@ -18,11 +19,11 @@ load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/diagnostics_cam.ncl"
 
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-  case     = "0606dlyout"  
+  case     = "0711dlyout"  
   ;case     = "seed3x3"
   diro     = "./wkout"        ; output dir: location of plots 
 
-  latN     = 15
+  latN     = 10
   latS     = -latN       ; symmetric about the equator
 
   nDayWin  = 96      ; Wheeler-Kiladis [WK] temporal window length (days)
@@ -37,18 +38,8 @@ load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/diagnostics_cam.ncl"
                      ; specify the plot intervals
 
   spd      = 4       ; samples per day (6 hour sampling rate)
-  var      = "OMEGA500"  ; user specified 
-
-; diri     = "/project/cas/shea/WHEELER/"
-  diri     = "./"    ; new input directory
-
-  ;fili     = "OMEGA.2001-2005.nc"    
-
-
-  ;f        = addfile (diri+fili, "r") 
-  ;omega    = f->omega(:,0,{latS:latN},:)     ; (time,lat,lon)
-
-  u200 = f[:]->OMEGA500
+  var      = "PRECT"  ; user specified 
+  u200 = f[:]->PRECT
   print(f[:]->time)
 
                      ; calculation and create plots

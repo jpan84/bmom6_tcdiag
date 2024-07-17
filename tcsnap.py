@@ -6,13 +6,14 @@ import datetime
 import matplotlib.pyplot as plt
 
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0606dlyout/'
+CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0711dlyout/'
 HISTS = 'atm/hist/'
 H1 = r'*h1.[0-9]*.nc'
+H1 = '*h1*1021-10-01*.nc'
 
-pltdate = cftime.DatetimeNoLeap(50, 11, 9, hour=6)
-LONBNDS = (55, 70)
-LATBNDS = (15, 30)
+pltdate = cftime.DatetimeNoLeap(1021, 10, 1, hour=6)
+LONBNDS = (132, 146)
+LATBNDS = (25, 37)
 
 #pltdate = cftime.DatetimeNoLeap(51, 5, 19, hour=18)
 #LONBNDS = (233, 259)

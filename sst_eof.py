@@ -1,4 +1,4 @@
-#Joshua Pan Feb 2024
+#Joshua Pan Jul 2024
 #compute eofs of monthly SST (tos)
 
 import sys
@@ -13,7 +13,7 @@ import cartopy.crs as ccrs
 LATLAB = np.array([-90., -60., -30., 0., 30., 60., 90.])
 latrng = (-90, 90)
 OUTDIR = 'sstvar/'
-hists = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.f09_sx0.66av1.aqua.production.0530ywbranch/ocn/hist/*mom6.hm_*.nc'
+hists = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.f09_sx0.66av1.aqua.production.0711dlyout/ocn/hist/*mom6.hm_*.nc'
 DV = 'tos'
 
 def main():
