@@ -21,6 +21,9 @@ COLS = [None, 'lonint', 'latp90', 'lon', 'lat', 'pres', 'wspd', 'year', 'month',
 TYPS = [None, int, int, float, float, float, float, int, int, int, int]
 CTYP = {COLS[i+1]: TYPS[i+1] for i in range(len(COLS[1:]))}
 
+XLIMS = dict()
+YLIMS = dict()
+
 def main(FN):
    print('Parsing files...')
    print(FN)
@@ -50,17 +53,18 @@ def main(FN):
       for ti in tr: #loop thru timesteps in trajectory
          [stat[vv].append(ti[jj + 1]) for jj, vv in enumerate(COLS[1:])]
       tcdf = pd.DataFrame.from_dict(stat).astype(CTYP)
-      tcdf = tcdf.assign(dt=pd.to_datetime(tcdf[COLS[-4:]]))
       tcdf = tcdf.assign(mdstr=tcdf[COLS[-3:-1]].astype(str).agg('-'.join, axis=1))
       #dfs.append(tcdf.assign(dt=tcdf['dtstr'].astype(dt.datetime)))
       tcdf = tcdf.assign(doy=tcdf['mdstr'].apply(lambda x: int(dt.datetime.strptime(x, '%m-%d').strftime('%j'))))
+      tcdf['year'] = tcdf['year'] % 584 + 1678
+      tcdf = tcdf.assign(dt=pd.to_datetime(tcdf[COLS[-4:]]))
       dfs.append(tcdf)
 
    print('Computing stats...')
    print(dfs[0])
    tc_stats = dict()
    tc_stats['genday'] = [tc['doy'].iloc[0] for tc in dfs]
-   #tc_stats['dura'] = [((tc['dt'].iloc[-1] - tc['dt'].iloc[0]) + (tc['dt'].iloc[1] - tc['dt'].iloc[0])).days for tc in dfs] #last-1st time plus 1 timestep
+   tc_stats['dura'] = [((tc['dt'].iloc[-1] - tc['dt'].iloc[0]) + (tc['dt'].iloc[1] - tc['dt'].iloc[0])).days for tc in dfs] #last-1st time plus 1 timestep
    tc_stats['pmins'] = [tc['pres'].min() for tc in dfs]
    tc_stats['genlat'] = [tc['lat'].iloc[0] for tc in dfs]
    tc_stats['lyslat'] = [tc['lat'].iloc[-1] for tc in dfs]
