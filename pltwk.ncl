@@ -11,8 +11,8 @@ load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/diagnostics_cam.ncl"
   ;cdf_path="/glade/derecho/scratch/jpan/QPC5-ne30np4-aquap10-seed3x3_regrid/"
 
   ; opening up 6 hourly files 
-  ncfiles=systemfunc("ls "+cdf_path+"*h1*.nc")
-  ;ncfiles=systemfunc("ls "+cdf_path+"*h1*2002-0*00.nc")
+  ;ncfiles=systemfunc("ls "+cdf_path+"*h1*.nc")
+  ncfiles=systemfunc("ls "+cdf_path+"*h1*1019*00.nc")
   nfiles=dimsizes(ncfiles)
   f=addfiles(ncfiles,"r")
   print(ncfiles)
@@ -43,5 +43,5 @@ load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/diagnostics_cam.ncl"
   print(f[:]->time)
 
                      ; calculation and create plots
-  wkSpaceTime (u200, diro, case, var             \
+  wkSpaceTime (u200(:,:,::-1), diro, case, var             \
               ,latN, spd, nDayWin, nDaySkip, opt  )

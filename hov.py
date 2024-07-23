@@ -14,11 +14,12 @@ import pltsettings
 ARCHV = proj3.ARCHV
 CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0711dlyout'
 H1 = r'*h1.[0-9]*.nc'
+H1 = '*h1.1021*.nc'
 HISTS = proj3.HISTS
 tdel = proj3.tdel
 
 LATBNDS = (-10, 10)
-LONBNDS = (0, 90)
+LONBNDS = (0, 360)
 TBNDS = None
 
 def main():
@@ -26,18 +27,21 @@ def main():
 
    print('Opening datasets...')
    ds1 = xr.open_mfdataset(os.path.join(ARCHV, CASE, HISTS, H1))
-   TBNDS = (ds1.time[0], ds1.time[0] + tdel(days=365))
+   TBNDS = (ds1.time[0], ds1.time[0] + tdel(days=180))
 
    pltvar = ds1.PRECT
    with ProgressBar():
       pltvar = pltvar.sel(lat=slice(*LATBNDS), lon=slice(*LONBNDS), time=slice(*TBNDS)).mean(dim='lat').load()
 
-   [print(tt) for tt in pltvar.time]
-   [print(tt - pltvar.time[0]).values for tt in pltvar.time.values]
+   #[print(tt) for tt in pltvar.time]
+   [print(tt - pltvar.time[0]) for tt in pltvar.time.values]
    #[print(type(tt - pltvar.time[0])) for tt in pltvar.time.values]
-   taxis = [(tt - pltvar.time[0]).values.days for tt in pltvar.time.values]
+   taxis = [(tt - pltvar.time[0]).values / 1e9 / 86400 for tt in pltvar.time.values]
 
-   plt.contourf(pltvar.lon, [(tt - pltvar.time[0]).values.days for tt in pltvar.time.values], pltvar.values)
+   plt.contourf(pltvar.lon, taxis, pltvar.values)
+   plt.xlabel('lon')
+   plt.ylabel('day')
+   plt.gca().invert_yaxis()
    plt.colorbar()
    plt.savefig('hov_test.png')
    plt.show()
