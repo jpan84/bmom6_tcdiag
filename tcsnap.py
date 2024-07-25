@@ -9,11 +9,11 @@ ARCHV = '/glade/derecho/scratch/jpan/archive/'
 CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0711dlyout/'
 HISTS = 'atm/hist/'
 H1 = r'*h1.[0-9]*.nc'
-H1 = '*h1*1032-08-18*.nc'
+H1 = '*h1*1029-08-04*.nc'
 
-pltdate = cftime.DatetimeNoLeap(1032, 8, 18, hour=18)
-LONBNDS = (325, 343)
-LATBNDS = (-45, -28)
+pltdate = cftime.DatetimeNoLeap(1029, 8, 4, hour=6)
+LONBNDS = (35, 45)
+LATBNDS = (16, 26)
 
 #pltdate = cftime.DatetimeNoLeap(51, 5, 19, hour=18)
 #LONBNDS = (233, 259)
