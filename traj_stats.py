@@ -47,7 +47,7 @@ def main(FN):
    #print(ids)
 
    dfs = []
-   for tr in trajs:
+   for ti, tr in enumerate(trajs):
       #print(tr)
       stat = {var: [] for var in COLS[1:]}
       for ti in tr: #loop thru timesteps in trajectory
@@ -56,8 +56,10 @@ def main(FN):
       tcdf = tcdf.assign(mdstr=tcdf[COLS[-3:-1]].astype(str).agg('-'.join, axis=1))
       #dfs.append(tcdf.assign(dt=tcdf['dtstr'].astype(dt.datetime)))
       tcdf = tcdf.assign(doy=tcdf['mdstr'].apply(lambda x: int(dt.datetime.strptime(x, '%m-%d').strftime('%j'))))
-      tcdf['year'] = tcdf['year'] % 584 + 1678
+      tcdf['yeardelta'] = tcdf['year'] % 584
+      tcdf['year'] = tcdf['yeardelta'] + 1678
       tcdf = tcdf.assign(dt=pd.to_datetime(tcdf[COLS[-4:]]))
+      tcdf['stmnum'] = ti
       dfs.append(tcdf)
 
    print('Computing stats...')
@@ -73,9 +75,13 @@ def main(FN):
    tc_stats['genlon'] = [tc['lon'].iloc[0] for tc in dfs]
    tc_stats['lyslon'] = [tc['lon'].iloc[-1] for tc in dfs]
 
-   cliplat = lambda lats: [np.nan if l < -15 else l for l in lats]
-   tc_stats['genlat'] = cliplat(tc_stats['genlat'])
-   tc_stats['lyslat'] = cliplat(tc_stats['lyslat'])
+   #cliplat = lambda lats: [np.nan if l < -15 else l for l in lats]
+   #tc_stats['genlat'] = cliplat(tc_stats['genlat'])
+   #tc_stats['lyslat'] = cliplat(tc_stats['lyslat'])
+
+   outdf = pd.concat(dfs)
+   outdf.to_parquet('%s.parquet' % FN.split('-')[-1])
+   outdf.to_csv('%s.csv' % FN.split('-')[-1])
 
    #FN = 'tcstats-QPC4ctrl'
    print('Hists and scatters...')

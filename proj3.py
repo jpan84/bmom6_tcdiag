@@ -8,7 +8,7 @@ import scipy.stats as stats
 tdel = datetime.timedelta
 
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0606cam5/'
+CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0725cam5/'
 #ARCHV = '/glade/derecho/scratch/youweima/archive/'
 #CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.yr500_branch/'
 #setsid nohup qcmd -q casper -A UPSU0064 -l walltime=00:30:00  -l select=1:ncpus=10:mem=200GB  python3 proj3.py
