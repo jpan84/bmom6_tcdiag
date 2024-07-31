@@ -47,7 +47,7 @@ def main(FN):
    #print(ids)
 
    dfs = []
-   for ti, tr in enumerate(trajs):
+   for tn, tr in enumerate(trajs):
       #print(tr)
       stat = {var: [] for var in COLS[1:]}
       for ti in tr: #loop thru timesteps in trajectory
@@ -59,7 +59,9 @@ def main(FN):
       tcdf['yeardelta'] = tcdf['year'] % 584
       tcdf['year'] = tcdf['yeardelta'] + 1678
       tcdf = tcdf.assign(dt=pd.to_datetime(tcdf[COLS[-4:]]))
-      tcdf['stmnum'] = ti
+      #print(tcdf)
+      print(tn)
+      tcdf['stmnum'] = tn
       dfs.append(tcdf)
 
    print('Computing stats...')
