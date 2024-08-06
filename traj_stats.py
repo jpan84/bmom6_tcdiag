@@ -56,6 +56,7 @@ def main(FN):
       tcdf = tcdf.assign(mdstr=tcdf[COLS[-3:-1]].astype(str).agg('-'.join, axis=1))
       #dfs.append(tcdf.assign(dt=tcdf['dtstr'].astype(dt.datetime)))
       tcdf = tcdf.assign(doy=tcdf['mdstr'].apply(lambda x: int(dt.datetime.strptime(x, '%m-%d').strftime('%j'))))
+      tcdf['trueyr'] = tcdf['year']
       tcdf['yeardelta'] = tcdf['year'] % 584
       tcdf['year'] = tcdf['yeardelta'] + 1678
       tcdf = tcdf.assign(dt=pd.to_datetime(tcdf[COLS[-4:]]))

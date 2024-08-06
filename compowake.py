@@ -18,14 +18,16 @@ ARCHV = '/glade/derecho/scratch/jpan/archive/'
 CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0711dlyout/'
 HISTS = 'ocn/hist/'
 H1 = '*mom6.hmd*'
+DIRI = os.path.join(ARCHV, CASE, HISTS)
 H1OFFSET_OCN = None #e.g., 6 if filename date is 01-01 and first timestamp is 06:00
-STRF_OCN = lambda dtobj: f'hmd_{dtobj.year:04}_{dtobj.month:02}_{dtobj.day:02}'
+STRF_OCN = lambda dtobj: f'*hmd_{dtobj.year:04}_{dtobj.month:02}_{dtobj.day:02}.nc'
 
 ### wake computation params
 NTOP = 5 #number of strongest storms
 LONBNDS = (-10, 10)
 LATBNDS = (-10, 10)
 AVBNDS = (-dt.timedelta(days=7), -dt.timedelta(days=3))
+TBNDS = (-dt.timedelta(days=10), dt.timedelta(days=10))
 
 omlvar = 'oml'
 sstvar = 'tos'
@@ -41,20 +43,52 @@ def main():
    topstms = peaks.nlargest(NTOP, 'wspd')
    print(topstms)
 
-   print('Opening history files...')
-   h1s = sorted(glob.glob(os.path.join(ARCHV, CASE, HISTS, H1)))
+   print('Getting list of history files...')
+   h1s = sorted(glob.glob(os.path.join(DIRI, H1)))
+   h1s = np.array(h1s)
    rndds = xr.open_dataset(h1s[0])
    #print(h1s[0])
    H1OFFSET_OCN = rndds.time.values[0].hour
    print(type(topstms.iloc[0]['dt']))
 
-   trueyr = BASEYR + topstms.iloc[0]['yeardelta']
-   truedt = cftime.DatetimeNoLeap(trueyr, topstms.iloc[0]['month'], topstms.iloc[0]['day'], hour=topstms.iloc[0]['hour'])
+   print('Computing composites...')
+   '''
+   #trueyr = BASEYR + topstms.iloc[0]['yeardelta']
+   truedt = cftime.DatetimeNoLeap(topstms.iloc[0]['trueyr'], topstms.iloc[0]['month'], topstms.iloc[0]['day'], hour=topstms.iloc[0]['hour'])
    print(truedt)
+
+   filebnds = tuple([truedt + tbnd - dt.timedelta(hours=H1OFFSET_OCN) for tbnd in TBNDS])
+   filebnds = tuple([glob.glob(os.path.join(DIRI, STRF_OCN(bnd)))[0] for bnd in filebnds]) #TODO: enforce that this be in bounds of the simulation dates
+   toopen = h1s[(h1s >= filebnds[0]) & (h1s <= filebnds[1])]
+   ds = xr.open_mfdataset(toopen)
+   print(toopen)
+   '''
+
+   for ii, stm in enumerate(topstms.iterrows()):
+      stm = stm[1]
+      truedt = cftime.DatetimeNoLeap(stm['trueyr'], stm['month'], stm['day'], hour=stm['hour'])
+      print(ii, truedt)
+
+      filebnds = tuple([truedt + tbnd - dt.timedelta(hours=H1OFFSET_OCN) for tbnd in TBNDS])
+      filebnds = tuple([glob.glob(os.path.join(DIRI, STRF_OCN(bnd)))[0] for bnd in filebnds]) #TODO: enforce that this be in bounds of the simulation dates
+      toopen = h1s[(h1s >= filebnds[0]) & (h1s <= filebnds[1])]
+      ds = xr.open_mfdataset(toopen)
+
+      print(ds)
+
+
+
+
+
+
+
+
+
+
    exit()
-
-
-
+   truedt = lambda df: cftime.DatetimeNoLeap(df[['trueyr', 'month', 'day', 'hour']])
+   print(truedt(topstms))
+   exit()
 
    truedt = topstms.iloc[0]['dt']
    truedt = truedt + dt.timedelta(days=365*int(-truedt.year + BASEYR + topstms.iloc[0]['yeardelta']))
