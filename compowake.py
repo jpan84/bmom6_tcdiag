@@ -72,12 +72,18 @@ def main():
       filebnds = tuple([truedt + tbnd - dt.timedelta(hours=H1OFFSET_OCN) for tbnd in TBNDS])
       filebnds = tuple([glob.glob(os.path.join(DIRI, STRF_OCN(bnd)))[0] for bnd in filebnds]) #TODO: enforce that this be in bounds of the simulation dates
       toopen = h1s[(h1s >= filebnds[0]) & (h1s <= filebnds[1])]
-      ds = xr.open_mfdataset(toopen)
+      lonbnds = (stm['lon'] + LONBNDS[0], stm['lon'] + LONBNDS[1])
+      latbnds = (stm['lat'] + LATBNDS[0], stm['lat'] + LATBNDS[1])
+      ds = xr.open_mfdataset(toopen).sel(xh=slice(*lonbnds), yh=slice(*latbnds)) #TODO: use geolon/geolat to be more technically accurate
 
-      print(ds)
+      omlser = ds[omlvar].mean(dim=['xh', 'yh'])
+      sstser = ds[sstvar].mean(dim=['xh', 'yh'])
+      omlref = omlser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time')
+      sstref = sstser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time')
+      taxis = [(tt - truedt).days + (tt - truedt).seconds/86400 for tt in omlser.time.values]
 
-
-
+      plt.plot(taxis, sstser)
+      plt.show()
 
 
 
