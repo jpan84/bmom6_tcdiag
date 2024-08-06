@@ -1,6 +1,7 @@
 ### Take the strongest storms and plot their composite cold wakes. Relative to -7 to -3 day avg in a
 ### 10° box surrounding the point of max intensity
 import os
+import glob
 import numpy as np
 import xarray as xr
 import pandas as pd
@@ -10,12 +11,15 @@ import matplotlib.pyplot as plt
 
 ### tempest traj output params
 TRAJFILE = 'set4.parquet' #output csv/parquet from traj_stats.py
+BASEYR = 584 #year from which yeardelta is determined to stay within date bounds of pandas date objects
 
 ### hist file params
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
 CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0711dlyout/'
 HISTS = 'ocn/hist/'
-H1OFFSET = None
+H1 = '*mom6.hmd*'
+H1OFFSET_OCN = None #e.g., 6 if filename date is 01-01 and first timestamp is 06:00
+STRF_OCN = lambda dtobj: f'hmd_{dtobj.year:04}_{dtobj.month:02}_{dtobj.day:02}'
 
 ### wake computation params
 NTOP = 5 #number of strongest storms
@@ -34,11 +38,32 @@ def main():
    peaks = tcdf.groupby('stmnum').apply(lambda x: x.loc[x['wspd'].idxmax()])
    print(peaks)
 
-   exit()
+   topstms = peaks.nlargest(NTOP, 'wspd')
+   print(topstms)
 
    print('Opening history files...')
-   ds = xr.open_mfdataset(os.path.join(ARCHV, CASE, HISTS, H1)).sel(time=slice(*TBNDS), xh=slice(*LONBNDS), yh=slice(*LATBNDS))
+   h1s = sorted(glob.glob(os.path.join(ARCHV, CASE, HISTS, H1)))
+   rndds = xr.open_dataset(h1s[0])
+   #print(h1s[0])
+   H1OFFSET_OCN = rndds.time.values[0].hour
+   print(type(topstms.iloc[0]['dt']))
 
+   trueyr = BASEYR + topstms.iloc[0]['yeardelta']
+   truedt = cftime.DatetimeNoLeap(trueyr, topstms.iloc[0]['month'], topstms.iloc[0]['day'], hour=topstms.iloc[0]['hour'])
+   print(truedt)
+   exit()
+
+
+
+
+   truedt = topstms.iloc[0]['dt']
+   truedt = truedt + dt.timedelta(days=365*int(-truedt.year + BASEYR + topstms.iloc[0]['yeardelta']))
+   print(truedt)
+   exit()
+
+   ds = xr.open_dataset(os.path.join(ARCHV, CASE, HISTS, H1)).sel(time=slice(*TBNDS), xh=slice(*LONBNDS), yh=slice(*LATBNDS))
+
+   exit()
    trc = ds[var].mean(dim=['xh', 'yh'])
    taxis = [(tt - pltdate).days + (tt - pltdate).seconds/86400 for tt in trc.time.values]
 
