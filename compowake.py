@@ -24,9 +24,9 @@ H1OFFSET_OCN = None #e.g., 6 if filename date is 01-01 and first timestamp is 06
 STRF_OCN = lambda dtobj: f'*hmd_{dtobj.year:04}_{dtobj.month:02}_{dtobj.day:02}.nc'
 
 ### wake computation params
-NTOP = 5 #number of strongest storms
-LONBNDS = (-10, 10)
-LATBNDS = (-10, 10)
+NTOP = 10 #number of strongest storms
+LONBNDS = (-5, 5)
+LATBNDS = (-5, 5)
 AVBNDS = (-dt.timedelta(days=7), -dt.timedelta(days=3))
 TBNDS = (-dt.timedelta(days=10), dt.timedelta(days=10))
 
@@ -87,27 +87,29 @@ def main():
 
       if not ii:
          taxis = [(tt - truedt).days + (tt - truedt).seconds/86400 for tt in omlser.time.values]
-      omls.append(omlser - omlref)
+      #omls.append(omlser - omlref) #absolute anomaly
+      omls.append(omlser / omlref * 100) #percentage
       ssts.append(sstser - sstref)
 
       #plt.plot(taxis, sstser)
       #plt.show()
+
+   filoargs = (TRAJFILE.split('.')[0], NTOP, LONBNDS[1] - LONBNDS[0], LATBNDS[1] - LATBNDS[0])
 
    sstcomp = np.array([da.values for da in ssts]).mean(axis=0)
    plt.plot(taxis, sstcomp)
    plt.xlabel('Day relative to max strength')
    plt.ylabel('SST relative to days %d to %d [K]' % (AVBNDS[0].days, AVBNDS[1].days))
    plt.title('Composite SST for top %d storms, lat %s, lon %s' % (NTOP, str(LATBNDS), str(LONBNDS)))
-   plt.savefig('%s_SSTwake.png' % TRAJFILE.split('.')[0])
+   plt.savefig('%s_%d_%dx%d_SSTwake.png' % filoargs)
    plt.close()
 
    omlcomp = np.array([da.values for da in omls]).mean(axis=0)
    plt.plot(taxis, omlcomp)
    plt.xlabel('Day relative to max strength')
-   plt.ylabel('OML relative to days %d to %d [m]' % (AVBNDS[0].days, AVBNDS[1].days))
+   plt.ylabel('OML relative to days %d to %d [%%]' % (AVBNDS[0].days, AVBNDS[1].days))
    plt.title('Composite OML for top %d storms, lat %s, lon %s' % (NTOP, str(LATBNDS), str(LONBNDS)))
-   plt.savefig('%s_OMLwake.png' % TRAJFILE.split('.')[0])
-   plt.show()
+   plt.savefig('%s_%d_%dx%d_OMLwake.png' % filoargs)
    plt.close()
 
 
