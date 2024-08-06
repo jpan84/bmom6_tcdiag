@@ -1,5 +1,6 @@
 ### Take the strongest storms and plot their composite cold wakes. Relative to -7 to -3 day avg in a
 ### 10° box surrounding the point of max intensity
+import sys
 import os
 import glob
 import numpy as np
@@ -10,7 +11,7 @@ import datetime as dt
 import matplotlib.pyplot as plt
 
 ### tempest traj output params
-TRAJFILE = 'set4.parquet' #output csv/parquet from traj_stats.py
+TRAJFILE = sys.argv[1] #output csv/parquet from traj_stats.py
 BASEYR = 584 #year from which yeardelta is determined to stay within date bounds of pandas date objects
 
 ### hist file params
@@ -64,6 +65,9 @@ def main():
    print(toopen)
    '''
 
+   taxis = None
+   omls = []
+   ssts = []
    for ii, stm in enumerate(topstms.iterrows()):
       stm = stm[1]
       truedt = cftime.DatetimeNoLeap(stm['trueyr'], stm['month'], stm['day'], hour=stm['hour'])
@@ -80,38 +84,32 @@ def main():
       sstser = ds[sstvar].mean(dim=['xh', 'yh'])
       omlref = omlser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time')
       sstref = sstser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time')
-      taxis = [(tt - truedt).days + (tt - truedt).seconds/86400 for tt in omlser.time.values]
 
-      plt.plot(taxis, sstser)
-      plt.show()
+      if not ii:
+         taxis = [(tt - truedt).days + (tt - truedt).seconds/86400 for tt in omlser.time.values]
+      omls.append(omlser - omlref)
+      ssts.append(sstser - sstref)
 
+      #plt.plot(taxis, sstser)
+      #plt.show()
 
+   sstcomp = np.array([da.values for da in ssts]).mean(axis=0)
+   plt.plot(taxis, sstcomp)
+   plt.xlabel('Day relative to max strength')
+   plt.ylabel('SST relative to days %d to %d [K]' % (AVBNDS[0].days, AVBNDS[1].days))
+   plt.title('Composite SST for top %d storms, lat %s, lon %s' % (NTOP, str(LATBNDS), str(LONBNDS)))
+   plt.savefig('%s_SSTwake.png' % TRAJFILE.split('.')[0])
+   plt.close()
 
-
-
-
-
-   exit()
-   truedt = lambda df: cftime.DatetimeNoLeap(df[['trueyr', 'month', 'day', 'hour']])
-   print(truedt(topstms))
-   exit()
-
-   truedt = topstms.iloc[0]['dt']
-   truedt = truedt + dt.timedelta(days=365*int(-truedt.year + BASEYR + topstms.iloc[0]['yeardelta']))
-   print(truedt)
-   exit()
-
-   ds = xr.open_dataset(os.path.join(ARCHV, CASE, HISTS, H1)).sel(time=slice(*TBNDS), xh=slice(*LONBNDS), yh=slice(*LATBNDS))
-
-   exit()
-   trc = ds[var].mean(dim=['xh', 'yh'])
-   taxis = [(tt - pltdate).days + (tt - pltdate).seconds/86400 for tt in trc.time.values]
-
-   print(taxis)
-
-   plt.plot(taxis, trc.values)
-   plt.title('%s %s' % (str(pltdate), var))
+   omlcomp = np.array([da.values for da in omls]).mean(axis=0)
+   plt.plot(taxis, omlcomp)
+   plt.xlabel('Day relative to max strength')
+   plt.ylabel('OML relative to days %d to %d [m]' % (AVBNDS[0].days, AVBNDS[1].days))
+   plt.title('Composite OML for top %d storms, lat %s, lon %s' % (NTOP, str(LATBNDS), str(LONBNDS)))
+   plt.savefig('%s_OMLwake.png' % TRAJFILE.split('.')[0])
    plt.show()
+   plt.close()
+
 
 if __name__ == '__main__':
    main()
