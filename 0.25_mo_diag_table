@@ -2,7 +2,7 @@
 1 1 1 0 0 0
 ### Section-1: File List
 #========================
-"CASENAME.mom6.hm%4yr-%2mo",                   10,  "days",  1, "days",   "time",  1,  "months"
+"CASENAME.mom6.hm%4yr-%2mo",                   1,  "months",  1, "days",   "time",  1,  "months"
 "CASENAME.mom6.static",                        -1, "days",   1, "days",   "time"
 
 ### Section-2: Fields List
