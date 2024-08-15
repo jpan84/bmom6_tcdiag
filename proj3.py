@@ -8,12 +8,12 @@ import scipy.stats as stats
 tdel = datetime.timedelta
 
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0725cam5/'
+CASE = 'b.e23.BMOM.ne120pg3_sx0.66av1.aqua.production.0812/'
 #ARCHV = '/glade/derecho/scratch/youweima/archive/'
 #CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.yr500_branch/'
 #setsid nohup qcmd -q casper -A UPSU0064 -l walltime=00:30:00  -l select=1:ncpus=10:mem=200GB  python3 proj3.py
-HISTS = 'atm/hist/'
-H0 = r'*h0.[0-9]*.nc'
+HISTS = 'atm/hist_regrid/'
+H0 = r'*h0a.[0-9]*.nc'
 #HISTS = 'ocn/hist/'
 #H0 = r'*mom6.h_[0-9]*.nc'
 
@@ -46,10 +46,11 @@ def main():
    #print(ts_ann[0].time[0] + tdel(days = 365 * 20))
    tanoms = [ts - tbase for ts in ts_av]
    '''
+   print(ts_av.values, rad_av.values)
 
    print('Plotting time series...')
    plt.rc('font', size=16)
-   plt.plot(ts_av)
+   plt.plot(ts_av, marker='+')
    #plt.hlines(0, 0, 50, linestyle='--', color='black')
    plt.xlabel('Year')
    plt.ylabel('$T_s$ [K]')
@@ -58,8 +59,8 @@ def main():
    plt.savefig('ts.png')#, bbox_inches='tight')
    plt.close()
 
-   plt.plot(rad_av)
-   plt.hlines(0, 0, 20, linestyle='--', color='black')
+   plt.plot(rad_av, marker='+')
+   #plt.hlines(0, 0, 20, linestyle='--', color='black')
    plt.xlabel('Year')
    plt.ylabel('Top of model\nnet radiative forcing [W m$^{-2}$]')
    plt.legend()

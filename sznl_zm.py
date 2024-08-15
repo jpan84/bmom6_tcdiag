@@ -5,7 +5,7 @@
 #DIR1 = 'QPC5-ne30np4-aquap10-seed3x3/atm/hist'
 #DIR2 = 'QPC5-ne30np4-aquap10-unseed/atm/hist'
 #FN = 'QPC5-ne30np4-aquap10-*.cam.h0.*regrid.nc'
-OUTDIR = 'linevslat/'
+OUTDIR = 'linevslat_0812/'
 HISTDIMS = set(['time', 'lat', 'lon']) #cam
 #HISTDIMS = set(['time', 'xh', 'yh']) #mom6 hm
 
