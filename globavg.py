@@ -2,12 +2,12 @@
 #compute globally area-weighted averaged quantities from unstructured grid
 
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120pg3_sx0.66av1.aqua.production.0812/'
+CASE = 'b.e23.BMOM.ne120pg3_sx0.66av1.aqua.production.0815/'
 HISTS = 'atm/hist/'
 H0 = r'*h0a.[0-9]*.nc'
 GRIDDIR = '/glade/p/cesmdata/inputdata/share/scripgrids'
 GRIDFN = 'ne120pg3_scrip_170628.nc'
-OUTDIR = './globavtraces_0812'
+OUTDIR = './globavtraces_0815_120'
 
 import os
 import glob
@@ -21,7 +21,7 @@ import consts as c
 
 a = c.a
 
-vrs = ['FSNT', 'FLNT', 'PRECC', 'PRECL', 'Q', 'QRS', 'QRL', 'PS', 'TMQ', 'QFLX', 'PSDRY', 'PRECT']
+vrs = ['FSNT', 'FLNT', 'PRECC', 'PRECL', 'PS', 'TMQ', 'QFLX', 'PSDRY', 'PRECT', 'RESTOM']
 
 def main():
    pt = os.path.join(ARCHV, CASE, HISTS, H0)
@@ -35,18 +35,27 @@ def main():
    dss = [ux.open_mfdataset(os.path.join(GRIDDIR, GRIDFN), ps) for ps in paths]
    '''
 
+   gav, units = None, None
    for var in vrs:
-      gav = globav(ds, var)
+      if var == 'PRECT':
+         gav = globav(ds, 'PRECC') + globav(ds, 'PRECL')
+         units = ds['PRECC'].units
+      elif var == 'RESTOM':
+         gav = globav(ds, 'FSNT') - globav(ds, 'FLNT')
+         units = ds['FSNT'].units
+      else:
+         gav = globav(ds, var)
+         units = ds[var].units
       with open(os.path.join(OUTDIR, 'globavgs.txt'), 'a') as f:
          if var == vrs[0]:
-            print(args, '\n', file=f)
+            print(pt, '\n', file=f)
          print(var, tav(gav), file=f)
          f.close()
       plt.plot(gav.time, gav.values)
       plt.legend()
       plt.title(var)
       plt.xlabel('Time [%s]' % str(gav.time.units))
-      plt.ylabel(ds[var].units)
+      plt.ylabel(units)
       plt.savefig(os.path.join(OUTDIR, '%s.png' % var), bbox_inches='tight')
       plt.close()
 

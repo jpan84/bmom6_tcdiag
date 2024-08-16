@@ -1337,3 +1337,10 @@ No artists with labels found to put in legend.  Note that artists whose label st
 No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
 Plotting explained variance...
 sst_eof.py done.
+Traceback (most recent call last):
+  File "/glade/u/home/jpan/aquaptc/mom6diag/globavg.py", line 74, in <module>
+    main()
+  File "/glade/u/home/jpan/aquaptc/mom6diag/globavg.py", line 42, in main
+    print(args, '\n', file=f)
+          ^^^^
+NameError: name 'args' is not defined
