@@ -2,12 +2,20 @@
 #compute globally area-weighted averaged quantities from unstructured grid
 
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120pg3_sx0.66av1.aqua.production.0815/'
+CASE = 'b.e23.BMOM.ne120pg3_sx0.66av1.aqua.production.0812/'
 HISTS = 'atm/hist/'
 H0 = r'*h0a.[0-9]*.nc'
 GRIDDIR = '/glade/p/cesmdata/inputdata/share/scripgrids'
 GRIDFN = 'ne120pg3_scrip_170628.nc'
-OUTDIR = './globavtraces_0815_120'
+OUTDIR = './globavtraces_0812'
+
+'''
+CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0815/'
+HISTS = 'atm/hist_ne30/'
+H0 = r'*h0.[0-9]*.nc'
+GRIDFN = 'ne30np4_091226_pentagons.nc'
+OUTDIR = './globavtraces_0815_f09'
+'''
 
 import os
 import glob
@@ -21,7 +29,7 @@ import consts as c
 
 a = c.a
 
-vrs = ['FSNT', 'FLNT', 'PRECC', 'PRECL', 'PS', 'TMQ', 'QFLX', 'PSDRY', 'PRECT', 'RESTOM']
+vrs = ['FSNT', 'FLNT', 'PRECC', 'PRECL', 'PS', 'TMQ', 'QFLX', 'PRECT', 'RESTOM', 'LWCF', 'SWCF'] #'PSDRY'
 
 def main():
    pt = os.path.join(ARCHV, CASE, HISTS, H0)

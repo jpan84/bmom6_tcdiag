@@ -16,7 +16,7 @@ BASEYR = 584 #year from which yeardelta is determined to stay within date bounds
 
 ### hist file params
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0711dlyout/'
+CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0815/'
 HISTS = 'ocn/hist/'
 H1 = '*mom6.hmd*'
 DIRI = os.path.join(ARCHV, CASE, HISTS)
@@ -32,6 +32,7 @@ TBNDS = (-dt.timedelta(days=10), dt.timedelta(days=10))
 
 omlvar = 'oml'
 sstvar = 'tos'
+budvars = {'hfsso': 'green', 'hflso': 'blue', 'rlntds': 'dimgray', 'rsntds': 'orange', 'Tadvconv': 'peru', 'Tdifconv': 'coral'}
 
 def main():
    tcdf = pd.read_parquet(TRAJFILE)
@@ -85,6 +86,10 @@ def main():
       omlref = omlser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time')
       sstref = sstser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time')
 
+      budser = dict()
+      for bk in budvars:
+         budser[bk] = ds[bk].mean(dim=['xh', 'yh'])
+
       if not ii:
          taxis = [(tt - truedt).days + (tt - truedt).seconds/86400 for tt in omlser.time.values]
       #omls.append(omlser - omlref) #absolute anomaly
@@ -101,6 +106,11 @@ def main():
    plt.xlabel('Day relative to max strength')
    plt.ylabel('SST relative to days %d to %d [K]' % (AVBNDS[0].days, AVBNDS[1].days))
    plt.title('Composite SST for top %d storms, lat %s, lon %s' % (NTOP, str(LATBNDS), str(LONBNDS)))
+   ax2 = plt.gca().twinx()
+   for bk in budvars:
+      ax2.plot(taxis, budser[bk].values, color=budvars[bk], label=bk)
+   ax2.legend()
+   ax2.set_ylabel('Energy budget [W m-2]')
    plt.savefig('%s_%d_%dx%d_SSTwake.png' % filoargs)
    plt.close()
 
@@ -109,7 +119,7 @@ def main():
    plt.xlabel('Day relative to max strength')
    plt.ylabel('OML relative to days %d to %d [%%]' % (AVBNDS[0].days, AVBNDS[1].days))
    plt.title('Composite OML for top %d storms, lat %s, lon %s' % (NTOP, str(LATBNDS), str(LONBNDS)))
-   plt.savefig('%s_%d_%dx%d_OMLwake.png' % filoargs)
+   plt.savefig('%s_%d_%dx%d_%swake.png' % (*filoargs, omlvar))
    plt.close()
 
 
