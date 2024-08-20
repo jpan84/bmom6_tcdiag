@@ -25,14 +25,15 @@ STRF_OCN = lambda dtobj: f'*hmd_{dtobj.year:04}_{dtobj.month:02}_{dtobj.day:02}.
 
 ### wake computation params
 NTOP = 10 #number of strongest storms
-LONBNDS = (-5, 5)
-LATBNDS = (-5, 5)
+LONBNDS = (-3, 3)
+LATBNDS = (-3, 3)
 AVBNDS = (-dt.timedelta(days=7), -dt.timedelta(days=3))
 TBNDS = (-dt.timedelta(days=10), dt.timedelta(days=10))
 
 omlvar = 'oml'
 sstvar = 'tos'
 budvars = {'hfsso': 'green', 'hflso': 'blue', 'rlntds': 'dimgray', 'rsntds': 'orange', 'Tadvconv': 'peru', 'Tdifconv': 'coral'}
+budlabs = {'hfsso': 'SH', 'hflso': 'LH', 'rlntds': 'LW', 'rsntds': 'SW', 'Tadvconv': 'advection', 'Tdifconv': 'diffusion'}
 
 def main():
    tcdf = pd.read_parquet(TRAJFILE)
@@ -102,16 +103,16 @@ def main():
    filoargs = (TRAJFILE.split('.')[0], NTOP, LONBNDS[1] - LONBNDS[0], LATBNDS[1] - LATBNDS[0])
 
    sstcomp = np.array([da.values for da in ssts]).mean(axis=0)
-   plt.plot(taxis, sstcomp)
+   plt.plot(taxis, sstcomp, color='red')
    plt.xlabel('Day relative to max strength')
    plt.ylabel('SST relative to days %d to %d [K]' % (AVBNDS[0].days, AVBNDS[1].days))
    plt.title('Composite SST for top %d storms, lat %s, lon %s' % (NTOP, str(LATBNDS), str(LONBNDS)))
    ax2 = plt.gca().twinx()
    for bk in budvars:
-      ax2.plot(taxis, budser[bk].values, color=budvars[bk], label=bk)
+      ax2.plot(taxis, budser[bk].values, color=budvars[bk], label=budlabs[bk], linewidth=1)
    ax2.legend()
    ax2.set_ylabel('Energy budget [W m-2]')
-   plt.savefig('%s_%d_%dx%d_SSTwake.png' % filoargs)
+   plt.savefig('%s_%d_%dx%d_SSTwake.png' % filoargs, bbox_inches='tight')
    plt.close()
 
    omlcomp = np.array([da.values for da in omls]).mean(axis=0)
