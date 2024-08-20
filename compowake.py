@@ -24,9 +24,9 @@ H1OFFSET_OCN = None #e.g., 6 if filename date is 01-01 and first timestamp is 06
 STRF_OCN = lambda dtobj: f'*hmd_{dtobj.year:04}_{dtobj.month:02}_{dtobj.day:02}.nc'
 
 ### wake computation params
-NTOP = 10 #number of strongest storms
-LONBNDS = (-3, 3)
-LATBNDS = (-3, 3)
+NTOP = 20 #number of strongest storms
+LONBNDS = (-5, 5)
+LATBNDS = (-5, 5)
 AVBNDS = (-dt.timedelta(days=7), -dt.timedelta(days=3))
 TBNDS = (-dt.timedelta(days=10), dt.timedelta(days=10))
 
@@ -104,12 +104,18 @@ def main():
 
    sstcomp = np.array([da.values for da in ssts]).mean(axis=0)
    plt.plot(taxis, sstcomp, color='red')
+   plt.axvline(x=0, linestyle='--', color='black', linewidth=0.7)
    plt.xlabel('Day relative to max strength')
    plt.ylabel('SST relative to days %d to %d [K]' % (AVBNDS[0].days, AVBNDS[1].days))
    plt.title('Composite SST for top %d storms, lat %s, lon %s' % (NTOP, str(LATBNDS), str(LONBNDS)))
    ax2 = plt.gca().twinx()
+   budlines = dict()
    for bk in budvars:
-      ax2.plot(taxis, budser[bk].values, color=budvars[bk], label=budlabs[bk], linewidth=1)
+      budlines[bk] = ax2.plot(taxis, budser[bk].values, color=budvars[bk], label=budlabs[bk], linewidth=1)
+   ###remove select lines
+   for bk in ['Tadvconv', 'hfsso', 'rlntds']:
+      budlines[bk][0].remove()
+   ###
    ax2.legend()
    ax2.set_ylabel('Energy budget [W m-2]')
    plt.savefig('%s_%d_%dx%d_SSTwake.png' % filoargs, bbox_inches='tight')
@@ -117,6 +123,7 @@ def main():
 
    omlcomp = np.array([da.values for da in omls]).mean(axis=0)
    plt.plot(taxis, omlcomp)
+   plt.axvline(x=0, linestyle='--', color='black', linewidth=0.7)
    plt.xlabel('Day relative to max strength')
    plt.ylabel('OML relative to days %d to %d [%%]' % (AVBNDS[0].days, AVBNDS[1].days))
    plt.title('Composite OML for top %d storms, lat %s, lon %s' % (NTOP, str(LATBNDS), str(LONBNDS)))
