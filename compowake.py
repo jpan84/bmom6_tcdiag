@@ -32,8 +32,8 @@ TBNDS = (-dt.timedelta(days=10), dt.timedelta(days=10))
 
 omlvar = 'oml'
 sstvar = 'tos'
-budvars = {'hfsso': 'green', 'hflso': 'blue', 'rlntds': 'dimgray', 'rsntds': 'orange', 'Tadvconv': 'peru', 'Tdifconv': 'coral'}
-budlabs = {'hfsso': 'SH', 'hflso': 'LH', 'rlntds': 'LW', 'rsntds': 'SW', 'Tadvconv': 'advection', 'Tdifconv': 'diffusion'}
+budvars = {'hfsso': 'green', 'hflso': 'blue', 'rlntds': 'dimgray', 'rsntds': 'orange', 'Tadvconv': 'peru', 'Tdifconv': 'coral', 'hfds': 'black'}
+budlabs = {'hfsso': 'SH', 'hflso': 'LH', 'rlntds': 'LW', 'rsntds': 'SW', 'Tadvconv': 'advection', 'Tdifconv': 'diffusion', 'hfds': 'sfctot'}
 
 def main():
    tcdf = pd.read_parquet(TRAJFILE)
@@ -113,9 +113,13 @@ def main():
    for bk in budvars:
       budlines[bk] = ax2.plot(taxis, budser[bk].values, color=budvars[bk], label=budlabs[bk], linewidth=1)
    ###remove select lines
-   for bk in ['Tadvconv', 'hfsso', 'rlntds']:
+   for bk in ['hfsso', 'rlntds', 'hflso', 'rsntds', 'Tadvconv', 'hfds']:
       budlines[bk][0].remove()
    ###
+   #mybud = sum([budser[bk] for bk in budser if bk != 'hfds'])
+   #print(mybud)
+   #ax2.plot(taxis, mybud - budser['hfds'], color = 'purple', label='resid', linewidth=1.5) #this residual ended up closely matching Tadvconv
+   ax2.plot(taxis, budser['Tadvconv'] + budser['hfds'], color = 'purple', label='adv+sfc')
    ax2.legend()
    ax2.set_ylabel('Energy budget [W m-2]')
    plt.savefig('%s_%d_%dx%d_SSTwake.png' % filoargs, bbox_inches='tight')

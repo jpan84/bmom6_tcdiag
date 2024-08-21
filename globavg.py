@@ -2,12 +2,12 @@
 #compute globally area-weighted averaged quantities from unstructured grid
 
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120pg3_sx0.66av1.aqua.production.0812/'
+CASE = 'b.e23.BMOM.ne120pg3_sx0.66av1.aqua.reitab.0819/'
 HISTS = 'atm/hist/'
 H0 = r'*h0a.[0-9]*.nc'
 GRIDDIR = '/glade/p/cesmdata/inputdata/share/scripgrids'
 GRIDFN = 'ne120pg3_scrip_170628.nc'
-OUTDIR = './globavtraces_0812'
+OUTDIR = './globavtraces_0819_reitab'
 
 '''
 CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0815/'
