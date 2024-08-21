@@ -3,7 +3,7 @@
 ##==============================================================
 #PBS -N tempest.par
 #PBS -A UPSU0063
-#PBS -l walltime=00:03:00
+#PBS -l walltime=00:10:00
 #PBS -q main
 #PBS -j oe
 #PBS -k eod
@@ -16,7 +16,7 @@ TEMPESTEXTREMESDIR=/glade/work/zarzycki/derecho/tempestextremes/
 ###TEMPESTEXTREMESDIR="/glade/u/home/jpan/miniconda3/pkgs/tempest-extremes-2.2.2-nompi_h2cd73b2_100/"
 
 ###UQSTR=QPC5-ne30np4-aquap10-ctrl10-regrid
-UQSTR=b.e23.BMOM.f09_sx0.66av1.aqua.production.0711dlyout
+UQSTR=b.e23.BMOM.f09_sx0.66av1.aqua.production.0815
 ###UQSTR=QPC4-ne30np4-aquap10-ctrl
 PATHTOFILES=/glade/derecho/scratch/jpan/archive/${UQSTR}/atm/hist/
 ###/glade/cheyenne/scratch/zarzycki/archive/${UQSTR}/atm/hist/
@@ -93,6 +93,21 @@ SN_MINLEN=10
 
 ###set3
 DCU_PSLFOMAG=200.0
+DCU_PSLFODIST=5.5
+DCU_WCFOMAG=-2.0
+DCU_WCFODIST=6.5
+DCU_WCMAXOFFSET=1.0
+DCU_MERGEDIST=6.0
+SN_TRAJRANGE=6.0
+SN_TRAJMINLENGTH=10
+SN_TRAJMAXGAP=3
+SN_MAXTOPO=150.0
+SN_MAXLAT=50.0
+SN_MINWIND=10.0
+SN_MINLEN=10
+
+###set4
+DCU_PSLFOMAG=400.0
 DCU_PSLFODIST=5.5
 DCU_WCFOMAG=-2.0
 DCU_WCFODIST=6.5
