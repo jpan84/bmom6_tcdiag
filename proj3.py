@@ -8,12 +8,12 @@ import scipy.stats as stats
 tdel = datetime.timedelta
 
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120pg3_sx0.66av1.aqua.production.0812/'
+CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0815/'
 #ARCHV = '/glade/derecho/scratch/youweima/archive/'
-#CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.yr500_branch/'
+#CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0515ctrl/'
 #setsid nohup qcmd -q casper -A UPSU0064 -l walltime=00:30:00  -l select=1:ncpus=10:mem=200GB  python3 proj3.py
-HISTS = 'atm/hist_regrid/'
-H0 = r'*h0a.[0-9]*.nc'
+HISTS = 'atm/hist/'
+H0 = r'*h0.[0-9]*.nc'
 #HISTS = 'ocn/hist/'
 #H0 = r'*mom6.h_[0-9]*.nc'
 
@@ -54,9 +54,9 @@ def main():
    #plt.hlines(0, 0, 50, linestyle='--', color='black')
    plt.xlabel('Year')
    plt.ylabel('$T_s$ [K]')
-   #plt.ylim(295, 298)
+   plt.ylim(295, 299)
    #plt.legend()
-   plt.savefig('ts.png')#, bbox_inches='tight')
+   plt.savefig('ts.png', bbox_inches='tight')
    plt.close()
 
    plt.plot(rad_av, marker='+')
@@ -64,8 +64,8 @@ def main():
    plt.xlabel('Year')
    plt.ylabel('Top of model\nnet radiative forcing [W m$^{-2}$]')
    plt.legend()
-   #plt.ylim(0, 4)
-   plt.savefig('restom.png')#, bbox_inches='tight')
+   plt.ylim(0, 4)
+   plt.savefig('restom.png', bbox_inches='tight')
    plt.close()
 
    '''
