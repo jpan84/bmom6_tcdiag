@@ -2,20 +2,21 @@
 #compute globally area-weighted averaged quantities from unstructured grid
 
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120pg3_sx0.66av1.aqua.reitab.0819/'
+CASE = 'b.e23.BMOM.ne120pg3_sx0.66av1.aqua.zmtau.0826/'
 HISTS = 'atm/hist/'
 H0 = r'*h0a.[0-9]*.nc'
 GRIDDIR = '/glade/p/cesmdata/inputdata/share/scripgrids'
 GRIDFN = 'ne120pg3_scrip_170628.nc'
-OUTDIR = './globavtraces_0819_reitab'
+OUTDIR = './globavtraces_0826_zmtau'
 
-'''
-CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0815/'
-HISTS = 'atm/hist_ne30/'
-H0 = r'*h0.[0-9]*.nc'
+
+CASE = 'b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.1121_yr1098/'
+HISTS = 'atm/hist/'
+H0 = r'*h0a.[0-9]*.nc'
 GRIDFN = 'ne30np4_091226_pentagons.nc'
-OUTDIR = './globavtraces_0815_f09'
-'''
+OUTDIR = './globavtraces_1121_yr1098'
+
+
 
 import os
 import glob
@@ -29,11 +30,16 @@ import consts as c
 
 a = c.a
 
-vrs = ['FSNT', 'FLNT', 'PRECC', 'PRECL', 'PS', 'TMQ', 'QFLX', 'PRECT', 'RESTOM', 'LWCF', 'SWCF'] #'PSDRY'
+vrs = ['TS', 'FSNT', 'FLNT', 'RESTOM', 'PRECC', 'PRECL', 'PRECT', 'QFLX', 'PS', 'TMQ', 'LWCF', 'SWCF', 'CLDTOT']
+plt.rc('font', size=16)
 
 def main():
    pt = os.path.join(ARCHV, CASE, HISTS, H0)
+   #print(os.path.join(GRIDDIR, GRIDFN))
+   #print(pt)
+   #exit()
    ds = ux.open_mfdataset(os.path.join(GRIDDIR, GRIDFN), pt)
+   print(ds.time) 
 
    '''
    #pltsettings.set1()
@@ -59,6 +65,8 @@ def main():
             print(pt, '\n', file=f)
          print(var, tav(gav), file=f)
          f.close()
+      #print(gav.time)
+      #print(weighted_temporal_mean(gav))
       plt.plot(gav.time, gav.values)
       plt.legend()
       plt.title(var)
@@ -86,6 +94,38 @@ def tav(gav):
    print(gav.shape, dt.shape)
    tchunks = gav * dt #s * [v], time integral of global avg var each time interval
    return (tchunks.sum() / dt.sum()).values
+
+#adapted from https://ncar.github.io/esds/posts/2021/yearly-averages-xarray/
+#weight monthly avgs to correctly compute annual avgs
+def weighted_temporal_mean(da):
+   """
+   weight by days in each month
+   """
+   # Determine the month length
+   month_length = da.time.dt.days_in_month
+
+   # Calculate the weights
+   wgts = month_length.groupby("time.year") / month_length.groupby("time.year").sum()
+
+   # Make sure the weights in each year add up to 1
+   np.testing.assert_allclose(wgts.groupby("time.year").sum(xr.ALL_DIMS), 1.0)
+
+   # Subset our dataset for our variable
+   #obs = ds[var]
+   obs = da
+
+   # Setup our masking for nan values
+   cond = obs.isnull()
+   ones = xr.where(cond, 0.0, 1.0)
+
+   # Calculate the numerator
+   obs_sum = (obs * wgts).resample(time="AS").sum(dim="time")
+
+   # Calculate the denominator
+   ones_out = (ones * wgts).resample(time="AS").sum(dim="time")
+
+   # Return the weighted average
+   return obs_sum / ones_out
 
 if __name__ == '__main__':
    main()
