@@ -2,9 +2,11 @@ import os
 import glob
 import datetime as dt
 import cftime
+import numpy as np
 import uxarray as ux
 import holoviews as hv
 from bokeh.models import FixedTicker
+import matplotlib.pyplot as plt
 import geoviews.feature as gf
 import cartopy.crs as ccrs
 
@@ -32,7 +34,8 @@ LONBNDS = (100, 160)
 
 CONVAR = 'PSL'
 COFVAR = 'OMEGA500'
-COFLIM = (-20, 20)
+COFLIM = (-10, 10)
+#COFLEV = np.arange(-20, 21, 4)
 
 def main():
    mygl = lambda fill: glob.glob(os.path.join(diri, hstr % fill))
@@ -47,10 +50,15 @@ def main():
          dt = cftime.num2date(tt, tt.units, calendar=tt.calendar)
          tstr = dt.strftime('%Y-%m-%d-%H')
          #print(tstr)
+         #print(uxds.dims)
 
-         rast = uxds[COFVAR].isel(time=0).plot.polygons(backend='bokeh')
-         rast = rast.opts(cmap='bwr', symmetric=True, xlim=LONBNDS, ylim=LATBNDS, frame_width=1200, frame_height=800)# * features
+         #limidx = np.where((uxds.lat >= LATBNDS[0]) & (uxds.lat <= LATBNDS[1]) & (uxds.lon >= LONBNDS[0]) & (uxds.lon <= LONBNDS[1]))[0]
+
+         plt.rc('font', size=20)
+         rast = uxds[COFVAR].sel(time=tt).plot.polygons(backend='matplotlib')
+         rast = rast.opts(cmap='bwr', symmetric=True, xlim=LONBNDS, ylim=LATBNDS, frame_width=1200, frame_height=800, color_levels=10, clim=COFLIM)# * features
          hv.save(rast, os.path.join(diro, '%s_%s.png' % (alias, tstr)))
+         plt.close()
 
    exit()
    
