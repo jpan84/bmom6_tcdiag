@@ -1,0 +1,40 @@
+"MOM6 diagnostic fields table for CESM case: CASENAME"
+1 1 1 0 0 0
+### Section-1: File List
+#========================
+"CASENAME.mom6.hmd%4yr%2mo%2dy",               6,  "hours",  1, "seconds","time" ,1, "days"
+"CASENAME.mom6.static",                        -1, "days",   1, "days",   "time"
+
+### Section-2: Fields List
+#=========================
+# "CASENAME.mom6.hmd%4yr%2mo%2dy"
+"ocean_model", "KPP_OBLdepth", "oml",          "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
+"ocean_model", "mlotst",       "mlotst",       "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
+"ocean_model", "tos",          "tos",          "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
+"ocean_model", "SSU",          "SSU",          "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
+"ocean_model", "SSV",          "SSV",          "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
+"ocean_model", "hfsso",        "hfsso",        "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
+"ocean_model", "hflso",        "hflso",        "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
+"ocean_model", "rlntds",       "rlntds",       "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
+"ocean_model", "rsntds",       "rsntds",       "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
+"ocean_model", "hfds",         "hfds",         "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
+"ocean_model", "T_advection_xy_2d","Tadvconv", "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
+"ocean_model", "opottemppmdiff_2d","Tdifconv", "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
+
+# "CASENAME.mom6.static"
+"ocean_model", "geolon",     "geolon",     "CASENAME.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "geolat",     "geolat",     "CASENAME.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "geolon_c",   "geolon_c",   "CASENAME.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "geolat_c",   "geolat_c",   "CASENAME.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "geolon_u",   "geolon_u",   "CASENAME.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "geolat_u",   "geolat_u",   "CASENAME.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "geolon_v",   "geolon_v",   "CASENAME.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "geolat_v",   "geolat_v",   "CASENAME.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "area_t",     "area_t",     "CASENAME.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "depth_ocean","depth_ocean","CASENAME.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "wet",        "wet",        "CASENAME.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "wet_c",      "wet_c",      "CASENAME.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "wet_u",      "wet_u",      "CASENAME.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "wet_v",      "wet_v",      "CASENAME.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "Coriolis",   "Coriolis",   "CASENAME.mom6.static", "all", ".false.", "none", 1
+

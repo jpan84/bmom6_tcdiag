@@ -32,9 +32,20 @@ START, END = '0005-02-15-21600', '0005-02-28-21600'
 LATBNDS = (-30, -10)
 LONBNDS = (100, 160)
 
-CONVAR = 'PSL'
-COFVAR = 'OMEGA500'
-COFLIM = (-10, 10)
+case = 'b.e23.BMOM.ne120pg3_sx0.66av1.aqua.reitab.0819'
+alias = 'reitab.0819'
+diro = 'tcmov_%s' % alias
+diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
+hstr = '*.h1i.%s.nc'
+grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120pg3_scrip_170417.nc'
+START, END = '0004-01-07-21600', '0004-01-17-21600'
+LATBNDS = (-50, -20)
+LONBNDS = (-60, 60)
+
+COFVAR = 'PSL'
+#COFVAR = 'OMEGA500'
+COFLIM = (-5, 5)
+COFLIM = (950, 1020)
 #COFLEV = np.arange(-20, 21, 4)
 
 def main():
@@ -49,16 +60,26 @@ def main():
       for tt in uxds.time:
          dt = cftime.num2date(tt, tt.units, calendar=tt.calendar)
          tstr = dt.strftime('%Y-%m-%d-%H')
-         #print(tstr)
+         print(tstr)
          #print(uxds.dims)
 
          #limidx = np.where((uxds.lat >= LATBNDS[0]) & (uxds.lat <= LATBNDS[1]) & (uxds.lon >= LONBNDS[0]) & (uxds.lon <= LONBNDS[1]))[0]
 
-         plt.rc('font', size=20)
-         rast = uxds[COFVAR].sel(time=tt).plot.polygons(backend='matplotlib')
-         rast = rast.opts(cmap='bwr', symmetric=True, xlim=LONBNDS, ylim=LATBNDS, frame_width=1200, frame_height=800, color_levels=10, clim=COFLIM)# * features
+         '''
+         #plt.rc('font', size=20)
+         #plt.figure(figsize=(12, 8))
+         rast = uxds[COFVAR].sel(time=tt).plot.polygons(backend='bokeh')
+         #rast = rast.opts(cmap='bwr', symmetric=True, xlim=LONBNDS, ylim=LATBNDS, color_levels=10, clim=COFLIM,
+         #   line_width=0.1)# * features
+         rast = rast.opts(cmap='bwr', symmetric=True, xlim=LONBNDS, ylim=LATBNDS, color_levels=10, clim=COFLIM,
+             frame_width=1200, frame_height=800)# * features
          hv.save(rast, os.path.join(diro, '%s_%s.png' % (alias, tstr)))
-         plt.close()
+         #plt.close()
+         '''
+
+         pts = (uxds[COFVAR].sel(time=tt) / 100).plot.points(title=tstr, height=300, width=800, size=1)
+         pts = pts.opts(cmap='bw', xlim=LONBNDS, ylim=LATBNDS, color_levels=7, clim=COFLIM) #symmetric=True
+         hv.save(pts, os.path.join(diro, '%s_%s.png' % (alias, tstr)))
 
    exit()
    
