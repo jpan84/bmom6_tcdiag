@@ -38,7 +38,7 @@ diro = 'tcmov_%s' % alias
 diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
 hstr = '*.h1i.%s.nc'
 grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120pg3_scrip_170417.nc'
-START, END = '0004-01-07-21600', '0004-01-17-21600'
+START, END = '0004-01-01-21600', '0004-01-31-21600'
 LATBNDS = (-50, -20)
 LONBNDS = (-60, 60)
 
@@ -47,6 +47,12 @@ COFVAR = 'PSL'
 COFLIM = (-5, 5)
 COFLIM = (950, 1020)
 #COFLEV = np.arange(-20, 21, 4)
+hvfont = {
+    'title': 24, 
+    'labels': 24, 
+    'xticks': 24, 
+    'yticks': 24,
+    'ticks': 24}
 
 def main():
    mygl = lambda fill: glob.glob(os.path.join(diri, hstr % fill))
@@ -77,21 +83,11 @@ def main():
          #plt.close()
          '''
 
-         pts = (uxds[COFVAR].sel(time=tt) / 100).plot.points(title=tstr, height=300, width=800, size=1)
-         pts = pts.opts(cmap='bw', xlim=LONBNDS, ylim=LATBNDS, color_levels=7, clim=COFLIM) #symmetric=True
+         pts = (uxds[COFVAR].sel(time=tt) / 100).plot.points(title=tstr, height=600, width=1600, size=2)
+         pts = pts.opts(cmap='bwr_r', xlim=LONBNDS, ylim=LATBNDS, color_levels=7, clim=COFLIM, fontsize=hvfont) #symmetric=True
+         #uxds.uxgrid.plot()
          hv.save(pts, os.path.join(diro, '%s_%s.png' % (alias, tstr)))
 
-   exit()
-   
-   uxds = ux.open_dataset(grid, fili)
-   print(list(uxds.data_vars))
-   #print(uxds.OMEGA500)
-   
-   rast = uxds.OMEGA500.isel(time=0).plot.polygons(backend='bokeh')#, projection=ccrs.PlateCarree())
-   #features = gf.coastline(projection=ccrs.PlateCarree(), line_width=1, scale='50m')
-   print(type(rast))
-   rast = rast.opts(cmap='bwr', symmetric=True, xlim=LONBNDS, ylim=LATBNDS, aspect='square', frame_width=400)# * features
-   hv.save(rast, 'test_tcsnap_ux_5.png')
 
 if __name__ == '__main__':
    main()
