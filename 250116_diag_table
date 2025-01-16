@@ -2,9 +2,9 @@
 1 1 1 0 0 0
 ### Section-1: File List
 #========================
-"CASENAME.mom6.rho2%4yr-%2mo-%2dy",                 30,  "days", 1, "days",   "time", 30, "days"
-"CASENAME.mom6.hm%4yr-%2mo-%2dy",                   30,  "days", 1, "days",   "time", 30, "days"
-"CASENAME.mom6.h%4yr-%2mo-%2dy",                    30,  "days", 1, "days",   "time", 30, "days"
+"CASENAME.mom6.rho2%4yr-%2mo-%2dy",                 1,  "days", 1, "days",   "time", 1, "days"
+"CASENAME.mom6.hm%4yr-%2mo-%2dy",                   1,  "days", 1, "days",   "time", 1, "days"
+"CASENAME.mom6.h%4yr-%2mo-%2dy",                    1,  "days", 1, "days",   "time", 1, "days"
 "CASENAME.mom6.sfc%4yr",                       6,  "hours",   1, "seconds",   "time", 1, "years"
 "CASENAME.mom6.static",                        -1, "days",   1, "days",   "time"
 
