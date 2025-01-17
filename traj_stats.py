@@ -21,8 +21,8 @@ COLS = [None, 'lonint', 'latp90', 'lon', 'lat', 'pres', 'wspd', 'year', 'month',
 TYPS = [None, int, int, float, float, float, float, int, int, int, int]
 CTYP = {COLS[i+1]: TYPS[i+1] for i in range(len(COLS[1:]))}
 
-XLIMS = dict()
-YLIMS = dict()
+XLIMS = dict(pmins=(900,1010))
+YLIMS = dict(pmins=(0, 6e-2))
 
 def main(FN):
    print('Parsing files...')
@@ -53,13 +53,16 @@ def main(FN):
       for ti in tr: #loop thru timesteps in trajectory
          [stat[vv].append(ti[jj + 1]) for jj, vv in enumerate(COLS[1:])]
       tcdf = pd.DataFrame.from_dict(stat).astype(CTYP)
-      tcdf = tcdf.assign(mdstr=tcdf[COLS[-3:-1]].astype(str).agg('-'.join, axis=1))
       #dfs.append(tcdf.assign(dt=tcdf['dtstr'].astype(dt.datetime)))
+      
+      tcdf = tcdf.assign(mdstr=tcdf[COLS[-3:-1]].astype(str).agg('-'.join, axis=1))
       tcdf = tcdf.assign(doy=tcdf['mdstr'].apply(lambda x: int(dt.datetime.strptime(x, '%m-%d').strftime('%j'))))
+      '''
       tcdf['trueyr'] = tcdf['year']
       tcdf['yeardelta'] = tcdf['year'] % 584
       tcdf['year'] = tcdf['yeardelta'] + 1678
       tcdf = tcdf.assign(dt=pd.to_datetime(tcdf[COLS[-4:]]))
+      '''
       #print(tcdf)
       print(tn)
       tcdf['stmnum'] = tn
@@ -69,7 +72,7 @@ def main(FN):
    print(dfs[0])
    tc_stats = dict()
    tc_stats['genday'] = [tc['doy'].iloc[0] for tc in dfs]
-   tc_stats['dura'] = [((tc['dt'].iloc[-1] - tc['dt'].iloc[0]) + (tc['dt'].iloc[1] - tc['dt'].iloc[0])).days for tc in dfs] #last-1st time plus 1 timestep
+   #tc_stats['dura'] = [((tc['dt'].iloc[-1] - tc['dt'].iloc[0]) + (tc['dt'].iloc[1] - tc['dt'].iloc[0])).days for tc in dfs] #last-1st time plus 1 timestep
    tc_stats['pmins'] = [tc['pres'].min() for tc in dfs]
    tc_stats['genlat'] = [tc['lat'].iloc[0] for tc in dfs]
    tc_stats['lyslat'] = [tc['lat'].iloc[-1] for tc in dfs]
@@ -83,29 +86,62 @@ def main(FN):
    #tc_stats['lyslat'] = cliplat(tc_stats['lyslat'])
 
    outdf = pd.concat(dfs)
-   outdf.to_parquet('%s.parquet' % FN.split('-')[-1])
-   outdf.to_csv('%s.csv' % FN.split('-')[-1])
+   outdf.to_parquet('%s.parquet' % FN.split('.')[-1])
+   outdf.to_csv('%s.csv' % FN.split('.')[-1])
 
    #FN = 'tcstats-QPC4ctrl'
+   plt.rc('font', size=20)
    print('Hists and scatters...')
    for k in tc_stats:
       print(k)
-      plt.hist(tc_stats[k], density=True, bins=15, edgecolor='black')
+      if k == 'pmins':
+         plt.hist([pval / 100 for pval in tc_stats[k]], density=True, bins=15, edgecolor='black')
+      else:
+         plt.hist(tc_stats[k], density=True, bins=15, edgecolor='black')
       plt.title(k)
       plt.ylabel('Probability density')
       if k in XLIMS:
          plt.xlim(*XLIMS[k])
          plt.ylim(*YLIMS[k])
-      plt.savefig('%s/%s.png' % (FN.split('-')[-1], k))
+      plt.savefig('%s/%s.png' % (FN.split('.')[-1], k), bbox_inches='tight')
       plt.close()
       for depvar in tc_stats:
-         plt.scatter(tc_stats[k], tc_stats[depvar])
-         plt.xlabel(k)
-         plt.ylabel(depvar)
-         plt.savefig('%s/scat_%s_%s.png' % (FN.split('-')[-1], k, depvar))
+         # Start with a square Figure.
+         fig = plt.figure(figsize=(6, 6))
+         # Add a gridspec with two rows and two columns and a ratio of 1 to 4 between
+         # the size of the marginal Axes and the main Axes in both directions.
+         # Also adjust the subplot parameters for a square plot.
+         gs = fig.add_gridspec(2, 2,  width_ratios=(4, 1), height_ratios=(1, 4),
+                               left=0.1, right=0.9, bottom=0.1, top=0.9,
+                               wspace=0.05, hspace=0.05)
+         # Create the Axes.
+         ax = fig.add_subplot(gs[1, 0])
+         ax_histx = fig.add_subplot(gs[0, 0], sharex=ax)
+         ax_histy = fig.add_subplot(gs[1, 1], sharey=ax)
+         # Draw the scatter plot and marginals.
+         scatter_hist(tc_stats[k], tc_stats[depvar], ax, ax_histx, ax_histy)
+         ax.set_xlabel(k)
+         ax.set_ylabel(depvar)
+         #plt.scatter(tc_stats[k], tc_stats[depvar])
+         #plt.xlabel(k)
+         #plt.ylabel(depvar)
+         plt.savefig('%s/scat_%s_%s.png' % (FN.split('.')[-1], k, depvar), bbox_inches='tight')
          plt.close()
    
    print('%s done.' % sys.argv[0])
+
+def scatter_hist(x, y, ax, ax_histx, ax_histy):
+   # no labels
+   ax_histx.tick_params(axis="x", labelbottom=False, labelleft=False)
+   ax_histy.tick_params(axis="y", labelleft=False, labelbottom=False)
+
+   # the scatter plot:
+   ax.scatter(x, y)
+
+   ax_histx.hist(x, bins=20, edgecolor='black')
+   ax_histy.hist(y, bins=20, edgecolor='black', orientation='horizontal')
+   ax_histx.set_yticks([])
+   ax_histy.set_xticks([])
 
 def mps2cat(wspd):
    dif = wspd - SSHS
