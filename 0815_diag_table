@@ -5,8 +5,7 @@
 "CASENAME.mom6.rho2%4yr-%2mo",                 1,  "months", 1, "days",   "time", 1, "months"
 "CASENAME.mom6.hm%4yr-%2mo",                   1,  "months", 1, "days",   "time", 1, "months"
 "CASENAME.mom6.h%4yr-%2mo",                    1,  "months", 1, "days",   "time", 1, "months"
-"CASENAME.mom6.sfc%4yr",                       1,  "days",   1, "days",   "time", 1, "years"
-"CASENAME.mom6.hmd%4yr%2mo%2dy",               6,  "hours",  1, "seconds","time" ,1, "days"
+"CASENAME.mom6.sfc%4yr",                       6,  "hours",   1, "days",   "time", 1, "years"
 "CASENAME.mom6.static",                        -1, "days",   1, "days",   "time"
 
 ### Section-2: Fields List
@@ -100,32 +99,25 @@
 "ocean_model_z", "rhopot0",  "rhopot0",  "CASENAME.mom6.h%4yr-%2mo", "all", "mean", "none", 1
 
 # "CASENAME.mom6.sfc%4yr"
-"ocean_model", "SSH",          "SSH",          "CASENAME.mom6.sfc%4yr", "all", "mean", "none", 1
-"ocean_model", "tos",          "tos",          "CASENAME.mom6.sfc%4yr", "all", "mean", "none", 1
-"ocean_model", "sos",          "sos",          "CASENAME.mom6.sfc%4yr", "all", "mean", "none", 1
-"ocean_model", "SSU",          "SSU",          "CASENAME.mom6.sfc%4yr", "all", "mean", "none", 1
-"ocean_model", "SSV",          "SSV",          "CASENAME.mom6.sfc%4yr", "all", "mean", "none", 1
-"ocean_model", "mass_wt",      "mass_wt",      "CASENAME.mom6.sfc%4yr", "all", "mean", "none", 1
-"ocean_model", "opottempmint", "opottempmint", "CASENAME.mom6.sfc%4yr", "all", "mean", "none", 1
-"ocean_model", "somint",       "somint",       "CASENAME.mom6.sfc%4yr", "all", "mean", "none", 1
-"ocean_model", "Rd_dx",        "Rd_dx",        "CASENAME.mom6.sfc%4yr", "all", "mean", "none", 1
-"ocean_model", "speed",        "speed",        "CASENAME.mom6.sfc%4yr", "all", "mean", "none", 1
-"ocean_model", "mlotst",       "mlotst",       "CASENAME.mom6.sfc%4yr", "all", "mean", "none", 1
-"ocean_model", "KPP_OBLdepth", "oml",          "CASENAME.mom6.sfc%4yr", "all", "mean", "none", 1
-
-# "CASENAME.mom6.hmd%4yr%2mo%2dy"
-"ocean_model", "KPP_OBLdepth", "oml",          "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
-"ocean_model", "mlotst",       "mlotst",       "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
-"ocean_model", "tos",          "tos",          "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
-"ocean_model", "SSU",          "SSU",          "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
-"ocean_model", "SSV",          "SSV",          "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
-"ocean_model", "hfsso",        "hfsso",        "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
-"ocean_model", "hflso",        "hflso",        "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
-"ocean_model", "rlntds",       "rlntds",       "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
-"ocean_model", "rsntds",       "rsntds",       "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
-"ocean_model", "hfds",         "hfds",         "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
-"ocean_model", "T_advection_xy_2d","Tadvconv", "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
-"ocean_model", "opottemppmdiff_2d","Tdifconv", "CASENAME.mom6.hmd%4yr%2mo%2dy", "all", "none", "none", 1
+"ocean_model", "SSH",          "SSH",          "CASENAME.mom6.sfc%4yr", "all", "none", "none", 1
+"ocean_model", "tos",          "tos",          "CASENAME.mom6.sfc%4yr", "all", "none", "none", 1
+"ocean_model", "sos",          "sos",          "CASENAME.mom6.sfc%4yr", "all", "none", "none", 1
+"ocean_model", "SSU",          "SSU",          "CASENAME.mom6.sfc%4yr", "all", "none", "none", 1
+"ocean_model", "SSV",          "SSV",          "CASENAME.mom6.sfc%4yr", "all", "none", "none", 1
+"ocean_model", "mass_wt",      "mass_wt",      "CASENAME.mom6.sfc%4yr", "all", "none", "none", 1
+"ocean_model", "opottempmint", "opottempmint", "CASENAME.mom6.sfc%4yr", "all", "none", "none", 1
+"ocean_model", "somint",       "somint",       "CASENAME.mom6.sfc%4yr", "all", "none", "none", 1
+"ocean_model", "Rd_dx",        "Rd_dx",        "CASENAME.mom6.sfc%4yr", "all", "none", "none", 1
+"ocean_model", "speed",        "speed",        "CASENAME.mom6.sfc%4yr", "all", "none", "none", 1
+"ocean_model", "mlotst",       "mlotst",       "CASENAME.mom6.sfc%4yr", "all", "none", "none", 1
+"ocean_model", "KPP_OBLdepth", "oml",          "CASENAME.mom6.sfc%4yr", "all", "none", "none", 1
+"ocean_model", "hfsso",        "hfsso",        "CASENAME.mom6.sfc%4yr", "all", "none", "none", 1
+"ocean_model", "hflso",        "hflso",        "CASENAME.mom6.sfc%4yr", "all", "none", "none", 1
+"ocean_model", "rlntds",       "rlntds",       "CASENAME.mom6.sfc%4yr", "all", "none", "none", 1
+"ocean_model", "rsntds",       "rsntds",       "CASENAME.mom6.sfc%4yr", "all", "none", "none", 1
+"ocean_model", "hfds",         "hfds",         "CASENAME.mom6.sfc%4yr", "all", "none", "none", 1
+"ocean_model", "T_advection_xy_2d","Tadvconv", "CASENAME.mom6.sfc%4yr", "all", "none", "none", 1
+"ocean_model", "opottemppmdiff_2d","Tdifconv", "CASENAME.mom6.sfc%4yr", "all", "none", "none", 1
 
 # "CASENAME.mom6.static"
 "ocean_model", "geolon",     "geolon",     "CASENAME.mom6.static", "all", ".false.", "none", 1

@@ -4,7 +4,7 @@ set -e
 
 module load nco
 
-CASENAME="b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.250121_unseed_all"
+CASENAME="REPLCASE"
 tapes=("hm" "h")
 
 for tape in "${tapes[@]}"; do
