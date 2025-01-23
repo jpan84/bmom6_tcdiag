@@ -19,6 +19,7 @@ for tape in "${tapes[@]}"; do
     while true; do
         ###if no diag files exist for the month, then break
         MOFILES="$CASENAME.mom6.$tape.$LASTYYYY-$LASTMM-*.nc"
+        ###ls -1 ${MOFILES}
         if [[ -z "$(ls -1 ${MOFILES} 2>/dev/null)" ]]; then
             break
         fi
@@ -38,15 +39,20 @@ for tape in "${tapes[@]}"; do
             echo "Month ${LASTYYYY}-${LASTMM} is incomplete. Not averaging."
         fi
 
-        ###decrement month
-        if [[ $LASTMM -eq 01 ]]; then
+        ###convert back to ints
+        LASTYYYY=$((10#$LASTYYYY))
+        LASTMM=$((10#$LASTMM))
+        ###echo $LASTMM
+
+        ###decrement month and retain leading zeroes
+        if [[ $LASTMM -eq 1 ]]; then
             ((LASTYYYY--))
-            LASTMM=12
-            LASTYYYY=$(printf "%04d" "$LASTYYYY")
+            LASTMM=12 
         else
-            ((LASTMM--))
-            LASTMM=$(printf "%02d" "$LASTMM")
+            ((LASTMM--))            
         fi
+        LASTMM=$(printf "%02d" "$LASTMM")
+        LASTYYYY=$(printf "%04d" "$LASTYYYY")
 
     done
 done
