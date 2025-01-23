@@ -14,20 +14,40 @@ for tape in "${tapes[@]}"; do
     LASTDATE=$(echo "$MOSTRECENT" | awk -F. '{print $(NF-1)}')
     ###echo $LASTDATE
     IFS='-' read -r LASTYYYY LASTMM LASTDD <<< "$LASTDATE"
-    echo $LASTDD
+    ###echo $LASTDD
 
-    ###noleap
-    DDINMO=$(cal $LASTMM 0001 | awk 'NF {DAYS = $NF}; END {print DAYS}')
-    ###echo $DDINMO
-
-    if [[ "$LASTDD" == "$DDINMO" ]]; then
-        echo "Month ${LASTYYYY}-${LASTMM} is complete. Averaging and archiving tape ${tape}." 
+    while true; do
+        ###if no diag files exist for the month, then break
         MOFILES="$CASENAME.mom6.$tape.$LASTYYYY-$LASTMM-*.nc"
-        ncra ${MOFILES} "$CASENAME.mom6.${tape}cust_avg.$LASTYYYY-$LASTMM.nc"
-        #mv -v "*cust_avg.nc" "${ARCHROOT}/${CASENAME}/ocn/hist"
-        rm -v $MOFILES
-    else
-        echo "Month ${LASTYYYY}-${LASTMM} is incomplete. Not averaging."
-    fi
+        if [[ -z "$(ls -1 ${MOFILES} 2>/dev/null)" ]]; then
+            break
+        fi
+
+        DDCOUNT=$(ls -1 ${MOFILES} 2>/dev/null | wc -l)
+
+        ###noleap
+        DDINMO=$(cal $LASTMM 0001 | awk 'NF {DAYS = $NF}; END {print DAYS}')
+        ###echo $DDINMO
+    
+        if [[ "$DDCOUNT" == "$DDINMO" ]]; then
+            echo "Month ${LASTYYYY}-${LASTMM} is complete. Averaging and archiving tape ${tape}." 
+            ncra ${MOFILES} "$CASENAME.mom6.${tape}cust_avg.$LASTYYYY-$LASTMM.nc"
+            #mv -v "*cust_avg.nc" "${ARCHROOT}/${CASENAME}/ocn/hist"
+            rm -v $MOFILES
+        else
+            echo "Month ${LASTYYYY}-${LASTMM} is incomplete. Not averaging."
+        fi
+
+        ###decrement month
+        if [[ $LASTMM -eq 01 ]]; then
+            ((LASTYYYY--))
+            LASTMM=12
+            LASTYYYY=$(printf "%04d" "$LASTYYYY")
+        else
+            ((LASTMM--))
+            LASTMM=$(printf "%02d" "$LASTMM")
+        fi
+
+    done
 done
 
