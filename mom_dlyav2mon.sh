@@ -1,11 +1,14 @@
-#!/bin/bash
+#!/bin/bash -l
 
 set -e
 
 module load nco
 
-CASENAME="REPLCASE"
+ARCHROOT="/glade/derecho/scratch/jpan/archive/"
+CASENAME="b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.250121_unseed_all"
 tapes=("hm" "h")
+
+cd "$ARCHROOT/$CASENAME/ocn/hist"
 
 for tape in "${tapes[@]}"; do
     echo $tape
