@@ -16,7 +16,11 @@ H0 = r'*h0a.[0-9]*.nc'
 GRIDFN = 'ne30np4_091226_pentagons.nc'
 OUTDIR = './globavtraces_1121_yr1098'
 
-
+CASE = 'b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.250127_h80l897/'
+HISTS = 'atm/hist/'
+H0 = r'*h0a.[0-9]*.nc'
+GRIDFN = 'ne30np4_091226_pentagons.nc'
+OUTDIR = './globavtraces_250127_h80l897'
 
 import os
 import glob

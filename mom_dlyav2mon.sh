@@ -5,7 +5,7 @@ set -e
 module load nco
 
 ARCHROOT="/glade/derecho/scratch/jpan/archive/"
-CASENAME="b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.250121_unseed_all"
+CASENAME="REPLCASE"
 tapes=("hm" "h")
 
 cd "$ARCHROOT/$CASENAME/ocn/hist"
