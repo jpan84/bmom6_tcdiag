@@ -152,3 +152,43 @@ No artists with labels found to put in legend.  Note that artists whose label st
 (24,) (24,)
 No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
 globavg.py done.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+<xarray.UxDataArray 'time' (time: 33)>
+array([10995. , 11024.5, 11055. , 11085.5, 11116. , 11146.5, 11177.5,
+       11208. , 11238.5, 11269. , 11299.5, 11330.5, 11360. , 11389.5,
+       11420. , 11450.5, 11481. , 11511.5, 11542.5, 11573. , 11603.5,
+       11634. , 11664.5, 11695.5, 11725. , 11754.5, 11785. , 11815.5,
+       11846. , 11876.5, 11907.5, 11938. , 11968.5])
+Coordinates:
+  * time     (time) float64 1.1e+04 1.102e+04 1.106e+04 ... 1.194e+04 1.197e+04
+Attributes:
+    long_name:  time
+    units:      days since 0001-01-01 00:00:00
+    calendar:   noleap
+    bounds:     time_bounds
+(33,) (33,)
+(33,) (33,)
+(33,) (33,)
+(33,) (33,)
+(33,) (33,)
+(33,) (33,)
+(33,) (33,)
+(33,) (33,)
+(33,) (33,)
+(33,) (33,)
+(33,) (33,)
+(33,) (33,)
+(33,) (33,)
+globavg.py done.
