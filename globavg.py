@@ -30,10 +30,11 @@ OUTDIR = './globavtraces_250130_h80l89'
 #OUTDIR = './globavtraces_250127_h80l895'
 #OUTDIR = './globavtraces_250127_h80l897'
 
-CLIPMO = 120
+CLIPMO = 0
 
 import os
 import glob
+import cftime
 import numpy as np
 import uxarray as ux
 import xarray as xr
@@ -53,7 +54,9 @@ def main():
    #print(pt)
    #exit()
    ds = ux.open_mfdataset(os.path.join(GRIDDIR, GRIDFN), pt)
-   print(ds.time) 
+   flt = ds.time
+   cft = cftime.num2date(ds.time, ds.time.attrs['units'], ds.time.attrs['calendar'])
+   ds = ds.assign_coords(time=cft)
 
    '''
    #pltsettings.set1()
@@ -86,10 +89,10 @@ def main():
          f.close()
       #print(gav.time)
       #print(weighted_temporal_mean(gav))
-      plt.plot(gav.time, gav.values)
+      plt.plot(flt, gav.values)
       plt.legend()
       plt.title(var)
-      plt.xlabel('Time [%s]' % str(gav.time.units))
+      plt.xlabel('Time [%s]' % str(flt.units))
       plt.ylabel(units)
       plt.savefig(os.path.join(OUTDIR, '%s.png' % var), bbox_inches='tight')
       plt.close()
@@ -122,9 +125,12 @@ def weighted_temporal_mean(da):
    """
    # Determine the month length
    month_length = da.time.dt.days_in_month
+   #print(month_length)
 
+   '''
    # Calculate the weights
    wgts = month_length.groupby("time.year") / month_length.groupby("time.year").sum()
+   print(wgts)
 
    # Make sure the weights in each year add up to 1
    np.testing.assert_allclose(wgts.groupby("time.year").sum(xr.ALL_DIMS), 1.0)
@@ -145,6 +151,11 @@ def weighted_temporal_mean(da):
 
    # Return the weighted average
    return obs_sum / ones_out
+   '''
+
+   num = (da * month_length).sum()
+   den = month_length.sum()
+   return (num / den).values
 
 if __name__ == '__main__':
    main()

@@ -46,3 +46,48 @@ TMQ 44.12446123096134
 LWCF 24.425903533929013
 SWCF -53.50303606651702
 CLDTOT 0.4928529325234868
+/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.250130_h80l89/atm/hist/*h0a.[0-9]*.nc
+(120,) 
+
+/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.250130_h80l89/atm/hist/*h0a.[0-9]*.nc
+(120,) 
+
+/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.250130_h80l89/atm/hist/*h0a.[0-9]*.nc
+(120,) 
+
+/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.250130_h80l89/atm/hist/*h0a.[0-9]*.nc
+(120,) 
+
+/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.250130_h80l89/atm/hist/*h0a.[0-9]*.nc
+(120,) 
+
+TS <xarray.UxDataArray ()>
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.250130_h80l89/atm/hist/*h0a.[0-9]*.nc
+(120,) 
+
+TS <xarray.UxDataArray ()>
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+FSNT <xarray.UxDataArray ()>
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+FLNT <xarray.UxDataArray ()>
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+RESTOM <xarray.UxDataArray ()>
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.250130_h80l89/atm/hist/*h0a.[0-9]*.nc
+(120,) 
+
+TS 296.35693067692944
+FSNT 251.06583149428516
+FLNT 251.20907405447352
+RESTOM -0.14324256018834775
+PRECC 2.793389047355195e-08
+PRECL 1.944976159870773e-08
+PRECT 4.7383652072259683e-08
+QFLX 4.737757351581719e-05
+PS 101514.81997542625
+TMQ 44.12272912247405
+LWCF 24.426248145506705
+SWCF -53.508372396548225
+CLDTOT 0.49286598741391835
+NCF -29.082124251041527
