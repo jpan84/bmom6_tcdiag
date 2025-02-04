@@ -57,6 +57,7 @@ def main():
    flt = ds.time
    cft = cftime.num2date(ds.time, ds.time.attrs['units'], ds.time.attrs['calendar'])
    ds = ds.assign_coords(time=cft)
+   #print(ds.isel(time=slice(120,None)).time)
 
    '''
    #pltsettings.set1()
@@ -82,10 +83,10 @@ def main():
          units = ds[var].units
       with open(os.path.join(OUTDIR, 'globavgs.txt'), 'a') as f:
          if var == vrs[0]:
-            print(pt, file=f)
-            print(gav.isel(time=slice(CLIPMO,)).shape, '\n', file=f)
+            print('\n', pt, file=f)
+            print(gav.isel(time=slice(CLIPMO, None)).shape, '\n', file=f)
          #print(var, tav(gav.isel(time=slice(CLIPMO,))), file=f)
-         print(var, weighted_temporal_mean(gav.isel(time=slice(CLIPMO,))), file=f)
+         print(var, weighted_temporal_mean(gav.isel(time=slice(CLIPMO, None))), file=f)
          f.close()
       #print(gav.time)
       #print(weighted_temporal_mean(gav))
