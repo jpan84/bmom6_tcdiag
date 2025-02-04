@@ -16,11 +16,21 @@ H0 = r'*h0a.[0-9]*.nc'
 GRIDFN = 'ne30np4_091226_pentagons.nc'
 OUTDIR = './globavtraces_1121_yr1098'
 
-CASE = 'b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.250128_h80l894/'
+CASE = 'b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.250130_h80l89/'
+#CASE = 'b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.250130_h80l892/'
+#CASE = 'b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.250128_h80l894/'
+#CASE = 'b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.250127_h80l895/'
+#CASE = 'b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.250127_h80l897/'
 HISTS = 'atm/hist/'
 H0 = r'*h0a.[0-9]*.nc'
 GRIDFN = 'ne30np4_091226_pentagons.nc'
-OUTDIR = './globavtraces_250128_h80l894'
+OUTDIR = './globavtraces_250130_h80l89'
+#OUTDIR = './globavtraces_250130_h80l892'
+#OUTDIR = './globavtraces_250128_h80l894'
+#OUTDIR = './globavtraces_250127_h80l895'
+#OUTDIR = './globavtraces_250127_h80l897'
+
+CLIPMO = 120
 
 import os
 import glob
@@ -34,7 +44,7 @@ import consts as c
 
 a = c.a
 
-vrs = ['TS', 'FSNT', 'FLNT', 'RESTOM', 'PRECC', 'PRECL', 'PRECT', 'QFLX', 'PS', 'TMQ', 'LWCF', 'SWCF', 'CLDTOT']
+vrs = ['TS', 'FSNT', 'FLNT', 'RESTOM', 'PRECC', 'PRECL', 'PRECT', 'QFLX', 'PS', 'TMQ', 'LWCF', 'SWCF', 'CLDTOT', 'NCF']
 plt.rc('font', size=16)
 
 def main():
@@ -61,13 +71,18 @@ def main():
       elif var == 'RESTOM':
          gav = globav(ds, 'FSNT') - globav(ds, 'FLNT')
          units = ds['FSNT'].units
+      elif var == 'NCF':
+         gav = globav(ds, 'LWCF') + globav(ds, 'SWCF')
+         units = ds['LWCF'].units
       else:
          gav = globav(ds, var)
          units = ds[var].units
       with open(os.path.join(OUTDIR, 'globavgs.txt'), 'a') as f:
          if var == vrs[0]:
-            print(pt, '\n', file=f)
-         print(var, tav(gav), file=f)
+            print(pt, file=f)
+            print(gav.isel(time=slice(CLIPMO,)).shape, '\n', file=f)
+         #print(var, tav(gav.isel(time=slice(CLIPMO,))), file=f)
+         print(var, weighted_temporal_mean(gav.isel(time=slice(CLIPMO,))), file=f)
          f.close()
       #print(gav.time)
       #print(weighted_temporal_mean(gav))
