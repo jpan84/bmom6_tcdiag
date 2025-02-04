@@ -30,6 +30,10 @@ OUTDIR = './globavtraces_250130_h80l89'
 #OUTDIR = './globavtraces_250127_h80l895'
 #OUTDIR = './globavtraces_250127_h80l897'
 
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250129'
+GRIDFN = 'ne120np4_pentagons_100310.nc'
+OUTDIR = './globavtraces_250129_ne120np4'
+
 CLIPMO = 0
 
 import os
@@ -49,6 +53,9 @@ vrs = ['TS', 'FSNT', 'FLNT', 'RESTOM', 'PRECC', 'PRECL', 'PRECT', 'QFLX', 'PS', 
 plt.rc('font', size=16)
 
 def main():
+   if not os.path.exists(OUTDIR):
+      os.makedirs(OUTDIR)
+
    pt = os.path.join(ARCHV, CASE, HISTS, H0)
    #print(os.path.join(GRIDDIR, GRIDFN))
    #print(pt)
@@ -69,6 +76,7 @@ def main():
 
    gav, units = None, None
    for var in vrs:
+      print('Working on', var)
       if var == 'PRECT':
          gav = globav(ds, 'PRECC') + globav(ds, 'PRECL')
          units = ds['PRECC'].units
@@ -91,7 +99,7 @@ def main():
       #print(gav.time)
       #print(weighted_temporal_mean(gav))
       plt.plot(flt, gav.values)
-      plt.legend()
+      #plt.legend()
       plt.title(var)
       plt.xlabel('Time [%s]' % str(flt.units))
       plt.ylabel(units)
