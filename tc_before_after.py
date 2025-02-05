@@ -73,14 +73,15 @@ def main():
          rast = rast.opts(cmap='bwr', xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400, symmetric=True)
          hv.save(rast, os.path.join(OUTDIR, 'difps_ux_%s_%s.png' % (tid, dtstr)))
 
+         clim = (psmin // 5 * 5, 1020)
          rast = orivar.plot.rasterize(method='polygon', backend='bokeh')#, projection=ccrs.PlateCarree())
          #features = gf.coastline(projection=ccrs.PlateCarree(), line_width=1, scale='50m')
-         rast = rast.opts(cmap='BuPu', xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400)
+         rast = rast.opts(cmap='BuPu', clim=clim, xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400)
          hv.save(rast, os.path.join(OUTDIR, 'orips_ux_%s_%s.png' % (tid, dtstr)))
 
          rast = modvar.plot.rasterize(method='polygon', backend='bokeh')#, projection=ccrs.PlateCarree())
          #features = gf.coastline(projection=ccrs.PlateCarree(), line_width=1, scale='50m')
-         rast = rast.opts(cmap='BuPu', xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400)
+         rast = rast.opts(cmap='BuPu', clim=clim, xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400)
          hv.save(rast, os.path.join(OUTDIR, 'modps_ux_%s_%s.png' % (tid, dtstr)))
 
          mkplt = False
