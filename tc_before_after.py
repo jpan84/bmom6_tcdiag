@@ -10,12 +10,17 @@ import cartopy.crs as ccrs
 
 BBOX_DEG = 10.
 CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250129_unseed_all'
+OUTDIR = 'bef_aft.250129_unseed_all/'
 seedlog = open('/glade/u/home/jpan/work/MOM6_CASEDIRS/250129_ne120np4_unseed_all.out4', 'r')
 RESTDIR = '/glade/derecho/scratch/jpan/archive/%s/rest/%s/'
 grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 ps_pattern = r"^\[(1\d{5}|9\d{4})\."
 
 def main():
+   if not os.path.exists(OUTDIR):
+      os.makedirs(OUTDIR)
+
+   mkplt = False
    clat, clon, psmin, tid = None, None, None, None
    dtstr, orinc, modnc = None, None, None
    for ln in seedlog:
@@ -40,6 +45,45 @@ def main():
          if re.match(ps_pattern, spl[0]):
             psmin = float(spl[0].strip('[')) / 100
             mkplt = True #make plot now that we have all the info for 1 storm
+
+      if mkplt:
+         print('Plotting %d...' % tid)
+         rdir = RESTDIR % (CASE, dtstr)
+         ori = os.path.join(rdir, orinc)
+         mod = os.path.join(rdir, modnc)
+         orids = ux.open_dataset(grid, ori)
+         modds = ux.open_dataset(grid, mod)
+         print('\topened')
+
+         latbnds = [clat - BBOX_DEG, clat + BBOX_DEG]
+         lonbnds = [clon - BBOX_DEG, clon + BBOX_DEG]
+         lonbnds = [(lon + 180) % 360 - 180 for lon in lonbnds]
+         extrps = lambda ds: ds['PSDRY'].isel(time=0) / 100
+         selbbox = lambda da: da.subset.bounding_box(lonbnds, latbnds)
+         print('\tselected')
+
+         orivar = selbbox(extrps(orids))
+         modvar = selbbox(extrps(modds))
+         difvar = modvar - orivar
+         print('\tdiffed')
+
+         rast = difvar.plot.rasterize(method='polygon', backend='bokeh')#, projection=ccrs.PlateCarree())
+         #features = gf.coastline(projection=ccrs.PlateCarree(), line_width=1, scale='50m')
+         #print(type(rast))
+         rast = rast.opts(cmap='bwr', xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400, symmetric=True)
+         hv.save(rast, os.path.join(OUTDIR, 'difps_ux_%s_%s.png' % (tid, dtstr)))
+
+         rast = orivar.plot.rasterize(method='polygon', backend='bokeh')#, projection=ccrs.PlateCarree())
+         #features = gf.coastline(projection=ccrs.PlateCarree(), line_width=1, scale='50m')
+         rast = rast.opts(cmap='BuPu', xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400)
+         hv.save(rast, os.path.join(OUTDIR, 'orips_ux_%s_%s.png' % (tid, dtstr)))
+
+         rast = modvar.plot.rasterize(method='polygon', backend='bokeh')#, projection=ccrs.PlateCarree())
+         #features = gf.coastline(projection=ccrs.PlateCarree(), line_width=1, scale='50m')
+         rast = rast.opts(cmap='BuPu', xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400)
+         hv.save(rast, os.path.join(OUTDIR, 'modps_ux_%s_%s.png' % (tid, dtstr)))
+
+         mkplt = False
 
    exit()
 
