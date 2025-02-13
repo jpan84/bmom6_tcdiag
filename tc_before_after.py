@@ -9,12 +9,16 @@ import cartopy.crs as ccrs
 
 
 BBOX_DEG = 10.
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250129_unseed_all'
-OUTDIR = 'bef_aft.250129_unseed_all/'
-seedlog = open('/glade/u/home/jpan/work/MOM6_CASEDIRS/250129_ne120np4_unseed_all.out4', 'r')
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250210_unseed_vort'
+OUTDIR = 'bef_aft.250210_unseed_vort.thresh/'
+seedlog = open('/glade/u/home/jpan/work/MOM6_CASEDIRS/250210_ne120np4_unseed_vort.out', 'r')
 RESTDIR = '/glade/derecho/scratch/jpan/archive/%s/rest/%s/'
 grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 ps_pattern = r"^\[(1\d{5}|9\d{4})\."
+
+dpmin = 3 #hPa
+dTmax = -1 #K
+CEN_DEG = 3 #find largest dp and dT within this many GCD of clon,clat
 
 def main():
    if not os.path.exists(OUTDIR):
@@ -60,13 +64,25 @@ def main():
          lonbnds = [(lon + 180) % 360 - 180 for lon in lonbnds]
          extrps = lambda ds: ds['PSDRY'].isel(time=0) / 100
          selbbox = lambda da: da.subset.bounding_box(lonbnds, latbnds)
-         print('\tselected')
+         selcir = lambda da: da.subset.bounding_circle((clon, clat), CEN_DEG)
 
          orivar = selbbox(extrps(orids))
          modvar = selbbox(extrps(modds))
+         print('\tselected')
          difvar = modvar - orivar
          print('\tdiffed')
 
+         #TODO: maybe generalize to allow plotting other vars
+         dp = selcir(difvar).max()
+         dTarr = selcir(modds.T) - selcir(orids.T)
+         dT = dTarr.min()
+
+         if dp < dpmin or dT > dTmax:
+            print('dT or dp threshold not met. Skipping...\n')
+            mkplt = False
+            continue
+
+         #TODO: fix holoviews unable to plot xlim1 > xlim2 across the antimeridian
          rast = difvar.plot.rasterize(method='polygon', backend='bokeh')#, projection=ccrs.PlateCarree())
          #features = gf.coastline(projection=ccrs.PlateCarree(), line_width=1, scale='50m')
          #print(type(rast))
@@ -86,30 +102,6 @@ def main():
 
          mkplt = False
 
-   exit()
-
-
-   LATBNDS = (-18, 2)
-   LONBNDS = (-8.5, 11.5)
-   
-   origds = ux.open_dataset(grid, os.path.join(RESTDIR, orig))
-   modds = ux.open_dataset(grid, os.path.join(RESTDIR, mod))
-   print(list(modds.data_vars))
-   #print(uxds.OMEGA500)
-   
-   
-   #https://uxarray.readthedocs.io/en/latest/user-guide/subset.html
-   bbox_subset_nodes = (origds['PSDRY'].isel(time=0) / 100).subset.bounding_box(
-       LONBNDS,
-       LATBNDS,
-   )
-   bbox_subset_nodes.attrs['units'] = 'hPa'
-   
-   rast = bbox_subset_nodes.plot.rasterize(method='polygon', backend='bokeh')#, projection=ccrs.PlateCarree())
-   #features = gf.coastline(projection=ccrs.PlateCarree(), line_width=1, scale='50m')
-   print(type(rast))
-   rast = rast.opts(cmap='BuPu', color_levels=list(np.arange(930, 1030, 10)), xlim=LONBNDS, ylim=LATBNDS, aspect='square', frame_width=400)#symmetric=True 
-   hv.save(rast, 'subset_tcsnap_ux.png')
 
 if __name__ == '__main__':
    main()
