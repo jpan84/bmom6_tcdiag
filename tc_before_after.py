@@ -21,6 +21,7 @@ dTmax = -1 #K
 CEN_DEG = 3 #find largest dp and dT within this many GCD of clon,clat
 
 def main():
+   print('\n\n\nStarting with dp, dT thresholds\n', dpmin, dTmax)
    if not os.path.exists(OUTDIR):
       os.makedirs(OUTDIR)
 
@@ -73,9 +74,9 @@ def main():
          print('\tdiffed')
 
          #TODO: maybe generalize to allow plotting other vars
-         dp = selcir(difvar).max()
+         dp = float(selcir(difvar).max().values)
          dTarr = selcir(modds.T) - selcir(orids.T)
-         dT = dTarr.min()
+         dT = float(dTarr.min().values)
 
          if dp < dpmin or dT > dTmax:
             print('dT or dp threshold not met. Skipping...\n')
@@ -83,22 +84,26 @@ def main():
             continue
 
          #TODO: fix holoviews unable to plot xlim1 > xlim2 across the antimeridian
-         rast = difvar.plot.rasterize(method='polygon', backend='bokeh')#, projection=ccrs.PlateCarree())
+         rasts = []
+         rasts.append(difvar.plot.rasterize(method='polygon', backend='bokeh'))#, projection=ccrs.PlateCarree())
          #features = gf.coastline(projection=ccrs.PlateCarree(), line_width=1, scale='50m')
          #print(type(rast))
-         rast = rast.opts(cmap='bwr', xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400, symmetric=True)
-         hv.save(rast, os.path.join(OUTDIR, 'difps_ux_%s_%s.png' % (tid, dtstr)))
+         rasts[-1] = rasts[-1].opts(cmap='bwr', clim=(-dp, dp), xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400, symmetric=True)
+         hv.save(rasts[-1], os.path.join(OUTDIR, 'difps_ux_%s_%s.png' % (tid, dtstr)))
 
          clim = (psmin // 5 * 5, 1020)
-         rast = orivar.plot.rasterize(method='polygon', backend='bokeh')#, projection=ccrs.PlateCarree())
+         rasts.append(orivar.plot.rasterize(method='polygon', backend='bokeh'))#, projection=ccrs.PlateCarree())
          #features = gf.coastline(projection=ccrs.PlateCarree(), line_width=1, scale='50m')
-         rast = rast.opts(cmap='BuPu', clim=clim, xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400)
-         hv.save(rast, os.path.join(OUTDIR, 'orips_ux_%s_%s.png' % (tid, dtstr)))
+         rasts[-1] = rasts[-1].opts(cmap='BuPu', clim=clim, xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400)
+         hv.save(rasts[-1], os.path.join(OUTDIR, 'orips_ux_%s_%s.png' % (tid, dtstr)))
 
-         rast = modvar.plot.rasterize(method='polygon', backend='bokeh')#, projection=ccrs.PlateCarree())
+         rasts.append(modvar.plot.rasterize(method='polygon', backend='bokeh'))#, projection=ccrs.PlateCarree())
          #features = gf.coastline(projection=ccrs.PlateCarree(), line_width=1, scale='50m')
-         rast = rast.opts(cmap='BuPu', clim=clim, xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400)
-         hv.save(rast, os.path.join(OUTDIR, 'modps_ux_%s_%s.png' % (tid, dtstr)))
+         rasts[-1] = rasts[-1].opts(cmap='BuPu', clim=clim, xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400)
+         hv.save(rasts[-1], os.path.join(OUTDIR, 'modps_ux_%s_%s.png' % (tid, dtstr)))
+
+         layout = hv.Layout(rasts)
+         hv.save(layout, os.path.join(OUTDIR, 'layout_ps_ux_%s_%s.png' % (tid, dtstr)))
 
          mkplt = False
 
