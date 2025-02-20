@@ -30,11 +30,11 @@ OUTDIR = './globavtraces_250130_h80l89'
 #OUTDIR = './globavtraces_250127_h80l895'
 #OUTDIR = './globavtraces_250127_h80l897'
 
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250206_1degeqm885'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250206_1degeqm88'
 GRIDFN = 'ne120np4_pentagons_100310.nc'
-OUTDIR = './globavtraces_250206_1degeqm885'
+OUTDIR = './globavtraces_250206_1degeqm88'
 
-CLIPMO = 0
+CLIPMO = 24
 
 import os
 import glob

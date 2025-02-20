@@ -2,22 +2,24 @@ import os
 import re
 import numpy as np
 import uxarray as ux
+
 import holoviews as hv
+from holoviews.operation import contours as hvcontours
 from bokeh.models import FixedTicker
 import geoviews.feature as gf
 import cartopy.crs as ccrs
 
 
 BBOX_DEG = 10.
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250210_unseed_vort'
-OUTDIR = 'bef_aft.250210_unseed_vort.thresh/'
-seedlog = open('/glade/u/home/jpan/work/MOM6_CASEDIRS/250210_ne120np4_unseed_vort.out', 'r')
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250218_unseed_all'
+OUTDIR = 'bef_aft.250218_unseed_all.contours/'
+seedlog = open('/glade/u/home/jpan/work/MOM6_CASEDIRS/250218_ne120np4_unseed_all.out2', 'r')
 RESTDIR = '/glade/derecho/scratch/jpan/archive/%s/rest/%s/'
 grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 ps_pattern = r"^\[(1\d{5}|9\d{4})\."
 
-dpmin = 3 #hPa
-dTmax = -1 #K
+dpmin = 0 #3 #hPa
+dTmax = 0 #-1 #K
 CEN_DEG = 3 #find largest dp and dT within this many GCD of clon,clat
 
 def main():
@@ -102,7 +104,10 @@ def main():
          rasts[-1] = rasts[-1].opts(cmap='BuPu', clim=clim, xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400)
          hv.save(rasts[-1], os.path.join(OUTDIR, 'modps_ux_%s_%s.png' % (tid, dtstr)))
 
-         layout = hv.Layout(rasts)
+         #!TEST-CONTOURS
+         cntrs = [hvcontours(rast).opts(color='black', show_legend=False) for rast in rasts]
+
+         layout = hv.Layout(cntrs)#hv.Layout([el[0] * el[1] for el in zip(rasts, cntrs)])
          hv.save(layout, os.path.join(OUTDIR, 'layout_ps_ux_%s_%s.png' % (tid, dtstr)))
 
          mkplt = False
