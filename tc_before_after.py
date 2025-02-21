@@ -60,6 +60,7 @@ def main():
          mod = os.path.join(rdir, modnc)
          orids = ux.open_dataset(grid, ori)
          modds = ux.open_dataset(grid, mod)
+         #difds = modds - orids
          print('\topened')
 
          latbnds = [clat - BBOX_DEG, clat + BBOX_DEG]
@@ -75,6 +76,13 @@ def main():
          difvar = modvar - orivar
          print('\tdiffed')
 
+         levi = -1
+         oriu = selbbox(orids['U'].isel(lev=levi).isel(time=0))
+         oriu = oriu - oriu.mean()
+         oriv = selbbox(orids['V'].isel(lev=levi).isel(time=0))
+         modu = selbbox(modds['U'].isel(lev=levi).isel(time=0))
+         modv = selbbox(modds['V'].isel(lev=levi).isel(time=0))
+
          #TODO: maybe generalize to allow plotting other vars
          dp = float(selcir(difvar).max().values)
          dTarr = selcir(modds.T) - selcir(orids.T)
@@ -86,28 +94,31 @@ def main():
             continue
 
          #TODO: fix holoviews unable to plot xlim1 > xlim2 across the antimeridian
-         rasts = []
-         rasts.append(difvar.plot.rasterize(method='polygon', backend='bokeh'))#, projection=ccrs.PlateCarree())
+         prasts, urasts, vrasts = [], [], []
+         prasts.append(difvar.plot.rasterize(method='polygon', backend='bokeh'))#, projection=ccrs.PlateCarree())
          #features = gf.coastline(projection=ccrs.PlateCarree(), line_width=1, scale='50m')
          #print(type(rast))
-         rasts[-1] = rasts[-1].opts(cmap='bwr', clim=(-dp, dp), xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400, symmetric=True)
-         hv.save(rasts[-1], os.path.join(OUTDIR, 'difps_ux_%s_%s.png' % (tid, dtstr)))
+         prasts[-1] = prasts[-1].opts(cmap='bwr', clim=(-dp, dp), xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400, symmetric=True)
+         #hv.save(prasts[-1], os.path.join(OUTDIR, 'difps_ux_%s_%s.png' % (tid, dtstr)))
 
          clim = (psmin // 5 * 5, 1020)
-         rasts.append(orivar.plot.rasterize(method='polygon', backend='bokeh'))#, projection=ccrs.PlateCarree())
+         prasts.append(orivar.plot.rasterize(method='polygon', backend='bokeh'))#, projection=ccrs.PlateCarree())
          #features = gf.coastline(projection=ccrs.PlateCarree(), line_width=1, scale='50m')
-         rasts[-1] = rasts[-1].opts(cmap='BuPu', clim=clim, xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400)
-         hv.save(rasts[-1], os.path.join(OUTDIR, 'orips_ux_%s_%s.png' % (tid, dtstr)))
+         prasts[-1] = prasts[-1].opts(cmap='BuPu', clim=clim, xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400)
+         urasts.append(oriu.plot.rasterize(method='polygon', backend='bokeh'))
+         urasts[-1] = urasts[-1].opts(cmap='BrBG', clim=(-20, 20), xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400, symmetric=True)
+         #hv.save(prasts[-1], os.path.join(OUTDIR, 'orips_ux_%s_%s.png' % (tid, dtstr)))
 
-         rasts.append(modvar.plot.rasterize(method='polygon', backend='bokeh'))#, projection=ccrs.PlateCarree())
+         prasts.append(modvar.plot.rasterize(method='polygon', backend='bokeh'))#, projection=ccrs.PlateCarree())
          #features = gf.coastline(projection=ccrs.PlateCarree(), line_width=1, scale='50m')
-         rasts[-1] = rasts[-1].opts(cmap='BuPu', clim=clim, xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400)
-         hv.save(rasts[-1], os.path.join(OUTDIR, 'modps_ux_%s_%s.png' % (tid, dtstr)))
+         prasts[-1] = prasts[-1].opts(cmap='BuPu', clim=clim, xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400)
+         #hv.save(prasts[-1], os.path.join(OUTDIR, 'modps_ux_%s_%s.png' % (tid, dtstr)))
 
          #!TEST-CONTOURS
-         cntrs = [hvcontours(rast).opts(color='black', show_legend=False) for rast in rasts]
+         cntrs = [hvcontours(rast).opts(color='black', show_legend=False, aspect='square', frame_width=400) for rast in prasts]
+         cntrs[1] = urasts[0] * cntrs[1]
 
-         layout = hv.Layout(cntrs)#hv.Layout([el[0] * el[1] for el in zip(rasts, cntrs)])
+         layout = hv.Layout(cntrs)#hv.Layout([el[0] * el[1] for el in zip(prasts, cntrs)])
          hv.save(layout, os.path.join(OUTDIR, 'layout_ps_ux_%s_%s.png' % (tid, dtstr)))
 
          mkplt = False
