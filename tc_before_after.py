@@ -24,8 +24,11 @@ CEN_DEG = 3 #find largest dp and dT within this many GCD of clon,clat
 
 Uclim = 20
 
+lev = None
+
 def main():
    print('\n\n\nStarting with dp, dT thresholds\n', dpmin, dTmax)
+   global lev
    if not os.path.exists(OUTDIR):
       os.makedirs(OUTDIR)
 
@@ -65,6 +68,10 @@ def main():
          #difds = modds - orids
          print('\topened')
 
+         if lev is None:
+            lev = modds.hyam * modds.P0 + modds.hybm * modds['PSDRY'].mean()
+            lev /= 100.
+
          latbnds = [clat - BBOX_DEG, clat + BBOX_DEG]
          lonbnds = [clon - BBOX_DEG, clon + BBOX_DEG]
          lonbnds = [(lon + 180) % 360 - 180 for lon in lonbnds]
@@ -88,7 +95,9 @@ def main():
          modv = selbbox(modds['V'].isel(lev=levi).isel(time=0))
          modv = modv - oriv.mean()
 
-         oriT = selbbox(modds['T'].isel(lev=-9).isel(time=0))
+         
+         levT = -9
+         oriT = selbbox(modds['T'].isel(lev=levT).isel(time=0))
 
          #TODO: maybe generalize to allow plotting other vars
          dp = float(selcir(difvar).max().values)
@@ -112,7 +121,7 @@ def main():
          modp = modvar.plot.rasterize(**rastkwargs)
 
          panels[0].append(oriu.plot.rasterize(**rastkwargs))
-         panels[0][-1] = panels[0][-1].opts(title='before u', cmap='BrBG', clim=(-Uclim, Uclim), symmetric=True, **framekwargs)
+         panels[0][-1] = panels[0][-1].opts(title='before u, lev %d' % levi, cmap='BrBG', clim=(-Uclim, Uclim), symmetric=True, **framekwargs)
          panels[0][-1] *= hvcontours(orip).opts(show_legend=False, **framekwargs)
 
          panels[0].append(oriv.plot.rasterize(**rastkwargs))
@@ -120,7 +129,7 @@ def main():
          panels[0][-1] *= hvcontours(orip).opts(show_legend=False, **framekwargs)
 
          panels[1].append(oriT.plot.rasterize(**rastkwargs))
-         panels[1][-1] = panels[1][-1].opts(title='before T', cmap='jet', **framekwargs)
+         panels[1][-1] = panels[1][-1].opts(title='before T, lev=%.2f' % lev[levT], cmap='jet', **framekwargs)
          
          panels[1].append(modu.plot.rasterize(**rastkwargs))
          panels[1][-1] = panels[1][-1].opts(title='after u', cmap='BrBG', clim=(-Uclim, Uclim), symmetric=True, **framekwargs)
