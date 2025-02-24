@@ -87,17 +87,21 @@ def main():
 
          levi = -1
          oriu = selbbox(orids['U'].isel(lev=levi).isel(time=0))
-         oriu = oriu - oriu.mean()
+         umean = oriu.mean()
+         oriu = oriu - umean
          oriv = selbbox(orids['V'].isel(lev=levi).isel(time=0))
-         oriv = oriv - oriv.mean()
+         vmean = oriv.mean()
+         oriv = oriv - vmean
          modu = selbbox(modds['U'].isel(lev=levi).isel(time=0))
-         modu = modu - oriu.mean()
+         modu = modu - umean
          modv = selbbox(modds['V'].isel(lev=levi).isel(time=0))
-         modv = modv - oriv.mean()
+         modv = modv - vmean
 
          
          levT = -9
-         oriT = selbbox(modds['T'].isel(lev=levT).isel(time=0))
+         oriT = selbbox(orids['T'].isel(lev=levT).isel(time=0))
+         #oriQ = selbbox(orids['Q'].isel(lev=levT).isel(time=0)) #need to convert dpQ
+         #oriTv = (1 + 0.61 * oriQ) * oriT
 
          #TODO: maybe generalize to allow plotting other vars
          dp = float(selcir(difvar).max().values)
@@ -117,6 +121,8 @@ def main():
 
          panels[0].append(difvar.plot.rasterize(**rastkwargs))
          panels[0][-1] = panels[0][-1].opts(title='dp=%.2f' % dp, cmap='bwr', clim=(-dp, dp), symmetric=True, **framekwargs)
+         #panels[0].append((modu - oriu).plot.rasterize(**rastkwargs))
+         #panels[0][-1] = panels[0][-1].opts(title='dp=%.2f' % dp, cmap='bwr', clim=(-Uclim, Uclim), symmetric=True, **framekwargs)
          orip = orivar.plot.rasterize(**rastkwargs)
          modp = modvar.plot.rasterize(**rastkwargs)
 
