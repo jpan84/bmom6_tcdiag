@@ -1,4 +1,5 @@
 import os
+import glob
 import re
 import numpy as np
 import uxarray as ux
@@ -15,6 +16,7 @@ CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250219_unseed_all'
 OUTDIR = 'bef_aft.250219_unseed_all/'
 seedlog = open('/glade/u/home/jpan/work/MOM6_CASEDIRS/250219_ne120np4_unseed_all.out', 'r')
 RESTDIR = '/glade/derecho/scratch/jpan/archive/%s/rest/%s/'
+HTRACKSTR = '*.cam.h1i.*.nc'
 grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 ps_pattern = r"^\[(1\d{5}|9\d{4})\."
 
@@ -63,8 +65,10 @@ def main():
          rdir = RESTDIR % (CASE, dtstr)
          ori = os.path.join(rdir, orinc)
          mod = os.path.join(rdir, modnc)
+         his = glob.glob(os.path.join(rdir, HTRACKSTR))[0]
          orids = ux.open_dataset(grid, ori)
          modds = ux.open_dataset(grid, mod)
+         hds = ux.open_dataset(grid, his)
          #difds = modds - orids
          print('\topened')
 
@@ -102,6 +106,10 @@ def main():
          oriT = selbbox(orids['T'].isel(lev=levT).isel(time=0))
          #oriQ = selbbox(orids['Q'].isel(lev=levT).isel(time=0)) #need to convert dpQ
          #oriTv = (1 + 0.61 * oriQ) * oriT
+         dZ = selbbox((hds['Z300'] - hds['Z500']).isel(time=0))
+         dZ.name = 'dZ300500'
+         #print(dZ)
+         #print(dZ.dims)
 
          #TODO: maybe generalize to allow plotting other vars
          dp = float(selcir(difvar).max().values)
@@ -134,9 +142,12 @@ def main():
          panels[0][-1] = panels[0][-1].opts(title='before v', cmap='BrBG', clim=(-Uclim, Uclim), symmetric=True, **framekwargs)
          panels[0][-1] *= hvcontours(orip).opts(show_legend=False, **framekwargs)
 
-         panels[1].append(oriT.plot.rasterize(**rastkwargs))
-         panels[1][-1] = panels[1][-1].opts(title='before T, lev=%.2f' % lev[levT], cmap='jet', **framekwargs)
-         
+         #panels[1].append(oriT.plot.rasterize(**rastkwargs))
+         #panels[1][-1] = panels[1][-1].opts(title='before T, lev=%.2f' % lev[levT], cmap='jet', **framekwargs)
+         panels[1].append(dZ.plot.rasterize(**rastkwargs))
+         panels[1][-1] = panels[1][-1].opts(title='before 300-500 thickness [m]', cmap='jet', **framekwargs)
+         panels[1][-1] *= hv.Points([(clon, clat)]).opts(marker='x', size=10, color='black')
+        
          panels[1].append(modu.plot.rasterize(**rastkwargs))
          panels[1][-1] = panels[1][-1].opts(title='after u', cmap='BrBG', clim=(-Uclim, Uclim), symmetric=True, **framekwargs)
          panels[1][-1] *= hvcontours(modp).opts(show_legend=False, **framekwargs)

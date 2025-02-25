@@ -517,3 +517,614 @@ WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing m
 WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11709', ...)
 WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11839', ...)
 WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p12039', ...)
+
+
+
+Starting with dp, dT thresholds
+ 0 0
+0003-02-02-00000
+Plotting 669484...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot03321: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot03321: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot03332: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot03332: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot03443: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot03443: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot03553: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot03553: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot03560: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot03560: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot03666: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot03666: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1027', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1157', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1227', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1357', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1085', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1285', ...)
+Plotting 669558...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot06202: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot06202: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot06213: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot06213: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot06324: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot06324: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot06434: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot06434: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot06441: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot06441: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot06543: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot06543: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1787', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1529', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1729', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1659', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1587', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1859', ...)
+Plotting 669623...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot09095: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot09095: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot09106: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot09106: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot09217: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot09217: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot09327: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot09327: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot09334: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot09334: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot09452: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot09452: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2157', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2357', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2227', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2085', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2285', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2027', ...)
+0003-02-03-00000
+Plotting 670138...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot12060: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot12060: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot12071: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot12071: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot12186: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot12186: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot12300: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot12300: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot12307: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot12307: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot12417: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot12417: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2799', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2871', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2541', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2671', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2741', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2599', ...)
+0003-02-04-00000
+Plotting 670638...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot14981: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot14981: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot14992: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot14992: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot15099: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot15099: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot15205: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot15205: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot15212: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot15212: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot15318: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot15318: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3251', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3181', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3309', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3109', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3381', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3051', ...)
+0003-02-05-00000
+Plotting 671160...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot17850: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot17850: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot17861: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot17861: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot17972: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot17972: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot18082: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot18082: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot18089: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot18089: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot18195: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot18195: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3607', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3879', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3679', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3807', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3749', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3549', ...)
+Plotting 671229...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot20763: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot20763: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot20774: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot20774: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot20889: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot20889: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot21003: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot21003: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot21010: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot21010: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot21124: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot21124: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4381', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4251', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4309', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4109', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4051', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4181', ...)
+Plotting 671297...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot23720: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot23720: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot23731: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot23731: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot23842: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot23842: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot23952: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot23952: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot23959: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot23959: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot24069: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot24069: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4765', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4895', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4695', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4623', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4565', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4823', ...)
+0003-02-07-00000
+Plotting 672318...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot26637: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot26637: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot26648: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot26648: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot26759: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot26759: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot26869: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot26869: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot26876: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot26876: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot26986: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot26986: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5201', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5271', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5129', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5329', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5401', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5071', ...)
+Plotting 672386...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot29586: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot29586: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot29597: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot29597: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot29716: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot29716: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot29834: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot29834: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot29841: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot29841: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot29959: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot29959: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5707', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5777', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5907', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5635', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5835', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5577', ...)
+0003-02-08-00000
+Plotting 672902...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot32591: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot32591: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot32602: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot32602: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot32713: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot32713: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot32823: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot32823: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot32830: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot32830: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot32944: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot32944: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6357', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6429', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6157', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6299', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6229', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6099', ...)
+Plotting 672971...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot35552: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot35552: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot35563: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot35563: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot35678: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot35678: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot35792: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot35792: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot35799: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot35799: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot35917: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot35917: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6867', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6609', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6809', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6667', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6739', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6939', ...)
+Plotting 673036...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot38553: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot38553: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot38564: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot38564: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot38679: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot38679: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot38793: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot38793: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot38800: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot38800: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot38918: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot38918: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7457', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7185', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7127', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7385', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7257', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7327', ...)
+0003-02-10-00000
+Plotting 673971...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot41554: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot41554: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot41565: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot41565: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot41684: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot41684: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot41802: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot41802: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot41809: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot41809: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot41923: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot41923: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7645', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7775', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7845', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7975', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7703', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7903', ...)
+0003-02-11-00000
+Plotting 674493...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot44547: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot44547: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot44558: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot44558: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot44669: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot44669: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot44779: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot44779: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot44786: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot44786: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot44904: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot44904: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8293', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8163', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8221', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8363', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8421', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8493', ...)
+0003-02-13-00000
+Plotting 675468...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot47504: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot47504: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot47515: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot47515: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot47630: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot47630: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot47744: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot47744: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot47751: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot47751: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot47857: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot47857: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8807', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8735', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8935', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9007', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8877', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8677', ...)
+0003-02-14-00000
+Plotting 676012...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot50429: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot50429: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot50440: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot50440: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot50551: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot50551: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot50661: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot50661: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot50668: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot50668: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot50782: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot50782: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9383', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9183', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9313', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9513', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9441', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9241', ...)
+0003-02-16-00000
+Plotting 677017...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot53374: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot53374: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot53385: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot53385: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot53496: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot53496: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot53606: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot53606: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot53613: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot53613: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot53727: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot53727: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10023', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9951', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9751', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9693', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9823', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9893', ...)
+Plotting 677102...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot56319: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot56319: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot56330: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot56330: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot56445: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot56445: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot56559: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot56559: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot56566: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot56566: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot56676: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot56676: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10261', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10403', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10533', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10461', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10333', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10203', ...)
+0003-02-18-00000
+Plotting 684950...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot59248: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot59248: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot59259: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot59259: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot59366: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot59366: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot59472: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot59472: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot59479: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot59479: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot59589: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot59589: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11043', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10843', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10771', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10971', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10913', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10713', ...)
+Plotting 685987...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot62121: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot62121: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot62132: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot62132: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot62239: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot62239: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot62345: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot62345: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot62352: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot62352: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot62454: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot62454: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11415', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11273', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11345', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11215', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11473', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11545', ...)
+0003-02-19-00000
+Plotting 686720...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot64994: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot64994: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot65005: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot65005: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot65120: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot65120: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.RasterPlot65234: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot65234: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot65241: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot65241: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot65355: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot65355: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11767', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11709', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11909', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p12039', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11839', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11967', ...)
+
+
+
+Starting with dp, dT thresholds
+ 0 0
+0003-02-02-00000
+Plotting 669484...
+Traceback (most recent call last):
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 211, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 56, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250219_unseed_all/rest/0003-02-02-00000/*.cam.h1i.*.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '78a8240f-5684-42fa-85af-3e1b97e8ef5c']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/tc_before_after.py", line 197, in <module>
+    main()
+  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/tc_before_after.py", line 70, in main
+    hds = ux.open_dataset(grid, his)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/uxarray/core/api.py", line 164, in open_dataset
+    ds = xr.open_dataset(filename_or_obj, decode_times=False, **kwargs)  # type: ignore
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/xarray/backends/api.py", line 566, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 590, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 391, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 338, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 400, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 394, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 199, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 217, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250219_unseed_all/rest/0003-02-02-00000/*.cam.h1i.*.nc'
+
+
+
+Starting with dp, dT thresholds
+ 0 0
+0003-02-02-00000
+Plotting 669484...
+	opened
+	selected
+	diffed
+Traceback (most recent call last):
+  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/tc_before_after.py", line 198, in <module>
+    main()
+  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/tc_before_after.py", line 144, in main
+    panels[1].append(dZ.plot.rasterize(**rastkwargs))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/uxarray/plot/accessor.py", line 360, in rasterize
+    return dataarray_plot.rasterize(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/uxarray/plot/dataarray_plot.py", line 165, in rasterize
+    raster = _polygon_raster(
+             ^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/uxarray/plot/dataarray_plot.py", line 316, in _polygon_raster
+    hv_polygons = hv.Polygons(gdf, vdims=[uxda.name])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/holoviews/element/path.py", line 221, in __init__
+    super().__init__(data, kdims=kdims, vdims=vdims, **params)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/holoviews/element/path.py", line 84, in __init__
+    super().__init__(data, kdims=kdims, vdims=vdims, **params)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/holoviews/element/selection.py", line 25, in __init__
+    super().__init__(*args, **kwargs)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/holoviews/core/data/__init__.py", line 325, in __init__
+    kwargs.update(process_dimensions(kdims, vdims))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/holoviews/core/dimension.py", line 116, in process_dimensions
+    dimensions[group] = [asdim(d) for d in dims]
+                        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/holoviews/core/dimension.py", line 116, in <listcomp>
+    dimensions[group] = [asdim(d) for d in dims]
+                         ^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/holoviews/core/dimension.py", line 60, in asdim
+    return dimension if isinstance(dimension, Dimension) else Dimension(dimension)
+                                                              ^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/holoviews/core/dimension.py", line 268, in __init__
+    raise ValueError(
+ValueError: NoneType type could not be interpreted as Dimension.  Dimensions must be declared as a string, tuple, dictionary or Dimension type.
+
+
+
+Starting with dp, dT thresholds
+ 0 0
+0003-02-02-00000
+Plotting 669484...
