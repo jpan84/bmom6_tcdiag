@@ -18,7 +18,8 @@ seedlog = open('/glade/u/home/jpan/work/MOM6_CASEDIRS/250227_unseed_vortsign.out
 RESTDIR = '/glade/derecho/scratch/jpan/archive/%s/rest/%s/'
 HTRACKSTR = '*.cam.h1i.*.nc'
 grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
-ps_pattern = r"^\[\s*(1\d{5}|9\d{4})\.\d+"
+ps_pattern_1000 = r"^\[1\d{5}\."
+ps_pattern_900 = r"^9\d{4}\."
 
 dpmin = 0 #3 #hPa
 dTmax = 0 #-1 #K
@@ -56,9 +57,12 @@ def main():
          orinc = os.path.basename(spl[-1].strip("'"))
          #print(modnc, orinc)
       elif spl[0][0] == '[':
-         if re.match(ps_pattern, spl[0]):
+         if re.match(ps_pattern_1000, spl[0]): 
             psmin = float(spl[0].strip('[')) / 100
             mkplt = True #make plot now that we have all the info for 1 storm
+         if spl[0] == '[' and re.match(ps_pattern_900, spl[1]):
+            psmin = float(spl[1]) / 100
+            mkplt = True
 
       if mkplt:
          print('Plotting %d...' % tid)
@@ -124,7 +128,7 @@ def main():
 
          #TODO: fix holoviews unable to plot xlim1 > xlim2 across the antimeridian
          rastkwargs = dict(method='polygon', backend='bokeh')
-         framekwargs = dict(xlim=tuple(lonbnds), ylim=tuple(latbnds), aspect='square', frame_width=400)
+         framekwargs = dict(xlim=tuple(lonbnds), ylim=tuple(latbnds), frame_width=400, frame_height=400)
          plevs = np.arange(psmin // 2 * 2, 1042, 2)
          panels = [[], []]
 
