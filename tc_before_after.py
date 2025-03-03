@@ -12,13 +12,13 @@ import cartopy.crs as ccrs
 
 
 BBOX_DEG = 10.
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250219_unseed_all'
-OUTDIR = 'bef_aft.250219_unseed_all/'
-seedlog = open('/glade/u/home/jpan/work/MOM6_CASEDIRS/250219_ne120np4_unseed_all.out', 'r')
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250227_unseed_vortsign'
+OUTDIR = 'bef_aft.250227_unseed_vortsign/'
+seedlog = open('/glade/u/home/jpan/work/MOM6_CASEDIRS/250227_unseed_vortsign.out2', 'r')
 RESTDIR = '/glade/derecho/scratch/jpan/archive/%s/rest/%s/'
 HTRACKSTR = '*.cam.h1i.*.nc'
 grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
-ps_pattern = r"^\[(1\d{5}|9\d{4})\."
+ps_pattern = r"^\[(1\d{5}| 9\d{4})\."
 
 dpmin = 0 #3 #hPa
 dTmax = 0 #-1 #K
@@ -79,6 +79,7 @@ def main():
          latbnds = [clat - BBOX_DEG, clat + BBOX_DEG]
          lonbnds = [clon - BBOX_DEG, clon + BBOX_DEG]
          lonbnds = [(lon + 180) % 360 - 180 for lon in lonbnds]
+         clon = (clon + 180) % 360 - 180
          extrps = lambda ds: ds['PSDRY'].isel(time=0) / 100
          selbbox = lambda da: da.subset.bounding_box(lonbnds, latbnds)
          selcir = lambda da: da.subset.bounding_circle((clon, clat), CEN_DEG)
