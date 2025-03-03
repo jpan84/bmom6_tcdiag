@@ -18,7 +18,7 @@ seedlog = open('/glade/u/home/jpan/work/MOM6_CASEDIRS/250227_unseed_vortsign.out
 RESTDIR = '/glade/derecho/scratch/jpan/archive/%s/rest/%s/'
 HTRACKSTR = '*.cam.h1i.*.nc'
 grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
-ps_pattern = r"^\[(1\d{5}| 9\d{4})\."
+ps_pattern = r"^\[\s*(1\d{5}|9\d{4})\.\d+"
 
 dpmin = 0 #3 #hPa
 dTmax = 0 #-1 #K

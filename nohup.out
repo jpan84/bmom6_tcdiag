@@ -4284,3 +4284,76 @@ WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing m
 WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p44325', ...)
 WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p44254', ...)
 WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p44397', ...)
+
+
+
+Starting with dp, dT thresholds
+ 0 0
+0005-02-02-00000
+0005-02-03-00000
+Plotting 1445748...
+	opened
+	selected
+	diffed
+WARNING:param.RasterPlot03380: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.RasterPlot03380: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot03391: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot03391: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot03502: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot03502: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot03612: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot03612: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot03636: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot03636: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:param.GeoOverlayPlot03746: Due to internal constraints, when aspect and width/height is set, the bokeh backend uses those values as frame_width/frame_height instead. This ensures the aspect is respected, but means that the plot might be slightly larger than anticipated. Set the frame_width/frame_height explicitly to suppress this warning.
+WARNING:param.GeoOverlayPlot03746: aspect value was ignored because absolute width and height values were provided. Either supply explicit frame_width and frame_height to achieve desired aspect OR supply a combination of width or height and an aspect value.
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1232', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1030', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1303', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1160', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1375', ...)
+WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1088', ...)
+The geckodriver version (0.35.0) detected in PATH at /glade/u/home/jpan/miniconda3/envs/aquapux1/bin/geckodriver might not be compatible with the detected firefox version (115.6.0); currently, geckodriver 0.36.0 is recommended for firefox 115.*, so it is advised to delete the driver in PATH and retry
+Traceback (most recent call last):
+  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/tc_before_after.py", line 203, in <module>
+    main()
+  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/tc_before_after.py", line 197, in main
+    hv.save(layout, os.path.join(OUTDIR, 'layout_ps_ux_%s_%s.png' % (tid, dtstr)))
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/holoviews/util/__init__.py", line 807, in save
+    return renderer_obj.save(obj, filename, fmt=fmt, resources=resources,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/holoviews/plotting/renderer.py", line 599, in save
+    rendered = self_or_cls(plot, fmt)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/holoviews/plotting/renderer.py", line 199, in __call__
+    data = self._figure_data(plot, fmt, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/holoviews/plotting/bokeh/renderer.py", line 125, in _figure_data
+    img = get_screenshot_as_png(plot.state, driver=state.webdriver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/bokeh/io/export.py", line 277, in get_screenshot_as_png
+    wait_until_render_complete(web_driver, timeout)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/bokeh/io/export.py", line 382, in wait_until_render_complete
+    driver.execute_script(_WAIT_SCRIPT)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 408, in execute_script
+    return self.execute(command, {"script": script, "args": converted_args})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 348, in execute
+    self.error_handler.check_response(response)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: Browsing context has been discarded
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:187:5
+NoSuchWindowError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:613:5
+assert.that/<@chrome://remote/content/shared/webdriver/Assert.sys.mjs:485:13
+assert.open@chrome://remote/content/shared/webdriver/Assert.sys.mjs:147:4
+GeckoDriver.prototype.execute_@chrome://remote/content/marionette/driver.sys.mjs:761:15
+GeckoDriver.prototype.executeScript@chrome://remote/content/marionette/driver.sys.mjs:673:15
+despatch@chrome://remote/content/marionette/server.sys.mjs:320:40
+execute@chrome://remote/content/marionette/server.sys.mjs:291:16
+onPacket/<@chrome://remote/content/marionette/server.sys.mjs:264:20
+onPacket@chrome://remote/content/marionette/server.sys.mjs:265:9
+_onJSONObjectReady/<@chrome://remote/content/marionette/transport.sys.mjs:496:20
+
