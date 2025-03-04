@@ -109,13 +109,17 @@ def main(FN):
 
    #FN = 'tcstats-QPC4ctrl'
    print('Hists and scatters...')
+   plt.rc('font', size=20)
    for k in tc_stats:
       print(k)
       if k == 'pmins':
          plt.hist([pval / 100 for pval in tc_stats[k]], density=True, bins=15, edgecolor='black')
       else:
          plt.hist(tc_stats[k], density=True, bins=15, edgecolor='black')
-      plt.title(k)
+      if k == 'ace':
+         plt.title('%s (total=%.1f)' % (k, np.sum(tc_stats[k])))
+      else:
+         plt.title(k)
       plt.ylabel('Probability density')
       if k in XLIMS:
          plt.xlim(*XLIMS[k])
@@ -123,13 +127,42 @@ def main(FN):
       plt.savefig('%s/%s.png' % (DOUT, k), bbox_inches='tight')
       plt.close()
       for depvar in tc_stats:
-         plt.scatter(tc_stats[k], tc_stats[depvar])
-         plt.xlabel(k)
-         plt.ylabel(depvar)
+         # Start with a square Figure.
+         fig = plt.figure(figsize=(6, 6))
+         # Add a gridspec with two rows and two columns and a ratio of 1 to 4 between
+         # the size of the marginal Axes and the main Axes in both directions.
+         # Also adjust the subplot parameters for a square plot.
+         gs = fig.add_gridspec(2, 2,  width_ratios=(4, 1), height_ratios=(1, 4),
+                               left=0.1, right=0.9, bottom=0.1, top=0.9,
+                               wspace=0.05, hspace=0.05)
+         # Create the Axes.
+         ax = fig.add_subplot(gs[1, 0])
+         ax_histx = fig.add_subplot(gs[0, 0], sharex=ax)
+         ax_histy = fig.add_subplot(gs[1, 1], sharey=ax)
+         # Draw the scatter plot and marginals.
+         scatter_hist(tc_stats[k], tc_stats[depvar], ax, ax_histx, ax_histy)
+         ax.set_xlabel(k)
+         ax.set_ylabel(depvar)
+         #plt.scatter(tc_stats[k], tc_stats[depvar])
+         #plt.xlabel(k)
+         #plt.ylabel(depvar)
          plt.savefig('%s/scat_%s_%s.png' % (DOUT, k, depvar), bbox_inches='tight')
          plt.close()
-   
+
    print('%s done.' % sys.argv[0])
+
+def scatter_hist(x, y, ax, ax_histx, ax_histy):
+   # no labels
+   ax_histx.tick_params(axis="x", labelbottom=False, labelleft=False)
+   ax_histy.tick_params(axis="y", labelleft=False, labelbottom=False)
+
+   # the scatter plot:
+   ax.scatter(x, y)
+
+   ax_histx.hist(x, bins=20, edgecolor='black')
+   ax_histy.hist(y, bins=20, edgecolor='black', orientation='horizontal')
+   ax_histx.set_yticks([])
+   ax_histy.set_xticks([])
 
 def mps2cat(wspd):
    dif = wspd - SSHS
