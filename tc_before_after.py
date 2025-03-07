@@ -12,9 +12,9 @@ import cartopy.crs as ccrs
 
 
 BBOX_DEG = 10.
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl1deg'
-OUTDIR = 'bef_aft.250303_unseed_curl1deg/'
-seedlog = open('/glade/u/home/jpan/work/MOM6_CASEDIRS/250303_unseed_curl1deg.out1', 'r')
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl2e-5'
+OUTDIR = 'bef_aft.250303_unseed_curl2e-5/'
+seedlog = open('/glade/u/home/jpan/work/MOM6_CASEDIRS/250303_unseed_curl2e-5.out1', 'r')
 RESTDIR = '/glade/derecho/scratch/jpan/archive/%s/rest/%s/'
 HTRACKSTR = '*.cam.h1i.*.nc'
 grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
