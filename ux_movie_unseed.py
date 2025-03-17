@@ -5,22 +5,19 @@ import cftime
 import numpy as np
 import uxarray as ux
 import holoviews as hv
+from holoviews.operation import contours as hvcontours
 from bokeh.models import FixedTicker
-import matplotlib.pyplot as plt
-import geoviews.feature as gf
-import cartopy.crs as ccrs
 
-case = 'b.e23.BMOM.ne120pg3_sx0.66av1.aqua.zmtau.0826'
-alias = 'zmtau.0826'
-diro = 'tcmov_%s' % alias
-diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
-hstr = '*.h1i.%s.nc'
-grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120pg3_scrip_170417.nc'
-#START, END = dt.datetime(5, 2, 15), dt.datetime(5, 3, 1)
-START, END = '0005-02-15-21600', '0005-02-28-21600'
-LATBNDS = (-30, -10)
-LONBNDS = (100, 160)
-
+COFVAR = 'PSL'
+#COFVAR = 'OMEGA500'
+#COFLIM = (-5, 5)
+#COFLIM = (970, 1030)
+#COFLEV = np.concatenate((np.arange(COFLIM[0], 1010, 5), np.arange(1010, 1021, 2), np.arange(1020, 1031)))
+COFLIM = (1004, 1024)
+COFLEV = np.arange(1004, 1025, 1)
+CONVAR = 'VBOT'
+CONLEV = np.arange(-20, 0, 4)
+CONLEV = np.concatenate((CONLEV, -CONLEV[::-1]))
 
 case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl2e-5'
 alias = 'curl2e-5.1754618'
@@ -29,14 +26,88 @@ diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
 hstr = '*.h1i.%s.nc'
 grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 START, END = '0005-02-14-00000', '0005-02-20-00000'
-LATBNDS = (-26, -13)
-LONBNDS = (-145, -130)
-COFVAR = 'PSL'
-#COFVAR = 'OMEGA500'
-#COFLIM = (-5, 5)
-COFLIM = (970, 1020)
-#COFLEV = np.arange(-20, 21, 4)
-COFLEV = np.concatenante((np.arange(COFLIM[0], 1001, 5), np.arange(1000, 1011, 2), np.arange(1010, 1021)))
+LATBNDS = (-30, -10)
+LONBNDS = (-150, -127)
+
+case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl2e-5'
+alias = 'curl2e-5.1727914'
+diro = 'tcmov_%s' % alias
+diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
+hstr = '*.h1i.%s.nc'
+grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+START, END = '0005-02-07-00000', '0005-02-11-00000'
+LATBNDS = (1, 21)
+LONBNDS = (29, 49)
+
+case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl2e-5'
+alias = 'curl2e-5.1724350'
+diro = 'tcmov_%s' % alias
+diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
+hstr = '*.h1i.%s.nc'
+grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+START, END = '0005-02-01-21600', '0005-02-07-00000'
+LATBNDS = (-37, -7)
+LONBNDS = (-169, -139)
+
+case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl2e-5'
+alias = 'curl2e-5.1759110'
+diro = 'tcmov_%s' % alias
+diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
+hstr = '*.h1i.%s.nc'
+grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+START, END = '0005-02-22-43200', '0005-02-27-00000'
+LATBNDS = (-35, -5)
+LONBNDS = (93, 123)
+
+case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl1deg'
+alias = 'curl1deg.1757806'
+diro = 'tcmov_%s' % alias
+diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
+hstr = '*.h1i.%s.nc'
+grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+START, END = '0005-02-18-00000', '0005-02-24-00000'
+LATBNDS = (-41, -11)
+LONBNDS = (-11, 19)
+
+case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl1deg'
+alias = 'curl1deg.1729575'
+diro = 'tcmov_%s' % alias
+diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
+hstr = '*.h1i.%s.nc'
+grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+START, END = '0005-02-08-00000', '0005-02-14-00000'
+LATBNDS = (-39, -9)
+LONBNDS = (-93, -63)
+
+case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250129_seed1x1'
+alias = 'seed1x1.minp32.73'
+diro = 'tcmov_%s' % alias
+diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
+hstr = '*.h1i.%s.nc'
+grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+START, END = '0001-02-01-21600', '0001-02-05-00000'
+LATBNDS = (5, 35)
+LONBNDS = (-115, -85)
+
+case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250129_seed1x1'
+alias = 'seed1x1.minp31.59'
+diro = 'tcmov_%s' % alias
+diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
+hstr = '*.h1i.%s.nc'
+grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+START, END = '0001-02-03-00000', '0001-02-07-00000'
+LATBNDS = (-21, 9)
+LONBNDS = (152, 180)
+
+case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250129_seed1x1'
+alias = 'seed1x1.minp15.15'
+diro = 'tcmov_%s' % alias
+diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
+hstr = '*.h1i.%s.nc'
+grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+START, END = '0001-02-03-00000', '0001-02-07-00000'
+LATBNDS = (-10, 20)
+LONBNDS = (77, 107)
 
 hvfont = {
     'title': 24, 
@@ -61,11 +132,16 @@ def main():
          tstr = dt.strftime('%Y-%m-%d-%H')
          print(tstr)
 
+         framekwargs = dict(height=800, width=800, xlim=LONBNDS, ylim=LATBNDS)
+
          da = uxds[COFVAR].sel(time=tt) / 100
+         dac = uxds[CONVAR].sel(time=tt)
          subda = da.subset.bounding_box(LONBNDS, LATBNDS)
-         pts = subda.plot.rasterize(title=tstr, height=1200, width=1200)
-         pts = pts.opts(cmap='bwr_r', xlim=LONBNDS, ylim=LATBNDS, color_levels=COFLEV, clim=COFLIM, fontsize=hvfont) #symmetric=True
-         #uxds.uxgrid.plot()
+         subdac = dac.subset.bounding_box(LONBNDS, LATBNDS)
+         crast = subdac.plot.rasterize(method='polygon', backend='bokeh')
+         pts = subda.plot.rasterize(title='%s min=%.1f' % (tstr, subda.min().values), **framekwargs)
+         pts = pts.opts(cmap='bwr_r', color_levels=list(COFLEV), clim=COFLIM, fontsize=hvfont) #symmetric=True
+         pts *= hvcontours(crast, levels=CONLEV).opts(show_legend=False, cmap='PRGn', color_levels=list(CONLEV), **framekwargs)
          hv.save(pts, os.path.join(diro, '%s_%s.png' % (alias, tstr)))
 
 
