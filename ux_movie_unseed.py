@@ -8,7 +8,7 @@ import holoviews as hv
 from holoviews.operation import contours as hvcontours
 from bokeh.models import FixedTicker
 
-COFVAR = 'PSL'
+COFVAR = 'PS'
 #COFVAR = 'OMEGA500'
 #COFLIM = (-5, 5)
 #COFLIM = (970, 1030)
@@ -20,65 +20,116 @@ CONLEV = np.arange(-20, 0, 4)
 CONLEV = np.concatenate((CONLEV, -CONLEV[::-1]))
 
 case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl2e-5'
-alias = 'curl2e-5.1754618'
+alias = 'curl2e-5.1754618.h2i'
 diro = 'tcmov_%s' % alias
 diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
-hstr = '*.h1i.%s.nc'
+hstr = '*.h2i.%s.nc'
 grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
-START, END = '0005-02-14-00000', '0005-02-20-00000'
+START, END = '0005-02-14-03600', '0005-02-19-03600'
 LATBNDS = (-30, -10)
 LONBNDS = (-150, -127)
 
 case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl2e-5'
-alias = 'curl2e-5.1727914'
+alias = 'curl2e-5.1727914.h2i'
 diro = 'tcmov_%s' % alias
 diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
-hstr = '*.h1i.%s.nc'
+hstr = '*.h2i.%s.nc'
 grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
-START, END = '0005-02-07-00000', '0005-02-11-00000'
+START, END = '0005-02-07-03600', '0005-02-10-03600'
 LATBNDS = (1, 21)
 LONBNDS = (29, 49)
 
-case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl2e-5'
-alias = 'curl2e-5.1724350'
-diro = 'tcmov_%s' % alias
-diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
-hstr = '*.h1i.%s.nc'
-grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
-START, END = '0005-02-01-21600', '0005-02-07-00000'
-LATBNDS = (-37, -7)
-LONBNDS = (-169, -139)
-
-case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl2e-5'
-alias = 'curl2e-5.1759110'
-diro = 'tcmov_%s' % alias
-diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
-hstr = '*.h1i.%s.nc'
-grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
-START, END = '0005-02-22-43200', '0005-02-27-00000'
-LATBNDS = (-35, -5)
-LONBNDS = (93, 123)
+###case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl2e-5'
+###alias = 'curl2e-5.1724350'
+###diro = 'tcmov_%s' % alias
+###diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
+###hstr = '*.h1i.%s.nc'
+###grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+###START, END = '0005-02-01-21600', '0005-02-07-00000'
+###LATBNDS = (-37, -7)
+###LONBNDS = (-169, -139)
+###
+###case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl2e-5'
+###alias = 'curl2e-5.1759110'
+###diro = 'tcmov_%s' % alias
+###diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
+###hstr = '*.h1i.%s.nc'
+###grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+###START, END = '0005-02-22-43200', '0005-02-27-00000'
+###LATBNDS = (-35, -5)
+###LONBNDS = (93, 123)
+###
+###case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl1deg'
+###alias = 'curl1deg.1757806'
+###diro = 'tcmov_%s' % alias
+###diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
+###hstr = '*.h1i.%s.nc'
+###grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+###START, END = '0005-02-18-00000', '0005-02-24-00000'
+###LATBNDS = (-41, -11)
+###LONBNDS = (-11, 19)
+###
+###case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl1deg'
+###alias = 'curl1deg.1729575'
+###diro = 'tcmov_%s' % alias
+###diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
+###hstr = '*.h1i.%s.nc'
+###grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+###START, END = '0005-02-08-00000', '0005-02-14-00000'
+###LATBNDS = (-39, -9)
+###LONBNDS = (-93, -63)
 
 case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl1deg'
-alias = 'curl1deg.1757806'
+alias = 'curl1deg.1723746.h2i'
 diro = 'tcmov_%s' % alias
 diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
-hstr = '*.h1i.%s.nc'
+hstr = '*.h2i.%s.nc'
 grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
-START, END = '0005-02-18-00000', '0005-02-24-00000'
-LATBNDS = (-41, -11)
-LONBNDS = (-11, 19)
+START, END = '0005-02-01-03600', '0005-02-05-03600'
+LATBNDS = (0, 20)
+LONBNDS = (67, 87)
 
-case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl1deg'
-alias = 'curl1deg.1729575'
-diro = 'tcmov_%s' % alias
-diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
-hstr = '*.h1i.%s.nc'
-grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
-START, END = '0005-02-08-00000', '0005-02-14-00000'
-LATBNDS = (-39, -9)
-LONBNDS = (-93, -63)
+###case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl1deg2e-5'
+###alias = 'curl1deg2e-5.NHTC'
+###diro = 'tcmov_%s' % alias
+###diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
+###hstr = '*.h1i.%s.nc'
+###grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+###START, END = '0005-02-18-43200', '0005-02-25-00000'
+###LATBNDS = (25, 70)
+###LONBNDS = (100, 145)
+###
+###case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl1deg'
+###alias = 'curl1deg.1722980'
+###diro = 'tcmov_%s' % alias
+###diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
+###hstr = '*.h1i.%s.nc'
+###grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+###START, END = '0005-02-01-21600', '0005-02-04-00000'
+###LATBNDS = (-30, -10)
+###LONBNDS = (-8, 12)
+###
+###case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl1deg'
+###alias = 'curl1deg.00050202-000000-ncol296899'
+###diro = 'tcmov_%s' % alias
+###diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
+###hstr = '*.h1i.%s.nc'
+###grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+###START, END = '0005-02-01-21600', '0005-02-04-00000'
+###LATBNDS = (-35, -5)
+###LONBNDS = (-180, -155)
+###
+###case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250303_unseed_curl1deg'
+###alias = 'curl1deg.00050214-000000-ncol430406'
+###diro = 'tcmov_%s' % alias
+###diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
+###hstr = '*.h1i.%s.nc'
+###grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+###START, END = '0005-02-11-00000', '0005-02-17-00000'
+###LATBNDS = (-28, 2)
+###LONBNDS = (-64, -34)
 
+'''
 case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250129_seed1x1'
 alias = 'seed1x1.minp32.73'
 diro = 'tcmov_%s' % alias
@@ -108,6 +159,7 @@ grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.n
 START, END = '0001-02-03-00000', '0001-02-07-00000'
 LATBNDS = (-10, 20)
 LONBNDS = (77, 107)
+'''
 
 hvfont = {
     'title': 24, 

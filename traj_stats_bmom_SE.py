@@ -15,6 +15,7 @@ import numpy as np
 import pandas as pd
 import datetime as dt
 import matplotlib.pyplot as plt
+from scipy import stats
 
 MS2KT = 1.9438
 
@@ -23,7 +24,7 @@ COLS = [None, 'ncol', 'lon', 'lat', 'pres', 'wspd', 'year', 'month', 'day', 'hou
 TYPS = [None, int, float, float, float, float, int, int, int, int]
 CTYP = {COLS[i+1]: TYPS[i+1] for i in range(len(COLS[1:]))}
 
-XLIMS = dict(pmins=(900,1010))
+XLIMS = dict(pmins=(900,1010), ace=(0,100), maxu=(15,120), genlon=(0,360), genlat=(-40, 40))
 YLIMS = dict(pmins=(0, 6e-2))
 
 def main(FN):
@@ -123,10 +124,13 @@ def main(FN):
       plt.ylabel('Probability density')
       if k in XLIMS:
          plt.xlim(*XLIMS[k])
+      if k in YLIMS:
          plt.ylim(*YLIMS[k])
       plt.savefig('%s/%s.png' % (DOUT, k), bbox_inches='tight')
       plt.close()
       for depvar in tc_stats:
+         if depvar == k:
+            continue
          # Start with a square Figure.
          fig = plt.figure(figsize=(6, 6))
          # Add a gridspec with two rows and two columns and a ratio of 1 to 4 between
@@ -140,7 +144,7 @@ def main(FN):
          ax_histx = fig.add_subplot(gs[0, 0], sharex=ax)
          ax_histy = fig.add_subplot(gs[1, 1], sharey=ax)
          # Draw the scatter plot and marginals.
-         scatter_hist(tc_stats[k], tc_stats[depvar], ax, ax_histx, ax_histy)
+         scatter_hist(tc_stats[k], tc_stats[depvar], ax, ax_histx, ax_histy, k, depvar)
          ax.set_xlabel(k)
          ax.set_ylabel(depvar)
          #plt.scatter(tc_stats[k], tc_stats[depvar])
@@ -151,7 +155,7 @@ def main(FN):
 
    print('%s done.' % sys.argv[0])
 
-def scatter_hist(x, y, ax, ax_histx, ax_histy):
+def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname):
    # no labels
    ax_histx.tick_params(axis="x", labelbottom=False, labelleft=False)
    ax_histy.tick_params(axis="y", labelleft=False, labelbottom=False)
@@ -163,6 +167,18 @@ def scatter_hist(x, y, ax, ax_histx, ax_histy):
    ax_histy.hist(y, bins=20, edgecolor='black', orientation='horizontal')
    ax_histx.set_yticks([])
    ax_histy.set_xticks([])
+
+   points = np.vstack([x, y])
+   kde = stats.gaussian_kde(points)
+   xmin, xmax, ymin, ymax = min(x), max(x), min(y), max(y)
+   if xname in XLIMS:
+      xmin, xmax = XLIMS[xname]
+   if yname in XLIMS:
+      ymin, ymax = XLIMS[yname]
+   xgrid, ygrid = np.mgrid[xmin:xmax:100j, ymin:ymax:100j]
+   pos = np.vstack([xgrid.ravel(), ygrid.ravel()])
+   z = kde(pos).reshape(xgrid.shape)
+   csf = ax.contourf(xgrid, ygrid, z)
 
 def mps2cat(wspd):
    dif = wspd - SSHS

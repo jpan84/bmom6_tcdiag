@@ -1,5 +1,5 @@
 #!/bin/bash
-#PBS -N tempest.CZ.1degeqm885
+#PBS -N tempest.CZ.seed1x1
 #PBS -A UPSU0063
 #PBS -l select=1:ncpus=18:mpiprocs=18:mem=80GB
 #PBS -l walltime=2:00:00
@@ -25,7 +25,7 @@ grep -c processor /proc/cpuinfo
 
 TEMPESTEXTREMESDIR=/glade/work/zarzycki/derecho/tempestextremes/
 
-UQSTR=b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250227_unseed_vortsign
+UQSTR=b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250129_seed1x1
 PATHTOFILES=/glade/derecho/scratch/jpan/archive/${UQSTR}/atm/hist/
 CONNECTDAT=/glade/u/home/jpan/ne120np4_connect_v2.dat
 CONNECTFLAG=""
