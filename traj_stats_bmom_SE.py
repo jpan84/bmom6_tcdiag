@@ -11,6 +11,7 @@
 
 import os
 import sys
+import pickle
 import numpy as np
 import pandas as pd
 import datetime as dt
@@ -24,10 +25,11 @@ COLS = [None, 'ncol', 'lon', 'lat', 'pres', 'wspd', 'year', 'month', 'day', 'hou
 TYPS = [None, int, float, float, float, float, int, int, int, int]
 CTYP = {COLS[i+1]: TYPS[i+1] for i in range(len(COLS[1:]))}
 
-XLIMS = dict(pmins=(900,1010), ace=(0,100), maxu=(15,120), genlon=(0,360), genlat=(-40, 40))
+XLIMS = dict(pmins=(8.5e4,1.01e5), ace=(0,80), maxu=(15,120), genlon=(0,360), genlat=(-40, 40))
 YLIMS = dict(pmins=(0, 6e-2))
+clabelkwargs = {'inline': 1, 'fontsize': 10, 'colors': 'black', 'fmt': '%.1e'}
 
-def main(FN):
+def main(FN, CTRL=None):
    DOUT = FN.split('.')[-1]
    if not os.path.exists(DOUT):
       os.makedirs(DOUT)
@@ -37,6 +39,11 @@ def main(FN):
    f = open(FN, 'r')
    lns = f.readlines()
    tbl = [l.replace('\n', '').split('\t') for l in lns]
+
+   ctrl_kde = None
+   if not CTRL is None:
+      with open(CTRL, 'rb') as handle:
+         ctrl_kde = pickle.load(handle)
 
    trajs = []
    curr_ts = []
@@ -111,10 +118,11 @@ def main(FN):
    #FN = 'tcstats-QPC4ctrl'
    print('Hists and scatters...')
    plt.rc('font', size=20)
+   kde_dict = dict()
    for k in tc_stats:
       print(k)
       if k == 'pmins':
-         plt.hist([pval / 100 for pval in tc_stats[k]], density=True, bins=15, edgecolor='black')
+         plt.hist([pval for pval in tc_stats[k]], density=True, bins=15, edgecolor='black') #pval / 100 for hPa
       else:
          plt.hist(tc_stats[k], density=True, bins=15, edgecolor='black')
       if k == 'ace':
@@ -144,7 +152,8 @@ def main(FN):
          ax_histx = fig.add_subplot(gs[0, 0], sharex=ax)
          ax_histy = fig.add_subplot(gs[1, 1], sharey=ax)
          # Draw the scatter plot and marginals.
-         scatter_hist(tc_stats[k], tc_stats[depvar], ax, ax_histx, ax_histy, k, depvar)
+         kde_k_dep = scatter_hist(tc_stats[k], tc_stats[depvar], ax, ax_histx, ax_histy, k, depvar, ctrl_kde=ctrl_kde)
+         kde_dict[(k, depvar)] = kde_k_dep
          ax.set_xlabel(k)
          ax.set_ylabel(depvar)
          #plt.scatter(tc_stats[k], tc_stats[depvar])
@@ -153,21 +162,16 @@ def main(FN):
          plt.savefig('%s/scat_%s_%s.png' % (DOUT, k, depvar), bbox_inches='tight')
          plt.close()
 
+   with open('%s.kde.pickle' % DOUT, 'wb') as handle:
+      pickle.dump(kde_dict, handle, protocol=-1)
    print('%s done.' % sys.argv[0])
 
-def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname):
+def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname, ctrl_kde=None):
    # no labels
    ax_histx.tick_params(axis="x", labelbottom=False, labelleft=False)
    ax_histy.tick_params(axis="y", labelleft=False, labelbottom=False)
 
-   # the scatter plot:
-   ax.scatter(x, y)
-
-   ax_histx.hist(x, bins=20, edgecolor='black')
-   ax_histy.hist(y, bins=20, edgecolor='black', orientation='horizontal')
-   ax_histx.set_yticks([])
-   ax_histy.set_xticks([])
-
+   #kde beneath the scatter
    points = np.vstack([x, y])
    kde = stats.gaussian_kde(points)
    xmin, xmax, ymin, ymax = min(x), max(x), min(y), max(y)
@@ -178,7 +182,26 @@ def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname):
    xgrid, ygrid = np.mgrid[xmin:xmax:100j, ymin:ymax:100j]
    pos = np.vstack([xgrid.ravel(), ygrid.ravel()])
    z = kde(pos).reshape(xgrid.shape)
-   csf = ax.contourf(xgrid, ygrid, z)
+
+   if ctrl_kde is None:
+      csf = ax.contourf(xgrid, ygrid, z)
+      cs = ax.contour(xgrid, ygrid, z, colors='black')
+      ax.clabel(cs, **clabelkwargs)
+   else:
+      zctrl = ctrl_kde[(xname, yname)](pos).reshape(xgrid.shape)
+      csf = ax.contourf(xgrid, ygrid, z - zctrl, cmap='bwr')
+      cs = ax.contour(xgrid, ygrid, zctrl, colors='black')
+      plt.colorbar(csf)
+
+   # the scatter plot:
+   ax.scatter(x, y)
+
+   ax_histx.hist(x, bins=20, edgecolor='black')
+   ax_histy.hist(y, bins=20, edgecolor='black', orientation='horizontal')
+   ax_histx.set_yticks([])
+   ax_histy.set_xticks([])
+
+   return kde
 
 def mps2cat(wspd):
    dif = wspd - SSHS
@@ -186,4 +209,7 @@ def mps2cat(wspd):
 
 if __name__ == '__main__':
    FN = sys.argv[1]
-   main(FN)
+   CTRL = None #pickled dict of kde objects
+   if len(sys.argv) > 2:
+      CTRL = sys.argv[2]
+   main(FN, CTRL=CTRL)
