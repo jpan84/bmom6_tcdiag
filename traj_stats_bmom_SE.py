@@ -1,6 +1,7 @@
 #Joshua Pan Mar 2025
 #Tweaked to use unstructured grid
 #Compute stats on the trajectories.txt output by par_track_aqua.ne120.CZ.sh (TempestExtremes)
+#Example of a call for differencing: python3 traj_stats_bmom_SE.py  trajectories.txt.b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250321_seed1x1 250206_1degeqm885.kde.pickle
 
 #TODO: genesis lat
 #TODO: termination lat
@@ -16,6 +17,7 @@ import numpy as np
 import pandas as pd
 import datetime as dt
 import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
 from scipy import stats
 
 MS2KT = 1.9438
@@ -152,7 +154,7 @@ def main(FN, CTRL=None):
          ax_histx = fig.add_subplot(gs[0, 0], sharex=ax)
          ax_histy = fig.add_subplot(gs[1, 1], sharey=ax)
          # Draw the scatter plot and marginals.
-         kde_k_dep = scatter_hist(tc_stats[k], tc_stats[depvar], ax, ax_histx, ax_histy, k, depvar, ctrl_kde=ctrl_kde)
+         kde_k_dep = scatter_hist(tc_stats[k], tc_stats[depvar], ax, ax_histx, ax_histy, k, depvar, ctrl_kde=ctrl_kde, weights=tc_stats['ace'])
          kde_dict[(k, depvar)] = kde_k_dep
          ax.set_xlabel(k)
          ax.set_ylabel(depvar)
@@ -166,14 +168,14 @@ def main(FN, CTRL=None):
       pickle.dump(kde_dict, handle, protocol=-1)
    print('%s done.' % sys.argv[0])
 
-def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname, ctrl_kde=None):
+def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname, ctrl_kde=None, weights=None):
    # no labels
    ax_histx.tick_params(axis="x", labelbottom=False, labelleft=False)
    ax_histy.tick_params(axis="y", labelleft=False, labelbottom=False)
 
    #kde beneath the scatter
    points = np.vstack([x, y])
-   kde = stats.gaussian_kde(points)
+   kde = stats.gaussian_kde(points, weights=weights)
    xmin, xmax, ymin, ymax = min(x), max(x), min(y), max(y)
    if xname in XLIMS:
       xmin, xmax = XLIMS[xname]
@@ -189,9 +191,11 @@ def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname, ctrl_kde=None):
       ax.clabel(cs, **clabelkwargs)
    else:
       zctrl = ctrl_kde[(xname, yname)](pos).reshape(xgrid.shape)
-      csf = ax.contourf(xgrid, ygrid, z - zctrl, cmap='bwr')
-      cs = ax.contour(xgrid, ygrid, zctrl, colors='black')
-      plt.colorbar(csf)
+      #pctdif = (z - zctrl) / zctrl * 100
+      cs = ax.contour(xgrid, ygrid, zctrl, colors='black', zorder=2)
+      csf = ax.contourf(xgrid, ygrid, z - zctrl, cmap='bwr', norm=mcolors.CenteredNorm(), levels=np.concatenate((-cs.levels[::-1], cs.levels[1:])), zorder=1)
+      ax.clabel(cs, **clabelkwargs)
+      plt.colorbar(csf, ax=ax_histy)
 
    # the scatter plot:
    ax.scatter(x, y)

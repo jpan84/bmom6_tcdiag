@@ -129,6 +129,26 @@ LONBNDS = (67, 87)
 ###LATBNDS = (-28, 2)
 ###LONBNDS = (-64, -34)
 
+case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250321_unseed_400.15.8e-5'
+alias = '250321_unseed.3354390'
+diro = 'tcmov_%s' % alias
+diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
+hstr = '*.h1i.%s.nc'
+grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+START, END = '0005-02-12-00000', '0005-02-16-00000'
+LATBNDS = (-43, -13)
+LONBNDS = (47, 77)
+
+case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250321_unseed_400.15.8e-5'
+alias = '250321_unseed.3358807'
+diro = 'tcmov_%s' % alias
+diri = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/' % case
+hstr = '*.h1i.%s.nc'
+grid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+START, END = '0005-02-22-00000', '0005-02-26-00000'
+LATBNDS = (-35, -5)
+LONBNDS = (-64, -34)
+
 '''
 case = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250129_seed1x1'
 alias = 'seed1x1.minp32.73'
