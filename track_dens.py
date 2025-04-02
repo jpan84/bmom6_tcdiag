@@ -17,15 +17,6 @@ a_e = 6.371e6 #m
 
 FILI = sys.argv[1]
 
-SSHS = np.array([0, 17, 33, 43, 49, 58, 70, 9999])
-COLS = [None, 'ncol', 'lon', 'lat', 'pres', 'wspd', 'year', 'month', 'day', 'hour']
-TYPS = [None, int, float, float, float, float, int, int, int, int]
-CTYP = {COLS[i+1]: TYPS[i+1] for i in range(len(COLS[1:]))}
-
-XLIMS = dict(pmins=(8.5e4,1.01e5), ace=(0,80), maxu=(15,120), genlon=(0,360), genlat=(-40, 40))
-YLIMS = dict(pmins=(0, 6e-2))
-clabelkwargs = {'inline': 1, 'fontsize': 10, 'colors': 'black', 'fmt': '%.1e'}
-
 def main():
    extidx = FILI.rfind('.')
    DOUT = FILI[:extidx] + '_density'
@@ -33,12 +24,25 @@ def main():
       os.makedirs(DOUT)
 
    df = pd.read_parquet(FILI)
+   trange = df.index.max() - df.index[0]
+   totyrs = trange.total_seconds() / 86400 / 365
 
    bininfo = make_bin_grid_1d()
+   tr_dens_1d = np.zeros_like(bininfo[1])
 
    for stm in df['stmnum'].unique():
-      tr_dens = track_density_of_storm_1d(df[df['stmnum'] == stm], bininfo)
-      ace_stm = bin_ace_of_storm_1d(df[df['stmnum'] == stm], bininfo)
+      print('Storm #%d' % stm)
+      tr_dens_1d += track_density_of_storm_1d(df[df['stmnum'] == stm], bininfo)
+      #ace_stm = bin_ace_of_storm_1d(df[df['stmnum'] == stm], bininfo)
+
+   #print(tr_dens_1d)
+   tr_dens_1d /= (bininfo[2] / 1e6 / 1e3**2) / totyrs #track density in # of storms per 1e6 km**2 per year
+
+   plt.plot(bininfo[1], tr_dens_1d)
+   plt.xlabel('lat')
+   plt.ylabel('Storms per million km2 per yr')
+   plt.savefig(os.path.join(DOUT, 'track_dens.png'), bbox_inches='tight')
+   plt.close()
 
 #make an array of lat bin interfaces
 #In: latitude bounds [deg], desired lat spacing [deg] at the equator
@@ -52,11 +56,16 @@ def make_bin_grid_1d(latbnds=(-50., 50.), dlat=0.5):
    area = 2 * np.pi * a_e**2 * true_dsin
    return np.rad2deg(np.arcsin(bini)), np.rad2deg(np.arcsin(binm)), area
 
-#track density in # of storms per 1e6 km**2
+#bool-to-int array of whether the storm hit the bin with midpoint
 #i.e., return should be 0 or 1 divided by bin area
 #In: dataframe subset for 1 storm, bininfo (bin interfaces, bin midpoints, bin area [m^2])
-def track_density_of_storm_1d():
-
+def track_density_of_storm_1d(stmdf, bininfo):
+   boolhit = np.full_like(bininfo[1], False)
+   for lat in stmdf['lat']:
+      #print(lat)
+      iidx = np.searchsorted(bininfo[0], lat) #edge case of lat==upper bound?
+      boolhit[iidx - 1] = True
+   return boolhit.astype(np.int_)
 
 if __name__ == '__main__':
    main()

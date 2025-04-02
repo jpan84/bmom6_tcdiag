@@ -1,7 +1,7 @@
 #Joshua Pan Mar 2025
 #Tweaked to use unstructured grid
 #Compute stats on the trajectories.txt output by par_track_aqua.ne120.CZ.sh (TempestExtremes)
-#Example of a call for differencing: python3 traj_stats_bmom_SE.py  trajectories.txt.b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250321_seed1x1 250206_1degeqm885.kde.pickle
+#Example of a call for differencing: python3 traj_stats_bmom_SE.py  trajectories.txt.b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250321_seed1x1  250206_1degeqm885.kde.pickle
 
 #TODO: genesis lat
 #TODO: termination lat
@@ -90,6 +90,9 @@ def main(FN, CTRL=None):
       tcdf = tcdf.set_index('dt')
       tcdf = tcdf.resample('6H').agg({col: 'first' for col in tcdf.columns})
       tcdf['wspd'] = tcdf['wspd'].interpolate(method='linear')
+      tcdf['lat'] = tcdf['lat'].interpolate(method='linear')
+      tcdf['lon'] = tcdf['lon'].interpolate(method='linear')
+      tcdf['pres'] = tcdf['pres'].interpolate(method='linear')
       
       #print(tcdf)
       print(tn)
