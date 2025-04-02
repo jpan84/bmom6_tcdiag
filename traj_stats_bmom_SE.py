@@ -193,7 +193,7 @@ def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname, ctrl_kde=None, weig
       zctrl = ctrl_kde[(xname, yname)](pos).reshape(xgrid.shape)
       #pctdif = (z - zctrl) / zctrl * 100
       cs = ax.contour(xgrid, ygrid, zctrl, colors='black', zorder=2)
-      csf = ax.contourf(xgrid, ygrid, z - zctrl, cmap='bwr', norm=mcolors.CenteredNorm(), levels=np.concatenate((-cs.levels[::-1], cs.levels[1:])), zorder=1)
+      csf = ax.contourf(xgrid, ygrid, z - zctrl, cmap='bwr', norm=mcolors.CenteredNorm(), levels=np.concatenate((-cs.levels[::-1], cs.levels[1:])), zorder=1, extend='both')
       ax.clabel(cs, **clabelkwargs)
       plt.colorbar(csf, ax=ax_histy)
 
