@@ -1,6 +1,5 @@
 #Joshua Pan Mar 2025
 #Uses parquet output of traj_stats_bmom_SE.py
-#CL arg: parquet file
 
 import os
 import sys
@@ -15,33 +14,51 @@ from scipy import stats
 MS2KT = 1.9438
 a_e = 6.371e6 #m
 
-FILI = sys.argv[1]
+#FILI = sys.argv[1]
+FILI = ['8e-5.parquet', '250206_1degeqm885.parquet', '250321_seed1x1.parquet']
+labels = ['unseed', 'ctrl', 'seed']
+DOUT = '250402_density'
 
 def main():
-   extidx = FILI.rfind('.')
-   DOUT = FILI[:extidx] + '_density'
+   #extidx = FILI.rfind('.')
+   #DOUT = FILI[:extidx] + '_density'
    if not os.path.exists(DOUT):
       os.makedirs(DOUT)
 
-   df = pd.read_parquet(FILI)
-   trange = df.index.max() - df.index[0]
-   totyrs = trange.total_seconds() / 86400 / 365
+   dfs = [pd.read_parquet(f) for f in FILI]
+   trange = [df.index.max() - df.index[0] for df in dfs]
+   totyrs = [tr.total_seconds() / 86400 / 365 for tr in trange]
 
    bininfo = make_bin_grid_1d()
-   tr_dens_1d = np.zeros_like(bininfo[1])
+   tr_dens_1d = [np.zeros_like(bininfo[1]) for _ in dfs]
+   bin_ace_1d = [np.zeros_like(bininfo[1]) for _ in dfs]
 
-   for stm in df['stmnum'].unique():
-      print('Storm #%d' % stm)
-      tr_dens_1d += track_density_of_storm_1d(df[df['stmnum'] == stm], bininfo)
-      #ace_stm = bin_ace_of_storm_1d(df[df['stmnum'] == stm], bininfo)
+   plt.rc('font', size=16)
+   for ii, df in enumerate(dfs):
+      for stm in df['stmnum'].unique():
+         #print('Storm #%d' % stm)
+         tr_dens_1d[ii] += track_density_of_storm_1d(df[df['stmnum'] == stm], bininfo)   
 
-   #print(tr_dens_1d)
-   tr_dens_1d /= (bininfo[2] / 1e6 / 1e3**2) / totyrs #track density in # of storms per 1e6 km**2 per year
+      tr_dens_1d[ii] /= (bininfo[2] / 1e6 / 1e3**2) / totyrs[ii] #track density in # of storms per 1e6 km**2 per year
 
-   plt.plot(bininfo[1], tr_dens_1d)
-   plt.xlabel('lat')
-   plt.ylabel('Storms per million km2 per yr')
+      plt.plot(bininfo[1], tr_dens_1d[ii], label=labels[ii])
+      plt.xlabel('lat')
+      plt.ylabel('Storms per million km2 per yr')
+   plt.legend(fontsize=12)
    plt.savefig(os.path.join(DOUT, 'track_dens.png'), bbox_inches='tight')
+   plt.close()
+
+   for ii, df in enumerate(dfs):
+      for stm in df['stmnum'].unique():
+         bin_ace_1d += bin_ace_of_storm_1d(df[df['stmnum'] == stm], bininfo)
+
+      bin_ace_1d[ii] /= (bininfo[2] / 1e6 / 1e3**2) / totyrs[ii]
+
+      plt.plot(bininfo[1], bin_ace_1d[ii], label=labels[ii])
+      plt.xlabel('lat')
+      plt.ylabel('ACE [$10^{-4}$ kt$^2$] per million km2 per yr')
+   plt.legend(fontsize=12)
+   plt.savefig(os.path.join(DOUT, 'ace_binned.png'), bbox_inches='tight')
    plt.close()
 
 #make an array of lat bin interfaces
@@ -66,6 +83,15 @@ def track_density_of_storm_1d(stmdf, bininfo):
       iidx = np.searchsorted(bininfo[0], lat) #edge case of lat==upper bound?
       boolhit[iidx - 1] = True
    return boolhit.astype(np.int_)
+
+def bin_ace_of_storm_1d(stmdf, bininfo):
+   binned_ace = np.zeros_like(bininfo[1])
+   ace = 1e-4 * (MS2KT * stmdf['wspd'])**2
+   for ii in stmdf.index:
+      #print(lat)
+      iidx = np.searchsorted(bininfo[0], stmdf['lat'][ii]) #edge case of lat==upper bound?
+      binned_ace[iidx - 1] += ace[ii]
+   return binned_ace
 
 if __name__ == '__main__':
    main()
