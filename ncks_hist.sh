@@ -6,7 +6,7 @@ set -e
 module load nco
 
 #Omit trailing slash to allow pwd check to work
-ARCHDIR="/glade/derecho/scratch/jpan/archive/xz_test_case"
+ARCHDIR="/glade/derecho/scratch/jpan/archive/REPLCASE"
 comps=("atm/" "lnd/" "ocn/" "ice/")
 
 cd $ARCHDIR
