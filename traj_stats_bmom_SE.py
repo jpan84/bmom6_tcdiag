@@ -87,12 +87,12 @@ def main(FN, CTRL=None):
       tcdf = tcdf.assign(dt=pd.to_datetime(tcdf[COLS[-4:-1]]) + pd.to_timedelta(tcdf['hour'], unit='h'))
 
       #resample winds to 6H for ACE
-      tcdf = tcdf.set_index('dt')
-      tcdf = tcdf.resample('6H').agg({col: 'first' for col in tcdf.columns})
-      tcdf['wspd'] = tcdf['wspd'].interpolate(method='linear')
-      tcdf['lat'] = tcdf['lat'].interpolate(method='linear')
-      tcdf['lon'] = tcdf['lon'].interpolate(method='linear')
-      tcdf['pres'] = tcdf['pres'].interpolate(method='linear')
+      ###tcdf = tcdf.set_index('dt')
+      ###tcdf = tcdf.resample('6H').agg({col: 'first' for col in tcdf.columns})
+      ###tcdf['wspd'] = tcdf['wspd'].interpolate(method='linear')
+      ###tcdf['lat'] = tcdf['lat'].interpolate(method='linear')
+      ###tcdf['lon'] = tcdf['lon'].interpolate(method='linear')
+      ###tcdf['pres'] = tcdf['pres'].interpolate(method='linear')
       
       #print(tcdf)
       print(tn)
