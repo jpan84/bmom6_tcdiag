@@ -46,6 +46,18 @@ if invert_vortex:
     print("We don't need to worry about where to seed vortices!")
     sys.exit(9)
 
+#seed only in the summer/fall hemi
+print('Finding SST max lat in', sstlats)
+ts = ux.open_dataset(camgrid, sstfile)['SST'].isel(time=0)
+tszm = ts.zonal_mean(lat=sstlats)
+#print(tszm, tszm.argmax(dim='latitudes'))
+sstlat = tszm['latitudes'].isel(latitudes=tszm.argmax(dim='latitudes')).values
+#print(type(sstlat), sstlat)
+sgnlat = np.sign(sstlat).astype(np.int_)
+print('SST max lat %f has sign %d, SST value %.2f' % (sstlat, sgnlat, tszm.max(dim='latitudes').values))
+latrng = sgnlat * np.array([minlat, maxlat])[::sgnlat]
+print('Uniformly selecting lats from', latrng)
+
 if os.path.exists(filename):
     # Read existing tempest file
     with open(filename, 'r') as f:
@@ -70,17 +82,6 @@ if os.path.exists(filename):
 
     # Set random seed using current time
     np.random.seed(int(time.time_ns() % 1000000000))
-
-    print('Finding SST max lat in', sstlats)
-    ts = ux.open_dataset(camgrid, sstfile)['SST'].isel(time=0)
-    tszm = ts.zonal_mean(lat=sstlats)
-    #print(tszm, tszm.argmax(dim='latitudes'))
-    sstlat = tszm['latitudes'].isel(latitudes=tszm.argmax(dim='latitudes')).values
-    #print(type(sstlat), sstlat)
-    sgnlat = np.sign(sstlat).astype(np.int_)
-    print('SST max lat %f has sign %d, SST value %.2f' % (sstlat, sgnlat, tszm.max(dim='latitudes').values))
-    latrng = sgnlat * np.array([minlat, maxlat])[::sgnlat]
-    print('Uniformly selecting lats from', latrng)
 
     # Find suitable location
     DONE = False
