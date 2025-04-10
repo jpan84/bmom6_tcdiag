@@ -6,7 +6,7 @@ module load nco
 
 ARCHROOT="/glade/derecho/scratch/jpan/archive/"
 CASENAME="REPLCASE"
-tapes=("hm" "h")
+tapes=("hm" "h" "rho2")
 
 cd "$ARCHROOT/$CASENAME/ocn/hist"
 

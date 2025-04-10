@@ -19,7 +19,7 @@ fi
 for cmp in "${comps[@]}"; do
   ###echo "${ARCHDIR}/${cmp}/hist/*.nc"
   for nc in "${ARCHDIR}"/"${cmp}"/hist/*.nc; do
-    if [[ "${nc}" == *".mom6.h."* || "${nc}" == *".mom6.hm."* ]]; then
+    if [[ "${nc}" == *".mom6.h."* || "${nc}" == *".mom6.hm."* || "${nc}" == *".mom6.rho2."* ]]; then
       continue
     fi
     if ncdump -h ${nc} | grep ":history" | grep -q "ncks -O -4 -L 1"; then
