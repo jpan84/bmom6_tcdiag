@@ -31,7 +31,7 @@ camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_10031
 parser = argparse.ArgumentParser(description='Process cyclone seeding parameters')
 parser.add_argument('--filename', type=str, required=True, help='Path to the cyclones tempest file')
 parser.add_argument('--pthi', type=str, required=True, help='Path to the namelist file')
-parser.add_argument('--sstfile', type=str, required=True, help='Path to unstructured cam file with TS')
+parser.add_argument('--sstfile', type=str, required=True, help='Path to unstructured cam file with SST')
 args = parser.parse_args()
 
 # Get command line arguments
@@ -72,11 +72,13 @@ if os.path.exists(filename):
     np.random.seed(int(time.time_ns() % 1000000000))
 
     print('Finding SST max lat in', sstlats)
-    ts = ux.open_dataset(camgrid, sstfile)['TS']
+    ts = ux.open_dataset(camgrid, sstfile)['SST'].isel(time=0)
     tszm = ts.zonal_mean(lat=sstlats)
-    maxlat = tszm['latitudes'].argmax()
-    sgnlat = np.sign(maxlat.values).astype(np.int_)
-    print('Print max lat %f has sign %d' % (maxlat, sgnlat))
+    #print(tszm, tszm.argmax(dim='latitudes'))
+    sstlat = tszm['latitudes'].isel(latitudes=tszm.argmax(dim='latitudes')).values
+    #print(type(sstlat), sstlat)
+    sgnlat = np.sign(sstlat).astype(np.int_)
+    print('SST max lat %f has sign %d, SST value %.2f' % (sstlat, sgnlat, tszm.max(dim='latitudes').values))
     latrng = sgnlat * np.array([minlat, maxlat])[::sgnlat]
     print('Uniformly selecting lats from', latrng)
 
