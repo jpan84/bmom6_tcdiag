@@ -37,6 +37,7 @@ print('Debugging restart file %s at time %s' % (inic_file, TID))
 subprocess.call(['scp', pthi, os.path.join(DOUT, 'nl.%s' % TID)])
 
 invert_vortex = keyword_values(pthi, "invert_vortex", "bool")
+sstmaxlat = keyword_values(pthi, "sstmaxlat", "float")
 
 if not invert_vortex:
     print("Not inverting vortex, we can exit gracefully!")
@@ -49,6 +50,11 @@ modify_q = keyword_values(pthi, "modify_q", "bool")
 modify_q_mult = keyword_values(pthi, "modify_q_mult", "float")
 gamma_ = keyword_values(pthi, "gamma", "float")
 restart_file = keyword_values(pthi, "restart_file", "bool")
+
+# !SZNL
+if not np.sign(sstmaxlat) == np.sign(psminlat):
+    print("Vortex %.2f° not in same hemisphere as SST max %.2f°...exiting" % (psminlat, sstmaxlat))
+    exit()
 
 if gamma_ < 0.0:
     gamma_ = 0.0065
