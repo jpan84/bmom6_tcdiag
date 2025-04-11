@@ -44,7 +44,7 @@ if invert_vortex:
 # Find SST max hemisphere
 sstmaxlat = keyword_values(pthi, "sstmaxlat", "float")
 sgnlat = np.sign(sstmaxlat).astype(np.int_)
-print('%s: SST max lat %f has sign %d, SST value %.2f' % (sys.argv[0], sstlat, sgnlat, tszm.max(dim='latitudes').values))
+print('%s: SST max lat %f has sign %d' % (sys.argv[0], sstmaxlat, sgnlat))
 latrng = sgnlat * np.array([minlat, maxlat])[::sgnlat]
 print('Uniformly selecting lats from', latrng)
 

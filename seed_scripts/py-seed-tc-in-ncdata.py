@@ -37,7 +37,7 @@ cen_lon = keyword_values(pthi, "psminlon", "float")
 zp = keyword_values(pthi, "zp", "float")
 exppr = keyword_values(pthi, "exppr", "float")
 restart_file = keyword_values(pthi, "restart_file", "bool")
-sstmaxlat = keyword_values(phti, "sstmaxlat", "float")
+sstmaxlat = keyword_values(pthi, "sstmaxlat", "float")
 
 # If we are seeding, read target pressure and RMW
 # If we are NOT seeding, assume these have been precalculated or set
