@@ -164,17 +164,17 @@ qcmd -q main -A $USEPROJ -l walltime=00:30:00 ./case.build
 ###make sure output tapes in the script match diag_table
 scp ${DIAGSRC}/mom_dlyav2mon.sh $RUNDIR
 sed -i "s/REPLCASE/$CASENAME/g" $RUNDIR/mom_dlyav2mon.sh
-ssh -n jpan@cron.hpc.ucar.edu "(crontab -l 2>/dev/null; echo \"0 */3 * * * ${RUNDIR}/mom_dlyav2mon.sh\") | crontab -"
+ssh -n cron "(crontab -l 2>/dev/null; echo \"0 */3 * * * ssh -n casper '/bin/bash ${RUNDIR}/mom_dlyav2mon.sh >> ${RUNDIR}/mom_dlyav2mon_cron.out 2&>1'\") | crontab -"
 
 ###apply ncks lossless compression to history archive
 scp ${DIAGSRC}/ncks_hist.sh $RUNDIR
 sed -i "s/REPLCASE/$CASENAME/g" $RUNDIR/ncks_hist.sh
-ssh -n jpan@cron.hpc.ucar.edu "(crontab -l 2>/dev/null; echo \"30 */3 * * * ${RUNDIR}/ncks_hist.sh\") | crontab -"
+ssh -n cron "(crontab -l 2>/dev/null; echo \"30 */3 * * * ssh -n casper '/bin/bash ${RUNDIR}/ncks_hist.sh >> ${RUNDIR}/ncks_hist_cron.out 2&>1'\") | crontab -"
 
 ###compress short-term restarts with xz
 scp ${DIAGSRC}/xz_st_rest.sh $RUNDIR
 sed -i "s/REPLCASE/$CASENAME/g" $RUNDIR/xz_st_rest.sh
-ssh -n jpan@cron.hpc.ucar.edu "(crontab -l 2>/dev/null; echo \"0 */3 * * * ${RUNDIR}/xz_st_rest.sh\") | crontab -"
+ssh -n cron "(crontab -l 2>/dev/null; echo \"0 */3 * * * ssh -n derecho '/bin/bash ${RUNDIR}/xz_st_rest.sh >> ${RUNDIR}/xz_st_rest_cron.out 2&>1'\") | crontab -"
 
 #delete short-term restarts, only keeping every 6 months
 ###scp ${DIAGSRC}/del_st_rest.sh $RUNDIR

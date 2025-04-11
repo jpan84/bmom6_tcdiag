@@ -1,6 +1,6 @@
 ###compress (lossless) hist by ~1/4 to 1/3
 ###by rechunking with ncks
-#!/bin/bash
+#!/bin/bash -l
 
 set -e
 module load nco
