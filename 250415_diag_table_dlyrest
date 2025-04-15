@@ -90,6 +90,8 @@
 "ocean_model", "uhGM",         "uhGM",         "CASENAME.mom6.hm%4yr-%2mo-%2dy", "all", "mean", "none", 1
 "ocean_model", "uhml",         "uhml",         "CASENAME.mom6.hm%4yr-%2mo-%2dy", "all", "mean", "none", 1
 "ocean_model", "agessc",       "agessc",       "CASENAME.mom6.hm%4yr-%2mo-%2dy", "all", "mean", "none", 1
+"ocean_model", "T_ady",        "T_ady",        "CASENAME.mom6.hm%4yr-%2mo-%2dy", "all", "mean", "none", 1
+"ocean_model", "T_adx",        "T_adx",        "CASENAME.mom6.hm%4yr-%2mo-%2dy", "all", "mean", "none", 1
 "ocean_model", "T_ady_2d",     "T_ady_2d",     "CASENAME.mom6.hm%4yr-%2mo-%2dy", "all", "mean", "none", 1
 "ocean_model", "T_adx_2d",     "T_adx_2d",     "CASENAME.mom6.hm%4yr-%2mo-%2dy", "all", "mean", "none", 1
 "ocean_model", "T_diffy_2d",   "T_diffy_2d",   "CASENAME.mom6.hm%4yr-%2mo-%2dy", "all", "mean", "none", 1

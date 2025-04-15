@@ -53,4 +53,4 @@ DTFREEZE_DP = -7.75E-08
 
 NUM_DIAG_COORDS = 2
 DIAG_COORDS = "z Z ZSTAR", "rho2 RHO2 RHO"
-DIAG_COORD_DEF_RHO2 = "FILE:ocean_rho2_190917.nc,interfaces=rho2"
+DIAG_COORD_DEF_RHO2 = "FILE:ocean_rho2_250415.nc,interfaces=rho2"
