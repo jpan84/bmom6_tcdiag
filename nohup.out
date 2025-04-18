@@ -1,983 +1,140 @@
-0005-02-14-00
-The geckodriver version (0.35.0) detected in PATH at /glade/u/home/jpan/miniconda3/envs/aquapux1/bin/geckodriver might not be compatible with the detected firefox version (124.0); currently, geckodriver 0.36.0 is recommended for firefox 124.*, so it is advised to delete the driver in PATH and retry
-0005-02-14-06
+<xarray.UxDataArray 'time' (time: 9)> Size: 72B
+array([cftime.DatetimeNoLeap(5, 2, 15, 0, 0, 0, 0, has_year_zero=True),
+       cftime.DatetimeNoLeap(5, 3, 16, 12, 0, 0, 0, has_year_zero=True),
+       cftime.DatetimeNoLeap(5, 4, 16, 0, 0, 0, 0, has_year_zero=True),
+       cftime.DatetimeNoLeap(5, 5, 16, 12, 0, 0, 0, has_year_zero=True),
+       cftime.DatetimeNoLeap(5, 6, 16, 0, 0, 0, 0, has_year_zero=True),
+       cftime.DatetimeNoLeap(5, 7, 16, 12, 0, 0, 0, has_year_zero=True),
+       cftime.DatetimeNoLeap(5, 8, 16, 12, 0, 0, 0, has_year_zero=True),
+       cftime.DatetimeNoLeap(5, 9, 16, 0, 0, 0, 0, has_year_zero=True),
+       cftime.DatetimeNoLeap(5, 10, 16, 12, 0, 0, 0, has_year_zero=True)],
+      dtype=object)
+Coordinates:
+  * time     (time) object 72B 0005-02-15 00:00:00 ... 0005-10-16 12:00:00
+Attributes:
+    long_name:  time
+    bounds:     time_bounds
+Working on TS
 Traceback (most recent call last):
-  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/ux_movie_unseed.py", line 201, in <module>
+  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/globavg.py", line 171, in <module>
     main()
-  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/ux_movie_unseed.py", line 197, in main
-    hv.save(pts, os.path.join(diro, '%s_%s.png' % (alias, tstr)))
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/holoviews/util/__init__.py", line 807, in save
-    return renderer_obj.save(obj, filename, fmt=fmt, resources=resources,
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/holoviews/plotting/renderer.py", line 599, in save
-    rendered = self_or_cls(plot, fmt)
-               ^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/holoviews/plotting/renderer.py", line 199, in __call__
-    data = self._figure_data(plot, fmt, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/holoviews/plotting/bokeh/renderer.py", line 125, in _figure_data
-    img = get_screenshot_as_png(plot.state, driver=state.webdriver)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/bokeh/io/export.py", line 274, in get_screenshot_as_png
-    web_driver = webdriver_control.get(scale_factor=scale_factor)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/bokeh/io/webdriver.py", line 173, in get
-    if not self.reuse or self.current is None or not scale_factor_less_than_web_driver_device_pixel_ratio(
-                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/bokeh/io/webdriver.py", line 122, in scale_factor_less_than_web_driver_device_pixel_ratio
-    device_pixel_ratio = get_web_driver_device_pixel_ratio(web_driver)
-                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/bokeh/io/webdriver.py", line 130, in get_web_driver_device_pixel_ratio
-    device_pixel_ratio: float = web_driver.execute_script(calculate_web_driver_device_pixel_ratio)
-                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 408, in execute_script
-    return self.execute(command, {"script": script, "args": converted_args})["value"]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 348, in execute
-    self.error_handler.check_response(response)
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
-    raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.WebDriverException: Message: Failed to decode response from marionette
-
+  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/globavg.py", line 102, in main
+    plt.plot(flt, gav.values)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/matplotlib/pyplot.py", line 3829, in plot
+    return gca().plot(
+           ^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/matplotlib/axes/_axes.py", line 1779, in plot
+    self.add_line(line)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/matplotlib/axes/_base.py", line 2371, in add_line
+    self._update_line_limits(line)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/matplotlib/axes/_base.py", line 2394, in _update_line_limits
+    path = line.get_path()
+           ^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/matplotlib/lines.py", line 1038, in get_path
+    self.recache()
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/matplotlib/lines.py", line 675, in recache
+    x = _to_unmasked_float_array(xconv).ravel()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/matplotlib/cbook.py", line 1345, in _to_unmasked_float_array
+    return np.asarray(x, float)
+           ^^^^^^^^^^^^^^^^^^^^
+TypeError: float() argument must be a string or a real number, not 'cftime._cftime.DatetimeNoLeap'
 Traceback (most recent call last):
-  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/ux_movie_unseed.py", line 201, in <module>
+  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/globavg.py", line 171, in <module>
     main()
-  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/ux_movie_unseed.py", line 176, in main
-    gls, gle = mygl(START)[0], mygl(END)[0]
-               ~~~~~~~~~~~^^^
-IndexError: list index out of range
-0005-02-14-01
+  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/globavg.py", line 64, in main
+    flt = cftime.date2num(ds.time, 'years since 0001-01-01')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/cftime/_cftime.pyx", line 252, in cftime._cftime.date2num
+  File "src/cftime/_cftime.pyx", line 105, in cftime._cftime._dateparse
+ValueError: In general, units must be one of 'microseconds', 'milliseconds', 'seconds', 'minutes', 'hours', or 'days' (or select abbreviated versions of these).  For the '360_day' calendar, 'months' can also be used, or for the 'noleap' calendar 'common_years' can also be used. Got 'years' instead, which are not recognized.
+[4.12328767 4.20410959 4.28767123 4.37123288 4.45479452 4.53835616
+ 4.62328767 4.70684932 4.79041096]
+Working on TS
 Traceback (most recent call last):
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/xarray/core/dataset.py", line 1393, in _construct_dataarray
-    variable = self._variables[name]
-               ~~~~~~~~~~~~~~~^^^^^^
-KeyError: 'PSL'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/ux_movie_unseed.py", line 201, in <module>
+  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/globavg.py", line 171, in <module>
     main()
-  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/ux_movie_unseed.py", line 189, in main
-    da = uxds[COFVAR].sel(time=tt) / 100
-         ~~~~^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/uxarray/core/dataset.py", line 83, in __getitem__
-    value = super().__getitem__(key)
-            ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/xarray/core/dataset.py", line 1484, in __getitem__
-    return self._construct_dataarray(key)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/uxarray/core/dataset.py", line 157, in _construct_dataarray
-    xarr = super()._construct_dataarray(name)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/xarray/core/dataset.py", line 1395, in _construct_dataarray
-    _, name, variable = _get_virtual_variable(self._variables, name, self.dims)
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux1/lib/python3.11/site-packages/xarray/core/dataset.py", line 196, in _get_virtual_variable
-    raise KeyError(key)
-KeyError: 'PSL'
-0005-02-14-01
-The geckodriver version (0.35.0) detected in PATH at /glade/u/home/jpan/miniconda3/envs/aquapux1/bin/geckodriver might not be compatible with the detected firefox version (124.0); currently, geckodriver 0.36.0 is recommended for firefox 124.*, so it is advised to delete the driver in PATH and retry
-0005-02-14-02
-0005-02-14-03
-0005-02-14-04
-0005-02-14-05
-0005-02-14-06
-0005-02-14-07
-0005-02-14-08
-0005-02-14-09
-0005-02-14-10
-0005-02-07-01
-0005-02-14-11
-0005-02-14-12
-0005-02-14-13
-0005-02-14-14
-The geckodriver version (0.35.0) detected in PATH at /glade/u/home/jpan/miniconda3/envs/aquapux1/bin/geckodriver might not be compatible with the detected firefox version (124.0); currently, geckodriver 0.36.0 is recommended for firefox 124.*, so it is advised to delete the driver in PATH and retry
-0005-02-14-15
-0005-02-14-16
-0005-02-07-02
-0005-02-14-17
-0005-02-07-03
-0005-02-14-18
-0005-02-07-04
-0005-02-14-19
-0005-02-07-05
-0005-02-14-20
-0005-02-07-06
-0005-02-14-21
-0005-02-07-07
-0005-02-14-22
-0005-02-07-08
-0005-02-14-23
-0005-02-07-09
-0005-02-15-00
-0005-02-07-10
-0005-02-07-11
-0005-02-07-12
-0005-02-07-13
-0005-02-07-14
-0005-02-15-01
-0005-02-07-15
-0005-02-07-16
-0005-02-15-02
-0005-02-07-17
-0005-02-15-03
-0005-02-07-18
-0005-02-15-04
-0005-02-07-19
-0005-02-15-05
-0005-02-07-20
-0005-02-15-06
-0005-02-07-21
-0005-02-15-07
-0005-02-07-22
-0005-02-15-08
-0005-02-07-23
-0005-02-15-09
-0005-02-08-00
-0005-02-15-10
-0005-02-15-11
-0005-02-15-12
-0005-02-15-13
-0005-02-08-01
-0005-02-15-14
-0005-02-15-15
-0005-02-08-02
-0005-02-15-16
-0005-02-08-03
-0005-02-15-17
-0005-02-08-04
-0005-02-15-18
-0005-02-08-05
-0005-02-15-19
-0005-02-08-06
-0005-02-15-20
-0005-02-08-07
-0005-02-15-21
-0005-02-08-08
-0005-02-15-22
-0005-02-08-09
-0005-02-15-23
-0005-02-08-10
-0005-02-16-00
-0005-02-08-11
-0005-02-08-12
-0005-02-08-13
-0005-02-08-14
-0005-02-08-15
-0005-02-16-01
-0005-02-08-16
-0005-02-16-02
-0005-02-08-17
-0005-02-16-03
-0005-02-08-18
-0005-02-16-04
-0005-02-08-19
-0005-02-08-20
-0005-02-16-05
-0005-02-08-21
-0005-02-16-06
-0005-02-08-22
-0005-02-16-07
-0005-02-16-08
-0005-02-08-23
-0005-02-16-09
-0005-02-09-00
-0005-02-16-10
-0005-02-16-11
-0005-02-16-12
-0005-02-16-13
-0005-02-16-14
-0005-02-09-01
-0005-02-16-15
-0005-02-16-16
-0005-02-09-02
-0005-02-01-01
-0005-02-16-17
-0005-02-09-03
-0005-02-16-18
-0005-02-09-04
-0005-02-16-19
-0005-02-09-05
-0005-02-16-20
-0005-02-09-06
-The geckodriver version (0.35.0) detected in PATH at /glade/u/home/jpan/miniconda3/envs/aquapux1/bin/geckodriver might not be compatible with the detected firefox version (124.0); currently, geckodriver 0.36.0 is recommended for firefox 124.*, so it is advised to delete the driver in PATH and retry
-0005-02-16-21
-0005-02-09-07
-0005-02-16-22
-0005-02-09-08
-0005-02-16-23
-0005-02-09-09
-0005-02-01-02
-0005-02-17-00
-0005-02-09-10
-0005-02-01-03
-0005-02-09-11
-0005-02-01-04
-0005-02-01-05
-0005-02-09-12
-0005-02-01-06
-0005-02-09-13
-0005-02-01-07
-0005-02-09-14
-0005-02-01-08
-0005-02-09-15
-0005-02-01-09
-0005-02-17-01
-0005-02-09-16
-0005-02-01-10
-0005-02-01-11
-0005-02-09-17
-0005-02-17-02
-0005-02-01-12
-0005-02-09-18
-0005-02-17-03
-0005-02-01-13
-0005-02-09-19
-0005-02-01-14
-0005-02-17-04
-0005-02-09-20
-0005-02-01-15
-0005-02-17-05
-0005-02-09-21
-0005-02-01-16
-0005-02-17-06
-0005-02-09-22
-0005-02-01-17
-0005-02-17-07
-0005-02-09-23
-0005-02-01-18
-0005-02-17-08
-0005-02-10-00
-0005-02-01-19
-0005-02-17-09
-0005-02-01-20
-0005-02-17-10
-0005-02-01-21
-0005-02-17-11
-0005-02-01-22
-0005-02-17-12
-0005-02-01-23
-0005-02-17-13
-0005-02-10-01
-0005-02-02-00
-0005-02-17-14
-0005-02-10-02
-0005-02-17-15
-0005-02-10-03
-0005-02-17-16
-0005-02-10-04
-0005-02-17-17
-0005-02-10-05
-0005-02-02-01
-0005-02-17-18
-0005-02-10-06
-0005-02-17-19
-0005-02-02-02
-0005-02-10-07
-0005-02-17-20
-0005-02-02-03
-0005-02-10-08
-0005-02-17-21
-0005-02-02-04
-0005-02-10-09
-0005-02-17-22
-0005-02-02-05
-0005-02-10-10
-0005-02-02-06
-0005-02-17-23
-0005-02-10-11
-0005-02-02-07
-0005-02-18-00
-0005-02-10-12
-0005-02-02-08
-0005-02-10-13
-0005-02-02-09
-0005-02-10-14
-0005-02-02-10
-0005-02-10-15
-0005-02-02-11
-0005-02-10-16
-0005-02-02-12
-0005-02-18-01
-0005-02-10-17
-0005-02-02-13
-0005-02-10-18
-0005-02-18-02
-0005-02-02-14
-0005-02-10-19
-0005-02-18-03
-0005-02-02-15
-0005-02-10-20
-0005-02-18-04
-0005-02-02-16
-0005-02-10-21
-0005-02-02-17
-0005-02-18-05
-0005-02-10-22
-0005-02-02-18
-0005-02-18-06
-0005-02-02-19
-0005-02-10-23
-0005-02-18-07
-0005-02-02-20
-0005-02-11-00
-0005-02-18-08
-0005-02-02-21
-0005-02-18-09
-0005-02-02-22
-0005-02-18-10
-0005-02-02-23
-0005-02-18-11
-0005-02-03-00
-0005-02-18-12
-0005-02-18-13
-0005-02-18-14
-0005-02-18-15
-0005-02-03-01
-0005-02-18-16
-0005-02-18-17
-0005-02-03-02
-0005-02-18-18
-0005-02-03-03
-0005-02-18-19
-0005-02-03-04
-0005-02-03-05
-0005-02-18-20
-0005-02-03-06
-0005-02-18-21
-0005-02-03-07
-0005-02-18-22
-0005-02-03-08
-0005-02-18-23
-0005-02-03-09
-0005-02-19-00
-0005-02-03-10
-0005-02-03-11
-0005-02-03-12
-0005-02-03-13
-0005-02-03-14
-0005-02-03-15
-0005-02-19-01
-0005-02-03-16
-0005-02-19-02
-0005-02-03-17
-0005-02-19-03
-0005-02-03-18
-0005-02-19-04
-0005-02-03-19
-0005-02-19-05
-0005-02-03-20
-0005-02-19-06
-0005-02-03-21
-0005-02-19-07
-0005-02-03-22
-0005-02-03-23
-0005-02-19-08
-0005-02-04-00
-0005-02-19-09
-0005-02-19-10
-0005-02-19-11
-0005-02-19-12
-0005-02-04-01
-0005-02-19-13
-0005-02-19-14
-0005-02-04-02
-0005-02-19-15
-0005-02-04-03
-0005-02-04-04
-0005-02-19-16
-0005-02-04-05
-0005-02-19-17
-0005-02-04-06
-0005-02-19-18
-0005-02-04-07
-0005-02-19-19
-0005-02-04-08
-0005-02-19-20
-0005-02-04-09
-0005-02-19-21
-0005-02-04-10
-0005-02-19-22
-0005-02-04-11
-0005-02-19-23
-0005-02-04-12
-0005-02-20-00
-0005-02-04-13
-0005-02-04-14
-0005-02-04-15
-0005-02-04-16
-0005-02-04-17
-0005-02-04-18
-0005-02-04-19
-0005-02-04-20
-0005-02-04-21
-0005-02-04-22
-0005-02-04-23
-0005-02-05-00
-0005-02-05-01
-0005-02-05-02
-0005-02-05-03
-0005-02-05-04
-0005-02-05-05
-0005-02-05-06
-0005-02-05-07
-0005-02-05-08
-0005-02-05-09
-0005-02-05-10
-0005-02-05-11
-0005-02-05-12
-0005-02-05-13
-0005-02-05-14
-0005-02-05-15
-0005-02-05-16
-0005-02-05-17
-0005-02-05-18
-0005-02-05-19
-0005-02-05-20
-0005-02-05-21
-0005-02-05-22
-0005-02-05-23
-0005-02-06-00
-
-
-
-Starting with dp, dT thresholds
- 0 0
-0005-02-02-00000
-Plotting 3342995...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1088', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1030', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1375', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1232', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1303', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1160', ...)
-The geckodriver version (0.35.0) detected in PATH at /glade/u/home/jpan/miniconda3/envs/aquapux1/bin/geckodriver might not be compatible with the detected firefox version (124.0); currently, geckodriver 0.36.0 is recommended for firefox 124.*, so it is advised to delete the driver in PATH and retry
-0005-02-03-00000
-Plotting 3345790...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1678', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1893', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1750', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1606', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1548', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p1821', ...)
-Plotting 3345855...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2427', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2284', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2082', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2355', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2212', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2140', ...)
-Plotting 3345914...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2616', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2961', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2818', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2674', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2746', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p2889', ...)
-Plotting 3345973...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3204', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3491', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3348', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3146', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3419', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3276', ...)
-Plotting 3346032...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3814', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3886', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3742', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4029', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3684', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p3957', ...)
-0005-02-04-00000
-Plotting 3348309...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4483', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4555', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4268', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4210', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4412', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4340', ...)
-0005-02-06-00000
-Plotting 3349790...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5013', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4870', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4740', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4942', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p4798', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5085', ...)
-0005-02-07-00000
-Plotting 3350804...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5480', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5278', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5408', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5623', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5551', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5336', ...)
-0005-02-08-00000
-Plotting 3351381...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6010', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5938', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5866', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6081', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p5808', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6153', ...)
-Plotting 3351445...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6695', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6623', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6552', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6408', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6480', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6350', ...)
-Plotting 3351505...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7010', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6938', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7153', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p6880', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7225', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7082', ...)
-0005-02-09-00000
-Plotting 3351944...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7616', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7414', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7759', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7544', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7687', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7472', ...)
-Plotting 3352007...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8285', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8142', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7998', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8213', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p7940', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8070', ...)
-0005-02-10-00000
-Plotting 3352442...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8528', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8743', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8815', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8672', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8470', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p8600', ...)
-Plotting 3352505...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9062', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9134', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9349', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9277', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9206', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9004', ...)
-0005-02-11-00000
-Plotting 3352936...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9811', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9596', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9668', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9883', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9740', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p9538', ...)
-Plotting 3352999...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10413', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10198', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10126', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10068', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10270', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10341', ...)
-Plotting 3353057...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10879', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10951', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10664', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10808', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10606', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p10736', ...)
-0005-02-12-00000
-Plotting 3353496...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11322', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11465', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11250', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11120', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11178', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11393', ...)
-Plotting 3353561...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11776', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11991', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11704', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11919', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11848', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p11646', ...)
-Plotting 3353619...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p12445', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p12230', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p12517', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p12172', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p12302', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p12374', ...)
-0005-02-14-00000
-Plotting 3354390...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p12828', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p12756', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p12971', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p12698', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p12900', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p13043', ...)
-Plotting 3354453...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p13366', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p13438', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p13294', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p13581', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p13236', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p13509', ...)
-Plotting 3354510...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p13896', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p13968', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p13766', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p13824', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p14111', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p14039', ...)
-0005-02-15-00000
-Plotting 3354959...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p14498', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p14641', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p14426', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p14296', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p14569', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p14354', ...)
-Plotting 3355024...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p15099', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p14826', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p15171', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p14956', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p14884', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p15028', ...)
-0005-02-17-00000
-Plotting 3355813...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p15705', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p15418', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p15633', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p15360', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p15562', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p15490', ...)
-0005-02-18-00000
-Plotting 3356257...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p15956', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p16171', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p15898', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p16100', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p16028', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p16243', ...)
-0005-02-19-00000
-Plotting 3356673...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p16558', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p16773', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p16701', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p16428', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p16486', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p16630', ...)
-Plotting 3356733...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p17012', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p17227', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p16954', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p17156', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p17084', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p17299', ...)
-0005-02-21-00000
-Plotting 3357521...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p17761', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p17488', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p17833', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p17546', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p17618', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p17690', ...)
-0005-02-24-00000
-Plotting 3358686...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p18072', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p18287', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p18216', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p18144', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p18014', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p18359', ...)
-Plotting 3358748...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p18598', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p18670', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p18885', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p18742', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p18540', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p18813', ...)
-Plotting 3358807...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p19351', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p19280', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p19208', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p19423', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p19078', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p19136', ...)
-0005-02-25-00000
-Plotting 3359249...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p19881', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p19608', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p19810', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p19953', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p19666', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p19738', ...)
-Plotting 3359310...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p20130', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p20475', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p20332', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p20260', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p20403', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p20188', ...)
-Plotting 3359368...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p20802', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p20730', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p20874', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p20672', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p20945', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p21017', ...)
-0005-02-26-00000
-Plotting 3359796...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p21264', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p21336', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p21479', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p21551', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p21206', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p21408', ...)
-Plotting 3359857...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p22081', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p21938', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p22009', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p21794', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p21736', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p21866', ...)
-Plotting 3359918...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p22328', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p22472', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p22270', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p22400', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p22615', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p22543', ...)
-Plotting 3359979...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p22854', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p23141', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p23069', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p22926', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p22796', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p22998', ...)
-0005-02-27-00000
-Plotting 3360413...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p23460', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p23675', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p23532', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p23388', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p23603', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p23330', ...)
-0005-02-28-00000
-Plotting 3360846...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p24066', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p24209', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p24137', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p23864', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p23994', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p23922', ...)
-0005-03-01-00000
-Plotting 3361263...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p24394', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p24452', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p24667', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p24524', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p24739', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p24596', ...)
-Plotting 3361326...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p25273', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p24986', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p25130', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p25201', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p25058', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p24928', ...)
-Plotting 3361391...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p25807', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p25520', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p25664', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p25592', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p25462', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p25735', ...)
-Plotting 3361450...
-	opened
-	selected
-	diffed
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p26265', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p26337', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p25992', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p26122', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p26050', ...)
-WARNING:bokeh.core.validation.check:W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: figure(id='p26194', ...)
-0005-02-12-00
-0005-02-12-06
-0005-02-12-12
-0005-02-12-18
-0005-02-13-00
-0005-02-13-06
-0005-02-13-12
-0005-02-22-00
-0005-02-13-18
-0005-02-14-00
-0005-02-22-06
-0005-02-14-06
-0005-02-22-12
-0005-02-14-12
-0005-02-22-18
-0005-02-14-18
-0005-02-23-00
-0005-02-15-00
-0005-02-23-06
-0005-02-15-06
-0005-02-23-12
-0005-02-15-12
-0005-02-23-18
-0005-02-15-18
-0005-02-24-00
-0005-02-16-00
-0005-02-24-06
-0005-02-24-12
-0005-02-24-18
-0005-02-25-00
-0005-02-25-06
-0005-02-25-12
-0005-02-25-18
-0005-02-26-00
+  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/globavg.py", line 105, in main
+    plt.xlabel('Time [%s]' % str(flt.units))
+                                 ^^^^^^^^^
+AttributeError: 'numpy.ndarray' object has no attribute 'units'
+[4.12328767 4.20410959 4.28767123 4.37123288 4.45479452 4.53835616
+ 4.62328767 4.70684932 4.79041096]
+Working on TS
+Working on FSNT
+Working on FLNT
+Working on RESTOM
+Working on PRECC
+Working on PRECL
+Working on PRECT
+Working on QFLX
+Working on PS
+Working on TMQ
+Working on LWCF
+Working on SWCF
+Working on CLDTOT
+Working on NCF
+globavg.py done.
+[4.12328767 4.20410959 4.28767123 4.37123288 4.45479452 4.53835616
+ 4.62328767 4.70684932 4.79041096 4.8739726  4.95753425 5.04246575
+ 5.12328767 5.20410959 5.28767123 5.37123288 5.45479452 5.53835616
+ 5.62328767 5.70684932 5.79041096 5.8739726  5.95753425 6.04246575
+ 6.12328767 6.20410959 6.28767123 6.37123288 6.45479452 6.53835616
+ 6.62328767 6.70684932 6.79041096 6.8739726  6.95753425 7.04246575
+ 7.12328767 7.20410959 7.28767123 7.37123288 7.45479452 7.53835616
+ 7.62328767 7.70684932 7.79041096]
+Working on TS
+Working on FSNT
+Working on FLNT
+Working on RESTOM
+Working on PRECC
+Working on PRECL
+Working on PRECT
+Working on QFLX
+Working on PS
+Working on TMQ
+Working on LWCF
+Working on SWCF
+Working on CLDTOT
+Working on NCF
+globavg.py done.
+[4.12328767 4.20410959 4.28767123 4.37123288 4.45479452 4.53835616
+ 4.62328767 4.70684932 4.79041096]
+Working on TS
+Working on FSNT
+Working on FLNT
+Working on RESTOM
+Working on PRECC
+Working on PRECL
+Working on PRECT
+Working on QFLX
+Working on PS
+Working on TMQ
+Working on LWCF
+Working on SWCF
+Working on CLDTOT
+Working on NCF
+globavg.py done.
+[4.12328767 4.20410959 4.28767123 4.37123288 4.45479452 4.53835616
+ 4.62328767 4.70684932 4.79041096 4.8739726  4.95753425 5.04246575
+ 5.12328767 5.20410959 5.28767123 5.37123288 5.45479452 5.53835616
+ 5.62328767 5.70684932 5.79041096 5.8739726  5.95753425 6.04246575
+ 6.12328767 6.20410959 6.28767123 6.37123288 6.45479452 6.53835616
+ 6.62328767 6.70684932 6.79041096 6.8739726  6.95753425 7.04246575
+ 7.12328767 7.20410959 7.28767123 7.37123288 7.45479452 7.53835616
+ 7.62328767 7.70684932 7.79041096]
+Working on TS
+Working on FSNT
+Working on FLNT
+Working on RESTOM
+Working on PRECC
+Working on PRECL
+Working on PRECT
+Working on QFLX
+Working on PS
+Working on TMQ
+Working on LWCF
+Working on SWCF
+Working on CLDTOT
+Working on NCF
+globavg.py done.

@@ -30,11 +30,12 @@ OUTDIR = './globavtraces_250130_h80l89'
 #OUTDIR = './globavtraces_250127_h80l895'
 #OUTDIR = './globavtraces_250127_h80l897'
 
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250206_1degeqm885'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
 GRIDFN = 'ne120np4_pentagons_100310.nc'
-OUTDIR = './globavtraces_250206_1degeqm885'
+OUTDIR = './globavtraces_250417_ctrl'
 
-CLIPMO = 24
+CLIPMO = 0
+tunits = 'common_years since 0000-01-01'
 
 import os
 import glob
@@ -61,9 +62,10 @@ def main():
    #print(pt)
    #exit()
    ds = ux.open_mfdataset(os.path.join(GRIDDIR, GRIDFN), pt)
-   flt = ds.time
-   cft = cftime.num2date(ds.time, ds.time.attrs['units'], ds.time.attrs['calendar'])
-   ds = ds.assign_coords(time=cft)
+   flt = cftime.date2num(ds.time, tunits)
+   print(flt)
+   #cft = cftime.num2date(ds.time, ds.time.attrs['units'], ds.time.attrs['calendar'])
+   #ds = ds.assign_coords(time=cft)
    #print(ds.isel(time=slice(120,None)).time)
 
    '''
@@ -101,7 +103,7 @@ def main():
       plt.plot(flt, gav.values)
       #plt.legend()
       plt.title(var)
-      plt.xlabel('Time [%s]' % str(flt.units))
+      plt.xlabel(tunits)# [%s]' % str(flt.units))
       plt.ylabel(units)
       plt.savefig(os.path.join(OUTDIR, '%s.png' % var), bbox_inches='tight')
       plt.close()
