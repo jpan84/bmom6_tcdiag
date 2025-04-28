@@ -28,7 +28,7 @@ TYPS = [None, int, float, float, float, float, int, int, int, int]
 CTYP = {COLS[i+1]: TYPS[i+1] for i in range(len(COLS[1:]))}
 
 XLIMS = dict(pmins=(8.5e4,1.01e5), ace=(0,80), maxu=(15,120), genlon=(0,360), genlat=(-40, 40))
-YLIMS = dict(pmins=(0, 6e-2))
+YLIMS = dict(pmins=(0, 6e-4))
 clabelkwargs = {'inline': 1, 'fontsize': 10, 'colors': 'black', 'fmt': '%.1e'}
 
 def main(FN, CTRL=None):
@@ -87,8 +87,8 @@ def main(FN, CTRL=None):
       tcdf = tcdf.assign(dt=pd.to_datetime(tcdf[COLS[-4:-1]]) + pd.to_timedelta(tcdf['hour'], unit='h'))
 
       #resample winds to 6H for ACE
-      ###tcdf = tcdf.set_index('dt')
-      ###tcdf = tcdf.resample('6H').agg({col: 'first' for col in tcdf.columns})
+      tcdf = tcdf.set_index('dt')
+      tcdf = tcdf.resample('6H').agg({col: 'first' for col in tcdf.columns})
       ###tcdf['wspd'] = tcdf['wspd'].interpolate(method='linear')
       ###tcdf['lat'] = tcdf['lat'].interpolate(method='linear')
       ###tcdf['lon'] = tcdf['lon'].interpolate(method='linear')

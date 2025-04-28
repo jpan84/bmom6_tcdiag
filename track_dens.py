@@ -15,9 +15,13 @@ MS2KT = 1.9438
 a_e = 6.371e6 #m
 
 #FILI = sys.argv[1]
-FILI = ['8e-5.parquet', '250206_1degeqm885.parquet', '250321_seed1x1.parquet']
-labels = ['unseed', 'ctrl', 'seed']
-DOUT = '250402_density_postruncurl'
+#FILI = ['250415_unseed.parquet', '250417_ctrl.parquet', '250416_seed1x1.parquet']
+#labels = ['unseed', 'ctrl', 'seed']
+#DOUT = '250422_density'
+
+FILI = ['250415_unseed_JJASOND.parquet', '250417_ctrl_JJASOND.parquet']
+labels = ['unseed', 'ctrl']
+DOUT = '250423_density_JJASOND'
 
 def main():
    #extidx = FILI.rfind('.')
@@ -27,13 +31,17 @@ def main():
 
    dfs = [pd.read_parquet(f) for f in FILI]
    trange = [df.index.max() - df.index[0] for df in dfs]
+   print(trange)
    totyrs = [tr.total_seconds() / 86400 / 365 for tr in trange]
+   print(totyrs)
+   #exit()
 
-   bininfo = make_bin_grid_1d()
+   bininfo = make_bin_grid_1d(latbnds=(-90., 90.), dlat=0.5)
 
    plt.rc('font', size=16)
 
-   plot_lat_binned(dfs, bininfo, totyrs, track_density_of_storm_1d, 'unique storms', 'track_dens.png')
+   plot_lat_binned(dfs, bininfo, totyrs, unique_tracks_of_storm_1d, 'unique storms', 'unique_track_dens.png')
+   plot_lat_binned(dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly fixes', '6hr_track_dens.png')
    plot_lat_binned(dfs, bininfo, totyrs, bin_ace_of_storm_1d, 'ACE [$10^4$ kt$^2$] ', 'ace_binned.png')
 
 
@@ -42,8 +50,9 @@ def plot_lat_binned(dfs, bininfo, totyrs, varfunc, ylabel, filo):
    for ii, df in enumerate(dfs):
       for stm in df['stmnum'].unique():
          pltdat[ii] += varfunc(df[df['stmnum'] == stm], bininfo)
-      pltdat[ii] /= (bininfo[2] / 1e6 / 1e3**2) / totyrs[ii]
-
+      print(pltdat[ii].sum())
+      pltdat[ii] = pltdat[ii] / (bininfo[2] / 1e6 / 1e3**2) / totyrs[ii]
+      
       plt.plot(bininfo[1], pltdat[ii], label=labels[ii])
       plt.xlabel('lat')
       plt.ylabel('%s per million km2 per yr' % ylabel)
@@ -78,8 +87,11 @@ def accum_bin_map_1d(stmdf, bininfo, col, afunc, dtype=np.float64, rettype=np.fl
 #bool-to-int array of whether the storm hit the bin with midpoint
 #i.e., return should be 0 or 1 divided by bin area
 #In: dataframe subset for 1 storm, bininfo (bin interfaces, bin midpoints, bin area [m^2])
-def track_density_of_storm_1d(stmdf, bininfo):
+def unique_tracks_of_storm_1d(stmdf, bininfo):
    return accum_bin_map_1d(stmdf, bininfo, 'lat', lambda x: 1, dtype=np.bool_, rettype=np.int_)
+
+def sixhrly_fixes_of_storm_1d(stmdf, bininfo):
+   return accum_bin_map_1d(stmdf, bininfo, 'lat', lambda x: 1, dtype=np.int_, rettype=np.int_)
 
 def bin_ace_of_storm_1d(stmdf, bininfo):
    ace = lambda wspd: 1e-4 * (MS2KT * wspd)**2
