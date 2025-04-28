@@ -1,0 +1,112 @@
+,units,long_name,cell_methods,cell_measures,time_avg_info,var,dims,source,htape,time_period_freq,interp_method,standard_name
+0,W m-2,Heat flux into ocean from mass flux into ocean,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",Heat_PmE,time yh xh,MOM,hmcust_avg,month_1,,
+1,m2 s-2,Layer kinetic energy per unit mass,area:mean zl:mean yh:mean xh:mean time: mean,volume: volcello area: area_t,"average_T1,average_T2,average_DT",KE,time zl yh xh,MOM,hmcust_avg,month_1,,
+2,m-1 s-1,Potential Vorticity,zl:mean yq:point xq:point time: mean,,"average_T1,average_T2,average_DT",PV,time zl yq xq,MOM,hmcust_avg,month_1,none,
+3,s-1,Relative Vorticity,zl:mean yq:point xq:point time: mean,,"average_T1,average_T2,average_DT",RV,time zl yq xq,MOM,hmcust_avg,month_1,none,
+4,m m-1,Ratio between deformation radius and grid spacing,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",Rd_dx,time yh xh,MOM,hmcust_avg,month_1,,
+5,m,Sea Surface Height,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",SSH,time yh xh,MOM,hmcust_avg,month_1,,
+6,m s-1,Sea Surface Zonal Velocity,yh:mean xq:point time: mean,,"average_T1,average_T2,average_DT",SSU,time yh xq,MOM,hmcust_avg,month_1,none,
+7,m s-1,Sea Surface Meridional Velocity,yq:point xh:mean time: mean,,"average_T1,average_T2,average_DT",SSV,time yq xh,MOM,hmcust_avg,month_1,none,
+8,W,Advective (by residual mean) Zonal Flux of Heat,zl:sum yh:sum xq:point time: mean,,"average_T1,average_T2,average_DT",T_adx,time zl yh xq,MOM,hmcust_avg,month_1,none,
+9,W,Vertically Integrated Advective Zonal Flux of Heat,yh:sum xq:point time: mean,,"average_T1,average_T2,average_DT",T_adx_2d,time yh xq,MOM,hmcust_avg,month_1,none,
+10,W,Advective (by residual mean) Meridional Flux of Heat,zl:sum yq:point xh:sum time: mean,,"average_T1,average_T2,average_DT",T_ady,time zl yq xh,MOM,hmcust_avg,month_1,none,
+11,W,Vertically Integrated Advective Meridional Flux of Heat,yq:point xh:sum time: mean,,"average_T1,average_T2,average_DT",T_ady_2d,time yq xh,MOM,hmcust_avg,month_1,none,
+12,W,Vertically Integrated Diffusive Zonal Flux of Heat,yh:sum xq:point time: mean,,"average_T1,average_T2,average_DT",T_diffx_2d,time yh xq,MOM,hmcust_avg,month_1,none,
+13,W,Vertically Integrated Diffusive Meridional Flux of Heat,yq:point xh:sum time: mean,,"average_T1,average_T2,average_DT",T_diffy_2d,time yq xh,MOM,hmcust_avg,month_1,none,
+14,,Length of average period,time: mean,,,average_DT,time,MOM,hmcust_avg,month_1,,
+15,,Start time for average period,time: mean,,,average_T1,time,MOM,hmcust_avg,month_1,,
+16,,End time for average period,time: mean,,,average_T2,time,MOM,hmcust_avg,month_1,,
+17,m4 s-1,Ocean lateral biharmonic viscosity,area:mean zl:mean yh:mean xh:mean time: mean,volume: volcello area: area_t,"average_T1,average_T2,average_DT",difmxybo,time zl yh xh,MOM,hmcust_avg,month_1,,ocean_momentum_xy_biharmonic_diffusivity
+18,m2 s-1,Ocean lateral Laplacian viscosity,area:mean zl:mean yh:mean xh:mean time: mean,volume: volcello area: area_t,"average_T1,average_T2,average_DT",difmxylo,time zl yh xh,MOM,hmcust_avg,month_1,,ocean_momentum_xy_laplacian_diffusivity
+19,m2 s-1,Ocean Tracer Diffusivity due to Parameterized Mesoscale Advection,area:mean zl:mean yh:mean xh:mean time: mean,volume: volcello area: area_t,"average_T1,average_T2,average_DT",diftrblo,time zl yh xh,MOM,hmcust_avg,month_1,,ocean_tracer_diffusivity_due_to_parameterized_mesoscale_advection
+20,m2 s-1,Ocean Tracer Epineutral Laplacian Diffusivity,area:mean zi:point yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",diftrelo,time zi yh xh,MOM,hmcust_avg,month_1,,ocean_tracer_epineutral_laplacian_diffusivity
+21,m,Interface Height Relative to Mean Sea Level,area:mean zi:point yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",e,time zi yh xh,MOM,hmcust_avg,month_1,,
+22,kg m-2 s-1,Water Evaporation Flux Where Ice Free Ocean over Sea,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",evs,time yh xh,MOM,hmcust_avg,month_1,,water_evaporation_flux
+23,kg m-2 s-1,Water Flux into Seawater from Icebergs,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",ficeberg,time yh xh,MOM,hmcust_avg,month_1,,water_flux_into_sea_water_from_icebergs
+24,kg m-2 s-1,Water Flux into Sea Water From Rivers,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",friver,time yh xh,MOM,hmcust_avg,month_1,,water_flux_into_sea_water_from_rivers
+25,kg m-2 s-1,water flux to ocean from sea ice melt(> 0) or form(< 0),area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",fsitherm,time yh xh,MOM,hmcust_avg,month_1,,water_flux_into_sea_water_due_to_sea_ice_thermodynamics
+26,m,Layer Thickness,area:mean zl:sum yh:mean xh:mean time: mean,volume: volcello area: area_t,"average_T1,average_T2,average_DT",h,time zl yh xh,MOM,hmcust_avg,month_1,,
+27,W m-2,Surface ocean heat flux from SW+LW+latent+sensible+masstransfer+frazil+seaice_melt_heat,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",hfds,time yh xh,MOM,hmcust_avg,month_1,,surface_downward_heat_flux_in_sea_water
+28,W m-2,Surface Downward Latent Heat Flux due to Evap + Melt Snow/Ice,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",hflso,time yh xh,MOM,hmcust_avg,month_1,,surface_downward_latent_heat_flux
+29,W m-2,Heat Flux into Sea Water due to Frazil Ice Formation,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",hfsifrazil,time yh xh,MOM,hmcust_avg,month_1,,heat_flux_into_sea_water_due_to_frazil_ice_formation
+30,W m-2,Latent Heat to Melt Frozen Precipitation,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",hfsnthermds,time yh xh,MOM,hmcust_avg,month_1,,heat_flux_into_sea_water_due_to_snow_thermodynamics
+31,W m-2,Surface Downward Sensible Heat Flux,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",hfsso,time yh xh,MOM,hmcust_avg,month_1,,surface_downward_sensible_heat_flux
+32,kg m-2,The column mass for calculating mass-weighted average properties,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",mass_wt,time yh xh,MOM,hmcust_avg,month_1,,
+33,m,Ocean Mixed Layer Thickness Defined by Sigma T,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",mlotst,time yh xh,MOM,hmcust_avg,month_1,,ocean_mixed_layer_thickness_defined_by_sigma_t
+34,meter,Thickness of the surface Ocean Boundary Layer calculated by [CVMix] KPP,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",oml,time yh xh,MOM,hmcust_avg,month_1,,
+35,degC kg m-2,integral_wrt_depth_of_product_of_sea_water_density_and_potential_temperature,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",opottempmint,time yh xh,MOM,hmcust_avg,month_1,,Depth integrated density times potential temperature
+36,Pa,Sea Water Pressure at Sea Floor,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",pbo,time yh xh,MOM,hmcust_avg,month_1,,sea_water_pressure_at_sea_floor
+37,kg m-2 s-1,Rainfall Flux where Ice Free Ocean over Sea,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",prlq,time yh xh,MOM,hmcust_avg,month_1,,rainfall_flux
+38,kg m-2 s-1,Snowfall Flux where Ice Free Ocean over Sea,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",prsn,time yh xh,MOM,hmcust_avg,month_1,,snowfall_flux
+39,Pa,Sea Water Pressure at Sea Water Surface,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",pso,time yh xh,MOM,hmcust_avg,month_1,,sea_water_pressure_at_sea_water_surface
+40,kg m-3,In situ density,area:mean zl:mean yh:mean xh:mean time: mean,volume: volcello area: area_t,"average_T1,average_T2,average_DT",rhoinsitu,time zl yh xh,MOM,hmcust_avg,month_1,,
+41,kg m-3,Potential density referenced to surface,area:mean zl:mean yh:mean xh:mean time: mean,volume: volcello area: area_t,"average_T1,average_T2,average_DT",rhopot0,time zl yh xh,MOM,hmcust_avg,month_1,,
+42,W m-2,Surface Net Downward Longwave Radiation,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",rlntds,time yh xh,MOM,hmcust_avg,month_1,,surface_net_downward_longwave_flux
+43,W m-2,Net Downward Shortwave Radiation at Sea Water Surface,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",rsntds,time yh xh,MOM,hmcust_avg,month_1,,net_downward_shortwave_flux_at_sea_water_surface
+44,kg m-2 s-1,Salt flux into ocean at surface due to restoring or flux adjustment,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",salt_flux_added,time yh xh,MOM,hmcust_avg,month_1,,
+45,W m-2,Heat flux into ocean due to snow and sea ice melt/freeze,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",seaice_melt_heat,time yh xh,MOM,hmcust_avg,month_1,,snow_ice_melt_heat_flux
+46,kg m-2 s-1,Downward Sea Ice Basal Salt Flux,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",sfdsi,time yh xh,MOM,hmcust_avg,month_1,,downward_sea_ice_basal_salt_flux
+47,psu,Sea Water Salinity,area:mean zl:mean yh:mean xh:mean time: mean,volume: volcello area: area_t,"average_T1,average_T2,average_DT",so,time zl yh xh,MOM,hmcust_avg,month_1,,sea_water_salinity
+48,psu,Global Mean Ocean Salinity,time: mean,,"average_T1,average_T2,average_DT",soga,time scalar_axis,MOM,hmcust_avg,month_1,,sea_water_salinity
+49,psu kg m-2,integral_wrt_depth_of_product_of_sea_water_density_and_salinity,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",somint,time yh xh,MOM,hmcust_avg,month_1,,Depth integrated density times salinity
+50,psu,Sea Surface Salinity,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",sos,time yh xh,MOM,hmcust_avg,month_1,,sea_surface_salinity
+51,m s-1,Sea Surface Speed,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",speed,time yh xh,MOM,hmcust_avg,month_1,,
+52,N m-2,Surface Downward X Stress,yh:mean xq:point time: mean,,"average_T1,average_T2,average_DT",tauuo,time yh xq,MOM,hmcust_avg,month_1,none,surface_downward_x_stress
+53,N m-2,Surface Downward Y Stress,yq:point xh:mean time: mean,,"average_T1,average_T2,average_DT",tauvo,time yq xh,MOM,hmcust_avg,month_1,none,surface_downward_y_stress
+54,Pa,Zonal Bottom Stress from Ocean to Earth,yh:mean xq:point time: mean,,"average_T1,average_T2,average_DT",taux_bot,time yh xq,MOM,hmcust_avg,month_1,none,
+55,Pa,Meridional Bottom Stress from Ocean to Earth,yq:point xh:mean time: mean,,"average_T1,average_T2,average_DT",tauy_bot,time yq xh,MOM,hmcust_avg,month_1,none,
+56,degC,Sea Water Potential Temperature,area:mean zl:mean yh:mean xh:mean time: mean,volume: volcello area: area_t,"average_T1,average_T2,average_DT",thetao,time zl yh xh,MOM,hmcust_avg,month_1,,sea_water_potential_temperature
+57,degC,Global Mean Ocean Potential Temperature,time: mean,,"average_T1,average_T2,average_DT",thetaoga,time scalar_axis,MOM,hmcust_avg,month_1,,sea_water_potential_temperature
+58,,time interval endpoints,time: mean,,,time_bounds,time nbnd,MOM,hmcust_avg,month_1,,
+59,degC,Sea Surface Temperature,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",tos,time yh xh,MOM,hmcust_avg,month_1,,sea_surface_temperature
+60,m3 s-1,Zonal Thickness Flux,zl:sum yh:sum xq:point time: mean,,"average_T1,average_T2,average_DT",uh,time zl yh xq,MOM,hmcust_avg,month_1,none,
+61,kg s-1,Time Mean Diffusive Zonal Thickness Flux,zl:sum yh:sum xq:point time: mean,,"average_T1,average_T2,average_DT",uhGM,time zl yh xq,MOM,hmcust_avg,month_1,none,
+62,m3 s-1,Barotropic zonal transport averaged over a baroclinic step,yh:mean xq:point time: mean,,"average_T1,average_T2,average_DT",uhbt,time yh xq,MOM,hmcust_avg,month_1,none,
+63,kg s-1,Ocean Mass X Transport,zl:sum yh:sum xq:point time: mean,,"average_T1,average_T2,average_DT",umo,time zl yh xq,MOM,hmcust_avg,month_1,none,ocean_mass_x_transport
+64,m s-1,Sea Water X Velocity,zl:mean yh:mean xq:point time: mean,,"average_T1,average_T2,average_DT",uo,time zl yh xq,MOM,hmcust_avg,month_1,none,sea_water_x_velocity
+65,m2 s-2,Zonal velocity squared,zl:mean yh:mean xq:point time: mean,,"average_T1,average_T2,average_DT",usq,time zl yh xq,MOM,hmcust_avg,month_1,none,
+66,m s-1,Surface friction velocity = [(gustiness + tau_magnitude)/rho0]^(1/2),area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",ustar,time yh xh,MOM,hmcust_avg,month_1,,
+67,m2 s-2,Product between zonal and meridional velocities at h-points,area:mean zl:mean yh:mean xh:mean time: mean,volume: volcello area: area_t,"average_T1,average_T2,average_DT",uv,time zl yh xh,MOM,hmcust_avg,month_1,,
+68,m3 s-1,Meridional Thickness Flux,zl:sum yq:point xh:sum time: mean,,"average_T1,average_T2,average_DT",vh,time zl yq xh,MOM,hmcust_avg,month_1,none,
+69,kg s-1,Time Mean Diffusive Meridional Thickness Flux,zl:sum yq:point xh:sum time: mean,,"average_T1,average_T2,average_DT",vhGM,time zl yq xh,MOM,hmcust_avg,month_1,none,
+70,m3 s-1,Barotropic meridional transport averaged over a baroclinic step,yq:point xh:mean time: mean,,"average_T1,average_T2,average_DT",vhbt,time yq xh,MOM,hmcust_avg,month_1,none,
+71,kg s-1,Ocean Mass Y Transport,zl:sum yq:point xh:sum time: mean,,"average_T1,average_T2,average_DT",vmo,time zl yq xh,MOM,hmcust_avg,month_1,none,ocean_mass_y_transport
+72,m s-1,Sea Water Y Velocity,zl:mean yq:point xh:mean time: mean,,"average_T1,average_T2,average_DT",vo,time zl yq xh,MOM,hmcust_avg,month_1,none,sea_water_y_velocity
+73,m3,Ocean grid-cell volume,area:sum zl:sum yh:sum xh:sum time: mean,,"average_T1,average_T2,average_DT",volcello,time zl yh xh,MOM,hmcust_avg,month_1,,ocean_volume
+74,kg m-2 s-1,Virtual liquid precip into ocean due to SSS restoring,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",vprec,time yh xh,MOM,hmcust_avg,month_1,,
+75,m2 s-2,Meridional velocity squared,zl:mean yq:point xh:mean time: mean,,"average_T1,average_T2,average_DT",vsq,time zl yq xh,MOM,hmcust_avg,month_1,none,
+76,kg m-2 s-1,Water Flux Into Sea Water,area:mean yh:mean xh:mean time: mean,area: area_t,"average_T1,average_T2,average_DT",wfo,time yh xh,MOM,hmcust_avg,month_1,,water_flux_into_sea_water
+77,,Length of average period,time: mean,,,average_DT,time,MOM,rho2cust_avg,month_1,,
+78,,Start time for average period,time: mean,,,average_T1,time,MOM,rho2cust_avg,month_1,,
+79,,End time for average period,time: mean,,,average_T2,time,MOM,rho2cust_avg,month_1,,
+80,m,Layer thicknesses in pure potential density coordinates,area:mean rho2_l:mean yh:mean xh:mean time: mean,volume: volcello area: area_t,"average_T1,average_T2,average_DT",h_rho,time rho2_l yh xh,MOM,rho2cust_avg,month_1,,
+81,,time interval endpoints,time: mean,,,time_bounds,time nbnd,MOM,rho2cust_avg,month_1,,
+82,kg s-1,Time Mean Diffusive Zonal Thickness Flux,rho2_l:sum yh:sum xq:point time: mean,,"average_T1,average_T2,average_DT",uhGM,time rho2_l yh xq,MOM,rho2cust_avg,month_1,none,
+83,kg s-1,Ocean Mass X Transport,rho2_l:sum yh:sum xq:point time: mean,,"average_T1,average_T2,average_DT",umo,time rho2_l yh xq,MOM,rho2cust_avg,month_1,none,ocean_mass_x_transport
+84,kg s-1,Time Mean Diffusive Meridional Thickness Flux,rho2_l:sum yq:point xh:sum time: mean,,"average_T1,average_T2,average_DT",vhGM,time rho2_l yq xh,MOM,rho2cust_avg,month_1,none,
+85,kg s-1,Ocean Mass Y Transport,rho2_l:sum yq:point xh:sum time: mean,,"average_T1,average_T2,average_DT",vmo,time rho2_l yq xh,MOM,rho2cust_avg,month_1,none,ocean_mass_y_transport
+86,m3,Ocean grid-cell volume,area:sum rho2_l:sum yh:sum xh:sum time: mean,,"average_T1,average_T2,average_DT",volcello,time rho2_l yh xh,MOM,rho2cust_avg,month_1,,ocean_volume
+87,m m-1,Ratio between deformation radius and grid spacing,area:mean yh:mean xh:mean time: point,area: area_t,,Rd_dx,time yh xh,MOM,sfc,hour_6,,
+88,m,Sea Surface Height,area:mean yh:mean xh:mean time: point,area: area_t,,SSH,time yh xh,MOM,sfc,hour_6,,
+89,m s-1,Sea Surface Zonal Velocity,yh:mean xq:point time: point,,,SSU,time yh xq,MOM,sfc,hour_6,none,
+90,m s-1,Sea Surface Meridional Velocity,yq:point xh:mean time: point,,,SSV,time yq xh,MOM,sfc,hour_6,none,
+91,W m-2,Vertical sum of horizontal convergence of residual mean advective fluxes of heat,area:mean yh:mean xh:mean time: point,area: area_t,,Tadvconv,time yh xh,MOM,sfc,hour_6,,
+92,W m-2,Tendency of sea water potential temperature expressed as heat content due to parameterized mesoscale neutral diffusion,area:sum yh:sum xh:sum time: point,area: area_t,,Tdifconv,time yh xh,MOM,sfc,hour_6,,tendency_of_sea_water_potential_temperature_expressed_as_heat_content_due_to_parameterized_mesoscale_neutral_diffusion
+93,W m-2,Surface ocean heat flux from SW+LW+latent+sensible+masstransfer+frazil+seaice_melt_heat,area:mean yh:mean xh:mean time: point,area: area_t,,hfds,time yh xh,MOM,sfc,hour_6,,surface_downward_heat_flux_in_sea_water
+94,W m-2,Surface Downward Latent Heat Flux due to Evap + Melt Snow/Ice,area:mean yh:mean xh:mean time: point,area: area_t,,hflso,time yh xh,MOM,sfc,hour_6,,surface_downward_latent_heat_flux
+95,W m-2,Surface Downward Sensible Heat Flux,area:mean yh:mean xh:mean time: point,area: area_t,,hfsso,time yh xh,MOM,sfc,hour_6,,surface_downward_sensible_heat_flux
+96,W m-2,Latent heat flux into ocean due to evaporation/condensation,area:mean yh:mean xh:mean time: point,area: area_t,,latent_evap,time yh xh,MOM,sfc,hour_6,,
+97,kg m-2,The column mass for calculating mass-weighted average properties,area:mean yh:mean xh:mean time: point,area: area_t,,mass_wt,time yh xh,MOM,sfc,hour_6,,
+98,m,Ocean Mixed Layer Thickness Defined by Sigma T,area:mean yh:mean xh:mean time: point,area: area_t,,mlotst,time yh xh,MOM,sfc,hour_6,,ocean_mixed_layer_thickness_defined_by_sigma_t
+99,meter,Thickness of the surface Ocean Boundary Layer calculated by [CVMix] KPP,area:mean yh:mean xh:mean time: point,area: area_t,,oml,time yh xh,MOM,sfc,hour_6,,
+100,degC kg m-2,integral_wrt_depth_of_product_of_sea_water_density_and_potential_temperature,area:mean yh:mean xh:mean time: point,area: area_t,,opottempmint,time yh xh,MOM,sfc,hour_6,,Depth integrated density times potential temperature
+101,W m-2,Surface Net Downward Longwave Radiation,area:mean yh:mean xh:mean time: point,area: area_t,,rlntds,time yh xh,MOM,sfc,hour_6,,surface_net_downward_longwave_flux
+102,W m-2,Net Downward Shortwave Radiation at Sea Water Surface,area:mean yh:mean xh:mean time: point,area: area_t,,rsntds,time yh xh,MOM,sfc,hour_6,,net_downward_shortwave_flux_at_sea_water_surface
+103,psu kg m-2,integral_wrt_depth_of_product_of_sea_water_density_and_salinity,area:mean yh:mean xh:mean time: point,area: area_t,,somint,time yh xh,MOM,sfc,hour_6,,Depth integrated density times salinity
+104,psu,Sea Surface Salinity,area:mean yh:mean xh:mean time: point,area: area_t,,sos,time yh xh,MOM,sfc,hour_6,,sea_surface_salinity
+105,m s-1,Sea Surface Speed,area:mean yh:mean xh:mean time: point,area: area_t,,speed,time yh xh,MOM,sfc,hour_6,,
+106,N m-2,Surface Downward X Stress,yh:mean xq:point time: point,,,tauuo,time yh xq,MOM,sfc,hour_6,none,surface_downward_x_stress
+107,N m-2,Surface Downward Y Stress,yq:point xh:mean time: point,,,tauvo,time yq xh,MOM,sfc,hour_6,none,surface_downward_y_stress
+108,Pa,Zonal Bottom Stress from Ocean to Earth,yh:mean xq:point time: point,,,taux_bot,time yh xq,MOM,sfc,hour_6,none,
+109,Pa,Meridional Bottom Stress from Ocean to Earth,yq:point xh:mean time: point,,,tauy_bot,time yq xh,MOM,sfc,hour_6,none,
+110,degC,Sea Surface Temperature,area:mean yh:mean xh:mean time: point,area: area_t,,tos,time yh xh,MOM,sfc,hour_6,,sea_surface_temperature
