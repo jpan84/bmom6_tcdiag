@@ -1,5 +1,6 @@
 a = 6.371e6 #m, Earth radius
 g = 9.807 #m s-2, grav accel
+p0 = 1e5 #Pa
 
 densliq = 997 #kg m-3, liquid water density
 cp = 1004 #J kg-1 K-1
