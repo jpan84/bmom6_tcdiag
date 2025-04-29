@@ -11,14 +11,15 @@ import datetime as dt
 import matplotlib.pyplot as plt
 
 ### tempest traj output params
-TRAJFILE = sys.argv[1] #output csv/parquet from traj_stats.py
-BASEYR = 584 #year from which yeardelta is determined to stay within date bounds of pandas date objects
+TRAJFILE = sys.argv[1] #output parquet from traj_stats.py
 
 ### hist file params
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.f09_sx0.66av1.aqua.production.0815/'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/'
 HISTS = 'ocn/hist/'
-H1 = '*mom6.hmd*'
+H1 = '*mom6.sfc*'
+STATIC = '/glade/derecho/scratch/jpan/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/run/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.mom6.static.nc'
+#TODO: account for choice of monthly or daily sfc history file freq
 DIRI = os.path.join(ARCHV, CASE, HISTS)
 H1OFFSET_OCN = None #e.g., 6 if filename date is 01-01 and first timestamp is 06:00
 STRF_OCN = lambda dtobj: f'*hmd_{dtobj.year:04}_{dtobj.month:02}_{dtobj.day:02}.nc'
@@ -53,20 +54,9 @@ def main():
    #print(h1s[0])
    H1OFFSET_OCN = rndds.time.values[0].hour
    print(type(topstms.iloc[0]['dt']))
+   geogrid = xr.open_dataset(STATIC)
 
    print('Computing composites...')
-   '''
-   #trueyr = BASEYR + topstms.iloc[0]['yeardelta']
-   truedt = cftime.DatetimeNoLeap(topstms.iloc[0]['trueyr'], topstms.iloc[0]['month'], topstms.iloc[0]['day'], hour=topstms.iloc[0]['hour'])
-   print(truedt)
-
-   filebnds = tuple([truedt + tbnd - dt.timedelta(hours=H1OFFSET_OCN) for tbnd in TBNDS])
-   filebnds = tuple([glob.glob(os.path.join(DIRI, STRF_OCN(bnd)))[0] for bnd in filebnds]) #TODO: enforce that this be in bounds of the simulation dates
-   toopen = h1s[(h1s >= filebnds[0]) & (h1s <= filebnds[1])]
-   ds = xr.open_mfdataset(toopen)
-   print(toopen)
-   '''
-
    taxis = None
    omls = []
    ssts = []
@@ -75,11 +65,14 @@ def main():
       truedt = cftime.DatetimeNoLeap(stm['trueyr'], stm['month'], stm['day'], hour=stm['hour'])
       print(ii, truedt)
 
+      lonbnds = ((stm['lon'] + LONBNDS[0]) % 360., (stm['lon'] + LONBNDS[1]) % 360.)
+      latbnds = (stm['lat'] + LATBNDS[0], stm['lat'] + LATBNDS[1])
+      yhid, _ = np.where((geogrid.geolat >= latbnds[0]) & (geogrid.geolat >= latbnds[1])) #how to handle inclusive vs. exclusive
+
+      #open files with the desired times
       filebnds = tuple([truedt + tbnd - dt.timedelta(hours=H1OFFSET_OCN) for tbnd in TBNDS])
       filebnds = tuple([glob.glob(os.path.join(DIRI, STRF_OCN(bnd)))[0] for bnd in filebnds]) #TODO: enforce that this be in bounds of the simulation dates
       toopen = h1s[(h1s >= filebnds[0]) & (h1s <= filebnds[1])]
-      lonbnds = (stm['lon'] + LONBNDS[0], stm['lon'] + LONBNDS[1])
-      latbnds = (stm['lat'] + LATBNDS[0], stm['lat'] + LATBNDS[1])
       ds = xr.open_mfdataset(toopen).sel(xh=slice(*lonbnds), yh=slice(*latbnds)) #TODO: use geolon/geolat to be more technically accurate
 
       omlser = ds[omlvar].mean(dim=['xh', 'yh'])
@@ -89,7 +82,7 @@ def main():
 
       budser = dict()
       for bk in budvars:
-         budser[bk] = ds[bk].mean(dim=['xh', 'yh'])
+         budser[bk] = ds[bk].mean(dim=['xh', 'yh']) #TODO: area weight the mean
 
       if not ii:
          taxis = [(tt - truedt).days + (tt - truedt).seconds/86400 for tt in omlser.time.values]
@@ -100,7 +93,7 @@ def main():
       #plt.plot(taxis, sstser)
       #plt.show()
 
-   filoargs = (TRAJFILE.split('.')[0], NTOP, LONBNDS[1] - LONBNDS[0], LATBNDS[1] - LATBNDS[0])
+   filoargs = (os.path.splitext(os.path.basename(TRAJFILE))[0], NTOP, LONBNDS[1] - LONBNDS[0], LATBNDS[1] - LATBNDS[0])
 
    sstcomp = np.array([da.values for da in ssts]).mean(axis=0)
    plt.plot(taxis, sstcomp, color='red')
@@ -125,6 +118,7 @@ def main():
    plt.savefig('%s_%d_%dx%d_SSTwake.png' % filoargs, bbox_inches='tight')
    plt.close()
 
+   #TODO: plot something with wind stress
    omlcomp = np.array([da.values for da in omls]).mean(axis=0)
    plt.plot(taxis, omlcomp)
    plt.axvline(x=0, linestyle='--', color='black', linewidth=0.7)
