@@ -22,7 +22,7 @@ STATIC = '/glade/derecho/scratch/jpan/b.e23.BMOM.ne120np4_sx0.66av1.aqua.product
 #TODO: account for choice of monthly or daily sfc history file freq
 DIRI = os.path.join(ARCHV, CASE, HISTS)
 H1OFFSET_OCN = None #e.g., 6 if filename date is 01-01 and first timestamp is 06:00
-STRF_OCN = lambda dtobj: f'*hmd_{dtobj.year:04}_{dtobj.month:02}_{dtobj.day:02}.nc'
+STRF_OCN = lambda dtobj: f'*sfc.{dtobj.year:04}-{dtobj.month:02}-{dtobj.day:02}.nc'
 
 ### wake computation params
 NTOP = 20 #number of strongest storms
@@ -53,7 +53,7 @@ def main():
    rndds = xr.open_dataset(h1s[0])
    #print(h1s[0])
    H1OFFSET_OCN = rndds.time.values[0].hour
-   print(type(topstms.iloc[0]['dt']))
+   #print(type(topstms.iloc[0]['dt']))
    geogrid = xr.open_dataset(STATIC)
 
    print('Computing composites...')
@@ -62,27 +62,34 @@ def main():
    ssts = []
    for ii, stm in enumerate(topstms.iterrows()):
       stm = stm[1]
-      truedt = cftime.DatetimeNoLeap(stm['trueyr'], stm['month'], stm['day'], hour=stm['hour'])
+      truedt = cftime.DatetimeNoLeap(int(stm['year']) - 2000, int(stm['month']), int(stm['day']), hour=int(stm['hour']))
       print(ii, truedt)
 
       lonbnds = ((stm['lon'] + LONBNDS[0]) % 360., (stm['lon'] + LONBNDS[1]) % 360.)
       latbnds = (stm['lat'] + LATBNDS[0], stm['lat'] + LATBNDS[1])
-      yhid, _ = np.where((geogrid.geolat >= latbnds[0]) & (geogrid.geolat >= latbnds[1])) #how to handle inclusive vs. exclusive
+      #TODO: make wherelat/lon into a function to account for q points too
+      wherelat = (geogrid.geolat >= latbnds[0]) & (geogrid.geolat <= latbnds[1])
+      wherelon = (geogrid.geolon >= lonbnds[0]) & (geogrid.geolon <= lonbnds[1])
+      if lonbnds[1] < lonbnds[0]:
+         wherelon = (geogrid.geolon >= lonbnds[0]) | (geogrid.geolon <= lonbnds[1])
 
       #open files with the desired times
       filebnds = tuple([truedt + tbnd - dt.timedelta(hours=H1OFFSET_OCN) for tbnd in TBNDS])
+      #print(STRF_OCN(filebnds[0]))
       filebnds = tuple([glob.glob(os.path.join(DIRI, STRF_OCN(bnd)))[0] for bnd in filebnds]) #TODO: enforce that this be in bounds of the simulation dates
       toopen = h1s[(h1s >= filebnds[0]) & (h1s <= filebnds[1])]
-      ds = xr.open_mfdataset(toopen).sel(xh=slice(*lonbnds), yh=slice(*latbnds)) #TODO: use geolon/geolat to be more technically accurate
+      ds = xr.open_mfdataset(toopen)#.sel(xh=slice(*lonbnds), yh=slice(*latbnds)) #TODO: use geolon/geolat to be more technically accurate
 
-      omlser = ds[omlvar].mean(dim=['xh', 'yh'])
-      sstser = ds[sstvar].mean(dim=['xh', 'yh'])
-      omlref = omlser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time')
+      print(ds[sstvar].where(wherelat & wherelon, drop=True))
+
+      omlser = latlon_avg(ds[omlvar], geogrid.geolat)
+      sstser = latlon_avg(ds[sstvar], geogrid.geolat)
+      omlref = omlser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time') #reference values -7 to -3 days
       sstref = sstser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time')
 
       budser = dict()
       for bk in budvars:
-         budser[bk] = ds[bk].mean(dim=['xh', 'yh']) #TODO: area weight the mean
+         budser[bk] = latlon_avg(ds[bk], geogrid.geolat) #TODO: area weight the mean
 
       if not ii:
          taxis = [(tt - truedt).days + (tt - truedt).seconds/86400 for tt in omlser.time.values]
@@ -128,6 +135,9 @@ def main():
    plt.savefig('%s_%d_%dx%d_%swake.png' % (*filoargs, omlvar))
    plt.close()
 
+def latlon_avg(da, latcoord, lataxis=1, lonaxis=2):
+   wgts = np.cos(np.deg2rad(latcoord))
+   return ((da * wgts).sum(axis=lataxis) / wgts.sum(axis=lataxis)).mean(axis=lonaxis)
 
 if __name__ == '__main__':
    main()
