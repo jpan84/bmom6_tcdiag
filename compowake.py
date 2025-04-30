@@ -15,17 +15,17 @@ TRAJFILE = sys.argv[1] #output parquet from traj_stats.py
 
 ### hist file params
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1'
 HISTS = 'ocn/hist/'
 H1 = '*mom6.sfc*'
-STATIC = '/glade/derecho/scratch/jpan/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/run/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.mom6.static.nc'
+STATIC = '/glade/derecho/scratch/jpan/%s/run/%s.mom6.static.nc' % CASE
 #TODO: account for choice of monthly or daily sfc history file freq
 DIRI = os.path.join(ARCHV, CASE, HISTS)
 H1OFFSET_OCN = None #e.g., 6 if filename date is 01-01 and first timestamp is 06:00
 STRF_OCN = lambda dtobj: f'*sfc.{dtobj.year:04}-{dtobj.month:02}-{dtobj.day:02}.nc'
 
 ### wake computation params
-NTOP = 20 #number of strongest storms
+NTOP = 10 #number of strongest storms
 LONBNDS = (-5, 5)
 LATBNDS = (-5, 5)
 AVBNDS = (-dt.timedelta(days=7), -dt.timedelta(days=3))
@@ -72,6 +72,8 @@ def main():
       wherelon = (geogrid.geolon >= lonbnds[0]) & (geogrid.geolon <= lonbnds[1])
       if lonbnds[1] < lonbnds[0]:
          wherelon = (geogrid.geolon >= lonbnds[0]) | (geogrid.geolon <= lonbnds[1])
+      selarea = lambda da: da.where(wherelat & wherelon, drop=True)
+      sellat = selarea(geogrid.geolat)
 
       #open files with the desired times
       filebnds = tuple([truedt + tbnd - dt.timedelta(hours=H1OFFSET_OCN) for tbnd in TBNDS])
@@ -80,22 +82,24 @@ def main():
       toopen = h1s[(h1s >= filebnds[0]) & (h1s <= filebnds[1])]
       ds = xr.open_mfdataset(toopen)#.sel(xh=slice(*lonbnds), yh=slice(*latbnds)) #TODO: use geolon/geolat to be more technically accurate
 
-      print(ds[sstvar].where(wherelat & wherelon, drop=True))
+      #print(ds[sstvar].where(wherelat & wherelon, drop=True))
 
-      omlser = latlon_avg(ds[omlvar], geogrid.geolat)
-      sstser = latlon_avg(ds[sstvar], geogrid.geolat)
+      omlser = latlon_avg(selarea(ds[omlvar]), sellat)
+      sstser = latlon_avg(selarea(ds[sstvar]), sellat)
+      #print(sstser)
       omlref = omlser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time') #reference values -7 to -3 days
       sstref = sstser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time')
 
       budser = dict()
       for bk in budvars:
-         budser[bk] = latlon_avg(ds[bk], geogrid.geolat) #TODO: area weight the mean
+         budser[bk] = latlon_avg(selarea(ds[bk]), sellat) #TODO: area weight the mean
 
       if not ii:
          taxis = [(tt - truedt).days + (tt - truedt).seconds/86400 for tt in omlser.time.values]
       #omls.append(omlser - omlref) #absolute anomaly
       omls.append(omlser / omlref * 100) #percentage
       ssts.append(sstser - sstref)
+      #print(ssts)
 
       #plt.plot(taxis, sstser)
       #plt.show()
@@ -112,9 +116,9 @@ def main():
    budlines = dict()
    for bk in budvars:
       budlines[bk] = ax2.plot(taxis, budser[bk].values, color=budvars[bk], label=budlabs[bk], linewidth=1)
-   ###remove select lines
-   for bk in ['hfsso', 'rlntds', 'hflso', 'rsntds', 'Tadvconv', 'hfds']:
-      budlines[bk][0].remove()
+   ###remove select lines for presentation slides
+   #for bk in ['hfsso', 'rlntds', 'hflso', 'rsntds', 'Tadvconv', 'hfds']:
+   #   budlines[bk][0].remove()
    ###
    #mybud = sum([budser[bk] for bk in budser if bk != 'hfds'])
    #print(mybud)
@@ -135,9 +139,9 @@ def main():
    plt.savefig('%s_%d_%dx%d_%swake.png' % (*filoargs, omlvar))
    plt.close()
 
-def latlon_avg(da, latcoord, lataxis=1, lonaxis=2):
+def latlon_avg(da, latcoord, latdim='yh', londim='xh'):
    wgts = np.cos(np.deg2rad(latcoord))
-   return ((da * wgts).sum(axis=lataxis) / wgts.sum(axis=lataxis)).mean(axis=lonaxis)
+   return ((da * wgts).sum(dim=latdim) / wgts.sum(dim=latdim)).mean(dim=londim)
 
 if __name__ == '__main__':
    main()
