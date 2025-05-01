@@ -10,24 +10,29 @@ import cftime
 import datetime as dt
 import matplotlib.pyplot as plt
 
+#TODO: add an option for diurnal averaging
+
 ### tempest traj output params
 TRAJFILE = sys.argv[1] #output parquet from traj_stats.py
 
 ### hist file params
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
 HISTS = 'ocn/hist/'
 H1 = '*mom6.sfc*'
-STATIC = '/glade/derecho/scratch/jpan/%s/run/%s.mom6.static.nc' % CASE
+STATIC = '/glade/derecho/scratch/jpan/%s/run/%s.mom6.static.nc' % (CASE, CASE)
 #TODO: account for choice of monthly or daily sfc history file freq
 DIRI = os.path.join(ARCHV, CASE, HISTS)
+FILEFREQ = dt.timedelta(days=30)
 H1OFFSET_OCN = None #e.g., 6 if filename date is 01-01 and first timestamp is 06:00
-STRF_OCN = lambda dtobj: f'*sfc.{dtobj.year:04}-{dtobj.month:02}-{dtobj.day:02}.nc'
+STRF_OCN_DLY = lambda dtobj: f'*sfc.{dtobj.year:04}-{dtobj.month:02}-{dtobj.day:02}.nc'
+STRF_OCN_MON = lambda dtobj: f'*sfc.{dtobj.year:04}-{dtobj.month:02}.nc'
+STRF_OCN = STRF_OCN_DLY if FILEFREQ == dt.timedelta(days=1) else STRF_OCN_MON
 
 ### wake computation params
 NTOP = 10 #number of strongest storms
-LONBNDS = (-5, 5)
-LATBNDS = (-5, 5)
+LONBNDS = (-2, 2)
+LATBNDS = (-2, 2)
 AVBNDS = (-dt.timedelta(days=7), -dt.timedelta(days=3))
 TBNDS = (-dt.timedelta(days=10), dt.timedelta(days=10))
 
@@ -52,7 +57,7 @@ def main():
    h1s = np.array(h1s)
    rndds = xr.open_dataset(h1s[0])
    #print(h1s[0])
-   H1OFFSET_OCN = rndds.time.values[0].hour
+   H1OFFSET_OCN = rndds.time.values[0].hour #technically not generalized for monthly, but good enough given the day=1, hour=6 of ctrl run monthly sfc files
    #print(type(topstms.iloc[0]['dt']))
    geogrid = xr.open_dataset(STATIC)
 
@@ -75,16 +80,12 @@ def main():
       selarea = lambda da: da.where(wherelat & wherelon, drop=True)
       sellat = selarea(geogrid.geolat)
 
-      #open files with the desired times
-      filebnds = tuple([truedt + tbnd - dt.timedelta(hours=H1OFFSET_OCN) for tbnd in TBNDS])
-      #print(STRF_OCN(filebnds[0]))
-      filebnds = tuple([glob.glob(os.path.join(DIRI, STRF_OCN(bnd)))[0] for bnd in filebnds]) #TODO: enforce that this be in bounds of the simulation dates
-      toopen = h1s[(h1s >= filebnds[0]) & (h1s <= filebnds[1])]
-      ds = xr.open_mfdataset(toopen)#.sel(xh=slice(*lonbnds), yh=slice(*latbnds)) #TODO: use geolon/geolat to be more technically accurate
+      toopen = get_files_in_window(truedt, TBNDS, h1s, FILEFREQ, STRF_OCN, H1OFFSET_OCN)
+      ds = xr.open_mfdataset(toopen).sel(time=slice(truedt + TBNDS[0], truedt + TBNDS[1]))
 
       #print(ds[sstvar].where(wherelat & wherelon, drop=True))
 
-      omlser = latlon_avg(selarea(ds[omlvar]), sellat)
+      omlser = latlon_avg(selarea(ds[omlvar]), sellat) #TODO: add time selection (maybe diurnal signal is spurious and this is the cause?)
       sstser = latlon_avg(selarea(ds[sstvar]), sellat)
       #print(sstser)
       omlref = omlser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time') #reference values -7 to -3 days
@@ -138,6 +139,14 @@ def main():
    plt.title('Composite OML for top %d storms, lat %s, lon %s' % (NTOP, str(LATBNDS), str(LONBNDS)))
    plt.savefig('%s_%d_%dx%d_%swake.png' % (*filoargs, omlvar))
    plt.close()
+
+#open files with the desired times
+def get_files_in_window(truedt, tbnds, filelist, filefreq, fmt_func, h1offset):
+   filebnds = tuple([truedt + tbnd - dt.timedelta(hours=h1offset) for tbnd in tbnds])
+   #print([os.path.join(DIRI, fmt_func(bnd)) for bnd in filebnds])
+   filebnds = tuple([glob.glob(os.path.join(DIRI, fmt_func(bnd)))[0] for bnd in filebnds]) #TODO: enforce that this be in bounds of the simulation dates
+   toopen = filelist[(filelist >= filebnds[0]) & (filelist <= filebnds[1])]
+   return toopen
 
 def latlon_avg(da, latcoord, latdim='yh', londim='xh'):
    wgts = np.cos(np.deg2rad(latcoord))
