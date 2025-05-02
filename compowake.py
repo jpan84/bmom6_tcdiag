@@ -36,6 +36,8 @@ LATBNDS = (-2, 2)
 AVBNDS = (-dt.timedelta(days=7), -dt.timedelta(days=3))
 TBNDS = (-dt.timedelta(days=10), dt.timedelta(days=10))
 
+#MOM diag vars params
+XY2GEO = {('yh', 'xh'): '', ('yq', 'xq'): '_c', ('yh', 'xq'): '_u', ('yq', 'xh'): '_v'}
 omlvar = 'oml'
 sstvar = 'tos'
 budvars = {'hfsso': 'green', 'hflso': 'blue', 'rlntds': 'dimgray', 'rsntds': 'orange', 'Tadvconv': 'peru', 'Tdifconv': 'coral', 'hfds': 'black'}
@@ -72,28 +74,22 @@ def main():
 
       lonbnds = ((stm['lon'] + LONBNDS[0]) % 360., (stm['lon'] + LONBNDS[1]) % 360.)
       latbnds = (stm['lat'] + LATBNDS[0], stm['lat'] + LATBNDS[1])
-      #TODO: make wherelat/lon into a function to account for q points too
-      wherelat = (geogrid.geolat >= latbnds[0]) & (geogrid.geolat <= latbnds[1])
-      wherelon = (geogrid.geolon >= lonbnds[0]) & (geogrid.geolon <= lonbnds[1])
-      if lonbnds[1] < lonbnds[0]:
-         wherelon = (geogrid.geolon >= lonbnds[0]) | (geogrid.geolon <= lonbnds[1])
-      selarea = lambda da: da.where(wherelat & wherelon, drop=True)
-      sellat = selarea(geogrid.geolat)
+      selargs = (geogrid, latbnds, lonbnds)
 
       toopen = get_files_in_window(truedt, TBNDS, h1s, FILEFREQ, STRF_OCN, H1OFFSET_OCN)
       ds = xr.open_mfdataset(toopen).sel(time=slice(truedt + TBNDS[0], truedt + TBNDS[1]))
 
       #print(ds[sstvar].where(wherelat & wherelon, drop=True))
 
-      omlser = latlon_avg(selarea(ds[omlvar]), sellat) #TODO: add time selection (maybe diurnal signal is spurious and this is the cause?)
-      sstser = latlon_avg(selarea(ds[sstvar]), sellat)
+      omlser = latlon_avg(*selarea(ds[omlvar], *selargs)) #TODO: add time selection (maybe diurnal signal is spurious and this is the cause?)
+      sstser = latlon_avg(*selarea(ds[sstvar], *selargs))
       #print(sstser)
       omlref = omlser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time') #reference values -7 to -3 days
       sstref = sstser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time')
 
       budser = dict()
       for bk in budvars:
-         budser[bk] = latlon_avg(selarea(ds[bk]), sellat) #TODO: area weight the mean
+         budser[bk] = latlon_avg(*selarea(ds[bk], *selargs)) #TODO: area weight the mean
 
       if not ii:
          taxis = [(tt - truedt).days + (tt - truedt).seconds/86400 for tt in omlser.time.values]
@@ -147,6 +143,22 @@ def get_files_in_window(truedt, tbnds, filelist, filefreq, fmt_func, h1offset):
    filebnds = tuple([glob.glob(os.path.join(DIRI, fmt_func(bnd)))[0] for bnd in filebnds]) #TODO: enforce that this be in bounds of the simulation dates
    toopen = filelist[(filelist >= filebnds[0]) & (filelist <= filebnds[1])]
    return toopen
+
+def wherelatlon(staticds, latbnds, lonbnds, yx=('yh', 'xh')):
+   #TODO: make wherelat/lon into a function to account for q points too
+   latnm, lonnm = 'geolat' + XY2GEO[yx], 'geolon' + XY2GEO[yx]
+   wherelat = (staticds[latnm] >= latbnds[0]) & (staticds[latnm] <= latbnds[1])
+   wherelon = (staticds[lonnm] >= lonbnds[0]) & (staticds[lonnm] <= lonbnds[1])
+   if lonbnds[1] < lonbnds[0]:
+      wherelon = (staticds[lonnm] >= lonbnds[0]) | (staticds[lonnm] <= lonbnds[1])
+   return wherelat, wherelon
+
+def selarea(da, staticds, latbnds, lonbnds):
+   yx = da.dims[-2:]
+   wherelat, wherelon = wherelatlon(staticds, latbnds, lonbnds, yx=yx)
+   selarea = da.where(wherelat & wherelon, drop=True)
+   sellat = staticds['geolat' + XY2GEO[yx]].where(wherelat & wherelon, drop=True)
+   return selarea, sellat
 
 def latlon_avg(da, latcoord, latdim='yh', londim='xh'):
    wgts = np.cos(np.deg2rad(latcoord))
