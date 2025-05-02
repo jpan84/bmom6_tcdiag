@@ -199,3 +199,50 @@ Working on SWCF
 Working on CLDTOT
 Working on NCF
 globavg.py done.
+stmnum
+0      50.20837
+1      27.74121
+2      91.08596
+3      80.31671
+4      31.75305
+         ...   
+412    48.97010
+413    56.38772
+414    74.54079
+415    60.07971
+416    54.66537
+Name: wspd, Length: 417, dtype: float64
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/compowake.py:51: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  peaks = tcdf.groupby('stmnum').apply(lambda x: x.loc[x['wspd'].idxmax()])
+            ncol         lon        lat       pres  ...  hour  mdstr   doy stmnum
+stmnum                                              ...                          
+0       296846.0  182.042714 -19.488543   98220.54  ...  12.0    2-4  35.0      0
+1       206597.0   71.792696   7.325731  100821.60  ...  12.0    2-3  34.0      1
+2       159422.0  100.292768 -24.603594   90876.88  ...   6.0    2-5  36.0      2
+3       292743.0  200.250000 -21.236703   91161.52  ...   6.0   2-10  41.0      3
+4       465480.0  272.457294   6.950959  100724.60  ...  18.0    2-3  34.0      4
+...          ...         ...        ...        ...  ...   ...    ...   ...    ...
+412     154561.0   54.957075 -23.487120   97311.00  ...  12.0   1-30  30.0    412
+413     157145.0   90.542710 -26.456268   95050.06  ...  18.0   1-30  30.0    413
+414     423156.0  245.457187 -20.139839   94328.77  ...  18.0   1-30  30.0    414
+415     432251.0  285.750000 -15.387122   95435.07  ...  12.0   1-30  30.0    415
+416     300334.0  202.707357 -16.177721   97120.39  ...   0.0    2-1  32.0    416
+
+[417 rows x 12 columns]
+            ncol         lon        lat      pres  ...  hour  mdstr    doy stmnum
+stmnum                                             ...                           
+91      177497.0   76.292687 -11.667729  86629.28  ...   6.0    4-9   99.0     91
+114     169498.0  129.957395 -14.419221  88363.58  ...   0.0    5-1  121.0    114
+202     480838.0  296.042778  15.777703  87117.09  ...  18.0   7-12  193.0    202
+262     223753.0   60.957193  17.689793  87560.80  ...   6.0    9-7  250.0    262
+80      420778.0  227.042539 -17.618743  88553.35  ...   6.0    4-1   91.0     80
+316     477586.0  293.792761  14.470035  89250.31  ...  18.0  10-27  300.0    316
+15       34505.0    2.792719 -21.519463  88359.57  ...   6.0   2-13   44.0     15
+192      86557.0    7.707311  14.870521  89798.58  ...   6.0    7-2  183.0    192
+181     346383.0  170.250000  14.792906  85042.94  ...   0.0   6-25  176.0    181
+66      166612.0   69.207218 -18.514039  90298.78  ...   0.0   3-19   78.0     66
+
+[10 rows x 12 columns]
+Getting list of history files...
+Computing composites...
+0 0005-04-09 06:00:00

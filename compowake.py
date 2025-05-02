@@ -17,13 +17,13 @@ TRAJFILE = sys.argv[1] #output parquet from traj_stats.py
 
 ### hist file params
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1'
 HISTS = 'ocn/hist/'
 H1 = '*mom6.sfc*'
 STATIC = '/glade/derecho/scratch/jpan/%s/run/%s.mom6.static.nc' % (CASE, CASE)
 #TODO: account for choice of monthly or daily sfc history file freq
 DIRI = os.path.join(ARCHV, CASE, HISTS)
-FILEFREQ = dt.timedelta(days=30)
+FILEFREQ = dt.timedelta(days=1)
 H1OFFSET_OCN = None #e.g., 6 if filename date is 01-01 and first timestamp is 06:00
 STRF_OCN_DLY = lambda dtobj: f'*sfc.{dtobj.year:04}-{dtobj.month:02}-{dtobj.day:02}.nc'
 STRF_OCN_MON = lambda dtobj: f'*sfc.{dtobj.year:04}-{dtobj.month:02}.nc'
@@ -31,8 +31,8 @@ STRF_OCN = STRF_OCN_DLY if FILEFREQ == dt.timedelta(days=1) else STRF_OCN_MON
 
 ### wake computation params
 NTOP = 10 #number of strongest storms
-LONBNDS = (-2, 2)
-LATBNDS = (-2, 2)
+LONBNDS = (-5, 5)
+LATBNDS = (-5, 5)
 AVBNDS = (-dt.timedelta(days=7), -dt.timedelta(days=3))
 TBNDS = (-dt.timedelta(days=10), dt.timedelta(days=10))
 
@@ -67,6 +67,7 @@ def main():
    taxis = None
    omls = []
    ssts = []
+   budser = dict()
    for ii, stm in enumerate(topstms.iterrows()):
       stm = stm[1]
       truedt = cftime.DatetimeNoLeap(int(stm['year']) - 2000, int(stm['month']), int(stm['day']), hour=int(stm['hour']))
@@ -87,9 +88,12 @@ def main():
       omlref = omlser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time') #reference values -7 to -3 days
       sstref = sstser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time')
 
-      budser = dict()
       for bk in budvars:
-         budser[bk] = latlon_avg(*selarea(ds[bk], *selargs)) #TODO: area weight the mean
+         if bk not in budser:
+            budser[bk] = [latlon_avg(*selarea(ds[bk], *selargs))] #TODO: area weight the mean
+         else:
+            budser[bk].append(latlon_avg(*selarea(ds[bk], *selargs)))
+      print(budser)
 
       if not ii:
          taxis = [(tt - truedt).days + (tt - truedt).seconds/86400 for tt in omlser.time.values]
@@ -103,6 +107,10 @@ def main():
 
    filoargs = (os.path.splitext(os.path.basename(TRAJFILE))[0], NTOP, LONBNDS[1] - LONBNDS[0], LATBNDS[1] - LATBNDS[0])
 
+   print('\n')
+   print(taxis)
+   print(ssts)
+
    sstcomp = np.array([da.values for da in ssts]).mean(axis=0)
    plt.plot(taxis, sstcomp, color='red')
    plt.axvline(x=0, linestyle='--', color='black', linewidth=0.7)
@@ -112,7 +120,8 @@ def main():
    ax2 = plt.gca().twinx()
    budlines = dict()
    for bk in budvars:
-      budlines[bk] = ax2.plot(taxis, budser[bk].values, color=budvars[bk], label=budlabs[bk], linewidth=1)
+      budcomp = np.array([da.values for da in budser[bk]]).mean(axis=0)
+      budlines[bk] = ax2.plot(taxis, budcomp, color=budvars[bk], label=budlabs[bk], linewidth=1)
    ###remove select lines for presentation slides
    #for bk in ['hfsso', 'rlntds', 'hflso', 'rsntds', 'Tadvconv', 'hfds']:
    #   budlines[bk][0].remove()
@@ -120,7 +129,7 @@ def main():
    #mybud = sum([budser[bk] for bk in budser if bk != 'hfds'])
    #print(mybud)
    #ax2.plot(taxis, mybud - budser['hfds'], color = 'purple', label='resid', linewidth=1.5) #this residual ended up closely matching Tadvconv
-   ax2.plot(taxis, budser['Tadvconv'] + budser['hfds'], color = 'purple', label='adv+sfc')
+   #ax2.plot(taxis, budser['Tadvconv'] + budser['hfds'], color = 'purple', label='adv+sfc')
    ax2.legend()
    ax2.set_ylabel('Energy budget [W m-2]')
    plt.savefig('%s_%d_%dx%d_SSTwake.png' % filoargs, bbox_inches='tight')
@@ -133,6 +142,8 @@ def main():
    plt.xlabel('Day relative to max strength')
    plt.ylabel('OML relative to days %d to %d [%%]' % (AVBNDS[0].days, AVBNDS[1].days))
    plt.title('Composite OML for top %d storms, lat %s, lon %s' % (NTOP, str(LATBNDS), str(LONBNDS)))
+   #ax2 = plt.gca().twinx()
+
    plt.savefig('%s_%d_%dx%d_%swake.png' % (*filoargs, omlvar))
    plt.close()
 
