@@ -6,7 +6,7 @@
 #DIR1 = 'QPC5-ne30np4-aquap10-seed3x3/atm/hist'
 #DIR2 = 'QPC5-ne30np4-aquap10-unseed/atm/hist'
 #FN = 'QPC5-ne30np4-aquap10-*.cam.h0.*regrid.nc'
-OUTDIR = 'linevslat_250416_seed1x1/'
+OUTDIR = 'linevslat_250416_seed1x1_season/'
 HISTDIMS = set(['time', 'n_face']) #cam-SE
 
 import os
@@ -27,11 +27,23 @@ HISTS = 'atm/hist/'
 H0 = '*.cam.h0a.*.nc'
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
-grpby = 'month' #'season'
+grpby = 'season' #month
 zmlats = (-90, 90, 0.5)
 LATLAB = np.array([-90., -60., -30., 0., 30., 60., 90.])
-lncolors = plt.cm.jet(np.linspace(0, 1, 12 if grpby == 'month' else 4 if grpby == 'season'))
+lncolors = plt.cm.jet(np.linspace(0, 1, 12 if grpby == 'month' else 4 if grpby == 'season' else None))
 #TODO: allow diffing between cases and selecting of months/seasons
+SKIP = {'AEROD_v'}
+
+#create months to seasons weight matrix
+mlnl = np.array([31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], dtype=np.int_)
+wmat = np.repeat(mlnl[None, :], 4, axis=0)
+for rr in range(wmat.shape[0]):
+   for cc in range(wmat.shape[1]):
+      mod = (cc + 1) % 12
+      if mod >= 3 * (rr + 1) or mod < 3 * rr:
+         wmat[rr, cc] = 0
+wmat = wmat / wmat.sum(axis=1)[:, None]
+print(wmat)
 
 def main():
    if not os.path.exists(OUTDIR):
@@ -48,24 +60,21 @@ def main():
    print(ds1)
 
    for dv in ds1.data_vars:
-      #if str(dv) != 'TREFHT':
-      #   print('Skipping %s...' % dv)
-      #   continue
+      if str(dv) in SKIP:
+         print('Skipping %s...' % dv)
+         continue
       if set(ds1[dv].dims) == HISTDIMS:
          print('Plotting %s...' % dv)
-         tmeans = None
-         if grpby == 'month':
-            tmeans = ds1[dv].groupby('time.%s' % grpby).mean()
-            tmeans = tmeans.assign_coords(month=np.arange(12) + 1)
-         elif grpby == 'season':
-            tmeans = season_mean(ds1[dv])
+         tmeans = ds1[dv].groupby('time.month').mean()
+         #tmeans = tmeans.assign_coords(coords=dict(month=np.arange(12) + 1))
+         print(tmeans)
          lines = tmeans.zonal_mean(lat=zmlats)
          sinlat = np.sin(np.deg2rad(lines.latitudes))
-         print(lines)
-         print(lines.coords)
-         print(lines.month)
-         for tt in lines.coords[grpby]:
-            plt.plot(sinlat, lines.sel(**{grpby: tt}), label=tt.values, color=lncolors[tt.values])
+         if grpby == 'season':
+            print(lines.shape)
+            lines = wmat @ lines.values
+         for tt in range(lines.shape[0]):
+            plt.plot(sinlat, lines[tt], label=tt, color=lncolors[tt])
          #plt.plot(sinlat, line1.values)
          if str(dv) == 'TS':
             plt.hlines(273.15 + 26.5, -1, 1, colors='black', linestyles='dashed')
@@ -82,22 +91,6 @@ def main():
 
    print('%s done.' % sys.argv[0])
 
-#https://docs.xarray.dev/en/stable/examples/monthly-means.html
-#Seasonal means from monthly means, properly weighted by month length
-def season_mean(ds, calendar="noleap"):
-   # Make a DataArray with the number of days in each month, size = len(time)
-   month_length = ds.time.dt.days_in_month
-
-   # Calculate the weights by grouping by 'time.season'
-   weights = (
-       month_length.groupby("time.season") / month_length.groupby("time.season").sum()
-   )
-
-   # Test that the sum of the weights for each season is 1.0
-   np.testing.assert_allclose(weights.groupby("time.season").sum().values, np.ones(4))
-
-   # Calculate the weighted average
-   return (ds * weights).groupby("time.season").sum(dim="time")
 
 if __name__ == '__main__':
    main()
