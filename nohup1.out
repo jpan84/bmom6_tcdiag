@@ -1,350 +1,513 @@
 nohup: ignoring input
+[[0.34444444 0.31111111 0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.34444444]
+ [0.         0.         0.33695652 0.32608696 0.33695652 0.
+  0.         0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.32608696
+  0.33695652 0.33695652 0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.32967033 0.34065934 0.32967033 0.        ]]
 Opening datasets...
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-/glade/u/home/jpan/miniconda3/envs/aquapgrid/lib/python3.11/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
-Selecting...
-Solving EOFs...
-Extracting EOFs and PCs...
-Saving EOFs...
-Plotting EOFs and PCs...
+<xarray.UxDataset> Size: 176GB
+Dimensions:       (time: 71, n_face: 777602, lev: 26, ilev: 27, nbnd: 2)
+Coordinates:
+  * ilev          (ilev) float64 216B 2.194 4.895 9.882 ... 956.0 985.1 1e+03
+  * lev           (lev) float64 208B 3.545 7.389 13.97 ... 929.6 970.6 992.6
+  * time          (time) object 568B 0005-02-15 00:00:00 ... 0010-12-16 12:00:00
+Dimensions without coordinates: n_face, nbnd
+Data variables: (12/105)
+    AEROD_v       (time, n_face) float32 221MB dask.array<chunksize=(1, 777602), meta=np.ndarray>
+    CAPE          (time, n_face) float32 221MB dask.array<chunksize=(1, 777602), meta=np.ndarray>
+    CLDHGH        (time, n_face) float32 221MB dask.array<chunksize=(1, 777602), meta=np.ndarray>
+    CLDICE        (time, lev, n_face) float32 6GB dask.array<chunksize=(1, 5, 177090), meta=np.ndarray>
+    CLDLIQ        (time, lev, n_face) float32 6GB dask.array<chunksize=(1, 5, 177090), meta=np.ndarray>
+    CLDLOW        (time, n_face) float32 221MB dask.array<chunksize=(1, 777602), meta=np.ndarray>
+    ...            ...
+    nbdate        (time) int32 284B 10101 10101 10101 ... 10101 10101 10101
+    nbsec         (time) int32 284B 0 0 0 0 0 0 0 0 0 0 ... 0 0 0 0 0 0 0 0 0 0
+    ndbase        (time) int32 284B 0 0 0 0 0 0 0 0 0 0 ... 0 0 0 0 0 0 0 0 0 0
+    nsbase        (time) int32 284B 0 0 0 0 0 0 0 0 0 0 ... 0 0 0 0 0 0 0 0 0 0
+    time_bounds   (time, nbnd) object 1kB dask.array<chunksize=(1, 2), meta=np.ndarray>
+    time_written  (time) |S8 568B dask.array<chunksize=(1,), meta=np.ndarray>
+Skipping AEROD_v...
+Plotting CAPE...
+<xarray.UxDataArray 'CAPE' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    units:         J/kg
+    long_name:     Convectively available potential energy
+    cell_methods:  time: mean
+(12, 361)
 QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/glade/derecho/scratch/jpan/tmp/runtime-jpan'
-No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
-No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
-No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
-No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
-No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
-No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
-No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
-No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
-No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
-No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
-Plotting explained variance...
-sst_eof.py done.
+Plotting CLDHGH...
+<xarray.UxDataArray 'CLDHGH' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              fraction
+    long_name:          Vertically-integrated high cloud from   5000. to  400...
+    cell_methods:       time: mean
+(12, 361)
+Skipping CLDICE...
+Skipping CLDLIQ...
+Plotting CLDLOW...
+<xarray.UxDataArray 'CLDLOW' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              fraction
+    long_name:          Vertically-integrated low cloud from  70000. to 12000...
+    cell_methods:       time: mean
+(12, 361)
+Plotting CLDMED...
+<xarray.UxDataArray 'CLDMED' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              fraction
+    long_name:          Vertically-integrated mid-level cloud from  40000. to...
+    cell_methods:       time: mean
+(12, 361)
+Plotting CLDTOT...
+<xarray.UxDataArray 'CLDTOT' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              fraction
+    long_name:          Vertically-integrated total cloud
+    cell_methods:       time: mean
+(12, 361)
+Skipping CLOUD...
+Skipping CONCLD...
+Skipping DCQ...
+Skipping DTCOND...
+Skipping DTV...
+Skipping EMIS...
+Skipping FICE...
+Plotting FLDS...
+<xarray.UxDataArray 'FLDS' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Downwelling longwave flux at surface
+    cell_methods:       time: mean
+(12, 361)
+Plotting FLDSC...
+<xarray.UxDataArray 'FLDSC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Clearsky downwelling longwave flux at surface
+    cell_methods:       time: mean
+(12, 361)
+Plotting FLNS...
+<xarray.UxDataArray 'FLNS' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Net longwave flux at surface
+    cell_methods:       time: mean
+(12, 361)
+Plotting FLNSC...
+<xarray.UxDataArray 'FLNSC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Clearsky net longwave flux at surface
+    cell_methods:       time: mean
+(12, 361)
+Plotting FLNT...
+<xarray.UxDataArray 'FLNT' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Net longwave flux at top of model
+    cell_methods:       time: mean
+(12, 361)
+Plotting FLNTC...
+<xarray.UxDataArray 'FLNTC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Clearsky net longwave flux at top of model
+    cell_methods:       time: mean
+(12, 361)
+Plotting FLUT...
+<xarray.UxDataArray 'FLUT' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Upwelling longwave flux at top of model
+    cell_methods:       time: mean
+(12, 361)
+Plotting FLUTC...
+<xarray.UxDataArray 'FLUTC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Clearsky upwelling longwave flux at top of model
+    cell_methods:       time: mean
+(12, 361)
+Plotting FSDS...
+<xarray.UxDataArray 'FSDS' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Downwelling solar flux at surface
+    cell_methods:       time: mean
+(12, 361)
+Plotting FSDSC...
+<xarray.UxDataArray 'FSDSC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Clearsky downwelling solar flux at surface
+    cell_methods:       time: mean
+(12, 361)
+Plotting FSDTOA...
+<xarray.UxDataArray 'FSDTOA' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Downwelling solar flux at top of atmosphere
+    cell_methods:       time: mean
+(12, 361)
+Plotting FSNS...
+<xarray.UxDataArray 'FSNS' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Net solar flux at surface
+    cell_methods:       time: mean
+(12, 361)
+Plotting FSNSC...
+<xarray.UxDataArray 'FSNSC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Clearsky net solar flux at surface
+    cell_methods:       time: mean
+(12, 361)
+Plotting FSNT...
+<xarray.UxDataArray 'FSNT' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Net solar flux at top of model
+    cell_methods:       time: mean
+(12, 361)
+Plotting FSNTC...
+<xarray.UxDataArray 'FSNTC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Clearsky net solar flux at top of model
+    cell_methods:       time: mean
+(12, 361)
+Plotting FSNTOA...
+<xarray.UxDataArray 'FSNTOA' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Net solar flux at top of atmosphere
+    cell_methods:       time: mean
+(12, 361)
+Plotting FSNTOAC...
+<xarray.UxDataArray 'FSNTOAC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Clearsky net solar flux at top of atmosphere
+    cell_methods:       time: mean
+(12, 361)
+Plotting FSUTOA...
+<xarray.UxDataArray 'FSUTOA' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Upwelling solar flux at top of atmosphere
+    cell_methods:       time: mean
+(12, 361)
+Plotting ICEFRAC...
+<xarray.UxDataArray 'ICEFRAC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    units:         fraction
+    long_name:     Fraction of sfc area covered by sea-ice
+    cell_methods:  time: mean
+(12, 361)
+Skipping ICIMR...
+Skipping ICWMR...
+Plotting LANDFRAC...
+<xarray.UxDataArray 'LANDFRAC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    units:         fraction
+    long_name:     Fraction of sfc area covered by land
+    cell_methods:  time: mean
+(12, 361)
+Plotting LHFLX...
+<xarray.UxDataArray 'LHFLX' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    units:         W/m2
+    long_name:     Surface latent heat flux
+    cell_methods:  time: mean
+(12, 361)
+Plotting LWCF...
+<xarray.UxDataArray 'LWCF' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Longwave cloud forcing
+    cell_methods:       time: mean
+(12, 361)
+Plotting OCNFRAC...
+<xarray.UxDataArray 'OCNFRAC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    units:         fraction
+    long_name:     Fraction of sfc area covered by ocean
+    cell_methods:  time: mean
+(12, 361)
+Skipping OMEGA...
+Skipping OMEGAT...
+Plotting PBLH...
+<xarray.UxDataArray 'PBLH' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    units:         m
+    long_name:     PBL height
+    cell_methods:  time: mean
+(12, 361)
+Skipping PMID...
+Plotting PRECC...
+<xarray.UxDataArray 'PRECC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    units:         m/s
+    long_name:     Convective precipitation rate (liq + ice)
+    cell_methods:  time: mean
+(12, 361)
+Plotting PRECL...
+<xarray.UxDataArray 'PRECL' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    units:         m/s
+    long_name:     Large-scale (stable) precipitation rate (liq + ice)
+    cell_methods:  time: mean
+(12, 361)
+Plotting PRECSC...
+<xarray.UxDataArray 'PRECSC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    units:         m/s
+    long_name:     Convective snow rate (water equivalent)
+    cell_methods:  time: mean
+(12, 361)
+Plotting PRECSL...
+<xarray.UxDataArray 'PRECSL' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    units:         m/s
+    long_name:     Large-scale (stable) snow rate (water equivalent)
+    cell_methods:  time: mean
+(12, 361)
+Plotting PS...
+<xarray.UxDataArray 'PS' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    units:         Pa
+    long_name:     Surface pressure
+    cell_methods:  time: mean
+(12, 361)
+Plotting PSDRY...
+<xarray.UxDataArray 'PSDRY' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    units:         Pa
+    long_name:     Dry surface pressure
+    cell_methods:  time: mean
+(12, 361)
+Plotting PSL...
+<xarray.UxDataArray 'PSL' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    units:         Pa
+    long_name:     Sea level pressure
+    cell_methods:  time: mean
+(12, 361)
+Skipping Q...
+Plotting QFLX...
+<xarray.UxDataArray 'QFLX' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    units:         kg/m2/s
+    long_name:     Surface water flux
+    cell_methods:  time: mean
+(12, 361)
+Plotting QREFHT...
+<xarray.UxDataArray 'QREFHT' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    units:         kg/kg
+    long_name:     Reference height humidity
+    cell_methods:  time: mean
+(12, 361)
+Skipping QRL...
+Skipping QRS...
+Skipping RELHUM...
+Plotting SFCLDICE...
+<xarray.UxDataArray 'SFCLDICE' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    units:         kg/m2/s
+    long_name:     CLDICE surface flux
+    cell_methods:  time: mean
+(12, 361)
+Plotting SFCLDLIQ...
+<xarray.UxDataArray 'SFCLDLIQ' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+Attributes:
+    units:         kg/m2/s
+    long_name:     CLDLIQ surface flux
+    cell_methods:  time: mean

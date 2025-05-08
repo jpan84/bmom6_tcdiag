@@ -6,7 +6,7 @@
 #DIR1 = 'QPC5-ne30np4-aquap10-seed3x3/atm/hist'
 #DIR2 = 'QPC5-ne30np4-aquap10-unseed/atm/hist'
 #FN = 'QPC5-ne30np4-aquap10-*.cam.h0.*regrid.nc'
-OUTDIR = 'linevslat_250416_seed1x1_season/'
+OUTDIR = 'linevslat_250416_seed_minus_ctrl/'
 HISTDIMS = set(['time', 'n_face']) #cam-SE
 
 import os
@@ -27,7 +27,11 @@ HISTS = 'atm/hist/'
 H0 = '*.cam.h0a.*.nc'
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
+DO_DIFF = True
+CASE2 = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
+
 grpby = 'season' #month
+SZNS = ['DJF', 'MAM', 'JJA', 'SON']
 zmlats = (-90, 90, 0.5)
 LATLAB = np.array([-90., -60., -30., 0., 30., 60., 90.])
 lncolors = plt.cm.jet(np.linspace(0, 1, 12 if grpby == 'month' else 4 if grpby == 'season' else None))
@@ -54,6 +58,9 @@ def main():
    print('Opening datasets...')
    
    ds1 = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, HISTS, H0))
+   ds2 = None
+   if DO_DIFF:
+      ds2 = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE2, HISTS, H0))
    #ds1 = ds1.assign_coords(coords=dict(time=ds1.time - dt.timedelta(days=1))) #timestamp of e.g., 0001-01.nc is Feb 1, so subtract a month from time coord
    #ds1 = ds1.assign(dict(U200=ds1.U.sel(lev=200, method='nearest')))
    #!OCEAN ds1 = ds1.isel(z_l=0)
@@ -65,7 +72,10 @@ def main():
          continue
       if set(ds1[dv].dims) == HISTDIMS:
          print('Plotting %s...' % dv)
-         tmeans = ds1[dv].groupby('time.month').mean()
+         da = ds1[dv]
+         if DO_DIFF:
+            da = da - ds2[dv]
+         tmeans = da.groupby('time.month').mean()
          #tmeans = tmeans.assign_coords(coords=dict(month=np.arange(12) + 1))
          print(tmeans)
          lines = tmeans.zonal_mean(lat=zmlats)
@@ -74,13 +84,15 @@ def main():
             print(lines.shape)
             lines = wmat @ lines.values
          for tt in range(lines.shape[0]):
-            plt.plot(sinlat, lines[tt], label=tt, color=lncolors[tt])
+            plt.plot(sinlat, lines[tt], label=SZNS[tt] if grpby == 'season' else tt, color=lncolors[tt])
          #plt.plot(sinlat, line1.values)
-         if str(dv) == 'TS':
-            plt.hlines(273.15 + 26.5, -1, 1, colors='black', linestyles='dashed')
+         if str(dv) == 'TS' and not DO_DIFF:
+            plt.hlines(273.15 + 26.5, -1, 1, colors='red', linestyles='dashed')
+         if DO_DIFF:
+            plt.hlines(0, -1, 1, colors='black', linestyles='dashed')
          plt.xlabel('Lat [°]')
          plt.ylabel(dv)
-         plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=4, prop=dict(size=8))
+         plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=4, prop=dict(size=12))
          plt.gca().set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB)
          plt.savefig(os.path.join(OUTDIR, '%s_sznl.png' % dv), bbox_inches='tight')
          #plt.tight_layout()
