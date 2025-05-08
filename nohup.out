@@ -246,3 +246,2595 @@ stmnum                                             ...
 Getting list of history files...
 Computing composites...
 0 0005-04-09 06:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00]}
+1 0005-05-01 00:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00]}
+2 0005-07-12 18:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00]}
+3 0005-09-07 06:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00]}
+4 0005-04-01 06:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00]}
+5 0005-10-27 18:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00]}
+6 0005-02-13 06:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00]}
+7 0005-07-02 06:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00]}
+8 0005-06-25 00:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00]}
+9 0005-03-19 00:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-09 00:00:00 ... 0005-03-29 00:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-09 00:00:00 ... 0005-03-29 00:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-09 00:00:00 ... 0005-03-29 00:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-09 00:00:00 ... 0005-03-29 00:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-09 00:00:00 ... 0005-03-29 00:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-09 00:00:00 ... 0005-03-29 00:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-09 00:00:00 ... 0005-03-29 00:00:00]}
+
+
+[-10.0, -9.75, -9.5, -9.25, -9.0, -8.75, -8.5, -8.25, -8.0, -7.75, -7.5, -7.25, -7.0, -6.75, -6.5, -6.25, -6.0, -5.75, -5.5, -5.25, -5.0, -4.75, -4.5, -4.25, -4.0, -3.75, -3.5, -3.25, -3.0, -2.75, -2.5, -2.25, -2.0, -1.75, -1.5, -1.25, -1.0, -0.75, -0.5, -0.25, 0.0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5, 2.75, 3.0, 3.25, 3.5, 3.75, 4.0, 4.25, 4.5, 4.75, 5.0, 5.25, 5.5, 5.75, 6.0, 6.25, 6.5, 6.75, 7.0, 7.25, 7.5, 7.75, 8.0, 8.25, 8.5, 8.75, 9.0, 9.25, 9.5, 9.75, 10.0]
+[<xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-09 00:00:00 ... 0005-03-29 00:00:00]
+stmnum
+0      50.20837
+1      27.74121
+2      91.08596
+3      80.31671
+4      31.75305
+         ...   
+412    48.97010
+413    56.38772
+414    74.54079
+415    60.07971
+416    54.66537
+Name: wspd, Length: 417, dtype: float64
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/compowake.py:51: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  peaks = tcdf.groupby('stmnum').apply(lambda x: x.loc[x['wspd'].idxmax()])
+            ncol         lon        lat       pres  ...  hour  mdstr   doy stmnum
+stmnum                                              ...                          
+0       296846.0  182.042714 -19.488543   98220.54  ...  12.0    2-4  35.0      0
+1       206597.0   71.792696   7.325731  100821.60  ...  12.0    2-3  34.0      1
+2       159422.0  100.292768 -24.603594   90876.88  ...   6.0    2-5  36.0      2
+3       292743.0  200.250000 -21.236703   91161.52  ...   6.0   2-10  41.0      3
+4       465480.0  272.457294   6.950959  100724.60  ...  18.0    2-3  34.0      4
+...          ...         ...        ...        ...  ...   ...    ...   ...    ...
+412     154561.0   54.957075 -23.487120   97311.00  ...  12.0   1-30  30.0    412
+413     157145.0   90.542710 -26.456268   95050.06  ...  18.0   1-30  30.0    413
+414     423156.0  245.457187 -20.139839   94328.77  ...  18.0   1-30  30.0    414
+415     432251.0  285.750000 -15.387122   95435.07  ...  12.0   1-30  30.0    415
+416     300334.0  202.707357 -16.177721   97120.39  ...   0.0    2-1  32.0    416
+
+[417 rows x 12 columns]
+            ncol         lon        lat      pres  ...  hour  mdstr    doy stmnum
+stmnum                                             ...                           
+91      177497.0   76.292687 -11.667729  86629.28  ...   6.0    4-9   99.0     91
+114     169498.0  129.957395 -14.419221  88363.58  ...   0.0    5-1  121.0    114
+202     480838.0  296.042778  15.777703  87117.09  ...  18.0   7-12  193.0    202
+262     223753.0   60.957193  17.689793  87560.80  ...   6.0    9-7  250.0    262
+80      420778.0  227.042539 -17.618743  88553.35  ...   6.0    4-1   91.0     80
+316     477586.0  293.792761  14.470035  89250.31  ...  18.0  10-27  300.0    316
+15       34505.0    2.792719 -21.519463  88359.57  ...   6.0   2-13   44.0     15
+192      86557.0    7.707311  14.870521  89798.58  ...   6.0    7-2  183.0    192
+181     346383.0  170.250000  14.792906  85042.94  ...   0.0   6-25  176.0    181
+66      166612.0   69.207218 -18.514039  90298.78  ...   0.0   3-19   78.0     66
+
+[10 rows x 12 columns]
+Getting list of history files...
+Computing composites...
+0 0005-04-09 06:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00]}
+1 0005-05-01 00:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00]}
+2 0005-07-12 18:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00]}
+3 0005-09-07 06:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00]}
+4 0005-04-01 06:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00]}
+5 0005-10-27 18:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00]}
+6 0005-02-13 06:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00]}
+7 0005-07-02 06:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00]}
+8 0005-06-25 00:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00]}
+9 0005-03-19 00:00:00
+{'hfsso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-09 00:00:00 ... 0005-03-29 00:00:00], 'hflso': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-09 00:00:00 ... 0005-03-29 00:00:00], 'rlntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-09 00:00:00 ... 0005-03-29 00:00:00], 'rsntds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-09 00:00:00 ... 0005-03-29 00:00:00], 'Tadvconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-09 00:00:00 ... 0005-03-29 00:00:00], 'Tdifconv': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-09 00:00:00 ... 0005-03-29 00:00:00], 'hfds': [<xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<mean_agg-aggregate, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-09 00:00:00 ... 0005-03-29 00:00:00]}
+
+
+[-10.0, -9.75, -9.5, -9.25, -9.0, -8.75, -8.5, -8.25, -8.0, -7.75, -7.5, -7.25, -7.0, -6.75, -6.5, -6.25, -6.0, -5.75, -5.5, -5.25, -5.0, -4.75, -4.5, -4.25, -4.0, -3.75, -3.5, -3.25, -3.0, -2.75, -2.5, -2.25, -2.0, -1.75, -1.5, -1.25, -1.0, -0.75, -0.5, -0.25, 0.0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5, 2.75, 3.0, 3.25, 3.5, 3.75, 4.0, 4.25, 4.5, 4.75, 5.0, 5.25, 5.5, 5.75, 6.0, 6.25, 6.5, 6.75, 7.0, 7.25, 7.5, 7.75, 8.0, 8.25, 8.5, 8.75, 9.0, 9.25, 9.5, 9.75, 10.0]
+[<xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-30 06:00:00 ... 0005-04-19 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-04-21 00:00:00 ... 0005-05-11 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-07-02 18:00:00 ... 0005-07-22 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-08-28 06:00:00 ... 0005-09-17 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-22 06:00:00 ... 0005-04-11 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-10-17 18:00:00 ... 0005-11-06 18:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-02-03 06:00:00 ... 0005-02-23 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-22 06:00:00 ... 0005-07-12 06:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-06-15 00:00:00 ... 0005-07-05 00:00:00, <xarray.DataArray (time: 81)> Size: 648B
+dask.array<sub, shape=(81,), dtype=float64, chunksize=(2,), chunktype=numpy.ndarray>
+Coordinates:
+  * time     (time) object 648B 0005-03-09 00:00:00 ... 0005-03-29 00:00:00]
+Opening datasets...
+<xarray.UxDataset> Size: 114GB
+Dimensions:       (time: 46, n_face: 777602, lev: 26, ilev: 27, nbnd: 2)
+Coordinates:
+  * ilev          (ilev) float64 216B 2.194 4.895 9.882 ... 956.0 985.1 1e+03
+  * lev           (lev) float64 208B 3.545 7.389 13.97 ... 929.6 970.6 992.6
+  * time          (time) object 368B 0005-02-15 00:00:00 ... 0008-11-16 00:00:00
+Dimensions without coordinates: n_face, nbnd
+Data variables: (12/105)
+    AEROD_v       (time, n_face) float32 143MB dask.array<chunksize=(1, 777602), meta=np.ndarray>
+    CAPE          (time, n_face) float32 143MB dask.array<chunksize=(1, 777602), meta=np.ndarray>
+    CLDHGH        (time, n_face) float32 143MB dask.array<chunksize=(1, 777602), meta=np.ndarray>
+    CLDICE        (time, lev, n_face) float32 4GB dask.array<chunksize=(1, 5, 177090), meta=np.ndarray>
+    CLDLIQ        (time, lev, n_face) float32 4GB dask.array<chunksize=(1, 5, 177090), meta=np.ndarray>
+    CLDLOW        (time, n_face) float32 143MB dask.array<chunksize=(1, 777602), meta=np.ndarray>
+    ...            ...
+    nbdate        (time) int32 184B 10101 10101 10101 ... 10101 10101 10101
+    nbsec         (time) int32 184B 0 0 0 0 0 0 0 0 0 0 ... 0 0 0 0 0 0 0 0 0 0
+    ndbase        (time) int32 184B 0 0 0 0 0 0 0 0 0 0 ... 0 0 0 0 0 0 0 0 0 0
+    nsbase        (time) int32 184B 0 0 0 0 0 0 0 0 0 0 ... 0 0 0 0 0 0 0 0 0 0
+    time_bounds   (time, nbnd) object 736B dask.array<chunksize=(1, 2), meta=np.ndarray>
+    time_written  (time) |S8 368B dask.array<chunksize=(1,), meta=np.ndarray>
+Plotting AEROD_v...
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/glade/derecho/scratch/jpan/tmp/runtime-jpan'
+Plotting CAPE...
+Plotting CLDHGH...
+Skipping CLDICE...
+Skipping CLDLIQ...
+Plotting CLDLOW...
+Plotting CLDMED...
+Plotting CLDTOT...
+Skipping CLOUD...
+Skipping CONCLD...
+Skipping DCQ...
+Skipping DTCOND...
+Skipping DTV...
+Skipping EMIS...
+Skipping FICE...
+Plotting FLDS...
+Plotting FLDSC...
+Plotting FLNS...
+Plotting FLNSC...
+Plotting FLNT...
+Plotting FLNTC...
+Plotting FLUT...
+Plotting FLUTC...
+Plotting FSDS...
+Plotting FSDSC...
+Plotting FSDTOA...
+Plotting FSNS...
+Plotting FSNSC...
+Plotting FSNT...
+Plotting FSNTC...
+Plotting FSNTOA...
+Plotting FSNTOAC...
+Plotting FSUTOA...
+Plotting ICEFRAC...
+Skipping ICIMR...
+Skipping ICWMR...
+Plotting LANDFRAC...
+Plotting LHFLX...
+Plotting LWCF...
+Plotting OCNFRAC...
+Skipping OMEGA...
+Skipping OMEGAT...
+Plotting PBLH...
+Skipping PMID...
+Plotting PRECC...
+Plotting PRECL...
+Plotting PRECSC...
+Plotting PRECSL...
+Plotting PS...
+Plotting PSDRY...
+Plotting PSL...
+Skipping Q...
+Plotting QFLX...
+Plotting QREFHT...
+Skipping QRL...
+Skipping QRS...
+Skipping RELHUM...
+Plotting SFCLDICE...
+Plotting SFCLDLIQ...
+Plotting SHFLX...
+Plotting SNOWHICE...
+Plotting SNOWHLND...
+Plotting SOLIN...
+Plotting SWCF...
+Skipping T...
+Plotting TAUGWX...
+Plotting TAUGWY...
+Plotting TAUX...
+Plotting TAUY...
+Plotting TGCLDCWP...
+Plotting TGCLDIWP...
+Plotting TGCLDLWP...
+Plotting TMQ...
+Plotting TREFHT...
+Plotting TS...
+Plotting TSMN...
+Plotting TSMX...
+Skipping U...
+Plotting U10...
+Skipping UU...
+Skipping V...
+Skipping VD01...
+Skipping VQ...
+Skipping VT...
+Skipping VU...
+Skipping VV...
+Skipping Z3...
+Plotting area...
+Plotting areawt...
+Skipping date...
+Skipping date_written...
+Skipping datesec...
+Skipping hyai...
+Skipping hyam...
+Skipping hybi...
+Skipping hybm...
+Plotting lat...
+Plotting lon...
+Skipping mdt...
+Skipping nbdate...
+Skipping nbsec...
+Skipping ndbase...
+Skipping nsbase...
+Skipping time_bounds...
+Skipping time_written...
+sznl_zm_ux.py done.

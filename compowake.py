@@ -31,8 +31,8 @@ STRF_OCN = STRF_OCN_DLY if FILEFREQ == dt.timedelta(days=1) else STRF_OCN_MON
 
 ### wake computation params
 NTOP = 10 #number of strongest storms
-LONBNDS = (-5, 5)
-LATBNDS = (-5, 5)
+LONBNDS = (-2, 2)
+LATBNDS = (-2, 2)
 AVBNDS = (-dt.timedelta(days=7), -dt.timedelta(days=3))
 TBNDS = (-dt.timedelta(days=10), dt.timedelta(days=10))
 
