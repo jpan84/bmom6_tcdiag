@@ -165,3 +165,346 @@ dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chun
 Coordinates:
   * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
 Dimensions without coordinates: n_face
+(12, 361)
+Plotting FSNT...
+<xarray.UxDataArray 'FSNT' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting FSNTC...
+<xarray.UxDataArray 'FSNTC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting FSNTOA...
+<xarray.UxDataArray 'FSNTOA' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting FSNTOAC...
+<xarray.UxDataArray 'FSNTOAC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting FSUTOA...
+<xarray.UxDataArray 'FSUTOA' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting ICEFRAC...
+<xarray.UxDataArray 'ICEFRAC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Skipping ICIMR...
+Skipping ICWMR...
+Plotting LANDFRAC...
+<xarray.UxDataArray 'LANDFRAC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting LHFLX...
+<xarray.UxDataArray 'LHFLX' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting LWCF...
+<xarray.UxDataArray 'LWCF' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting OCNFRAC...
+<xarray.UxDataArray 'OCNFRAC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Skipping OMEGA...
+Skipping OMEGAT...
+Plotting PBLH...
+<xarray.UxDataArray 'PBLH' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Skipping PMID...
+Plotting PRECC...
+<xarray.UxDataArray 'PRECC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting PRECL...
+<xarray.UxDataArray 'PRECL' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting PRECSC...
+<xarray.UxDataArray 'PRECSC' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting PRECSL...
+<xarray.UxDataArray 'PRECSL' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting PS...
+<xarray.UxDataArray 'PS' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting PSDRY...
+<xarray.UxDataArray 'PSDRY' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting PSL...
+<xarray.UxDataArray 'PSL' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Skipping Q...
+Plotting QFLX...
+<xarray.UxDataArray 'QFLX' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting QREFHT...
+<xarray.UxDataArray 'QREFHT' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Skipping QRL...
+Skipping QRS...
+Skipping RELHUM...
+Plotting SFCLDICE...
+<xarray.UxDataArray 'SFCLDICE' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting SFCLDLIQ...
+<xarray.UxDataArray 'SFCLDLIQ' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting SHFLX...
+<xarray.UxDataArray 'SHFLX' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting SNOWHICE...
+<xarray.UxDataArray 'SNOWHICE' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting SNOWHLND...
+<xarray.UxDataArray 'SNOWHLND' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting SOLIN...
+<xarray.UxDataArray 'SOLIN' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting SWCF...
+<xarray.UxDataArray 'SWCF' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Skipping T...
+Plotting TAUGWX...
+<xarray.UxDataArray 'TAUGWX' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting TAUGWY...
+<xarray.UxDataArray 'TAUGWY' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting TAUX...
+<xarray.UxDataArray 'TAUX' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting TAUY...
+<xarray.UxDataArray 'TAUY' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting TGCLDCWP...
+<xarray.UxDataArray 'TGCLDCWP' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting TGCLDIWP...
+<xarray.UxDataArray 'TGCLDIWP' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting TGCLDLWP...
+<xarray.UxDataArray 'TGCLDLWP' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting TMQ...
+<xarray.UxDataArray 'TMQ' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting TREFHT...
+<xarray.UxDataArray 'TREFHT' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting TS...
+<xarray.UxDataArray 'TS' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting TSMN...
+<xarray.UxDataArray 'TSMN' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting TSMX...
+<xarray.UxDataArray 'TSMX' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Skipping U...
+Plotting U10...
+<xarray.UxDataArray 'U10' (month: 12, n_face: 777602)> Size: 37MB
+dask.array<stack, shape=(12, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Skipping UU...
+Skipping V...
+Skipping VD01...
+Skipping VQ...
+Skipping VT...
+Skipping VU...
+Skipping VV...
+Skipping Z3...
+Plotting area...
+<xarray.UxDataArray 'area' (month: 12, n_face: 777602)> Size: 75MB
+dask.array<stack, shape=(12, 777602), dtype=float64, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting areawt...
+<xarray.UxDataArray 'areawt' (month: 12, n_face: 777602)> Size: 75MB
+dask.array<stack, shape=(12, 777602), dtype=float64, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Skipping date...
+Skipping date_written...
+Skipping datesec...
+Skipping hyai...
+Skipping hyam...
+Skipping hybi...
+Skipping hybm...
+Plotting lat...
+<xarray.UxDataArray 'lat' (month: 12, n_face: 777602)> Size: 75MB
+dask.array<stack, shape=(12, 777602), dtype=float64, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Plotting lon...
+<xarray.UxDataArray 'lon' (month: 12, n_face: 777602)> Size: 75MB
+dask.array<stack, shape=(12, 777602), dtype=float64, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+  * month    (month) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: n_face
+(12, 361)
+Skipping mdt...
+Skipping nbdate...
+Skipping nbsec...
+Skipping ndbase...
+Skipping nsbase...
+Skipping time_bounds...
+Skipping time_written...
+sznl_zm_ux.py done.

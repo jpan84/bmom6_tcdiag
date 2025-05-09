@@ -41,7 +41,7 @@ def main():
    print(DIR1)
    HIST_DS1 = xr.open_mfdataset(DIR1) #open all h1 files into one dask-chunked array
    if HIST_DS1[pres_name].units == 'Pa':
-      HIST_DS1 = HIST_DS1.assign_coords(coords=dict(pres_name=HIST_DS1[pres_name] / 100))
+      HIST_DS1 = HIST_DS1.assign_coords(coords={pres_name: HIST_DS1[pres_name] / 100})
    streamf1 = comppsi(HIST_DS1)
    #print([(s.lat.min(),s.lat.max()) for s in streamf1])
    plotfields = streamf1
