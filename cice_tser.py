@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 ciceh = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250206_1degeqm885/ice/hist/*.cice.h.*.nc'
-#ciceh = '/glade/derecho/scratch/jpan/b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.250127_h80l895/run/cice.r.cat.nc'
+ciceh = '/glade/derecho/scratch/jpan/b.e23.BMOM.ne30np4_sx0.66av1.aqua.production.250130_h80l89/run/cice.r.cat.nc'
 grid = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250206_1degeqm885/ice/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250206_1degeqm885.cice.h.0003-02.nc'
 tunits = 'common_years since 0000-01-01'
 latcoords = 'TLAT'

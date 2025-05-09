@@ -6,7 +6,7 @@
 #DIR1 = 'QPC5-ne30np4-aquap10-seed3x3/atm/hist'
 #DIR2 = 'QPC5-ne30np4-aquap10-unseed/atm/hist'
 #FN = 'QPC5-ne30np4-aquap10-*.cam.h0.*regrid.nc'
-OUTDIR = 'linevslat_250415_unseed_minus_ctrl/'
+OUTDIR = 'linevslat_250417_ctrl/'
 HISTDIMS = set(['time', 'n_face']) #cam-SE
 
 import os
@@ -22,12 +22,12 @@ import pltsettings
 
 ### hist file params
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
 HISTS = 'atm/hist/'
 H0 = '*.cam.h0a.*.nc'
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
-DO_DIFF = True
+DO_DIFF = False
 CASE2 = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
 
 grpby = 'season' #month
@@ -37,6 +37,9 @@ LATLAB = np.array([-90., -60., -30., 0., 30., 60., 90.])
 lncolors = plt.cm.jet(np.linspace(0, 1, 12 if grpby == 'month' else 4 if grpby == 'season' else None))
 #TODO: allow diffing between cases and selecting of months/seasons
 SKIP = {'AEROD_v'}
+
+HEMISYM = {'FSNS', 'FLNS', 'LHFLX', 'SHFLX'}
+DO_SYM = True #only works for season, not month
 
 #create months to seasons weight matrix
 mlnl = np.array([31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], dtype=np.int_)
@@ -67,7 +70,7 @@ def main():
    print(ds1)
 
    for dv in ds1.data_vars:
-      if str(dv) in SKIP:
+      if str(dv) in SKIP or DO_SYM and str(dv) not in HEMISYM:
          print('Skipping %s...' % dv)
          continue
       if set(ds1[dv].dims) == HISTDIMS:
@@ -98,6 +101,23 @@ def main():
          #plt.tight_layout()
          #plt.show()
          plt.close()
+
+         if DO_SYM:
+            nhstart = int(lines.shape[1] // 2) + 1 #odd number of lats, sym about Eq
+            shend = nhstart - 1
+            nh = lines[:, nhstart:]
+            sh = np.roll(lines[:, :shend], 2, axis=0)[:, ::-1] #align seasons and reflect across Eq
+            hemidiff = nh - sh
+            for tt in range(hemidiff.shape[0]):
+               plt.plot(sinlat[nhstart:], hemidiff[tt], label='NH %s' % SZNS[tt], color=lncolors[tt])
+            plt.hlines(0, -1, 1, colors='black', linestyles='dashed')
+            plt.xlabel('Lat [°]')
+            plt.ylabel(dv)
+            plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=4, prop=dict(size=12))
+            plt.gca().set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB)
+            plt.xlim(0, 1)
+            plt.savefig(os.path.join(OUTDIR, '%s_hemidiff.png' % dv), bbox_inches='tight')
+            plt.close()
       else:
          print('Skipping %s...' % dv)
 
