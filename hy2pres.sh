@@ -3,14 +3,14 @@
 set -e
 module load nco
 
-cd /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm
+cd /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm
 pwd
 
-diri="./hist_regrid/"
-diro="./hist_regrid_onpres/"
+diri="./hist_regrid_0.25x0.25/"
+diro="./hist_regrid_0.25x0.25_onpres/"
 tapes=("h0a")
-vrt_in="/glade/u/home/jpan/L26_hyb.nc"
-vrt_out="/glade/u/home/jpan/L26_plevs.nc"
+vrt_in="/glade/u/home/jpan/grids/L26_hyb.nc"
+vrt_out="/glade/u/home/jpan/grids/L26_plevs.nc"
 
 if [ ! -d "$diro" ]; then
   mkdir -p "$diro"

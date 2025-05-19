@@ -88,7 +88,7 @@ def main(FN, CTRL=None):
 
       #resample winds to 6H for ACE
       tcdf = tcdf.set_index('dt')
-      tcdf = tcdf.resample('6H').agg({col: 'first' for col in tcdf.columns})
+      tcdf = tcdf.resample('6h').agg({col: 'first' for col in tcdf.columns})
       ###tcdf['wspd'] = tcdf['wspd'].interpolate(method='linear')
       ###tcdf['lat'] = tcdf['lat'].interpolate(method='linear')
       ###tcdf['lon'] = tcdf['lon'].interpolate(method='linear')

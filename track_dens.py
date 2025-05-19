@@ -13,15 +13,18 @@ from scipy import stats
 
 MS2KT = 1.9438
 a_e = 6.371e6 #m
+LATLABS = np.arange(-90, 90.1, 30)
+FIXYLIM = (0, 70)
+DLAT = 0.5
 
 #FILI = sys.argv[1]
-#FILI = ['250415_unseed.parquet', '250417_ctrl.parquet', '250416_seed1x1.parquet']
-#labels = ['unseed', 'ctrl', 'seed']
-#DOUT = '250422_density'
+FILI = ['250415_unseed.parquet', '250417_ctrl.parquet', '250416_seed1x1.parquet']
+labels = ['unseed', 'ctrl', 'seed']
+DOUT = '250519_density'
 
-FILI = ['250415_unseed_JJASOND.parquet', '250417_ctrl_JJASOND.parquet']
-labels = ['unseed', 'ctrl']
-DOUT = '250423_density_JJASOND'
+#FILI = ['250415_unseed_JJASOND.parquet', '250417_ctrl_JJASOND.parquet']
+#labels = ['unseed', 'ctrl']
+#DOUT = '250423_density_JJASOND'
 
 def main():
    #extidx = FILI.rfind('.')
@@ -36,25 +39,30 @@ def main():
    print(totyrs)
    #exit()
 
-   bininfo = make_bin_grid_1d(latbnds=(-90., 90.), dlat=0.5)
+   bininfo = make_bin_grid_1d(latbnds=(-90., 90.), dlat=DLAT)
 
-   plt.rc('font', size=16)
+   plt.rc('font', size=14)
 
-   plot_lat_binned(dfs, bininfo, totyrs, unique_tracks_of_storm_1d, 'unique storms', 'unique_track_dens.png')
-   plot_lat_binned(dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly fixes', '6hr_track_dens.png')
-   plot_lat_binned(dfs, bininfo, totyrs, bin_ace_of_storm_1d, 'ACE [$10^4$ kt$^2$] ', 'ace_binned.png')
+   plot_lat_binned(dfs, bininfo, totyrs, unique_tracks_of_storm_1d, 'unique storms', 'unique_track_dens_%.1f.png' % DLAT)
+   plot_lat_binned(dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly fixes', '6hr_track_dens_%.1f.png' % DLAT)
+   plot_lat_binned(dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly hurricane fixes', '6hr_track_dens_hurr_%.1f.png' % DLAT, wspd_thresh=33)
+   plot_lat_binned(dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly major hurricane fixes', '6hr_track_dens_major_%.1f.png' % DLAT, wspd_thresh=50)
+   plot_lat_binned(dfs, bininfo, totyrs, bin_ace_of_storm_1d, 'ACE [$10^4$ kt$^2$] ', 'ace_binned_%.1f.png' % DLAT)
 
 
-def plot_lat_binned(dfs, bininfo, totyrs, varfunc, ylabel, filo):
+def plot_lat_binned(dfs, bininfo, totyrs, varfunc, ylabel, filo, **fkwargs):
    pltdat = [np.zeros_like(bininfo[1]) for _ in dfs]
    for ii, df in enumerate(dfs):
       for stm in df['stmnum'].unique():
-         pltdat[ii] += varfunc(df[df['stmnum'] == stm], bininfo)
-      print(pltdat[ii].sum())
+         pltdat[ii] += varfunc(df[df['stmnum'] == stm], bininfo, **fkwargs)
+      print(ylabel, '\t', pltdat[ii].sum())
       pltdat[ii] = pltdat[ii] / (bininfo[2] / 1e6 / 1e3**2) / totyrs[ii]
       
-      plt.plot(bininfo[1], pltdat[ii], label=labels[ii])
+      plt.plot(np.sin(np.deg2rad(bininfo[1])), pltdat[ii], label=labels[ii])
+      plt.xticks(np.sin(np.deg2rad(LATLABS)), labels=LATLABS.astype(np.int_))
       plt.xlabel('lat')
+      if varfunc == sixhrly_fixes_of_storm_1d:
+         plt.ylim(*FIXYLIM)
       plt.ylabel('%s per million km2 per yr' % ylabel)
    plt.legend(fontsize=12)
    plt.savefig(os.path.join(DOUT, filo), bbox_inches='tight')
@@ -78,6 +86,8 @@ def accum_bin_map_1d(stmdf, bininfo, col, afunc, dtype=np.float64, rettype=np.fl
    outarr = np.zeros_like(bininfo[1], dtype=dtype)
    accvals = stmdf[col].apply(afunc)
    for ii in stmdf.index:
+      if np.isnan(stmdf['lat'][ii]):
+         continue
       iidx = np.searchsorted(bininfo[0], stmdf['lat'][ii])
       if iidx == 0 or iidx == bininfo[0].shape[0] - 1:
          continue
@@ -90,8 +100,8 @@ def accum_bin_map_1d(stmdf, bininfo, col, afunc, dtype=np.float64, rettype=np.fl
 def unique_tracks_of_storm_1d(stmdf, bininfo):
    return accum_bin_map_1d(stmdf, bininfo, 'lat', lambda x: 1, dtype=np.bool_, rettype=np.int_)
 
-def sixhrly_fixes_of_storm_1d(stmdf, bininfo):
-   return accum_bin_map_1d(stmdf, bininfo, 'lat', lambda x: 1, dtype=np.int_, rettype=np.int_)
+def sixhrly_fixes_of_storm_1d(stmdf, bininfo, wspd_thresh=0):
+   return accum_bin_map_1d(stmdf, bininfo, 'wspd', lambda wspd: int(wspd >= wspd_thresh), dtype=np.int_, rettype=np.int_)
 
 def bin_ace_of_storm_1d(stmdf, bininfo):
    ace = lambda wspd: 1e-4 * (MS2KT * wspd)**2

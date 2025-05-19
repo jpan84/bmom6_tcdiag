@@ -111,6 +111,7 @@ def main():
             for tt in range(hemidiff.shape[0]):
                plt.plot(sinlat[nhstart:], hemidiff[tt], label='NH %s' % SZNS[tt], color=lncolors[tt])
             plt.hlines(0, -1, 1, colors='black', linestyles='dashed')
+            plt.vlines(np.sin(np.deg2rad(73.75)), 0, 10, colors='gray', linestyles='dashed')
             plt.xlabel('Lat [°]')
             plt.ylabel(dv)
             plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=4, prop=dict(size=12))
