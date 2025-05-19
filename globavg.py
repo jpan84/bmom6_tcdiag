@@ -30,9 +30,9 @@ OUTDIR = './globavtraces_250130_h80l89'
 #OUTDIR = './globavtraces_250127_h80l895'
 #OUTDIR = './globavtraces_250127_h80l897'
 
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
 GRIDFN = 'ne120np4_pentagons_100310.nc'
-OUTDIR = './globavtraces_250415_unseed'
+OUTDIR = './globavtraces_250417_ctrl'
 
 CLIPMO = 0
 tunits = 'common_years since 0000-01-01'

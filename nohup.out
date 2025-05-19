@@ -4320,3 +4320,314 @@ Skipping nsbase...
 Skipping time_bounds...
 Skipping time_written...
 sznl_zm_ux.py done.
+[ 5.12328767  5.20410959  5.28767123  5.37123288  5.45479452  5.53835616
+  5.62328767  5.70684932  5.79041096  5.8739726   5.95753425  6.04246575
+  6.12328767  6.20410959  6.28767123  6.37123288  6.45479452  6.53835616
+  6.62328767  6.70684932  6.79041096  6.8739726   6.95753425  7.04246575
+  7.12328767  7.20410959  7.28767123  7.37123288  7.45479452  7.53835616
+  7.62328767  7.70684932  7.79041096  7.8739726   7.95753425  8.04246575
+  8.12328767  8.20410959  8.28767123  8.37123288  8.45479452  8.53835616
+  8.62328767  8.70684932  8.79041096  8.8739726   8.95753425  9.04246575
+  9.12328767  9.20410959  9.28767123  9.37123288  9.45479452  9.53835616
+  9.62328767  9.70684932  9.79041096  9.8739726   9.95753425 10.04246575]
+Working on TS
+[ 5.12328767  5.20410959  5.28767123  5.37123288  5.45479452  5.53835616
+  5.62328767  5.70684932  5.79041096  5.8739726   5.95753425  6.04246575
+  6.12328767  6.20410959  6.28767123  6.37123288  6.45479452  6.53835616
+  6.62328767  6.70684932  6.79041096  6.8739726   6.95753425  7.04246575
+  7.12328767  7.20410959  7.28767123  7.37123288  7.45479452  7.53835616
+  7.62328767  7.70684932  7.79041096  7.8739726   7.95753425  8.04246575
+  8.12328767  8.20410959  8.28767123  8.37123288  8.45479452  8.53835616
+  8.62328767  8.70684932  8.79041096  8.8739726   8.95753425  9.04246575
+  9.12328767  9.20410959  9.28767123  9.37123288  9.45479452  9.53835616
+  9.62328767  9.70684932  9.79041096  9.8739726   9.95753425 10.04246575
+ 10.12328767 10.20410959 10.28767123]
+Working on TS
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/glade/derecho/scratch/jpan/tmp/runtime-jpan'
+Working on FSNT
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/glade/derecho/scratch/jpan/tmp/runtime-jpan'
+Working on FSNT
+[ 5.12328767  5.20410959  5.28767123  5.37123288  5.45479452  5.53835616
+  5.62328767  5.70684932  5.79041096  5.8739726   5.95753425  6.04246575
+  6.12328767  6.20410959  6.28767123  6.37123288  6.45479452  6.53835616
+  6.62328767  6.70684932  6.79041096  6.8739726   6.95753425  7.04246575
+  7.12328767  7.20410959  7.28767123  7.37123288  7.45479452  7.53835616
+  7.62328767  7.70684932  7.79041096  7.8739726   7.95753425  8.04246575
+  8.12328767  8.20410959  8.28767123  8.37123288  8.45479452  8.53835616
+  8.62328767  8.70684932  8.79041096  8.8739726   8.95753425  9.04246575
+  9.12328767  9.20410959  9.28767123  9.37123288  9.45479452  9.53835616
+  9.62328767  9.70684932  9.79041096  9.8739726   9.95753425 10.04246575
+ 10.12328767 10.20410959 10.28767123 10.37123288 10.45479452 10.53835616
+ 10.62328767 10.70684932 10.79041096 10.8739726  10.95753425 11.04246575
+ 11.12328767 11.20410959 11.28767123 11.37123288 11.45479452 11.53835616
+ 11.62328767 11.70684932 11.79041096 11.8739726  11.95753425 12.04246575
+ 12.12328767 12.20410959 12.28767123 12.37123288 12.45479452 12.53835616
+ 12.62328767 12.70684932 12.79041096 12.8739726  12.95753425 13.04246575]
+Working on TS
+Working on FLNT
+Working on FLNT
+Working on RESTOM
+Working on PRECC
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/glade/derecho/scratch/jpan/tmp/runtime-jpan'
+Working on FSNT
+Working on RESTOM
+Working on PRECL
+Working on PRECC
+Working on PRECL
+Working on PRECT
+Working on FLNT
+Working on QFLX
+Working on PRECT
+Working on QFLX
+Working on PS
+Working on RESTOM
+Working on PS
+Working on TMQ
+Working on TMQ
+Working on PRECC
+Working on LWCF
+Working on LWCF
+Working on PRECL
+Working on SWCF
+Working on SWCF
+Working on CLDTOT
+Working on PRECT
+Working on QFLX
+Working on CLDTOT
+Working on NCF
+globavg.py done.
+Working on NCF
+Working on PS
+globavg.py done.
+Working on TMQ
+Working on LWCF
+Working on SWCF
+Working on CLDTOT
+Working on NCF
+globavg.py done.
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 5098065.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q tutorial@casper-pbs -l walltime=00:15:00
+
+Error: PBS could not successfully start job.
+
+    Missing file:  /glade/u/home/jpan/.qcmd/out.14381
+    Missing jobid: 5098065
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 5098070.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:15:00
+
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 5098074.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:15:00
+
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 5098076.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:15:00
+
+['streamf.py', '1']
+Reading history files...
+/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/*h0a*.nc
+Computing Eulerian mean streamfunction...
+Computing Stokes drift...
+Computing Eulerian mean streamfunction...
+Computing Stokes drift...
+Plotting streamfunctions...
+Traceback (most recent call last):
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf.py", line 144, in <module>
+"""
+^^^^
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf.py", line 71, in main
+CSF = ax.contourf(np.sin(np.deg2rad(HIST_DS1.lat)), HIST_DS1[pres_name], plotfields[i].values, **contourfkwargs)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/matplotlib/__init__.py", line 1521, in inner
+return func(
+^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/matplotlib/axes/_axes.py", line 6760, in contourf
+contours = mcontour.QuadContourSet(self, *args, **kwargs)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/matplotlib/contour.py", line 708, in __init__
+kwargs = self._process_args(*args, **kwargs)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/matplotlib/contour.py", line 1326, in _process_args
+x, y, z = self._contour_args(args, kwargs)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/matplotlib/contour.py", line 1366, in _contour_args
+x, y, z = self._check_xyz(x, y, z_orig, kwargs)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/matplotlib/contour.py", line 1394, in _check_xyz
+raise TypeError(f"Input z must be at least a (2, 2) shaped array, "
+TypeError: Input z must be at least a (2, 2) shaped array, but has shape (0, 720)
+['streamf.py', '1']
+Reading history files...
+/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/*h0a*.nc
+Computing Eulerian mean streamfunction...
+Computing Stokes drift...
+Computing Eulerian mean streamfunction...
+Computing Stokes drift...
+Plotting streamfunctions...
+Traceback (most recent call last):
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf.py", line 144, in <module>
+"""
+^^^^
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf.py", line 71, in main
+CSF = ax.contourf(np.sin(np.deg2rad(HIST_DS1.lat)), HIST_DS1[pres_name], plotfields[i].values, **contourfkwargs)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/matplotlib/__init__.py", line 1521, in inner
+return func(
+^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/matplotlib/axes/_axes.py", line 6760, in contourf
+contours = mcontour.QuadContourSet(self, *args, **kwargs)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/matplotlib/contour.py", line 708, in __init__
+kwargs = self._process_args(*args, **kwargs)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/matplotlib/contour.py", line 1326, in _process_args
+x, y, z = self._contour_args(args, kwargs)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/matplotlib/contour.py", line 1366, in _contour_args
+x, y, z = self._check_xyz(x, y, z_orig, kwargs)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/matplotlib/contour.py", line 1394, in _check_xyz
+raise TypeError(f"Input z must be at least a (2, 2) shaped array, "
+TypeError: Input z must be at least a (2, 2) shaped array, but has shape (0, 720)
+['streamf.py', '0']
+Reading history files...
+/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/*h0a*.nc
+Computing Eulerian mean streamfunction...
+Computing Stokes drift...
+Plotting streamfunctions...
+Done.
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 5098192.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:15:00
+
+['streamf.py', '1']
+Reading history files...
+/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/*h0a*.nc
+Computing Eulerian mean streamfunction...
+Computing Stokes drift...
+Traceback (most recent call last):
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf.py", line 160, in <module>
+
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf.py", line 46, in main
+streamf1 = comppsi(HIST_DS1)
+^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf.py", line 119, in comppsi
+PSI_vT = (-EHF * latcirc / c.g / dTHTA_dp)#.mean(dim='time')
+~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/_typed_ops.py", line 575, in __truediv__
+return self._binary_op(other, operator.truediv)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/dataarray.py", line 4824, in _binary_op
+f(self.variable, other_variable_or_arraylike)
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/_typed_ops.py", line 964, in __truediv__
+return self._binary_op(other, operator.truediv)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/variable.py", line 2381, in _binary_op
+f(self_data, other_data) if not reflexive else f(other_data, self_data)
+^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported operand type(s) for /: 'Array' and 'NoneType'
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 5098291.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:15:00
+
+['streamf.py', '0']
+Reading history files...
+/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/test/*h0a*.nc
+Computing Eulerian mean streamfunction...
+Computing Stokes drift...
+Traceback (most recent call last):
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf.py", line 163, in <module>
+main()
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf.py", line 46, in main
+streamf1 = comppsi(HIST_DS1)
+^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf.py", line 121, in comppsi
+PSI_resid = PSI_EM + PSI_bal
+^^^^^^^
+NameError: name 'PSI_bal' is not defined
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 5098315.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:15:00
+
+['streamf.py', '0']
+Reading history files...
+/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/test/*h0a*.nc
+Computing Eulerian mean streamfunction...
+Computing Stokes drift...
+Traceback (most recent call last):
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+return self._engine.get_loc(casted_key)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+File "pandas/_libs/hashtable_class_helper.pxi", line 1698, in pandas._libs.hashtable.Float64HashTable.get_item
+File "pandas/_libs/hashtable_class_helper.pxi", line 1722, in pandas._libs.hashtable.Float64HashTable.get_item
+KeyError: -1.5642513420999178
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/indexes.py", line 789, in sel
+indexer = self.index.get_loc(label_value)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+raise KeyError(key) from err
+KeyError: -1.5642513420999178
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf.py", line 185, in <module>
+main()
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf.py", line 49, in main
+plotfields.extend(comppsi_diab(HIST_DS1))
+^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf.py", line 154, in comppsi_diab
+return [2 * np.pi * dens0 * c.a**2 * trapint(w * np.cos(np.deg2rad(w['lat'])), np.deg2rad(w['lat'])) for w in w_diab]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf.py", line 154, in <listcomp>
+return [2 * np.pi * dens0 * c.a**2 * trapint(w * np.cos(np.deg2rad(w['lat'])), np.deg2rad(w['lat'])) for w in w_diab]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf.py", line 174, in trapint
+igral.loc[curr] = igral[prev] + (igrnd.loc[curr] + igrnd[prev]) / 2 * step
+~~~~~~~~~^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/dataarray.py", line 262, in __getitem__
+return self.data_array.sel(key)
+^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/dataarray.py", line 1683, in sel
+ds = self._to_temp_dataset().sel(
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/dataset.py", line 3249, in sel
+query_results = map_index_queries(
+^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/indexing.py", line 194, in map_index_queries
+results.append(index.sel(labels, **options))
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/indexes.py", line 791, in sel
+raise KeyError(
+KeyError: "not all values found in index 'lat'. Try setting the `method` keyword argument (example: method='nearest')."
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 5098330.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:05:00
+
+=>> PBS: job killed: walltime 321 exceeded limit 300
+Terminated
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 5098465.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:15:00
+
+['streamf.py', '0']
+Reading history files...
+/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/test/*h0a*.nc
+Computing Eulerian mean streamfunction...
+Computing Stokes drift...
+Plotting streamfunctions...
+Traceback (most recent call last):
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf.py", line 184, in <module>
+main()
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf.py", line 98, in main
+CSF = ax.contourf(np.sin(np.deg2rad(HIST_DS1.lat)), HIST_DS1[pres_name], plotfields[3:][i].values, **contourfkwargs)
+~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
