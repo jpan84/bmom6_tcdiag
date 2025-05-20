@@ -24,10 +24,11 @@ print(sys.argv)
 #DIRIDX = int(sys.argv[1])
 DIFF = bool(int(sys.argv[1])) #False if len(sys.argv) < 3 else bool(sys.argv[2])
 #DIRIDX2 = None if not DIFF else int(sys.argv[3])
-DIR1 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/test/*h0a*.nc'
-DIR2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/test/*h0a*.nc' if DIFF else None
+DIR1 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/*h0a*.nc'
+DIR2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist_regrid_0.25x0.25_onpres/*h0a*.nc' if DIFF else None
 pres_name = 'plev'
 DIAB_VARS = ['DTCOND', 'QRL', 'QRS']
+plotfileargs = (DIR1.split('/')[-4], DIR2.split('/')[-4] if DIFF else '')
 
 H = 7e3 #m
 dens0 = c.p0 / c.g / H #Boussinesq background density
@@ -45,7 +46,7 @@ def main():
    streamf1 = comppsi(HIST_DS1)
    #print([(s.lat.min(),s.lat.max()) for s in streamf1])
    plotfields = streamf1
-   plotfields.extend(comppsi_diab(HIST_DS1))
+   #plotfields.extend(comppsi_diab(HIST_DS1))
    expo = 10
 
    if DIFF:
@@ -62,6 +63,10 @@ def main():
       #print(plotfields[1])
       #print(plotfields[2])
       expo = 9
+
+   print('Saving to .nc...')
+   outds = xr.Dataset(data_vars = {'PSI_EM': plotfields[0], 'PSI_vT': plotfields[1], 'PSI_resid': plotfields[2]})#, 'EPy': Fy, 'EPz': Fz, 'EPylp': Fylp, 'EPzlp': Fzlp, 'EPyhp': Fyhp, 'EPzhp': Fzhp, 'EPdiv': dF})
+   outds.to_netcdf(path = os.path.join(OUTDIR, '%s_%s_TEM.nc' % plotfileargs))
    
    print('Plotting streamfunctions...')
    plt.rc('font', size=16)
@@ -92,9 +97,11 @@ def main():
       ax.set_title('%s (10$^{%d}$ kg s$^{-1}$)' % (plottitles[i], expo))
       ax.set_xlabel('Latitude [°]')
 
-   plt.savefig(os.path.join(OUTDIR, '%s_%s_TEMstreamf.png' % (DIR1.split('/')[-4], DIR2.split('/')[-4] if DIFF else '')), bbox_inches='tight')
+
+   plt.savefig(os.path.join(OUTDIR, '%s_%s_TEMstreamf.png' % plotfileargs), bbox_inches='tight')
    plt.close()
 
+   '''
    #plot the diabatic terms
    fig, axes = plt.subplots(1, 3, sharey=True, subplot_kw=subplot_kw)
    for i, ax in enumerate(axes):
@@ -115,10 +122,7 @@ def main():
 
    plt.savefig(os.path.join(OUTDIR, '%s_%s_TEMstreamf_diab.png' % (DIR1.split('/')[-4], DIR2.split('/')[-4] if DIFF else '')), bbox_inches='tight')
    plt.close()
-
-   #print('Saving to .nc...')
-   #outds = xr.Dataset(data_vars = {'PSI_EM': PSI_EM, 'PSI_stokes': PSI_bal, 'PSI_resid': PSI_resid, 'EPy': Fy, 'EPz': Fz, 'EPylp': Fylp, 'EPzlp': Fzlp, 'EPyhp': Fyhp, 'EPzhp': Fzhp, 'EPdiv': dF})
-   #outds.to_netcdf(path = '%s_%s_TEM.nc' % plotfileargs)
+   '''
 
    print('Done.')
 
@@ -126,7 +130,7 @@ def comppsi(HIST_DS):
    print('Computing Eulerian mean streamfunction...')
    #compute the streamfunction assoc w/ Eulerian-mean V
    V_ZM = HIST_DS.V.mean(dim='lon')
-   V_ZMEM = V_ZM.mean(dim='time')
+   V_ZMEM = V_ZM.mean(dim='time') #TODO: weight months by length
    coslat = np.cos(HIST_DS.lat * np.pi / 180)
    latcirc = 2 * np.pi * c.a * coslat #circumference at each latitude
    integrand = V_ZMEM * latcirc / c.g
@@ -155,7 +159,7 @@ def comppsi_diab(HIST_DS):
    w_diab = [thdot / dens0 / c.g / dTHTA_dp for thdot in th_tends]
 
    print('Integrating w to obtain diabatic streamfuncs...')
-   return [2 * np.pi * dens0 * c.a**2 * trapint(w * np.cos(np.deg2rad(w['lat'])), w['lat']) / 180 * np.pi for w in w_diab]
+   return [2 * np.pi * dens0 * c.a**2 * trapint_vectorized(w * np.cos(np.deg2rad(w['lat'])), w['lat']) / 180 * np.pi for w in w_diab]
 
 #get background stratification as d(THETA_zm) / dp
 def bg_strat(TH_MEAN):
@@ -178,6 +182,30 @@ def trapint(igrnd, coords):
       step = pt - coords[prev]
       igral.loc[curr] = igral[prev] + (igrnd.loc[curr] + igrnd[prev]) / 2 * step
    return igral
+
+#written by Gemini
+def trapint_vectorized(igrnd, coords):
+    print(igrnd.name)
+    dim = list(coords.coords)[0]
+    coord_values = coords.values
+    integrand_values = igrnd.values
+
+    # Calculate the step sizes
+    step = np.diff(coord_values)
+
+    # Get the integrand values at the current and previous points
+    y_curr = integrand_values[1:]
+    y_prev = integrand_values[:-1]
+
+    # Calculate the trapezoidal area for each step
+    trapezoid_areas = (y_curr + y_prev) / 2 * step[..., 25, ...]
+
+    # Calculate the cumulative sum of the areas
+    cumulative_integral_values = np.concatenate(([0], np.cumsum(trapezoid_areas)))
+
+    # Create a new DataArray for the result
+    igral = xr.DataArray(cumulative_integral_values, dims=coords.dims, coords=coords.coords)
+    return igral
 
 def thta(T, p):
    """

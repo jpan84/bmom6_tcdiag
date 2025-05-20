@@ -43,14 +43,16 @@ def main():
 
    plt.rc('font', size=14)
 
-   plot_lat_binned(dfs, bininfo, totyrs, unique_tracks_of_storm_1d, 'unique storms', 'unique_track_dens_%.1f.png' % DLAT)
-   plot_lat_binned(dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly fixes', '6hr_track_dens_%.1f.png' % DLAT)
-   plot_lat_binned(dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly hurricane fixes', '6hr_track_dens_hurr_%.1f.png' % DLAT, wspd_thresh=33)
-   plot_lat_binned(dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly major hurricane fixes', '6hr_track_dens_major_%.1f.png' % DLAT, wspd_thresh=50)
-   plot_lat_binned(dfs, bininfo, totyrs, bin_ace_of_storm_1d, 'ACE [$10^4$ kt$^2$] ', 'ace_binned_%.1f.png' % DLAT)
+   uniq = plot_lat_binned(dfs, bininfo, totyrs, unique_tracks_of_storm_1d, 'unique storms', 'unique_track_dens_%.1f.png' % DLAT)
+   h6all = plot_lat_binned(dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly fixes', '6hr_track_dens_%.1f.png' % DLAT)
+   h6hurr = plot_lat_binned(dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly hurricane fixes', '6hr_track_dens_hurr_%.1f.png' % DLAT, wspd_thresh=33)
+   h6maj = plot_lat_binned(dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly major hurricane fixes', '6hr_track_dens_major_%.1f.png' % DLAT, wspd_thresh=50)
+   ace = plot_lat_binned(dfs, bininfo, totyrs, bin_ace_of_storm_1d, 'ACE [$10^4$ kt$^2$] ', 'ace_binned_%.1f.png' % DLAT)
 
+   outds = xr.Dataset(data_vars=dict(uniq=uniq, h6all=h6all, h6hurr=h6hurr, h6maj=h6maj, ace=ace), attrs=dict(dlat=DLAT))
+   outds.to_netcdf(os.path.join(DOUT, 'tcdens.nc'))
 
-def plot_lat_binned(dfs, bininfo, totyrs, varfunc, ylabel, filo, **fkwargs):
+def plot_lat_binned(dfs, bininfo, totyrs, varfunc, ylabel, filo, norm='per million km2 per yr', **fkwargs):
    pltdat = [np.zeros_like(bininfo[1]) for _ in dfs]
    for ii, df in enumerate(dfs):
       for stm in df['stmnum'].unique():
@@ -63,10 +65,12 @@ def plot_lat_binned(dfs, bininfo, totyrs, varfunc, ylabel, filo, **fkwargs):
       plt.xlabel('lat')
       if varfunc == sixhrly_fixes_of_storm_1d:
          plt.ylim(*FIXYLIM)
-      plt.ylabel('%s per million km2 per yr' % ylabel)
+      plt.ylabel('%s %s' % (ylabel, norm))
    plt.legend(fontsize=12)
    plt.savefig(os.path.join(DOUT, filo), bbox_inches='tight')
    plt.close()
+
+   return xr.DataArray(np.array(pltdat), dims=['run', 'lat'], coords=dict(run=labels, lat=bininfo[1]), name=ylabel, attrs=dict(norm=norm))
 
 #make an array of lat bin interfaces
 #In: latitude bounds [deg], desired lat spacing [deg] at the equator
