@@ -40,9 +40,9 @@ def main():
    expo = 9 if DIFF else 10
 
    plt.rc('font', size=16)
-   plt.rcParams['figure.figsize'] = (7, 12)
+   plt.rcParams['figure.figsize'] = (8, 12)
    subplot_kw = dict(xlim=(-1, 1))
-   fig, axes = plt.subplots(3, 2, sharex=True, subplot_kw=subplot_kw, height_ratios=[3, 1, 1], width_ratios=[15, 1])
+   fig, axes = plt.subplots(3, 2, sharex=True, subplot_kw=subplot_kw, height_ratios=[2, 1, 1], width_ratios=[15, 1])
    axes[1, 1].axis('off'); axes[2, 1].axis('off')
 
    contourfkwargs = {'cmap': 'bwr' if DIFF else 'coolwarm', 'levels': 2.**np.arange(-2, 7, 1), 'norm': colors.SymLogNorm(2.**-1)}
@@ -57,7 +57,7 @@ def main():
    ax.set_ylabel('Pressure [hPa]')
    ax.set_yticks(np.arange(100, 1001, 100))
    plt.colorbar(CSF, cax=axes[0, 1])
-   ax.set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB)
+   ax.set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB.astype(np.int_))
    ax.set_yscale('log')
    #ax.set_xlim(np.sin(np.deg2rad(-15)), np.sin(np.deg2rad(90)))
    ax.set_ylim(100, 1000)
@@ -68,33 +68,50 @@ def main():
    ax.set_title('$\\bar{\Psi}^*$ (10$^{%d}$ kg s$^{-1}$)' % expo)
    ax.set_xlabel('Latitude [°]')
 
-   plt.show()
+   #plt.show()
+   plt.savefig(os.path.join(DIRIO, '%s_%s_TEM_ener_tracks.png' % (ALIASES[0], ALIASES[1] if DIFF else '')), bbox_inches='tight')
 
    buddss = [xr.open_mfdataset(h0).mean(dim=['lon', 'time']) for h0 in H0As] #TODO: weight months by length
    budds = buddss[1] - buddss[0] if DIFF else buddss[0]
-   if not diff:
+   if not DIFF:
       buddss[1].close()
 
-   pltTdot3D = np.sum([budds[dv] * 86400 for dv in DIAB_VARS])
-   contourkwargs = {'colors': 'red', 'levels': np.arange(0.25, 3.1, 0.25)}
+   Tdot3D = sum([budds[dv] for dv in DIAB_VARS])
+   contourkwargs = {'colors': 'red', 'levels': np.arange(5e-2, 5.1e-1, 5e-2)}
    contourkwargs['levels'] = np.concatenate((-contourkwargs['levels'][::-1], contourkwargs['levels']))
-   CS2 = ax.contour(np.sin(np.deg2rad(pltTdot3D.lat)), pltTdot3D[pres_name], pltTdot3D.values, **contourkwargs)
+   CS2 = ax.contour(np.sin(np.deg2rad(Tdot3D.lat)), Tdot3D[pres_name], Tdot3D.values * 86400, **contourkwargs)
 
-   plt.show()
+   plt.savefig(os.path.join(DIRIO, '%s_%s_TEM_ener_tracks.png' % (ALIASES[0], ALIASES[1] if DIFF else '')), bbox_inches='tight')
+   #plt.show()
 
-#compute the trapezoidal integral given integrand values and 1D coordinate values
-#start at a zero integral value for the 1st coord value
-def trapint(igrnd, coords):
-   print(igrnd.name)
-   dim = list(coords.coords)[0]
-   #sz = coords.shape[0]
-   igral = xr.DataArray(np.zeros(igrnd.shape, dtype=np.float64), dims=igrnd.dims, coords=igrnd.coords)
-   for i, pt in enumerate(coords[1:]):
-      prev = {dim: i} #use [] to index DataArrays
-      curr = {dim: pt} #use .loc[] to index DataArrays
-      step = pt - coords[prev]
-      igral.loc[curr] = igral[prev] + (igrnd.loc[curr] + igrnd[prev]) / 2 * step
-   return igral
+   integ3d = -c.cp / c.g * Tdot3D.integrate(pres_name) #since cumulative not needed trapint(Tdot3D, Tdot3D[pres_name]).isel({pres_name: -1})
+   sfcexch = budds['SHFLX'] - budds['LHFLX']
+
+   ax = axes[1, 0]
+   ax.plot(np.sin(np.deg2rad(sfcexch.lat)), sfcexch.values, label='sfc')
+   ax.plot(np.sin(np.deg2rad(integ3d.lat)), integ3d.values, label='3D cond+lw+sw')
+   ax.legend(framealpha=0.5)
+   ax.set_ylabel('Atmo energy budget [W m$^{-2}$]')
+
+   plt.savefig(os.path.join(DIRIO, '%s_%s_TEM_ener_tracks.png' % (ALIASES[0], ALIASES[1] if DIFF else '')), bbox_inches='tight')  
+   #plt.show()
+
+   densds = xr.open_dataset(os.path.join(DIRIO, DENSFILI))
+   if DIFF:
+      densds = densds.sel(run=ALIASES[1]) - densds.sel(run=ALIASES[0])
+   else:
+      densds = densds.sel(run=ALIASES[0])
+
+   ax = axes[2, 0]
+   ax.plot(np.sin(np.deg2rad(densds.lat), densds.ace.values), label='ACE')
+   ax1 = ax.twinx()
+   ax1.plot(np.sin(np.deg2rad(densds.lat), densds.h6hurr.values), label='6h hurricane fixes')
+   ax.set_title(densds.ace.attrs['norm'])
+   ax.legend(framealpha=0.5)
+
+   #plt.show()
+   plt.savefig(os.path.join(DIRIO, '%s_%s_TEM_ener_tracks.png' % (ALIASES[0], ALIASES[1] if DIFF else '')), bbox_inches='tight')
+   plt.close()
 
 def thta(T, p):
    """

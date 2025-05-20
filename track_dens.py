@@ -70,7 +70,7 @@ def plot_lat_binned(dfs, bininfo, totyrs, varfunc, ylabel, filo, norm='per milli
    plt.savefig(os.path.join(DOUT, filo), bbox_inches='tight')
    plt.close()
 
-   return xr.DataArray(np.array(pltdat), dims=['run', 'lat'], coords=dict(run=labels, lat=bininfo[1]), name=ylabel, attrs=dict(norm=norm))
+   return xr.DataArray(np.array(pltdat), dims=['run', 'lat'], coords=dict(run=labels, lat=bininfo[1]), attrs=dict(norm=norm, long_name=ylabel))
 
 #make an array of lat bin interfaces
 #In: latitude bounds [deg], desired lat spacing [deg] at the equator

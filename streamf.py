@@ -2,7 +2,7 @@
 #Adapted from 20221002 version
 #Use data on pressure levels, interpolated using hy2pres.py.
 #Compute the transformed Eulerian mean (TEM) streamfunctions based on Eq. 10 from White et al. 2020 (10.1175/JCLI-D-19-0697.1).
-#qcmd -q casper -l walltime=00:15:00 -l select=1:ncpus=36:mem=128GB -A UPSU0063 python3 streamf.py 0
+#qcmd -q casper -l walltime=00:30:00 -l select=1:ncpus=36:mem=128GB -A UPSU0063 python3 streamf.py 0
 
 #import paths as pt
 OUTDIR = './streamf/'
