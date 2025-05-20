@@ -1,14 +1,5 @@
 nohup: ignoring input
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 5112094.casper-pbs with qsub arguments:
-    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:30:00
+Waiting on job launch; 5115995.casper-pbs with qsub arguments:
+    qsub  -l select=2:ncpus=36:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:45:00
 
-['streamf.py', '0']
-Reading history files...
-/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/*h0a*.nc
-Computing Eulerian mean streamfunction...
-None
-Computing vT term...
-Saving to .nc...
-Plotting streamfunctions...
-Done.
