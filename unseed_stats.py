@@ -4,6 +4,7 @@ import glob
 import re
 import numpy as np
 import pandas as pd
+from datetime import datetime as dt
 '''
 import uxarray as ux
 
@@ -14,7 +15,9 @@ import geoviews.feature as gf
 import cartopy.crs as ccrs
 '''
 
-logpaths = sorted(glob.glob('/glade/u/home/jpan/work/MOM6_CASEDIRS/250415_unseed_production.out*'))
+alias = '250415_unseed_production'
+dfcols = ['dt', 'sstlat', 'tid', 'clat', 'clon', 'psmin', 'rp', 'dp', 'zp', 'exppr']
+logpaths = sorted(glob.glob('/glade/u/home/jpan/work/MOM6_CASEDIRS/%s.out*' % alias))
 
 '''
 BBOX_DEG = 10.
@@ -52,18 +55,21 @@ def main():
    #print(seedlog)
    #exit()
 
+   outdf = pd.DataFrame(columns=dfcols)
    mkplt = False
    clat, clon, psmin, tid, sstlat, dtstr = tuple([np.nan for _ in range(6)])
    settings = []
    #dtstr, orinc, modnc = None, None, None
+   prevln = ''
    for ln in seedlog:
       spl = ln.strip('\n').split(' ')
       if not len(spl[0]):
          continue
-      if 'not in same hemisphere' in ln:
+      if 'not in same hemisphere' in ln and ln != prevln:
+         psmin, settings = np.nan, []
          mkplt = True
-      if spl[0] == 'find-sst-max.py':
-         sstlat = spl[4]
+      if spl[0] == 'find-sst-max.py:':
+         sstlat = float(spl[4])
       if spl[0] == 'sedding':
          #211 sedding lat/lon: -8.347259 48.750000
          clon = float(spl[-1])
@@ -89,10 +95,14 @@ def main():
          settings = [float(num) for num in re.compile(r'\d+\.\d+').findall(ln)]
          mkplt = True
       if mkplt:
-         print(dtstr, sstlat, tid, clat, clon, psmin, *settings)
-
+         newrow = [dt.strptime('-'.join(dtstr.split('-')[:-1]), '%Y-%m-%d'), sstlat, tid, clat, clon, psmin, *settings]
+         ser = pd.Series(newrow, index=outdf.columns[:len(newrow)])
+         outdf.loc[len(outdf)] = ser
          mkplt = False
+      prevln = ln
 
+   outdf.to_parquet('seed_stats/%s_unseed_events.parquet' % alias)
+   outdf.to_csv('seed_stats/%s_unseed_events.csv' % alias)
 
 if __name__ == '__main__':
    main()

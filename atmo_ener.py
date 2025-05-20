@@ -91,13 +91,13 @@ def main():
       buddss[1].close()
 
    Tdot3D = sum([budds[dv] for dv in DIAB_VARS])
-   contourkwargs = {'colors': 'lime', 'levels': np.arange(1e-1, 1.01, 1e-1) / (10 if DIFF else 1)}
+   contourkwargs = {'colors': 'lime', 'levels': np.arange(5e-1, 1.01e1, 5e-1) / (10 if DIFF else 1)}
    contourkwargs['levels'] = np.concatenate((-contourkwargs['levels'][::-1], contourkwargs['levels']))
    CS2 = ax.contour(np.sin(np.deg2rad(Tdot3D.lat)), Tdot3D[pres_name] / 100, Tdot3D.values * 86400, **contourkwargs)
    ax.set_title('$\\bar{\Psi}^*$ (10$^{%d}$ kg s$^{-1}$)        %s: CI %.2f K day$^{-1}$' % (expo, contourkwargs['colors'], contourkwargs['levels'][-1] - contourkwargs['levels'][-2]))
 
-   debug_Tdot = xr.Dataset(data_vars=dict(Tdot3D=Tdot3D * 86400))
-   debug_Tdot.to_netcdf(os.path.join(DIRIO, 'debug_Tdot3D.nc'))
+   #debug_Tdot = xr.Dataset(data_vars=dict(Tdot3D=Tdot3D * 86400))
+   #debug_Tdot.to_netcdf(os.path.join(DIRIO, 'debug_Tdot3D.nc'))
 
    plt.savefig(os.path.join(DIRIO, '%s_%s_TEM_ener_tracks.png' % (ALIASES[0], ALIASES[1] if DIFF else '')), bbox_inches='tight')
    #plt.show()
