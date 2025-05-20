@@ -84,14 +84,17 @@ def main():
    plt.savefig(os.path.join(DIRIO, '%s_%s_TEM_ener_tracks.png' % (ALIASES[0], ALIASES[1] if DIFF else '')), bbox_inches='tight')
    #plt.show()
 
-   integ3d = -c.cp / c.g * Tdot3D.integrate(pres_name) #since cumulative not needed trapint(Tdot3D, Tdot3D[pres_name]).isel({pres_name: -1})
+   integ3d = c.cp / c.g * Tdot3D.integrate(pres_name) #since cumulative not needed trapint(Tdot3D, Tdot3D[pres_name]).isel({pres_name: -1})
    sfcexch = budds['SHFLX'] - budds['LHFLX']
+   sumbud = integ3d + sfc
 
    ax = axes[1, 0]
    ax.plot(np.sin(np.deg2rad(sfcexch.lat)), sfcexch.values, label='sfc')
    ax.plot(np.sin(np.deg2rad(integ3d.lat)), integ3d.values, label='3D cond+lw+sw')
+   ax.plot(np.sin(np.deg2rad(sumbud.lat)), sumbud.values, label='sum')
+   ax.hlines(0, -1, 1, color='black', linestyle='--')
    ax.legend(framealpha=0.5)
-   ax.set_ylabel('Atmo energy budget [W m$^{-2}$]')
+   ax.set_title('Atmo energy budget [W m$^{-2}$]')
 
    plt.savefig(os.path.join(DIRIO, '%s_%s_TEM_ener_tracks.png' % (ALIASES[0], ALIASES[1] if DIFF else '')), bbox_inches='tight')  
    #plt.show()
@@ -103,11 +106,17 @@ def main():
       densds = densds.sel(run=ALIASES[0])
 
    ax = axes[2, 0]
-   ax.plot(np.sin(np.deg2rad(densds.lat), densds.ace.values), label='ACE')
+   ax.plot(np.sin(np.deg2rad(densds.lat)), densds.ace.values, label='ACE')
+   ax.set_ylabel('ACE')
    ax1 = ax.twinx()
-   ax1.plot(np.sin(np.deg2rad(densds.lat), densds.h6hurr.values), label='6h hurricane fixes')
+   ax1.plot(np.sin(np.deg2rad(densds.lat)), densds.h6hurr.values, label='6h hurricane fixes', color='orange')
+   ax1.set_ylabel('6h hurricane fixes')
+   ax1.legend(framealpha=0.5, loc=1)
    ax.set_title(densds.ace.attrs['norm'])
-   ax.legend(framealpha=0.5)
+   ax.legend(framealpha=0.5, loc=2)
+   ax.hlines(0, -1, 1, color='black', linestyle='--')
+   ax1.hlines(0, -1, 1, color='black', linestyle='--')
+   #TODO: align zeroes for diff plot
 
    #plt.show()
    plt.savefig(os.path.join(DIRIO, '%s_%s_TEM_ener_tracks.png' % (ALIASES[0], ALIASES[1] if DIFF else '')), bbox_inches='tight')
