@@ -1,60 +1,6 @@
 nohup: ignoring input
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 5134162.casper-pbs with qsub arguments:
-    qsub  -l select=1:ncpus=16:mem=64GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:30:00
+Waiting on job launch; 5136456.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=64GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:15:00
 
-['streamf.py', '1']
-Reading history files...
-/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/cdo_ann_means.nc
-Computing Eulerian mean streamfunction...
-None
-Computing vT term...
-Computing Eulerian mean streamfunction...
-None
-Computing vT term...
-Saving to .nc...
-Traceback (most recent call last):
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 211, in _acquire_with_cache_info
-file = self._cache[self._key]
-~~~~~~~~~~~^^^^^^^^^^^
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 56, in __getitem__
-value = self._cache[key]
-~~~~~~~~~~~^^^^^
-KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl_b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1_TEM.nc',), 'a', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), 'b728b1eb-db34-43c6-8fee-668a7c4bfd3d']
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf.py", line 219, in <module>
-main()
-File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf.py", line 70, in main
-outds.to_netcdf(path = os.path.join(OUTDIR, '%s_%s_TEM.nc' % plotfileargs))
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/dataset.py", line 2372, in to_netcdf
-return to_netcdf(  # type: ignore[return-value]  # mypy cannot resolve the overloads:(
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 1856, in to_netcdf
-store = store_open(target, mode, format, group, **kwargs)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 452, in open
-return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 393, in __init__
-self.format = self.ds.data_model
-^^^^^^^
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 461, in ds
-return self._acquire()
-^^^^^^^^^^^^^^^
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 455, in _acquire
-with self._manager.acquire_context(needs_lock) as root:
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/contextlib.py", line 137, in __enter__
-return next(self.gen)
-^^^^^^^^^^^^^^
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 199, in acquire_context
-file, cached = self._acquire_with_cache_info(needs_lock)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 217, in _acquire_with_cache_info
-file = self._opener(*self._args, **kwargs)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-File "src/netCDF4/_netCDF4.pyx", line 2521, in netCDF4._netCDF4.Dataset.__init__
-File "src/netCDF4/_netCDF4.pyx", line 2158, in netCDF4._netCDF4._ensure_nc_success
-PermissionError: [Errno 13] Permission denied: '/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl_b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1_TEM.nc'
+['atmo_ener.py', '1']

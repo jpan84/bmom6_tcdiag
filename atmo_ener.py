@@ -130,6 +130,7 @@ def main():
    #plt.show()
 
    densds = xr.open_dataset(os.path.join(DIRIO, DENSFILI))
+   dds0 = densds
    densnorm = densds.ace.attrs['norm']
    if DIFF:
       densds = densds.sel(run=ALIASES[1]) - densds.sel(run=ALIASES[0])
@@ -142,6 +143,10 @@ def main():
    ax1 = ax.twinx()
    ax1.plot(np.sin(np.deg2rad(densds.lat)), densds.h6hurr.values, label='6h hurricane fixes', color='orange')
    ax1.set_ylabel('6h hurricane fixes')
+   if DIFF and ALIASES[1] == 'unseed':
+      ax1.plot(np.sin(np.deg2rad(densds.lat)), -dds0.unseeds.values, label='unseed events', color='gray')
+   if DIFF and ALIASES[1] == 'seed':
+      ax1.plot(np.sin(np.deg2rad(densds.lat)), dds0.seeds.values, label='seed events', color='gray')
    ax1.legend(framealpha=0.5, loc=1)
    ax.set_title(densnorm)
    ax.set_xlabel('Latitude [°]')
