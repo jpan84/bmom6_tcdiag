@@ -3,7 +3,9 @@ nohup: ignoring input
 Waiting on job launch; 5133670.casper-pbs with qsub arguments:
     qsub  -l select=2:ncpus=16:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=01:30:00
 
-/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+=>> PBS: job killed: walltime 5461 exceeded limit 5400
+Terminated
+_flag]: bad array subscript
 Waiting on job launch; 5134480.casper-pbs with qsub arguments:
     qsub  -l select=1:ncpus=16:mem=64GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:05:00
 
@@ -25,3 +27,7 @@ Waiting on job launch; 5134722.casper-pbs with qsub arguments:
 
 ['atmo_ener.py', '0']
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 5134879.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=64GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:15:00
+
+['atmo_ener.py', '1']

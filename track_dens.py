@@ -4,12 +4,15 @@
 import os
 import sys
 import pickle
+import xarray as xr
 import numpy as np
 import pandas as pd
 import datetime as dt
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 from scipy import stats
+
+PLOTSEEDS = int(sys.argv[1])
 
 MS2KT = 1.9438
 a_e = 6.371e6 #m
@@ -20,6 +23,8 @@ DLAT = 0.5
 #FILI = sys.argv[1]
 FILI = ['250415_unseed.parquet', '250417_ctrl.parquet', '250416_seed1x1.parquet']
 labels = ['unseed', 'ctrl', 'seed']
+events = ['250415_unseed_production_unseed_events.parquet', None, '250416_seed1x1_production_seed_events.parquet']
+rename_dict = dict(clat='lat', clon='lon')
 DOUT = '250519_density'
 
 #FILI = ['250415_unseed_JJASOND.parquet', '250417_ctrl_JJASOND.parquet']
@@ -50,6 +55,18 @@ def main():
    ace = plot_lat_binned(dfs, bininfo, totyrs, bin_ace_of_storm_1d, 'ACE [$10^4$ kt$^2$] ', 'ace_binned_%.1f.png' % DLAT)
 
    outds = xr.Dataset(data_vars=dict(uniq=uniq, h6all=h6all, h6hurr=h6hurr, h6maj=h6maj, ace=ace), attrs=dict(dlat=DLAT))
+
+   if PLOTSEEDS:
+      usdf = pd.read_parquet(events[0]).rename(columns=rename_dict)
+      unseeds = accum_bin_map_1d(usdf, bininfo, 'psmin', lambda ps: not np.isnan(ps), dtype=np.int_, rettype=np.int_)
+      usdens = xr.DataArray(unseeds / (bininfo[2] / 1e6 / 1e3**2) / totyrs[0], dims=['lat'], coords=[bininfo[1]])
+
+      sddf = pd.read_parquet(events[-1]).rename(columns=rename_dict)
+      seeds = accum_bin_map_1d(usdf, bininfo, 'lat', lambda lat: 1, dtype=np.int_, rettype=np.int_)
+      sddens = xr.DataArray(seeds / (bininfo[2] / 1e6 / 1e3**2) / totyrs[-1], dims=['lat'], coords=[bininfo[1]])
+
+      outds = outds.assign(variables=dict(unseeds=usdens, seeds=sddens))
+
    outds.to_netcdf(os.path.join(DOUT, 'tcdens.nc'))
 
 def plot_lat_binned(dfs, bininfo, totyrs, varfunc, ylabel, filo, norm='per million km2 per yr', **fkwargs):
