@@ -193,3 +193,4 @@ Waiting on job launch; 5116026.casper-pbs with qsub arguments:
 Waiting on job launch; 5116182.casper-pbs with qsub arguments:
     qsub  -l select=2:ncpus=36:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:45:00
 
+['atmo_ener.py', '1']
