@@ -1,5 +1,111 @@
 nohup: ignoring input
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 5133127.casper-pbs with qsub arguments:
-    qsub  -l select=1:ncpus=32:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=01:30:00
+Waiting on job launch; 5133293.casper-pbs with qsub arguments:
+    qsub  -l select=2:ncpus=16:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=01:30:00
 
+[28 31 30 31 30 31 31 30 31 30 31 31 28 31 30 31 30 31 31 30 31 30 31 31
+28 31 30 31 30 31 31 30 31 30 31 31 28 31 30 31 30 31 31 30 31 30 31 31
+28 31 30 31 30 31 31 30 31 30 31 31 28 31 30 31 30 31 31 30 31 30 31 31
+28 31 30 31 30 31 31 30 31 30 31 31 28 31 30 31 30 31 31 30 31 30 31 31]
+Averaging AEROD_v
+Averaging CAPE
+Averaging CLDHGH
+Averaging CLDICE
+Averaging CLDLIQ
+Averaging CLDLOW
+Averaging CLDMED
+Averaging CLDTOT
+Averaging CLOUD
+Averaging CONCLD
+Averaging DCQ
+Averaging DTCOND
+Averaging DTV
+Averaging EMIS
+Averaging FICE
+Averaging FLDS
+Averaging FLDSC
+Averaging FLNS
+Averaging FLNSC
+Averaging FLNT
+Averaging FLNTC
+Averaging FLUT
+Averaging FLUTC
+Averaging FSDS
+Averaging FSDSC
+Averaging FSDTOA
+Averaging FSNS
+Averaging FSNSC
+Averaging FSNT
+Averaging FSNTC
+Averaging FSNTOA
+Averaging FSNTOAC
+Averaging FSUTOA
+Averaging ICEFRAC
+Averaging ICIMR
+Averaging ICWMR
+Averaging LANDFRAC
+Averaging LHFLX
+Averaging LWCF
+Averaging OCNFRAC
+Averaging OMEGA
+Averaging OMEGAT
+Averaging PBLH
+Averaging PMID
+Averaging PRECC
+Averaging PRECL
+Averaging PRECSC
+Averaging PRECSL
+Averaging PS
+Averaging PSDRY
+Averaging PSL
+Averaging Q
+Averaging QFLX
+Averaging QREFHT
+Averaging QRL
+Averaging QRS
+Averaging RELHUM
+Averaging SFCLDICE
+Averaging SFCLDLIQ
+Averaging SHFLX
+Averaging SNOWHICE
+Averaging SNOWHLND
+Averaging SOLIN
+Averaging SWCF
+Averaging T
+Averaging TAUGWX
+Averaging TAUGWY
+Averaging TAUX
+Averaging TAUY
+Averaging TGCLDCWP
+Averaging TGCLDIWP
+Averaging TGCLDLWP
+Averaging TMQ
+Averaging TREFHT
+Averaging TS
+Averaging TSMN
+Averaging TSMX
+Averaging U
+Averaging U10
+Averaging UU
+Averaging V
+Averaging VD01
+Averaging VQ
+Averaging VT
+Averaging VU
+Averaging VV
+Averaging Z3
+Averaging area
+Averaging areawt
+Averaging date
+Skipping date_written
+Averaging datesec
+Averaging gw
+Averaging lat_bnds
+Averaging lon_bnds
+Averaging mdt
+Averaging nbdate
+Averaging nbsec
+Averaging ndbase
+Averaging nsbase
+Skipping time_bounds
+Skipping time_written

@@ -3,7 +3,7 @@ import numpy as np
 import os
 import sys
 
-DIR = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist_regrid_0.25x0.25_onpres'
+DIR = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres'
 
 ds = xr.open_mfdataset(os.path.join(DIR, '*.h0a.*.nc'))
 print(ds.time.dt.days_in_month.data)

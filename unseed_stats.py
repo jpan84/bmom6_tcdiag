@@ -16,7 +16,7 @@ import cartopy.crs as ccrs
 '''
 
 alias = '250415_unseed_production'
-dfcols = ['dt', 'sstlat', 'tid', 'clat', 'clon', 'psmin', 'rp', 'dp', 'zp', 'exppr']
+dfcols = ['dt', 'sstlat', 'sstval', 'tid', 'clat', 'clon', 'psmin', 'rp', 'dp', 'zp', 'exppr']
 logpaths = sorted(glob.glob('/glade/u/home/jpan/work/MOM6_CASEDIRS/%s.out*' % alias))
 
 '''
@@ -57,7 +57,7 @@ def main():
 
    outdf = pd.DataFrame(columns=dfcols)
    mkplt = False
-   clat, clon, psmin, tid, sstlat, dtstr = tuple([np.nan for _ in range(6)])
+   clat, clon, psmin, tid, sstlat, sstval, dtstr = tuple([np.nan for _ in range(7)])
    settings = []
    #dtstr, orinc, modnc = None, None, None
    prevln = ''
@@ -70,6 +70,7 @@ def main():
          mkplt = True
       if spl[0] == 'find-sst-max.py:':
          sstlat = float(spl[4])
+         sstval = float(spl[-1])
       if spl[0] == 'sedding':
          #211 sedding lat/lon: -8.347259 48.750000
          clon = float(spl[-1])
@@ -95,7 +96,7 @@ def main():
          settings = [float(num) for num in re.compile(r'\d+\.\d+').findall(ln)]
          mkplt = True
       if mkplt:
-         newrow = [dt.strptime('-'.join(dtstr.split('-')[:-1]), '%Y-%m-%d'), sstlat, tid, clat, clon, psmin, *settings]
+         newrow = [dt.strptime('-'.join(dtstr.split('-')[:-1]), '%Y-%m-%d'), sstlat, sstval, tid, clat, clon, psmin, *settings]
          ser = pd.Series(newrow, index=outdf.columns[:len(newrow)])
          outdf.loc[len(outdf)] = ser
          mkplt = False
