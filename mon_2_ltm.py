@@ -3,9 +3,9 @@ import numpy as np
 import os
 import sys
 
-DIR = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres'
+DIR = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist_regrid_0.25x0.25_onpres'
 
-ds = xr.open_mfdataset(os.path.join(DIR, '*.h0a.0005-1*.nc'))
+ds = xr.open_mfdataset(os.path.join(DIR, '*.h0a.*.nc'))
 print(ds.time.dt.days_in_month.data)
 dpm = ds.time.dt.days_in_month.data
 wgts = dpm / dpm.sum()
@@ -20,6 +20,6 @@ for dv in ds.data_vars:
       print('Skipping', dv)
 
 ds.attrs['history'] = sys.argv[0] + ';\n' + ds.attrs['history']
-ds.attrs['ltm_start_date'] = ds.time.values[0]
-ds.attrs['ltm_end_date'] = ds.time.values[-1]
-ds.to_netcdf(os.path.join(DIR, 'testltm.nc'))
+ds.attrs['ltm_start_date'] = str(ds.time.values[0])
+ds.attrs['ltm_end_date'] = str(ds.time.values[-1])
+ds.to_netcdf(os.path.join(DIR, 'ltm.nc'))

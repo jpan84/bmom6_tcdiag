@@ -93,8 +93,12 @@ def main():
    Tdot3D = sum([budds[dv] for dv in DIAB_VARS])
    contourkwargs = {'colors': 'lime', 'levels': np.arange(5e-1, 1.01e1, 5e-1) / (10 if DIFF else 1)}
    contourkwargs['levels'] = np.concatenate((-contourkwargs['levels'][::-1], contourkwargs['levels']))
+   ci = contourkwargs['levels'][-1] - contourkwargs['levels'][-2]
+   if Tdot3D.max() * 86400 > 15 * ci:
+      contourkwargs['levels'] = contourkwargs['levels'] * 5
+      ci *= 5
    CS2 = ax.contour(np.sin(np.deg2rad(Tdot3D.lat)), Tdot3D[pres_name] / 100, Tdot3D.values * 86400, **contourkwargs)
-   ax.set_title('$\\bar{\Psi}^*$ (10$^{%d}$ kg s$^{-1}$)        %s: CI %.2f K day$^{-1}$' % (expo, contourkwargs['colors'], contourkwargs['levels'][-1] - contourkwargs['levels'][-2]))
+   ax.set_title('$\\bar{\Psi}^*$ (10$^{%d}$ kg s$^{-1}$)        %s: CI %.2f K day$^{-1}$' % (expo, contourkwargs['colors'], ci))
 
    #debug_Tdot = xr.Dataset(data_vars=dict(Tdot3D=Tdot3D * 86400))
    #debug_Tdot.to_netcdf(os.path.join(DIRIO, 'debug_Tdot3D.nc'))
@@ -140,6 +144,13 @@ def main():
    ax.hlines(0, -1, 1, color='black', linestyle='--')
    ax1.hlines(0, -1, 1, color='black', linestyle='--')
    #TODO: align zeroes for diff plot
+   yl, yl1 = ax.get_ylim(), ax1.get_ylim()
+   if abs(yl[0]) > abs(yl[1]):
+      ax.set_ylim(yl[0], -0.1 * yl[0])
+      ax1.set_ylim(yl1[0], -0.1 * yl1[0])
+   else:
+      ax.set_ylim(-0.1 * yl[1], yl[1])
+      ax1.set_ylim(-0.1 * yl1[1], yl1[1])
 
    #plt.show()
    plt.savefig(os.path.join(DIRIO, '%s_%s_TEM_ener_tracks.png' % (ALIASES[0], ALIASES[1] if DIFF else '')), bbox_inches='tight')
