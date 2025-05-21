@@ -24,8 +24,9 @@ print(sys.argv)
 #DIRIDX = int(sys.argv[1])
 DIFF = bool(int(sys.argv[1])) #False if len(sys.argv) < 3 else bool(sys.argv[2])
 #DIRIDX2 = None if not DIFF else int(sys.argv[3])
-DIR1 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/*h0a*.nc'
-DIR2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist_regrid_0.25x0.25_onpres/*h0a*.nc' if DIFF else None
+fname = 'cdo_ann_means.nc' #'*h0a*.nc'
+DIR1 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/%s' % fname
+DIR2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist_regrid_0.25x0.25_onpres/%s' % fname
 pres_name = 'plev'
 DIAB_VARS = ['DTCOND', 'QRL', 'QRS']
 plotfileargs = (DIR1.split('/')[-4], DIR2.split('/')[-4] if DIFF else '')
@@ -40,7 +41,7 @@ def main():
 
    print('Reading history files...')
    print(DIR1)
-   HIST_DS1 = xr.open_mfdataset(DIR1) #open all h1 files into one dask-chunked array
+   HIST_DS1 = xr.open_dataset(DIR1) #open all h1 files into one dask-chunked array
    if HIST_DS1[pres_name].units == 'Pa':
       HIST_DS1 = HIST_DS1.assign_coords(coords={pres_name: HIST_DS1[pres_name] / 100})
    streamf1 = comppsi(HIST_DS1)
@@ -50,7 +51,7 @@ def main():
    expo = 10
 
    if DIFF:
-      HIST_DS2 = xr.open_mfdataset(DIR2)
+      HIST_DS2 = xr.open_dataset(DIR2)
       if HIST_DS2[pres_name].units == 'Pa':
          HIST_DS2 = HIST_DS2.assign_coords(coords={pres_name: HIST_DS2[pres_name] / 100})
       streamf2 = comppsi(HIST_DS2)

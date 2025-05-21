@@ -22,22 +22,24 @@ print(sys.argv)
 #DIRIDX = int(sys.argv[1])
 DIFF = bool(int(sys.argv[1])) #False if len(sys.argv) < 3 else bool(sys.argv[2])
 
+fname = 'cdo_ann_means.nc' #'*.h0a.*.nc'
+
 SFFILI = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl__TEM.nc',\
           'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl_b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1_TEM.nc']
          #'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl_b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed_TEM.nc']
-H0As = ['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/*h0a*.nc',\
-       '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist_regrid_0.25x0.25_onpres/*h0a*.nc']
+H0As = ['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/%s' % fname,\
+       '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist_regrid_0.25x0.25_onpres/%s' % fname]
        #'/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist_regrid_0.25x0.25_onpres/*h0a*.nc']
 
 
-'''
+
 SFFILI = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl__TEM.nc',\
           'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl_b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed_TEM.nc']
-H0As = ['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/*h0a*.nc',\
-        '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist_regrid_0.25x0.25_onpres/*h0a*.nc']
-'''
+H0As = ['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/%s' % fname,\
+        '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist_regrid_0.25x0.25_onpres/%s' % fname]
+
        
-ALIASES = ['ctrl', 'seed'] #'un/seed'
+ALIASES = ['ctrl', 'unseed'] #'un/seed'
 DENSFILI = 'tcdens.nc'
 
 PSI_NAME = 'PSI_resid'
@@ -85,7 +87,7 @@ def main():
    #plt.show()
    plt.savefig(os.path.join(DIRIO, '%s_%s_TEM_ener_tracks.png' % (ALIASES[0], ALIASES[1] if DIFF else '')), bbox_inches='tight')
 
-   buddss = [xr.open_mfdataset(h0).mean(dim=['lon', 'time']) for h0 in H0As] #TODO: weight months by length
+   buddss = [xr.open_dataset(h0).mean(dim=['lon', 'time']) for h0 in H0As] #TODO: weight months by length
    budds = buddss[1] - buddss[0] if DIFF else buddss[0]
    if not DIFF:
       buddss[1].close()
@@ -94,9 +96,12 @@ def main():
    contourkwargs = {'colors': 'lime', 'levels': np.arange(5e-1, 1.01e1, 5e-1) / (10 if DIFF else 1)}
    contourkwargs['levels'] = np.concatenate((-contourkwargs['levels'][::-1], contourkwargs['levels']))
    ci = contourkwargs['levels'][-1] - contourkwargs['levels'][-2]
-   if Tdot3D.max() * 86400 > 15 * ci:
-      contourkwargs['levels'] = contourkwargs['levels'] * 5
+   if DIFF and ALIASES[1] == 'seed':
       ci *= 5
+      contourkwargs['levels'] = contourkwargs['levels'] * 5
+   #if Tdot3D.max() * 86400 > 15 * ci:
+   #   contourkwargs['levels'] = contourkwargs['levels'] * 5
+   #   ci *= 5
    CS2 = ax.contour(np.sin(np.deg2rad(Tdot3D.lat)), Tdot3D[pres_name] / 100, Tdot3D.values * 86400, **contourkwargs)
    ax.set_title('$\\bar{\Psi}^*$ (10$^{%d}$ kg s$^{-1}$)        %s: CI %.2f K day$^{-1}$' % (expo, contourkwargs['colors'], ci))
 
