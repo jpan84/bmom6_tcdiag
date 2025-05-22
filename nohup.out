@@ -72,3 +72,28 @@ UnboundLocalError: cannot access local variable 'case' where it is not associate
 Waiting on job launch; 5150452.casper-pbs with qsub arguments:
     qsub  -l select=2:ncpus=16:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=01:30:00
 
+Drizzle thresh 0.000000
+Opening files for case b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed...
+/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist/*.h2a.*.nc
+<xarray.UxDataArray 'PRECT' (time: 43896, n_face: 777602)> Size: 137GB
+dask.array<concatenate, shape=(43896, 777602), dtype=float32, chunksize=(1, 777602), chunktype=numpy.ndarray>
+Coordinates:
+* time     (time) object 351kB 0005-02-01 00:30:00 ... 0010-02-04 23:30:00
+Dimensions without coordinates: n_face
+Attributes:
+units:         m/s
+long_name:     Total (convective and large-scale) precipitation rate (liq...
+cell_methods:  time: mean
+Traceback (most recent call last):
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/precdist_ori.py", line 104, in <module>
+main()
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/precdist_ori.py", line 42, in main
+areas = (ds.uxgrid.face_areas * a**2).repeat(ds.time.shape[0])
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/common.py", line 302, in __getattr__
+raise AttributeError(
+AttributeError: 'DataArray' object has no attribute 'repeat'
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 5151252.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=01:30:00
+

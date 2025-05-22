@@ -10,7 +10,7 @@ CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.B
 ALIASES = ['UNSEED', 'CTRL', 'SEED']
 
 cdfs = [] #store cdf of each case
-CDFPKL = 'prect_cdf_8.pkl'
+CDFPKL = '/glade/work/jpan/PRECTbmom/prect_cdf_8.pkl'
 CALCCDFS = True
 
 a = 6.371e6 #m
@@ -38,19 +38,24 @@ def main():
          cdfs.append(compute_cdfs(HISTS % case))
    
       print('Pickling...')
-      with open('prect_cdf_%d.pkl' % int(-np.log10(thresh)), 'wb') as fl:
+      with open('/glade/work/jpan/PRECTbmom/prect_cdf_%d.pkl' % int(-np.log10(thresh)), 'wb') as fl:
          pickle.dump(cdfs, fl)
    else:
       with open(CDFPKL, 'rb') as fl:
          cdfs = pickle.load(fl)
 
-   pltcdf_line(cdfs[1])
+   pltcdf_line(cdfs[1], ALIASES[1])
+   pltcdf_line(cdfs[2], ALIASES[2])
+
+   plt.legend()
+   plt.savefig('PRECT_cdf_test.png')
+   plt.close()
 
 def compute_cdfs(histpath, latbins=None):
    print('Computing CDFs', histpath)
    ds = ux.open_mfdataset(os.path.join(GRIDDIR, GRIDFN), histpath)
    prec1d = ds.PRECT.values.reshape(-1) #shape (time, n_face)
-   areas = (ds.uxgrid.face_areas * a**2).repeat(ds.time.shape[0])
+   areas = (ds.uxgrid.face_areas * a**2).data.repeat(ds.time.shape[0])
 
    print('\tSorting...')
    sorter = np.argsort(prec1d)
@@ -64,21 +69,22 @@ def compute_cdfs(histpath, latbins=None):
    return precsort, wgts, qtiles
 
 #takes cdf tuple like compute_cdfs() output
-def pltcdf_line(cdftup, ax=None, **pltkwargs):
+def pltcdf_line(cdftup, label, ax=None, **pltkwargs):
    if ax is None:
       ax = plt.axes()
-      plt.xscale('log')
-      plt.yscale('log')
+      ax.set_xscale('log')
+      ax.set_yscale('log')
       #ticks = np.logspace(-8, -1, 8)
       #plt.xticks(ticks, labels=np.log10(ticks))
       ticklocs = 10. ** np.arange(-6, 0.1, 2)
       ticklabs = 100 * (1 - ticklocs)
-      plt.xticks(ticklocs, labels=ticklabs)
-      plt.gca().invert_xaxis()
-      plt.xlabel('Percentile')
-      plt.ylabel('P rate [mm h$^{-1}$]')
+      ax.set_xticks(ticklocs, labels=ticklabs)
+      ax.invert_xaxis()
+      ax.set_xlabel('Percentile')
+      ax.set_ylabel('P rate [mm h$^{-1}$]')
 
-   ax.plot(1 - qtiles, precsort * MPS2MMHR, label=ALIASES[ii])
+   ln = ax.plot(1 - cdftup[2], cdftup[0] * MPS2MMHR, label=label)
+   return ax, ln
 
 
    '''
