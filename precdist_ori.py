@@ -10,8 +10,6 @@ CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.B
 ALIASES = ['UNSEED', 'CTRL', 'SEED']
 
 cdfs = [] #store cdf of each case
-CDFPKL = 'prect_cdf_8.pkl'
-CALCCDFS = True
 
 a = 6.371e6 #m
 MPS2MMHR = 3.6e6
@@ -30,58 +28,30 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 
 def main():
-   global cdfs
    pltsettings.set1()
 
-   if CALCCDFS:
-      for case in CASES:
-         cdfs.append(compute_cdfs(HISTS % case))
-   
-      print('Pickling...')
-      with open('prect_cdf_%d.pkl' % int(-np.log10(thresh)), 'wb') as fl:
-         pickle.dump(cdfs, fl)
-   else:
-      with open(CDFPKL, 'rb') as fl:
-         cdfs = pickle.load(fl)
+   print('Drizzle thresh %f' % thresh)
+   cdfs = []
+   for ii, case in enumerate(CASES):
+      print('Opening files for case %s...' % case)
+      print(HISTS % case)
+      ds = ux.open_mfdataset(os.path.join(GRIDDIR, GRIDFN), HISTS % case)
+      print(ds.PRECT)
+      prec1d = ds.PRECT.values.reshape(-1)
+      #prec1d = da.from_array(ds.prect.values).reshape(-1) #concat time chunks
+      areas = (ds.uxgrid.face_areas * a**2).repeat(ds.time.shape[0])
 
-   pltcdf_line(cdfs[1])
+      print('Sorting...')
+      sorter = np.argsort(prec1d)
+      precsort = prec1d[sorter]
+      wgts = areas[sorter]
+      wherethresh = np.where(precsort > thresh)[0][0]
+      precsort = precsort[wherethresh:]
+      wgts = wgts[wherethresh:]
+      qtiles = np.cumsum(wgts) / sum(wgts)
+      print(qtiles)
+      cdfs.append((precsort, wgts, qtiles))
 
-def compute_cdfs(histpath, latbins=None):
-   print('Computing CDFs', histpath)
-   ds = ux.open_mfdataset(os.path.join(GRIDDIR, GRIDFN), histpath)
-   prec1d = ds.PRECT.values.reshape(-1) #shape (time, n_face)
-   areas = (ds.uxgrid.face_areas * a**2).repeat(ds.time.shape[0])
-
-   print('\tSorting...')
-   sorter = np.argsort(prec1d)
-   precsort = prec1d[sorter]
-   wgts = areas[sorter]
-   wherethresh = np.where(precsort > thresh)[0][0]
-   precsort = precsort[wherethresh:]
-   wgts = wgts[wherethresh:]
-   qtiles = np.cumsum(wgts) / sum(wgts)
-
-   return precsort, wgts, qtiles
-
-#takes cdf tuple like compute_cdfs() output
-def pltcdf_line(cdftup, ax=None, **pltkwargs):
-   if ax is None:
-      ax = plt.axes()
-      plt.xscale('log')
-      plt.yscale('log')
-      #ticks = np.logspace(-8, -1, 8)
-      #plt.xticks(ticks, labels=np.log10(ticks))
-      ticklocs = 10. ** np.arange(-6, 0.1, 2)
-      ticklabs = 100 * (1 - ticklocs)
-      plt.xticks(ticklocs, labels=ticklabs)
-      plt.gca().invert_xaxis()
-      plt.xlabel('Percentile')
-      plt.ylabel('P rate [mm h$^{-1}$]')
-
-   ax.plot(1 - qtiles, precsort * MPS2MMHR, label=ALIASES[ii])
-
-
-   '''
       print('Plotting...')      
       plt.plot(1 - qtiles, precsort * MPS2MMHR, label=ALIASES[ii])
       if case == CASES[0]:
@@ -116,10 +86,11 @@ def pltcdf_line(cdftup, ax=None, **pltkwargs):
    plt.savefig('prect_cdf_ratios_%d.png' % int(-np.log10(thresh)), bbox_inches='tight')
    plt.close()
 
-
+   print('Pickling...')
+   with open('prect_cdf_%d.pkl' % int(-np.log10(thresh)), 'wb') as fl:
+      pickle.dump(cdfs, fl)
 
    print('%s done.' % sys.argv[0])
-   '''
 
    '''
    print('Plotting all percentiles to find threshold...')
