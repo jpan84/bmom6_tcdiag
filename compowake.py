@@ -20,6 +20,7 @@ ARCHV = '/glade/derecho/scratch/jpan/archive/'
 CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1'
 HISTS = 'ocn/hist/'
 H1 = '*mom6.sfc*'
+NORMS = 'ocn/hist_norms/sfc_yhourmean.nc'
 STATIC = '/glade/derecho/scratch/jpan/%s/run/%s.mom6.static.nc' % (CASE, CASE)
 #TODO: account for choice of monthly or daily sfc history file freq
 DIRI = os.path.join(ARCHV, CASE, HISTS)
@@ -30,11 +31,12 @@ STRF_OCN_MON = lambda dtobj: f'*sfc.{dtobj.year:04}-{dtobj.month:02}.nc'
 STRF_OCN = STRF_OCN_DLY if FILEFREQ == dt.timedelta(days=1) else STRF_OCN_MON
 
 ### wake computation params
-NTOP = 10 #number of strongest storms
+NTOP = 5 #number of strongest storms
 LONBNDS = (-2, 2)
 LATBNDS = (-2, 2)
 AVBNDS = (-dt.timedelta(days=7), -dt.timedelta(days=3))
 TBNDS = (-dt.timedelta(days=10), dt.timedelta(days=10))
+GRPR = ('doy_hr', '%j-%H')
 
 #MOM diag vars params
 XY2GEO = {('yh', 'xh'): '', ('yq', 'xq'): '_c', ('yh', 'xq'): '_u', ('yq', 'xh'): '_v'}
@@ -63,6 +65,11 @@ def main():
    #print(type(topstms.iloc[0]['dt']))
    geogrid = xr.open_dataset(STATIC)
 
+   print('Setting up normals...')
+   normds = xr.open_dataset(os.path.join(ARCHV, CASE, NORMS))
+   normds[GRPR[0]] = normds.time.dt.strftime(GRPR[1])
+   normds = normds.swap_dims(dict(time=GRPR[0])) #day of yr and hour as unique indexer
+
    print('Computing composites...')
    taxis = None
    omls = []
@@ -79,20 +86,25 @@ def main():
 
       toopen = get_files_in_window(truedt, TBNDS, h1s, FILEFREQ, STRF_OCN, H1OFFSET_OCN)
       ds = xr.open_mfdataset(toopen).sel(time=slice(truedt + TBNDS[0], truedt + TBNDS[1]))
+      ds[GRPR[0]] = ds.time.dt.strftime(GRPR[1])
+      ds = ds.swap_dims(dict(time=GRPR[0])) #day of yr and hour as unique indexer
 
       #print(ds[sstvar].where(wherelat & wherelon, drop=True))
 
-      omlser = latlon_avg(*selarea(ds[omlvar], *selargs)) #TODO: add time selection (maybe diurnal signal is spurious and this is the cause?)
+      omlser = latlon_avg(*selarea(ds[omlvar], *selargs))
       sstser = latlon_avg(*selarea(ds[sstvar], *selargs))
       #print(sstser)
-      omlref = omlser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time') #reference values -7 to -3 days
-      sstref = sstser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time')
+      #omlref = omlser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time') #reference values -7 to -3 days
+      #sstref = sstser.sel(time=slice(truedt + AVBNDS[0], truedt + AVBNDS[1])).mean(dim='time')
+      omlref = latlon_avg(*selarea(normds[omlvar], *selargs))
+      sstref = latlon_avg(*selarea(normds[sstvar], *selargs))
 
       for bk in budvars:
+         budref = latlon_avg(*selarea(normds[bk], *selargs))
          if bk not in budser:
-            budser[bk] = [latlon_avg(*selarea(ds[bk], *selargs))] #TODO: area weight the mean
+            budser[bk] = [latlon_avg(*selarea(ds[bk], *selargs)) - budref]
          else:
-            budser[bk].append(latlon_avg(*selarea(ds[bk], *selargs)))
+            budser[bk].append(latlon_avg(*selarea(ds[bk], *selargs)) - budref)
       print(budser)
 
       if not ii:
@@ -115,7 +127,7 @@ def main():
    plt.plot(taxis, sstcomp, color='red')
    plt.axvline(x=0, linestyle='--', color='black', linewidth=0.7)
    plt.xlabel('Day relative to max strength')
-   plt.ylabel('SST relative to days %d to %d [K]' % (AVBNDS[0].days, AVBNDS[1].days))
+   plt.ylabel('SST anom [K]' % (AVBNDS[0].days, AVBNDS[1].days))
    plt.title('Composite SST for top %d storms, lat %s, lon %s' % (NTOP, str(LATBNDS), str(LONBNDS)))
    ax2 = plt.gca().twinx()
    budlines = dict()
@@ -131,8 +143,8 @@ def main():
    #ax2.plot(taxis, mybud - budser['hfds'], color = 'purple', label='resid', linewidth=1.5) #this residual ended up closely matching Tadvconv
    #ax2.plot(taxis, budser['Tadvconv'] + budser['hfds'], color = 'purple', label='adv+sfc')
    ax2.legend()
-   ax2.set_ylabel('Energy budget [W m-2]')
-   plt.savefig('%s_%d_%dx%d_SSTwake.png' % filoargs, bbox_inches='tight')
+   ax2.set_ylabel('Energy budget anom [W m-2]')
+   plt.savefig('%s_%d_%dx%d_SSTwake_anom.png' % filoargs, bbox_inches='tight')
    plt.close()
 
    #TODO: plot something with wind stress
@@ -140,11 +152,11 @@ def main():
    plt.plot(taxis, omlcomp)
    plt.axvline(x=0, linestyle='--', color='black', linewidth=0.7)
    plt.xlabel('Day relative to max strength')
-   plt.ylabel('OML relative to days %d to %d [%%]' % (AVBNDS[0].days, AVBNDS[1].days))
+   plt.ylabel('OML anom [%%]' % (AVBNDS[0].days, AVBNDS[1].days))
    plt.title('Composite OML for top %d storms, lat %s, lon %s' % (NTOP, str(LATBNDS), str(LONBNDS)))
    #ax2 = plt.gca().twinx()
 
-   plt.savefig('%s_%d_%dx%d_%swake.png' % (*filoargs, omlvar))
+   plt.savefig('%s_%d_%dx%d_%swake_anom.png' % (*filoargs, omlvar))
    plt.close()
 
 #open files with the desired times

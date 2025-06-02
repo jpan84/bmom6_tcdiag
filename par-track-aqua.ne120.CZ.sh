@@ -1,11 +1,11 @@
 #!/bin/bash
-#PBS -N tempest.CZ.seed1x1
+#PBS -N tempest.CZ.seed
 #PBS -A UPSU0063
 #PBS -l select=1:ncpus=18:mpiprocs=18:mem=80GB
-#PBS -l walltime=2:00:00
+#PBS -l walltime=0:05:00
 #PBS -q casper@casper-pbs
 #PBS -j oe
-#PBS -m abe
+#PBS -m a
 #PBS -M jvp5930@psu.edu
 ################################################################
 
@@ -25,14 +25,14 @@ grep -c processor /proc/cpuinfo
 
 TEMPESTEXTREMESDIR=/glade/work/zarzycki/derecho/tempestextremes/
 
-UQSTR=b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250129_seed1x1
-PATHTOFILES=/glade/derecho/scratch/jpan/archive/${UQSTR}/atm/hist/
+UQSTR=b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1
+PATHTOFILES=/glade/derecho/scratch/jpan/archive/${UQSTR}/atm/hist_short/
 CONNECTDAT=/glade/u/home/jpan/ne120np4_connect_v2.dat
 CONNECTFLAG=""
 TOPOFILE=""
 
 DN_FMT="lon,lat,slp,wind"
-NFE_FMT="${DN_FMT},ace0,azi_psl"
+NFE_FMT="${DN_FMT},prect,olr,sst,ace0,radialpsl"
 
 ############ TRACKER MECHANICS #####################
 
@@ -74,7 +74,7 @@ SN_MINLEN=10
 
 touch cyclones.${DATESTRING}
 
-STR_DETECT="--verbosity 0 --timestride 6hr --in_connect ${CONNECTDAT} --out cyclones_tempest.${DATESTRING} --closedcontourcmd PSL,${DCU_PSLFOMAG},${DCU_PSLFODIST},0;_DIFF(Z300,Z500),${DCU_WCFOMAG},${DCU_WCFODIST},${DCU_WCMAXOFFSET} --mergedist ${DCU_MERGEDIST} --searchbymin PSL --outputcmd PSL,min,0;_VECMAG(UBOT,VBOT),max,2"
+STR_DETECT="--verbosity 0 --timestride 6hr --in_connect ${CONNECTDAT} --out cyclones_tempest.${DATESTRING} --closedcontourcmd PSL,${DCU_PSLFOMAG},${DCU_PSLFODIST},0;_DIFF(Z300,Z500),${DCU_WCFOMAG},${DCU_WCFODIST},${DCU_WCMAXOFFSET};_PROD(_SIGN(lat),_CURL{8,1.0}(U850,V850)),-8e-5,5.5,0.5 --mergedist ${DCU_MERGEDIST} --searchbymin PSL --outputcmd PSL,min,0;_VECMAG(UBOT,VBOT),max,2"
 echo "calling mpiexec"
 mpiexec --display-allocation --display-map --report-bindings -n 16 $TEMPESTEXTREMESDIR/bin/DetectNodes --in_data_list "${FILELISTNAME}" ${STR_DETECT} </dev/null
 
@@ -84,7 +84,9 @@ cat cyclones_tempest.${DATESTRING}* >> cyclones.${DATESTRING}
 pwd
 ${TEMPESTEXTREMESDIR}/bin/StitchNodes --in_connect ${CONNECTDAT} --in_fmt ${DN_FMT} --allow_repeated_times --range ${SN_TRAJRANGE} --minlength ${SN_TRAJMINLENGTH} --maxgap ${SN_TRAJMAXGAP} --in cyclones.${DATESTRING} --out ${TRAJFILENAME} --threshold "wind,>=,${SN_MINWIND},${SN_MINLEN};lat,<=,${SN_MAXLAT},${SN_MINLEN};lat,>=,-${SN_MAXLAT},${SN_MINLEN}"
 
-${TEMPESTEXTREMESDIR}/bin/NodeFileEditor --in_nodefile ${TRAJFILENAME} --in_nodefile_type "SN" --in_data_list "${FILELISTNAME}" --in_connect ${CONNECTDAT} --in_fmt "${DN_FMT}" --out_fmt ${NFE_FMT} --calculate "ace0=eval_ace(U10,V10,0.25);rwp=radial_profile(PSL,32,0.25)" --out_nodefile "${TRAJFILENAME}.NFE"
+NFEMEANRAD=8.0
+
+###${TEMPESTEXTREMESDIR}/bin/NodeFileEditor --in_nodefile ${TRAJFILENAME} --in_nodefile_type "SN" --in_data_list "${FILELISTNAME}" --in_connect ${CONNECTDAT} --in_fmt "${DN_FMT}" --out_fmt ${NFE_FMT} --calculate "prect=_MEAN{${NFEMEANRAD}}(PRECT);olr=_MEAN{${NFEMEANRAD}}(FLUT);sst=_MEAN{${NFEMEANRAD}}(SST);ace0=eval_ace(UBOT,VBOT,0.25);radialpsl=radial_profile(PSL,32,0.25)" --out_nodefile "${TRAJFILENAME}.NFE"
 
 endtime=$(date -u +"%s")
 tottime=$(($endtime-$starttime))

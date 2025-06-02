@@ -3,4 +3,5 @@ nohup: ignoring input
 Waiting on job launch; 5136455.casper-pbs with qsub arguments:
     qsub  -l select=1:ncpus=16:mem=64GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:15:00
 
-['atmo_ener.py', '1']
+
+qcmd job 5136414.casper-pbs terminated

@@ -97,3 +97,4 @@ AttributeError: 'DataArray' object has no attribute 'repeat'
 Waiting on job launch; 5151252.casper-pbs with qsub arguments:
     qsub  -l select=1:ncpus=16:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=01:30:00
 
+=>> PBS: job killed: walltime 5476 exceeded limit 5400
