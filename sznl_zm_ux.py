@@ -6,7 +6,7 @@
 #DIR1 = 'QPC5-ne30np4-aquap10-seed3x3/atm/hist'
 #DIR2 = 'QPC5-ne30np4-aquap10-unseed/atm/hist'
 #FN = 'QPC5-ne30np4-aquap10-*.cam.h0.*regrid.nc'
-OUTDIR = 'linevslat_250417_ctrl/'
+OUTDIR = 'linevslat_250415_unseed_minus_ctrl/'
 HISTDIMS = set(['time', 'n_face']) #cam-SE
 
 import os
@@ -21,13 +21,20 @@ import matplotlib.colors as colors
 import pltsettings
 
 ### hist file params
+MODE = 'CAM'
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed'
 HISTS = 'atm/hist/'
 H0 = '*.cam.h0a.*.nc'
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
-DO_DIFF = False
+'''
+MODE = 'MOM'
+HISTS = 'ocn/hist/'
+H0 = '*mom6.hm*[0-9][0-9][0-9][0-9]-[0-9][0-9].nc'
+'''
+
+DO_DIFF = True
 CASE2 = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
 
 grpby = 'season' #month
@@ -37,9 +44,10 @@ LATLAB = np.array([-90., -60., -30., 0., 30., 60., 90.])
 lncolors = plt.cm.jet(np.linspace(0, 1, 12 if grpby == 'month' else 4 if grpby == 'season' else None))
 #TODO: allow diffing between cases and selecting of months/seasons
 SKIP = {'AEROD_v'}
+USER_DEF = {'RESTOM', 'PRECT', 'NCF'}
 
 HEMISYM = {'FSNS', 'FLNS', 'LHFLX', 'SHFLX'}
-DO_SYM = True #only works for season, not month
+DO_SYM = False #only works for season, not month
 
 #create months to seasons weight matrix
 mlnl = np.array([31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], dtype=np.int_)
@@ -69,18 +77,27 @@ def main():
    #!OCEAN ds1 = ds1.isel(z_l=0)
    print(ds1)
 
-   for dv in ds1.data_vars:
+   dvset = set([str(dv) for dv in ds1.data_vars])
+   dvset = dvset | USER_DEF
+   for dv in dvset:
       if str(dv) in SKIP or DO_SYM and str(dv) not in HEMISYM:
          print('Skipping %s...' % dv)
          continue
-      if set(ds1[dv].dims) == HISTDIMS:
+      if str(dv) in USER_DEF or set(ds1[dv].dims) == HISTDIMS:
          print('Plotting %s...' % dv)
-         da = ds1[dv]
+         da = None
+         if dv in USER_DEF:
+            da = udef(ds1, dv)
+         else:
+            da = ds1[dv]
          if DO_DIFF:
-            da = da - ds2[dv]
+            if dv in USER_DEF:
+               da = da - udef(ds2, dv)
+            else:
+               da = da - ds2[dv]
          tmeans = da.groupby('time.month').mean()
-         #tmeans = tmeans.assign_coords(coords=dict(month=np.arange(12) + 1))
-         print(tmeans)
+         #lines = None
+         #if
          lines = tmeans.zonal_mean(lat=zmlats)
          sinlat = np.sin(np.deg2rad(lines.latitudes))
          if grpby == 'season':
@@ -96,7 +113,7 @@ def main():
          plt.xlabel('Lat [°]')
          plt.ylabel(dv)
          plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=4, prop=dict(size=12))
-         plt.gca().set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB)
+         plt.gca().set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB.astype(np.int_))
          plt.savefig(os.path.join(OUTDIR, '%s_sznl.png' % dv), bbox_inches='tight')
          #plt.tight_layout()
          #plt.show()
@@ -115,7 +132,7 @@ def main():
             plt.xlabel('Lat [°]')
             plt.ylabel(dv)
             plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=4, prop=dict(size=12))
-            plt.gca().set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB)
+            plt.gca().set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB.astype(np.int_))
             plt.xlim(0, 1)
             plt.savefig(os.path.join(OUTDIR, '%s_hemidiff.png' % dv), bbox_inches='tight')
             plt.close()
@@ -124,6 +141,13 @@ def main():
 
    print('%s done.' % sys.argv[0])
 
+def udef(ds, dv):
+   if dv == 'PRECT':
+      return ds['PRECC'] + ds['PRECL']
+   if dv == 'RESTOM':
+      return ds['FSNT'] - ds['FLNT']
+   if dv == 'NCF':
+      return ds['LWCF'] + ds['SWCF']
 
 if __name__ == '__main__':
    main()

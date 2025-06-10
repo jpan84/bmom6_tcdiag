@@ -17,21 +17,21 @@ TRAJFILE = sys.argv[1] #output parquet from traj_stats.py
 
 ### hist file params
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
 HISTS = 'ocn/hist/'
 H1 = '*mom6.sfc*'
 NORMS = 'ocn/hist_norms/sfc_yhourmean.nc'
 STATIC = '/glade/derecho/scratch/jpan/%s/run/%s.mom6.static.nc' % (CASE, CASE)
 #TODO: account for choice of monthly or daily sfc history file freq
 DIRI = os.path.join(ARCHV, CASE, HISTS)
-FILEFREQ = dt.timedelta(days=1)
+FILEFREQ = dt.timedelta(days=30)#dt.timedelta(days=1)
 H1OFFSET_OCN = None #e.g., 6 if filename date is 01-01 and first timestamp is 06:00
 STRF_OCN_DLY = lambda dtobj: f'*sfc.{dtobj.year:04}-{dtobj.month:02}-{dtobj.day:02}.nc'
 STRF_OCN_MON = lambda dtobj: f'*sfc.{dtobj.year:04}-{dtobj.month:02}.nc'
 STRF_OCN = STRF_OCN_DLY if FILEFREQ == dt.timedelta(days=1) else STRF_OCN_MON
 
 ### wake computation params
-NTOP = 5 #number of strongest storms
+NTOP = 20 #number of strongest storms
 LONBNDS = (-2, 2)
 LATBNDS = (-2, 2)
 AVBNDS = (-dt.timedelta(days=7), -dt.timedelta(days=3))
@@ -43,7 +43,7 @@ XY2GEO = {('yh', 'xh'): '', ('yq', 'xq'): '_c', ('yh', 'xq'): '_u', ('yq', 'xh')
 omlvar = 'oml'
 sstvar = 'tos'
 budvars = {'hfsso': 'green', 'hflso': 'blue', 'rlntds': 'dimgray', 'rsntds': 'orange', 'Tadvconv': 'peru', 'Tdifconv': 'coral', 'hfds': 'black'}
-budlabs = {'hfsso': 'SH', 'hflso': 'LH', 'rlntds': 'LW', 'rsntds': 'SW', 'Tadvconv': 'advection', 'Tdifconv': 'diffusion', 'hfds': 'sfctot'}
+budlabs = {'hfsso': 'SH', 'hflso': 'LH', 'rlntds': 'LW', 'rsntds': 'SW', 'Tadvconv': 'advection/100', 'Tdifconv': 'diffusion', 'hfds': 'sfctot'}
 
 def main():
    tcdf = pd.read_parquet(TRAJFILE)
@@ -105,7 +105,7 @@ def main():
             budser[bk] = [latlon_avg(*selarea(ds[bk], *selargs)) - budref]
          else:
             budser[bk].append(latlon_avg(*selarea(ds[bk], *selargs)) - budref)
-      print(budser)
+      #print(budser)
 
       if not ii:
          taxis = [(tt - truedt).days + (tt - truedt).seconds/86400 for tt in omlser.time.values]
@@ -127,12 +127,14 @@ def main():
    plt.plot(taxis, sstcomp, color='red')
    plt.axvline(x=0, linestyle='--', color='black', linewidth=0.7)
    plt.xlabel('Day relative to max strength')
-   plt.ylabel('SST anom [K]' % (AVBNDS[0].days, AVBNDS[1].days))
+   plt.ylabel('SST anom [K]')
    plt.title('Composite SST for top %d storms, lat %s, lon %s' % (NTOP, str(LATBNDS), str(LONBNDS)))
    ax2 = plt.gca().twinx()
    budlines = dict()
    for bk in budvars:
       budcomp = np.array([da.values for da in budser[bk]]).mean(axis=0)
+      if bk == 'Tadvconv':
+         budcomp /= 100
       budlines[bk] = ax2.plot(taxis, budcomp, color=budvars[bk], label=budlabs[bk], linewidth=1)
    ###remove select lines for presentation slides
    #for bk in ['hfsso', 'rlntds', 'hflso', 'rsntds', 'Tadvconv', 'hfds']:
@@ -152,7 +154,7 @@ def main():
    plt.plot(taxis, omlcomp)
    plt.axvline(x=0, linestyle='--', color='black', linewidth=0.7)
    plt.xlabel('Day relative to max strength')
-   plt.ylabel('OML anom [%%]' % (AVBNDS[0].days, AVBNDS[1].days))
+   plt.ylabel('OML anom [%%]')
    plt.title('Composite OML for top %d storms, lat %s, lon %s' % (NTOP, str(LATBNDS), str(LONBNDS)))
    #ax2 = plt.gca().twinx()
 
