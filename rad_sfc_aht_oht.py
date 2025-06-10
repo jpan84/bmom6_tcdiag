@@ -55,6 +55,8 @@ def cam_glob_integ(da, areas):
 def plot_cam_zm(da, title, outfil):
    toplt = da.zonal_mean(lat=ZMLATS)
    toplt = toplt.assign_coords(coords=dict(time=da.time))
+   #print(toplt.time)
+   #print(toplt.time.dt)
    sinlat = np.sin(np.deg2rad(toplt.latitudes))
    print(toplt.shape)
    print(wtm(toplt).shape)

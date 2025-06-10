@@ -164,9 +164,9 @@ def weighted_temporal_mean(da):
    return obs_sum / ones_out
    '''
 
-   num = (da * month_length).sum()
-   den = month_length.sum()
-   return (num / den).values
+   num = (da * month_length).sum(dim='time')
+   den = month_length.sum(dim='time')
+   return num / den
 
 if __name__ == '__main__':
    main()
