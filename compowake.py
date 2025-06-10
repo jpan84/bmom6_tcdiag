@@ -13,7 +13,9 @@ import matplotlib.pyplot as plt
 #TODO: add an option for diurnal averaging
 
 ### tempest traj output params
-TRAJFILE = sys.argv[1] #output parquet from traj_stats.py
+TRAJFILE = None
+if __name__ == '__main__':
+   TRAJFILE = sys.argv[1] #output parquet from traj_stats.py
 
 ### hist file params
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
