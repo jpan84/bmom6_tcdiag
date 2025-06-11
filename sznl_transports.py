@@ -5,6 +5,7 @@ import xarray as xr
 import matplotlib.pyplot as plt
 
 import sznl_zm_ux
+import rad_sfc_aht_oht as formulae
 
 wmat = sznl_zm_ux.wmat
 print(wmat)
@@ -58,17 +59,22 @@ def main():
    lhf = [lv * monzm(ds['VQ']) for ds in camdss]
    mseflx = sum([f[0] - f[1] for f in [gpf, shf, lhf]])
    latcirc = 2 * np.pi * a * np.cos(np.deg2rad(mseflx.lat_h))
-   aht = -latcirc / g * mseflx.integrate('plev')
+   aht = latcirc / g * mseflx.integrate('plev')
    aht = aht.transpose('month', ...)
+   aht_q = aht.interp(coords=dict(lat_h=oht.yq.data)).rename(dict(lat_h='yq'))
    print(aht.shape)
    aht_sznl = wmat @ aht.data
+   aht_sznl_q = wmat @ aht_q.data
    sinlat_cam_h = np.sin(np.deg2rad(mseflx.lat_h))
    plt_sznl(sinlat_cam_h, aht_sznl, 'AHT', '[W]')
 
+   print('Plotting AHT + OHT...')
+   plt_sznl(sinlat_q, oht_sznl + aht_sznl_q, 'AOHT', '[W]')
+
    print('Computing AMT...')
-   umf = [monzm(ds['UV']) for ds in camdss]
+   umf = [monzm(ds['VU']) for ds in camdss]
    umf = umf[0] - umf[1]
-   amt = -latcirc / g * umf.integrate('plev')
+   amt = latcirc / g * umf.integrate('plev')
    amt = amt.transpose('month', ...)
    amt_sznl = wmat @ amt.data
    plt_sznl(sinlat_cam_h, amt_sznl, 'AMT', '[N]')
@@ -77,9 +83,49 @@ def main():
    omf = [monmeans(ds['rhoinsitu'] * ds['uv']).mean(dim='xh') for ds in momdss]
    omf = omf[0] - omf[1]
    omt = latcirc * omf.integrate('zl')
+   omt = omt.transpose('month', ...)
    omt_sznl = wmat @ omt.data
-   sinlat_h = np.sin(np.deg2rad(omt.yh))
+   sinlat_h = np.sin(np.deg2rad(omt.lat_h))
    plt_sznl(sinlat_h, omt_sznl, 'OMT', '[N]')
+
+   print('Computing OMU...')
+   omu = [monmeans((ds['tauuo'] + ds['taux_bot']).sum(dim='xq')) for ds in momdss]
+   omu = omu[0] - omu[1]
+   omu_sznl = wmat @ omu.data
+   plt_sznl(sinlat_q, omu_sznl, 'OMU', '[N m$^{-2}$]')
+
+   print('Computing TAUX...')
+   taux = [monzm(ds['TAUX']) for ds in camdss]
+   taux = taux[0] - taux[1]
+   taux_sznl = wmat @ taux.transpose('month', ...).data
+   plt.sznl(sinlat_cam_h, taux_sznl, 'TAUX', '[N m$^{-2}$]')
+
+   print('Computing AHU...')
+   ahu = [sum([monzm(tm[0] * ds[tm[1]]) for tm in formulae.AHU]) for ds in camdss]
+   ahu = ahu[0] - ahu[1]
+   ahu = ahu.transpose('month', ...)
+   ahu_sznl = wmat @ ahu.data
+   plt_sznl(sinlat_cam_h, ahu_sznl, 'AHU', '[W m$^{-2}$]')
+
+   print('Computing sfc heat uptake...')
+   shu = [sum([monzm(tm[0] * ds[tm[1]]) for tm in formulae.SHU]) for ds in camdss]
+   shu = shu[0] - shu[1]
+   shu = shu.transpose('month', ...)
+   shu_sznl = wmat @ shu.data
+   plt_sznl(sinlat_cam_h, shu_sznl, 'sfcHU', '[W m$^{-2}$]')
+
+   print('Computing RESTOM...')
+   rom = [sum([monzm(tm[0] * ds[tm[1]]) for tm in formulae.RESTOM]) for ds in camdss]
+   rom = rom[0] - rom[1]
+   rom = rom.transpose('month', ...)
+   rom_sznl = wmat @ rom.data
+   plt_sznl(sinlat_cam_h, rom_sznl, 'RESTOM', '[W m$^{-2}$]')
+
+   print('Computing diabatic heating...')
+   ttnd_diab = [monzm(ds['DTCOND'] + ds['QRL'] + ds['QRS']) for ds in camdss]
+   diab_int = cp / g * (ttnd_diab[0] - ttnd_diab[1]).integrate('plev')
+   diab_int = wmat @ diab_int.transpose('month', ...).data
+   plt_sznl(sinlat_cam_h, diab_int, 'integ_Qdot', '[W m$^{-2}$]')
 
    print('Done.')
 
@@ -87,9 +133,14 @@ def main():
 def plt_sznl(sinlats, vals, name, units, linestyle='solid', close=True):
    for tt in range(vals.shape[0]):
       plt.plot(sinlats, vals[tt, :], label=SZNS[tt], color=lncolors[tt], linestyle=linestyle)
+   if True or not CASE2 is None:
+      plt.hlines(0, -1, 1, color='black', linestyle='dotted')
    plt.xlabel('Lat [°]')
    plt.ylabel(name + ' ' + units)
+   if units == '[W]' and CASE2 is None:
+      plt.ylim(-2e16, 2e16)
    plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=4, prop=dict(size=10))
+   plt.xlim(-1, 1)
    plt.gca().set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB.astype(np.int_))
    plt.savefig(os.path.join(DIRO, '%s.%s.png' % (CASE1.split('.')[-1], name)), bbox_inches='tight')
    if close:
