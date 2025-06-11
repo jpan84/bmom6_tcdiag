@@ -50,3 +50,4 @@ Thumbs.db
 *.png
 
 betacast-pivot.tar
+rad_sfc_*/out.nc
