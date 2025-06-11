@@ -10,10 +10,10 @@ import rad_sfc_aht_oht as formulae
 wmat = sznl_zm_ux.wmat
 print(wmat)
 
-DIRO = 'sznl_transports_250417_ctrl'
+DIRO = 'sznl_transports_250416_seed1x1'
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE1 = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
-CASE2 = None
+CASE1 = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1'
+CASE2 = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl' #None
 MOMH = 'ocn/hist/*mom6.hm*[0-9][0-9][0-9][0-9]-[0-9][0-9].nc'
 CAMH = 'atm/hist_regrid_mom_onpres/*h0a*.nc'
 
@@ -89,7 +89,7 @@ def main():
    plt_sznl(sinlat_h, omt_sznl, 'OMT', '[N]')
 
    print('Computing OMU...')
-   omu = [monmeans((ds['tauuo'] + ds['taux_bot']).sum(dim='xq')) for ds in momdss]
+   omu = [monmeans((ds['tauuo'] + ds['taux_bot']).mean(dim='xq')) for ds in momdss]
    omu = omu[0] - omu[1]
    omu_sznl = wmat @ omu.data
    plt_sznl(sinlat_q, omu_sznl, 'OMU', '[N m$^{-2}$]')
@@ -98,7 +98,7 @@ def main():
    taux = [monzm(ds['TAUX']) for ds in camdss]
    taux = taux[0] - taux[1]
    taux_sznl = wmat @ taux.transpose('month', ...).data
-   plt.sznl(sinlat_cam_h, taux_sznl, 'TAUX', '[N m$^{-2}$]')
+   plt_sznl(sinlat_cam_h, taux_sznl, 'TAUX', '[N m$^{-2}$]')
 
    print('Computing AHU...')
    ahu = [sum([monzm(tm[0] * ds[tm[1]]) for tm in formulae.AHU]) for ds in camdss]
@@ -108,7 +108,7 @@ def main():
    plt_sznl(sinlat_cam_h, ahu_sznl, 'AHU', '[W m$^{-2}$]')
 
    print('Computing sfc heat uptake...')
-   shu = [sum([monzm(tm[0] * ds[tm[1]]) for tm in formulae.SHU]) for ds in camdss]
+   shu = [sum([monzm(tm[0] * ds[tm[1]]) for tm in formulae.OHU_CAM]) for ds in camdss]
    shu = shu[0] - shu[1]
    shu = shu.transpose('month', ...)
    shu_sznl = wmat @ shu.data

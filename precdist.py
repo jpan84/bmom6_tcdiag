@@ -1,11 +1,11 @@
 #Joshua Pan Nov 2023
 #Following Allen and Ingram, plot log-log area-weighted CDF of hourly grid-cell precip
 
-PRECDIR = '/glade/work/jpan/PRECTux'
+#PRECDIR = '/glade/work/jpan/PRECTux'
 GRIDDIR = '/glade/p/cesmdata/inputdata/share/scripgrids'
 GRIDFN = 'ne120np4_pentagons_100310.nc'
 
-HISTS = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/*.h2a.*.nc'
+HISTS = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/*.h1i.*.nc'
 CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1']
 ALIASES = ['UNSEED', 'CTRL', 'SEED']
 
@@ -44,8 +44,9 @@ def main():
       with open(CDFPKL, 'rb') as fl:
          cdfs = pickle.load(fl)
 
-   pltcdf_line(cdfs[1], ALIASES[1])
-   pltcdf_line(cdfs[2], ALIASES[2])
+   pltcdf_line(cdfs[0], ALIASES[0])
+   pltcdf_line(cdfs[1], ALIASES[1], ax=plt.gca())
+   pltcdf_line(cdfs[2], ALIASES[2], ax=plt.gca())
 
    plt.legend()
    plt.savefig('PRECT_cdf_test.png')
