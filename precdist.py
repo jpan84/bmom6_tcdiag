@@ -5,7 +5,7 @@
 GRIDDIR = '/glade/p/cesmdata/inputdata/share/scripgrids'
 GRIDFN = 'ne120np4_pentagons_100310.nc'
 
-HISTS = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/*.h1i.*.nc'
+HISTS = '/glade/derecho/scratch/jpan/archive/%s/atm/hist_0010_h1i/*.h1i.*.nc'
 CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1']
 ALIASES = ['UNSEED', 'CTRL', 'SEED']
 
@@ -37,9 +37,9 @@ def main():
       for case in CASES:
          cdfs.append(compute_cdfs(HISTS % case))
    
-      print('Pickling...')
-      with open('/glade/work/jpan/PRECTbmom/prect_cdf_%d.pkl' % int(-np.log10(thresh)), 'wb') as fl:
-         pickle.dump(cdfs, fl)
+         print('Pickling...')
+         with open('/glade/work/jpan/PRECTbmom/prect_cdf_%d.pkl' % int(-np.log10(thresh)), 'wb') as fl:
+            pickle.dump(cdfs, fl)
    else:
       with open(CDFPKL, 'rb') as fl:
          cdfs = pickle.load(fl)
