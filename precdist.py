@@ -11,7 +11,7 @@ ALIASES = ['UNSEED', 'CTRL', 'SEED']
 
 cdfs = [] #store cdf of each case
 CDFPKL = '/glade/work/jpan/PRECTbmom/prect_cdf_8.pkl'
-CALCCDFS = True
+CALCCDFS = False
 
 a = 6.371e6 #m
 MPS2MMHR = 3.6e6
@@ -50,11 +50,34 @@ def main():
 
    plt.legend()
    plt.savefig('PRECT_cdf_test.png')
+
+   ratio_line(cdfs[2], cdfs[0], ALIASES[2], ALIASES[0], plt.gca())
    plt.close()
 
-def compute_cdfs(histpath, latbins=None):
+def compute_cdfs(histpath):
    print('Computing CDFs', histpath)
    ds = ux.open_mfdataset(os.path.join(GRIDDIR, GRIDFN), histpath)
+   prec1d = ds.PRECT.values.reshape(-1) #shape (time, n_face)
+   areas = (ds.uxgrid.face_areas * a**2).data.repeat(ds.time.shape[0])
+
+   print('\tSorting...')
+   sorter = np.argsort(prec1d)
+   precsort = prec1d[sorter]
+   wgts = areas[sorter]
+   wherethresh = np.where(precsort > thresh)[0][0]
+   precsort = precsort[wherethresh:]
+   wgts = wgts[wherethresh:]
+   qtiles = np.cumsum(wgts) / sum(wgts)
+
+   return precsort, wgts, qtiles
+
+def compute_cdfs_lat(histpath, latbins=np.arange(-90, 90.1, 15)):
+   print('Computing CDFs', histpath)
+   ds = ux.open_mfdataset(os.path.join(GRIDDIR, GRIDFN), histpath)
+
+   for ii in range(latbins.size - 1):
+   llat, ulat = latbins[ii], latbins[ii + 1]
+
    prec1d = ds.PRECT.values.reshape(-1) #shape (time, n_face)
    areas = (ds.uxgrid.face_areas * a**2).data.repeat(ds.time.shape[0])
 
@@ -87,6 +110,22 @@ def pltcdf_line(cdftup, label, ax=None, **pltkwargs):
    ln = ax.plot(1 - cdftup[2], cdftup[0] * MPS2MMHR, label=label)
    return ax, ln
 
+def ratio_line(cdftup1, cdftup2, alias1, alias2, ax):
+   print('Computing ratios for %s / %s...' % (alias1, alias2))
+   rattiles = np.logspace(-8, -0.5, 100)
+   rats = []
+   for tile in rattiles:
+      idx1 = np.where(cdftup1[2] >= 1 - tile)[0][0]
+      idx2 = np.where(cdftup2[2] >= 1 - tile)[0][0]
+      p1 = cdftup1[idx1]
+      p2 = cdftup2[idx2]
+      rats.append(p1 / p2)
+   ax1 = ax.twinx()
+   ax1.plot(rattiles, rats, linestyle='-.', color='black')
+   ax1.axhline(1, linestyle='--', color='gray')
+   ax1.set_ylabel('%s/%s' % (alias1, alias2))
+   plt.savefig('prect_cdf_ratios_%d.png' % int(-np.log10(thresh)), bbox_inches='tight')
+   #plt.close()
 
    '''
       print('Plotting...')      

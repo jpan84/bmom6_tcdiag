@@ -1,6 +1,6 @@
 #!/bin/bash
 #PBS -N tempest.NFF
-#PBS -A UPSU0063
+#PBS -A UCIS0005
 #PBS -l select=1:ncpus=18:mpiprocs=18:mem=80GB
 #PBS -l walltime=0:05:00
 #PBS -q casper@casper-pbs
@@ -67,7 +67,7 @@ DCU_PSLFODIST=5.5
 STR_NFF="--in_nodefile ${TRAJFILENAME} --in_nodefile_type SN --in_fmt ${SN_FMT} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_data_list ${OUTLISTNAME} --var PRECT --maskvar TCPRECMASK --bycontour PSL,${DCU_PSLFOMAG},${DCU_PSLFODIST},0"
 
 echo "calling mpiexec"
-mpiexec --display-allocation --display-map --report-bindings -n 16 $TEMPESTEXTREMESDIR/bin/DetectNodes --in_data_list "${FILELISTNAME}" ${STR_DETECT} </dev/null
+mpiexec --display-allocation --display-map --report-bindings -n 16 $TEMPESTEXTREMESDIR/bin/NodeFileFilter ${STR_NFF} </dev/null
 
 
 
