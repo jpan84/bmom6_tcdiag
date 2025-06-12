@@ -1,29 +1,31 @@
 #!/bin/bash
-#PBS -N tempest.NFF
-#PBS -A UCIS0005
-#PBS -l select=1:ncpus=18:mpiprocs=18:mem=80GB
-#PBS -l walltime=0:05:00
-#PBS -q casper@casper-pbs
-#PBS -j oe
-#PBS -m a
-#PBS -M jvp5930@psu.edu
-################################################################
+####PBS -N tempest.NFF
+####PBS -A UCIS0005
+####PBS -l select=1:ncpus=18:mpiprocs=18:mem=80GB
+####PBS -l walltime=0:05:00
+####PBS -q casper@casper-pbs
+####PBS -j oe
+####PBS -m a
+####PBS -M jvp5930@psu.edu
+###################################################################
+###
+###starttime=$(date -u +"%s")
+###
+#### Casper modules
+###module load intel
+###module load openmpi
+###module load parallel
+###module load nco
+###
+###echo "MPI info"
+###nproc
+###cat /proc/cpuinfo | grep processor | wc -l
+###grep "cpu cores" /proc/cpuinfo | uniq
+###grep -c processor /proc/cpuinfo
 
-starttime=$(date -u +"%s")
+###TEMPESTEXTREMESDIR=/glade/work/zarzycki/derecho/tempestextremes/
+TEMPESTEXTREMESDIR=/glade/work/zarzycki/tempestextremes_noMPI
 
-# Casper modules
-module load intel
-module load openmpi
-module load parallel
-module load nco
-
-echo "MPI info"
-nproc
-cat /proc/cpuinfo | grep processor | wc -l
-grep "cpu cores" /proc/cpuinfo | uniq
-grep -c processor /proc/cpuinfo
-
-TEMPESTEXTREMESDIR=/glade/work/zarzycki/derecho/tempestextremes/
 
 UQSTR=b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1
 PATHTOFILES=/glade/derecho/scratch/jpan/archive/${UQSTR}/atm/hist_0010_h1i/
@@ -64,11 +66,13 @@ starttime=$(date -u +"%s")
 DCU_PSLFOMAG=200.0
 DCU_PSLFODIST=5.5
 
-STR_NFF="--in_nodefile ${TRAJFILENAME} --in_nodefile_type SN --in_fmt ${SN_FMT} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_data_list ${OUTLISTNAME} --var PRECT --maskvar TCPRECMASK --bycontour PSL,${DCU_PSLFOMAG},${DCU_PSLFODIST},0"
+STR_NFF="--in_nodefile ${TRAJFILENAME} --in_nodefile_type SN --in_fmt ${SN_FMT} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_data_list ${OUTLISTNAME} --var PRECT --maskvar TCPRECMASK --nearbyblobs _VECMAG(UBOT,VBOT),0.0,>,5.0,8.0"
+###--bycontour _PROD(_SIGN(lat),_CURL{8,1.0}(U850,V850)),-1e-5,5.5,0.5"
+###PSL,${DCU_PSLFOMAG},${DCU_PSLFODIST},0"
 
-echo "calling mpiexec"
-mpiexec --display-allocation --display-map --report-bindings -n 16 $TEMPESTEXTREMESDIR/bin/NodeFileFilter ${STR_NFF} </dev/null
-
+###echo "calling mpiexec"
+###mpiexec --display-allocation --display-map --report-bindings -n 16 $TEMPESTEXTREMESDIR/bin/NodeFileFilter ${STR_NFF} </dev/null
+$TEMPESTEXTREMESDIR/bin/NodeFileFilter ${STR_NFF}
 
 
 
