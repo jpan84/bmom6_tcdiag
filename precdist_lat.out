@@ -1,0 +1,10 @@
+nohup: ignoring input
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 5321639.casper-pbs with qsub arguments:
+    qsub  -l select=3:ncpus=36:mem=384GB -A UCIS0005 -q casper@casper-pbs -l walltime=03:00:00
+
+Computing lat-binned CDFs /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist_0010_h1i/*.h1i.*.nc
+lats -90.0 -75.0
+Sorting...
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:1758: FutureWarning: The `numpy.argsort` function is not implemented by Dask array. You may want to use the da.map_blocks function or something similar to silence this warning. Your code may stop working in a future release.
+warnings.warn(

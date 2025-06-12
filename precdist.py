@@ -17,7 +17,7 @@ cdfslat = [] #store cdf of each case as list(list(tuple(prate, areawgt, quantile
 #outer list indexed by case, inner list indexed by latitude bin
 CDFPKL = '/glade/work/jpan/PRECTbmom/prect_cdf_8.pkl'
 CDFPKLLAT = '/glade/work/jpan/PRECTbmom/prect_cdf_8_lat.pkl'
-CALCCDFS = False
+CALCCDFS = True
 
 a = 6.371e6 #m
 MPS2MMHR = 3.6e6
@@ -115,7 +115,7 @@ def compute_cdfs_lat(histpath, latbins=np.arange(-90, 90.1, 15)):
       idx = np.where((ds.lat >= llat) & (ds.lat < ulat))[0]
 
       prec1d = ds['PRECT'].isel(n_face=idx).data.reshape(-1) #shape (time, n_face)
-      areas = (ds['area'].isel(n_face=idx) * a**2).data.repeat(ds.time.size)
+      areas = (ds['area'].isel(n_face=idx) * a**2).data.repeat(ds.time.size, axis=0)
 
       print('\tSorting...')
       sorter = np.argsort(prec1d)
@@ -164,54 +164,6 @@ def ratio_line(cdftup1, cdftup2, alias1, alias2, ax):
    ax1.set_ylabel('%s/%s' % (alias1, alias2))
    plt.savefig('prect_cdf_ratios_%d.png' % int(-np.log10(thresh)), bbox_inches='tight')
    #plt.close()
-
-   '''
-      print('Plotting...')      
-      plt.plot(1 - qtiles, precsort * MPS2MMHR, label=ALIASES[ii])
-      if case == CASES[0]:
-         plt.xscale('log')
-         plt.yscale('log')
-         #ticks = np.logspace(-8, -1, 8)
-         #plt.xticks(ticks, labels=np.log10(ticks))
-         ticklocs = 10. ** np.arange(-6, 0.1, 2)
-         ticklabs = 100 * (1 - ticklocs)
-         plt.xticks(ticklocs, labels=ticklabs)
-         plt.gca().invert_xaxis()
-         plt.xlabel('Percentile')
-         plt.ylabel('P rate [mm h$^{-1}$]')
-      if case == CASES[-1]:
-         plt.legend(loc='center right')
-      plt.savefig('%s_prect_cdf_%d.png' % (case, int(-np.log10(thresh))), bbox_inches='tight')
-
-   print('Computing ratios at percentiles...')
-   rattiles = np.logspace(-8, -0.5, 100)
-   pp, qq = 2, 1
-   rats = []
-   for tile in rattiles:
-      idx0 = np.where(cdfs[pp][2] >= 1 - tile)[0][0]
-      idx1 = np.where(cdfs[qq][2] >= 1 - tile)[0][0]
-      p0 = cdfs[pp][0][idx0]
-      p1 = cdfs[qq][0][idx1]
-      rats.append(p0 / p1)
-   ax0 = plt.gca().twinx()
-   ax0.plot(rattiles, rats, linestyle='-.', color='black')
-   ax0.axhline(1, linestyle='--', color='gray')
-   ax0.set_ylabel('%s/%s' % (ALIASES[pp], ALIASES[qq]))
-   plt.savefig('prect_cdf_ratios_%d.png' % int(-np.log10(thresh)), bbox_inches='tight')
-   plt.close()
-
-
-
-   print('%s done.' % sys.argv[0])
-   '''
-
-   '''
-   print('Plotting all percentiles to find threshold...')
-   plt.plot([i[1] for i in oneto100])
-   plt.yscale('log')
-   plt.savefig('precvol_1to100.png', bbox_inches='tight')
-   plt.close()
-   '''
 
 if __name__ == '__main__':
    if LATCDF:
