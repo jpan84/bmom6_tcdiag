@@ -6,7 +6,7 @@
 #DIR1 = 'QPC5-ne30np4-aquap10-seed3x3/atm/hist'
 #DIR2 = 'QPC5-ne30np4-aquap10-unseed/atm/hist'
 #FN = 'QPC5-ne30np4-aquap10-*.cam.h0.*regrid.nc'
-OUTDIR = 'linevslat_250415_unseed_minus_ctrl/'
+OUTDIR = 'linevslat_250416_seed1x1_0010_h1i/'
 HISTDIMS = set(['time', 'n_face']) #cam-SE
 
 import os
@@ -23,10 +23,14 @@ import pltsettings
 ### hist file params
 MODE = 'CAM'
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1'
 HISTS = 'atm/hist/'
 H0 = '*.cam.h0a.*.nc'
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+
+#also works with !HIFREQ output
+HISTS = 'atm/nff_tcprec/'
+H0 = '*.cam.h1i.*.nc'
 
 '''
 MODE = 'MOM'
@@ -34,7 +38,7 @@ HISTS = 'ocn/hist/'
 H0 = '*mom6.hm*[0-9][0-9][0-9][0-9]-[0-9][0-9].nc'
 '''
 
-DO_DIFF = True
+DO_DIFF = False
 CASE2 = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
 
 grpby = 'season' #month
@@ -44,7 +48,7 @@ LATLAB = np.array([-90., -60., -30., 0., 30., 60., 90.])
 lncolors = plt.cm.jet(np.linspace(0, 1, 12 if grpby == 'month' else 4 if grpby == 'season' else None))
 #TODO: allow diffing between cases and selecting of months/seasons
 SKIP = {'AEROD_v'}
-USER_DEF = {'RESTOM', 'PRECT', 'NCF'}
+USER_DEF = set() #{'RESTOM', 'PRECT', 'NCF'}
 
 HEMISYM = {'FSNS', 'FLNS', 'LHFLX', 'SHFLX'}
 DO_SYM = False #only works for season, not month
@@ -80,7 +84,7 @@ def main():
    dvset = set([str(dv) for dv in ds1.data_vars])
    dvset = dvset | USER_DEF
    for dv in dvset:
-      if str(dv) in SKIP or DO_SYM and str(dv) not in HEMISYM:
+      if str(dv) in SKIP or DO_SYM and str(dv) not in HEMISYM or str(dv) not in {'PRECT', 'OMEGA500', 'TCPRECMASK'}: #!HIFREQ
          print('Skipping %s...' % dv)
          continue
       if str(dv) in USER_DEF or set(ds1[dv].dims) == HISTDIMS:
