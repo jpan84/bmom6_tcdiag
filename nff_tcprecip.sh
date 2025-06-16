@@ -27,7 +27,7 @@
 TEMPESTEXTREMESDIR=/glade/work/zarzycki/tempestextremes_noMPI
 
 
-UQSTR=b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1
+UQSTR=b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed
 PATHTOFILES=/glade/derecho/scratch/jpan/archive/${UQSTR}/atm/hist_0010_h1i/
 DIRO=/glade/derecho/scratch/jpan/archive/${UQSTR}/atm/nff_tcprec
 mkdir -p $DIRO
@@ -66,7 +66,7 @@ starttime=$(date -u +"%s")
 DCU_PSLFOMAG=200.0
 DCU_PSLFODIST=5.5
 
-STR_NFF="--in_nodefile ${TRAJFILENAME} --in_nodefile_type SN --in_fmt ${SN_FMT} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_data_list ${OUTLISTNAME} --var PRECT --maskvar TCPRECMASK --nearbyblobs _VECMAG(UBOT,VBOT),0.0,>,5.0,8.0"
+STR_NFF="--in_nodefile ${TRAJFILENAME} --in_nodefile_type SN --in_fmt ${SN_FMT} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_data_list ${OUTLISTNAME} --var PRECT,OMEGA500,OMEGA850,V850,T850,V500,T500,TAUX --maskvar TC8GCD5MPS --nearbyblobs _VECMAG(UBOT,VBOT),0.0,>,5.0,8.0"
 ###--bycontour _PROD(_SIGN(lat),_CURL{8,1.0}(U850,V850)),-1e-5,5.5,0.5"
 ###PSL,${DCU_PSLFOMAG},${DCU_PSLFODIST},0"
 

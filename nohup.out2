@@ -1,0 +1,26 @@
+nohup: ignoring input
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 5333440.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:15:00
+
+[[0.34444444 0.31111111 0.         0.         0.         0.
+0.         0.         0.         0.         0.         0.34444444]
+[0.         0.         0.33695652 0.32608696 0.33695652 0.
+0.         0.         0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.32608696
+0.33695652 0.33695652 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+0.         0.         0.32967033 0.34065934 0.32967033 0.        ]]
+Opening datasets...
+Traceback (most recent call last):
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/sznl_zm_ux.py", line 162, in <module>
+main()
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/sznl_zm_ux.py", line 76, in main
+ds1 = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, HISTS, H0))
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/uxarray/core/api.py", line 271, in open_mfdataset
+ds = xr.open_mfdataset(paths, chunks=corrected_chunks, **kwargs)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 1541, in open_mfdataset
+raise OSError("no files to open")
+OSError: no files to open

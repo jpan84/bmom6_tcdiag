@@ -6,7 +6,7 @@
 #DIR1 = 'QPC5-ne30np4-aquap10-seed3x3/atm/hist'
 #DIR2 = 'QPC5-ne30np4-aquap10-unseed/atm/hist'
 #FN = 'QPC5-ne30np4-aquap10-*.cam.h0.*regrid.nc'
-OUTDIR = 'linevslat_250416_seed1x1_0010_h1i/'
+
 HISTDIMS = set(['time', 'n_face']) #cam-SE
 
 import os
@@ -21,9 +21,10 @@ import matplotlib.colors as colors
 import pltsettings
 
 ### hist file params
+OUTDIR = 'linevslat_250417_nff_tcprec/'
 MODE = 'CAM'
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
 HISTS = 'atm/hist/'
 H0 = '*.cam.h0a.*.nc'
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
@@ -114,6 +115,10 @@ def main():
             plt.hlines(273.15 + 26.5, -1, 1, colors='red', linestyles='dashed')
          if DO_DIFF:
             plt.hlines(0, -1, 1, colors='black', linestyles='dashed')
+         if str(dv) == 'PRECT': #!HIFREQ
+            plt.ylim(0, 1.5e-7)
+         if str(dv) == 'TCPRECMASK':
+            plt.ylim(0, 0.14)
          plt.xlabel('Lat [°]')
          plt.ylabel(dv)
          plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=4, prop=dict(size=12))
