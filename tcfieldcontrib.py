@@ -9,8 +9,8 @@ import pltsettings
 import matplotlib.pyplot as plt
 
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
-DIRO = './tcfieldszm_250417_ctrl/'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1'
+DIRO = './tcfieldszm_250416_seed1x1/'
 HRAW = 'atm/hist_0010_h1i'
 HNFF = 'atm/nff_tcprec'
 HTAPE = '*h1i*.nc'
@@ -38,14 +38,18 @@ def main():
    print(precttcs.shape)
    plt_sznl(SINLAT, precttot, 'PRECT', '[m s$^{-1}$]', close=False)
    plt_sznl(SINLAT, precttcs, 'PRECT', '[m s$^{-1}$]', linestyle='dashed')
-   plt_sznl(SINLAT, precttcs / precttot, 'PRECT_TCfrac', '')
+   ###plt_sznl(SINLAT, precttcs / precttot, 'PRECT_TCfrac', '')
 
-   umf = lambda omg: -(omg < 0) * omg / g
+   umf = lambda omg: (omg < 0) * -omg / g
    print('\nUMF 500...')
    umf500tcs, umf500tot = sznl_fields(dsnff, dsraw, 'OMEGA500', afunc=umf)
    plt_sznl(SINLAT, umf500tot, 'UMF500', '[kg m$^{-2}$ s$^{-1}$]', close=False)
    plt_sznl(SINLAT, umf500tcs, 'UMF500', '[kg m$^{-2}$ s$^{-1}$]', linestyle='dashed')
-   plt_sznl(SINLAT, umf500tcs / umf500tot, 'UMF500_TCfrac', '')
+   #plt_sznl(SINLAT, umf500tcs / umf500tot, 'UMF500_TCfrac', '')
+
+   print('\nConvective frac 500...')
+   _, cf500 = sznl_fields(dsnff, dsraw, 'OMEGA500', afunc=lambda omg: omg < 0)
+   plt_sznl(SINLAT, cf500, 'CF500', '')
 
    print('\nEHF 850...')
    ehf850tcs, ehf850tot = sznl_fields(dsnff, dsraw, 'V850', var2='T850', afunc=lambda x,y: x * y)
