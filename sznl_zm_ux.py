@@ -21,16 +21,16 @@ import matplotlib.colors as colors
 import pltsettings
 
 ### hist file params
-OUTDIR = 'linevslat_250417_nff_tcprec/'
+OUTDIR = 'linevslat_250416_seed1x1_minus_ctrl_0010_h1i/'
 MODE = 'CAM'
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1'
 HISTS = 'atm/hist/'
 H0 = '*.cam.h0a.*.nc'
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
 #also works with !HIFREQ output
-HISTS = 'atm/nff_tcprec/'
+HISTS = 'atm/hist_0010_h1i/'
 H0 = '*.cam.h1i.*.nc'
 
 '''
@@ -39,7 +39,7 @@ HISTS = 'ocn/hist/'
 H0 = '*mom6.hm*[0-9][0-9][0-9][0-9]-[0-9][0-9].nc'
 '''
 
-DO_DIFF = False
+DO_DIFF = True
 CASE2 = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
 
 grpby = 'season' #month
@@ -49,7 +49,7 @@ LATLAB = np.array([-90., -60., -30., 0., 30., 60., 90.])
 lncolors = plt.cm.jet(np.linspace(0, 1, 12 if grpby == 'month' else 4 if grpby == 'season' else None))
 #TODO: allow diffing between cases and selecting of months/seasons
 SKIP = {'AEROD_v'}
-USER_DEF = set() #{'RESTOM', 'PRECT', 'NCF'}
+USER_DEF = set('CF500') #{'RESTOM', 'PRECT', 'NCF'}
 
 HEMISYM = {'FSNS', 'FLNS', 'LHFLX', 'SHFLX'}
 DO_SYM = False #only works for season, not month
@@ -85,7 +85,7 @@ def main():
    dvset = set([str(dv) for dv in ds1.data_vars])
    dvset = dvset | USER_DEF
    for dv in dvset:
-      if str(dv) in SKIP or DO_SYM and str(dv) not in HEMISYM or str(dv) not in {'PRECT', 'OMEGA500', 'TCPRECMASK'}: #!HIFREQ
+      if str(dv) in SKIP or DO_SYM and str(dv) not in HEMISYM or str(dv) not in {'PRECT', 'OMEGA500', 'TC8GCD5MPS', 'CF500'}: #!HIFREQ
          print('Skipping %s...' % dv)
          continue
       if str(dv) in USER_DEF or set(ds1[dv].dims) == HISTDIMS:
@@ -116,8 +116,8 @@ def main():
          if DO_DIFF:
             plt.hlines(0, -1, 1, colors='black', linestyles='dashed')
          if str(dv) == 'PRECT': #!HIFREQ
-            plt.ylim(0, 1.5e-7)
-         if str(dv) == 'TCPRECMASK':
+            plt.ylim(0, 2.2e-7)
+         if str(dv) == 'TC8GCD5MPS':
             plt.ylim(0, 0.14)
          plt.xlabel('Lat [°]')
          plt.ylabel(dv)
@@ -157,6 +157,8 @@ def udef(ds, dv):
       return ds['FSNT'] - ds['FLNT']
    if dv == 'NCF':
       return ds['LWCF'] + ds['SWCF']
+   if dv == 'CF500':
+      return ds['OMEGA500'] < 0
 
 if __name__ == '__main__':
    main()

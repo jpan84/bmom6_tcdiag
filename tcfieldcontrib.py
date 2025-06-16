@@ -9,8 +9,8 @@ import pltsettings
 import matplotlib.pyplot as plt
 
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed'
-DIRO = './tcfieldszm_250415_unseed/'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
+DIRO = './tcfieldszm_250417_ctrl/'
 HRAW = 'atm/hist_0010_h1i'
 HNFF = 'atm/nff_tcprec'
 HTAPE = '*h1i*.nc'
@@ -26,7 +26,7 @@ LATLAB = sznl_zm_ux.LATLAB
 SZNS = sznl_zm_ux.SZNS
 lncolors = plt.cm.jet(np.linspace(0, 1, 4))
 
-YLIM = {'UMF500_TCfrac': (0, 0.6), 'PRECT_TCfrac': (0, 0.6), 'UMF500': (0, .012), 'PRECT': (0, 2.3e-7)}
+YLIM = {'UMF500_TCfrac': (0, 0.6), 'PRECT_TCfrac': (0, 0.6), 'UMF500': (0, .012), 'PRECT': (0, 2.3e-7), 'CF500': (0, 1)}
 
 def main():
    if not os.path.exists(DIRO):
@@ -37,19 +37,19 @@ def main():
    dsraw = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, HRAW, HTAPE))
    dsnff = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, HNFF, HTAPE))
 
-   print('\nPRECT...')
-   precttcs, precttot = sznl_fields(dsnff, dsraw, 'PRECT')
-   print(precttcs.shape)
-   plt_sznl(SINLAT, precttot, 'PRECT', '[m s$^{-1}$]', close=False)
-   plt_sznl(SINLAT, precttcs, 'PRECT', '[m s$^{-1}$]', linestyle='dashed')
-   plt_sznl(SINLAT, precttcs / precttot, 'PRECT_TCfrac', '', linestyle='dotted')
+   ###print('\nPRECT...')
+   ###precttcs, precttot = sznl_fields(dsnff, dsraw, 'PRECT')
+   ###print(precttcs.shape)
+   ###plt_sznl(SINLAT, precttot, 'PRECT', '[m s$^{-1}$]', close=False)
+   ###plt_sznl(SINLAT, precttcs, 'PRECT', '[m s$^{-1}$]', linestyle='dashed')
+   ###plt_sznl(SINLAT, precttcs / precttot, 'PRECT_TCfrac', '', linestyle='dotted')
 
-   umf = lambda omg: (omg < 0) * -omg / g
-   print('\nUMF 500...')
-   umf500tcs, umf500tot = sznl_fields(dsnff, dsraw, 'OMEGA500', afunc=umf)
-   plt_sznl(SINLAT, umf500tot, 'UMF500', '[kg m$^{-2}$ s$^{-1}$]', close=False)
-   plt_sznl(SINLAT, umf500tcs, 'UMF500', '[kg m$^{-2}$ s$^{-1}$]', linestyle='dashed')
-   plt_sznl(SINLAT, umf500tcs / umf500tot, 'UMF500_TCfrac', '', linestyle='dotted')
+   ###umf = lambda omg: (omg < 0) * -omg / g
+   ###print('\nUMF 500...')
+   ###umf500tcs, umf500tot = sznl_fields(dsnff, dsraw, 'OMEGA500', afunc=umf)
+   ###plt_sznl(SINLAT, umf500tot, 'UMF500', '[kg m$^{-2}$ s$^{-1}$]', close=False)
+   ###plt_sznl(SINLAT, umf500tcs, 'UMF500', '[kg m$^{-2}$ s$^{-1}$]', linestyle='dashed')
+   ###plt_sznl(SINLAT, umf500tcs / umf500tot, 'UMF500_TCfrac', '', linestyle='dotted')
 
    print('\nConvective frac 500...')
    _, cf500 = sznl_fields(dsnff, dsraw, 'OMEGA500', afunc=lambda omg: omg < 0)
