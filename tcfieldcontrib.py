@@ -9,12 +9,14 @@ import pltsettings
 import matplotlib.pyplot as plt
 
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1'
-DIRO = './tcfieldszm_250416_seed1x1/'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed'
+DIRO = './tcfieldszm_250415_unseed/'
 HRAW = 'atm/hist_0010_h1i'
 HNFF = 'atm/nff_tcprec'
 HTAPE = '*h1i*.nc'
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+
+print(CASE, DIRO)
 
 g = 9.81
 WMAT = sznl_zm_ux.wmat
@@ -23,6 +25,8 @@ SINLAT = np.sin(np.deg2rad(ZMLATS))
 LATLAB = sznl_zm_ux.LATLAB
 SZNS = sznl_zm_ux.SZNS
 lncolors = plt.cm.jet(np.linspace(0, 1, 4))
+
+YLIM = {'UMF500_TCfrac': (0, 0.6), 'PRECT_TCfrac': (0, 0.6), 'UMF500': (0, .012), 'PRECT': (0, 2.3e-7)}
 
 def main():
    if not os.path.exists(DIRO):
@@ -38,23 +42,24 @@ def main():
    print(precttcs.shape)
    plt_sznl(SINLAT, precttot, 'PRECT', '[m s$^{-1}$]', close=False)
    plt_sznl(SINLAT, precttcs, 'PRECT', '[m s$^{-1}$]', linestyle='dashed')
-   ###plt_sznl(SINLAT, precttcs / precttot, 'PRECT_TCfrac', '')
+   plt_sznl(SINLAT, precttcs / precttot, 'PRECT_TCfrac', '', linestyle='dotted')
 
    umf = lambda omg: (omg < 0) * -omg / g
    print('\nUMF 500...')
    umf500tcs, umf500tot = sznl_fields(dsnff, dsraw, 'OMEGA500', afunc=umf)
    plt_sznl(SINLAT, umf500tot, 'UMF500', '[kg m$^{-2}$ s$^{-1}$]', close=False)
    plt_sznl(SINLAT, umf500tcs, 'UMF500', '[kg m$^{-2}$ s$^{-1}$]', linestyle='dashed')
-   #plt_sznl(SINLAT, umf500tcs / umf500tot, 'UMF500_TCfrac', '')
+   plt_sznl(SINLAT, umf500tcs / umf500tot, 'UMF500_TCfrac', '', linestyle='dotted')
 
    print('\nConvective frac 500...')
    _, cf500 = sznl_fields(dsnff, dsraw, 'OMEGA500', afunc=lambda omg: omg < 0)
    plt_sznl(SINLAT, cf500, 'CF500', '')
 
-   print('\nEHF 850...')
-   ehf850tcs, ehf850tot = sznl_fields(dsnff, dsraw, 'V850', var2='T850', afunc=lambda x,y: x * y)
-   plt_sznl(SINLAT, ehf850tot, 'EHF850', '[K m s$^{-1}$]', close=False)
-   plt_sznl(SINLAT, ehf850tcs, 'EHF850', '[K m s$^{-1}$]', linestyle='dashed')
+   #incorrect considered total instead of just eddy flux
+   ###print('\nEHF 850...')
+   ###ehf850tcs, ehf850tot = sznl_fields(dsnff, dsraw, 'V850', var2='T850', afunc=lambda x,y: x * y)
+   ###plt_sznl(SINLAT, ehf850tot, 'EHF850', '[K m s$^{-1}$]', close=False)
+   ###plt_sznl(SINLAT, ehf850tcs, 'EHF850', '[K m s$^{-1}$]', linestyle='dashed')
 
    #TODO: consider eddy moisture flux
 
@@ -86,6 +91,7 @@ def plt_sznl(sinlats, arr, name, units, linestyle='solid', close=True):
    plt.ylabel(name + ' ' + units)
    plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=4, prop=dict(size=10))
    plt.xlim(-1, 1)
+   plt.ylim(*YLIM[name])
    plt.gca().set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB.astype(np.int_))
    plt.savefig(os.path.join(DIRO, '%s.%s.png' % (CASE.split('.')[-1], name)), bbox_inches='tight')
    if close:
