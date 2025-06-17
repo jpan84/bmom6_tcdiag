@@ -508,3 +508,7 @@ Plotting FSNS...
 Plotting TSMN...
 (12, 361)
 sznl_zm_ux.py done.
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 5372669.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=01:30:00
+

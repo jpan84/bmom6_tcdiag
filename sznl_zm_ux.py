@@ -21,10 +21,10 @@ import matplotlib.colors as colors
 import pltsettings
 
 ### hist file params
-OUTDIR = 'linevslat_250416_seed1x1_minus_ctrl_0010_h1i/'
+OUTDIR = 'linevslat_250417_ctrl_0010_h1i/'
 MODE = 'CAM'
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
 HISTS = 'atm/hist/'
 H0 = '*.cam.h0a.*.nc'
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
@@ -39,7 +39,7 @@ HISTS = 'ocn/hist/'
 H0 = '*mom6.hm*[0-9][0-9][0-9][0-9]-[0-9][0-9].nc'
 '''
 
-DO_DIFF = True
+DO_DIFF = False
 CASE2 = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
 
 grpby = 'season' #month
@@ -49,7 +49,7 @@ LATLAB = np.array([-90., -60., -30., 0., 30., 60., 90.])
 lncolors = plt.cm.jet(np.linspace(0, 1, 12 if grpby == 'month' else 4 if grpby == 'season' else None))
 #TODO: allow diffing between cases and selecting of months/seasons
 SKIP = {'AEROD_v'}
-USER_DEF = set('CF500') #{'RESTOM', 'PRECT', 'NCF'}
+USER_DEF = {'CF500'} #{'RESTOM', 'PRECT', 'NCF'}
 
 HEMISYM = {'FSNS', 'FLNS', 'LHFLX', 'SHFLX'}
 DO_SYM = False #only works for season, not month
@@ -158,7 +158,8 @@ def udef(ds, dv):
    if dv == 'NCF':
       return ds['LWCF'] + ds['SWCF']
    if dv == 'CF500':
-      return ds['OMEGA500'] < 0
+      return ux.UxDataArray((ds['OMEGA500'] < 0).astype(np.float64).data, dims=ds['OMEGA500'].dims,\
+             coords=ds['OMEGA500'].coords, uxgrid=ds.uxgrid)
 
 if __name__ == '__main__':
    main()
