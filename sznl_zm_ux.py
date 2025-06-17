@@ -21,10 +21,10 @@ import matplotlib.colors as colors
 import pltsettings
 
 ### hist file params
-OUTDIR = 'linevslat_250417_ctrl_0010_h1i/'
+OUTDIR = 'linevslat_250415_unseed_minus_ctrl_0010_h1i/'
 MODE = 'CAM'
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed'
 HISTS = 'atm/hist/'
 H0 = '*.cam.h0a.*.nc'
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
@@ -39,7 +39,7 @@ HISTS = 'ocn/hist/'
 H0 = '*mom6.hm*[0-9][0-9][0-9][0-9]-[0-9][0-9].nc'
 '''
 
-DO_DIFF = False
+DO_DIFF = True
 CASE2 = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
 
 grpby = 'season' #month
