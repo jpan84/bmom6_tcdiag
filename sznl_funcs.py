@@ -16,7 +16,8 @@ wmat = wmat / wmat.sum(axis=1)[:, None]
 
 def monthly2sznl(da, monnm='month'):
    da = da.transpose(monnm, ...)
-   sznarr = wmat @ da.data
+   #sznarr = wmat @ da.data
+   sznarr = np.einsum('ij,j...->i...', wmat, da.data)
 
    dims = list(da.dims)
    coords = dict(da.coords)

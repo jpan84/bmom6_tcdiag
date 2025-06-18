@@ -18,14 +18,14 @@ import sznl_funcs
 import pltsettings
 
 ### hist file params
-OUTDIR = 'linevslat_new_sznl'
+OUTDIR = 'linevslat_new_sznl_diff'
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
 HISTS = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/*.h0a.*.nc'
 CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1']
 ALIASES = ['UNSEED', 'CTRL', 'SEED']
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
-DO_DIFF = False
+DO_DIFF = True
 
 zmlats = (-90, 90, 0.5)
 LATLAB = np.array([-90., -60., -30., 0., 30., 60., 90.])
@@ -93,17 +93,22 @@ def main():
             ax.set_ylabel(str(dv) + ' [' + str(das[1].units) + ']')
          except:
             ax.set_ylabel(dv)
-         ax.set_title(ALIASES[ii])
+         ax.set_title(ALIASES[ii] + (' difference' if (DO_DIFF and (ii == 0 or ii == 2)) else '') )
          ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=4, prop=dict(size=12))
          ax.set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB.astype(np.int_))
 
       if DO_DIFF:
-         ylims = [ax.get_ylim() for ax in axes]
-         ylims.pop(1)
-         ylims = np.array(ylims)
-         miny, maxy = ylims.min(), ylims.max()
-         axes[0].set_ylim(miny, maxy)
-         axes[2].set_ylim(miny, maxy)
+         ###make the difference panels share y
+         #ylims = [ax.get_ylim() for ax in axes]
+         #ylims.pop(1)
+         #ylims = np.array(ylims)
+         #miny, maxy = ylims.min(), ylims.max()
+         #axes[0].set_ylim(miny, maxy)
+         #axes[2].set_ylim(miny, maxy)
+         for aa in [axes[0], axes[2]]:
+            ylims = aa.get_ylim()
+            maxy = max(np.abs(ylims))
+            aa.set_ylim(-maxy, maxy)
       plt.savefig(os.path.join(OUTDIR, '%s_sznl.png' % dv), bbox_inches='tight')
       plt.close()
 

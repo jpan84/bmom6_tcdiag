@@ -2,7 +2,7 @@
 #Adapted from 20221002 version
 #Use data on pressure levels, interpolated using hy2pres.py.
 #Compute the transformed Eulerian mean (TEM) streamfunctions based on Eq. 10 from White et al. 2020 (10.1175/JCLI-D-19-0697.1).
-#qcmd -q casper -l walltime=00:30:00 -l select=1:ncpus=36:mem=128GB -A UPSU0063 python3 streamf.py 0
+#qcmd -q casper -l walltime=00:30:00 -l select=1:ncpus=36:mem=128GB -A UCIS0005 python3 streamf_sznl.py 0
 
 #import paths as pt
 OUTDIR = './streamf_sznl/'
@@ -26,9 +26,9 @@ print(sys.argv)
 #DIRIDX = int(sys.argv[1])
 DIFF = bool(int(sys.argv[1])) #False if len(sys.argv) < 3 else bool(sys.argv[2])
 #DIRIDX2 = None if not DIFF else int(sys.argv[3])
-fname = '*h0a*.nc' #'cdo_ann_means.nc' #'*h0a*.nc'
+fname = 'ymonmean.nc' #'cdo_ann_means.nc' #'*h0a*.nc'
 DIR1 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/%s' % fname
-DIR2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist_regrid_0.25x0.25_onpres/%s' % fname
+DIR2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist_regrid_0.25x0.25_onpres/%s' % fname
 pres_name = 'plev'
 DIAB_VARS = ['DTCOND', 'QRL', 'QRS']
 plotfileargs = (DIR1.split('/')[-4], DIR2.split('/')[-4] if DIFF else '')
@@ -43,7 +43,7 @@ def main():
 
    print('Reading history files...')
    print(DIR1)
-   HIST_DS1 = xr.open_mfdataset(DIR1) #open all h1 files into one dask-chunked array
+   HIST_DS1 = xr.open_dataset(DIR1) #open all h1 files into one dask-chunked array
    if HIST_DS1[pres_name].units == 'Pa':
       HIST_DS1 = HIST_DS1.assign_coords(coords={pres_name: HIST_DS1[pres_name] / 100})
    streamf1 = comppsi(HIST_DS1)
@@ -53,7 +53,7 @@ def main():
    expo = 10
 
    if DIFF:
-      HIST_DS2 = xr.open_mfdataset(DIR2)
+      HIST_DS2 = xr.open_dataset(DIR2)
       if HIST_DS2[pres_name].units == 'Pa':
          HIST_DS2 = HIST_DS2.assign_coords(coords={pres_name: HIST_DS2[pres_name] / 100})
       streamf2 = comppsi(HIST_DS2)
@@ -68,6 +68,8 @@ def main():
       expo = 9
 
    print('Computing seasonal means...')
+   #print(plotfields[0])
+   #print(plotfields[0].transpose('month', ...))
    plotfields = [monthly2sznl(pf) for pf in plotfields]
    print('Mirroring hemispheres...')
    plotfields = [stack_hemi_sznl(pf, antisym=True, latnm='lat') for pf in plotfields]
@@ -85,7 +87,7 @@ def main():
    contourkwargs['levels'] = np.concatenate((-contourkwargs['levels'][::-1], contourkwargs['levels']))
    clabelkwargs = {'inline': 1, 'fontsize': 10, 'colors': 'black', 'fmt': '%.1f'}
    subplot_kw = dict(xlim=(-1, 1), ylim=(100, 1000), yscale='log')
-   fig, axes = plt.subplots(2, 3, sharey=True, subplot_kw=subplot_kw)
+   fig, axes = plt.subplots(2, 3, layout='constrained', sharey=True, subplot_kw=subplot_kw)
 
    plotfields = [field / 10**expo for field in plotfields]
    plottitles = ['Eulerian Mean Streamfunction', '$\Psi^*_{vT}$', 'Residual Streamfunction $\Psi^*$', '$\Psi^*_{cond}$', '$\Psi^*_{LWrad}$', '$\Psi^*_{SWrad}$']
@@ -95,20 +97,25 @@ def main():
          ax = axes[szj, sfi]
          CSF = ax.contourf(np.sin(np.deg2rad(HIST_DS1.lat)), HIST_DS1[pres_name], plotfields[sfi].isel(season=szj).data, **contourfkwargs)
          CS1 = ax.contour(np.sin(np.deg2rad(HIST_DS1.lat)), HIST_DS1[pres_name], plotfields[sfi].isel(season=szj).data, **contourkwargs) 
-         if i == 0:
+         if sfi == 0 and szj == 0:
             ax.yaxis.set_minor_formatter(mticker.ScalarFormatter())
             ax.yaxis.set_major_formatter(mticker.ScalarFormatter())
             ax.set_ylabel('Pressure [hPa]')
             ax.set_yticks(np.arange(100, 1001, 100))
-            plt.colorbar(CSF, ax=axes)
+            cb = plt.colorbar(CSF, ax=axes)
+            cbt = cb.get_ticks()
+            cbt = np.concatenate((cbt[:cbt.size // 2 + 1], -cbt[:cbt.size // 2 + 1][::-1]))
+            cb.set_ticks(cbt)
+            cb.set_ticklabels([(('%d' % t) if abs(t) >= 1 else t) for t in cbt])
+            ax.invert_yaxis()
          ax.set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB.astype(np.int_))
          #ax.set_xlim(np.sin(np.deg2rad(-15)), np.sin(np.deg2rad(90)))
-         plt.gca().invert_yaxis()
+         #plt.gca().invert_yaxis()
          #ax.clabel(CS1, **clabelkwargs)
-         ax.set_title('%s (10$^{%d}$ kg s$^{-1}$)' % (plottitles[i], expo))
+         ax.set_title('%s (10$^{%d}$ kg s$^{-1}$)' % (plottitles[sfi], expo))
          ax.set_xlabel('Latitude [°]')
 
-
+   #fig.tight_layout()
    plt.savefig(os.path.join(OUTDIR, '%s_%s_TEMstreamf.png' % plotfileargs), bbox_inches='tight')
    plt.close()
 
