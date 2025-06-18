@@ -26,19 +26,25 @@ def main():
    plt.close()
 
    coslat = np.cos(np.deg2rad(ds['yq'])) #TODO: check numerical accuracy/validity of shifting yh to yq
+   print(ds['vmo'].max())
    vmf = (ds['vmo'] / a / coslat / dlon / ds['h'].data).mean(dim=['xh', 'time'])
+   print(vmf.max())
    vrho_mean = ds['vo'].mean(dim=['xh', 'time']) * ds['rhoinsitu'].mean(dim=['xh', 'time']).data
    vpbp = -g / dens0 * (vmf - vrho_mean)
    bmean = -g / dens0 * (ds['rhoinsitu'].mean(dim=['xh', 'time']) - dens0)
    bz = -bmean.differentiate('zl', edge_order=2)
-   Psi_qs = (2 * np.pi * a * coslat * vpbp).transpose('zl', ...) / bz.data
+   #plt.hist(bz.data)
+   #plt.show()
+   Psi_qs = (2 * np.pi * a * coslat * dens0 * vpbp).transpose('zl', ...) / bz.data
 
    print(vpbp)
    print(bz)
    print(coslat)
    print(Psi_qs)
 
-   plt.contourf(Psi_qs.yq, Psi_qs.zl, Psi_qs.data / 10**expo, **contourfkwargs)
+   levels = 10.**np.arange(-2, 3)
+   levels = np.concatenate((-levels[::-1], levels))
+   plt.contourf(Psi_qs.yq, Psi_qs.zl, vrho_mean, levels=levels, norm=colors.SymLogNorm(0.01), cmap='coolwarm')#Psi_qs.data / 10**expo, **contourfkwargs) )#
    plt.gca().invert_yaxis()
    plt.colorbar()
    plt.show()
