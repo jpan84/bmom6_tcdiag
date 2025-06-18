@@ -56,14 +56,20 @@ def main():
          das = [udef(ds, dv) for ds in dss]
       elif set(dss[0][dv].dims) == HISTDIMS:
          das = [ds[dv] for ds in dss]
+      else:
+         print('Skipping %s...' % dv)
+         continue
 
-      print('     Computing means...')
+      print('\tComputing means...')
       monmeans = [da.groupby('time.month').mean() for da in das]
-      monzm = [tmeans.zonal_mean(lat=zmlats).to_xarray()] #monthly zonal means
+      monzm = [da.zonal_mean(lat=zmlats) for da in monmeans] #monthly zonal means
+      print(monzm[0])
+      #monzm = [da.assign_coords(month=monmeans[0]['month'].data) for da in monmeans] #fix uxarray zonal_mean() dropping coords
+      #print(monzm[0])
       sznzm = [sznl_funcs.monthly2sznl(da) for da in monzm]
       sinlat = np.sin(np.deg2rad(sznzm[0]['latitudes']))
 
-      print('     Plotting...')
+      print('\tPlotting...')
       plt.rcParams['figure.figsize'] = (30, 6)
       subplot_kw = dict(xlim=(-1, 1), sharey=(not DO_DIFF))
       fig, axes = plt.subplots(1, 3, subplot_kw=subplot_kw)
