@@ -130,7 +130,18 @@ def main():
    print('Done.')
 
 #vals should have shape (time, lat)
-def plt_sznl(sinlats, vals, name, units, linestyle='solid', close=True, ax=None):
+def plt_sznl(sinlats, pltda, name, units, title='', linestyle='solid', close=True, ax=None):
+   if ax is None:
+      ax = plt.axes()
+   for tt, szn in enumerate(pltda['season']):
+      ax.plot(sinlats, pltda.sel(season=szn), label=str(szn.values), color=lncolors[tt])
+   ax.set_xlabel('Lat [°]')
+   ax.set_ylabel(name + ' ' + units)
+   ax.set_title(title)
+   ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=4, prop=dict(size=12))
+   ax.set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB.astype(np.int_))
+   ax.hlines(0, -1, 1, color='black', linestyle='dotted')
+
    if ax is None:
       ax = plt.axes()
    for tt in range(vals.shape[0]):

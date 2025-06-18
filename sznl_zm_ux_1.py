@@ -18,14 +18,14 @@ import sznl_funcs
 import pltsettings
 
 ### hist file params
-OUTDIR = 'linevslat_new_sznl_diff'
+OUTDIR = 'linevslat_new_sznl'
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
 HISTS = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/*.h0a.*.nc'
 CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1']
 ALIASES = ['UNSEED', 'CTRL', 'SEED']
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
-DO_DIFF = True
+DO_DIFF = False
 
 zmlats = (-90, 90, 0.5)
 LATLAB = np.array([-90., -60., -30., 0., 30., 60., 90.])
@@ -63,7 +63,7 @@ def main():
       print('\tComputing means...')
       monmeans = [da.groupby('time.month').mean() for da in das]
       monzm = [da.zonal_mean(lat=zmlats) for da in monmeans] #monthly zonal means
-      print(monzm[0])
+      #print(monzm[0])
       #monzm = [da.assign_coords(month=monmeans[0]['month'].data) for da in monmeans] #fix uxarray zonal_mean() dropping coords
       #print(monzm[0])
       sznzm = [sznl_funcs.monthly2sznl(da) for da in monzm] #shape (season, ncol)
@@ -86,10 +86,13 @@ def main():
          #plt.plot(sinlat, line1.values)
          #if str(dv) == 'TS' and not DO_DIFF:
          #   plt.hlines(273.15 + 26.5, -1, 1, colors='red', linestyles='dashed')
-         #if DO_DIFF:
-         #   plt.hlines(0, -1, 1, colors='black', linestyles='dashed')
+         if DO_DIFF and (ii == 0 or ii == 2):
+            ax.hlines(0, -1, 1, colors='black', linestyles='dashed')
          ax.set_xlabel('Lat [°]')
-         ax.set_ylabel(dv, das[ii].units)
+         try:
+            ax.set_ylabel(str(dv) + ' [' + str(das[1].units) + ']')
+         except:
+            ax.set_ylabel(dv)
          ax.set_title(ALIASES[ii])
          ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=4, prop=dict(size=12))
          ax.set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB.astype(np.int_))
