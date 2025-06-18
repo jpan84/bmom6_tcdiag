@@ -1,6 +1,5 @@
 nohup: ignoring input
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 5136456.casper-pbs with qsub arguments:
-    qsub  -l select=1:ncpus=16:mem=64GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:15:00
+Waiting on job launch; 5393114.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=02:35:00
 
-['atmo_ener.py', '1']

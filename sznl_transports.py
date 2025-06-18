@@ -130,7 +130,9 @@ def main():
    print('Done.')
 
 #vals should have shape (time, lat)
-def plt_sznl(sinlats, vals, name, units, linestyle='solid', close=True):
+def plt_sznl(sinlats, vals, name, units, linestyle='solid', close=True, ax=None):
+   if ax is None:
+      ax = plt.axes()
    for tt in range(vals.shape[0]):
       plt.plot(sinlats, vals[tt, :], label=SZNS[tt], color=lncolors[tt], linestyle=linestyle)
    if True or not CASE2 is None:

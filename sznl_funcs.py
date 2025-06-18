@@ -20,11 +20,12 @@ def monthly2sznl(da, monnm='month'):
 
    dims = list(da.dims)
    coords = dict(da.coords)
-   print(da)
-   print(dims)
-   print(coords)
+   #print(da)
+   #print(dims)
+   #print(coords)
    if monnm in coords:
       coords.pop(monnm)
+   if monnm in dims:
       dims.remove(monnm)
    dims = ['season'] + dims
    coords['season'] = SZNS
@@ -39,7 +40,7 @@ def monthly2sznl(da, monnm='month'):
 
 #reduce a DataArray from 4 seasons to 2
 #by mirroring across the equator and averaging
-#lats must be increasing and symmetric about Eq (0 deg optional)
+#lats must be symmetric about Eq (0 deg optional)
 def stack_hemi_sznl(sznlda, antisym=False, sznnm='season', latnm='latitudes'):
    nhwarm = sznlda.sel({sznnm: ['JJA', 'SON']}) 
    shwarm = sznlda.sel({sznnm: ['DJF', 'MAM']})
