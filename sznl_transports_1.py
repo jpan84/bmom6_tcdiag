@@ -50,44 +50,46 @@ def main():
    camdss = [xr.open_mfdataset(CAMH % cs) for cs in CASES]
    momdss = [xr.open_mfdataset(MOMH % cs) for cs in CASES]
 
-   ###print('\nComputing OHT...')
-   ###oht = [derive_flx(ds, OHT, 'yq', True).isel(yq=slice(0, -1)) for ds in momdss]
+   print('\nComputing OHT...')
+   oht = [derive_flx(ds, OHT, 'yq', True).isel(yq=slice(0, -1)) for ds in momdss]
    ###if DO_DIFF:
    ###   oht[0], oht[2] = oht[0] - oht[1], oht[2] - oht[1]
-   ###sinlat_q = np.sin(np.deg2rad(oht[0]['yq']))
-   ####print(sinlat_q.values) #TODO: always remove the last (northernmost) yq point to make hemi sym
+   siny_q = np.sin(np.deg2rad(oht[0]['yq']))
+   ###print(sinlat_q.values) #TODO: always remove the last (northernmost) yq point to make hemi sym
 
-   ###print('\tPlotting OHT...')
-   ###plt_cases(sinlat_q, oht, 'OHT', '[W]', linestyle='solid')
+   print('\tPlotting OHT...')
+   plt_cases(siny_q, oht, 'OHT', '[W]', linestyle='solid')
 
    print('\nComputing AHT...')
    msefl = [derive_flx(ds, MSEFLX, 'lat', True) for ds in camdss]
    ####if DO_DIFF:
+   #print(camdss[0]['lat'])
    lat_h = msefl[0]['lat']
+   #print(lat_h)
    latcirc = 2 * np.pi * a * np.cos(np.deg2rad(lat_h))
-   ###aht = [latcirc / g * fl.integrate('plev') for fl in msefl]
+   aht = [latcirc / g * fl.integrate('plev') for fl in msefl]
    sinlat_h = np.sin(np.deg2rad(lat_h))
 
-   ###print('\tPlotting AHT...')
-   ###plt_cases(sinlat_h, aht, 'AHT', '[W]')
+   print('\tPlotting AHT...')
+   plt_cases(sinlat_h, aht, 'AHT', '[W]')
 
-   ###print('\nSumming AHT + OHT...')
-   ###aht_q = [da.interp(coords=dict(lat=oht[0]['yq'].data)) for da in aht]
-   ###aoht = [oht[ii] + ada.data.T for ii, ada in enumerate(aht_q)]
-   ###print('\tPlotting AOHT...')
-   ###plt_cases(sinlat_q, aoht, 'AOHT', '[W]')
+   print('\nSumming AHT + OHT...')
+   aht_q = [da.interp(coords=dict(lat=oht[0]['yq'].data)) for da in aht]
+   aoht = [oht[ii] + ada.data.T for ii, ada in enumerate(aht_q)]
+   print('\tPlotting AOHT...')
+   plt_cases(sinlat_q, aoht, 'AOHT', '[W]')
 
    print('\nComputing O Angular Momentum Transport...')
    vo_h = [ds['vo'].rename(dict(yq='yh')).interp(coords=dict(yh=ds['yh'])) for ds in momdss] #non-conservative interp
    momdss = [ds.assign(variables=dict(vo_h=vo_h[ii])) for ii, ds in enumerate(momdss)]
    #print(momdss[0]['vo_h'])
    #print(momdss[0]['rhoinsitu'])
-   r_ax = latcirc / 2 / np.pi
+   r_ax_yh = a * np.cos(np.deg2rad(momdss[0]['yh']))
    #print(r_ax)
    #print(momdss[0]['uv'])
-   oamf_r = [r_ax.data**2 * derive_flx(ds, OamFLX_rot, 'yh', True) for ds in momdss]
-   oamf_u = [r_ax.data * derive_flx(ds, OamFLX_u, 'yh', True) for ds in momdss]
-   oamt = [latcirc * (oamf_u[ii] + oamf_r[ii]).integrate('zl') for ii in range(len(oamf_r))]
+   oamf_r = [r_ax_yh**2 * derive_flx(ds, OamFLX_rot, 'yh', True) for ds in momdss]
+   oamf_u = [r_ax_yh * derive_flx(ds, OamFLX_u, 'yh', True) for ds in momdss]
+   oamt = [2 * np.pi * r_ax_yh * (oamf_u[ii] + oamf_r[ii]).integrate('zl') for ii in range(len(oamf_r))]
    print('\tPlotting OAMT...')
    plt_cases(sinlat_h, oamt, 'OAMT', '[N m]')
 
@@ -99,7 +101,7 @@ def main():
    plt_cases(sinlat_h, aamt, 'AAMT', '[N m]')
 
    print('\nSumming AAMT + OAMT...')
-   AOamT = [oamt[ii] + ada.data.T for ii, ada in enumerate(aamt)]
+   AOamT = [oamt[ii] + ada.sel(lat=oamt[ii]['yh'].data).data.T for ii, ada in enumerate(aamt)]
    print('\tPlotting AOamT...')
    plt_cases(sinlat_h, AOamT, 'AO_AMT', '[N m]')
 
@@ -156,7 +158,7 @@ def derive_flx(ds, template, latnm, antisym):
 
 
 def plt_cases(sinlat, das, *args, **kwargs):
-   plt.rcParams['figure.figsize'] = (20, 4)
+   plt.rcParams['figure.figsize'] = (30, 6)
    subplot_kw = dict(xlim=(-1, 1), sharey=(not DO_DIFF))
    fig, axes = plt.subplots(1, 3, layout='constrained', subplot_kw=subplot_kw)
    for ii, pltda in enumerate(das):
