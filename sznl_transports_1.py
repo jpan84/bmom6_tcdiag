@@ -30,7 +30,8 @@ RESTOM = [(1, 'FSNT'), (-1, 'FLNT'), ('mean', 'lon')]
 AHU = [(1, 'FSNT'), (-1, 'FSNS'), (1, 'FLNS'), (-1, 'FLNT'), (1, 'SHFLX'), (1, 'LHFLX'), ('mean', 'lon')]
 OHU_CAM = [(1, 'FSNS'), (-1, 'FLNS'), (-1, 'SHFLX'), (-1, 'LHFLX'), ('mean', 'lon')]
 MSEFLX = [(g, 'V', 'Z3'), (cp, 'VT'), (lv, 'VQ'), ('mean', 'lon')]
-
+TAUX = [(1, 'TAUX'), ('mean', 'lon')]
+DIAB = [(cp / g, 'DTCOND'), (cp / g, 'QRL'), (cp / g, 'QRS'), ('mean', 'lon')]
 
 OHU_MOM = [(1, 'rsntds'), (1, 'rlntds'), (1, 'hfsso'), (1, 'hflso'), ('mean', 'xh')]
 OHT = [(1, 'T_ady_2d'), (1, 'T_diffy_2d'), ('sum', 'xh')]
@@ -49,39 +50,43 @@ def main():
    camdss = [xr.open_mfdataset(CAMH % cs) for cs in CASES]
    momdss = [xr.open_mfdataset(MOMH % cs) for cs in CASES]
 
-   print('\nComputing OHT...')
-   oht = [derive_flx(ds, OHT, 'yq', True).isel(yq=slice(0, -1)) for ds in momdss]
-   if DO_DIFF:
-      oht[0], oht[2] = oht[0] - oht[1], oht[2] - oht[1]
-   sinlat_q = np.sin(np.deg2rad(oht[0]['yq']))
-   #print(sinlat_q.values) #TODO: always remove the last (northernmost) yq point to make hemi sym
+   ###print('\nComputing OHT...')
+   ###oht = [derive_flx(ds, OHT, 'yq', True).isel(yq=slice(0, -1)) for ds in momdss]
+   ###if DO_DIFF:
+   ###   oht[0], oht[2] = oht[0] - oht[1], oht[2] - oht[1]
+   ###sinlat_q = np.sin(np.deg2rad(oht[0]['yq']))
+   ####print(sinlat_q.values) #TODO: always remove the last (northernmost) yq point to make hemi sym
 
-   print('\tPlotting OHT...')
-   plt_cases(sinlat_q, oht, 'OHT', '[W]', linestyle='solid')
+   ###print('\tPlotting OHT...')
+   ###plt_cases(sinlat_q, oht, 'OHT', '[W]', linestyle='solid')
 
    print('\nComputing AHT...')
    msefl = [derive_flx(ds, MSEFLX, 'lat', True) for ds in camdss]
-   #if DO_DIFF:
+   ####if DO_DIFF:
    lat_h = msefl[0]['lat']
    latcirc = 2 * np.pi * a * np.cos(np.deg2rad(lat_h))
-   aht = [latcirc / g * fl.integrate('plev') for fl in msefl]
+   ###aht = [latcirc / g * fl.integrate('plev') for fl in msefl]
    sinlat_h = np.sin(np.deg2rad(lat_h))
 
-   print('\tPlotting AHT...')
-   plt_cases(sinlat_h, aht, 'AHT', '[W]')
+   ###print('\tPlotting AHT...')
+   ###plt_cases(sinlat_h, aht, 'AHT', '[W]')
 
-   print('\nSumming AHT + OHT...')
-   aht_q = [aht.interp(coords=dict(lat=oht[0]['yq'].data))]
-   aoht = [oht[ii] + ada.data for ii, ada in enumerate(aht_q)]
-   print('\tPlotting AOHT...')
-   plt_cases(sinlat_q, aoht, 'AOHT', '[W]')
+   ###print('\nSumming AHT + OHT...')
+   ###aht_q = [da.interp(coords=dict(lat=oht[0]['yq'].data)) for da in aht]
+   ###aoht = [oht[ii] + ada.data.T for ii, ada in enumerate(aht_q)]
+   ###print('\tPlotting AOHT...')
+   ###plt_cases(sinlat_q, aoht, 'AOHT', '[W]')
 
    print('\nComputing O Angular Momentum Transport...')
    vo_h = [ds['vo'].rename(dict(yq='yh')).interp(coords=dict(yh=ds['yh'])) for ds in momdss] #non-conservative interp
    momdss = [ds.assign(variables=dict(vo_h=vo_h[ii])) for ii, ds in enumerate(momdss)]
+   #print(momdss[0]['vo_h'])
+   #print(momdss[0]['rhoinsitu'])
    r_ax = latcirc / 2 / np.pi
-   oamf_r = [r_ax**2 * derive_flx(ds, OamFLX_rot, 'yh', True) for ds in momdss]
-   oamf_u = [r_ax * derive_flx(ds, OamFLX_u, 'yh', True) for ds in momdss]
+   #print(r_ax)
+   #print(momdss[0]['uv'])
+   oamf_r = [r_ax.data**2 * derive_flx(ds, OamFLX_rot, 'yh', True) for ds in momdss]
+   oamf_u = [r_ax.data * derive_flx(ds, OamFLX_u, 'yh', True) for ds in momdss]
    oamt = [latcirc * (oamf_u[ii] + oamf_r[ii]).integrate('zl') for ii in range(len(oamf_r))]
    print('\tPlotting OAMT...')
    plt_cases(sinlat_h, oamt, 'OAMT', '[N m]')
@@ -94,9 +99,40 @@ def main():
    plt_cases(sinlat_h, aamt, 'AAMT', '[N m]')
 
    print('\nSumming AAMT + OAMT...')
-   AOamT = [oamt[ii] + ada.data for ii, ada in enumerate(aamt)]
+   AOamT = [oamt[ii] + ada.data.T for ii, ada in enumerate(aamt)]
    print('\tPlotting AOamT...')
    plt_cases(sinlat_h, AOamT, 'AO_AMT', '[N m]')
+
+   print('\nComputing AHU...')
+   ahu = [derive_flx(ds, AHU, 'lat', False) for ds in camdss]
+   print('\tPlotting AHU...')
+   plt_cases(sinlat_h, ahu, 'AHU', '[W m$^{-2}$]')
+
+   print('\nComputing sfcHU...')
+   shu = [derive_flx(ds, OHU_CAM, 'lat', False) for ds in camdss]
+   print('\tPlotting sfcHU...')
+   plt_cases(sinlat_h, shu, 'sfcHU', '[W m$^{-2}$]')
+
+   print('\nComputing RESTOM...')
+   rom = [derive_flx(ds, RESTOM, 'lat', False) for ds in camdss]
+   print('\tPlotting RESTOM...')
+   plt_cases(sinlat_h, rom, 'RESTOM', '[W m$^{-2}$]')
+
+   print('\nComputing TAUX torque...')
+   taux_tor = [r_ax * derive_flx(ds, TAUX, 'lat', False) for ds in camdss]
+   print('\tPlotting TAUX torque...')
+   plt_cases(sinlat_h, taux_tor, 'atmo_sfc_torque', '[N m m$^{-2}$]')
+
+   print('\nComputing ocean stress torques...')
+   otor = [r_ax * derive_flx(ds, OMU, 'yh', False) for ds in momdss]
+   print('\tPlotting ocean stress torques...')
+   plt_cases(sinlat_h, otor, 'ocn_stress_torque', '[N m m$^{-2}$]')
+
+   print('\nComputing diabatic heating...')
+   diab = [derive_flx(ds, DIAB, 'lat', False).integrate('plev') for ds in camdss]
+   print('\tPlotting diabatic heating...')
+   plt_sznl(sinlat_h, diab, 'diabatic_heating', '[W m$^{-2}$]')
+   
 
 #Take the product of terms in template tuples, then sum over tuples
 #Final element in template gives zonal aggregation method
@@ -122,7 +158,7 @@ def derive_flx(ds, template, latnm, antisym):
 def plt_cases(sinlat, das, *args, **kwargs):
    plt.rcParams['figure.figsize'] = (20, 4)
    subplot_kw = dict(xlim=(-1, 1), sharey=(not DO_DIFF))
-   fig, axes = plt.subplots(1, 3, subplot_kw=subplot_kw)
+   fig, axes = plt.subplots(1, 3, layout='constrained', subplot_kw=subplot_kw)
    for ii, pltda in enumerate(das):
       plt_sznl(sinlat, pltda, *args, **kwargs, title=ALIASES[ii], ax=axes[ii])
    plt.savefig(os.path.join(DIRO, '%s.png' % args[0]), bbox_inches='tight')
