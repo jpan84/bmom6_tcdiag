@@ -131,7 +131,7 @@ def main():
    plt_cases(sinlat_h, aamt, 'AAMT', '[N m]')
 
    print('\nSumming AAMT + OAMT...')
-   AOamT = [oamt[ii] + ada.sel(lat=oamt[ii]['yh'].data).data.T for ii, ada in enumerate(aamt)]
+   AOamT = [oamt[ii] + ada.sel(lat=oamt[ii]['yh'].data).data for ii, ada in enumerate(aamt)]
    print('\tPlotting AOamT...')
    plt_cases(siny_h, AOamT, 'AO_AMT', '[N m]')
 
