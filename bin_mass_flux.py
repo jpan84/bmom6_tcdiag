@@ -10,7 +10,7 @@ cp = 1004
 lv = 2500840
 a = 6.371e6
 
-testfile = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-*-01-00000.nc'
+testfile = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.*.nc'
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
 #TODO: allow flexible latitude bins?
@@ -18,34 +18,29 @@ camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_10031
 #TODO: split seasons
 def main():
    ds = xr.open_mfdataset(testfile)
-   print(ds)
-   #ds = ds.isel(ncol=(np.abs(ds['lat']) < 35).all(dim='time').compute())
-   nh, sh = sel_unstruct_tropics(ds)
-   print(nh)
-   print(sh)
-   ds = xr.concat((nh, sh), 'ncol')
 
-   mse850 = g * ds['Z850'] + cp * ds['T850'] + lv * ds['Q850']
-   plt.hist(mse850.data)
-   plt.savefig('mse850_hist.png')
-   plt.close()
-
-   area = ds['area'] * a**2
-   umf500 = (ds['OMEGA500'] < 0) * (-ds['OMEGA500'] * area / g)
-
-   msebins = np.arange(3e5, 3.61e5, 5e3)
-   capebins = np.arange(0, 501, 25)
-
-   umf_b_2d, mse_edges, cape_edges, _ = bin_umf_2d(umf500, mse850, ds['CAPE'], msebins, capebins, ds['time'].size)
-   umf_b_2d = np.nan_to_num(umf_b_2d, nan=0.0)
-   print(mse_edges, cape_edges, umf_b_2d.shape)
+   umf_b_2d, mse_edges, cape_edges = compute_umf_hist(ds, hemi='cool')
+   #print(mse_edges, cape_edges, umf_b_2d.shape)
    plt.pcolormesh(mse_edges, cape_edges, umf_b_2d.T, shading='flat')#, norm=colors.LogNorm())
    plt.xlabel('MSE 850 [J kg$^{-1}$]')
    plt.ylabel('CAPE [J kg$^{-1}$]')
    plt.title('500 hPa UMF [kg s$^{-1}$]')
    plt.colorbar()
-   plt.savefig('umf_binned_2d.png', bbox_inches='tight')
+   plt.savefig('umf_binned_2d_cool.png', bbox_inches='tight')
    plt.close()
+
+
+def compute_umf_hist(ds, outerlat=30, hemi='warm', msebins=np.arange(3.2e5, 3.71e5, 5e3), capebins=np.arange(0, 501, 25)):
+   nhsel, shsel = sel_unstruct_tropics(ds, outerlat=outerlat, hemi=hemi)
+   selds = xr.concat((nhsel, shsel), 'ncol')
+
+   mse850 = g * ds['Z850'] + cp * ds['T850'] + lv * ds['Q850']
+   area = ds['area'] * a**2
+   umf500 = (ds['OMEGA500'] < 0) * (-ds['OMEGA500'] * area / g)
+
+   umf_b_2d, mse_edges, cape_edges, _ = bin_umf_2d(umf500, mse850, ds['CAPE'], msebins, capebins, ds['time'].size / 2) #Divide time size by 2 because I've filtered out half of the year
+   return np.nan_to_num(umf_b_2d, nan=0.0), mse_edges, cape_edges
+
 
 def sel_unstruct_tropics(ds, outerlat=30., hemi='warm'):
    szn = ds['time'].dt.season
