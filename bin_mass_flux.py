@@ -10,23 +10,31 @@ cp = 1004
 lv = 2500840
 a = 6.371e6
 
-testfile = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.*.nc'
+CASE1 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.*.nc'
+CASE2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h1i.*.nc'
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+
+DO_DIFF = True
 
 #TODO: allow flexible latitude bins?
 #TODO: allow diffing cases
 #TODO: split seasons
 def main():
-   ds = xr.open_mfdataset(testfile)
+   ds = xr.open_mfdataset(CASE1)
 
-   umf_b_2d, mse_edges, cape_edges = compute_umf_hist(ds, hemi='cool')
+   hem = 'cool'
+   umf_b_2d, mse_edges, cape_edges = compute_umf_hist(ds, hemi=hem)
+   if DO_DIFF:
+      umf_b_2d_CASE2, _, _ = compute_umf_hist(ds2, hemi=hem)
+      umf_b_2d = umf_b_2d_CASE2 - umf_b_2d
+
    #print(mse_edges, cape_edges, umf_b_2d.shape)
-   plt.pcolormesh(mse_edges, cape_edges, umf_b_2d.T, shading='flat')#, norm=colors.LogNorm())
+   plt.pcolormesh(mse_edges, cape_edges, umf_b_2d.T, shading='flat', cmap='bwr' if DO_DIFF else 'viridis')#, norm=colors.LogNorm())
    plt.xlabel('MSE 850 [J kg$^{-1}$]')
    plt.ylabel('CAPE [J kg$^{-1}$]')
    plt.title('500 hPa UMF [kg s$^{-1}$]')
    plt.colorbar()
-   plt.savefig('umf_binned_2d_cool.png', bbox_inches='tight')
+   plt.savefig('umf_binned_2d_cool%s.png' % '_diff' if DO_DIFF else '', bbox_inches='tight')
    plt.close()
 
 
