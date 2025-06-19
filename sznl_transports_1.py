@@ -55,7 +55,7 @@ def main():
    ###if DO_DIFF:
    ###   oht[0], oht[2] = oht[0] - oht[1], oht[2] - oht[1]
    siny_q = np.sin(np.deg2rad(oht[0]['yq']))
-   ###print(sinlat_q.values) #TODO: always remove the last (northernmost) yq point to make hemi sym
+   ###print(siny_q.values) #TODO: always remove the last (northernmost) yq point to make hemi sym
 
    print('\tPlotting OHT...')
    plt_cases(siny_q, oht, 'OHT', '[W]', linestyle='solid')
@@ -77,33 +77,7 @@ def main():
    aht_q = [da.interp(coords=dict(lat=oht[0]['yq'].data)) for da in aht]
    aoht = [oht[ii] + ada.data.T for ii, ada in enumerate(aht_q)]
    print('\tPlotting AOHT...')
-   plt_cases(sinlat_q, aoht, 'AOHT', '[W]')
-
-   print('\nComputing O Angular Momentum Transport...')
-   vo_h = [ds['vo'].rename(dict(yq='yh')).interp(coords=dict(yh=ds['yh'])) for ds in momdss] #non-conservative interp
-   momdss = [ds.assign(variables=dict(vo_h=vo_h[ii])) for ii, ds in enumerate(momdss)]
-   #print(momdss[0]['vo_h'])
-   #print(momdss[0]['rhoinsitu'])
-   r_ax_yh = a * np.cos(np.deg2rad(momdss[0]['yh']))
-   #print(r_ax)
-   #print(momdss[0]['uv'])
-   oamf_r = [r_ax_yh**2 * derive_flx(ds, OamFLX_rot, 'yh', True) for ds in momdss]
-   oamf_u = [r_ax_yh * derive_flx(ds, OamFLX_u, 'yh', True) for ds in momdss]
-   oamt = [2 * np.pi * r_ax_yh * (oamf_u[ii] + oamf_r[ii]).integrate('zl') for ii in range(len(oamf_r))]
-   print('\tPlotting OAMT...')
-   plt_cases(sinlat_h, oamt, 'OAMT', '[N m]')
-
-   print('\nComputing A Angular Momentum Transport...')
-   aamf_r = [r_ax**2 * derive_flx(ds, AamFLX_rot, 'lat', True) for ds in camdss]
-   aamf_u = [r_ax * derive_flx(ds, AamFLX_u, 'lat', True) for ds in camdss]
-   aamt = [latcirc / g * (aamf_r[ii] + aamf_u[ii]).integrate('plev') for ii in range(len(aamf_r))]
-   print('\tPlotting AAMT...')
-   plt_cases(sinlat_h, aamt, 'AAMT', '[N m]')
-
-   print('\nSumming AAMT + OAMT...')
-   AOamT = [oamt[ii] + ada.sel(lat=oamt[ii]['yh'].data).data.T for ii, ada in enumerate(aamt)]
-   print('\tPlotting AOamT...')
-   plt_cases(sinlat_h, AOamT, 'AO_AMT', '[N m]')
+   plt_cases(siny_q, aoht, 'AOHT', '[W]')
 
    print('\nComputing AHU...')
    ahu = [derive_flx(ds, AHU, 'lat', False) for ds in camdss]
@@ -128,12 +102,41 @@ def main():
    print('\nComputing ocean stress torques...')
    otor = [r_ax * derive_flx(ds, OMU, 'yh', False) for ds in momdss]
    print('\tPlotting ocean stress torques...')
-   plt_cases(sinlat_h, otor, 'ocn_stress_torque', '[N m m$^{-2}$]')
+   plt_cases(siny_h, otor, 'ocn_stress_torque', '[N m m$^{-2}$]')
 
    print('\nComputing diabatic heating...')
    diab = [derive_flx(ds, DIAB, 'lat', False).integrate('plev') for ds in camdss]
    print('\tPlotting diabatic heating...')
    plt_sznl(sinlat_h, diab, 'diabatic_heating', '[W m$^{-2}$]')
+
+   print('\nComputing O Angular Momentum Transport...')
+   vo_h = [ds['vo'].rename(dict(yq='yh')).interp(coords=dict(yh=ds['yh'])) for ds in momdss] #non-conservative interp
+   momdss = [ds.assign(variables=dict(vo_h=vo_h[ii])) for ii, ds in enumerate(momdss)]
+   #print(momdss[0]['vo_h'])
+   #print(momdss[0]['rhoinsitu'])
+   r_ax_yh = a * np.cos(np.deg2rad(momdss[0]['yh']))
+   #print(r_ax)
+   #print(momdss[0]['uv'])
+   oamf_r = [r_ax_yh**2 * derive_flx(ds, OamFLX_rot, 'yh', True) for ds in momdss]
+   oamf_u = [r_ax_yh * derive_flx(ds, OamFLX_u, 'yh', True) for ds in momdss]
+   oamt = [2 * np.pi * r_ax_yh * (oamf_u[ii] + oamf_r[ii]).integrate('zl') for ii in range(len(oamf_r))]
+   print('\tPlotting OAMT...')
+   siny_h = np.sin(np.deg2rad(oamt[0]['yh']))
+   plt_cases(siny_h, oamt, 'OAMT', '[N m]')
+
+   print('\nComputing A Angular Momentum Transport...')
+   r_ax = latcirc / 2 / np.pi
+   aamf_r = [r_ax**2 * derive_flx(ds, AamFLX_rot, 'lat', True) for ds in camdss]
+   aamf_u = [r_ax * derive_flx(ds, AamFLX_u, 'lat', True) for ds in camdss]
+   aamt = [latcirc / g * (aamf_r[ii] + aamf_u[ii]).integrate('plev') for ii in range(len(aamf_r))]
+   print('\tPlotting AAMT...')
+   plt_cases(sinlat_h, aamt, 'AAMT', '[N m]')
+
+   print('\nSumming AAMT + OAMT...')
+   AOamT = [oamt[ii] + ada.sel(lat=oamt[ii]['yh'].data).data.T for ii, ada in enumerate(aamt)]
+   print('\tPlotting AOamT...')
+   plt_cases(siny_h, AOamT, 'AO_AMT', '[N m]')
+
    
 
 #Take the product of terms in template tuples, then sum over tuples
