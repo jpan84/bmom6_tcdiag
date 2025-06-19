@@ -24,6 +24,7 @@ g = 9.81
 cp = 1004
 lv = 2500840
 a = 6.371e6
+OM = 7.29e-5
 
 RESTOM = [(1, 'FSNT'), (-1, 'FLNT'), ('mean', 'lon')]
 AHU = [(1, 'FSNT'), (-1, 'FSNS'), (1, 'FLNS'), (-1, 'FLNT'), (1, 'SHFLX'), (1, 'LHFLX'), ('mean', 'lon')]
@@ -34,6 +35,11 @@ MSEFLX = [(g, 'V', 'Z3'), (cp, 'VT'), (lv, 'VQ'), ('mean', 'lon')]
 OHU_MOM = [(1, 'rsntds'), (1, 'rlntds'), (1, 'hfsso'), (1, 'hflso'), ('mean', 'xh')]
 OHT = [(1, 'T_ady_2d'), (1, 'T_diffy_2d'), ('sum', 'xh')]
 OMU = [(1, 'taux_bot'), (1, 'tauuo'), ('mean', 'xq')]
+
+OamFLX_rot = [(OM, 'rhoinsitu', 'vo_h'), ('mean', 'xh')] #vo must be interpolated from yq:point to yh:mean
+OamFLX_u = [(1, 'rhoinsitu', 'uv'), ('mean', 'xh')]
+AamFLX_rot = [(OM, 'V'), ('mean', 'lon')]
+AamFLX_u = [(1, 'VU'), ('mean', 'lon')]
 
 def main():
    if not os.path.exists(DIRO):
@@ -64,6 +70,34 @@ def main():
    print('\tPlotting AHT...')
    plt_cases(sinlat_h, aht, 'AHT', '[W]')
 
+   print('\nSumming AHT + OHT...')
+   aht_q = [aht.interp(coords=dict(lat=oht[0]['yq'].data))]
+   aoht = [oht[ii] + ada.data for ii, ada in enumerate(aht_q)]
+   print('\tPlotting AOHT...')
+   plt_cases(sinlat_q, aoht, 'AOHT', '[W]')
+
+   print('\nComputing O Angular Momentum Transport...')
+   vo_h = [ds['vo'].rename(dict(yq='yh')).interp(coords=dict(yh=ds['yh'])) for ds in momdss] #non-conservative interp
+   momdss = [ds.assign(variables=dict(vo_h=vo_h[ii])) for ii, ds in enumerate(momdss)]
+   r_ax = latcirc / 2 / np.pi
+   oamf_r = [r_ax**2 * derive_flx(ds, OamFLX_rot, 'yh', True) for ds in momdss]
+   oamf_u = [r_ax * derive_flx(ds, OamFLX_u, 'yh', True) for ds in momdss]
+   oamt = [latcirc * (oamf_u[ii] + oamf_r[ii]).integrate('zl') for ii in range(len(oamf_r))]
+   print('\tPlotting OAMT...')
+   plt_cases(sinlat_h, oamt, 'OAMT', '[N m]')
+
+   print('\nComputing A Angular Momentum Transport...')
+   aamf_r = [r_ax**2 * derive_flx(ds, AamFLX_rot, 'lat', True) for ds in camdss]
+   aamf_u = [r_ax * derive_flx(ds, AamFLX_u, 'lat', True) for ds in camdss]
+   aamt = [latcirc / g * (aamf_r[ii] + aamf_u[ii]).integrate('plev') for ii in range(len(aamf_r))]
+   print('\tPlotting AAMT...')
+   plt_cases(sinlat_h, aamt, 'AAMT', '[N m]')
+
+   print('\nSumming AAMT + OAMT...')
+   AOamT = [oamt[ii] + ada.data for ii, ada in enumerate(aamt)]
+   print('\tPlotting AOamT...')
+   plt_cases(sinlat_h, AOamT, 'AO_AMT', '[N m]')
+
 #Take the product of terms in template tuples, then sum over tuples
 #Final element in template gives zonal aggregation method
 def derive_flx(ds, template, latnm, antisym):
@@ -86,7 +120,7 @@ def derive_flx(ds, template, latnm, antisym):
 
 
 def plt_cases(sinlat, das, *args, **kwargs):
-   plt.rcParams['figure.figsize'] = (30, 6)
+   plt.rcParams['figure.figsize'] = (20, 4)
    subplot_kw = dict(xlim=(-1, 1), sharey=(not DO_DIFF))
    fig, axes = plt.subplots(1, 3, subplot_kw=subplot_kw)
    for ii, pltda in enumerate(das):
