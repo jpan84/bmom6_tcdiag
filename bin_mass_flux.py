@@ -1,3 +1,6 @@
+#python3 bin_mass_flux.py 0 cool
+#python3 bin_mass_flux.py 1 warm
+import sys
 import numpy as np
 from scipy.stats import binned_statistic_2d
 #import uxarray as ux
@@ -10,35 +13,46 @@ cp = 1004
 lv = 2500840
 a = 6.371e6
 
-CASE1 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.*.nc'
-CASE2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h1i.*.nc'
-camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+#camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
-DO_DIFF = True
+DO_DIFF = bool(int(sys.argv[1])) #True
+hem = sys.argv[2]
+alias2 = sys.argv[3] if DO_DIFF else None
+
+CASE1 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.*.nc'
+CASE2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.*.nc'\
+         % alias2
 
 #TODO: allow flexible latitude bins?
 #TODO: allow diffing cases
 #TODO: split seasons
 def main():
+   print(sys.argv)
    ds = xr.open_mfdataset(CASE1)
 
-   hem = 'cool'
    umf_b_2d, mse_edges, cape_edges = compute_umf_hist(ds, hemi=hem)
    if DO_DIFF:
+      ds2 = xr.open_mfdataset(CASE2)
       umf_b_2d_CASE2, _, _ = compute_umf_hist(ds2, hemi=hem)
       umf_b_2d = umf_b_2d_CASE2 - umf_b_2d
 
    #print(mse_edges, cape_edges, umf_b_2d.shape)
-   plt.pcolormesh(mse_edges, cape_edges, umf_b_2d.T, shading='flat', cmap='bwr' if DO_DIFF else 'viridis')#, norm=colors.LogNorm())
+   vminmax = dict(vmin=0, vmax=2e11)
+   if DO_DIFF:
+      vminmax = dict()
+   plt.pcolormesh(mse_edges, cape_edges, umf_b_2d.T, shading='flat', cmap='bwr' if DO_DIFF else 'viridis', **vminmax)#, norm=colors.LogNorm())
+   plt.xlim(3.0e5, 3.8e5)
+   plt.ylim(0, 400)
    plt.xlabel('MSE 850 [J kg$^{-1}$]')
    plt.ylabel('CAPE [J kg$^{-1}$]')
-   plt.title('500 hPa UMF [kg s$^{-1}$]')
+   plt.title(f'500 hPa UMF [kg s$^{{-1}}$]\n{umf_b_2d.sum():.2e}')
    plt.colorbar()
-   plt.savefig('umf_binned_2d_cool%s.png' % '_diff' if DO_DIFF else '', bbox_inches='tight')
+   plt.savefig('umf_binned_2d_%s%s.png' % (hem, '_%s_diff' % alias2 if DO_DIFF else ''), bbox_inches='tight')
    plt.close()
 
+   print('UMFBIN done.')
 
-def compute_umf_hist(ds, outerlat=30, hemi='warm', msebins=np.arange(3.2e5, 3.71e5, 5e3), capebins=np.arange(0, 501, 25)):
+def compute_umf_hist(ds, outerlat=30, hemi='warm', msebins=np.arange(2.8e5, 4.01e5, 5e3), capebins=np.arange(0, 1001, 25)):
    nhsel, shsel = sel_unstruct_tropics(ds, outerlat=outerlat, hemi=hemi)
    selds = xr.concat((nhsel, shsel), 'ncol')
 
