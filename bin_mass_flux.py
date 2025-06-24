@@ -5,6 +5,7 @@ import numpy as np
 from scipy.stats import binned_statistic_2d
 #import uxarray as ux
 import xarray as xr
+import pickle
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 
@@ -15,21 +16,41 @@ a = 6.371e6
 
 #camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
-DO_DIFF = bool(int(sys.argv[1])) #True
-hem = sys.argv[2]
-alias2 = sys.argv[3] if DO_DIFF else None
+#DO_DIFF = bool(int(sys.argv[1])) #True
+#hem = sys.argv[2]
+#alias2 = sys.argv[3] if DO_DIFF else None
 
-CASE1 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.*.nc'
-CASE2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.*.nc'\
-         % (alias2, alias2)
+#CASE1 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.*.nc'
+#CASE2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.*.nc'\
+#         % (alias2, alias2)
+FILIS = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.*.nc'
+ALIS = ['250415_unseed', '250417_ctrl', '250416_seed1x1']
+FILO = 'umf500_0010_histo_mse850_cape.pkl'
 
 #TODO: allow flexible latitude bins?
 #TODO: allow diffing cases
 #TODO: split seasons
+#TODO: check why NH and SH selections differ in number of cols
 def main():
-   print(sys.argv)
-   ds = xr.open_mfdataset(CASE1)
+   #print(sys.argv)
+   #ds = xr.open_mfdataset(CASE1)
 
+   topkl = [tuple(ALIS), ('warm', 'cool')]
+
+   for al in ALIS:
+      print('Working on', al)
+      ds = xr.open_mfdataset(FILIS % (al, al))
+      topkl.append(compute_umf_hist(ds, hemi='warm'))
+      topkl.append(compute_umf_hist(ds, hemi='cool'))
+
+   print('Pickling')
+   with open(FILO, 'wb') as fl:
+      pickle.dump(topkl, fl)
+
+   print(sys.argv[0], 'done')
+
+   exit()
+   ##################################
    print('Computing histogram...')
    umf_b_2d, mse_edges, cape_edges = compute_umf_hist(ds, hemi=hem)
    if DO_DIFF:

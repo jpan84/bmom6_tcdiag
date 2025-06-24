@@ -98,3 +98,35 @@ LWCF 21.340153493432087
 SWCF -47.1004906940524
 CLDTOT 0.4046311566033078
 NCF -25.760337200620317
+
+ /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist/*h0a.[0-9]*.nc
+(110,) 
+
+TS <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+FSNT <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+FLNT <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+RESTOM <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+PRECC <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+PRECL <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+PRECT <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+QFLX <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+PS <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+TMQ <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+LWCF <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+SWCF <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+CLDTOT <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+NCF <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>

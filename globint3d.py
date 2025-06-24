@@ -1,12 +1,14 @@
 #Joshua Pan Oct 2023
-#compute globally area-weighted averaged quantities from unstructured grid
+#compute conservative 3d global integrals on the native horizontal and vertical CESM grids
+#for horizontal aggregation "mean," units are the raw var times kg m-2
+#for horizontal aggregation "sum," units are the original times kg
 
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
 HISTS = 'atm/hist/'
 H0 = r'*h0a.[0-9]*.nc'
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1'
 GRIDFN = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
-OUTDIR = './globinteg_250417_ctrl'
+OUTDIR = './globinteg_250416_seed1x1'
 
 CLIPMO = 0
 tunits = 'common_years since 0000-01-01'
@@ -33,7 +35,7 @@ OM = 7.29e-5
 
 RAW = ['Q', 'DCQ', 'T', 'U', 'V']
 #UDEF = ['KE', 'GP', 'SH', 'LH', 'DIAB',
-UDEF = dict(KE=[(1, 'UU'), (1, 'VV'), 'sum'], GP=[(g, 'Z3'), 'sum'], SH=[(cp, 'T'), 'sum'], LH=[(lv, 'Q')],\
+UDEF = dict(KE=[(1, 'UU'), (1, 'VV'), 'sum'], GP=[(g, 'Z3'), 'sum'], SH=[(cp, 'T'), 'sum'], LH=[(lv, 'Q'), 'sum'],\
          MASS=[(1, ), 'sum'], AAMr=[(OM, a**2, 'coslat', 'coslat'), 'sum'], AAMu=[(a, 'coslat', 'U'), 'sum'],\
          DIAB=[(cp, 'DTCOND'), (cp, 'QRL'), (cp, 'QRS'), 'mean'])
 UDEF['MSE'] = [(g, 'Z3'), (cp, 'T'), (lv, 'Q'), 'sum']

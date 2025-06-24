@@ -96,7 +96,7 @@ def main():
             print('\n', pt, file=f)
             print(gav.isel(time=slice(CLIPMO, None)).shape, '\n', file=f)
          #print(var, tav(gav.isel(time=slice(CLIPMO,))), file=f)
-         print(var, weighted_temporal_mean(gav.isel(time=slice(CLIPMO, None))), file=f)
+         print(var, weighted_temporal_mean(gav.isel(time=slice(CLIPMO, None))).values, file=f)
          f.close()
       #print(gav.time)
       #print(weighted_temporal_mean(gav))

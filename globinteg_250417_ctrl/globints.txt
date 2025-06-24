@@ -24,3 +24,38 @@ GP sum <xarray.UxDataArray ()> Size: 8B
 dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
 MASS sum <xarray.UxDataArray ()> Size: 8B
 dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+
+ /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/*h0a.[0-9]*.nc
+(120,) 
+
+Q mean 41.15777217748672
+DCQ mean -4.8886600325883384e-05
+T mean 2668514.8559724423
+U mean 79805.33669384441
+V mean -5.001855899519375
+KE sum 2.1087520570410525e+21
+GP sum 3.8868785080104336e+23
+SH sum 1.36655907927681e+24
+LH (2500840, 'Q') 0.0
+MASS sum 5.265387202469314e+18
+AAMr sum 1.0437059681478656e+28
+AAMu sum 1.5085849337463162e+26
+
+ /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/*h0a.[0-9]*.nc
+(120,) 
+
+Q mean 41.15777217748672
+DCQ mean -4.8886600325883384e-05
+T mean 2668514.8559724423
+U mean 79805.33669384441
+V mean -5.001855899519375
+KE sum 2.1087520570410525e+21
+GP sum 3.8868785080104336e+23
+SH sum 1.36655907927681e+24
+LH sum 5.250042754529617e+22
+MASS sum 5.265387202469314e+18
+AAMr sum 1.0437059681478656e+28
+AAMu sum 1.5085849337463162e+26
+DIAB mean -7.190493997746237
+MSE sum 1.8077473576228628e+24
+AAM sum 1.058791817485329e+28
