@@ -30,18 +30,17 @@ def main():
    print(sys.argv)
    ds = xr.open_mfdataset(CASE1)
 
-   print(sel_unstruct_tropics(ds, outerlat=30., hemi='warm'))
-   print(sel_unstruct_tropics(ds, outerlat=30., hemi='cool'))
-   exit()
-
+   print('Computing histogram...')
    umf_b_2d, mse_edges, cape_edges = compute_umf_hist(ds, hemi=hem)
    if DO_DIFF:
       ds2 = xr.open_mfdataset(CASE2)
       umf_b_2d_CASE2, _, _ = compute_umf_hist(ds2, hemi=hem)
       umf_b_2d = umf_b_2d_CASE2 - umf_b_2d
 
+   print('Plotting...')
+   plt.rc('font', size=16)
    #print(mse_edges, cape_edges, umf_b_2d.shape)
-   vminmax = dict(vmin=0, vmax=2e11)
+   vminmax = dict(vmin=0, vmax=1e11)
    if DO_DIFF:
       vminmax = dict()
    plt.pcolormesh(mse_edges, cape_edges, umf_b_2d.T, shading='flat', cmap='bwr' if DO_DIFF else 'viridis', **vminmax)#, norm=colors.LogNorm())
@@ -49,7 +48,7 @@ def main():
    plt.ylim(0, 400)
    plt.xlabel('MSE 850 [J kg$^{-1}$]')
    plt.ylabel('CAPE [J kg$^{-1}$]')
-   plt.title(f'500 hPa UMF [kg s$^{{-1}}$]\n{umf_b_2d.sum():.2e}')
+   plt.title(f'500 hPa UMF [kg s$^{{-1}}$]\n{umf_b_2d.sum():.3e}')
    plt.colorbar()
    plt.savefig('umf_binned_2d_%s%s.png' % (hem, '_%s_diff' % alias2 if DO_DIFF else ''), bbox_inches='tight')
    plt.close()

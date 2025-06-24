@@ -1,5 +1,7 @@
 nohup: ignoring input
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 5460944.casper-pbs with qsub arguments:
+Waiting on job launch; 5461145.casper-pbs with qsub arguments:
     qsub  -l select=1:ncpus=36:mem=384GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:30:00
 
+['bin_mass_flux.py', '1', 'cool', '250415_unseed']
+UMFBIN done.
