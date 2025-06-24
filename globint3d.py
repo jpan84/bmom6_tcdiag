@@ -27,10 +27,17 @@ a = 6.371e6
 GA = 4 * np.pi * a**2
 P0 = 1e5
 g = 9.81
+cp = 1004
+lv = 2500840
+OM = 7.29e-5
 
 RAW = ['Q', 'DCQ', 'T', 'U', 'V']
 #UDEF = ['KE', 'GP', 'SH', 'LH', 'DIAB',
-UDEF = dict(KE=[(1, 'UU'), (1, 'VV'), 'sum'], GP=[(g, 'Z3'), 'sum'], MASS=[(1, ), 'sum'])
+UDEF = dict(KE=[(1, 'UU'), (1, 'VV'), 'sum'], GP=[(g, 'Z3'), 'sum'], SH=[(cp, 'T'), 'sum'], LH=[(lv, 'Q')],\
+         MASS=[(1, ), 'sum'], AAMr=[(OM, a**2, 'coslat', 'coslat'), 'sum'], AAMu=[(a, 'coslat', 'U'), 'sum'],\
+         DIAB=[(cp, 'DTCOND'), (cp, 'QRL'), (cp, 'QRS'), 'mean'])
+UDEF['MSE'] = [(g, 'Z3'), (cp, 'T'), (lv, 'Q'), 'sum']
+UDEF['AAM'] = [(OM, a**2, 'coslat', 'coslat'), (a, 'coslat', 'U'), 'sum']
 VARS = RAW + list(UDEF.keys())
 
 plt.rc('font', size=16)
@@ -50,12 +57,11 @@ def main():
    dp3d = aterm + bterm
    dp3d = dp3d.rename(dict(ilev='lev')).assign_coords(lev=ds['lev'])
    print(dp3d)
-   ds = ds.assign(variables=dict(dp3d=dp3d))
+   ds = ds.assign(variables=dict(dp3d=dp3d, coslat=np.cos(np.deg2rad(ds['lat']))))
 
    print('\nBasic tests...')
    print('Atmospheric mass from PS')
    print((weighted_temporal_mean(ds['PS']).weighted_mean() * GA / g).values)
-
 
    print('Atmospheric mass from 3D integral')
    colintmass = ((ds['U'] * 0 + 1) * dp3d).sum(dim='lev') / g
@@ -82,14 +88,13 @@ def main():
          if var == VARS[0]:
             print('\n', pt, file=f)
             print(gint.isel(time=slice(CLIPMO, None)).shape, '\n', file=f)
-         print(var, horagg, weighted_temporal_mean(gint.isel(time=slice(CLIPMO, None))), file=f)
+         print(var, horagg, weighted_temporal_mean(gint.isel(time=slice(CLIPMO, None))).values, file=f)
          f.close()
 
-      plt.plot(flt, gav.values)
+      plt.plot(flt, gint.values)
       #plt.legend()
       plt.title(var)
       plt.xlabel(tunits)# [%s]' % str(flt.units))
-      plt.ylabel(units)
       plt.savefig(os.path.join(OUTDIR, '%s.png' % var), bbox_inches='tight')
       plt.close()
 

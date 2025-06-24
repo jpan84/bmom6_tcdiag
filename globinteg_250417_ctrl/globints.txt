@@ -1,0 +1,26 @@
+
+ /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/*h0a.[0-9]*.nc
+(120,) 
+
+Q mean <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+
+ /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/*h0a.[0-9]*.nc
+(120,) 
+
+Q mean <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+DCQ mean <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+T mean <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+U mean <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+V mean <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+KE sum <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+GP sum <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+MASS sum <xarray.UxDataArray ()> Size: 8B
+dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
