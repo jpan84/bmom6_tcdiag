@@ -30,6 +30,10 @@ def main():
    print(sys.argv)
    ds = xr.open_mfdataset(CASE1)
 
+   print(sel_unstruct_tropics(ds, outerlat=30., hemi='warm'))
+   print(sel_unstruct_tropics(ds, outerlat=30., hemi='cool'))
+   exit()
+
    umf_b_2d, mse_edges, cape_edges = compute_umf_hist(ds, hemi=hem)
    if DO_DIFF:
       ds2 = xr.open_mfdataset(CASE2)
@@ -56,11 +60,11 @@ def compute_umf_hist(ds, outerlat=30, hemi='warm', msebins=np.arange(2.8e5, 4.01
    nhsel, shsel = sel_unstruct_tropics(ds, outerlat=outerlat, hemi=hemi)
    selds = xr.concat((nhsel, shsel), 'ncol')
 
-   mse850 = g * ds['Z850'] + cp * ds['T850'] + lv * ds['Q850']
-   area = ds['area'] * a**2
-   umf500 = (ds['OMEGA500'] < 0) * (-ds['OMEGA500'] * area / g)
+   mse850 = g * selds['Z850'] + cp * selds['T850'] + lv * selds['Q850']
+   area = selds['area'] * a**2
+   umf500 = (selds['OMEGA500'] < 0) * (-selds['OMEGA500'] * area / g)
 
-   umf_b_2d, mse_edges, cape_edges, _ = bin_umf_2d(umf500, mse850, ds['CAPE'], msebins, capebins, ds['time'].size / 2) #Divide time size by 2 because I've filtered out half of the year
+   umf_b_2d, mse_edges, cape_edges, _ = bin_umf_2d(umf500, mse850, selds['CAPE'], msebins, capebins, selds['time'].size / 2) #Divide time size by 2 because I've filtered out half of the year
    return np.nan_to_num(umf_b_2d, nan=0.0), mse_edges, cape_edges
 
 
