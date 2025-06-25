@@ -1,6 +1,6 @@
 nohup: ignoring input
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 5463607.casper-pbs with qsub arguments:
+Waiting on job launch; 5468437.casper-pbs with qsub arguments:
     qsub  -l select=1:ncpus=36:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=01:00:00
 
 [ 5.12328767  5.20410959  5.28767123  5.37123288  5.45479452  5.53835616
@@ -47,9 +47,5 @@ Working on GP
 Working on SH
 Working on LH
 Working on MASS
-Working on AAMr
 Working on AAMu
 Working on DIAB
-Working on MSE
-Working on AAM
-globint3d.py done.

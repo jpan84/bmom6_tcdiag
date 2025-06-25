@@ -66,3 +66,21 @@ CLDTOT <xarray.UxDataArray ()> Size: 8B
 dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
 NCF <xarray.UxDataArray ()> Size: 8B
 dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
+
+ /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist/*h0a.[0-9]*.nc
+(112,) 
+
+TS 296.24039312706606
+FSNT 258.0745683228028
+FLNT 257.19128759983516
+RESTOM 0.8832807229676795
+PRECC 1.8308996069974292e-08
+PRECL 3.103197704920088e-08
+PRECT 4.9340973119175166e-08
+QFLX 4.934390207750094e-05
+PS 101490.5584948983
+TMQ 41.73681768771827
+LWCF 20.904111375326604
+SWCF -46.586381214934235
+CLDTOT 0.4068962133526052
+NCF -25.68226983960764

@@ -6,9 +6,9 @@
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
 HISTS = 'atm/hist/'
 H0 = r'*h0a.[0-9]*.nc'
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed'
 GRIDFN = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
-OUTDIR = './globinteg_250416_seed1x1'
+OUTDIR = './globinteg_250415_unseed'
 
 CLIPMO = 0
 tunits = 'common_years since 0000-01-01'
@@ -36,11 +36,13 @@ OM = 7.29e-5
 RAW = ['Q', 'DCQ', 'T', 'U', 'V']
 #UDEF = ['KE', 'GP', 'SH', 'LH', 'DIAB',
 UDEF = dict(KE=[(1, 'UU'), (1, 'VV'), 'sum'], GP=[(g, 'Z3'), 'sum'], SH=[(cp, 'T'), 'sum'], LH=[(lv, 'Q'), 'sum'],\
-         MASS=[(1, ), 'sum'], AAMr=[(OM, a**2, 'coslat', 'coslat'), 'sum'], AAMu=[(a, 'coslat', 'U'), 'sum'],\
+         MASS=[(1, ), 'sum'], AAMu=[(a, 'coslat', 'U'), 'sum'],\
          DIAB=[(cp, 'DTCOND'), (cp, 'QRL'), (cp, 'QRS'), 'mean'])
 UDEF['MSE'] = [(g, 'Z3'), (cp, 'T'), (lv, 'Q'), 'sum']
-UDEF['AAM'] = [(OM, a**2, 'coslat', 'coslat'), (a, 'coslat', 'U'), 'sum']
+#UDEF['AAM'] = [(OM, a**2, 'coslat', 'coslat'), (a, 'coslat', 'U'), 'sum']
 VARS = RAW + list(UDEF.keys())
+
+YLIMS = dict(KE=(1.9e21, 2.25e21), AAMu=(1.3e26, 1.8e26), U=(7e4, 9e4), MSE=(1.805e24, 1.813e24), GP=(3.882e23, 3.895e23), LH=(5.15e22, 5.45e22))
 
 plt.rc('font', size=16)
 
@@ -97,6 +99,8 @@ def main():
       #plt.legend()
       plt.title(var)
       plt.xlabel(tunits)# [%s]' % str(flt.units))
+      if var in YLIMS:
+         plt.ylim(*YLIMS[var])
       plt.savefig(os.path.join(OUTDIR, '%s.png' % var), bbox_inches='tight')
       plt.close()
 

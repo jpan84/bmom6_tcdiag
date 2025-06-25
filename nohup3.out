@@ -1,6 +1,6 @@
 nohup: ignoring input
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 5463632.casper-pbs with qsub arguments:
+Waiting on job launch; 5468439.casper-pbs with qsub arguments:
     qsub  -l select=1:ncpus=36:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=01:00:00
 
 [ 5.12328767  5.20410959  5.28767123  5.37123288  5.45479452  5.53835616
@@ -33,9 +33,9 @@ Dimensions without coordinates: n_face
 
 Basic tests...
 Atmospheric mass from PS
-5.276934569065223e+18
+5.276897079674428e+18
 Atmospheric mass from 3D integral
-5.265526662585205e+18
+5.26548917319441e+18
 Working on Q
 Working on DCQ
 Working on T
@@ -46,7 +46,5 @@ Working on GP
 Working on SH
 Working on LH
 Working on MASS
-Working on AAMr
 Working on AAMu
 Working on DIAB
-Working on MSE

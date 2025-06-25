@@ -3,3 +3,8 @@ nohup: ignoring input
 Waiting on job launch; 5463727.casper-pbs with qsub arguments:
     qsub  -l select=1:ncpus=36:mem=384GB -A UCIS0005 -q casper@casper-pbs -l walltime=01:30:00
 
+Working on 250415_unseed
+Working on 250417_ctrl
+Working on 250416_seed1x1
+Pickling
+bin_mass_flux.py done
