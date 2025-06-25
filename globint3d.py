@@ -6,9 +6,9 @@
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
 HISTS = 'atm/hist/'
 H0 = r'*h0a.[0-9]*.nc'
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1'
 GRIDFN = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
-OUTDIR = './globinteg_250415_unseed'
+OUTDIR = './globinteg_250416_seed1x1'
 
 CLIPMO = 0
 tunits = 'common_years since 0000-01-01'
