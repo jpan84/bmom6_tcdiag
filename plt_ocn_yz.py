@@ -56,10 +56,14 @@ def main():
             antisym = True; break
       sznl = [sznl_funcs.stack_hemi_sznl(sznl_funcs.monthly2sznl(mm), antisym=antisym, latnm=ymeth[0]) for mm in monmeans]
       vmax = max([np.abs(sz).max().values for sz in sznl])
+      vmin = min([sz.min().values for sz in sznl])
+      zero_centered = True
+      if vmax - vmin < 0.25 * vmax:
+         zero_centered = False
 
       plt.rc('font', size=16)
       plt.rcParams['figure.figsize'] = (30, 12)
-      contourfkwargs = {'cmap': 'coolwarm', 'norm': colors.CenteredNorm(vcenter=0, halfrange=vmax)}
+      contourfkwargs = {'cmap': 'coolwarm' if zero_centered else 'rainbow', 'norm': colors.CenteredNorm(vcenter=0, halfrange=vmax) if zero_centered else None}
       subplot_kw = dict(xlim=(-1, 1), ylim=(0, 1))
       fig, axes = plt.subplots(2, 3, layout='constrained', sharey=True, subplot_kw=subplot_kw)
       plt.suptitle(f"{dv} [{dss[0][dv].attrs['units']}]\n{dss[0][dv].attrs['long_name']}\n{dss[0][dv].attrs['cell_methods']}")
