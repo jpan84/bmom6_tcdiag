@@ -33,11 +33,11 @@ STRF_OCN_MON = lambda dtobj: f'*sfc.{dtobj.year:04}-{dtobj.month:02}.nc'
 STRF_OCN = STRF_OCN_DLY if FILEFREQ == dt.timedelta(days=1) else STRF_OCN_MON
 
 ### wake computation params
-NTOP = 5 #number of strongest storms
+NTOP = 20 #number of strongest storms
 LONBNDS = (-2, 2)
 LATBNDS = (-2, 2)
 AVBNDS = (-dt.timedelta(days=7), -dt.timedelta(days=3))
-TBNDS = (-dt.timedelta(days=10), dt.timedelta(days=10))
+TBNDS = (-dt.timedelta(days=15), dt.timedelta(days=15))
 GRPR = ('doy_hr', '%j-%H')
 
 #MOM diag vars params
@@ -97,12 +97,12 @@ def main():
 
       omlser = latlon_avg(*selarea(ds[omlvar], *selargs))
       sstser = latlon_avg(*selarea(ds[sstvar], *selargs))
-      thtser = latlon_avg(*selarea(ds['opottempmint'], *selargs) / *selarea(ds['mass_wt'], *selargs))
-      salser = latlon_avg(*selarea(ds['somint'], *selargs) / *selarea(ds['mass_wt'], *selargs))
+      thtser = latlon_avg(*selarea(ds['opottempmint'] / ds['mass_wt'], *selargs))
+      salser = latlon_avg(*selarea(ds['somint'] / ds['mass_wt'], *selargs))
       omlref = latlon_avg(*selarea(normds[omlvar], *selargs))
       sstref = latlon_avg(*selarea(normds[sstvar], *selargs))
-      thtref = latlon_avg(*selarea(normds['opottempmint'], *selargs) / *selarea(normds['mass_wt'], *selargs)) #this is technically wrong. Need to use the norm of the quotient
-      salref = latlon_avg(*selarea(normds['somint'], *selargs) / *selarea(normds['mass_wt'], *selargs))
+      thtref = latlon_avg(*selarea(normds['opottempmint'] / ds['mass_wt'], *selargs)) #this is technically wrong. Need to use the norm of the quotient
+      salref = latlon_avg(*selarea(normds['somint'] / ds['mass_wt'], *selargs))
 
       for bk in budvars:
          budref = latlon_avg(*selarea(normds[bk], *selargs))
