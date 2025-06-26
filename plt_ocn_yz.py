@@ -63,7 +63,7 @@ def main():
 
       plt.rc('font', size=16)
       plt.rcParams['figure.figsize'] = (30, 12)
-      contourfkwargs = {'cmap': 'coolwarm' if zero_centered else 'rainbow', 'norm': colors.CenteredNorm(vcenter=0, halfrange=vmax) if zero_centered else None}
+      contourfkwargs = {'cmap': 'coolwarm' if zero_centered else 'rainbow', 'norm': colors.CenteredNorm(vcenter=0, halfrange=vmax) if zero_centered else colors.Normalize(vmin=vmin, vmax=vmax)}
       subplot_kw = dict(xlim=(-1, 1), ylim=(0, 1))
       fig, axes = plt.subplots(2, 3, layout='constrained', sharey=True, subplot_kw=subplot_kw)
       plt.suptitle(f"{dv} [{dss[0][dv].attrs['units']}]\n{dss[0][dv].attrs['long_name']}\n{dss[0][dv].attrs['cell_methods']}")
