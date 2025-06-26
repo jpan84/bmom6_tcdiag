@@ -48,12 +48,14 @@ def main():
          zonagg = [za.cumsum(dim=zmeth[0]) for za in zonagg]
 
       monmeans = [za.groupby('time.month').mean() for za in zonagg]
+      if ymeth[0] == 'yq':
+         monmeans = [mm.isel(yq=slice(None, -1)) for mm in monmeans]
       antisym = False
       for sstr in ANTISYM_STR:
          if sstr in dss[0][dv].attrs['long_name'].lower():
             antisym = True; break
-      sznl = [sznl_funcs.stack_hemi_sznl(sznl_funcs.monthly2sznl(mm), antisym=antisym) for mm in monmeans]
-      vmax = max([np.abs(sz).max() for sz in sznl])
+      sznl = [sznl_funcs.stack_hemi_sznl(sznl_funcs.monthly2sznl(mm), antisym=antisym, latnm=ymeth[0]) for mm in monmeans]
+      vmax = max([np.abs(sz).max().values for sz in sznl])
 
       plt.rc('font', size=16)
       plt.rcParams['figure.figsize'] = (30, 12)
@@ -63,14 +65,14 @@ def main():
       plt.suptitle(f"{dv} [{dss[0][dv].attrs['units']}]\n{dss[0][dv].attrs['long_name']}\n{dss[0][dv].attrs['cell_methods']}")
 
       for ii, sz in enumerate(['JJA', 'SON']):
-         for jj, cs in CASES:
+         for jj, cs in enumerate(CASES):
             ax = axes[ii, jj]
-            ax.contourf(YSCL(sznl[jj][ymeth[0]]), ZSCL(sznl[jj][zmeth[0]]), sznl[jj].data, **contourfkwargs)
+            csf = ax.contourf(YSCL(sznl[jj][ymeth[0]]), ZSCL(sznl[jj][zmeth[0]]), sznl[jj].sel(season=sz).data, **contourfkwargs)
             if ii == 0 and jj == 0:
                ax.set_ylabel('Depth [m]')
                ax.set_yticks(ZLOC, ZLAB)
                ax.invert_yaxis()
-               plt.colorbar(ax=axes)
+               plt.colorbar(csf, ax=axes)
             ax.set_xticks(YLOC, YLAB)
             ax.set_xlabel('Latitude [°]')
 
