@@ -73,10 +73,13 @@ def main():
    #print(plotfields[0].transpose('month', ...))
    plotfields = [monthly2sznl(pf) for pf in plotfields]
    print('Mirroring hemispheres...')
-   plotfields = [stack_hemi_sznl(pf, antisym=True, latnm='lat') for pf in plotfields]
+   antisym = [True, True, True, True, True, False, False, False, False, False, False]
+   plotfields = [stack_hemi_sznl(pf, antisym=antisym[ii], latnm='lat') for ii, pf in enumerate(plotfields)]
 
    print('Saving to .nc...')
-   outds = xr.Dataset(data_vars = {'PSI_EM': plotfields[0], 'PSI_vT': plotfields[1], 'PSI_resid': plotfields[2]})#, 'EPy': Fy, 'EPz': Fz, 'EPylp': Fylp, 'EPzlp': Fzlp, 'EPyhp': Fyhp, 'EPzhp': Fzhp, 'EPdiv': dF})
+   outds = xr.Dataset(data_vars = {'PSI_EM': plotfields[0], 'PSI_vT': plotfields[1], 'PSI_resid': plotfields[2], 'EPy_EMF': plotfields[3],\
+             'EPy_adv': plotfields[4], 'EPz_EHF': plotfields[5], 'EPz_adv': plotfields[6], 'EPy_EMF_d': plotfields[7],\
+             'EPy_adv_d': plotfields[8], 'EPz_EHF_d': plotfields[9], 'EPz_adv_d': plotfields[10]})
    outds.to_netcdf(path = os.path.join(OUTDIR, '%s_%s_TEM.nc' % plotfileargs))
    
    print('Plotting streamfunctions...')
@@ -90,7 +93,7 @@ def main():
    subplot_kw = dict(xlim=(-1, 1), ylim=(100, 1000), yscale='log')
    fig, axes = plt.subplots(2, 3, layout='constrained', sharey=True, subplot_kw=subplot_kw)
 
-   plotfields = [field / 10**expo for field in plotfields]
+   plotfields = [field / 10**expo for field in plotfields[:3]]
    plottitles = ['Eulerian Mean Streamfunction', '$\Psi^*_{vT}$', 'Residual Streamfunction $\Psi^*$', '$\Psi^*_{cond}$', '$\Psi^*_{LWrad}$', '$\Psi^*_{SWrad}$']
 
    for sfi, sfn in enumerate(plotfields):
@@ -145,8 +148,8 @@ def comppsi(HIST_DS):
    PSI_resid = PSI_EM + PSI_vT
 
    print('Setting up log-p coords...')
-   HIST_DS = HIST_DS.assign_coords(dens=(pres_name, dens0 * HIST_DS[pres_name] / c.p0),\
-                zs=(pres_name, -H * np.log(HIST_DS[pres_name] / c.p0)))
+   HIST_DS = HIST_DS.assign_coords(dens=(pres_name, dens0 * HIST_DS[pres_name].data / c.p0 * 100),\
+                zs=(pres_name, -H * np.log(HIST_DS[pres_name].data / c.p0 * 100)))
 
    print('Computing quasi-Stokes velocity streamfunction...')
    dTHTA_dz = -HIST_DS['dens'] * c.g * dTHTA_dp
@@ -183,6 +186,7 @@ def comppsi(HIST_DS):
 def yderiv(var, coslat):
    return (var * coslat).differentiate('lat') * 180 / np.pi / c.a / coslat
 
+#expects pressure coord in hPa, density array of same shape
 def zderiv(var, dens):
    return -dens * c.g * var.differentiate(pres_name, edge_order=2) / 100
 
