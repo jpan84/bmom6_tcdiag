@@ -7,6 +7,10 @@ import numpy as np
 
 DIRI = './streamf_sznl'
 FILI = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl__TEM.nc'
+DIFF = False
+
+FILI = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl_b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed_TEM.nc'
+DIFF = True
 
 YSCL = lambda lat: np.sin(np.deg2rad(lat))
 YLAB = np.arange(-90, 90.1, 30).astype(np.int_)
@@ -16,17 +20,18 @@ def main():
    ds = xr.open_dataset(os.path.join(DIRI, FILI))
 
    plotfields = [ds[dv] for dv in ['EPy_EMF_d', 'EPy_adv_d', 'EPz_EHF_d', 'EPz_adv_d']]
-   plottitles = ['EPFd (y) due to EMF', 'EPFd (y) due to mean vu adv', 'EPFd (z) due to EHF', 'EPFd (z) due to mean wu adv']
+   plotfields.append(sum(plotfields))
+   plottitles = ['EPFd (y) due to EMF', 'EPFd (y) due to mean vu adv', 'EPFd (z) due to EHF', 'EPFd (z) due to mean wu adv', 'Sum']
 
    print('Plotting EPFd...')
    plt.rc('font', size=20)
-   plt.rcParams['figure.figsize'] = (40, 12)
+   plt.rcParams['figure.figsize'] = (52, 12)
    contourkwargs = {'colors': 'black', 'levels': .2 * 2.**np.arange(-1, 7, 1)}
    contourkwargs['levels'] = np.concatenate((-contourkwargs['levels'][::-1], contourkwargs['levels']))
-   contourfkwargs = {'cmap': 'RdBu_r', 'levels': contourkwargs['levels'], 'norm': colors.SymLogNorm(0.1), 'extend': 'both'} #Use RdYlBu_r for diff
+   contourfkwargs = {'cmap': 'RdYlBu_r' if DIFF else 'RdBu_r', 'levels': contourkwargs['levels'], 'norm': colors.SymLogNorm(0.1), 'extend': 'both'} #Use RdYlBu_r for diff
    #clabelkwargs = {'inline': 1, 'fontsize': 10, 'colors': 'black', 'fmt': '%.1f'}
    subplot_kw = dict(xlim=(-1, 1), ylim=(100, 1000), yscale='log')
-   fig, axes = plt.subplots(2, 4, layout='constrained', sharey=True, subplot_kw=subplot_kw)
+   fig, axes = plt.subplots(2, 5, layout='constrained', sharey=True, subplot_kw=subplot_kw)
 
    for sfi, sfn in enumerate(plotfields):
       for szj, szn in enumerate(['JJA', 'SON']):

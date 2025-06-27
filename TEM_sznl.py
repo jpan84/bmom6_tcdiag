@@ -28,7 +28,7 @@ DIFF = bool(int(sys.argv[1])) #False if len(sys.argv) < 3 else bool(sys.argv[2])
 #DIRIDX2 = None if not DIFF else int(sys.argv[3])
 fname = 'ymonmean.nc' #'cdo_ann_means.nc' #'*h0a*.nc'
 DIR1 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/%s' % fname
-DIR2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist_regrid_0.25x0.25_onpres/%s' % fname
+DIR2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist_regrid_0.25x0.25_onpres/%s' % fname
 pres_name = 'plev'
 DIAB_VARS = ['DTCOND', 'QRL', 'QRS']
 plotfileargs = (DIR1.split('/')[-4], DIR2.split('/')[-4] if DIFF else '')
@@ -171,12 +171,12 @@ def comppsi(HIST_DS):
 
    print('Computing vert EPF, EHF (Coriolis) term...')
    EPz_EHF = EP_qs * 2 * OM * sinlat
-   EPz_EHF_d = zderiv(EPz_EHF, HIST_DS['dens'])
+   EPz_EHF_d = zderiv(EPz_EHF, HIST_DS['dens']) / EPfac
 
    print('Computing vert EPF, quasi-Stokes uv advection term...')
    dU_dy = yderiv(U_MEAN, coslat)
    EPz_adv = EP_qs * -dU_dy
-   EPz_adv_d = zderiv(EPz_adv, HIST_DS['dens'])
+   EPz_adv_d = zderiv(EPz_adv, HIST_DS['dens']) / EPfac
 
    print('Skipping vertical EMF term b/c not avail.')
 
