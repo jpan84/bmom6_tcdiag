@@ -34,7 +34,8 @@ DIAB_VARS = ['DTCOND', 'QRL', 'QRS']
 plotfileargs = (DIR1.split('/')[-4], DIR2.split('/')[-4] if DIFF else '')
 
 H = 7e3 #m
-dens0 = c.p0 / c.g / H #Boussinesq background density
+OM = 7.29e-5 #rad s-1
+dens0 = c.p0 / c.g / H #LBC density
 LATLAB = linevslat.LATLAB
 
 def main():
@@ -122,16 +123,17 @@ def main():
    print('Done.')
 
 def comppsi(HIST_DS):
-   print('Computing Eulerian mean streamfunction...')
+   print('Computing Eulerian mean mass streamfunction...')
    #compute the streamfunction assoc w/ Eulerian-mean V
    V_ZM = HIST_DS.V.mean(dim='lon')
    V_ZMEM = V_ZM.groupby('time.month').mean(dim='time')
    coslat = np.cos(HIST_DS.lat * np.pi / 180)
+   sinlat = np.sin(HIST_DS.lat * np.pi / 180)
    latcirc = 2 * np.pi * c.a * coslat #circumference at each latitude
    integrand = V_ZMEM * latcirc / c.g
    PSI_EM = trapint(integrand, HIST_DS[pres_name]) * 100
 
-   print('Computing vT term...')
+   print('Computing vT term (quasi-Stokes mass streamfunction)...')
    VTH_ZMEM = thta(HIST_DS.VT, HIST_DS[pres_name]).groupby('time.month').mean(dim=['time', 'lon']) 
    TH_MEAN = thta(HIST_DS.T, HIST_DS[pres_name]).groupby('time.month').mean(dim=['time', 'lon'])
    V_MEAN = HIST_DS.V.groupby('time.month').mean(dim=['time', 'lon'])
@@ -140,10 +142,49 @@ def comppsi(HIST_DS):
 
    dTHTA_dp = bg_strat(TH_MEAN)
    PSI_vT = (-EHF * latcirc / c.g / dTHTA_dp)#.mean(dim='time')
-
    PSI_resid = PSI_EM + PSI_vT
 
-   return [PSI_EM, PSI_vT, PSI_resid]
+   print('Setting up log-p coords...')
+   HIST_DS = HIST_DS.assign_coords(dens=(pres_name, dens0 * HIST_DS[pres_name] / c.p0),\
+                zs=(pres_name, -H * np.log(HIST_DS[pres_name] / c.p0)))
+
+   print('Computing quasi-Stokes velocity streamfunction...')
+   dTHTA_dz = -HIST_DS['dens'] * c.g * dTHTA_dp
+   PSI_vel = EHF / dTHTA_dz
+
+   print('Computing merid EPF, EMF term...')
+   EPfac = c.a * HIST_DS['dens'] * coslat
+   EP_qs = EPfac * PSI_vel
+   UV_ZMEM = HIST_DS['VU'].groupby('time.month').mean(dim=['time', 'lon'])
+   U_MEAN = HIST_DS['U'].groupby('time.month').mean(dim=['time', 'lon'])
+   EMF = UV_ZMEM - U_MEAN * V_MEAN
+   EPy_EMF = EPfac * -EMF
+   EPy_EMF_d = yderiv(EPy_EMF, coslat) / EPfac
+
+   print('Computing merid EPF, quasi-Stokes uw advection term...')
+   dU_dz = zderiv(U_MEAN, HIST_DS['dens'])
+   EPy_adv = EP_qs * dU_dz
+   EPy_adv_d = yderiv(EPy_adv, coslat) / EPfac
+
+   print('Computing vert EPF, EHF (Coriolis) term...')
+   EPz_EHF = EP_qs * 2 * OM * sinlat
+   EPz_EHF_d = zderiv(EPz_EHF, HIST_DS['dens'])
+
+   print('Computing vert EPF, quasi-Stokes uv advection term...')
+   dU_dy = yderiv(U_MEAN, coslat)
+   EPz_adv = EP_qs * -dU_dy
+   EPz_adv_d = zderiv(EPz_adv, HIST_DS['dens'])
+
+   print('Skipping vertical EMF term b/c not avail.')
+
+   return [PSI_EM, PSI_vT, PSI_resid, EPy_EMF, EPy_adv, EPz_EHF, EPz_adv, EPy_EMF_d, EPy_adv_d, EPz_EHF_d, EPz_adv_d]
+
+#y-derivative in spherical coords
+def yderiv(var, coslat):
+   return (var * coslat).differentiate('lat') * 180 / np.pi / c.a / coslat
+
+def zderiv(var, dens):
+   return -dens * c.g * var.differentiate(pres_name, edge_order=2) / 100
 
 #get background stratification as d(THETA_zm) / dp
 def bg_strat(TH_MEAN):
