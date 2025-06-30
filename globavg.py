@@ -30,9 +30,9 @@ OUTDIR = './globavtraces_250130_h80l89'
 #OUTDIR = './globavtraces_250127_h80l895'
 #OUTDIR = './globavtraces_250127_h80l897'
 
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1'
 GRIDFN = 'ne120np4_pentagons_100310.nc'
-OUTDIR = './globavtraces_250417_ctrl'
+OUTDIR = './globavtraces_250416_seed1x1'
 
 CLIPMO = 0
 tunits = 'common_years since 0000-01-01'
@@ -50,7 +50,7 @@ import consts as c
 
 a = c.a
 
-vrs = ['TS', 'FSNT', 'FLNT', 'RESTOM', 'PRECC', 'PRECL', 'PRECT', 'QFLX', 'PS', 'TMQ', 'LWCF', 'SWCF', 'CLDTOT', 'NCF']
+vrs = ['TS', 'FSNT', 'FLNT', 'RESTOM', 'PRECC', 'PRECL', 'PRECT', 'QFLX', 'PS', 'TMQ', 'CLDTOT', 'LWCF', 'SWCF', 'NCF', 'SHFLX', 'AHU', 'SFCHU', 'TORQu']
 plt.rc('font', size=16)
 
 def main():
@@ -76,6 +76,7 @@ def main():
    dss = [ux.open_mfdataset(os.path.join(GRIDDIR, GRIDFN), ps) for ps in paths]
    '''
 
+   ds = ds.assign(variables=dict(TORQu=ds['TAUX'] * a * np.cos(np.deg2rad(ds['lat']))))
    gav, units = None, None
    for var in vrs:
       print('Working on', var)
@@ -88,6 +89,12 @@ def main():
       elif var == 'NCF':
          gav = globav(ds, 'LWCF') + globav(ds, 'SWCF')
          units = ds['LWCF'].units
+      elif var == 'AHU':
+         gav = globav(ds, 'FSNT') - globav(ds, 'FSNS') + globav(ds, 'FLNS') - globav(ds, 'FLNT') + globav(ds, 'SHFLX') + globav(ds, 'LHFLX')
+         units = ds['FSNT'].units
+      elif var == 'SFCHU':
+         gav = globav(ds, 'FSNS') - globav(ds, 'FLNS') - globav(ds, 'SHFLX') - globav(ds, 'LHFLX')
+         units = ds['FSNS'].units
       else:
          gav = globav(ds, var)
          units = ds[var].units

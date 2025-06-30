@@ -1,91 +1,5 @@
 
  /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/*h0a.[0-9]*.nc
-(45,) 
-
-TS 296.23355946543757
-FSNT 257.4288814575744
-FLNT 257.3112138625498
-RESTOM 0.11766759502465965
-PRECC 1.9081898142091652e-08
-PRECL 2.9966679231890847e-08
-PRECT 4.9048577373982495e-08
-QFLX 4.9057399913645115e-05
-PS 101487.29606650125
-TMQ 41.40082768516784
-LWCF 21.29993888755048
-SWCF -47.224662177879296
-CLDTOT 0.4047321961599321
-NCF -25.924723290328814
-
- /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/*h0a.[0-9]*.nc
-(60,) 
-
-TS 296.24512758803695
-FSNT 257.3458181825369
-FLNT 257.3798424545996
-RESTOM -0.03402427206274158
-PRECC 1.9052842007044963e-08
-PRECL 3.003362288032164e-08
-PRECT 4.908646488736661e-08
-QFLX 4.9083880011203926e-05
-PS 101487.51147258631
-TMQ 41.42276862017025
-LWCF 21.284849519306928
-SWCF -47.19524426171359
-CLDTOT 0.40494743527310595
-NCF -25.910394742406666
-
- /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/*h0a.[0-9]*.nc
-(96,) 
-
-TS 296.26146379659014
-FSNT 257.3950102581493
-FLNT 257.37146504235614
-RESTOM 0.023545215793116605
-PRECC 1.9058891416562843e-08
-PRECL 3.004193055711378e-08
-PRECT 4.9100821973676625e-08
-QFLX 4.910077477577368e-05
-PS 101487.94062066043
-TMQ 41.46648486841596
-LWCF 21.298629227002454
-SWCF -47.18358231740615
-CLDTOT 0.40486122062354085
-NCF -25.884953090403684
-
- /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/*h0a.[0-9]*.nc
-(120,) 
-
-TS <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-FSNT <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-FLNT <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-RESTOM <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-PRECC <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-PRECL <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-PRECT <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-QFLX <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-PS <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-TMQ <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-LWCF <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-SWCF <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-CLDTOT <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-NCF <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-
- /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/*h0a.[0-9]*.nc
 (120,) 
 
 TS 296.2664637316974
@@ -98,7 +12,10 @@ PRECT 4.9126033446363506e-08
 QFLX 4.912621464691646e-05
 PS 101487.8762776253
 TMQ 41.4598140365557
+CLDTOT 0.4051896808120125
 LWCF 21.284229454754612
 SWCF -47.213752975531854
-CLDTOT 0.4051896808120125
 NCF -25.929523520777234
+SHFLX 7.564280646076238
+AHU -0.2038446050777757
+SFCHU 0.15013537851208203

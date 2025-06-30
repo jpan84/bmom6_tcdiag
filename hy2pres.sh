@@ -3,7 +3,7 @@
 set -e
 module load nco
 
-cd /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm
+cd /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm
 pwd
 
 diri="./hist_regrid_0.25x0.25/"

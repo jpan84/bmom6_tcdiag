@@ -1,86 +1,14 @@
 
  /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist/*h0a.[0-9]*.nc
-(12,) 
+(120,) 
 
-TS 296.2049132829135
-FSNT 258.115680967294
-FLNT 257.5149436777809
-RESTOM 0.6007372895130485
-PRECC 1.8265621116194654e-08
-PRECL 3.11564718631783e-08
-PRECT 4.942209297937295e-08
-QFLX 4.9438553475243904e-05
-PS 101489.17680192557
-TMQ 41.59538607476786
-LWCF 20.759108144363076
-SWCF -46.38055111000796
-CLDTOT 0.40612490320073424
-NCF -25.621442965644874
-
- /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist/*h0a.[0-9]*.nc
-(63,) 
-
-TS 296.19349781232995
-FSNT 258.09570899191385
-FLNT 257.1227568159697
-RESTOM 0.9729521759441352
-PRECC 1.8315044132293195e-08
-PRECL 3.096498386936992e-08
-PRECT 4.9280028001663114e-08
-QFLX 4.928550867824604e-05
-PS 101489.02508715131
-TMQ 41.580129095071804
-LWCF 20.912025961168542
-SWCF -46.536157149633944
-CLDTOT 0.40696289879963404
-NCF -25.62413118846541
-
- /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist/*h0a.[0-9]*.nc
-(112,) 
-
-TS <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-FSNT <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-FLNT <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-RESTOM <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-PRECC <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-PRECL <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-PRECT <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-QFLX <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-PS <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-TMQ <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-LWCF <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-SWCF <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-CLDTOT <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-NCF <xarray.UxDataArray ()> Size: 8B
-dask.array<truediv, shape=(), dtype=float64, chunksize=(), chunktype=numpy.ndarray>
-
- /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist/*h0a.[0-9]*.nc
-(112,) 
-
-TS 296.24039312706606
-FSNT 258.0745683228028
-FLNT 257.19128759983516
-RESTOM 0.8832807229676795
-PRECC 1.8308996069974292e-08
-PRECL 3.103197704920088e-08
-PRECT 4.9340973119175166e-08
-QFLX 4.934390207750094e-05
-PS 101490.5584948983
-TMQ 41.73681768771827
-LWCF 20.904111375326604
-SWCF -46.586381214934235
-CLDTOT 0.4068962133526052
-NCF -25.68226983960764
+TS 296.25126376621614
+FSNT 258.007233770934
+FLNT 257.20751120007424
+RESTOM 0.7997225708597846
+PRECC 1.8316974669657395e-08
+PRECL 3.104214917926825e-08
+PRECT 4.9359123848925644e-08
+QFLX 4.9362098532607366e-05
+PS 101490.84528314848
+TMQ 41.766107668896694
