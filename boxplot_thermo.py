@@ -21,7 +21,9 @@ DZTHRESH = 10 #mm/d threshold to separate non/precipitating regimes
 OPs = {'<': operator.lt, '<=': operator.le, '>': operator.gt, '>=': operator.ge}
 VARPLEVS = dict(OMEGA=[500, 850], T=[200, 500, 850], Z=[300, 500, 850], U=[200, 500, 850])
 
-FILIS = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0010-*-01-00000.nc'
+HEM = 'warm'
+MYOP = '>='
+FILIS = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0010-*-0*-*.nc'
 ALIS = ['250415_unseed', '250417_ctrl', '250416_seed1x1']
 PLCLRS = ['blue', 'green', 'red']
 DIRO = './thermo_boxplots'
@@ -38,11 +40,19 @@ def main():
          for ii, al in enumerate(ALIS):
             print('Working on', al, var, pl)
             ds = xr.open_mfdataset(FILIS % (al, al))
-            quartiles = get_weighted_quartiles_filtered(ds, 'PRECT', '>=', DZTHRESH / 8.64e4 / 1e3, '%s%d' %(var, pl))
+            quartiles = get_weighted_quartiles_filtered(ds, 'PRECT', MYOP, DZTHRESH / 8.64e4 / 1e3, '%s%d' % (var, pl), hemi=HEM)
             #plt.boxplot(quartiles)
-            plt.scatter(quartiles, np.zeros_like(quartiles) + pl + (ii - 1) * 25)
+            if var == 'T':
+               quartiles = quartiles * (1000. / pl)**(287 / 1004)
+            plt.scatter(quartiles, np.zeros_like(quartiles) + pl + (ii - 1) * 25, c=PLCLRS[ii])
 
-      plt.savefig(os.path.join(DIRO, '%s_%d.png' % (var, DZTHRESH)))
+      plt.xlabel(var)
+      if var == 'T':
+         plt.xlabel('Pot temp [K]')
+      plt.ylabel('Pressure [hPa]')
+      plt.yticks(VARPLEVS[var])
+      plt.gca().invert_yaxis()
+      plt.savefig(os.path.join(DIRO, '%s_%s%d_%s.png' % (var, OPs[MYOP].__name__, DZTHRESH, HEM)))
       plt.close()
 
       continue
@@ -57,31 +67,7 @@ def main():
    print(sys.argv[0], 'done')
 
    exit()
-   ##################################
-   print('Computing histogram...')
-   umf_b_2d, mse_edges, cape_edges = compute_umf_hist(ds, hemi=hem)
-   if DO_DIFF:
-      ds2 = xr.open_mfdataset(CASE2)
-      umf_b_2d_CASE2, _, _ = compute_umf_hist(ds2, hemi=hem)
-      umf_b_2d = umf_b_2d_CASE2 - umf_b_2d
 
-   print('Plotting...')
-   plt.rc('font', size=16)
-   #print(mse_edges, cape_edges, umf_b_2d.shape)
-   vminmax = dict(vmin=0, vmax=1e11)
-   if DO_DIFF:
-      vminmax = dict()
-   plt.pcolormesh(mse_edges, cape_edges, umf_b_2d.T, shading='flat', cmap='bwr' if DO_DIFF else 'viridis', **vminmax)#, norm=colors.LogNorm())
-   plt.xlim(3.0e5, 3.8e5)
-   plt.ylim(0, 400)
-   plt.xlabel('MSE 850 [J kg$^{-1}$]')
-   plt.ylabel('CAPE [J kg$^{-1}$]')
-   plt.title(f'500 hPa UMF [kg s$^{{-1}}$]\n{umf_b_2d.sum():.3e}')
-   plt.colorbar()
-   plt.savefig('umf_binned_2d_%s%s.png' % (hem, '_%s_diff' % alias2 if DO_DIFF else ''), bbox_inches='tight')
-   plt.close()
-
-   print('UMFBIN done.')
 
 #use one variable and threshold to filter datapoints
 #get the area-weighted CDF/quartiles of any var in the filtered dataset
