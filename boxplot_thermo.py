@@ -2,6 +2,7 @@
 #python3 bin_mass_flux.py 1 warm
 import sys
 import numpy as np
+import dask
 import operator
 #import uxarray as ux
 import xarray as xr
@@ -18,7 +19,7 @@ a = 6.371e6
 DZTHRESH = 1.157e-8 #m/s drizzle threshold to separate non/precipitating regimes
 OPs = {'<': operator.lt, '<=': operator.le, '>': operator.gt, '>=': operator.ge}
 
-FILIS = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0010-*-01-*.nc'
+FILIS = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0010-*-01-00000.nc'
 ALIS = ['250415_unseed', '250417_ctrl', '250416_seed1x1']
 DIRO = './thermo_boxplots'
 
@@ -35,7 +36,9 @@ def main():
    for al in ALIS:
       print('Working on', al)
       ds = xr.open_mfdataset(FILIS % (al, al))
-      get_weighted_quartiles_filtered(ds, 'PRECT', '>=', DZTHRESH, 'OMEGA500')
+      quartiles = get_weighted_quartiles_filtered(ds, 'PRECT', '>=', DZTHRESH, 'OMEGA500')
+      plt.boxplot(quartiles)
+      plt.show()
 
       exit()
       topkl.append(compute_umf_hist(ds, hemi='warm'))
@@ -79,17 +82,24 @@ def main():
 def get_weighted_quartiles_filtered(ds, varfilt, oper, thresh, cdfvar, wgts=None, outerlat=30., hemi='warm'):
    nhsel, shsel = sel_unstruct_tropics(ds, outerlat=outerlat, hemi=hemi)
    selds = xr.concat((nhsel, shsel), 'ncol')
-   print(selds)
+   #print(selds)
 
-   mask = OPs[oper](selds[varfilt], thresh).data.reshape(-1)
-   wgts = selds['area'].data.reshape(-1)[mask]
-   var1d = selds[cdfvar].data.reshape(-1)[mask]
-   print(mask.shape, wgts.shape, var1d.shape)
+   mask = OPs[oper](selds[varfilt], thresh).data.reshape(-1).compute()
+   wgts = selds['area'].data.reshape(-1)[mask].compute()
+   var1d = selds[cdfvar].data.reshape(-1)[mask].compute()
 
-   return compute_wgted_quartiles(var1d, wgts)
+   #mask = OPs[oper](selds[varfilt], thresh).compute()
+   #wgts = dask.array.from_array(selds['area'].where(mask, drop=False))
+   #var1d = dask.array.from_array(selds[cdfvar].where(mask, drop=False))
 
-def compute_wgted_quartiles(var, wgts):
-   return
+   return np.nanquantile(var1d, np.arange(0, 1.01, 0.25), weights=wgts) #compute_wgted_quartiles(var1d, wgts)
+
+###def compute_wgted_quartiles(var, wgts):
+###   sorter = np.argsort(var)
+###   varsort = var[sorter]
+###   wgtssort = wgts[sorter]
+###   quantiles = np.cumsum(wgts) / sum(wgts)
+###   return np.interp(np.arange(0, 1.01, 0.25), quantiles, varsort)
 
 #TODO: check why the 2 hemis return different numbers of points
 def sel_unstruct_tropics(ds, outerlat=30., hemi='warm'):
