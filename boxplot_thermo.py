@@ -1,5 +1,6 @@
 #python3 bin_mass_flux.py 0 cool
 #python3 bin_mass_flux.py 1 warm
+import os
 import sys
 import numpy as np
 import dask
@@ -16,34 +17,39 @@ lv = 2500840
 a = 6.371e6
 
 #camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
-DZTHRESH = 1.157e-8 #m/s drizzle threshold to separate non/precipitating regimes
+DZTHRESH = 10 #mm/d threshold to separate non/precipitating regimes
 OPs = {'<': operator.lt, '<=': operator.le, '>': operator.gt, '>=': operator.ge}
+VARPLEVS = dict(OMEGA=[500, 850], T=[200, 500, 850], Z=[300, 500, 850], U=[200, 500, 850])
 
 FILIS = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0010-*-01-00000.nc'
 ALIS = ['250415_unseed', '250417_ctrl', '250416_seed1x1']
+PLCLRS = ['blue', 'green', 'red']
 DIRO = './thermo_boxplots'
 
-#TODO: allow flexible latitude bins?
-#TODO: allow diffing cases
-#TODO: split seasons
 #TODO: check why NH and SH selections differ in number of cols
 def main():
-   #print(sys.argv)
-   #ds = xr.open_mfdataset(CASE1)
+   if not os.path.exists(DIRO):
+      os.makedirs(DIRO)
 
    topkl = [tuple(ALIS), ('warm', 'cool')]
 
-   for al in ALIS:
-      print('Working on', al)
-      ds = xr.open_mfdataset(FILIS % (al, al))
-      quartiles = get_weighted_quartiles_filtered(ds, 'PRECT', '>=', DZTHRESH, 'OMEGA500')
-      plt.boxplot(quartiles)
-      plt.show()
+   for var in VARPLEVS:
+      for jj, pl in enumerate(VARPLEVS[var]):
+         for ii, al in enumerate(ALIS):
+            print('Working on', al, var, pl)
+            ds = xr.open_mfdataset(FILIS % (al, al))
+            quartiles = get_weighted_quartiles_filtered(ds, 'PRECT', '>=', DZTHRESH / 8.64e4 / 1e3, '%s%d' %(var, pl))
+            #plt.boxplot(quartiles)
+            plt.scatter(quartiles, np.zeros_like(quartiles) + pl + (ii - 1) * 25)
 
-      exit()
+      plt.savefig(os.path.join(DIRO, '%s_%d.png' % (var, DZTHRESH)))
+      plt.close()
+
+      continue
       topkl.append(compute_umf_hist(ds, hemi='warm'))
       topkl.append(compute_umf_hist(ds, hemi='cool'))
 
+   exit()
    print('Pickling')
    with open(FILO, 'wb') as fl:
       pickle.dump(topkl, fl)
@@ -92,7 +98,7 @@ def get_weighted_quartiles_filtered(ds, varfilt, oper, thresh, cdfvar, wgts=None
    #wgts = dask.array.from_array(selds['area'].where(mask, drop=False))
    #var1d = dask.array.from_array(selds[cdfvar].where(mask, drop=False))
 
-   return np.nanquantile(var1d, np.arange(0, 1.01, 0.25), weights=wgts) #compute_wgted_quartiles(var1d, wgts)
+   return np.nanquantile(var1d, np.arange(.05, .96, 0.1), weights=wgts, method='inverted_cdf') #compute_wgted_quartiles(var1d, wgts)
 
 ###def compute_wgted_quartiles(var, wgts):
 ###   sorter = np.argsort(var)
