@@ -30,9 +30,9 @@ OUTDIR = './globavtraces_250130_h80l89'
 #OUTDIR = './globavtraces_250127_h80l895'
 #OUTDIR = './globavtraces_250127_h80l897'
 
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
 GRIDFN = 'ne120np4_pentagons_100310.nc'
-OUTDIR = './globavtraces_250416_seed1x1'
+OUTDIR = './globavtraces_250417_ctrl'
 
 CLIPMO = 0
 tunits = 'common_years since 0000-01-01'
@@ -76,7 +76,7 @@ def main():
    dss = [ux.open_mfdataset(os.path.join(GRIDDIR, GRIDFN), ps) for ps in paths]
    '''
 
-   ds = ds.assign(variables=dict(TORQu=ds['TAUX'] * a * np.cos(np.deg2rad(ds['lat']))))
+
    gav, units = None, None
    for var in vrs:
       print('Working on', var)
@@ -95,6 +95,10 @@ def main():
       elif var == 'SFCHU':
          gav = globav(ds, 'FSNS') - globav(ds, 'FLNS') - globav(ds, 'SHFLX') - globav(ds, 'LHFLX')
          units = ds['FSNS'].units
+      elif var == 'TORQu':
+         ds = ds.assign(variables=dict(TORQu=(ds['TAUX'] * a * np.cos(np.deg2rad(ds['lat'])).assign_attrs({"units": "N m m-2"}))))
+         gav = globav(ds, 'TORQu')
+         units = 'N m m-2'
       else:
          gav = globav(ds, var)
          units = ds[var].units
@@ -111,7 +115,7 @@ def main():
       #plt.legend()
       plt.title(var)
       plt.xlabel(tunits)# [%s]' % str(flt.units))
-      plt.ylabel(units)
+      plt.ylabel('[' + units + ']')
       plt.savefig(os.path.join(OUTDIR, '%s.png' % var), bbox_inches='tight')
       plt.close()
 

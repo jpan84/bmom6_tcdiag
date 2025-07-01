@@ -1,7 +1,7 @@
 nohup: ignoring input
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 5505151.casper-pbs with qsub arguments:
-    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:05:00
+Waiting on job launch; 5505301.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=36:mem=384GB -A UCIS0005 -q casper@casper-pbs -l walltime=03:00:00
 
 [ 5.12328767  5.20410959  5.28767123  5.37123288  5.45479452  5.53835616
 5.62328767  5.70684932  5.79041096  5.8739726   5.95753425  6.04246575
@@ -23,22 +23,31 @@ Waiting on job launch; 5505151.casper-pbs with qsub arguments:
 13.62328767 13.70684932 13.79041096 13.8739726  13.95753425 14.04246575
 14.12328767 14.20410959 14.28767123 14.37123288 14.45479452 14.53835616
 14.62328767 14.70684932 14.79041096 14.8739726  14.95753425 15.04246575]
-Working on TS
-Working on FSNT
-Working on FLNT
-Working on RESTOM
-Working on PRECC
-Working on PRECL
-Working on PRECT
-Working on QFLX
-Working on PS
-Working on TMQ
-Working on CLDTOT
-Working on LWCF
-Working on SWCF
-Working on NCF
-Working on SHFLX
-Working on AHU
-Working on SFCHU
-Working on TORQu
-globavg.py done.
+
+Obtaining dp3d...
+<xarray.UxDataArray (time: 120, lev: 26, n_face: 777602)> Size: 19GB
+dask.array<add, shape=(120, 26, 777602), dtype=float64, chunksize=(1, 26, 777602), chunktype=numpy.ndarray>
+Coordinates:
+* time     (time) object 960B 0005-02-15 00:00:00 ... 0015-01-16 12:00:00
+* lev      (lev) float64 208B 3.545 7.389 13.97 23.94 ... 929.6 970.6 992.6
+Dimensions without coordinates: n_face
+
+Basic tests...
+Atmospheric mass from PS
+5.276795108949332e+18
+Atmospheric mass from 3D integral
+5.265387202469315e+18
+Working on Q
+Working on DCQ
+Working on T
+Working on U
+Working on V
+Working on KE
+Working on GP
+Working on SH
+Working on LH
+Working on MASS
+Working on AAMu
+Working on DIAB
+Working on MSE
+globint3d.py done.

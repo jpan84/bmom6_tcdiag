@@ -8,13 +8,13 @@ import matplotlib.pyplot as plt
 import sznl_funcs
 import rad_sfc_aht_oht as formulae
 
-DIRO = 'sznl_transports_new'
+DIRO = 'sznl_transports_newdiff'
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
 CAMH = '/glade/derecho/scratch/jpan/archive/%s/atm/hist_regrid_mom_onpres/*.h0a.*.nc'
 MOMH = '/glade/derecho/scratch/jpan/archive/%s/ocn/hist/*mom6.hm*[0-9][0-9][0-9][0-9]-[0-9][0-9].nc'
 CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1']
 ALIASES = ['UNSEED', 'CTRL', 'SEED']
-DO_DIFF = False
+DO_DIFF = True
 
 LATLAB = np.array([-90., -60., -30., 0., 30., 60., 90.])
 lncolors = ['blue', 'orange']
@@ -163,7 +163,10 @@ def plt_cases(sinlat, das, *args, **kwargs):
    subplot_kw = dict(xlim=(-1, 1), sharey=(not DO_DIFF))
    fig, axes = plt.subplots(1, 3, layout='constrained', subplot_kw=subplot_kw)
    for ii, pltda in enumerate(das):
-      plt_sznl(sinlat, pltda, *args, **kwargs, title=ALIASES[ii], ax=axes[ii])
+      if not ii == 1 and DO_DIFF:
+         plt_sznl(sinlat, pltda - das[1], *args, **kwargs, title=ALIASES[ii], ax=axes[ii])
+      else:
+         plt_sznl(sinlat, pltda, *args, **kwargs, title=ALIASES[ii], ax=axes[ii])
    plt.savefig(os.path.join(DIRO, '%s.png' % args[0]), bbox_inches='tight')
    plt.close()
 
@@ -173,6 +176,9 @@ def plt_sznl(sinlats, pltda, name, units, title='', linestyle='solid', ax=None):
       ax = plt.axes()
    for tt, szn in enumerate(pltda['season']):
       ax.plot(sinlats, pltda.sel(season=szn), label=str(szn.values), color=lncolors[tt])
+   if DO_DIFF:
+      ylim = np.abs(pltda).max().values
+      ax.set_ylim(-ylim, ylim)
    ax.set_xlabel('Lat [°]')
    ax.set_ylabel(name + ' ' + units)
    ax.set_title(title)

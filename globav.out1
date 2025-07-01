@@ -1,7 +1,7 @@
 nohup: ignoring input
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 5505022.casper-pbs with qsub arguments:
-    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=01:00:00
+Waiting on job launch; 5505146.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:05:00
 
 [ 5.12328767  5.20410959  5.28767123  5.37123288  5.45479452  5.53835616
 5.62328767  5.70684932  5.79041096  5.8739726   5.95753425  6.04246575
@@ -41,12 +41,4 @@ Working on SHFLX
 Working on AHU
 Working on SFCHU
 Working on TORQu
-Traceback (most recent call last):
-File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/globavg.py", line 179, in <module>
-main()
-File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/globavg.py", line 100, in main
-units = ds[var].units
-^^^^^^^^^^^^^
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/common.py", line 302, in __getattr__
-raise AttributeError(
-AttributeError: 'UxDataArray' object has no attribute 'units'
+globavg.py done.
