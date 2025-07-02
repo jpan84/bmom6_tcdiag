@@ -5,7 +5,7 @@ import sznl_funcs
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 
-DO_DIFF = True
+DO_DIFF = False
 HISTS = '/glade/derecho/scratch/jpan/archive/%s/ocn/hist/*mom6.hm*[0-9][0-9][0-9][0-9]-[0-9][0-9].nc'
 CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1']
 ALIASES = ['UNSEED', 'CTRL', 'SEED']
@@ -56,13 +56,18 @@ def main():
          if sstr in dss[0][dv].attrs['long_name'].lower():
             antisym = True; break
       sznl = [sznl_funcs.stack_hemi_sznl(sznl_funcs.monthly2sznl(mm), antisym=antisym, latnm=ymeth[0]) for mm in monmeans]
+
+      vmin, vmax, zero_centered = None, None, False
       if DO_DIFF:
-         sznl = [sz - sznl[1] for sz in sznl]
-      vmax = max([np.abs(sz).max().values for sz in sznl])
-      vmin = min([sz.min().values for sz in sznl])
-      zero_centered = True
-      if vmax - vmin < 0.25 * vmax:
-         zero_centered = False
+         zero_centered = True
+         sznl = [(sznl[ii] - sznl[1]) if ii != 1 else sznl[1] for ii in range(len(sznl))]
+         vmax = max([np.abs(sz).max().values for sz in sznl])
+      else:
+         vmax = max([np.abs(sz).max().values for sz in sznl])
+         vmin = min([sz.min().values for sz in sznl])
+         zero_centered = True
+         if vmax - vmin < 0.25 * vmax:
+            zero_centered = False
 
       plt.rc('font', size=16)
       plt.rcParams['figure.figsize'] = (30, 12)
@@ -74,12 +79,14 @@ def main():
       for ii, sz in enumerate(['JJA', 'SON']):
          for jj, cs in enumerate(CASES):
             ax = axes[ii, jj]
+            if DO_DIFF:
+               #TODO
             csf = ax.contourf(YSCL(sznl[jj][ymeth[0]]), ZSCL(sznl[jj][zmeth[0]]), sznl[jj].sel(season=sz).data, **contourfkwargs)
             if ii == 0 and jj == 0:
                ax.set_ylabel('Depth [m]')
                ax.set_yticks(ZLOC, ZLAB)
                ax.invert_yaxis()
-               plt.colorbar(csf, ax=axes)
+            plt.colorbar(csf, ax=ax)
             ax.set_xticks(YLOC, YLAB)
             ax.set_xlabel('Latitude [°]')
 

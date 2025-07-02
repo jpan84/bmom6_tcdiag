@@ -63,8 +63,8 @@ scp /glade/u/home/jpan/ocean_rho2_250415.nc "${RUNDIR}"/INPUT
 cat > user_nl_cam <<EOF
 nhtfrq=0,-6,-1
 mfilt=0,1,24
-fincl1='CAPE:A','VZ:A','UWzm:A'
-fincl2='UBOT:I','VBOT:I','Z300:I','SST:I','Q850:I','Q500:I','Q200:I','PS:I','PSDRY:I','PRECT:I','U850:I','V850:I','PSL:I','TBOT:I','T850:I','UBOT:I','VBOT:I','TMQ:I','Z500:I','U200:I','V200:I','OMEGA500:I','OMEGA850:I','T200:I','T500:I','U500:I','V500:I', 'TAUX:I', 'TAUY:I', 'FLUT:I', 'Z850:I', 'CAPE:I'
+fincl1='CAPE:A','VZ:A','OMEGAU:A'
+fincl2='UBOT:I','VBOT:I','Z300:I','SST:I','Q850:I','Q200:I','PS:I','PSDRY:I','PRECT:I','U850:I','V850:I','PSL:I','TBOT:I','T850:I','UBOT:I','VBOT:I','TMQ:I','Z500:I','U200:I','V200:I','OMEGA500:I','OMEGA850:I','T200:I','T500:I','U500:I','V500:I', 'TAUX:I', 'TAUY:I', 'FLUT:I', 'Z850:I', 'CAPE:I'
 fincl3='PRECT:A','PRECC:A'
 se_write_restart_unstruct              = .true.
 ncdata='/glade/work/zarzycki/CESM_files/ncdata/ncdata_ne120np4_L26_aqua.nc'
