@@ -5,10 +5,11 @@ import sznl_funcs
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 
+DO_DIFF = True
 HISTS = '/glade/derecho/scratch/jpan/archive/%s/ocn/hist/*mom6.hm*[0-9][0-9][0-9][0-9]-[0-9][0-9].nc'
 CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1']
 ALIASES = ['UNSEED', 'CTRL', 'SEED']
-DIRO = './ocn_yz_plts/'
+DIRO = './ocn_yz_plts_diff/'
 
 DIMS3D = {('time', 'zl', 'yq', 'xq'), ('time', 'zl', 'yq', 'xh'), ('time', 'zl', 'yh', 'xq'), ('time', 'zl', 'yh', 'xh')}
 ANTISYM_STR = ['vorticity', 'meridional', 'y transport', 'y velocity']
@@ -55,6 +56,8 @@ def main():
          if sstr in dss[0][dv].attrs['long_name'].lower():
             antisym = True; break
       sznl = [sznl_funcs.stack_hemi_sznl(sznl_funcs.monthly2sznl(mm), antisym=antisym, latnm=ymeth[0]) for mm in monmeans]
+      if DO_DIFF:
+         sznl = [sz - sznl[1] for sz in sznl]
       vmax = max([np.abs(sz).max().values for sz in sznl])
       vmin = min([sz.min().values for sz in sznl])
       zero_centered = True

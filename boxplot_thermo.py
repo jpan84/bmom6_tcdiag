@@ -21,9 +21,9 @@ DZTHRESH = 10 #mm/d threshold to separate non/precipitating regimes
 OPs = {'<': operator.lt, '<=': operator.le, '>': operator.gt, '>=': operator.ge}
 VARPLEVS = dict(OMEGA=[500, 850], T=[200, 500, 850], Z=[300, 500, 850], U=[200, 500, 850])
 
-HEM = 'warm'
-MYOP = '>='
-FILIS = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0010-*-0*-*.nc'
+HEM = 'cool'
+MYOP = '<'
+FILIS = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0010-*-01-*.nc'
 ALIS = ['250415_unseed', '250417_ctrl', '250416_seed1x1']
 PLCLRS = ['blue', 'green', 'red']
 DIRO = './thermo_boxplots'
@@ -32,6 +32,7 @@ DIRO = './thermo_boxplots'
 def main():
    if not os.path.exists(DIRO):
       os.makedirs(DIRO)
+   dss = [xr.open_mfdataset(FILIS % (al, al)) for al in ALIS]
 
    topkl = [tuple(ALIS), ('warm', 'cool')]
 
@@ -39,7 +40,7 @@ def main():
       for jj, pl in enumerate(VARPLEVS[var]):
          for ii, al in enumerate(ALIS):
             print('Working on', al, var, pl)
-            ds = xr.open_mfdataset(FILIS % (al, al))
+            ds = dss[ii]
             quartiles = get_weighted_quartiles_filtered(ds, 'PRECT', MYOP, DZTHRESH / 8.64e4 / 1e3, '%s%d' % (var, pl), hemi=HEM)
             #plt.boxplot(quartiles)
             if var == 'T':

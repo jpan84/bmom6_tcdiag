@@ -133,6 +133,9 @@
 "ocean_model", "geolon_v",   "geolon_v",   "CASENAME.mom6.static", "all", ".false.", "none", 1
 "ocean_model", "geolat_v",   "geolat_v",   "CASENAME.mom6.static", "all", ".false.", "none", 1
 "ocean_model", "area_t",     "area_t",     "CASENAME.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "area_u",     "area_u",     "CASENAME.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "area_v",     "area_v",     "CASENAME.mom6.static", "all", ".false.", "none", 1
+"ocean_model", "area_q",     "area_q",     "CASENAME.mom6.static", "all", ".false.", "none", 1
 "ocean_model", "depth_ocean","depth_ocean","CASENAME.mom6.static", "all", ".false.", "none", 1
 "ocean_model", "wet",        "wet",        "CASENAME.mom6.static", "all", ".false.", "none", 1
 "ocean_model", "wet_c",      "wet_c",      "CASENAME.mom6.static", "all", ".false.", "none", 1
