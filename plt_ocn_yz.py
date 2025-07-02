@@ -5,7 +5,7 @@ import sznl_funcs
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 
-DO_DIFF = False
+DO_DIFF = True
 HISTS = '/glade/derecho/scratch/jpan/archive/%s/ocn/hist/*mom6.hm*[0-9][0-9][0-9][0-9]-[0-9][0-9].nc'
 CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1']
 ALIASES = ['UNSEED', 'CTRL', 'SEED']
@@ -30,6 +30,10 @@ def main():
    dvars = list(dss[0].data_vars)
 
    for dv in dvars:
+      #!COLORLEVS
+      #if dv not in ['uh', 'T_ady']:
+      #   continue
+
       if dss[0][dv].dims not in DIMS3D:
          print('%s not 3D. Skipping...' % dv)
          continue
@@ -61,7 +65,7 @@ def main():
       if DO_DIFF:
          zero_centered = True
          sznl = [(sznl[ii] - sznl[1]) if ii != 1 else sznl[1] for ii in range(len(sznl))]
-         vmax = max([np.abs(sz).max().values for sz in sznl])
+         vmax = max([np.abs(sz).max().values for sz in [sznl[0], sznl[2]]])
       else:
          vmax = max([np.abs(sz).max().values for sz in sznl])
          vmin = min([sz.min().values for sz in sznl])
@@ -71,21 +75,26 @@ def main():
 
       plt.rc('font', size=16)
       plt.rcParams['figure.figsize'] = (30, 12)
-      contourfkwargs = {'cmap': 'coolwarm' if zero_centered else 'rainbow', 'norm': colors.CenteredNorm(vcenter=0, halfrange=vmax) if zero_centered else colors.Normalize(vmin=vmin, vmax=vmax)}
+      contourfkwargs = {'cmap': 'coolwarm' if zero_centered else 'rainbow', 'norm': colors.CenteredNorm(vcenter=0, halfrange=vmax) if zero_centered else colors.Normalize(vmin=vmin, vmax=vmax), 'levels': 11}
       subplot_kw = dict(xlim=(-1, 1), ylim=(0, 1))
       fig, axes = plt.subplots(2, 3, layout='constrained', sharey=True, subplot_kw=subplot_kw)
       plt.suptitle(f"{dv} [{dss[0][dv].attrs['units']}]\n{dss[0][dv].attrs['long_name']}\n{dss[0][dv].attrs['cell_methods']}")
 
       for ii, sz in enumerate(['JJA', 'SON']):
          for jj, cs in enumerate(CASES):
-            ax = axes[ii, jj]
+            ax, csf = axes[ii, jj], None
             if DO_DIFF:
-               #TODO
-            csf = ax.contourf(YSCL(sznl[jj][ymeth[0]]), ZSCL(sznl[jj][zmeth[0]]), sznl[jj].sel(season=sz).data, **contourfkwargs)
+               if jj == 1:
+                  csf = ax.contourf(YSCL(sznl[jj][ymeth[0]]), ZSCL(sznl[jj][zmeth[0]]), sznl[jj].sel(season=sz).data, **contourfkwargs, levels=11, cmap='rainbow')
+               else:
+                  csf = ax.contourf(YSCL(sznl[jj][ymeth[0]]), ZSCL(sznl[jj][zmeth[0]]), sznl[jj].sel(season=sz).data, levels=contourfkwargs['levels'], cmap='bwr', contourfkwargs['norm'])
+            else:
+               csf = ax.contourf(YSCL(sznl[jj][ymeth[0]]), ZSCL(sznl[jj][zmeth[0]]), sznl[jj].sel(season=sz).data, **contourfkwargs)
             if ii == 0 and jj == 0:
                ax.set_ylabel('Depth [m]')
                ax.set_yticks(ZLOC, ZLAB)
                ax.invert_yaxis()
+               contourfkwargs['levels'] = csf.levels
             plt.colorbar(csf, ax=ax)
             ax.set_xticks(YLOC, YLAB)
             ax.set_xlabel('Latitude [°]')
