@@ -1,52 +1,171 @@
 nohup: ignoring input
-/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 5468506.casper-pbs with qsub arguments:
-    qsub  -l select=1:ncpus=36:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=01:00:00
 
-[ 5.12328767  5.20410959  5.28767123  5.37123288  5.45479452  5.53835616
-5.62328767  5.70684932  5.79041096  5.8739726   5.95753425  6.04246575
-6.12328767  6.20410959  6.28767123  6.37123288  6.45479452  6.53835616
-6.62328767  6.70684932  6.79041096  6.8739726   6.95753425  7.04246575
-7.12328767  7.20410959  7.28767123  7.37123288  7.45479452  7.53835616
-7.62328767  7.70684932  7.79041096  7.8739726   7.95753425  8.04246575
-8.12328767  8.20410959  8.28767123  8.37123288  8.45479452  8.53835616
-8.62328767  8.70684932  8.79041096  8.8739726   8.95753425  9.04246575
-9.12328767  9.20410959  9.28767123  9.37123288  9.45479452  9.53835616
-9.62328767  9.70684932  9.79041096  9.8739726   9.95753425 10.04246575
-10.12328767 10.20410959 10.28767123 10.37123288 10.45479452 10.53835616
-10.62328767 10.70684932 10.79041096 10.8739726  10.95753425 11.04246575
-11.12328767 11.20410959 11.28767123 11.37123288 11.45479452 11.53835616
-11.62328767 11.70684932 11.79041096 11.8739726  11.95753425 12.04246575
-12.12328767 12.20410959 12.28767123 12.37123288 12.45479452 12.53835616
-12.62328767 12.70684932 12.79041096 12.8739726  12.95753425 13.04246575
-13.12328767 13.20410959 13.28767123 13.37123288 13.45479452 13.53835616
-13.62328767 13.70684932 13.79041096 13.8739726  13.95753425 14.04246575
-14.12328767 14.20410959 14.28767123 14.37123288 14.45479452 14.53835616]
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
 
-Obtaining dp3d...
-<xarray.UxDataArray (time: 114, lev: 26, n_face: 777602)> Size: 18GB
-dask.array<add, shape=(114, 26, 777602), dtype=float64, chunksize=(1, 26, 777602), chunktype=numpy.ndarray>
-Coordinates:
-* time     (time) object 912B 0005-02-15 00:00:00 ... 0014-07-16 12:00:00
-* lev      (lev) float64 208B 3.545 7.389 13.97 23.94 ... 929.6 970.6 992.6
-Dimensions without coordinates: n_face
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
 
-Basic tests...
-Atmospheric mass from PS
-5.276935360026521e+18
-Atmospheric mass from 3D integral
-5.265527453546504e+18
-Working on Q
-Working on DCQ
-Working on T
-Working on U
-Working on V
-Working on KE
-Working on GP
-Working on SH
-Working on LH
-Working on MASS
-Working on AAMu
-Working on DIAB
-Working on MSE
-globint3d.py done.
+Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 9, in <module>
+    import xarray as xr
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/__init__.py", line 3, in <module>
+    from xarray import groupers, testing, tutorial, ufuncs
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/groupers.py", line 16, in <module>
+    import pandas as pd
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/__init__.py", line 26, in <module>
+    from pandas.compat import (
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/compat/__init__.py", line 27, in <module>
+    from pandas.compat.pyarrow import (
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/compat/pyarrow.py", line 8, in <module>
+    import pyarrow as pa
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pyarrow/__init__.py", line 65, in <module>
+    import pyarrow.lib as _lib
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 9, in <module>
+    import xarray as xr
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/__init__.py", line 3, in <module>
+    from xarray import groupers, testing, tutorial, ufuncs
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/groupers.py", line 16, in <module>
+    import pandas as pd
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/__init__.py", line 49, in <module>
+    from pandas.core.api import (
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/core/api.py", line 9, in <module>
+    from pandas.core.dtypes.dtypes import (
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/core/dtypes/dtypes.py", line 24, in <module>
+    from pandas._libs import (
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pyarrow/__init__.py", line 65, in <module>
+    import pyarrow.lib as _lib
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 14, in <module>
+    from metpy.plots import SkewT
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/__init__.py", line 8, in <module>
+    from . import cartopy_utils, plot_areas
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/cartopy_utils.py", line 7, in <module>
+    from cartopy.feature import Feature, Scaler
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
+    import cartopy.crs  # noqa: E402  module-level imports
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
+    import shapely.geometry as sgeom
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
+    from shapely.lib import GEOSException  # NOQA
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 14, in <module>
+    from metpy.plots import SkewT
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/__init__.py", line 8, in <module>
+    from . import cartopy_utils, plot_areas
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/plot_areas.py", line 11, in <module>
+    import cartopy.crs as ccrs
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
+    import cartopy.crs  # noqa: E402  module-level imports
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
+    import shapely.geometry as sgeom
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
+    from shapely.lib import GEOSException  # NOQA
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 14, in <module>
+    from metpy.plots import SkewT
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/__init__.py", line 12, in <module>
+    from .declarative import *  # noqa: F403
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/declarative.py", line 29, in <module>
+    ccrs = import_cartopy()
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/cartopy_utils.py", line 70, in import_cartopy
+    import cartopy.crs as ccrs
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
+    import cartopy.crs  # noqa: E402  module-level imports
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
+    import shapely.geometry as sgeom
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
+    from shapely.lib import GEOSException  # NOQA
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 125, in <module>
+    main()
+  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 38, in main
+    dss = [xr.open_mfdataset(FILIS % (al, al)).rename(name_dict=dict(TBOT='T1010')) for al in ALIS]
+  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 38, in <listcomp>
+    dss = [xr.open_mfdataset(FILIS % (al, al)).rename(name_dict=dict(TBOT='T1010')) for al in ALIS]
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 1579, in open_mfdataset
+    datasets = [open_(p, **open_kwargs) for p in paths1d]
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 1579, in <listcomp>
+    datasets = [open_(p, **open_kwargs) for p in paths1d]
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 651, in open_dataset
+    engine = plugins.guess_engine(filename_or_obj)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 143, in guess_engine
+    engines = list_engines()
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 132, in list_engines
+    return build_engines(entrypoints)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 110, in build_engines
+    external_backend_entrypoints = backends_dict_from_pkg(entrypoints_unique)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 73, in backends_dict_from_pkg
+    backend = entrypoint.load()
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/importlib_metadata/__init__.py", line 189, in load
+    module = import_module(match.group('module'))
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/io/__init__.py", line 15, in <module>
+    from .gempak import *  # noqa: F403
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/io/gempak.py", line 29, in <module>
+    from ..plots.mapping import CFProjection
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/mapping.py", line 12, in <module>
+    ccrs = import_cartopy()
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/cartopy_utils.py", line 70, in import_cartopy
+    import cartopy.crs as ccrs
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
+    import cartopy.crs  # noqa: E402  module-level imports
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
+    import shapely.geometry as sgeom
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
+    from shapely.lib import GEOSException  # NOQA
+AttributeError: _ARRAY_API not found

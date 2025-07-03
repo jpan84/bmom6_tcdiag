@@ -85,16 +85,17 @@ def main():
             ax, csf = axes[ii, jj], None
             if DO_DIFF:
                if jj == 1:
-                  csf = ax.contourf(YSCL(sznl[jj][ymeth[0]]), ZSCL(sznl[jj][zmeth[0]]), sznl[jj].sel(season=sz).data, **contourfkwargs, levels=11, cmap='rainbow')
+                  csf = ax.contourf(YSCL(sznl[jj][ymeth[0]]), ZSCL(sznl[jj][zmeth[0]]), sznl[jj].sel(season=sz).data, levels=11, cmap='rainbow')
                else:
-                  csf = ax.contourf(YSCL(sznl[jj][ymeth[0]]), ZSCL(sznl[jj][zmeth[0]]), sznl[jj].sel(season=sz).data, levels=contourfkwargs['levels'], cmap='bwr', contourfkwargs['norm'])
+                  csf = ax.contourf(YSCL(sznl[jj][ymeth[0]]), ZSCL(sznl[jj][zmeth[0]]), sznl[jj].sel(season=sz).data, levels=contourfkwargs['levels'], cmap='bwr', norm=colors.TwoSlopeNorm(0))
             else:
                csf = ax.contourf(YSCL(sznl[jj][ymeth[0]]), ZSCL(sznl[jj][zmeth[0]]), sznl[jj].sel(season=sz).data, **contourfkwargs)
             if ii == 0 and jj == 0:
                ax.set_ylabel('Depth [m]')
                ax.set_yticks(ZLOC, ZLAB)
                ax.invert_yaxis()
-               contourfkwargs['levels'] = csf.levels
+               if not DO_DIFF:
+                  contourfkwargs['levels'] = csf.levels * 1.25
             plt.colorbar(csf, ax=ax)
             ax.set_xticks(YLOC, YLAB)
             ax.set_xlabel('Latitude [°]')

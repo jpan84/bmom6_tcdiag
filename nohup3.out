@@ -1,602 +1,177 @@
 nohup: ignoring input
-/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-02.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-02.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-03.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-03.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-04.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-04.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-05.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-05.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-06.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-06.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-07.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-07.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-08.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-08.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-09.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-09.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-10.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-10.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-11.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-11.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-12.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0005-12.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-01.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-01.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-02.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-02.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-03.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-03.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-04.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-04.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-05.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-05.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-06.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-06.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-07.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-07.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-08.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-08.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-09.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-09.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-10.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-10.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-11.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-11.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-12.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0006-12.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-01.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-01.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-02.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-02.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-03.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-03.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-04.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-04.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-05.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-05.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-06.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-06.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-07.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-07.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-08.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-08.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-09.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-09.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-10.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-10.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-11.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-11.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-12.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0007-12.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-01.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-01.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-02.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-02.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-03.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-03.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-04.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-04.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-05.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-05.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-06.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-06.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-07.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-07.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-08.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-08.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-09.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-09.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-10.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-10.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-11.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-11.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-12.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0008-12.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-01.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-01.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-02.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-02.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-03.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-03.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-04.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-04.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-05.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-05.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-06.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-06.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-07.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-07.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-08.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-08.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-09.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-09.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-10.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-10.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-11.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-11.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-12.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0009-12.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-01.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-01.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-02.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-02.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-03.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-03.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-04.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-04.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-05.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-05.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-06.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-06.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-07.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-07.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-08.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-08.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-09.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-09.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-10.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-10.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-11.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-11.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-12.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0010-12.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-01.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-01.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-02.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-02.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-03.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-03.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-04.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-04.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-05.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-05.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-06.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-06.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-07.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-07.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-08.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-08.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-09.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-09.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-10.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-10.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-11.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-11.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-12.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0011-12.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-01.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-01.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-02.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-02.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-03.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-03.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-04.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-04.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-05.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-05.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-06.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-06.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-07.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-07.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-08.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-08.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-09.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-09.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-10.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-10.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-11.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-11.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-12.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0012-12.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-01.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-01.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-02.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-02.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-03.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-03.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-04.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-04.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-05.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-05.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-06.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-06.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-07.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-07.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-08.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-08.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-09.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-09.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-10.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-10.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-11.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-11.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-12.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0013-12.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-01.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-01.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-02.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-02.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-03.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-03.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-04.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-04.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-05.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-05.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-06.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-06.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-07.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-07.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-08.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-08.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-09.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-09.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-10.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-10.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-11.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-11.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-12.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0014-12.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
-./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0015-01.nc
-Input #00: ./hist_regrid_0.25x0.25//b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed.cam.h0a.0015-01.nc
-Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
-ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
-ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 9, in <module>
+    import xarray as xr
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/__init__.py", line 3, in <module>
+    from xarray import groupers, testing, tutorial, ufuncs
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/groupers.py", line 16, in <module>
+    import pandas as pd
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/__init__.py", line 26, in <module>
+    from pandas.compat import (
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/compat/__init__.py", line 27, in <module>
+    from pandas.compat.pyarrow import (
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/compat/pyarrow.py", line 8, in <module>
+    import pyarrow as pa
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pyarrow/__init__.py", line 65, in <module>
+    import pyarrow.lib as _lib
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 9, in <module>
+    import xarray as xr
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/__init__.py", line 3, in <module>
+    from xarray import groupers, testing, tutorial, ufuncs
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/groupers.py", line 16, in <module>
+    import pandas as pd
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/__init__.py", line 49, in <module>
+    from pandas.core.api import (
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/core/api.py", line 9, in <module>
+    from pandas.core.dtypes.dtypes import (
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/core/dtypes/dtypes.py", line 24, in <module>
+    from pandas._libs import (
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pyarrow/__init__.py", line 65, in <module>
+    import pyarrow.lib as _lib
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 14, in <module>
+    from metpy.plots import SkewT
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/__init__.py", line 8, in <module>
+    from . import cartopy_utils, plot_areas
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/cartopy_utils.py", line 7, in <module>
+    from cartopy.feature import Feature, Scaler
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
+    import cartopy.crs  # noqa: E402  module-level imports
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
+    import shapely.geometry as sgeom
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
+    from shapely.lib import GEOSException  # NOQA
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 14, in <module>
+    from metpy.plots import SkewT
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/__init__.py", line 8, in <module>
+    from . import cartopy_utils, plot_areas
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/plot_areas.py", line 11, in <module>
+    import cartopy.crs as ccrs
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
+    import cartopy.crs  # noqa: E402  module-level imports
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
+    import shapely.geometry as sgeom
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
+    from shapely.lib import GEOSException  # NOQA
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 14, in <module>
+    from metpy.plots import SkewT
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/__init__.py", line 12, in <module>
+    from .declarative import *  # noqa: F403
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/declarative.py", line 29, in <module>
+    ccrs = import_cartopy()
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/cartopy_utils.py", line 70, in import_cartopy
+    import cartopy.crs as ccrs
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
+    import cartopy.crs  # noqa: E402  module-level imports
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
+    import shapely.geometry as sgeom
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
+    from shapely.lib import GEOSException  # NOQA
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 125, in <module>
+    main()
+  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 38, in main
+    dss = [xr.open_mfdataset(FILIS % (al, al)).rename(name_dict=dict(TBOT='T1010')) for al in ALIS]
+  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 38, in <listcomp>
+    dss = [xr.open_mfdataset(FILIS % (al, al)).rename(name_dict=dict(TBOT='T1010')) for al in ALIS]
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 1579, in open_mfdataset
+    datasets = [open_(p, **open_kwargs) for p in paths1d]
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 1579, in <listcomp>
+    datasets = [open_(p, **open_kwargs) for p in paths1d]
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 651, in open_dataset
+    engine = plugins.guess_engine(filename_or_obj)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 143, in guess_engine
+    engines = list_engines()
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 132, in list_engines
+    return build_engines(entrypoints)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 110, in build_engines
+    external_backend_entrypoints = backends_dict_from_pkg(entrypoints_unique)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 73, in backends_dict_from_pkg
+    backend = entrypoint.load()
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/importlib_metadata/__init__.py", line 189, in load
+    module = import_module(match.group('module'))
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/io/__init__.py", line 15, in <module>
+    from .gempak import *  # noqa: F403
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/io/gempak.py", line 29, in <module>
+    from ..plots.mapping import CFProjection
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/mapping.py", line 12, in <module>
+    ccrs = import_cartopy()
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/cartopy_utils.py", line 70, in import_cartopy
+    import cartopy.crs as ccrs
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
+    import cartopy.crs  # noqa: E402  module-level imports
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
+    import shapely.geometry as sgeom
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
+    from shapely.lib import GEOSException  # NOQA
+AttributeError: _ARRAY_API not found
+Working on 250415_unseed OMEGA 500
+Working on 250417_ctrl OMEGA 500
+Working on 250416_seed1x1 OMEGA 500
+Working on 250415_unseed OMEGA 850
+Working on 250417_ctrl OMEGA 850
+Working on 250416_seed1x1 OMEGA 850
