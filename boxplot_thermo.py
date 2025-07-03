@@ -23,10 +23,11 @@ DZTHRESH = 10 #mm/d threshold to separate non/precipitating regimes
 OPs = {'<': operator.lt, '<=': operator.le, '>': operator.gt, '>=': operator.ge}
 VARPLEVS = dict(OMEGA=[500, 850], T=[200, 500, 850, 1010], Z=[300, 500, 850], U=[200, 500, 850])
 OFF = {200: 10, 500: 25, 850: 40, 1010: 50}
+YOFF = 4 #points units of y-offset for skew T
 
 HEM = 'cool'
 MYOP = '>='
-FILIS = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0010-*-01-*.nc'
+FILIS = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0010-*-01-00000.nc'
 ALIS = ['250415_unseed', '250417_ctrl', '250416_seed1x1']
 PLCLRS = ['blue', 'green', 'red']
 DIRO = './thermo_boxplots'
@@ -40,9 +41,11 @@ def main():
    topkl = [tuple(ALIS), ('warm', 'cool')]
 
    for var in VARPLEVS:
-      skew = None
+      skew, tr, invtr, offpix = None, None, None, None
       if var == 'T':
-         skew = metpy.plots.SkewT()
+         skew = metpy.plots.SkewT(rotation=45)
+         tr, invtr = skew.ax.transData.transform, skew.ax.transData.inverted().transform
+         offpix = YOFF / 72 * plt.gcf().dpi
          skew.plot_moist_adiabats()
       for jj, pl in enumerate(VARPLEVS[var]):
          for ii, al in enumerate(ALIS):
@@ -52,8 +55,25 @@ def main():
             quartiles = get_weighted_quartiles_filtered(ds, 'PRECT', MYOP, DZTHRESH / 8.64e4 / 1e3, '%s%d' % (var, pl), hemi=HEM)
             #plt.boxplot(quartiles)
             if var == 'T':
-               offset = OFF[pl] #25 if pl >= 500 else 10
-               plt.gca().scatter(quartiles - 273.15, np.zeros_like(quartiles) + pl + (ii - 1) * offset, c=PLCLRS[ii], marker='|')
+               #offset = OFF[pl] #25 if pl >= 500 else 10
+               #plt.gca().scatter(quartiles - 273.15, np.zeros_like(quartiles) + pl + (ii - 1) * offset, c=PLCLRS[ii], marker='|') #this skews the T while offsetting vertically
+               din = np.array([quartiles - 273.15, np.zeros_like(quartiles) + pl]).T
+               trout = tr(din)
+               print(trout)
+               #print(len(trout))
+               #dispx, origy = trout
+               trout[:, 1] += offpix * (ii - 1)
+               disppT = invtr(trout)
+               print(disppT)
+               plt.gca().scatter(disppT[:, 0], disppT[:, 1], c=PLCLRS[ii], marker='|')
+               '''
+               scat = plt.gca().scatter(quartiles - 273.15, np.zeros_like(quartiles) + pl, c=PLCLRS[ii], marker='|')
+               offsets = scat.get_offsets()
+               #print(offsets)
+               offsets[:, 1] += (ii - 1) * offset
+               #print(offsets)
+               scat.set_offsets(offsets)
+               '''
                #quartiles = quartiles * (1000. / pl)**(287 / 1004)
             else:
                plt.scatter(quartiles, np.zeros_like(quartiles) + pl + (ii - 1) * 15, c=PLCLRS[ii], marker='|')
