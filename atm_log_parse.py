@@ -27,7 +27,8 @@ def main():
       te_arr[:, 1:3] *= 4 * np.pi * (6.371e6)**2
    
       plt.plot(te_arr[:, 0] / 192 / 365 + 1, te_arr[:, 1], color=CLR[ii], label=al, linewidth=0.8)
-      plt.plot(te_arr[:, 0] / 192 / 365 + 1, te_arr[:, 1].mean(), color=CLR[ii], linestyle='--', linewidth=0.5)
+      #plt.plot(te_arr[:, 0] / 192 / 365 + 1, float(te_arr[:, 1].mean()), color=CLR[ii], linestyle='--', linewidth=0.5)
+      plt.hlines(te_arr[:, 1].mean(), 5, 16, color=CLR[ii], linestyle='--', linewidth=0.5)
 
    plt.rc('font', size=16)
    plt.xlabel('year')
