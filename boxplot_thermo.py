@@ -25,9 +25,9 @@ VARPLEVS = dict(OMEGA=[500, 850], T=[200, 500, 850, 1010], Z=[300, 500, 850], U=
 OFF = {200: 10, 500: 25, 850: 40, 1010: 50}
 YOFF = 4 #points units of y-offset for skew T
 
-HEM = 'cool'
+HEM = 'warm'
 MYOP = '>='
-FILIS = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0010-*-01-00000.nc'
+FILIS = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0010-*-*-*.nc'
 ALIS = ['250415_unseed', '250417_ctrl', '250416_seed1x1']
 PLCLRS = ['blue', 'green', 'red']
 DIRO = './thermo_boxplots'

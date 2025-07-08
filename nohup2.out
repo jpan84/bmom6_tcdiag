@@ -1,4 +1,8 @@
 nohup: ignoring input
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 5532750.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=2:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=4:00:00
+
 
 A module that was compiled using NumPy 1.x cannot be run in
 NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
@@ -10,19 +14,19 @@ downgrade to 'numpy<2' or try to upgrade the affected module.
 We expect that some modules will need time to support NumPy 2.
 
 Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 9, in <module>
-    import xarray as xr
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/__init__.py", line 3, in <module>
-    from xarray import groupers, testing, tutorial, ufuncs
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/groupers.py", line 16, in <module>
-    import pandas as pd
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/__init__.py", line 26, in <module>
-    from pandas.compat import (
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/compat/__init__.py", line 27, in <module>
-    from pandas.compat.pyarrow import (
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/compat/pyarrow.py", line 8, in <module>
-    import pyarrow as pa
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pyarrow/__init__.py", line 65, in <module>
-    import pyarrow.lib as _lib
+import xarray as xr
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/__init__.py", line 3, in <module>
+from xarray import groupers, testing, tutorial, ufuncs
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/groupers.py", line 16, in <module>
+import pandas as pd
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/__init__.py", line 26, in <module>
+from pandas.compat import (
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/compat/__init__.py", line 27, in <module>
+from pandas.compat.pyarrow import (
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/compat/pyarrow.py", line 8, in <module>
+import pyarrow as pa
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pyarrow/__init__.py", line 65, in <module>
+import pyarrow.lib as _lib
 AttributeError: _ARRAY_API not found
 
 A module that was compiled using NumPy 1.x cannot be run in
@@ -35,19 +39,19 @@ downgrade to 'numpy<2' or try to upgrade the affected module.
 We expect that some modules will need time to support NumPy 2.
 
 Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 9, in <module>
-    import xarray as xr
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/__init__.py", line 3, in <module>
-    from xarray import groupers, testing, tutorial, ufuncs
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/groupers.py", line 16, in <module>
-    import pandas as pd
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/__init__.py", line 49, in <module>
-    from pandas.core.api import (
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/core/api.py", line 9, in <module>
-    from pandas.core.dtypes.dtypes import (
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/core/dtypes/dtypes.py", line 24, in <module>
-    from pandas._libs import (
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pyarrow/__init__.py", line 65, in <module>
-    import pyarrow.lib as _lib
+import xarray as xr
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/__init__.py", line 3, in <module>
+from xarray import groupers, testing, tutorial, ufuncs
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/groupers.py", line 16, in <module>
+import pandas as pd
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/__init__.py", line 49, in <module>
+from pandas.core.api import (
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/core/api.py", line 9, in <module>
+from pandas.core.dtypes.dtypes import (
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/core/dtypes/dtypes.py", line 24, in <module>
+from pandas._libs import (
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pyarrow/__init__.py", line 65, in <module>
+import pyarrow.lib as _lib
 AttributeError: _ARRAY_API not found
 
 A module that was compiled using NumPy 1.x cannot be run in
@@ -60,17 +64,17 @@ downgrade to 'numpy<2' or try to upgrade the affected module.
 We expect that some modules will need time to support NumPy 2.
 
 Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 14, in <module>
-    from metpy.plots import SkewT
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/__init__.py", line 8, in <module>
-    from . import cartopy_utils, plot_areas
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/cartopy_utils.py", line 7, in <module>
-    from cartopy.feature import Feature, Scaler
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
-    import cartopy.crs  # noqa: E402  module-level imports
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
-    import shapely.geometry as sgeom
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
-    from shapely.lib import GEOSException  # NOQA
+from metpy.plots import SkewT
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/__init__.py", line 8, in <module>
+from . import cartopy_utils, plot_areas
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/cartopy_utils.py", line 7, in <module>
+from cartopy.feature import Feature, Scaler
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
+import cartopy.crs  # noqa: E402  module-level imports
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
+import shapely.geometry as sgeom
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
+from shapely.lib import GEOSException  # NOQA
 AttributeError: _ARRAY_API not found
 
 A module that was compiled using NumPy 1.x cannot be run in
@@ -83,17 +87,17 @@ downgrade to 'numpy<2' or try to upgrade the affected module.
 We expect that some modules will need time to support NumPy 2.
 
 Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 14, in <module>
-    from metpy.plots import SkewT
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/__init__.py", line 8, in <module>
-    from . import cartopy_utils, plot_areas
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/plot_areas.py", line 11, in <module>
-    import cartopy.crs as ccrs
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
-    import cartopy.crs  # noqa: E402  module-level imports
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
-    import shapely.geometry as sgeom
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
-    from shapely.lib import GEOSException  # NOQA
+from metpy.plots import SkewT
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/__init__.py", line 8, in <module>
+from . import cartopy_utils, plot_areas
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/plot_areas.py", line 11, in <module>
+import cartopy.crs as ccrs
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
+import cartopy.crs  # noqa: E402  module-level imports
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
+import shapely.geometry as sgeom
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
+from shapely.lib import GEOSException  # NOQA
 AttributeError: _ARRAY_API not found
 
 A module that was compiled using NumPy 1.x cannot be run in
@@ -106,19 +110,19 @@ downgrade to 'numpy<2' or try to upgrade the affected module.
 We expect that some modules will need time to support NumPy 2.
 
 Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 14, in <module>
-    from metpy.plots import SkewT
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/__init__.py", line 12, in <module>
-    from .declarative import *  # noqa: F403
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/declarative.py", line 29, in <module>
-    ccrs = import_cartopy()
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/cartopy_utils.py", line 70, in import_cartopy
-    import cartopy.crs as ccrs
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
-    import cartopy.crs  # noqa: E402  module-level imports
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
-    import shapely.geometry as sgeom
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
-    from shapely.lib import GEOSException  # NOQA
+from metpy.plots import SkewT
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/__init__.py", line 12, in <module>
+from .declarative import *  # noqa: F403
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/declarative.py", line 29, in <module>
+ccrs = import_cartopy()
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/cartopy_utils.py", line 70, in import_cartopy
+import cartopy.crs as ccrs
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
+import cartopy.crs  # noqa: E402  module-level imports
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
+import shapely.geometry as sgeom
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
+from shapely.lib import GEOSException  # NOQA
 AttributeError: _ARRAY_API not found
 
 A module that was compiled using NumPy 1.x cannot be run in
@@ -130,44 +134,44 @@ If you are a user of the module, the easiest solution will be to
 downgrade to 'numpy<2' or try to upgrade the affected module.
 We expect that some modules will need time to support NumPy 2.
 
-Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 125, in <module>
-    main()
-  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 38, in main
-    dss = [xr.open_mfdataset(FILIS % (al, al)).rename(name_dict=dict(TBOT='T1010')) for al in ALIS]
-  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 38, in <listcomp>
-    dss = [xr.open_mfdataset(FILIS % (al, al)).rename(name_dict=dict(TBOT='T1010')) for al in ALIS]
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 1579, in open_mfdataset
-    datasets = [open_(p, **open_kwargs) for p in paths1d]
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 1579, in <listcomp>
-    datasets = [open_(p, **open_kwargs) for p in paths1d]
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 651, in open_dataset
-    engine = plugins.guess_engine(filename_or_obj)
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 143, in guess_engine
-    engines = list_engines()
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 132, in list_engines
-    return build_engines(entrypoints)
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 110, in build_engines
-    external_backend_entrypoints = backends_dict_from_pkg(entrypoints_unique)
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 73, in backends_dict_from_pkg
-    backend = entrypoint.load()
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/importlib_metadata/__init__.py", line 189, in load
-    module = import_module(match.group('module'))
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/importlib/__init__.py", line 126, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/io/__init__.py", line 15, in <module>
-    from .gempak import *  # noqa: F403
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/io/gempak.py", line 29, in <module>
-    from ..plots.mapping import CFProjection
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/mapping.py", line 12, in <module>
-    ccrs = import_cartopy()
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/cartopy_utils.py", line 70, in import_cartopy
-    import cartopy.crs as ccrs
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
-    import cartopy.crs  # noqa: E402  module-level imports
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
-    import shapely.geometry as sgeom
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
-    from shapely.lib import GEOSException  # NOQA
+Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 145, in <module>
+main()
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 39, in main
+dss = [xr.open_mfdataset(FILIS % (al, al)).rename(name_dict=dict(TBOT='T1010')) for al in ALIS]
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 39, in <listcomp>
+dss = [xr.open_mfdataset(FILIS % (al, al)).rename(name_dict=dict(TBOT='T1010')) for al in ALIS]
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 1579, in open_mfdataset
+datasets = [open_(p, **open_kwargs) for p in paths1d]
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 1579, in <listcomp>
+datasets = [open_(p, **open_kwargs) for p in paths1d]
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 651, in open_dataset
+engine = plugins.guess_engine(filename_or_obj)
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 143, in guess_engine
+engines = list_engines()
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 132, in list_engines
+return build_engines(entrypoints)
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 110, in build_engines
+external_backend_entrypoints = backends_dict_from_pkg(entrypoints_unique)
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 73, in backends_dict_from_pkg
+backend = entrypoint.load()
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/importlib_metadata/__init__.py", line 189, in load
+module = import_module(match.group('module'))
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/importlib/__init__.py", line 126, in import_module
+return _bootstrap._gcd_import(name[level:], package, level)
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/io/__init__.py", line 15, in <module>
+from .gempak import *  # noqa: F403
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/io/gempak.py", line 29, in <module>
+from ..plots.mapping import CFProjection
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/mapping.py", line 12, in <module>
+ccrs = import_cartopy()
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/cartopy_utils.py", line 70, in import_cartopy
+import cartopy.crs as ccrs
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
+import cartopy.crs  # noqa: E402  module-level imports
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
+import shapely.geometry as sgeom
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
+from shapely.lib import GEOSException  # NOQA
 AttributeError: _ARRAY_API not found
 Working on 250415_unseed OMEGA 500
 Working on 250417_ctrl OMEGA 500
@@ -175,19 +179,258 @@ Working on 250416_seed1x1 OMEGA 500
 Working on 250415_unseed OMEGA 850
 Working on 250417_ctrl OMEGA 850
 Working on 250416_seed1x1 OMEGA 850
-QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/glade/derecho/scratch/jpan/tmp/runtime-jpan'
 Working on 250415_unseed T 200
+[[295.6381665  313.44787245]
+[312.25079942 313.44787245]
+[319.3701869  313.44787245]
+[323.1105542  313.44787245]
+[325.51367649 313.44787245]
+[327.42645318 313.44787245]
+[329.17600559 313.44787245]
+[330.98063883 313.44787245]
+[333.13173475 313.44787245]
+[336.53388048 313.44787245]]
+[[-47.15901922 207.19531255]
+[-44.14463019 207.19531255]
+[-42.85280585 207.19531255]
+[-42.17411017 207.19531255]
+[-41.73805975 207.19531255]
+[-41.39098334 207.19531255]
+[-41.07352423 207.19531255]
+[-40.74607062 207.19531255]
+[-40.35575079 207.19531255]
+[-39.73842596 207.19531255]]
 Working on 250417_ctrl T 200
+[[294.78580105 313.44787245]
+[309.78864393 313.44787245]
+[316.04078152 313.44787245]
+[319.35639567 313.44787245]
+[321.53751275 313.44787245]
+[323.30295871 313.44787245]
+[324.94302219 313.44787245]
+[326.64623942 313.44787245]
+[328.66976644 313.44787245]
+[331.95796631 313.44787245]]
+[[-48.32174683 200.00007522]
+[-45.59945679 200.00007522]
+[-44.46499634 200.00007522]
+[-43.8633728  200.00007522]
+[-43.46760559 200.00007522]
+[-43.14726257 200.00007522]
+[-42.84967041 200.00007522]
+[-42.5406189  200.00007522]
+[-42.17344666 200.00007522]
+[-41.57679749 200.00007522]]
 Working on 250416_seed1x1 T 200
+[[291.23296088 313.44787245]
+[306.71891737 313.44787245]
+[312.73147434 313.44787245]
+[315.9122876  313.44787245]
+[318.18439317 313.44787245]
+[320.11701579 313.44787245]
+[321.95890218 313.44787245]
+[323.904391   313.44787245]
+[326.29540392 313.44787245]
+[330.35263319 313.44787245]]
+[[-49.97447992 193.0547057 ]
+[-47.16452814 193.0547057 ]
+[-46.07353998 193.0547057 ]
+[-45.49637628 193.0547057 ]
+[-45.08409906 193.0547057 ]
+[-44.73342157 193.0547057 ]
+[-44.39920831 193.0547057 ]
+[-44.04619623 193.0547057 ]
+[-43.61234308 193.0547057 ]
+[-42.87615228 193.0547057 ]]
 Working on 250415_unseed T 500
+[[390.76062236 169.42110413]
+[407.40630378 169.42110413]
+[417.03174323 169.42110413]
+[421.77945916 169.42110413]
+[424.39071133 169.42110413]
+[426.3534392  169.42110413]
+[428.12376255 169.42110413]
+[429.94437344 169.42110413]
+[432.1292747  169.42110413]
+[435.74375495 169.42110413]]
+[[ -3.76500677 517.98817613]
+[ -0.74462103 517.98817613]
+[  1.00193048 517.98817613]
+[  1.8634112  517.98817613]
+[  2.33722711 517.98817613]
+[  2.69336725 517.98817613]
+[  3.01459528 517.98817613]
+[  3.34494806 517.98817613]
+[  3.74140192 517.98817613]
+[  4.39725519 517.98817613]]
 Working on 250417_ctrl T 500
+[[391.05730205 169.42110413]
+[406.88761889 169.42110413]
+[415.54144918 169.42110413]
+[419.63256789 169.42110413]
+[422.01576016 169.42110413]
+[423.85285326 169.42110413]
+[425.52831984 169.42110413]
+[427.27190165 169.42110413]
+[429.37960565 169.42110413]
+[432.92563429 169.42110413]]
+[[-4.71923828e+00  5.00000086e+02]
+[-1.84680176e+00  5.00000086e+02]
+[-2.76550293e-01  5.00000086e+02]
+[ 4.65789795e-01  5.00000086e+02]
+[ 8.98223877e-01  5.00000086e+02]
+[ 1.23156738e+00  5.00000086e+02]
+[ 1.53558350e+00  5.00000086e+02]
+[ 1.85195923e+00  5.00000086e+02]
+[ 2.23440552e+00  5.00000086e+02]
+[ 2.87783813e+00  5.00000086e+02]]
 Working on 250416_seed1x1 T 500
+[[386.97459263 169.42110413]
+[403.29197544 169.42110413]
+[412.49140035 169.42110413]
+[417.00079705 169.42110413]
+[419.55705248 169.42110413]
+[421.50060717 169.42110413]
+[423.27328512 169.42110413]
+[425.12282396 169.42110413]
+[427.36793573 169.42110413]
+[431.14791077 169.42110413]]
+[[-6.46811701e+00  4.82636666e+02]
+[-3.50730158e+00  4.82636666e+02]
+[-1.83805109e+00  4.82636666e+02]
+[-1.01981378e+00  4.82636666e+02]
+[-5.55977114e-01  4.82636666e+02]
+[-2.03315981e-01  4.82636666e+02]
+[ 1.18339292e-01  4.82636666e+02]
+[ 4.53941099e-01  4.82636666e+02]
+[ 8.61320249e-01  4.82636666e+02]
+[ 1.54720282e+00  4.82636666e+02]]
 Working on 250415_unseed T 850
+[[410.27192835  86.01449562]
+[428.80414948  86.01449562]
+[440.19015751  86.01449562]
+[448.61054597  86.01449562]
+[453.75888039  86.01449562]
+[456.38880118  86.01449562]
+[458.23564905  86.01449562]
+[459.95568486  86.01449562]
+[461.98165057  86.01449562]
+[465.58435782  86.01449562]]
+[[ 14.90961481 880.57998028]
+[ 18.27231623 880.57998028]
+[ 20.33832575 880.57998028]
+[ 21.86621881 880.57998028]
+[ 22.8003924  880.57998028]
+[ 23.27759577 880.57998028]
+[ 23.61270929 880.57998028]
+[ 23.92481256 880.57998028]
+[ 24.29242731 880.57998028]
+[ 24.94614435 880.57998028]]
 Working on 250417_ctrl T 850
+[[411.46201081  86.01449562]
+[429.22377296  86.01449562]
+[440.07999584  86.01449562]
+[447.9001293   86.01449562]
+[452.25580421  86.01449562]
+[454.58299063  86.01449562]
+[456.3353181   86.01449562]
+[458.02962149  86.01449562]
+[460.07963776  86.01449562]
+[463.78325647  86.01449562]]
+[[ 14.11749268 850.00022501]
+[ 17.34039307 850.00022501]
+[ 19.31027222 850.00022501]
+[ 20.72924805 850.00022501]
+[ 21.51959229 850.00022501]
+[ 21.94186401 850.00022501]
+[ 22.25982666 850.00022501]
+[ 22.56726074 850.00022501]
+[ 22.9392395  850.00022501]
+[ 23.61126709 850.00022501]]
 Working on 250416_seed1x1 T 850
+[[409.51189688  86.01449562]
+[427.26827709  86.01449562]
+[438.21397479  86.01449562]
+[446.22398998  86.01449562]
+[451.2517352   86.01449562]
+[453.8661829   86.01449562]
+[455.6832619   86.01449562]
+[457.35099193  86.01449562]
+[459.2498092   86.01449562]
+[462.4137198   86.01449562]]
+[[ 12.75557684 820.48240784]
+[ 15.97750067 820.48240784]
+[ 17.96361517 820.48240784]
+[ 19.41704535 820.48240784]
+[ 20.32933783 820.48240784]
+[ 20.80373358 820.48240784]
+[ 21.13344549 820.48240784]
+[ 21.4360578  820.48240784]
+[ 21.78060126 820.48240784]
+[ 22.35469794 820.48240784]]
 Working on 250415_unseed T 1010
+[[439.00510303  58.90495112]
+[450.84655811  58.90495112]
+[460.79928706  58.90495112]
+[468.22199756  58.90495112]
+[473.06625212  58.90495112]
+[476.47352751  58.90495112]
+[479.18821392  58.90495112]
+[481.54197369  58.90495112]
+[483.91002925  58.90495112]
+[487.1830924   58.90495112]]
+[[  25.04236627 1046.33642006]
+[  27.1910174  1046.33642006]
+[  28.99695612 1046.33642006]
+[  30.34381891 1046.33642006]
+[  31.22281671 1046.33642006]
+[  31.84107233 1046.33642006]
+[  32.33365656 1046.33642006]
+[  32.76075006 1046.33642006]
+[  33.19043756 1046.33642006]
+[  33.78434015 1046.33642006]]
 Working on 250417_ctrl T 1010
+[[439.31607851  58.90495112]
+[450.97236106  58.90495112]
+[460.32550776  58.90495112]
+[466.40895503  58.90495112]
+[470.44070416  58.90495112]
+[473.82073346  58.90495112]
+[476.84151796  58.90495112]
+[479.46672955  58.90495112]
+[481.98077035  58.90495112]
+[485.31034392  58.90495112]]
+[[  24.09072876 1010.00046834]
+[  26.20578003 1010.00046834]
+[  27.90292358 1010.00046834]
+[  29.0067749  1010.00046834]
+[  29.73834229 1010.00046834]
+[  30.35165405 1010.00046834]
+[  30.89978027 1010.00046834]
+[  31.37612915 1010.00046834]
+[  31.83230591 1010.00046834]
+[  32.4364624  1010.00046834]]
 Working on 250416_seed1x1 T 1010
+[[439.14284717  58.90495112]
+[450.55559674  58.90495112]
+[460.21601883  58.90495112]
+[468.40212451  58.90495112]
+[474.27130312  58.90495112]
+[477.36928489  58.90495112]
+[479.44099713  58.90495112]
+[481.23974387  58.90495112]
+[483.11383784  58.90495112]
+[485.85122933  58.90495112]]
+[[ 23.05123114 974.92634919]
+[ 25.12209295 974.92634919]
+[ 26.87499212 974.92634919]
+[ 28.3603742  974.92634919]
+[ 29.42534613 974.92634919]
+[ 29.98747992 974.92634919]
+[ 30.36339544 974.92634919]
+[ 30.68978094 974.92634919]
+[ 31.02983832 974.92634919]
+[ 31.52654242 974.92634919]]
 Working on 250415_unseed Z 300
 Working on 250417_ctrl Z 300
 Working on 250416_seed1x1 Z 300
