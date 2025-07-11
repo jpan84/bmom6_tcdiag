@@ -27,12 +27,16 @@ def main():
       os.makedirs(DIRO)
 
    dss = [xr.open_mfdataset(HISTS % cs) for cs in CASES]
+   dss = [ds.assign(variables=dict(vmo_resid=\
+          (ds['vmo'] + ds['vhGM']).assign_attrs(long_name='Ocean Mass Residual Y Transport',\
+          cell_methods=ds['vmo'].attrs['cell_methods'], units=ds['vmo'].attrs['units'])\
+          )) for ds in dss]
    dvars = list(dss[0].data_vars)
 
    for dv in dvars:
       #!COLORLEVS
-      #if dv not in ['uh', 'T_ady']:
-      #   continue
+      if dv not in ['vmo_resid']:
+         continue
 
       if dss[0][dv].dims not in DIMS3D:
          print('%s not 3D. Skipping...' % dv)

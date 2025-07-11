@@ -29,29 +29,29 @@ def main():
    plt.title('Eulerian mean mass streamfunc [1e10 kg/s]')
    plt.gca().invert_yaxis()
    plt.colorbar(csf)
-   #plt.show()
+   plt.show()
    plt.close()
 
-   coslat = np.cos(np.deg2rad(ds['yq'])) #TODO: check numerical accuracy/validity of shifting yh to yq
-   print(ds['vmo'].max())
-   vmf = (ds['vmo'] / a / coslat / dlon / ds['h'].data).mean(dim=['xh', 'time'])
-   print(vmf.max())
-   rho_yq = ds['rhoinsitu'].mean(dim=['xh', 'time']).interp(yh=ds['yq'], method='linear')
-   vrho_mean = ds['vo'].mean(dim=['xh', 'time']) * rho_yq.data
-   vpbp = -g / dens0 * (vmf - vrho_mean)
-   bmean = -g / dens0 * (ds['rhoinsitu'].mean(dim=['xh', 'time']) - dens0)
-   bz = -bmean.differentiate('zl', edge_order=2)
    coslat_h = np.cos(np.deg2rad(ds['yh']))
-   by = (bmean * coslat_h).differentiate('yh', edge_order=2) * 180 / np.pi / a / coslat_h
-   kapzm = ds['diftrblo'].mean(dim=['xh', 'time'])
-   #plt.hist(bz.data)
-   #plt.show()
-   #Psi_qs = (2 * np.pi * a * coslat * dens0 * vpbp).transpose('zl', ...) / bz.data
-   Psi_qs = (2 * np.pi * a * coslat_h * dens0 * kapzm * by / bz).transpose('zl', ...)
-   print(vpbp.shape)
-   print(bz.data.shape)
-   print(Psi_qs.shape)
-   #Psi_qs -= Psi_qs.isel(zl=-1)
+   buoy = -g / dens0 * (ds['rhoinsitu'] - dens0)
+   by = (buoy * coslat_h).differentiate('yh', edge_order=2) * 180 / np.pi / a / coslat_h
+   bz = -buoy.differentiate('zl', edge_order=2)
+   kap = ds['diftrblo']
+   Psi_qs = (2 * np.pi * a * coslat_h * dens0 * (kap * by / bz).mean(dim=['xh', 'time'])).transpose('zl', ...)
+
+   ###bmean = -g / dens0 * (ds['rhoinsitu'].mean(dim=['xh', 'time']) - dens0)
+   ###bz = -bmean.differentiate('zl', edge_order=2)
+   ###coslat_h = np.cos(np.deg2rad(ds['yh']))
+   ###by = (bmean * coslat_h).differentiate('yh', edge_order=2) * 180 / np.pi / a / coslat_h
+   ###kapzm = ds['diftrblo'].mean(dim=['xh', 'time'])
+   ####plt.hist(bz.data)
+   ####plt.show()
+   ####Psi_qs = (2 * np.pi * a * coslat * dens0 * vpbp).transpose('zl', ...) / bz.data
+   ###Psi_qs = (2 * np.pi * a * coslat_h * dens0 * kapzm * by / bz).transpose('zl', ...)
+   ###print(vpbp.shape)
+   ###print(bz.data.shape)
+   ###print(Psi_qs.shape)
+   ####Psi_qs -= Psi_qs.isel(zl=-1)
 
    #print(ds['rhoinsitu'].mean())
    #print(vmf.dims)

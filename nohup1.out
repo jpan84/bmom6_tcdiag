@@ -1,451 +1,733 @@
 nohup: ignoring input
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 5532747.casper-pbs with qsub arguments:
-    qsub  -l select=1:ncpus=2:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=4:00:00
+Waiting on job launch; 5577354.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=36:mem=384GB -A UCIS0005 -q casper@casper-pbs -l walltime=1:00:00
 
-
-A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
-
-If you are a user of the module, the easiest solution will be to
-downgrade to 'numpy<2' or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
-
-Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 9, in <module>
-import xarray as xr
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/__init__.py", line 3, in <module>
-from xarray import groupers, testing, tutorial, ufuncs
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/groupers.py", line 16, in <module>
-import pandas as pd
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/__init__.py", line 26, in <module>
-from pandas.compat import (
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/compat/__init__.py", line 27, in <module>
-from pandas.compat.pyarrow import (
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/compat/pyarrow.py", line 8, in <module>
-import pyarrow as pa
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pyarrow/__init__.py", line 65, in <module>
-import pyarrow.lib as _lib
-AttributeError: _ARRAY_API not found
-
-A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
-
-If you are a user of the module, the easiest solution will be to
-downgrade to 'numpy<2' or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
-
-Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 9, in <module>
-import xarray as xr
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/__init__.py", line 3, in <module>
-from xarray import groupers, testing, tutorial, ufuncs
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/groupers.py", line 16, in <module>
-import pandas as pd
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/__init__.py", line 49, in <module>
-from pandas.core.api import (
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/core/api.py", line 9, in <module>
-from pandas.core.dtypes.dtypes import (
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/core/dtypes/dtypes.py", line 24, in <module>
-from pandas._libs import (
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pyarrow/__init__.py", line 65, in <module>
-import pyarrow.lib as _lib
-AttributeError: _ARRAY_API not found
-
-A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
-
-If you are a user of the module, the easiest solution will be to
-downgrade to 'numpy<2' or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
-
-Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 14, in <module>
-from metpy.plots import SkewT
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/__init__.py", line 8, in <module>
-from . import cartopy_utils, plot_areas
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/cartopy_utils.py", line 7, in <module>
-from cartopy.feature import Feature, Scaler
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
-import cartopy.crs  # noqa: E402  module-level imports
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
-import shapely.geometry as sgeom
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
-from shapely.lib import GEOSException  # NOQA
-AttributeError: _ARRAY_API not found
-
-A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
-
-If you are a user of the module, the easiest solution will be to
-downgrade to 'numpy<2' or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
-
-Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 14, in <module>
-from metpy.plots import SkewT
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/__init__.py", line 8, in <module>
-from . import cartopy_utils, plot_areas
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/plot_areas.py", line 11, in <module>
-import cartopy.crs as ccrs
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
-import cartopy.crs  # noqa: E402  module-level imports
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
-import shapely.geometry as sgeom
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
-from shapely.lib import GEOSException  # NOQA
-AttributeError: _ARRAY_API not found
-
-A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
-
-If you are a user of the module, the easiest solution will be to
-downgrade to 'numpy<2' or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
-
-Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 14, in <module>
-from metpy.plots import SkewT
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/__init__.py", line 12, in <module>
-from .declarative import *  # noqa: F403
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/declarative.py", line 29, in <module>
-ccrs = import_cartopy()
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/cartopy_utils.py", line 70, in import_cartopy
-import cartopy.crs as ccrs
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
-import cartopy.crs  # noqa: E402  module-level imports
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
-import shapely.geometry as sgeom
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
-from shapely.lib import GEOSException  # NOQA
-AttributeError: _ARRAY_API not found
-
-A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
-
-If you are a user of the module, the easiest solution will be to
-downgrade to 'numpy<2' or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
-
-Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 145, in <module>
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/coding/times.py:1005: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+Working on vmo_resid...
+Traceback (most recent call last):
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/plt_ocn_yz.py", line 112, in <module>
 main()
-File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 39, in main
-dss = [xr.open_mfdataset(FILIS % (al, al)).rename(name_dict=dict(TBOT='T1010')) for al in ALIS]
-File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 39, in <listcomp>
-dss = [xr.open_mfdataset(FILIS % (al, al)).rename(name_dict=dict(TBOT='T1010')) for al in ALIS]
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 1579, in open_mfdataset
-datasets = [open_(p, **open_kwargs) for p in paths1d]
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 1579, in <listcomp>
-datasets = [open_(p, **open_kwargs) for p in paths1d]
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 651, in open_dataset
-engine = plugins.guess_engine(filename_or_obj)
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 143, in guess_engine
-engines = list_engines()
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 132, in list_engines
-return build_engines(entrypoints)
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 110, in build_engines
-external_backend_entrypoints = backends_dict_from_pkg(entrypoints_unique)
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 73, in backends_dict_from_pkg
-backend = entrypoint.load()
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/importlib_metadata/__init__.py", line 189, in load
-module = import_module(match.group('module'))
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/importlib/__init__.py", line 126, in import_module
-return _bootstrap._gcd_import(name[level:], package, level)
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/io/__init__.py", line 15, in <module>
-from .gempak import *  # noqa: F403
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/io/gempak.py", line 29, in <module>
-from ..plots.mapping import CFProjection
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/mapping.py", line 12, in <module>
-ccrs = import_cartopy()
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/cartopy_utils.py", line 70, in import_cartopy
-import cartopy.crs as ccrs
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
-import cartopy.crs  # noqa: E402  module-level imports
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
-import shapely.geometry as sgeom
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
-from shapely.lib import GEOSException  # NOQA
-AttributeError: _ARRAY_API not found
-Working on 250415_unseed OMEGA 500
-Working on 250417_ctrl OMEGA 500
-Working on 250416_seed1x1 OMEGA 500
-Working on 250415_unseed OMEGA 850
-Working on 250417_ctrl OMEGA 850
-Working on 250416_seed1x1 OMEGA 850
-Working on 250415_unseed T 200
-[[304.58060357 313.44787245]
-[321.09770698 313.44787245]
-[325.10784424 313.44787245]
-[327.31940294 313.44787245]
-[329.04952989 313.44787245]
-[330.60693007 313.44787245]
-[332.16475071 313.44787245]
-[333.85821316 313.44787245]
-[335.95843289 313.44787245]
-[339.53212809 313.44787245]]
-[[-45.5363996  207.19531255]
-[-42.53934454 207.19531255]
-[-41.81169867 207.19531255]
-[-41.41040777 207.19531255]
-[-41.09647345 207.19531255]
-[-40.81388067 207.19531255]
-[-40.53121161 207.19531255]
-[-40.22393011 207.19531255]
-[-39.84284186 207.19531255]
-[-39.1943891  207.19531255]]
-Working on 250417_ctrl T 200
-[[303.01588732 313.44787245]
-[317.3394279  313.44787245]
-[320.82633925 313.44787245]
-[322.87837375 313.44787245]
-[324.51498942 313.44787245]
-[326.01907471 313.44787245]
-[327.53165337 313.44787245]
-[329.1994675  313.44787245]
-[331.28766195 313.44787245]
-[334.83268148 313.44787245]]
-[[-46.8283844  200.00007522]
-[-44.22935486 200.00007522]
-[-43.59664917 200.00007522]
-[-43.2243042  200.00007522]
-[-42.92733765 200.00007522]
-[-42.65441895 200.00007522]
-[-42.37995911 200.00007522]
-[-42.07733154 200.00007522]
-[-41.69842529 200.00007522]
-[-41.05517578 200.00007522]]
-Working on 250416_seed1x1 T 200
-[[298.59125624 313.44787245]
-[312.9977124  313.44787245]
-[316.71268365 313.44787245]
-[318.9815096  313.44787245]
-[320.79068386 313.44787245]
-[322.43646566 313.44787245]
-[324.0922545  313.44787245]
-[325.91597683 313.44787245]
-[328.20776015 313.44787245]
-[332.2132723  313.44787245]]
-[[-48.63930536 193.0547057 ]
-[-46.02523065 193.0547057 ]
-[-45.35114313 193.0547057 ]
-[-44.939461   193.0547057 ]
-[-44.61118341 193.0547057 ]
-[-44.31255365 193.0547057 ]
-[-44.0121081  193.0547057 ]
-[-43.68119074 193.0547057 ]
-[-43.26534296 193.0547057 ]
-[-42.53853632 193.0547057 ]]
-Working on 250415_unseed T 500
-[[394.73939297 169.42110413]
-[413.99683113 169.42110413]
-[419.34278382 169.42110413]
-[422.02921502 169.42110413]
-[423.88951776 169.42110413]
-[425.42656745 169.42110413]
-[426.85749193 169.42110413]
-[428.35299974 169.42110413]
-[430.17226515 169.42110413]
-[433.35803989 169.42110413]]
-[[-3.04305243e+00  5.17988176e+02]
-[ 4.51240786e-01  5.17988176e+02]
-[ 1.42127252e+00  5.17988176e+02]
-[ 1.90872980e+00  5.17988176e+02]
-[ 2.24628473e+00  5.17988176e+02]
-[ 2.52518488e+00  5.17988176e+02]
-[ 2.78482843e+00  5.17988176e+02]
-[ 3.05619074e+00  5.17988176e+02]
-[ 3.38629938e+00  5.17988176e+02]
-[ 3.96436334e+00  5.17988176e+02]]
-Working on 250417_ctrl T 500
-[[394.64991815 169.42110413]
-[412.57246589 169.42110413]
-[417.01492466 169.42110413]
-[419.56697544 169.42110413]
-[421.37917705 169.42110413]
-[422.88225322 169.42110413]
-[424.28374519 169.42110413]
-[425.74393399 169.42110413]
-[427.5206484  169.42110413]
-[430.63763516 169.42110413]]
-[[-4.06735229e+00  5.00000086e+02]
-[-8.15277100e-01  5.00000086e+02]
-[-9.18579102e-03  5.00000086e+02]
-[ 4.53887939e-01  5.00000086e+02]
-[ 7.82714844e-01  5.00000086e+02]
-[ 1.05545044e+00  5.00000086e+02]
-[ 1.30975342e+00  5.00000086e+02]
-[ 1.57470703e+00  5.00000086e+02]
-[ 1.89709473e+00  5.00000086e+02]
-[ 2.46267700e+00  5.00000086e+02]]
-Working on 250416_seed1x1 T 500
-[[390.63566034 169.42110413]
-[410.29405335 169.42110413]
-[414.49970656 169.42110413]
-[417.17049649 169.42110413]
-[419.05215882 169.42110413]
-[420.61090448 169.42110413]
-[422.07311151 169.42110413]
-[423.60932027 169.42110413]
-[425.50981941 169.42110413]
-[428.95258199 169.42110413]]
-[[-5.80381037e+00  4.82636666e+02]
-[-2.23676325e+00  4.82636666e+02]
-[-1.47364069e+00  4.82636666e+02]
-[-9.89021547e-01  4.82636666e+02]
-[-6.47590883e-01  4.82636666e+02]
-[-3.64753969e-01  4.82636666e+02]
-[-9.94341450e-02  4.82636666e+02]
-[ 1.79313414e-01  4.82636666e+02]
-[ 5.24162046e-01  4.82636666e+02]
-[ 1.14885687e+00  4.82636666e+02]]
-Working on 250415_unseed T 850
-[[426.34645091  86.01449562]
-[444.63026168  86.01449562]
-[452.94570222  86.01449562]
-[455.0618155   86.01449562]
-[456.33397262  86.01449562]
-[457.37504249  86.01449562]
-[458.36750669  86.01449562]
-[459.42993616  86.01449562]
-[460.74968985  86.01449562]
-[463.0728398   86.01449562]]
-[[ 17.82636286 880.57998028]
-[ 21.14398981 880.57998028]
-[ 22.65283991 880.57998028]
-[ 23.03681207 880.57998028]
-[ 23.26764704 880.57998028]
-[ 23.45655084 880.57998028]
-[ 23.63663507 880.57998028]
-[ 23.82941461 880.57998028]
-[ 24.06888605 880.57998028]
-[ 24.49042536 880.57998028]]
-Working on 250417_ctrl T 850
-[[425.65403013  86.01449562]
-[443.94406376  86.01449562]
-[451.17537887  86.01449562]
-[453.13423846  86.01449562]
-[454.35375343  86.01449562]
-[455.37716381  86.01449562]
-[456.36525517  86.01449562]
-[457.43626211  86.01449562]
-[458.77670265  86.01449562]
-[461.16208134  86.01449562]]
-[[ 16.69265747 850.00022501]
-[ 20.01141357 850.00022501]
-[ 21.32354736 850.00022501]
-[ 21.6789856  850.00022501]
-[ 21.90026855 850.00022501]
-[ 22.08596802 850.00022501]
-[ 22.26525879 850.00022501]
-[ 22.45959473 850.00022501]
-[ 22.70281982 850.00022501]
-[ 23.13565063 850.00022501]]
-Working on 250416_seed1x1 T 850
-[[423.97469527  86.01449562]
-[441.67389232  86.01449562]
-[449.52144006  86.01449562]
-[451.80691641  86.01449562]
-[453.16703468  86.01449562]
-[454.27521068  86.01449562]
-[455.32653989  86.01449562]
-[456.43976146  86.01449562]
-[457.79651602  86.01449562]
-[460.13328902  86.01449562]]
-[[ 15.37987494 820.48240784]
-[ 18.59142279 820.48240784]
-[ 20.01537298 820.48240784]
-[ 20.43007635 820.48240784]
-[ 20.67687201 820.48240784]
-[ 20.87795233 820.48240784]
-[ 21.06871771 820.48240784]
-[ 21.27071356 820.48240784]
-[ 21.51689886 820.48240784]
-[ 21.94091009 820.48240784]]
-Working on 250415_unseed T 1010
-[[447.5363259   58.90495112]
-[465.18691727  58.90495112]
-[472.69977534  58.90495112]
-[475.25014426  58.90495112]
-[476.9119878   58.90495112]
-[478.23224604  58.90495112]
-[479.43393333  58.90495112]
-[480.66538949  58.90495112]
-[482.13163298  58.90495112]
-[484.5366894   58.90495112]]
-[[  26.59037042 1046.33642006]
-[  29.7930987  1046.33642006]
-[  31.15631891 1046.33642006]
-[  31.61908747 1046.33642006]
-[  31.92063165 1046.33642006]
-[  32.16019464 1046.33642006]
-[  32.37824274 1046.33642006]
-[  32.60169245 1046.33642006]
-[  32.86774469 1046.33642006]
-[  33.30414606 1046.33642006]]
-Working on 250417_ctrl T 1010
-[[447.56172195  58.90495112]
-[464.91529726  58.90495112]
-[471.1526345   58.90495112]
-[473.55617725  58.90495112]
-[475.1694151   58.90495112]
-[476.47150928  58.90495112]
-[477.6597417   58.90495112]
-[478.8730338   58.90495112]
-[480.3132085   58.90495112]
-[482.68950516  58.90495112]]
-[[  25.58691406 1010.00046834]
-[  28.73574829 1010.00046834]
-[  29.86752319 1010.00046834]
-[  30.3036499  1010.00046834]
-[  30.59637451 1010.00046834]
-[  30.8326416  1010.00046834]
-[  31.04824829 1010.00046834]
-[  31.2684021  1010.00046834]
-[  31.52972412 1010.00046834]
-[  31.96090698 1010.00046834]]
-Working on 250416_seed1x1 T 1010
-[[446.66192812  58.90495112]
-[462.95189665  58.90495112]
-[470.56162972  58.90495112]
-[473.084248    58.90495112]
-[474.68033089  58.90495112]
-[475.94256505  58.90495112]
-[477.09194656  58.90495112]
-[478.27563797  58.90495112]
-[479.69277122  58.90495112]
-[482.08084088  58.90495112]]
-[[ 24.4155805  974.92634919]
-[ 27.37142157 974.92634919]
-[ 28.75221991 974.92634919]
-[ 29.20995306 974.92634919]
-[ 29.49956488 974.92634919]
-[ 29.7285993  974.92634919]
-[ 29.93715643 974.92634919]
-[ 30.15193915 974.92634919]
-[ 30.40908026 974.92634919]
-[ 30.84239935 974.92634919]]
-Working on 250415_unseed Z 300
-Working on 250417_ctrl Z 300
-Working on 250416_seed1x1 Z 300
-Working on 250415_unseed Z 500
-Working on 250417_ctrl Z 500
-Working on 250416_seed1x1 Z 500
-Working on 250415_unseed Z 850
-Working on 250417_ctrl Z 850
-Working on 250416_seed1x1 Z 850
-Working on 250415_unseed U 200
-Working on 250417_ctrl U 200
-Working on 250416_seed1x1 U 200
-Working on 250415_unseed U 500
-Working on 250417_ctrl U 500
-Working on 250416_seed1x1 U 500
-Working on 250415_unseed U 850
-Working on 250417_ctrl U 850
-Working on 250416_seed1x1 U 850
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/plt_ocn_yz.py", line 85, in main
+plt.suptitle(f"{dv} [{dss[0][dv].attrs['units']}]n{dss[0][dv].attrs['long_name']}n{dss[0][dv].attrs['cell_methods']}")
+~~~~~~~~~~~~~~~~^^^^^^^^^
+KeyError: 'units'
