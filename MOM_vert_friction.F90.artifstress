@@ -841,6 +841,12 @@ subroutine vertvisc(u, v, h, forces, visc, dt, OBC, ADp, CDp, G, GV, US, CS, &
       mylatCu = G%geoLatCu(I,j)
       mylonCu = G%geoLonCu(I,j)
       !TODO: add the stress in Pa to taux
+      IF (mylonCu .ge. 0.0 .AND. mylonCu .le. 5.0) THEN
+        IF (mylatCu .ge. 15.0 .AND. mylatCu .le. 20.0) THEN
+          forces%taux(I,j) = forces%taux(I,j) - 3.0
+        ELSE IF (mylatCu .lt. 15.0 .AND. mylatCu .ge. 10.0) THEN
+          forces%taux(I,j) = forces%taux(I,j) + 3.0
+      ENDIF
       surface_stress(I) = dt_Rho0 * (G%mask2dCu(I,j)*forces%taux(I,j))
     enddo ; endif ! direct_stress
 
