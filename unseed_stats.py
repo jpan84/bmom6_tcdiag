@@ -16,6 +16,7 @@ import cartopy.crs as ccrs
 '''
 
 alias = '250415_unseed_production'
+alias = '250702_unseed_2hPa6m'
 dfcols = ['dt', 'sstlat', 'sstval', 'tid', 'clat', 'clon', 'psmin', 'rp', 'dp', 'zp', 'exppr']
 logpaths = sorted(glob.glob('/glade/u/home/jpan/work/MOM6_CASEDIRS/%s.out*' % alias))
 
