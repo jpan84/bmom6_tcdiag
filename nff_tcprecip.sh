@@ -65,13 +65,13 @@ starttime=$(date -u +"%s")
 
 BINW=0.25
 
-STR_NFE1="--in_nodefile ${TRAJFILENAME} --in_nodefile_type SN --in_fmt ${SN_FMT} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_nodefile ${TRAJFILENAME}.radspd --out_fmt ${SN_FMT},radspd --calculate radspd=radial_wind_profile(UBOT,VBOT,32,${BINW})"
+STR_NFE1="--in_nodefile ${TRAJFILENAME} --in_nodefile_type SN --in_fmt ${SN_FMT} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_nodefile ${TRAJFILENAME}.radspd --out_fmt ${SN_FMT},radspd,r8 --calculate radspd=radial_wind_profile(UBOT,VBOT,32,${BINW});r8=lastwhere(radspd,>=,8)*${BINW}"
 
 $TEMPESTEXTREMESDIR/bin/NodeFileEditor ${STR_NFE1}
 
-STR_NFE2="--in_nodefile ${TRAJFILENAME}.radspd --in_nodefile_type SN --in_fmt ${SN_FMT},radspd --out_nodefile ${TRAJFILENAME}.radspd --out_fmt ${SN_FMT},radspd,r8 --calculate r8=_PROD(lastwhere(radspd,>=,8),${BINW})"
+###STR_NFE2="--in_nodefile ${TRAJFILENAME}.radspd --in_nodefile_type SN --in_fmt ${SN_FMT},radspd --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_nodefile ${TRAJFILENAME}.radspd --out_fmt ${SN_FMT},radspd,r8 --calculate r8=lastwhere(radspd,>=,8)*${BINW}"
 
-$TEMPESTEXTREMESDIR/bin/NodeFileEditor ${STR_NFE2}
+###$TEMPESTEXTREMESDIR/bin/NodeFileEditor ${STR_NFE2}
 
 STR_NFF="--in_nodefile ${TRAJFILENAME}.radspd --in_nodefile_type SN --in_fmt ${SN_FMT},radspd,r8 --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_data_list ${OUTLISTNAME} --maskvar TC_R8 --bydist r8"
 ###--bycontour _PROD(_SIGN(lat),_CURL{8,1.0}(U850,V850)),-1e-5,5.5,0.5"
@@ -80,56 +80,3 @@ STR_NFF="--in_nodefile ${TRAJFILENAME}.radspd --in_nodefile_type SN --in_fmt ${S
 ###echo "calling mpiexec"
 ###mpiexec --display-allocation --display-map --report-bindings -n 16 $TEMPESTEXTREMESDIR/bin/NodeFileFilter ${STR_NFF} </dev/null
 $TEMPESTEXTREMESDIR/bin/NodeFileFilter ${STR_NFF}
-
-
-
-
-
-
-
-
-
-
-
-exit
-##############################################################
-
-###orig
-DCU_PSLFOMAG=200.0
-DCU_PSLFODIST=5.5
-DCU_WCFOMAG=-6.0
-DCU_WCFODIST=6.5
-DCU_WCMAXOFFSET=1.0
-DCU_MERGEDIST=6.0
-SN_TRAJRANGE=6.0
-SN_TRAJMINLENGTH=10
-SN_TRAJMAXGAP=3
-SN_MAXTOPO=150.0
-SN_MAXLAT=50.0
-SN_MINWIND=10.0
-SN_MINLEN=10
-
-touch cyclones.${DATESTRING}
-
-STR_DETECT="--verbosity 0 --timestride 6hr --in_connect ${CONNECTDAT} --out cyclones_tempest.${DATESTRING} --closedcontourcmd PSL,${DCU_PSLFOMAG},${DCU_PSLFODIST},0;_DIFF(Z300,Z500),${DCU_WCFOMAG},${DCU_WCFODIST},${DCU_WCMAXOFFSET};_PROD(_SIGN(lat),_CURL{8,1.0}(U850,V850)),-8e-5,5.5,0.5 --mergedist ${DCU_MERGEDIST} --searchbymin PSL --outputcmd PSL,min,0;_VECMAG(UBOT,VBOT),max,2"
-echo "calling mpiexec"
-mpiexec --display-allocation --display-map --report-bindings -n 16 $TEMPESTEXTREMESDIR/bin/DetectNodes --in_data_list "${FILELISTNAME}" ${STR_DETECT} </dev/null
-
-cat cyclones_tempest.${DATESTRING}* >> cyclones.${DATESTRING}
-#rm cyclones_tempest.${DATESTRING}*
-
-pwd
-${TEMPESTEXTREMESDIR}/bin/StitchNodes --in_connect ${CONNECTDAT} --in_fmt ${DN_FMT} --allow_repeated_times --range ${SN_TRAJRANGE} --minlength ${SN_TRAJMINLENGTH} --maxgap ${SN_TRAJMAXGAP} --in cyclones.${DATESTRING} --out ${TRAJFILENAME} --threshold "wind,>=,${SN_MINWIND},${SN_MINLEN};lat,<=,${SN_MAXLAT},${SN_MINLEN};lat,>=,-${SN_MAXLAT},${SN_MINLEN}"
-
-NFEMEANRAD=8.0
-
-###${TEMPESTEXTREMESDIR}/bin/NodeFileEditor --in_nodefile ${TRAJFILENAME} --in_nodefile_type "SN" --in_data_list "${FILELISTNAME}" --in_connect ${CONNECTDAT} --in_fmt "${DN_FMT}" --out_fmt ${NFE_FMT} --calculate "prect=_MEAN{${NFEMEANRAD}}(PRECT);olr=_MEAN{${NFEMEANRAD}}(FLUT);sst=_MEAN{${NFEMEANRAD}}(SST);ace0=eval_ace(UBOT,VBOT,0.25);radialpsl=radial_profile(PSL,32,0.25)" --out_nodefile "${TRAJFILENAME}.NFE"
-
-endtime=$(date -u +"%s")
-tottime=$(($endtime-$starttime))
-
-printf "${tottime}\n" >> timing.txt
-
-rm -v cyclones.${DATESTRING}.dat
-rm -v ${FILELISTNAME}
-rm -v log*txt
