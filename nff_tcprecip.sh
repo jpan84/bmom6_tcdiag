@@ -26,14 +26,15 @@
 ###TEMPESTEXTREMESDIR=/glade/work/zarzycki/derecho/tempestextremes/
 TEMPESTEXTREMESDIR=/glade/work/zarzycki/tempestextremes_noMPI
 
-
-UQSTR=b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl
-PATHTOFILES=/glade/derecho/scratch/jpan/archive/${UQSTR}/atm/hist_0010_h1i/
-DIRO=/glade/derecho/scratch/jpan/archive/${UQSTR}/atm/nff_8mps
+SPTH=2
+UQSTR=b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1
+PATHTOFILES=/glade/derecho/scratch/jpan/archive/${UQSTR}/atm/hist/
+DIRO=/glade/derecho/scratch/jpan/archive/${UQSTR}/atm/nff_${SPTH}mps
 mkdir -p $DIRO
 CONNECTDAT=/glade/u/home/jpan/ne120np4_connect_v2.dat
 CONNECTFLAG=""
 TOPOFILE=""
+
 
 SN_FMT="lon,lat,slp,wind"
 
@@ -47,25 +48,26 @@ cd /glade/u/home/jpan/aquaptc/tempest
 DATESTRING=`date +"%s%N"`
 FILELISTNAME=filelist.txt.${DATESTRING}
 OUTLISTNAME=outlist.txt.${DATESTRING}
-TRAJFILENAME=trajectories.txt.${UQSTR}.0010
+TRAJFILENAME=trajectories.txt.${UQSTR}
 touch $FILELISTNAME $OUTLISTNAME
 
 ignoreyear=999999999
-FILES=$(ls "${PATHTOFILES}"/*.h1i.*.nc | grep -v "$ignoreyear-")
+###FILES=$(ls "${PATHTOFILES}"/*.h1i.*.nc | grep -v "$ignoreyear-")
+FILES=$(find "${PATHTOFILES}" -maxdepth 1 -name "*.h1i.*.nc" ! -name "*$ignoreyear-*" | sort)
 ###echo $FILES
 for f in $FILES
 do
   #echo "${f};${TOPOFILE}" >> $FILELISTNAME
   echo "${f}" >> $FILELISTNAME
   FILENAME=$(basename "$f")
-  echo "${DIRO}/${FILENAME}.nff_8mps" >> $OUTLISTNAME
+  echo "${DIRO}/${FILENAME}.nff_${SPTH}mps" >> $OUTLISTNAME
 done
 
 starttime=$(date -u +"%s")
 
 BINW=0.25
 
-STR_NFE1="--in_nodefile ${TRAJFILENAME} --in_nodefile_type SN --in_fmt ${SN_FMT} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_nodefile ${TRAJFILENAME}.radspd --out_fmt ${SN_FMT},radspd,r8 --calculate radspd=radial_wind_profile(UBOT,VBOT,32,${BINW});r8=lastwhere(radspd,>=,8)*${BINW}"
+STR_NFE1="--in_nodefile ${TRAJFILENAME} --in_nodefile_type SN --in_fmt ${SN_FMT} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_nodefile ${TRAJFILENAME}.radspd --out_fmt ${SN_FMT},radspd,r${SPTH} --calculate radspd=radial_wind_profile(UBOT,VBOT,33,${BINW});r${SPTH}=lastwhere(radspd,>=,${SPTH})*${BINW}"
 
 $TEMPESTEXTREMESDIR/bin/NodeFileEditor ${STR_NFE1}
 
@@ -73,7 +75,7 @@ $TEMPESTEXTREMESDIR/bin/NodeFileEditor ${STR_NFE1}
 
 ###$TEMPESTEXTREMESDIR/bin/NodeFileEditor ${STR_NFE2}
 
-STR_NFF="--in_nodefile ${TRAJFILENAME}.radspd --in_nodefile_type SN --in_fmt ${SN_FMT},radspd,r8 --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_data_list ${OUTLISTNAME} --maskvar TC_R8 --bydist r8"
+STR_NFF="--in_nodefile ${TRAJFILENAME}.radspd --in_nodefile_type SN --in_fmt ${SN_FMT},radspd,r${SPTH} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_data_list ${OUTLISTNAME} --maskvar TC_R${SPTH} --bydist r${SPTH}"
 ###--bycontour _PROD(_SIGN(lat),_CURL{8,1.0}(U850,V850)),-1e-5,5.5,0.5"
 ###PSL,${DCU_PSLFOMAG},${DCU_PSLFODIST},0"
 
