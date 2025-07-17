@@ -21,7 +21,7 @@ MSKNM = 'TC_R2'
 
 print(CASE, DIRO)
 
-zmlats = (-90, 90, 0.5)
+zmlats = (-90, 90.1, 0.5)
 LATLAB = np.arange(-90, 91, 30)
 g = 9.81
 
@@ -48,7 +48,7 @@ def main():
    rawvars = ['PRECT']
    var1 = 'PRECT'
    flds = [dsraws[var1], dsraws[var1] * dsmask[MSKNM]]
-   monzm = [da.groupby('time.month').mean().zonal_mean(lat=zmlats) for da in flds]
+   monzm = [da.groupby('time.month').mean().zonal_mean(lat=ZMLATS) for da in flds]
    sznzm = [stack_hemi_sznl(monthly2sznl(da)) for da in monzm]
    ratzm = [sznzm[1] / sznzm[0]]
 
@@ -62,7 +62,7 @@ def main():
       for tt, szn in enumerate(pltda['season']):
          axes[0].plot(SINLAT, pltda.sel(season=szn), label=str(szn.values), color=LCLRS[tt], linestyle=LSTYS[ii])
          if not ii:
-            axes[1].plot(SINLAT, ratzm, color=LCLRS[tt])
+            axes[1].plot(SINLAT, ratzm.sel(season=szn), color=LCLRS[tt])
    axes[0].legend()
    axes[0].set_xticks(SINLAT, labels=LATLAB)
    fig.tight_layout()
@@ -84,7 +84,7 @@ def main():
       for jj, op in enumerate([operator.gt, operator.lt]):
          sgned = dsraws[dv] * op(dsraws[dv], 0)
          flds = [sgned, sgned * dsmask[MSKNM]]
-         monzm = [da.groupby('time.month').mean().zonal_mean(lat=zmlats) for da in flds]
+         monzm = [da.groupby('time.month').mean().zonal_mean(lat=ZMLATS) for da in flds]
          sznzm = [stack_hemi_sznl(monthly2sznl(da)) for da in monzm]
          ratzm = [sznzm[1] / sznzm[0]]
          for tt, szn in enumerate(pltda['season']):
