@@ -33,11 +33,28 @@ for case in "${CASES[@]}"; do
   mkdir -p yhoureddy_${MSKNAM}_masked
 
   DATS=$(find "${DATDIR}" -maxdepth 1 -name "${DATFIL}" | sort)
+  printf "%s\n" "${DATS[@]}" > filelist.txt
+
+  ###xargs cdo yhoursub -cat $(<filelist.txt) ${NORMF} yhoureddy/yhoursub_h1i.nc
   
   for datf in $DATS; do
     echo "Working on ${datf}"
-    cdo mul -delname,${DELVARS} ${datf} -selname,${MSKNAM} ${MSKDIR}/$(basename ${datf})${MSKEXT} "${MSKNAM}_masked/$(basename ${datf})"
-    ncks -O -4 -L 1 "${MSKNAM}_masked/$(basename ${datf})" "${MSKNAM}_masked/$(basename ${datf})"
+    bn=$(basename ${datf})
+
+    ###mask raw fields
+    cdo mul -delname,${DELVARS} ${datf} -selname,${MSKNAM} ${MSKDIR}/${bn}${MSKEXT} "${MSKNAM}_masked/${bn}"
+    ncks -O -4 -L 1 "${MSKNAM}_masked/${bn}" "${MSKNAM}_masked/${bn}"
+
+    ###compute eddy fields
+    timestamp=$(cdo showtimestamp ${datf})
+    timestamp=$(echo "$timestamp" | tr -d '[:space:]')
+    echo $timestamp
+    year=$(echo "$timestamp" | cut -d'-' -f1)
+    echo $year
+
+    cdo showdate -selhour,00 -selmon,01 -selday,01 ${NORMF}
+    #cdo -v sub ${datf} -seldate,${timestamp} -setyear,${year} ${NORMF} "yhoureddy/${bn}"
+    ncks -O -4 -L 1 "yhoureddy/${bn}" "yhoureddy/${bn}"
   done
 
 done
