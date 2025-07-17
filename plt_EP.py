@@ -21,7 +21,7 @@ def main():
 
    plotfields = [ds[dv] for dv in ['EPy_EMF_d', 'EPy_adv_d', 'EPz_EHF_d', 'EPz_adv_d']]
    plotfields.append(sum(plotfields))
-   plottitles = ['EPFd (y) due to EMF', 'EPFd (y) due to mean vu adv', 'EPFd (z) due to EHF', 'EPFd (z) due to mean wu adv', 'Sum']
+   plottitles = ['EPFd (y) due to EMF', 'EPFd (y) due to mean wu adv', 'EPFd (z) due to EHF', 'EPFd (z) due to mean vu adv', 'Sum']
 
    print('Plotting EPFd...')
    plt.rc('font', size=20)

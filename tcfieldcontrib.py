@@ -4,27 +4,30 @@
 import os
 import uxarray as ux
 import numpy as np
-import sznl_zm_ux
+from sznl_funcs import monthly2sznl, stack_hemi_sznl
 import pltsettings
 import matplotlib.pyplot as plt
 
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
-DIRO = './tcfieldszm_250417_ctrl/'
-HRAW = 'atm/hist_0010_h1i'
-HNFF = 'atm/nff_tcprec'
-HTAPE = '*h1i*.nc'
+ALIAS = '250417_ctrl'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s' % ALIAS
+DIRO = './tcfields2mps_%s/' % ALIAS
+HRAWS = 'atm/hist_0010_h1i/*h1i*.nc'
+HMASK = 'atm/nff_2mps/*.h1i.0010*.nc'
+HNORM = 'atm/hist_norms/yhourmean_h1i.nc' #norms e.g., yhourmean
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+MSKNM = 'TC_R2'
 
 print(CASE, DIRO)
 
+zmlats = (-90, 90, 0.5)
+LATLAB = np.arange(-90, 91, 30)
 g = 9.81
-WMAT = sznl_zm_ux.wmat
-ZMLATS = np.arange(*sznl_zm_ux.zmlats)
+
+ZMLATS = np.arange(*zmlats)
 SINLAT = np.sin(np.deg2rad(ZMLATS))
-LATLAB = sznl_zm_ux.LATLAB
-SZNS = sznl_zm_ux.SZNS
-lncolors = plt.cm.jet(np.linspace(0, 1, 4))
+LSTYS = ['solid', 'dashed']
+LCLRS = ['blue', 'orange']
 
 YLIM = {'UMF500_TCfrac': (0, 0.6), 'PRECT_TCfrac': (0, 0.6), 'UMF500': (0, .012), 'PRECT': (0, 2.3e-7), 'CF500': (0, 1)}
 
@@ -34,8 +37,48 @@ def main():
    pltsettings.set1()
 
    print('Opening datasets...')
-   dsraw = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, HRAW, HTAPE))
-   dsnff = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, HNFF, HTAPE))
+   dsraws = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, HRAW, HTAPE))
+   dsmask = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, HNFF, HTAPE))
+   dsnorm = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, HNFF, HTAPE))
+
+   #TODO: raw vars
+   print('Computing precip contrib...')
+   rawvars = ['PRECT']
+   var1 = 'PRECT'
+   flds = [dsraws[var1], dsraws[var1] * dsmask[MSKNM]]
+   monzm = [da.groupby('time.month').mean().zonal_mean(lat=zmlats) for da in flds]
+   sznzm = [stack_hemi_sznl(monthly2sznl(da)) for da in monzm]
+   ratzm = [sznzm[1] / sznzm[0]]
+
+   print('Plotting precip contrib...')
+   plt.rcParams['figure.figsize'] = (10, 12)
+   subplot_kw = dict(xlim=(-1, 1), sharex=True)
+   fig, axes = plt.subplots(2, 1, subplot_kw=subplot_kw)
+
+   plt.suptitle(var1)
+   for ii, pltda in enumerate(sznzm):
+      for tt, szn in enumerate(pltda['season']):
+         axes[0].plot(SINLAT, pltda.sel(season=szn), label=str(szn.values), color=LCLRS[tt], linestyle=LSTYS[ii])
+         if not ii:
+            axes[1].plot(SINLAT, ratzm, color=LCLRS[tt])
+   axes[0].legend()
+   axes[0].set_xticks(SINLAT, labels=LATLAB)
+   fig.tight_layout()
+   plt.savefig(os.path.join(DIRO, '%s.png' % var1))
+   plt.close()
+
+   print('tcfieldcontrib.py done.')
+   exit()
+
+
+   #TODO: directional raw vars
+   dirvars = ['SHFLX', 'LHFLX', 'TAUX', 'TAUY']
+
+   #TODO: meridional eddy fluxes
+
+   #TODO: vertical eddy fluxes
+
+   #TODO: Plot total field, TC field, and fraction
 
    ###print('\nPRECT...')
    ###precttcs, precttot = sznl_fields(dsnff, dsraw, 'PRECT')
