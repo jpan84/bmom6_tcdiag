@@ -2,6 +2,7 @@
 #Use raw h1i output and NodeFileFilter'ed h1i output
 
 import os
+import operator
 import uxarray as ux
 import numpy as np
 from sznl_funcs import monthly2sznl, stack_hemi_sznl
@@ -13,7 +14,7 @@ ALIAS = '250417_ctrl'
 CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s' % ALIAS
 DIRO = './tcfields2mps_%s/' % ALIAS
 HRAWS = 'atm/hist_0010_h1i/*h1i*.nc'
-HMASK = 'atm/nff_2mps/*.h1i.0010*.nc'
+HMASK = 'atm/nff_2mps/*.h1i.0010*'
 HNORM = 'atm/hist_norms/yhourmean_h1i.nc' #norms e.g., yhourmean
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 MSKNM = 'TC_R2'
@@ -37,11 +38,12 @@ def main():
    pltsettings.set1()
 
    print('Opening datasets...')
-   dsraws = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, HRAW, HTAPE))
-   dsmask = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, HNFF, HTAPE))
-   dsnorm = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, HNFF, HTAPE))
+   dsraws = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, HRAWS))
+   dsmask = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, HMASK))
+   dsnorm = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, HNORM))
 
    #TODO: raw vars
+   #consider threshold precip rates? (how much of precip at rates heavier than XX do TCs contribute)
    print('Computing precip contrib...')
    rawvars = ['PRECT']
    var1 = 'PRECT'
@@ -72,7 +74,24 @@ def main():
 
 
    #TODO: directional raw vars
-   dirvars = ['SHFLX', 'LHFLX', 'TAUX', 'TAUY']
+   dirvars = ['SHFLX', 'LHFLX', 'TAUX']#, 'UMF500', 'DMF500', 'UMF850', 'DMF850', 'TAUY'] #consider turning zonal stresses into torques
+   for dv in dirvars:
+      print('Working on directional var %s...' % dv)
+      plt.rcParams['figure.figsize'] = (10, 12)
+      subplot_kw = dict(xlim=(-1, 1), sharex=True)
+      fig, axes = plt.subplots(2, 1, subplot_kw=subplot_kw)
+      axes[0].hlines(0, -1, 1, colors='black', linestyles='dotted')
+      for jj, op in enumerate([operator.gt, operator.lt]):
+         sgned = dsraws[dv] * op(dsraws[dv], 0)
+         flds = [sgned, sgned * dsmask[MSKNM]]
+         monzm = [da.groupby('time.month').mean().zonal_mean(lat=zmlats) for da in flds]
+         sznzm = [stack_hemi_sznl(monthly2sznl(da)) for da in monzm]
+         ratzm = [sznzm[1] / sznzm[0]]
+         for tt, szn in enumerate(pltda['season']):
+            axes[1].plot(SINLAT, ratzm, color=LCLRS[tt], linestyle=LSTYS[jj])
+            for ii, pltda in enumerate(sznzm):
+               axes[0].plot(SINLAT, pltda.sel(season=szn), label=str(szn.values) if jj else None, color=LCLRS[tt], linestyle=LSTYS[ii])
+
 
    #TODO: meridional eddy fluxes
 
