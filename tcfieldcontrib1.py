@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 
 
 ARCHV = '/glade/campaign/univ/upsu0032/jpan_tcfields/'
-ALIAS = '250417_ctrl'
+ALIAS = '250416_seed1x1'
 CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s' % ALIAS
 DIRO = './tcfields2mps_%s/' % ALIAS
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
@@ -34,7 +34,12 @@ eddy_fluxes=dict(VTBOT=('VBOT', 'TBOT', True), VT850=('V850', 'T850', True), VT5
                  WT850=(-1, 'OMEGA850', 'T850', False), WT500=(-1, 'OMEGA500', 'T500', False),\
                  WU850=(-1, 'OMEGA850', 'U850', False), WU500=(-1, 'OMEGA500', 'U500', False),\
                  WQ850=(-1, 'OMEGA850', 'Q850', False), WZ850=(-1, 'OMEGA850', 'Z850', False), WZ500=(-1, 'OMEGA500', 'Z500', False)) 
-#SHFLX=(1, 'SHFLX', False), LHFLX=(1, 'LHFLX', False),
+eddy_fluxes=dict(VT850=('V850', 'T850', True),\
+                 VU200=('V200', 'U200', True),\
+                 VQ850=('V850', 'Q850', True),\
+                 WT850=(-1, 'OMEGA850', 'T850', False),\
+                 WU500=(-1, 'OMEGA500', 'U500', False),\
+                 WQ850=(-1, 'OMEGA850', 'Q850', False))
 
 zmlats = (-90, 90.1, 0.5)
 LATLAB = np.arange(-90, 91, 30)
@@ -96,13 +101,16 @@ def compute_signed_flds(allds, tcsds, flds_dict):
    retall, rettcs = None, None
    for fl in flds_dict:
       print('Processing %s signed...' % fl)
-      allfld = template_prod(allds, flds_dict[fl][:-1])
-      tcsfld = template_prod(tcsds, flds_dict[fl][:-1])
+      antisym = flds_dict[fl][-1]
+      templ = flds_dict[fl][:-1]
+      allfld = template_prod(allds, templ)
+      tcsfld = template_prod(tcsds, templ)
+      sgnlat = np.sign(allfld['lat']) if antisym else 1
 
       for sgn in [('_pos', operator.gt), ('_neg', operator.lt)]:
-         allsgn = (sgn[1](allfld, 0)) * allfld
-         tcssgn = (sgn[1](tcsfld, 0)) * tcsfld
-         sznzm = all_and_TC_to_sznlzm(allsgn, tcssgn, antisym=flds_dict[fl][-1])
+         allsgn = (sgn[1](allfld * sgnlat, 0)) * allfld
+         tcssgn = (sgn[1](tcsfld * sgnlat, 0)) * tcsfld
+         sznzm = all_and_TC_to_sznlzm(allsgn, tcssgn, antisym=antisym)
          if retall is None:
             retall = xr.Dataset(data_vars={fl + sgn[0]: sznzm[0].to_xarray()})
             rettcs = xr.Dataset(data_vars={fl + sgn[0]: sznzm[1].to_xarray()})
