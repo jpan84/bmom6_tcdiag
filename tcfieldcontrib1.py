@@ -30,10 +30,10 @@ signed_vars = dict(TAUX=(-1, 'TAUX', False), TAUY=(-1, 'TAUY', True), UMF500=(-1
 
 eddy_fluxes=dict(VTBOT=('VBOT', 'TBOT', True), VT850=('V850', 'T850', True), VT500=('V500', 'T500', True), VT200=('V200', 'T200', True),\
                  VUBOT=('VBOT', 'UBOT', True), VU850=('V850', 'U850', True), VU500=('V500', 'U500', True), VU200=('V200', 'U200', True),\
-                 VQ850=('V850', 'Q850', True), VZ850=('V850', 'Z850', True), VZ500=('V500', 'Z500', True),\ 
-                 WT850=('OMEGA850', 'T850', False), WT500=('OMEGA500', 'T500', False),\
-                 WU850=('OMEGA850', 'U850', False), WU500=('OMEGA500', 'U500', False),
-                 WQ850=('OMEGA850', 'Q850', False), WZ850=('OMEGA850', 'Z850', False), WZ500=('OMEGA500', 'Z500', False)) 
+                 VQ850=('V850', 'Q850', True), VZ850=('V850', 'Z850', True), VZ500=('V500', 'Z500', True),\
+                 WT850=(-1, 'OMEGA850', 'T850', False), WT500=(-1, 'OMEGA500', 'T500', False),\
+                 WU850=(-1, 'OMEGA850', 'U850', False), WU500=(-1, 'OMEGA500', 'U500', False),\
+                 WQ850=(-1, 'OMEGA850', 'Q850', False), WZ850=(-1, 'OMEGA850', 'Z850', False), WZ500=(-1, 'OMEGA500', 'Z500', False)) 
 #SHFLX=(1, 'SHFLX', False), LHFLX=(1, 'LHFLX', False),
 
 zmlats = (-90, 90.1, 0.5)
