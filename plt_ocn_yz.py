@@ -33,10 +33,11 @@ def main():
           )) for ds in dss]
    dvars = list(dss[0].data_vars)
 
+   outds = None
    for dv in dvars:
       #!COLORLEVS
-      if dv not in ['vmo_resid']:
-         continue
+      #if dv not in ['vmo_resid']:
+      #   continue
 
       if dss[0][dv].dims not in DIMS3D:
          print('%s not 3D. Skipping...' % dv)
@@ -64,6 +65,12 @@ def main():
          if sstr in dss[0][dv].attrs['long_name'].lower():
             antisym = True; break
       sznl = [sznl_funcs.stack_hemi_sznl(sznl_funcs.monthly2sznl(mm), antisym=antisym, latnm=ymeth[0]) for mm in monmeans]
+
+      outda = xr.concat(sznl, dim=xr.DataArray(ALIASES, dims='case'))
+      if outds is None:
+         outds = xr.Dataset(data_vars={dv: outda})
+      else:
+         outds = outds.assign(variables={dv: outda})
 
       vmin, vmax, zero_centered = None, None, False
       if DO_DIFF:
@@ -106,6 +113,8 @@ def main():
 
       plt.savefig(os.path.join(DIRO, '%s.png' % dv), bbox_inches='tight')
       plt.close()
+
+   outds.to_netcdf(os.path.join(DIRO, 'sznlzm.nc'))
 
 
 if __name__ == '__main__':

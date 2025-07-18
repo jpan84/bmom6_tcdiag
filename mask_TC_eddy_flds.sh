@@ -46,15 +46,15 @@ for case in "${CASES[@]}"; do
     ncks -O -4 -L 1 "${MSKNAM}_masked/${bn}" "${MSKNAM}_masked/${bn}"
 
     ###compute eddy fields
-    timestamp=$(cdo showtimestamp ${datf})
-    timestamp=$(echo "$timestamp" | tr -d '[:space:]')
-    echo $timestamp
-    year=$(echo "$timestamp" | cut -d'-' -f1)
-    echo $year
+    ###timestamp=$(cdo showtimestamp ${datf})
+    ###timestamp=$(echo "$timestamp" | tr -d '[:space:]')
+    ###echo $timestamp
+    ###year=$(echo "$timestamp" | cut -d'-' -f1)
+    ###echo $year
 
-    cdo showdate -selhour,00 -selmon,01 -selday,01 ${NORMF}
-    #cdo -v sub ${datf} -seldate,${timestamp} -setyear,${year} ${NORMF} "yhoureddy/${bn}"
-    ncks -O -4 -L 1 "yhoureddy/${bn}" "yhoureddy/${bn}"
+    ###cdo showdate -selhour,00 -selmon,01 -selday,01 ${NORMF}
+    ####cdo -v sub ${datf} -seldate,${timestamp} -setyear,${year} ${NORMF} "yhoureddy/${bn}"
+    ###ncks -O -4 -L 1 "yhoureddy/${bn}" "yhoureddy/${bn}"
   done
 
 done
