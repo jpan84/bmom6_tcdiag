@@ -26,9 +26,15 @@ EDDTCS = 'yhoureddy_TC_R2_masked/yhoureddy_h1i.nc'
 
 g = 9.81
 unsigned_vars = ['PRECT']
-signed_vars = dict(SHFLX=(1, 'SHFLX', False), LHFLX=(1, 'LHFLX', False), TAUX=(1, 'TAUX', False),\
-                   TAUY=(1, 'TAUY', True), UMF500=(-1/g, 'OMEGA500', False), UMF850=(-1/g, 'OMEGA850', False),
-                   vEHF850=('V850', 'T850', True), vEMF200=('V200', 'U200', True), wEHF500=('OMEGA500', 'U500', False)) #template: (...take the product of these scalars/data_vars..., antisym?)
+signed_vars = dict(TAUX=(-1, 'TAUX', False), TAUY=(-1, 'TAUY', True), UMF500=(-1/g, 'OMEGA500', False), UMF850=(-1/g, 'OMEGA850', False))#template: (...take the product of these scalars/data_vars..., antisym?)
+
+eddy_fluxes=dict(VTBOT=('VBOT', 'TBOT', True), VT850=('V850', 'T850', True), VT500=('V500', 'T500', True), VT200=('V200', 'T200', True),\
+                 VUBOT=('VBOT', 'UBOT', True), VU850=('V850', 'U850', True), VU500=('V500', 'U500', True), VU200=('V200', 'U200', True),\
+                 VQ850=('V850', 'Q850', True), VZ850=('V850', 'Z850', True), VZ500=('V500', 'Z500', True),\ 
+                 WT850=('OMEGA850', 'T850', False), WT500=('OMEGA500', 'T500', False),\
+                 WU850=('OMEGA850', 'U850', False), WU500=('OMEGA500', 'U500', False),
+                 WQ850=('OMEGA850', 'Q850', False), WZ850=('OMEGA850', 'Z850', False), WZ500=('OMEGA500', 'Z500', False)) 
+#SHFLX=(1, 'SHFLX', False), LHFLX=(1, 'LHFLX', False),
 
 zmlats = (-90, 90.1, 0.5)
 LATLAB = np.arange(-90, 91, 30)
@@ -53,6 +59,9 @@ def main():
 
    sgnallds, sgntcsds = compute_signed_flds(rawallds, rawtcsds, signed_vars)
    outallds, outtcsds = xr.merge([outallds, sgnallds]), xr.merge([outtcsds, sgntcsds])
+
+   eddallds, eddtcsds = compute_signed_flds(eddallds, eddtcsds, eddy_fluxes)
+   outallds, outtcsds = xr.merge([outallds, eddallds]), xr.merge([outtcsds, eddtcsds])
 
    print('Saving .nc outputs...')
    outallds.to_netcdf(os.path.join(DIRO, 'means_all.nc'))
@@ -85,15 +94,15 @@ def compute_unsigned_flds(allds, tcsds, flds):
 
 def compute_signed_flds(allds, tcsds, flds_dict):
    retall, rettcs = None, None
-   for fl in flds:
+   for fl in flds_dict:
       print('Processing %s signed...' % fl)
-      allfld = template_prod(allds, signed_vars[fl][:-1])
-      tcsfld = template_prod(tcsds, signed_vars[fl][:-1])
+      allfld = template_prod(allds, flds_dict[fl][:-1])
+      tcsfld = template_prod(tcsds, flds_dict[fl][:-1])
 
       for sgn in [('_pos', operator.gt), ('_neg', operator.lt)]:
          allsgn = (sgn[1](allfld, 0)) * allfld
          tcssgn = (sgn[1](tcsfld, 0)) * tcsfld
-         sznzm = all_and_TC_to_sznlzm(allsgn, tcssgn, antisym=signed_vars[fl][-1])
+         sznzm = all_and_TC_to_sznlzm(allsgn, tcssgn, antisym=flds_dict[fl][-1])
          if retall is None:
             retall = xr.Dataset(data_vars={fl + sgn[0]: sznzm[0].to_xarray()})
             rettcs = xr.Dataset(data_vars={fl + sgn[0]: sznzm[1].to_xarray()})

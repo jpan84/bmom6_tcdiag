@@ -1,20 +1,5 @@
 nohup: ignoring input
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 5367145.casper-pbs with qsub arguments:
-    qsub  -l select=1:ncpus=32:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=01:00:00
+Waiting on job launch; 5670028.casper-pbs with qsub arguments:
+    qsub  -l select=2:ncpus=36:mem=256GB -A UESM0014 -q casper@casper-pbs -l walltime=06:31:00
 
-[[0.34444444 0.31111111 0.         0.         0.         0.
-0.         0.         0.         0.         0.         0.34444444]
-[0.         0.         0.33695652 0.32608696 0.33695652 0.
-0.         0.         0.         0.         0.         0.        ]
-[0.         0.         0.         0.         0.         0.32608696
-0.33695652 0.33695652 0.         0.         0.         0.        ]
-[0.         0.         0.         0.         0.         0.
-0.         0.         0.32967033 0.34065934 0.32967033 0.        ]]
-b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl ./tcfieldszm_250417_ctrl/
-Opening datasets...
-
-Convective frac 500...
-Applying func...
-Monthly means...
-Zonal means...
