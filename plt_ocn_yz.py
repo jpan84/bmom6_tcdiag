@@ -1,3 +1,4 @@
+import sys
 import xarray as xr
 from dask.diagnostics import ProgressBar
 import numpy as np
@@ -5,6 +6,9 @@ import os
 import sznl_funcs
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
+
+mode = sys.argv[1]
+MODES = ['compute', 'plot']
 
 DO_DIFF = True
 HISTS = '/glade/derecho/scratch/jpan/archive/%s/ocn/hist/*mom6.hm*[0-9][0-9][0-9][0-9]-[0-9][0-9].nc'
@@ -119,6 +123,14 @@ def main():
 
    outds.to_netcdf(os.path.join(DIRO, 'sznlzm.nc'))
 
+def main_plot():
+   ds = xr.open_dataset(os.path.join(DIRO, 'sznlzm.nc'))
+   print(ds)
 
 if __name__ == '__main__':
-   main()
+   if mode == 'compute':
+      main()
+   if mode == 'plot':
+      main_plot()
+   if mode not in MODES:
+      raise ValueError ('Invalid mode for script')

@@ -7,6 +7,7 @@ import math
 import operator
 import uxarray as ux
 import xarray as xr
+from dask.diagnostics import ProgressBar
 import numpy as np
 from sznl_funcs import monthly2sznl, stack_hemi_sznl
 import pltsettings
@@ -16,7 +17,7 @@ MODES = ['compute', 'plot']
 mode = sys.argv[1]
 
 ARCHV = '/glade/campaign/univ/upsu0032/jpan_tcfields/'
-ALIAS = '250417_ctrl'
+ALIAS = '250416_seed1x1'
 CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s' % ALIAS
 DIRO = './tcfields2mps_%s/' % ALIAS
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
@@ -25,6 +26,7 @@ RAWALL = 'hist_0010_h1i/cat_h1i.nc'
 RAWTCS = 'TC_R2_masked/*.h1i.*.nc'
 EDDALL = 'yhoureddy/yhoureddy_h1i.nc'
 EDDTCS = 'yhoureddy_TC_R2_masked/yhoureddy_h1i.nc'
+EDDTCS = 'yhoureddy_mask_after/yhoureddy_h1i.nc'
 
 g = 9.81
 unsigned_vars = ['PRECT']
@@ -36,12 +38,12 @@ eddy_fluxes=dict(VTBOT=('VBOT', 'TBOT', True), VT850=('V850', 'T850', True), VT5
                  WT850=(-1, 'OMEGA850', 'T850', False), WT500=(-1, 'OMEGA500', 'T500', False),\
                  WU850=(-1, 'OMEGA850', 'U850', False), WU500=(-1, 'OMEGA500', 'U500', False),\
                  WQ850=(-1, 'OMEGA850', 'Q850', False), WZ850=(-1, 'OMEGA850', 'Z850', False), WZ500=(-1, 'OMEGA500', 'Z500', False)) 
-eddy_fluxes=dict(VT850=('V850', 'T850', True),\
-                 VU200=('V200', 'U200', True),\
-                 VQ850=('V850', 'Q850', True),\
-                 WT850=(-1, 'OMEGA850', 'T850', False),\
-                 WU500=(-1, 'OMEGA500', 'U500', False),\
-                 WQ850=(-1, 'OMEGA850', 'Q850', False))
+#eddy_fluxes=dict(VT850=('V850', 'T850', True),\
+#                 VU200=('V200', 'U200', True),\
+#                 VQ850=('V850', 'Q850', True),\
+#                 WT850=(-1, 'OMEGA850', 'T850', False),\
+#                 WU500=(-1, 'OMEGA500', 'U500', False),\
+#                 WQ850=(-1, 'OMEGA850', 'Q850', False))
 
 zmlats = (-90, 90.1, 0.5)
 LATLAB = np.arange(-90, 91, 30)
@@ -51,6 +53,12 @@ SINLAT = np.sin(np.deg2rad(ZMLATS))
 LSTYS = ['solid', 'dashed']
 LCLRS = ['blue', 'orange']
 NEWLATS = np.arange(-50, 51, 10)
+
+RATLIMS = dict(PRECT=0.7, TAUX_neg=0.5, TAUX_pos=1, TAUY_neg=0.6, TAUY_pos=1, UMF500_neg=0.35, UMF500_pos=0.65,\
+            VQ850_neg=0.6, VQ850_pos=0.6, VT850_neg=0.6, VT850_pos=0.6, VU200_neg=0.3, VU200_pos=0.25, WQ850_neg=0.5, WQ850_pos=0.5, WT850_neg=0.4, WT850_pos=0.6, WU500_neg=0.8, WU500_pos=0.7)
+YLIMS = dict(PRECT=(0, 2.2e-7), TAUX_neg=(-0.12, .01), TAUX_pos=(-5e-3, .03), TAUY_neg=(-.1, .1), TAUY_pos=(-.1, .1), UMF500_neg=(-.012, .012), UMF500_pos=(-.012, .012),\
+            VQ850_neg=(-.009, .009), VQ850_pos=(-.009, .009), VT850_neg=(-5, 5), VT850_pos=(-5, 5), VU200_neg=(-100, 100), VU200_pos=(-100, 100), WQ850_neg=(-1e-4, 1e-5), WQ850_pos=(-2e-5, 5e-4),\
+            WT850_neg=(-0.15, 0), WT850_pos=(0, .15), WU500_neg=(-.8, .05), WU500_pos=(-.05, .8))
 
 def main():
    if not os.path.exists(DIRO):
@@ -72,8 +80,10 @@ def main():
    outallds, outtcsds = xr.merge([outallds, eddallds]), xr.merge([outtcsds, eddtcsds])
 
    print('Saving .nc outputs...')
-   outallds.to_netcdf(os.path.join(DIRO, 'means_all.nc'))
-   outtcsds.to_netcdf(os.path.join(DIRO, 'means_tcs.nc'))
+   with ProgressBar():
+      outallds.to_netcdf(os.path.join(DIRO, 'means_all.nc'))
+   with ProgressBar():
+      outtcsds.to_netcdf(os.path.join(DIRO, 'means_tcs.nc'))
 
    print(sys.argv[0], 'done.')
 
@@ -99,6 +109,10 @@ def main_plot():
       axes[0].legend()
       [ax.set_xticks(np.sin(np.deg2rad(NEWLATS)), NEWLATS) for ax in axes]
       axes[1].set_xlabel('Latitude [°]')
+      if str(dv) in RATLIMS:
+         axes[1].set_ylim(0, RATLIMS[dv])
+      if str(dv) in YLIMS:
+         axes[0].set_ylim(*YLIMS[dv])
       fig.tight_layout()
       plt.savefig(os.path.join(DIRO, str(dv)))
       plt.close()
