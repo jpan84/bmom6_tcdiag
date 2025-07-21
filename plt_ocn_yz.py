@@ -1,4 +1,5 @@
 import xarray as xr
+from dask.diagnostics import ProgressBar
 import numpy as np
 import os
 import sznl_funcs
@@ -27,10 +28,10 @@ def main():
       os.makedirs(DIRO)
 
    dss = [xr.open_mfdataset(HISTS % cs) for cs in CASES]
-   dss = [ds.assign(variables=dict(vmo_resid=\
-          (ds['vmo'] + ds['vhGM']).assign_attrs(long_name='Ocean Mass Residual Y Transport',\
-          cell_methods=ds['vmo'].attrs['cell_methods'], units=ds['vmo'].attrs['units'])\
-          )) for ds in dss]
+   #dss = [ds.assign(variables=dict(vmo_resid=\
+   #       (ds['vmo'] + ds['vhGM']).assign_attrs(long_name='Ocean Mass Residual Y Transport',\
+   #       cell_methods=ds['vmo'].attrs['cell_methods'], units=ds['vmo'].attrs['units'])\
+   #       )) for ds in dss]
    dvars = list(dss[0].data_vars)
 
    outds = None
@@ -65,6 +66,8 @@ def main():
          if sstr in dss[0][dv].attrs['long_name'].lower():
             antisym = True; break
       sznl = [sznl_funcs.stack_hemi_sznl(sznl_funcs.monthly2sznl(mm), antisym=antisym, latnm=ymeth[0]) for mm in monmeans]
+      with ProgressBar():
+         sznl = [sz.compute() for sz in sznl]
 
       outda = xr.concat(sznl, dim=xr.DataArray(ALIASES, dims='case'))
       if outds is None:

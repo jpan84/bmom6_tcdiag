@@ -12,9 +12,11 @@ from sznl_funcs import monthly2sznl, stack_hemi_sznl
 import pltsettings
 import matplotlib.pyplot as plt
 
+MODES = ['compute', 'plot']
+mode = sys.argv[1]
 
 ARCHV = '/glade/campaign/univ/upsu0032/jpan_tcfields/'
-ALIAS = '250416_seed1x1'
+ALIAS = '250417_ctrl'
 CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s' % ALIAS
 DIRO = './tcfields2mps_%s/' % ALIAS
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
@@ -48,6 +50,7 @@ ZMLATS = np.arange(*zmlats)
 SINLAT = np.sin(np.deg2rad(ZMLATS))
 LSTYS = ['solid', 'dashed']
 LCLRS = ['blue', 'orange']
+NEWLATS = np.arange(-50, 51, 10)
 
 def main():
    if not os.path.exists(DIRO):
@@ -73,6 +76,32 @@ def main():
    outtcsds.to_netcdf(os.path.join(DIRO, 'means_tcs.nc'))
 
    print(sys.argv[0], 'done.')
+
+def main_plot():
+   allds = xr.open_dataset(os.path.join(DIRO, 'means_all.nc'))
+   tcsds = xr.open_dataset(os.path.join(DIRO, 'means_tcs.nc'))
+
+   plt.rc('font', size=16)
+
+   for dv in allds.data_vars:
+      print('Plotting', dv)
+      plt.rcParams['figure.figsize'] = (10, 12)
+      subplot_kw = dict(xlim=(-0.75, 0.75), sharex=True)
+      fig, axes = plt.subplots(2, 1, subplot_kw=subplot_kw, gridspec_kw=dict(height_ratios=[3, 1]))
+      axes[0].hlines(0, -1, 1, colors='black', linestyles='dotted')
+      ratio = tcsds[dv] / allds[dv]
+      for tt, szn in enumerate(allds['season']):
+         axes[1].plot(SINLAT, ratio[tt], color=LCLRS[tt])
+         axes[1].set_title('TCs / all')
+         for ii, pltda in enumerate([allds[dv], tcsds[dv]]):
+            axes[0].plot(SINLAT, pltda.sel(season=szn), label=str(szn.values), color=LCLRS[tt], linestyle=LSTYS[ii])
+            axes[0].set_title(str(dv))
+      axes[0].legend()
+      [ax.set_xticks(np.sin(np.deg2rad(NEWLATS)), NEWLATS) for ax in axes]
+      axes[1].set_xlabel('Latitude [°]')
+      fig.tight_layout()
+      plt.savefig(os.path.join(DIRO, str(dv)))
+      plt.close()
 
 #compute the product of terms (scalar or var name) in template
 def template_prod(ds, templ):
@@ -105,7 +134,7 @@ def compute_signed_flds(allds, tcsds, flds_dict):
       templ = flds_dict[fl][:-1]
       allfld = template_prod(allds, templ)
       tcsfld = template_prod(tcsds, templ)
-      sgnlat = np.sign(allfld['lat']) if antisym else 1
+      sgnlat = np.sign(allds['lat']) if antisym else 1
 
       for sgn in [('_pos', operator.gt), ('_neg', operator.lt)]:
          allsgn = (sgn[1](allfld * sgnlat, 0)) * allfld
@@ -121,4 +150,9 @@ def compute_signed_flds(allds, tcsds, flds_dict):
 
 
 if __name__ == '__main__':
-   main()
+   if mode == 'compute':
+      main()
+   if mode == 'plot':
+      main_plot()
+   if mode not in MODES:
+      raise ValueError('invalid mode for script')

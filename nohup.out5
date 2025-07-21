@@ -6,3 +6,30 @@ Waiting on job launch; 5670805.casper-pbs with qsub arguments:
 Opening datasets...
 Processing PRECT unsigned...
 Processing TAUX signed...
+Processing TAUY signed...
+Traceback (most recent call last):
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/dataarray.py", line 892, in _getitem_coord
+var = self._coords[key]
+~~~~~~~~~~~~^^^^^
+KeyError: 'lat'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/tcfieldcontrib1.py", line 124, in <module>
+main()
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/tcfieldcontrib1.py", line 65, in main
+sgnallds, sgntcsds = compute_signed_flds(rawallds, rawtcsds, signed_vars)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/tcfieldcontrib1.py", line 108, in compute_signed_flds
+sgnlat = np.sign(allfld['lat']) if antisym else 1
+~~~~~~^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/dataarray.py", line 901, in __getitem__
+return self._getitem_coord(key)
+^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/dataarray.py", line 895, in _getitem_coord
+_, key, var = _get_virtual_variable(self._coords, key, dim_sizes)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/dataset.py", line 220, in _get_virtual_variable
+raise KeyError(key)
+KeyError: 'lat'
