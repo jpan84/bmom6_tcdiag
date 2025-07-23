@@ -27,6 +27,8 @@ YSCL = lambda lat: np.sin(np.deg2rad(lat))
 YLAB = np.arange(-90, 90.1, 30).astype(np.int_)
 YLOC = YSCL(YLAB)
 
+CLEVS = dict(thetao=((0, 37, 4), (-0.5, 0.51, .05)), rhopot0=((1018, 1030, 1), (-.2, .21, .02)), so=((32, 38, .5), (-.2, .2, .02)), T_ady=((-1.6e16, 1.7e16, 4e15), (-2e15, 2.1e15, 2e14)))
+
 def main():
    if not os.path.exists(DIRO):
       os.makedirs(DIRO)
@@ -126,6 +128,43 @@ def main():
 def main_plot():
    ds = xr.open_dataset(os.path.join(DIRO, 'sznlzm.nc'))
    print(ds)
+
+   for dv in ds.data_vars:
+      print('Plotting', str(dv))
+      plt.rc('font', size=16)
+      plt.rcParams['figure.figsize'] = (30, 12)
+      #contourfkwargs = {'cmap': 'coolwarm' if zero_centered else 'rainbow', 'norm': colors.CenteredNorm(vcenter=0, halfrange=vmax) if zero_centered else colors.Normalize(vmin=vmin, vmax=vmax), 'levels': 11}
+      subplot_kw = dict(xlim=(-1, 1), ylim=(0, 1))
+      fig, axes = plt.subplots(2, 3, layout='constrained', sharey=True, subplot_kw=subplot_kw)
+      #plt.suptitle(f"{dv} [{dss[0][dv].attrs['units']}]\n{dss[0][dv].attrs['long_name']}\n{dss[0][dv].attrs['cell_methods']}")
+      plt.suptitle(str(dv))
+
+      #print(ds[dv], ds[dv].dims[-1])
+      ydim = ds[dv].dims[-1]
+      levels = (11, 11)
+      if str(dv) in CLEVS:
+         levels = (np.arange(*CLEVS[str(dv)][0]), np.arange(*CLEVS[str(dv)][1]))
+      for ii, sz in enumerate(ds['season']):
+         for jj, cs in enumerate(ds['case']):
+            ax, csf = axes[ii, jj], None
+            if DO_DIFF:
+               if jj == 1:
+                  csf = ax.contourf(YSCL(ds[ydim]), ZSCL(ds['zl']), ds[dv].sel(case=cs, season=sz).data, levels=levels[0], cmap='rainbow')
+               else:
+                  ctrl = ds[dv].isel(case=1).sel(season=sz).data
+                  csf = ax.contourf(YSCL(ds[ydim]), ZSCL(ds['zl']), ds[dv].sel(case=cs, season=sz).data - ctrl, levels=levels[1], cmap='bwr', norm=colors.TwoSlopeNorm(0), extend='both')
+            else:
+               csf = ax.contourf(YSCL(ds[ydim]), ZSCL(ds['zl']), ds[dv].sel(case=cs, season=sz).data, levels=levels[0], cmap='rainbow')
+            if ii == 0 and jj == 0:
+               ax.set_ylabel('Depth [m]')
+               ax.set_yticks(ZLOC, ZLAB)
+               ax.invert_yaxis()
+            plt.colorbar(csf, ax=ax)
+            ax.set_xticks(YLOC, YLAB)
+            ax.set_xlabel('Latitude [°]')
+   
+      plt.savefig(os.path.join(DIRO, '%s.png' % str(dv)), bbox_inches='tight')
+      plt.close()
 
 if __name__ == '__main__':
    if mode == 'compute':

@@ -17,9 +17,9 @@ MODES = ['compute', 'plot']
 mode = sys.argv[1]
 
 ARCHV = '/glade/campaign/univ/upsu0032/jpan_tcfields/'
-ALIAS = '250416_seed1x1'
+ALIAS = '250417_ctrl'
 CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s' % ALIAS
-DIRO = './tcfields2mps_%s/' % ALIAS
+DIRO = './tcfields2mps_%s_full/' % ALIAS
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
 RAWALL = 'hist_0010_h1i/cat_h1i.nc'
@@ -27,6 +27,13 @@ RAWTCS = 'TC_R2_masked/*.h1i.*.nc'
 EDDALL = 'yhoureddy/yhoureddy_h1i.nc'
 EDDTCS = 'yhoureddy_TC_R2_masked/yhoureddy_h1i.nc'
 EDDTCS = 'yhoureddy_mask_after/yhoureddy_h1i.nc'
+
+#R8 sensitivity test
+#RAWALL = 'hist_0010_h1i/cat_h1i_1459.nc'
+#RAWTCS = 'TC_R8_masked/cat_h1i_R8.nc'
+#EDDALL = 'yhoureddy/yhoureddy_h1i_1459.nc'
+#EDDTCS = 'yhoureddy_TC_R8_masked/yhoureddy_h1i.nc'
+#DIRO = './tcfields8mps_%s/' % ALIAS
 
 g = 9.81
 unsigned_vars = ['PRECT']
@@ -38,12 +45,12 @@ eddy_fluxes=dict(VTBOT=('VBOT', 'TBOT', True), VT850=('V850', 'T850', True), VT5
                  WT850=(-1, 'OMEGA850', 'T850', False), WT500=(-1, 'OMEGA500', 'T500', False),\
                  WU850=(-1, 'OMEGA850', 'U850', False), WU500=(-1, 'OMEGA500', 'U500', False),\
                  WQ850=(-1, 'OMEGA850', 'Q850', False), WZ850=(-1, 'OMEGA850', 'Z850', False), WZ500=(-1, 'OMEGA500', 'Z500', False)) 
-#eddy_fluxes=dict(VT850=('V850', 'T850', True),\
-#                 VU200=('V200', 'U200', True),\
-#                 VQ850=('V850', 'Q850', True),\
-#                 WT850=(-1, 'OMEGA850', 'T850', False),\
-#                 WU500=(-1, 'OMEGA500', 'U500', False),\
-#                 WQ850=(-1, 'OMEGA850', 'Q850', False))
+eddy_fluxes=dict(VT850=('V850', 'T850', True),\
+                 VU200=('V200', 'U200', True),\
+                 VQ850=('V850', 'Q850', True),\
+                 WT850=(-1, 'OMEGA850', 'T850', False),\
+                 WU500=(-1, 'OMEGA500', 'U500', False),\
+                 WQ850=(-1, 'OMEGA850', 'Q850', False))
 
 zmlats = (-90, 90.1, 0.5)
 LATLAB = np.arange(-90, 91, 30)
@@ -99,7 +106,7 @@ def main_plot():
       subplot_kw = dict(xlim=(-0.75, 0.75), sharex=True)
       fig, axes = plt.subplots(2, 1, subplot_kw=subplot_kw, gridspec_kw=dict(height_ratios=[3, 1]))
       axes[0].hlines(0, -1, 1, colors='black', linestyles='dotted')
-      ratio = tcsds[dv] / allds[dv]
+      ratio = (tcsds[dv] / allds[dv]).clip(min=0)
       for tt, szn in enumerate(allds['season']):
          axes[1].plot(SINLAT, ratio[tt], color=LCLRS[tt])
          axes[1].set_title('TCs / all')
@@ -116,6 +123,36 @@ def main_plot():
       fig.tight_layout()
       plt.savefig(os.path.join(DIRO, str(dv)))
       plt.close()
+
+      if '_pos' in str(dv):
+         totname = str(dv).strip('_pos') + '_net'
+         negname = str(dv).strip('_pos') + '_neg'
+         plt.rcParams['figure.figsize'] = (10, 12)
+         subplot_kw = dict(xlim=(-0.75, 0.75), sharex=True)
+         fig, axes = plt.subplots(2, 1, subplot_kw=subplot_kw, gridspec_kw=dict(height_ratios=[3, 1]))
+         axes[0].hlines(0, -1, 1, colors='black', linestyles='dotted')
+         netall, nettcs = allds[dv] + allds[negname], tcsds[dv] + tcsds[negname]
+         #ratio = nettcs / netall #raw ratio is unstable at zero crossings
+         posrat, negrat = tcsds[dv] / allds[dv], tcsds[negname] / allds[negname]
+         ratio = (np.abs(allds[dv]) * posrat + np.abs(allds[negname]) * negrat)\
+                    / (np.abs(allds[dv]) + np.abs(allds[negname]))
+         ratio = ratio.clip(min=0)
+         for tt, szn in enumerate(allds['season']):
+            axes[1].plot(SINLAT, ratio[tt], color=LCLRS[tt])
+            axes[1].set_title('TCs / all')
+            for ii, pltda in enumerate([netall, nettcs]):
+               axes[0].plot(SINLAT, pltda.sel(season=szn), label=str(szn.values), color=LCLRS[tt], linestyle=LSTYS[ii])
+               axes[0].set_title(totname)
+         axes[0].legend()
+         [ax.set_xticks(np.sin(np.deg2rad(NEWLATS)), NEWLATS) for ax in axes]
+         axes[1].set_xlabel('Latitude [°]')
+         #if str(dv) in RATLIMS:
+         #   axes[1].set_ylim(0, RATLIMS[dv])
+         #if str(dv) in YLIMS:
+         #   axes[0].set_ylim(*YLIMS[dv])
+         fig.tight_layout()
+         plt.savefig(os.path.join(DIRO, totname))
+         plt.close()
 
 #compute the product of terms (scalar or var name) in template
 def template_prod(ds, templ):
