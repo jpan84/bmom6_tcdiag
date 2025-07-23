@@ -33,7 +33,7 @@ EDDTCS = 'yhoureddy_mask_after/yhoureddy_h1i.nc'
 #RAWTCS = 'TC_R8_masked/cat_h1i_R8.nc'
 #EDDALL = 'yhoureddy/yhoureddy_h1i_1459.nc'
 #EDDTCS = 'yhoureddy_TC_R8_masked/yhoureddy_h1i.nc'
-#DIRO = './tcfields8mps_%s/' % ALIAS
+DIRO = './tcfields8mps_%s/' % ALIAS
 
 g = 9.81
 unsigned_vars = ['PRECT']
@@ -66,6 +66,10 @@ RATLIMS = dict(PRECT=0.7, TAUX_neg=0.5, TAUX_pos=1, TAUY_neg=0.6, TAUY_pos=1, UM
 YLIMS = dict(PRECT=(0, 2.2e-7), TAUX_neg=(-0.12, .01), TAUX_pos=(-5e-3, .03), TAUY_neg=(-.1, .1), TAUY_pos=(-.1, .1), UMF500_neg=(-.012, .012), UMF500_pos=(-.012, .012),\
             VQ850_neg=(-.009, .009), VQ850_pos=(-.009, .009), VT850_neg=(-5, 5), VT850_pos=(-5, 5), VU200_neg=(-100, 100), VU200_pos=(-100, 100), WQ850_neg=(-1e-4, 1e-5), WQ850_pos=(-2e-5, 5e-4),\
             WT850_neg=(-0.15, 0), WT850_pos=(0, .15), WU500_neg=(-.8, .05), WU500_pos=(-.05, .8))
+
+RLIMS_NET = dict(TAUX_net=0.55, TAUY_net=0.65, UMF500_net=0.5, VQ850_net=0.5, VT850_net=0.6, VU200_net=0.25, VU850_net=0.65, VZ500_net=0.65, WQ850_net=0.5, WT850_net=0.5, WU500_net=0.7, WZ850_net=0.75)
+YLIMS_NET = dict(TAUX_net=(-.13, .2), TAUY_net=(-.05, .05), UMF500_net=(-3e-3, 8e-3), VQ850_net=(-8e-3, 8e-3), VT850_net=(-18, 15), VU200_net=(-85, 85), VU850_net=(-15, 12), VZ500_net=(-20, 20),\
+                WQ850_net=(-1e-5, 4e-4), WT850_net=(-2e-2, .18), WU500_net=(-0.12, 0.35), WZ850_net=(-3.6, 0.1))
 
 def main():
    if not os.path.exists(DIRO):
@@ -146,10 +150,10 @@ def main_plot():
          axes[0].legend()
          [ax.set_xticks(np.sin(np.deg2rad(NEWLATS)), NEWLATS) for ax in axes]
          axes[1].set_xlabel('Latitude [°]')
-         #if str(dv) in RATLIMS:
-         #   axes[1].set_ylim(0, RATLIMS[dv])
-         #if str(dv) in YLIMS:
-         #   axes[0].set_ylim(*YLIMS[dv])
+         if totname in RLIMS_NET:
+            axes[1].set_ylim(0, RLIMS_NET[totname])
+         if totname in YLIMS_NET:
+            axes[0].set_ylim(*YLIMS_NET[totname])
          fig.tight_layout()
          plt.savefig(os.path.join(DIRO, totname))
          plt.close()

@@ -6274,3 +6274,25 @@ Working on volcello...
 vprec not 3D. Skipping...
 Working on vsq...
 wfo not 3D. Skipping...
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/glade/derecho/scratch/jpan/tmp/runtime-jpan'
+Plotting PRECT
+Plotting TAUX_pos
+Plotting TAUX_neg
+Plotting TAUY_pos
+Plotting TAUY_neg
+Plotting UMF500_pos
+Plotting UMF500_neg
+Plotting UMF850_pos
+Plotting UMF850_neg
+Plotting VT850_pos
+Plotting VT850_neg
+Plotting VU200_pos
+Plotting VU200_neg
+Plotting VQ850_pos
+Plotting VQ850_neg
+Plotting WT850_pos
+Plotting WT850_neg
+Plotting WU500_pos
+Plotting WU500_neg
+Plotting WQ850_pos
+Plotting WQ850_neg
