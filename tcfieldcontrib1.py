@@ -127,16 +127,20 @@ def main_plot():
 
    for dv in allds.data_vars:
       print('Plotting', dv)
+      #print(allds[dv].dims)
       plt.rcParams['figure.figsize'] = (10, 12)
       subplot_kw = dict(xlim=(-0.75, 0.75), sharex=True)
       fig, axes = plt.subplots(2, 1, subplot_kw=subplot_kw, gridspec_kw=dict(height_ratios=[3, 1]))
       axes[0].hlines(0, -1, 1, colors='black', linestyles='dotted')
       ratio = (tcsds[dv] / allds[dv]).clip(min=0)
+      sinlats = SINLAT
       for tt, szn in enumerate(allds['season']):
-         axes[1].plot(SINLAT, ratio[tt], color=LCLRS[tt])
+         if 'yh' in ratio.dims:
+            sinlats = np.sin(np.deg2rad(ratio['yh']))
+         axes[1].plot(sinlats, ratio[tt], color=LCLRS[tt])
          axes[1].set_title('TCs / all')
          for ii, pltda in enumerate([allds[dv], tcsds[dv]]):
-            axes[0].plot(SINLAT, pltda.sel(season=szn), label=str(szn.values), color=LCLRS[tt], linestyle=LSTYS[ii])
+            axes[0].plot(sinlats, pltda.sel(season=szn), label=str(szn.values), color=LCLRS[tt], linestyle=LSTYS[ii])
             axes[0].set_title(str(dv))
       axes[0].legend()
       [ax.set_xticks(np.sin(np.deg2rad(NEWLATS)), NEWLATS) for ax in axes]
@@ -150,8 +154,9 @@ def main_plot():
       plt.close()
 
       if '_pos' in str(dv):
-         totname = str(dv).strip('_pos') + '_net'
-         negname = str(dv).strip('_pos') + '_neg'
+         totname = str(dv).replace('_pos', '_net')
+         negname = str(dv).replace('_pos', '_neg')
+         #print(str(dv), totname)
          plt.rcParams['figure.figsize'] = (10, 12)
          subplot_kw = dict(xlim=(-0.75, 0.75), sharex=True)
          fig, axes = plt.subplots(2, 1, subplot_kw=subplot_kw, gridspec_kw=dict(height_ratios=[3, 1]))
@@ -163,10 +168,10 @@ def main_plot():
                     / (np.abs(allds[dv]) + np.abs(allds[negname]))
          ratio = ratio.clip(min=0)
          for tt, szn in enumerate(allds['season']):
-            axes[1].plot(SINLAT, ratio[tt], color=LCLRS[tt])
+            axes[1].plot(sinlats, ratio[tt], color=LCLRS[tt])
             axes[1].set_title('TCs / all')
             for ii, pltda in enumerate([netall, nettcs]):
-               axes[0].plot(SINLAT, pltda.sel(season=szn), label=str(szn.values), color=LCLRS[tt], linestyle=LSTYS[ii])
+               axes[0].plot(sinlats, pltda.sel(season=szn), label=str(szn.values), color=LCLRS[tt], linestyle=LSTYS[ii])
                axes[0].set_title(totname)
          axes[0].legend()
          [ax.set_xticks(np.sin(np.deg2rad(NEWLATS)), NEWLATS) for ax in axes]
