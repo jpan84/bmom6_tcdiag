@@ -19,14 +19,19 @@ mode = sys.argv[1]
 ARCHV = '/glade/campaign/univ/upsu0032/jpan_tcfields/'
 ALIAS = '250417_ctrl'
 CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s' % ALIAS
-DIRO = './tcfields2mps_%s_full/' % ALIAS
+DIRO = './tcfields2mps_%s/' % ALIAS
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
 RAWALL = 'hist_0010_h1i/cat_h1i.nc'
 RAWTCS = 'TC_R2_masked/*.h1i.*.nc'
 EDDALL = 'yhoureddy/yhoureddy_h1i.nc'
-EDDTCS = 'yhoureddy_TC_R2_masked/yhoureddy_h1i.nc'
+#EDDTCS = 'yhoureddy_TC_R2_masked/yhoureddy_h1i.nc'
 EDDTCS = 'yhoureddy_mask_after/yhoureddy_h1i.nc'
+
+OCNALL = 'hist_0010_h1i/cat_sfc_0010.nc'
+OCNTCS = 'TC_R2_masked/cat_sfc_0010.nc'
+OCAALL = 'yhoureddy/yhouranom_sfc_0010.nc'
+OCATCS = 'yhoureddy_mask_after/yhouranom_sfc_0010.nc'
 
 #R8 sensitivity test
 #RAWALL = 'hist_0010_h1i/cat_h1i_1459.nc'
@@ -36,6 +41,8 @@ EDDTCS = 'yhoureddy_mask_after/yhoureddy_h1i.nc'
 DIRO = './tcfields8mps_%s/' % ALIAS
 
 g = 9.81
+
+#CAM fields
 unsigned_vars = ['PRECT']
 signed_vars = dict(TAUX=(-1, 'TAUX', False), TAUY=(-1, 'TAUY', True), UMF500=(-1/g, 'OMEGA500', False), UMF850=(-1/g, 'OMEGA850', False))#template: (...take the product of these scalars/data_vars..., antisym?)
 
@@ -51,6 +58,10 @@ eddy_fluxes=dict(VT850=('V850', 'T850', True),\
                  WT850=(-1, 'OMEGA850', 'T850', False),\
                  WU500=(-1, 'OMEGA500', 'U500', False),\
                  WQ850=(-1, 'OMEGA850', 'Q850', False))
+
+#MOM fields
+ocn_signed = dict(hflso=(1, 'hflso', False), hfsso=(1, 'hfsso', False))
+ocn_anom = dict(rlntds=(1, 'rlntds', False), rsntds=(1, 'rsntds', False))
 
 zmlats = (-90, 90.1, 0.5)
 LATLAB = np.arange(-90, 91, 30)
@@ -81,7 +92,12 @@ def main():
    rawtcsds = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, RAWTCS))
    eddallds = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, EDDALL))
    eddtcsds = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, EDDTCS))
+   ocnallds = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, OCNALL))
+   ocntcsds = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, OCNTCS))
+   ocaallds = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, OCAALL))
+   ocatcsds = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, OCATCS))
 
+   print('Setting up CAM fields...')
    outallds, outtcsds = compute_unsigned_flds(rawallds, rawtcsds, unsigned_vars)
 
    sgnallds, sgntcsds = compute_signed_flds(rawallds, rawtcsds, signed_vars)
@@ -90,11 +106,16 @@ def main():
    eddallds, eddtcsds = compute_signed_flds(eddallds, eddtcsds, eddy_fluxes)
    outallds, outtcsds = xr.merge([outallds, eddallds]), xr.merge([outtcsds, eddtcsds])
 
+   print('Setting up MOM fields...')
+   ocnallds, ocntcsds = compute_signed_flds(ocnallds, ocntcsds, ocn_signed)
+   ocaallds, ocatcsds = compute_signed_flds(ocaallds, ocatcsds, ocn_anom)
+   outallds, outtcsds = xr.merge([outallds, ocnallds, ocaallds]), xr.merge([outtcsds, ocntcsds, ocatcsds])
+
    print('Saving .nc outputs...')
    with ProgressBar():
-      outallds.to_netcdf(os.path.join(DIRO, 'means_all.nc'))
+      outallds.compute().to_netcdf(os.path.join(DIRO, 'means_all.nc'))
    with ProgressBar():
-      outtcsds.to_netcdf(os.path.join(DIRO, 'means_tcs.nc'))
+      outtcsds.compute().to_netcdf(os.path.join(DIRO, 'means_tcs.nc'))
 
    print(sys.argv[0], 'done.')
 
@@ -165,8 +186,13 @@ def template_prod(ds, templ):
 
 #Compute seasonal and zonal mean after all physical quantity computation/masking is complete
 def all_and_TC_to_sznlzm(allda, tcsda, antisym=False):
-   monzm = [da.groupby('time.month').mean().zonal_mean(lat=ZMLATS) for da in [allda, tcsda]]
-   return [stack_hemi_sznl(monthly2sznl(da), antisym=antisym) for da in monzm]
+   typ = type(allda)
+   if typ == ux.UxDataArray:
+      monzm = [da.groupby('time.month').mean().zonal_mean(lat=ZMLATS) for da in [allda, tcsda]]
+      return [stack_hemi_sznl(monthly2sznl(da), antisym=antisym) for da in monzm]
+   if typ == xr.DataArray: #hard-coded for MOM6 tracer points
+      monzm = [da.groupby('time.month').mean().mean(dim='xh') for da in [allda, tcsda]]
+      return [stack_hemi_sznl(monthly2sznl(da), antisym=antisym, latnm='yh') for da in monzm]
 
 def compute_unsigned_flds(allds, tcsds, flds):
    retall, rettcs = None, None
