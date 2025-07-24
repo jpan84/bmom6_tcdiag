@@ -38,7 +38,7 @@ OCATCS = 'yhoureddy_mask_after/yhouranom_sfc_0010.nc'
 #RAWTCS = 'TC_R8_masked/cat_h1i_R8.nc'
 #EDDALL = 'yhoureddy/yhoureddy_h1i_1459.nc'
 #EDDTCS = 'yhoureddy_TC_R8_masked/yhoureddy_h1i.nc'
-DIRO = './tcfields8mps_%s/' % ALIAS
+#DIRO = './tcfields8mps_%s/' % ALIAS
 
 g = 9.81
 
@@ -92,10 +92,10 @@ def main():
    rawtcsds = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, RAWTCS))
    eddallds = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, EDDALL))
    eddtcsds = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, EDDTCS))
-   ocnallds = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, OCNALL))
-   ocntcsds = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, OCNTCS))
-   ocaallds = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, OCAALL))
-   ocatcsds = ux.open_mfdataset(camgrid, os.path.join(ARCHV, CASE, OCATCS))
+   ocnallds = xr.open_dataset(os.path.join(ARCHV, CASE, OCNALL))
+   ocntcsds = xr.open_dataset(os.path.join(ARCHV, CASE, OCNTCS))
+   ocaallds = xr.open_dataset(os.path.join(ARCHV, CASE, OCAALL))
+   ocatcsds = xr.open_dataset(os.path.join(ARCHV, CASE, OCATCS))
 
    print('Setting up CAM fields...')
    outallds, outtcsds = compute_unsigned_flds(rawallds, rawtcsds, unsigned_vars)
@@ -113,9 +113,9 @@ def main():
 
    print('Saving .nc outputs...')
    with ProgressBar():
-      outallds.compute().to_netcdf(os.path.join(DIRO, 'means_all.nc'))
+      outallds.to_netcdf(os.path.join(DIRO, 'means_all.nc'))
    with ProgressBar():
-      outtcsds.compute().to_netcdf(os.path.join(DIRO, 'means_tcs.nc'))
+      outtcsds.to_netcdf(os.path.join(DIRO, 'means_tcs.nc'))
 
    print(sys.argv[0], 'done.')
 
