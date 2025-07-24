@@ -19,7 +19,7 @@ mode = sys.argv[1]
 ARCHV = '/glade/campaign/univ/upsu0032/jpan_tcfields/'
 ALIAS = '250417_ctrl'
 CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s' % ALIAS
-DIRO = './tcfields2mps_%s/' % ALIAS
+DIRO = './tcfields2mps_%s_ocn/' % ALIAS
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
 RAWALL = 'hist_0010_h1i/cat_h1i.nc'
@@ -58,10 +58,11 @@ eddy_fluxes=dict(VT850=('V850', 'T850', True),\
                  WT850=(-1, 'OMEGA850', 'T850', False),\
                  WU500=(-1, 'OMEGA500', 'U500', False),\
                  WQ850=(-1, 'OMEGA850', 'Q850', False))
+unsigned_vars, signed_vars, eddy_fluxes = [], dict(), dict()
 
 #MOM fields
 ocn_signed = dict(hflso=(1, 'hflso', False), hfsso=(1, 'hfsso', False))
-ocn_anom = dict(rlntds=(1, 'rlntds', False), rsntds=(1, 'rsntds', False))
+ocn_anom = dict(rlntds=(1, 'rlntds', False), rsntds=(1, 'rsntds', False), hflso_a=(1, 'hflso', False), hfsso_a=(1, 'hfsso', False))
 
 zmlats = (-90, 90.1, 0.5)
 LATLAB = np.arange(-90, 91, 30)
