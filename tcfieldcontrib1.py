@@ -222,11 +222,11 @@ def compute_signed_flds(allds, tcsds, flds_dict):
          tcssgn = (sgn[1](tcsfld * sgnlat, 0)) * tcsfld
          sznzm = all_and_TC_to_sznlzm(allsgn, tcssgn, antisym=antisym)
          if retall is None:
-            retall = xr.Dataset(data_vars={fl + sgn[0]: sznzm[0].to_xarray()})
-            rettcs = xr.Dataset(data_vars={fl + sgn[0]: sznzm[1].to_xarray()})
+            retall = xr.Dataset(data_vars={fl + sgn[0]: sznzm[0]})#.to_xarray()})
+            rettcs = xr.Dataset(data_vars={fl + sgn[0]: sznzm[1]})#.to_xarray()})
          else:
-            retall = retall.assign(variables={fl + sgn[0]: sznzm[0].to_xarray()})
-            rettcs = rettcs.assign(variables={fl + sgn[0]: sznzm[1].to_xarray()})
+            retall = retall.assign(variables={fl + sgn[0]: sznzm[0]})#.to_xarray()})
+            rettcs = rettcs.assign(variables={fl + sgn[0]: sznzm[1]})#.to_xarray()})
    return retall, rettcs
 
 

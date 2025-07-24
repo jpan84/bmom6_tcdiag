@@ -24,10 +24,15 @@ ZLAB = np.arange(1000, 5000, 1000)
 ZLOC = ZSCL(ZLAB)
 
 YSCL = lambda lat: np.sin(np.deg2rad(lat))
-YLAB = np.arange(-90, 90.1, 30).astype(np.int_)
+YLAB = np.array([-90, -60, -45, -30, -15, 0, 15, 30, 45, 60, 90]).astype(np.int_)
 YLOC = YSCL(YLAB)
 
-CLEVS = dict(thetao=((0, 37, 4), (-0.5, 0.51, .05)), rhopot0=((1018, 1030, 1), (-.2, .21, .02)), so=((32, 38, .5), (-.2, .2, .02)), T_ady=((-1.6e16, 1.7e16, 4e15), (-2e15, 2.1e15, 2e14)))
+CLEVS = dict(thetao=((0, 37, 4), (-0.5, 0.51, .05)), rhopot0=((1018, 1030, 1), (-.2, .21, .02)), so=((32, 38, .5), (-.2, .2, .02)), T_ady=((-1.6e16, 1.7e16, 4e15), (-2e15, 2.1e15, 2e14)),\
+             uo=((-2.25, 0.6, .25), (-.1, .21, .02)))
+ZEROCTR = {'vmo', 'uo', 'vo'}
+LIMDEPTH = {'uo', 'thetao', 'rhopot0', 'so'}
+LIMLAB = np.arange(200, 1500, 200)
+LIMLOC = ZSCL(LIMLAB)
 
 def main():
    if not os.path.exists(DIRO):
@@ -147,18 +152,24 @@ def main_plot():
       for ii, sz in enumerate(ds['season']):
          for jj, cs in enumerate(ds['case']):
             ax, csf = axes[ii, jj], None
+            ctrlnorm = colors.TwoSlopeNorm(0) if str(dv) in ZEROCTR else None
             if DO_DIFF:
                if jj == 1:
-                  csf = ax.contourf(YSCL(ds[ydim]), ZSCL(ds['zl']), ds[dv].sel(case=cs, season=sz).data, levels=levels[0], cmap='rainbow')
+                  csf = ax.contourf(YSCL(ds[ydim]), ZSCL(ds['zl']), ds[dv].sel(case=cs, season=sz).data, levels=levels[0], cmap='PiYG', norm=ctrlnorm)
                else:
                   ctrl = ds[dv].isel(case=1).sel(season=sz).data
                   csf = ax.contourf(YSCL(ds[ydim]), ZSCL(ds['zl']), ds[dv].sel(case=cs, season=sz).data - ctrl, levels=levels[1], cmap='bwr', norm=colors.TwoSlopeNorm(0), extend='both')
             else:
-               csf = ax.contourf(YSCL(ds[ydim]), ZSCL(ds['zl']), ds[dv].sel(case=cs, season=sz).data, levels=levels[0], cmap='rainbow')
+               csf = ax.contourf(YSCL(ds[ydim]), ZSCL(ds['zl']), ds[dv].sel(case=cs, season=sz).data, levels=levels[0], cmap='PiYG', norm=ctrlnorm)
             if ii == 0 and jj == 0:
                ax.set_ylabel('Depth [m]')
                ax.set_yticks(ZLOC, ZLAB)
                ax.invert_yaxis()
+
+               if str(dv) in LIMDEPTH:
+                  ax.set_yticks(LIMLOC, LIMLAB)
+                  ax.set_ylim(ZSCL(800), ZSCL(0)) 
+
             plt.colorbar(csf, ax=ax)
             ax.set_xticks(YLOC, YLAB)
             ax.set_xlabel('Latitude [°]')
