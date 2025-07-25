@@ -49,6 +49,13 @@ def main():
    print(totyrs)
    #exit()
 
+   usdf, sddf = None, None
+   if PLOTSEEDS:
+      usdf = pd.read_parquet(events[0]).rename(columns=rename_dict)
+      sddf = pd.read_parquet(events[-1]).rename(columns=rename_dict)
+      #print(usdf)
+      #print(usdf['dt'])
+
    bininfo = make_bin_grid_1d(latbnds=(-90., 90.), dlat=DLAT)
 
    plt.rc('font', size=14)
@@ -66,12 +73,10 @@ def main():
       outdss.append(xr.Dataset(data_vars=dict(uniq=uniq, h6all=h6all, h6hurr=h6hurr, h6maj=h6maj, ace=ace), attrs=dict(dlat=DLAT)).expand_dims(season=[sznnm]))
    
       if PLOTSEEDS:
-         usdf = pd.read_parquet(events[0]).rename(columns=rename_dict)
-         unseeds = accum_bin_map_1d(usdf, bininfo, 'psmin', lambda ps: not np.isnan(ps), dtype=np.int_, rettype=np.int_)
+         unseeds = accum_bin_map_1d(usdf[usdf['dt'].dt.month.isin(sznmos)], bininfo, 'psmin', lambda ps: not np.isnan(ps), dtype=np.int_, rettype=np.int_)
          usdens = xr.DataArray(unseeds / (bininfo[2] / 1e6 / 1e3**2) / totyrs[0], dims=['lat'], coords=[bininfo[1]])
-   
-         sddf = pd.read_parquet(events[-1]).rename(columns=rename_dict)
-         seeds = accum_bin_map_1d(usdf, bininfo, 'lat', lambda lat: 1, dtype=np.int_, rettype=np.int_)
+
+         seeds = accum_bin_map_1d(sddf[sddf['dt'].dt.month.isin(sznmos)], bininfo, 'lat', lambda lat: 1, dtype=np.int_, rettype=np.int_)
          sddens = xr.DataArray(seeds / (bininfo[2] / 1e6 / 1e3**2) / totyrs[-1], dims=['lat'], coords=[bininfo[1]])
    
          outdss[-1] = outdss[-1].assign(variables=dict(unseeds=usdens, seeds=sddens))
