@@ -51,11 +51,12 @@ def main():
    momdss = [xr.open_mfdataset(MOMH % cs) for cs in CASES]
 
    print('\nComputing OHT...')
-   oht = [derive_flx(ds, OHT, 'yq', True).isel(yq=slice(0, -1)) for ds in momdss]
+   oht = [derive_flx(ds, OHT, 'yq', True).isel(yq=slice(0, -1)) for ii, ds in enumerate(momdss)]
    ###if DO_DIFF:
    ###   oht[0], oht[2] = oht[0] - oht[1], oht[2] - oht[1]
    siny_q = np.sin(np.deg2rad(oht[0]['yq']))
    ###print(siny_q.values) #TODO: always remove the last (northernmost) yq point to make hemi sym
+   outds = xr.Dataset(data_vars=dict(oht=xr.concat(oht, dim=xr.Variable('case', ALIASES))))
 
    print('\tPlotting OHT...')
    plt_cases(siny_q, oht, 'OHT', '[W]', linestyle='solid')
@@ -78,16 +79,21 @@ def main():
    aoht = [oht[ii] + ada.data.T for ii, ada in enumerate(aht_q)]
    print('\tPlotting AOHT...')
    plt_cases(siny_q, aoht, 'AOHT', '[W]')
+   outds = outds.assign(variables=dict(aoht=xr.concat(aoht, dim=xr.Variable('case', ALIASES))))
 
    print('\nComputing AHU...')
-   ahu = [derive_flx(ds, AHU, 'lat', False) for ds in camdss]
+   ahu = [derive_flx(ds, AHU, 'lat', False) for ii, ds in enumerate(camdss)]
    print('\tPlotting AHU...')
    plt_cases(sinlat_h, ahu, 'AHU', '[W m$^{-2}$]')
+   outds = outds.assign(variables=dict(ahu=xr.concat(ahu, dim=xr.Variable('case', ALIASES))))
 
    print('\nComputing sfcHU...')
-   shu = [derive_flx(ds, OHU_CAM, 'lat', False) for ds in camdss]
+   shu = [derive_flx(ds, OHU_CAM, 'lat', False) for ii, ds in enumerate(camdss)]
    print('\tPlotting sfcHU...')
    plt_cases(sinlat_h, shu, 'sfcHU', '[W m$^{-2}$]')
+   outds = outds.assign(variables=dict(ohu=xr.concat(shu, dim=xr.Variable('case', ALIASES))))
+
+   outds.to_netcdf(os.path.join(DIRO, 'HT_HU.nc'))
 
    print('\nComputing RESTOM...')
    rom = [derive_flx(ds, RESTOM, 'lat', False) for ds in camdss]
@@ -164,9 +170,9 @@ def plt_cases(sinlat, das, *args, **kwargs):
    fig, axes = plt.subplots(1, 3, layout='constrained', subplot_kw=subplot_kw)
    for ii, pltda in enumerate(das):
       if not ii == 1 and DO_DIFF:
-         plt_sznl(sinlat, pltda - das[1], *args, **kwargs, title=ALIASES[ii], ax=axes[ii])
+         plt_sznl(sinlat, (pltda - das[1]).squeeze(), *args, **kwargs, title=ALIASES[ii], ax=axes[ii])
       else:
-         plt_sznl(sinlat, pltda, *args, **kwargs, title=ALIASES[ii], ax=axes[ii])
+         plt_sznl(sinlat, pltda.squeeze(), *args, **kwargs, title=ALIASES[ii], ax=axes[ii])
    plt.savefig(os.path.join(DIRO, '%s.png' % args[0]), bbox_inches='tight')
    plt.close()
 
