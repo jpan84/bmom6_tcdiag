@@ -20,12 +20,15 @@ LATLABS = np.arange(-90, 90.1, 30)
 FIXYLIM = (0, 70)
 DLAT = 0.5
 
+SZNS = ['DJF', 'MAM', 'JJA', 'SON']
+SZMOs = [{12, 1, 2}, {3, 4, 5}, {6, 7, 8}, {9, 10, 11}]
+
 #FILI = sys.argv[1]
 FILI = ['250415_unseed.parquet', '250417_ctrl.parquet', '250416_seed1x1.parquet']
 labels = ['unseed', 'ctrl', 'seed']
 events = ['250415_unseed_production_unseed_events.parquet', None, '250416_seed1x1_production_seed_events.parquet']
 rename_dict = dict(clat='lat', clon='lon')
-DOUT = '250519_density'
+DOUT = '250725_density_sznl'
 
 #FILI = ['250415_unseed_JJASOND.parquet', '250417_ctrl_JJASOND.parquet']
 #labels = ['unseed', 'ctrl']
@@ -38,6 +41,8 @@ def main():
       os.makedirs(DOUT)
 
    dfs = [pd.read_parquet(f) for f in FILI]
+   print(dfs[0].index, type(dfs[0].index))
+   print(dfs[0].groupby(dfs[0].index.month))
    trange = [df.index.max() - df.index[0] for df in dfs]
    print(trange)
    totyrs = [tr.total_seconds() / 86400 / 365 for tr in trange]
@@ -48,26 +53,30 @@ def main():
 
    plt.rc('font', size=14)
 
-   uniq = plot_lat_binned(dfs, bininfo, totyrs, unique_tracks_of_storm_1d, 'unique storms', 'unique_track_dens_%.1f.png' % DLAT)
-   h6all = plot_lat_binned(dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly fixes', '6hr_track_dens_%.1f.png' % DLAT)
-   h6hurr = plot_lat_binned(dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly hurricane fixes', '6hr_track_dens_hurr_%.1f.png' % DLAT, wspd_thresh=33)
-   h6maj = plot_lat_binned(dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly major hurricane fixes', '6hr_track_dens_major_%.1f.png' % DLAT, wspd_thresh=50)
-   ace = plot_lat_binned(dfs, bininfo, totyrs, bin_ace_of_storm_1d, 'ACE [$10^4$ kt$^2$] ', 'ace_binned_%.1f.png' % DLAT)
+   outdss = []
+   for sznnm, sznmos in zip(SZNS, SZMOs):
+      szn_dfs = [df[df.index.month.isin(sznmos)] for df in dfs]
 
-   outds = xr.Dataset(data_vars=dict(uniq=uniq, h6all=h6all, h6hurr=h6hurr, h6maj=h6maj, ace=ace), attrs=dict(dlat=DLAT))
-
-   if PLOTSEEDS:
-      usdf = pd.read_parquet(events[0]).rename(columns=rename_dict)
-      unseeds = accum_bin_map_1d(usdf, bininfo, 'psmin', lambda ps: not np.isnan(ps), dtype=np.int_, rettype=np.int_)
-      usdens = xr.DataArray(unseeds / (bininfo[2] / 1e6 / 1e3**2) / totyrs[0], dims=['lat'], coords=[bininfo[1]])
-
-      sddf = pd.read_parquet(events[-1]).rename(columns=rename_dict)
-      seeds = accum_bin_map_1d(usdf, bininfo, 'lat', lambda lat: 1, dtype=np.int_, rettype=np.int_)
-      sddens = xr.DataArray(seeds / (bininfo[2] / 1e6 / 1e3**2) / totyrs[-1], dims=['lat'], coords=[bininfo[1]])
-
-      outds = outds.assign(variables=dict(unseeds=usdens, seeds=sddens))
-
-   outds.to_netcdf(os.path.join(DOUT, 'tcdens.nc'))
+      uniq = plot_lat_binned(szn_dfs, bininfo, totyrs, unique_tracks_of_storm_1d, 'unique storms', 'unique_track_dens_%.1f_%s.png' % (DLAT, sznnm))
+      h6all = plot_lat_binned(szn_dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly fixes', '6hr_track_dens_%.1f_%s.png' % (DLAT, sznnm))
+      h6hurr = plot_lat_binned(szn_dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly hurricane fixes', '6hr_track_dens_hurr_%.1f_%s.png' % (DLAT, sznnm), wspd_thresh=33)
+      h6maj = plot_lat_binned(szn_dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly major hurricane fixes', '6hr_track_dens_major_%.1f_%s.png' % (DLAT, sznnm), wspd_thresh=50)
+      ace = plot_lat_binned(szn_dfs, bininfo, totyrs, bin_ace_of_storm_1d, 'ACE [$10^4$ kt$^2$] ', 'ace_binned_%.1f_%s.png' % (DLAT, sznnm))
+   
+      outdss.append(xr.Dataset(data_vars=dict(uniq=uniq, h6all=h6all, h6hurr=h6hurr, h6maj=h6maj, ace=ace), attrs=dict(dlat=DLAT)).expand_dims(season=[sznnm]))
+   
+      if PLOTSEEDS:
+         usdf = pd.read_parquet(events[0]).rename(columns=rename_dict)
+         unseeds = accum_bin_map_1d(usdf, bininfo, 'psmin', lambda ps: not np.isnan(ps), dtype=np.int_, rettype=np.int_)
+         usdens = xr.DataArray(unseeds / (bininfo[2] / 1e6 / 1e3**2) / totyrs[0], dims=['lat'], coords=[bininfo[1]])
+   
+         sddf = pd.read_parquet(events[-1]).rename(columns=rename_dict)
+         seeds = accum_bin_map_1d(usdf, bininfo, 'lat', lambda lat: 1, dtype=np.int_, rettype=np.int_)
+         sddens = xr.DataArray(seeds / (bininfo[2] / 1e6 / 1e3**2) / totyrs[-1], dims=['lat'], coords=[bininfo[1]])
+   
+         outdss[-1] = outdss[-1].assign(variables=dict(unseeds=usdens, seeds=sddens))
+   
+      xr.concat(outdss, dim='season').to_netcdf(os.path.join(DOUT, 'tcdens.nc'))
 
 def plot_lat_binned(dfs, bininfo, totyrs, varfunc, ylabel, filo, norm='per million km2 per yr', **fkwargs):
    pltdat = [np.zeros_like(bininfo[1]) for _ in dfs]

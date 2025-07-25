@@ -58,7 +58,7 @@ eddy_fluxes=dict(VT850=('V850', 'T850', True),\
                  WT850=(-1, 'OMEGA850', 'T850', False),\
                  WU500=(-1, 'OMEGA500', 'U500', False),\
                  WQ850=(-1, 'OMEGA850', 'Q850', False))
-unsigned_vars, signed_vars, eddy_fluxes = [], dict(), dict()
+eddy_fluxes, signed_vars = dict(VT850=('V850', 'T850', True)), dict(TAUY=(-1, 'TAUY', True))
 
 #MOM fields
 ocn_signed = dict(hflso=(1, 'hflso', False), hfsso=(1, 'hfsso', False))
