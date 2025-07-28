@@ -226,7 +226,7 @@ def main():
 
    #fig.tight_layout()
    fig.get_layout_engine().set(w_pad=.25, h_pad=0.15)
-   plt.show()
+   #plt.show()
    plt.savefig('ocn_yz_plts_diff/ACE_OHT_resid_theto.png', bbox_inches='tight')
    plt.close()
    #########################################################################################
