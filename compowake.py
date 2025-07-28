@@ -19,14 +19,15 @@ if __name__ == '__main__':
 
 ### hist file params
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
+CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1'
 HISTS = 'ocn/hist/'
 H1 = '*mom6.sfc*'
 NORMS = 'ocn/hist_norms/sfc_yhourmean.nc'
+COLAVNORM = 'ocn/hist_norms/opottemp_colavg_yhourmean.nc'
 STATIC = '/glade/derecho/scratch/jpan/%s/run/%s.mom6.static.nc' % (CASE, CASE)
 #TODO: account for choice of monthly or daily sfc history file freq
 DIRI = os.path.join(ARCHV, CASE, HISTS)
-FILEFREQ = dt.timedelta(days=30)#dt.timedelta(days=1)
+FILEFREQ = dt.timedelta(days=1)#dt.timedelta(days=30)
 H1OFFSET_OCN = None #e.g., 6 if filename date is 01-01 and first timestamp is 06:00
 STRF_OCN_DLY = lambda dtobj: f'*sfc.{dtobj.year:04}-{dtobj.month:02}-{dtobj.day:02}.nc'
 STRF_OCN_MON = lambda dtobj: f'*sfc.{dtobj.year:04}-{dtobj.month:02}.nc'
@@ -37,7 +38,7 @@ NTOP = 20 #number of strongest storms
 LONBNDS = (-2, 2)
 LATBNDS = (-2, 2)
 AVBNDS = (-dt.timedelta(days=7), -dt.timedelta(days=3))
-TBNDS = (-dt.timedelta(days=15), dt.timedelta(days=15))
+TBNDS = (-dt.timedelta(days=12), dt.timedelta(days=15))
 GRPR = ('doy_hr', '%j-%H')
 
 #MOM diag vars params
@@ -71,6 +72,9 @@ def main():
    normds = xr.open_dataset(os.path.join(ARCHV, CASE, NORMS))
    normds[GRPR[0]] = normds.time.dt.strftime(GRPR[1])
    normds = normds.swap_dims(dict(time=GRPR[0])) #day of yr and hour as unique indexer
+   quotds = xr.open_dataset(os.path.join(ARCHV, CASE, COLAVNORM))
+   quotds[GRPR[0]] = quotds.time.dt.strftime(GRPR[1])
+   quotds = quotds.swap_dims(dict(time=GRPR[0]))
 
    print('Computing composites...')
    taxis = None
@@ -88,7 +92,10 @@ def main():
       latbnds = (stm['lat'] + LATBNDS[0], stm['lat'] + LATBNDS[1])
       selargs = (geogrid, latbnds, lonbnds)
 
-      toopen = get_files_in_window(truedt, TBNDS, h1s, FILEFREQ, STRF_OCN, H1OFFSET_OCN)
+      try:
+         toopen = get_files_in_window(truedt, TBNDS, h1s, FILEFREQ, STRF_OCN, H1OFFSET_OCN)
+      except IndexError:
+         continue
       ds = xr.open_mfdataset(toopen).sel(time=slice(truedt + TBNDS[0], truedt + TBNDS[1]))
       ds[GRPR[0]] = ds.time.dt.strftime(GRPR[1])
       ds = ds.swap_dims(dict(time=GRPR[0])) #day of yr and hour as unique indexer
@@ -101,8 +108,9 @@ def main():
       salser = latlon_avg(*selarea(ds['somint'] / ds['mass_wt'], *selargs))
       omlref = latlon_avg(*selarea(normds[omlvar], *selargs))
       sstref = latlon_avg(*selarea(normds[sstvar], *selargs))
-      thtref = latlon_avg(*selarea(normds['opottempmint'] / ds['mass_wt'], *selargs)) #this is technically wrong. Need to use the norm of the quotient
-      salref = latlon_avg(*selarea(normds['somint'] / ds['mass_wt'], *selargs))
+      thtref = latlon_avg(*selarea(quotds['opottempmint'], *selargs))
+      #thtref = latlon_avg(*selarea(normds['opottempmint'] / ds['mass_wt'], *selargs)) #this is technically wrong. Need to use the norm of the quotient
+      #salref = latlon_avg(*selarea(normds['somint'] / ds['mass_wt'], *selargs))
 
       for bk in budvars:
          budref = latlon_avg(*selarea(normds[bk], *selargs))
@@ -118,7 +126,7 @@ def main():
       omls.append(omlser / omlref * 100) #percentage
       ssts.append(sstser - sstref)
       thta.append(thtser - thtref)
-      sali.append(salser - salref)
+      #sali.append(salser - salref)
       #print(ssts)
 
       #plt.plot(taxis, sstser)
@@ -169,15 +177,15 @@ def main():
 
    #TODO: plot something with wind stress
    thtcomp = np.array([da.values for da in thta]).mean(axis=0)
-   salcomp = np.array([da.values for da in sali]).mean(axis=0)
+   #salcomp = np.array([da.values for da in sali]).mean(axis=0)
    plt.plot(taxis, thtcomp, color='red')
    plt.axvline(x=0, linestyle='--', color='black', linewidth=0.7)
    plt.xlabel('Day relative to max strength')
    plt.ylabel('Column mass-weighted theta [°C]')
    plt.title('Composite column theta, salinity for top %d storms, lat %s, lon %s' % (NTOP, str(LATBNDS), str(LONBNDS)))
-   ax2 = plt.gca().twinx()
-   ax2.plot(taxis, salcomp, color='green')
-   ax2.set_ylabel('Column mass-weighted salinity [psu]')
+   #ax2 = plt.gca().twinx()
+   #ax2.plot(taxis, salcomp, color='green')
+   #ax2.set_ylabel('Column mass-weighted salinity [psu]')
    plt.savefig('%s_%d_%dx%d_colwake_anom.png' % filoargs, bbox_inches='tight')
    plt.close()
 
@@ -185,7 +193,10 @@ def main():
 def get_files_in_window(truedt, tbnds, filelist, filefreq, fmt_func, h1offset):
    filebnds = tuple([truedt + tbnd - dt.timedelta(hours=h1offset) for tbnd in tbnds])
    #print([os.path.join(DIRI, fmt_func(bnd)) for bnd in filebnds])
+   #try:
    filebnds = tuple([glob.glob(os.path.join(DIRI, fmt_func(bnd)))[0] for bnd in filebnds]) #TODO: enforce that this be in bounds of the simulation dates
+   #except IndexError:
+   #   filebnds = (glob.glob(os.path.join(DIRI, fmt_func(filebnds[0])))[0], filelist[-1]) #still need to catch out-of-bounds at the start of the simulation
    toopen = filelist[(filelist >= filebnds[0]) & (filelist <= filebnds[1])]
    return toopen
 
