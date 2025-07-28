@@ -69,8 +69,10 @@ def main():
       h6hurr = plot_lat_binned(szn_dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly hurricane fixes', '6hr_track_dens_hurr_%.1f_%s.png' % (DLAT, sznnm), wspd_thresh=33)
       h6maj = plot_lat_binned(szn_dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly major hurricane fixes', '6hr_track_dens_major_%.1f_%s.png' % (DLAT, sznnm), wspd_thresh=50)
       ace = plot_lat_binned(szn_dfs, bininfo, totyrs, bin_ace_of_storm_1d, 'ACE [$10^4$ kt$^2$] ', 'ace_binned_%.1f_%s.png' % (DLAT, sznnm))
+      gen = plot_lat_binned(szn_dfs, bininfo, totyrs, genesis_pts_1d, 'genesis points', 'gen_pt_dens_%.1f_%s.png' % (DLAT, sznnm))
+      lys = plot_lat_binned(szn_dfs, bininfo, totyrs, lysis_pts_1d, 'lysis points', 'lys_pt_dens_%.1f_%s.png' % (DLAT, sznnm))
    
-      outdss.append(xr.Dataset(data_vars=dict(uniq=uniq, h6all=h6all, h6hurr=h6hurr, h6maj=h6maj, ace=ace), attrs=dict(dlat=DLAT)).expand_dims(season=[sznnm]))
+      outdss.append(xr.Dataset(data_vars=dict(uniq=uniq, h6all=h6all, h6hurr=h6hurr, h6maj=h6maj, ace=ace, gen=gen, lys=lys), attrs=dict(dlat=DLAT)).expand_dims(season=[sznnm]))
    
       if PLOTSEEDS:
          unseeds = accum_bin_map_1d(usdf[usdf['dt'].dt.month.isin(sznmos)], bininfo, 'psmin', lambda ps: not np.isnan(ps), dtype=np.int_, rettype=np.int_)
@@ -141,6 +143,14 @@ def sixhrly_fixes_of_storm_1d(stmdf, bininfo, wspd_thresh=0):
 def bin_ace_of_storm_1d(stmdf, bininfo):
    ace = lambda wspd: 1e-4 * (MS2KT * wspd)**2
    return accum_bin_map_1d(stmdf, bininfo, 'wspd', ace)
+
+def genesis_pts_1d(stmdf, bininfo):
+   gendf = stmdf.groupby('stmnum').first().reset_index()
+   return sixhrly_fixes_of_storm_1d(gendf, bininfo)
+
+def lysis_pts_1d(stmdf, bininfo):
+   lysdf = stmdf.groupby('stmnum').last().reset_index()
+   return sixhrly_fixes_of_storm_1d(lysdf, bininfo)
 
 if __name__ == '__main__':
    main()
