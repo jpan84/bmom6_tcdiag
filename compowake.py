@@ -34,7 +34,7 @@ STRF_OCN_MON = lambda dtobj: f'*sfc.{dtobj.year:04}-{dtobj.month:02}.nc'
 STRF_OCN = STRF_OCN_DLY if FILEFREQ == dt.timedelta(days=1) else STRF_OCN_MON
 
 ### wake computation params
-NTOP = 20 #number of strongest storms
+NTOP = 21 #number of strongest storms
 LONBNDS = (-2, 2)
 LATBNDS = (-2, 2)
 AVBNDS = (-dt.timedelta(days=7), -dt.timedelta(days=3))
@@ -175,14 +175,27 @@ def main():
    plt.savefig('%s_%d_%dx%d_%swake_anom.png' % (*filoargs, omlvar))
    plt.close()
 
+   plt.rc('font', size=16)
    #TODO: plot something with wind stress
    thtcomp = np.array([da.values for da in thta]).mean(axis=0)
    #salcomp = np.array([da.values for da in sali]).mean(axis=0)
    plt.plot(taxis, thtcomp, color='red')
    plt.axvline(x=0, linestyle='--', color='black', linewidth=0.7)
+   plt.axhline(y=0, linestyle='--', color='black', linewidth=0.7)
    plt.xlabel('Day relative to max strength')
-   plt.ylabel('Column mass-weighted theta [°C]')
-   plt.title('Composite column theta, salinity for top %d storms, lat %s, lon %s' % (NTOP, str(LATBNDS), str(LONBNDS)))
+   plt.ylabel('Column mass-weighted theta anomaly [°C]', color='red')
+   plt.title('Composite column heat anomaly, energy budget anomaly for top %d storms\nlat %s, lon %s' % (NTOP, str(LATBNDS), str(LONBNDS)))
+   plt.ylim(-.09, .06)
+   ax2 = plt.gca().twinx()
+   budlines = dict()
+   for bk in ['hflso', 'Tadvconv']:
+      budcomp = np.array([da.values for da in budser[bk]]).mean(axis=0)
+      if bk == 'Tadvconv':
+         budcomp /= 100
+      budlines[bk] = ax2.plot(taxis, budcomp, color=budvars[bk], label=budlabs[bk])
+   ax2.set_ylim(-660, 440)
+   ax2.legend(loc='lower right')
+   ax2.set_ylabel('Column energy input [W m$^{-2}$]')
    #ax2 = plt.gca().twinx()
    #ax2.plot(taxis, salcomp, color='green')
    #ax2.set_ylabel('Column mass-weighted salinity [psu]')

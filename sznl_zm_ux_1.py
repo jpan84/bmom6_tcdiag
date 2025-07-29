@@ -34,6 +34,12 @@ lncolors = ['blue', 'orange']
 SKIP = {'AEROD_v'}
 USER_DEF = {'RESTOM', 'PRECT', 'NCF'}
 
+#h1i mode
+HISTS = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/*.h1i.0010*.nc'
+H1I = True
+H1IVARS = {'CF500'}
+USER_DEF = {'CF500'}
+
 def main():
    if not os.path.exists(OUTDIR):
       os.makedirs(OUTDIR)
@@ -45,7 +51,7 @@ def main():
    dvset = set([str(dv) for dv in dss[0].data_vars])
    dvset = dvset | USER_DEF
    for dv in dvset:
-      if str(dv) in SKIP:
+      if str(dv) in SKIP or H1I and str(dv) not in H1IVARS:
          print('Skipping %s...' % dv)
          continue
       
