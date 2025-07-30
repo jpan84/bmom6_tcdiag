@@ -35,10 +35,10 @@ SKIP = {'AEROD_v'}
 USER_DEF = {'RESTOM', 'PRECT', 'NCF'}
 
 #h1i mode
-HISTS = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/*.h1i.0010*.nc'
-H1I = True
+#HISTS = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/*.h1i.0010*.nc'
+H1I = False
 H1IVARS = {'CF500'}
-USER_DEF = {'CF500'}
+#USER_DEF = {'CF500'}
 
 def main():
    if not os.path.exists(OUTDIR):
@@ -50,6 +50,7 @@ def main():
    dss = [ux.open_mfdataset(camgrid, HISTS % cs) for cs in CASES]
    dvset = set([str(dv) for dv in dss[0].data_vars])
    dvset = dvset | USER_DEF
+   outds = None
    for dv in dvset:
       if str(dv) in SKIP or H1I and str(dv) not in H1IVARS:
          print('Skipping %s...' % dv)
@@ -117,6 +118,16 @@ def main():
             aa.set_ylim(-maxy, maxy)
       plt.savefig(os.path.join(OUTDIR, '%s_sznl.png' % dv), bbox_inches='tight')
       plt.close()
+
+      #Add to output dataset/netcdf
+      if outds is None:
+         outds = xr.Dataset(data_vars={dv: xr.concat(sznnm, dim=xr.Variable('case', ALIASES))})
+         outds.attrs['difference'] = DO_DIFF
+      else:
+         outds = outds.assign(variables={dv: xr.concat(sznnm, dim=xr.Variable('case', ALIASES))})
+
+   print('Saving to .nc...')
+   outds.to_netcdf(os.path.join(OUTDIR, 'sznlzm.nc'))
 
    print(sys.argv[0], 'done.')
 

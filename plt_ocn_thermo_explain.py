@@ -76,6 +76,7 @@ def main():
          ax_bot.set_xlabel('Latitude [°]')
          ax_bot.set_ylabel('Depth [m]')
 
+         #TODO: make sure TAUX includes all 10 years
          fldnet = lambda ds, fld: ds['%s_neg' % fld] + ds['%s_pos' % fld]
          pltdens = tcdens['ace'].isel(run=jj) if jj == 1 else tcdens['ace'].isel(run=jj) - tcdens['ace'].isel(run=1)
          pltdens = pltdens.sel(season=szn)

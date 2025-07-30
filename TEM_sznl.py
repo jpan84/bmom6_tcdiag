@@ -28,7 +28,7 @@ DIFF = bool(int(sys.argv[1])) #False if len(sys.argv) < 3 else bool(sys.argv[2])
 #DIRIDX2 = None if not DIFF else int(sys.argv[3])
 fname = 'ymonmean.nc' #'cdo_ann_means.nc' #'*h0a*.nc'
 DIR1 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/%s' % fname
-DIR2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist_regrid_0.25x0.25_onpres/%s' % fname
+DIR2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist_regrid_0.25x0.25_onpres/%s' % fname
 pres_name = 'plev'
 DIAB_VARS = ['DTCOND', 'QRL', 'QRS']
 plotfileargs = (DIR1.split('/')[-4], DIR2.split('/')[-4] if DIFF else '')
@@ -79,7 +79,7 @@ def main():
    print('Saving to .nc...')
    outds = xr.Dataset(data_vars = {'PSI_EM': plotfields[0], 'PSI_vT': plotfields[1], 'PSI_resid': plotfields[2], 'EPy_EMF': plotfields[3],\
              'EPy_adv': plotfields[4], 'EPz_EHF': plotfields[5], 'EPz_adv': plotfields[6], 'EPy_EMF_d': plotfields[7],\
-             'EPy_adv_d': plotfields[8], 'EPz_EHF_d': plotfields[9], 'EPz_adv_d': plotfields[10], 'TH_y': plotfields[11], 'vpTHp': plotfields[12]})
+             'EPy_adv_d': plotfields[8], 'EPz_EHF_d': plotfields[9], 'EPz_adv_d': plotfields[10], 'TH_y': plotfields[12], 'vpTHp': plotfields[11]})
    outds.to_netcdf(path = os.path.join(OUTDIR, '%s_%s_TEM.nc' % plotfileargs))
    
    print('Plotting streamfunctions...')
