@@ -73,13 +73,13 @@ def main():
    #print(plotfields[0].transpose('month', ...))
    plotfields = [monthly2sznl(pf) for pf in plotfields]
    print('Mirroring hemispheres...')
-   antisym = [True, True, True, True, True, False, False, False, False, False, False]
+   antisym = [True, True, True, True, True, False, False, False, False, False, False, True, True]
    plotfields = [stack_hemi_sznl(pf, antisym=antisym[ii], latnm='lat') for ii, pf in enumerate(plotfields)]
 
    print('Saving to .nc...')
    outds = xr.Dataset(data_vars = {'PSI_EM': plotfields[0], 'PSI_vT': plotfields[1], 'PSI_resid': plotfields[2], 'EPy_EMF': plotfields[3],\
              'EPy_adv': plotfields[4], 'EPz_EHF': plotfields[5], 'EPz_adv': plotfields[6], 'EPy_EMF_d': plotfields[7],\
-             'EPy_adv_d': plotfields[8], 'EPz_EHF_d': plotfields[9], 'EPz_adv_d': plotfields[10]})
+             'EPy_adv_d': plotfields[8], 'EPz_EHF_d': plotfields[9], 'EPz_adv_d': plotfields[10], 'TH_y': plotfields[11], 'vpTHp': plotfields[12]})
    outds.to_netcdf(path = os.path.join(OUTDIR, '%s_%s_TEM.nc' % plotfileargs))
    
    print('Plotting streamfunctions...')
@@ -147,6 +147,8 @@ def comppsi(HIST_DS):
    PSI_vT = (-EHF * latcirc / c.g / dTHTA_dp)#.mean(dim='time')
    PSI_resid = PSI_EM + PSI_vT
 
+   TH_y = yderiv(TH_MEAN, coslat) #theta gradient to check eddy diffusivity
+
    print('Setting up log-p coords...')
    HIST_DS = HIST_DS.assign_coords(dens=(pres_name, dens0 * HIST_DS[pres_name].data / c.p0 * 100),\
                 zs=(pres_name, -H * np.log(HIST_DS[pres_name].data / c.p0 * 100)))
@@ -180,7 +182,7 @@ def comppsi(HIST_DS):
 
    print('Skipping vertical EMF term b/c not avail.')
 
-   return [PSI_EM, PSI_vT, PSI_resid, EPy_EMF, EPy_adv, EPz_EHF, EPz_adv, EPy_EMF_d, EPy_adv_d, EPz_EHF_d, EPz_adv_d]
+   return [PSI_EM, PSI_vT, PSI_resid, EPy_EMF, EPy_adv, EPz_EHF, EPz_adv, EPy_EMF_d, EPy_adv_d, EPz_EHF_d, EPz_adv_d, EHF, TH_y]
 
 #y-derivative in spherical coords
 def yderiv(var, coslat):
