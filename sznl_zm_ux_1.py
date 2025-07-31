@@ -121,10 +121,10 @@ def main():
 
       #Add to output dataset/netcdf
       if outds is None:
-         outds = xr.Dataset(data_vars={dv: xr.concat(sznnm, dim=xr.Variable('case', ALIASES))})
-         outds.attrs['difference'] = DO_DIFF
+         outds = xr.Dataset(data_vars={dv: xr.concat(sznzm, dim=xr.Variable('case', ALIASES))})
+         outds.attrs['difference'] = str(DO_DIFF)
       else:
-         outds = outds.assign(variables={dv: xr.concat(sznnm, dim=xr.Variable('case', ALIASES))})
+         outds = outds.assign(variables={dv: xr.concat(sznzm, dim=xr.Variable('case', ALIASES))})
 
    print('Saving to .nc...')
    outds.to_netcdf(os.path.join(OUTDIR, 'sznlzm.nc'))

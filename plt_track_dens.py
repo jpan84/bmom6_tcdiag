@@ -23,9 +23,10 @@ genplt = stack_hemi_sznl(ds['gen'], **stack_kw).sum(dim='season')
 aceplt = stack_hemi_sznl(ds['ace'], **stack_kw).sum(dim='season')
 allplt = stack_hemi_sznl(ds['h6all'], **stack_kw).sum(dim='season')
 
-axes[0][0].set_title('UNSEED')
+axes[0][0].set_title('UNSEED–CTRL')
 axes[0][0].plot(sinlat, lysplt.isel(run=0) - lysplt.isel(run=1))
 axes[0][0].plot(sinlat, genplt.isel(run=0) - genplt.isel(run=1))
+axes[0][0].set_yticks(np.arange(-2, 2.1, 1))
 axes[0][0].set_ylim(-3.5, 3.5)
 axes[0][0].set_xticks(LATLOC, LATLAB)
 
@@ -34,13 +35,14 @@ axes[0][1].plot(sinlat, lysplt.isel(run=1), label='lysis')
 axes[0][1].plot(sinlat, genplt.isel(run=1), label='genesis')
 axes[0][1].legend(loc='best')
 
-axes[0][2].set_title('SEED')
+axes[0][2].set_title('SEED–CTRL')
 axes[0][2].plot(sinlat, lysplt.isel(run=2) - lysplt.isel(run=1))
 axes[0][2].plot(sinlat, genplt.isel(run=2) - genplt.isel(run=1))
 
 
 axes[1][0].plot(sinlat, aceplt.isel(run=0) - aceplt.isel(run=1))
 axes[1][0].plot(sinlat, allplt.isel(run=0) - allplt.isel(run=1), linestyle='dotted', color='black')
+axes[1][0].set_yticks(np.arange(-20, 60, 10))
 axes[1][0].set_ylim(-25, 65)
 axes[1][0].set_xticks(LATLOC, LATLAB)
 
