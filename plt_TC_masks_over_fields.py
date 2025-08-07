@@ -11,15 +11,15 @@ from holoviews.operation import contours as hvcontours
 CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
 ATM = '/glade/derecho/scratch/jpan/archive/%s/atm'
 H1I = os.path.join(ATM % CASE, 'hist/') #h1i path
-MASKS = os.path.join(ATM % CASE, 'nff_2mps/') #masks path
+MASKS = os.path.join(ATM % CASE, 'nff_17mps/') #masks path
 PARQ = '/glade/u/home/jpan/aquaptc/tempest/250417_ctrl.parquet' #TC parquet
 CAMGRID = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
-DIRO = './TC_mask_plots/'
+DIRO = './TC_mask_plots_R17/'
 
 STRF = lambda dtobj: f'*{dtobj.year:04}-{dtobj.month:02}-{dtobj.day:02}-{3600*dtobj.hour:05}*'
 
 BBDEG = 12.
-MNM = 'TC_R2'
+MNM = 'TC_R17'
 
 def main():
    if not os.path.exists(DIRO):
@@ -48,8 +48,10 @@ def main():
 
       #print(hds)
       #print(mds)
-      print(row['lon'], row['lat'])
-      lonbnds = ((row['lon'] - BBDEG) % 360, (row['lon'] + BBDEG) % 360)
+      print(row['stmnum'], row['lon'], row['lat'])
+      lonshift = lambda lon: (lon + 180) % 360 - 180
+      clon = row['lon']
+      lonbnds = (lonshift(clon - BBDEG), lonshift(clon + BBDEG))
       latbnds = (row['lat'] - BBDEG, row['lat'] + BBDEG)
       msub = mds[MNM].subset.bounding_box(lonbnds, latbnds).squeeze()
       print(msub)

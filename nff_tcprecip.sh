@@ -26,9 +26,10 @@
 ###TEMPESTEXTREMESDIR=/glade/work/zarzycki/derecho/tempestextremes/
 TEMPESTEXTREMESDIR=/glade/work/zarzycki/tempestextremes_noMPI
 
-SPTH=2
-UQSTR=b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1
-PATHTOFILES=/glade/derecho/scratch/jpan/archive/${UQSTR}/atm/hist/
+SPTH=17
+GCD=8
+UQSTR=b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl
+PATHTOFILES=/glade/derecho/scratch/jpan/archive/${UQSTR}/atm/hist_0010_h1i/
 DIRO=/glade/derecho/scratch/jpan/archive/${UQSTR}/atm/nff_${SPTH}mps
 mkdir -p $DIRO
 CONNECTDAT=/glade/u/home/jpan/ne120np4_connect_v2.dat
@@ -66,8 +67,12 @@ done
 starttime=$(date -u +"%s")
 
 BINW=0.25
+BINC=$( echo "$GCD / $BINW + 1" | bc )
 
-STR_NFE1="--in_nodefile ${TRAJFILENAME} --in_nodefile_type SN --in_fmt ${SN_FMT} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_nodefile ${TRAJFILENAME}.radspd --out_fmt ${SN_FMT},radspd,r${SPTH} --calculate radspd=radial_wind_profile(UBOT,VBOT,33,${BINW});r${SPTH}=lastwhere(radspd,>=,${SPTH})*${BINW}"
+UMEANRMV="_DIFF(UBOT,_MEAN{${GCD}}(UBOT))"
+VMEANRMV="_DIFF(VBOT,_MEAN{${GCD}}(VBOT))"
+
+STR_NFE1="--in_nodefile ${TRAJFILENAME} --in_nodefile_type SN --in_fmt ${SN_FMT} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_nodefile ${TRAJFILENAME}.radspd --out_fmt ${SN_FMT},radspd,r${SPTH} --calculate radspd=radial_wind_profile(${UMEANRMV},${VMEANRMV},${BINC},${BINW});r${SPTH}=lastwhere(radspd,>=,${SPTH})*${BINW}"
 
 $TEMPESTEXTREMESDIR/bin/NodeFileEditor ${STR_NFE1}
 

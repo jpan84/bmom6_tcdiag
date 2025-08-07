@@ -1,451 +1,427 @@
 nohup: ignoring input
-/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 5532752.casper-pbs with qsub arguments:
-    qsub  -l select=1:ncpus=2:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=4:00:00
+                         ncol         lon        lat  ...  mdstr   doy  stmnum
+dt                                                    ...                     
+2005-02-01 06:00:00  297965.0  185.792728 -19.201424  ...    2-1  32.0       0
+2005-02-01 12:00:00  297966.0  186.000000 -19.194777  ...    2-1  32.0       0
+2005-02-01 18:00:00  296892.0  186.000000 -19.401177  ...    2-1  32.0       0
+2005-02-02 00:00:00  296899.0  186.207317 -19.394232  ...    2-2  33.0       0
+2005-02-02 06:00:00  296892.0  186.000000 -19.401177  ...    2-2  33.0       0
+...                       ...         ...        ...  ...    ...   ...     ...
+2015-01-31 00:00:00  296864.0  183.542720 -19.465540  ...   1-31  31.0    2619
+2015-01-31 06:00:00  295794.0  184.500000 -20.192625  ...   1-31  31.0    2619
+2015-01-31 12:00:00  294730.0  185.457318 -20.913062  ...   1-31  31.0    2619
+2015-01-31 18:00:00  293661.0  186.750000 -21.613181  ...   1-31  31.0    2619
+2015-02-01 00:00:00  293671.0  187.707331 -22.110811  ...    2-1  32.0    2619
 
+[58656 rows x 12 columns]
 
-A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+ 0010-01-01 06:00:00 *0010-01-01-21600*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-21600.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-21600.nc.nff_4mps']
+1281 14.792784 22.760245
+<xarray.UxDataArray 'TC_R4' (n_face: 9275)> Size: 74kB
+[9275 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-01 06:00:00
+Dimensions without coordinates: n_face
+The geckodriver version (0.36.0) detected in PATH at /glade/u/home/jpan/miniconda3/envs/aquapux2504/bin/geckodriver might not be compatible with the detected firefox version (115.6.0); currently, geckodriver 0.35.0 is recommended for firefox 115.*, so it is advised to delete the driver in PATH and retry
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
 
-If you are a user of the module, the easiest solution will be to
-downgrade to 'numpy<2' or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
+ 0010-01-01 18:00:00 *0010-01-01-64800*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-64800.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-64800.nc.nff_4mps']
+1281 16.2928 23.869033
+<xarray.UxDataArray 'TC_R4' (n_face: 9306)> Size: 74kB
+[9306 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-01 18:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
 
-Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 9, in <module>
-import xarray as xr
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/__init__.py", line 3, in <module>
-from xarray import groupers, testing, tutorial, ufuncs
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/groupers.py", line 16, in <module>
-import pandas as pd
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/__init__.py", line 26, in <module>
-from pandas.compat import (
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/compat/__init__.py", line 27, in <module>
-from pandas.compat.pyarrow import (
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/compat/pyarrow.py", line 8, in <module>
-import pyarrow as pa
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pyarrow/__init__.py", line 65, in <module>
-import pyarrow.lib as _lib
-AttributeError: _ARRAY_API not found
+ 0010-01-02 18:00:00 *0010-01-02-64800*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-64800.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-64800.nc.nff_4mps']
+1281 20.792864 27.43475
+<xarray.UxDataArray 'TC_R4' (n_face: 9383)> Size: 75kB
+[9383 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-02 18:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
 
-A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+ 0010-01-03 00:00:00 *0010-01-03-00000*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-03-00000.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-03-00000.nc.nff_4mps']
+1281 22.292887 28.310138
+<xarray.UxDataArray 'TC_R4' (n_face: 9407)> Size: 75kB
+[9407 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-03 00:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
 
-If you are a user of the module, the easiest solution will be to
-downgrade to 'numpy<2' or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
+ 0010-01-01 00:00:00 *0010-01-01-00000*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-00000.nc', '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.i.0010-01-01-00000.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-00000.nc.nff_4mps']
+1287 89.792707 10.707225
+<xarray.UxDataArray 'TC_R4' (n_face: 9061)> Size: 72kB
+[9061 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-01 00:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
 
-Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 9, in <module>
-import xarray as xr
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/__init__.py", line 3, in <module>
-from xarray import groupers, testing, tutorial, ufuncs
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/groupers.py", line 16, in <module>
-import pandas as pd
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/__init__.py", line 49, in <module>
-from pandas.core.api import (
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/core/api.py", line 9, in <module>
-from pandas.core.dtypes.dtypes import (
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pandas/core/dtypes/dtypes.py", line 24, in <module>
-from pandas._libs import (
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/pyarrow/__init__.py", line 65, in <module>
-import pyarrow.lib as _lib
-AttributeError: _ARRAY_API not found
+ 0010-01-01 06:00:00 *0010-01-01-21600*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-21600.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-21600.nc.nff_4mps']
+1287 85.707288 10.471196
+<xarray.UxDataArray 'TC_R4' (n_face: 9113)> Size: 73kB
+[9113 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-01 06:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
 
-A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+ 0010-01-01 12:00:00 *0010-01-01-43200*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-43200.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-43200.nc.nff_4mps']
+1287 83.457284 11.718039
+<xarray.UxDataArray 'TC_R4' (n_face: 9119)> Size: 73kB
+[9119 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-01 12:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
 
-If you are a user of the module, the easiest solution will be to
-downgrade to 'numpy<2' or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
+ 0010-01-02 00:00:00 *0010-01-02-00000*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-00000.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-00000.nc.nff_4mps']
+1287 78.542693 10.827926
+<xarray.UxDataArray 'TC_R4' (n_face: 9266)> Size: 74kB
+[9266 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-02 00:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
 
-Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 14, in <module>
-from metpy.plots import SkewT
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/__init__.py", line 8, in <module>
-from . import cartopy_utils, plot_areas
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/cartopy_utils.py", line 7, in <module>
-from cartopy.feature import Feature, Scaler
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
-import cartopy.crs  # noqa: E402  module-level imports
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
-import shapely.geometry as sgeom
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
-from shapely.lib import GEOSException  # NOQA
-AttributeError: _ARRAY_API not found
+ 0010-01-02 12:00:00 *0010-01-02-43200*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-43200.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-43200.nc.nff_4mps']
+1287 72.95727 11.288469
+<xarray.UxDataArray 'TC_R4' (n_face: 9462)> Size: 76kB
+[9462 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-02 12:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
 
-A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+ 0010-01-02 18:00:00 *0010-01-02-64800*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-64800.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-64800.nc.nff_4mps']
+1287 71.25 10.864153
+<xarray.UxDataArray 'TC_R4' (n_face: 9563)> Size: 77kB
+[9563 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-02 18:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
 
-If you are a user of the module, the easiest solution will be to
-downgrade to 'numpy<2' or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
+ 0010-01-01 00:00:00 *0010-01-01-00000*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-00000.nc', '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.i.0010-01-01-00000.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-00000.nc.nff_4mps']
+1288 97.5 -38.759455
+<xarray.UxDataArray 'TC_R4' (n_face: 8819)> Size: 71kB
+[8819 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-01 00:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
 
-Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 14, in <module>
-from metpy.plots import SkewT
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/__init__.py", line 8, in <module>
-from . import cartopy_utils, plot_areas
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/plot_areas.py", line 11, in <module>
-import cartopy.crs as ccrs
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
-import cartopy.crs  # noqa: E402  module-level imports
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
-import shapely.geometry as sgeom
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
-from shapely.lib import GEOSException  # NOQA
-AttributeError: _ARRAY_API not found
+ 0010-01-01 06:00:00 *0010-01-01-21600*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-21600.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-21600.nc.nff_4mps']
+1288 99.0 -36.616911
+<xarray.UxDataArray 'TC_R4' (n_face: 8964)> Size: 72kB
+[8964 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-01 06:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
 
-A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+ 0010-01-01 12:00:00 *0010-01-01-43200*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-43200.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-43200.nc.nff_4mps']
+1288 101.45745 -38.643611
+<xarray.UxDataArray 'TC_R4' (n_face: 8831)> Size: 71kB
+[8831 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-01 12:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
 
-If you are a user of the module, the easiest solution will be to
-downgrade to 'numpy<2' or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
+ 0010-01-01 18:00:00 *0010-01-01-64800*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-64800.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-64800.nc.nff_4mps']
+1288 104.79293 -41.248067
+<xarray.UxDataArray 'TC_R4' (n_face: 8579)> Size: 69kB
+[8579 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-01 18:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
 
-Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 14, in <module>
-from metpy.plots import SkewT
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/__init__.py", line 12, in <module>
-from .declarative import *  # noqa: F403
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/declarative.py", line 29, in <module>
-ccrs = import_cartopy()
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/cartopy_utils.py", line 70, in import_cartopy
-import cartopy.crs as ccrs
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
-import cartopy.crs  # noqa: E402  module-level imports
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
-import shapely.geometry as sgeom
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
-from shapely.lib import GEOSException  # NOQA
-AttributeError: _ARRAY_API not found
+ 0010-01-02 00:00:00 *0010-01-02-00000*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-00000.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-00000.nc.nff_4mps']
+1288 107.91393 -43.783909
+<xarray.UxDataArray 'TC_R4' (n_face: 8264)> Size: 66kB
+[8264 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-02 00:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
 
-A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+ 0010-01-02 06:00:00 *0010-01-02-21600*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-21600.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-21600.nc.nff_4mps']
+1288 110.067925 -46.210784
+<xarray.UxDataArray 'TC_R4' (n_face: 7878)> Size: 63kB
+[7878 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-02 06:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
 
-If you are a user of the module, the easiest solution will be to
-downgrade to 'numpy<2' or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
+ 0010-01-02 12:00:00 *0010-01-02-43200*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-43200.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-43200.nc.nff_4mps']
+1288 112.826131 -47.938225
+<xarray.UxDataArray 'TC_R4' (n_face: 7566)> Size: 61kB
+[7566 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-02 12:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
 
-Traceback (most recent call last):  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 145, in <module>
-main()
-File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 39, in main
-dss = [xr.open_mfdataset(FILIS % (al, al)).rename(name_dict=dict(TBOT='T1010')) for al in ALIS]
-File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/boxplot_thermo.py", line 39, in <listcomp>
-dss = [xr.open_mfdataset(FILIS % (al, al)).rename(name_dict=dict(TBOT='T1010')) for al in ALIS]
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 1579, in open_mfdataset
-datasets = [open_(p, **open_kwargs) for p in paths1d]
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 1579, in <listcomp>
-datasets = [open_(p, **open_kwargs) for p in paths1d]
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 651, in open_dataset
-engine = plugins.guess_engine(filename_or_obj)
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 143, in guess_engine
-engines = list_engines()
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 132, in list_engines
-return build_engines(entrypoints)
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 110, in build_engines
-external_backend_entrypoints = backends_dict_from_pkg(entrypoints_unique)
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/plugins.py", line 73, in backends_dict_from_pkg
-backend = entrypoint.load()
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/importlib_metadata/__init__.py", line 189, in load
-module = import_module(match.group('module'))
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/importlib/__init__.py", line 126, in import_module
-return _bootstrap._gcd_import(name[level:], package, level)
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/io/__init__.py", line 15, in <module>
-from .gempak import *  # noqa: F403
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/io/gempak.py", line 29, in <module>
-from ..plots.mapping import CFProjection
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/mapping.py", line 12, in <module>
-ccrs = import_cartopy()
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/metpy/plots/cartopy_utils.py", line 70, in import_cartopy
-import cartopy.crs as ccrs
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/__init__.py", line 106, in <module>
-import cartopy.crs  # noqa: E402  module-level imports
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/cartopy/crs.py", line 24, in <module>
-import shapely.geometry as sgeom
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/shapely/__init__.py", line 1, in <module>
-from shapely.lib import GEOSException  # NOQA
-AttributeError: _ARRAY_API not found
-Working on 250415_unseed OMEGA 500
-Working on 250417_ctrl OMEGA 500
-Working on 250416_seed1x1 OMEGA 500
-Working on 250415_unseed OMEGA 850
-Working on 250417_ctrl OMEGA 850
-Working on 250416_seed1x1 OMEGA 850
-Working on 250415_unseed T 200
-[[316.1804598  313.44787245]
-[325.01029649 313.44787245]
-[327.85532688 313.44787245]
-[329.763058   313.44787245]
-[331.36998888 313.44787245]
-[332.87886746 313.44787245]
-[334.41322618 313.44787245]
-[336.10963189 313.44787245]
-[338.24475016 313.44787245]
-[341.9645147  313.44787245]]
-[[-43.43158697 207.19531255]
-[-41.82939886 207.19531255]
-[-41.31316351 207.19531255]
-[-40.96700262 207.19531255]
-[-40.67542242 207.19531255]
-[-40.40163397 207.19531255]
-[-40.1232221  207.19531255]
-[-39.81540655 207.19531255]
-[-39.4279859  207.19531255]
-[-38.75302862 207.19531255]]
-Working on 250417_ctrl T 200
-[[314.10925212 313.44787245]
-[321.40969157 313.44787245]
-[323.92583469 313.44787245]
-[325.68850559 313.44787245]
-[327.20108426 313.44787245]
-[328.63638156 313.44787245]
-[330.11078206 313.44787245]
-[331.76413222 313.44787245]
-[333.86258599 313.44787245]
-[337.59858046 313.44787245]]
-[[-44.81547546 200.00007522]
-[-43.49079895 200.00007522]
-[-43.03424072 200.00007522]
-[-42.71440125 200.00007522]
-[-42.43994141 200.00007522]
-[-42.17950439 200.00007522]
-[-41.91197205 200.00007522]
-[-41.61196899 200.00007522]
-[-41.23120117 200.00007522]
-[-40.55329895 200.00007522]]
-Working on 250416_seed1x1 T 200
-[[312.76191596 313.44787245]
-[318.17337701 313.44787245]
-[320.69986355 313.44787245]
-[322.64434326 313.44787245]
-[324.40432319 313.44787245]
-[326.17237603 313.44787245]
-[328.12366726 313.44787245]
-[330.58077718 313.44787245]
-[334.60773302 313.44787245]
-[346.6984394  313.44787245]]
-[[-46.0680163  193.0547057 ]
-[-45.08609796 193.0547057 ]
-[-44.6276629  193.0547057 ]
-[-44.27483393 193.0547057 ]
-[-43.95548273 193.0547057 ]
-[-43.63466669 193.0547057 ]
-[-43.28060175 193.0547057 ]
-[-42.83475519 193.0547057 ]
-[-42.10405756 193.0547057 ]
-[-39.91017938 193.0547057 ]]
-Working on 250415_unseed T 500
-[[410.89817661 169.42110413]
-[417.68379944 169.42110413]
-[421.21755053 169.42110413]
-[423.49781311 169.42110413]
-[425.20557136 169.42110413]
-[426.63918681 169.42110413]
-[427.96936802 169.42110413]
-[429.34243659 169.42110413]
-[430.98022956 169.42110413]
-[433.78943638 169.42110413]]
-[[-1.11015074e-01  5.17988176e+02]
-[ 1.12024713e+00  5.17988176e+02]
-[ 1.76145197e+00  5.17988176e+02]
-[ 2.17520929e+00  5.17988176e+02]
-[ 2.48508478e+00  5.17988176e+02]
-[ 2.74521662e+00  5.17988176e+02]
-[ 2.98658014e+00  5.17988176e+02]
-[ 3.23572565e+00  5.17988176e+02]
-[ 3.53290582e+00  5.17988176e+02]
-[ 4.04264093e+00  5.17988176e+02]]
-Working on 250417_ctrl T 500
-[[409.97769593 169.42110413]
-[415.78649584 169.42110413]
-[419.0925234  169.42110413]
-[421.28247023 169.42110413]
-[422.95053664 169.42110413]
-[424.368679   169.42110413]
-[425.69162822 169.42110413]
-[427.06890144 169.42110413]
-[428.73225864 169.42110413]
-[431.67702318 169.42110413]]
-[[-1.28610229e+00  5.00000086e+02]
-[-2.32086182e-01  5.00000086e+02]
-[ 3.67797852e-01  5.00000086e+02]
-[ 7.65167236e-01  5.00000086e+02]
-[ 1.06784058e+00  5.00000086e+02]
-[ 1.32516479e+00  5.00000086e+02]
-[ 1.56521606e+00  5.00000086e+02]
-[ 1.81512451e+00  5.00000086e+02]
-[ 2.11694336e+00  5.00000086e+02]
-[ 2.65127563e+00  5.00000086e+02]]
-Working on 250416_seed1x1 T 500
-[[408.03481398 169.42110413]
-[414.19899041 169.42110413]
-[417.28789015 169.42110413]
-[419.35909784 169.42110413]
-[420.99874085 169.42110413]
-[422.47675734 169.42110413]
-[423.96234219 169.42110413]
-[425.66253208 169.42110413]
-[428.09298455 169.42110413]
-[434.65845222 169.42110413]]
-[[-2.64670587e+00  4.82636666e+02]
-[-1.52820612e+00  4.82636666e+02]
-[-9.67720278e-01  4.82636666e+02]
-[-5.91896303e-01  4.82636666e+02]
-[-2.94380434e-01  4.82636666e+02]
-[-2.61919575e-02  4.82636666e+02]
-[ 2.43369810e-01  4.82636666e+02]
-[ 5.51872007e-01  4.82636666e+02]
-[ 9.92881529e-01  4.82636666e+02]
-[ 2.18419623e+00  4.82636666e+02]]
-Working on 250415_unseed T 850
-[[442.48034306  86.01449562]
-[452.70586932  86.01449562]
-[455.59681441  86.01449562]
-[456.99527904  86.01449562]
-[458.01801667  86.01449562]
-[458.90519657  86.01449562]
-[459.76311216  86.01449562]
-[460.67888364  86.01449562]
-[461.80942835  86.01449562]
-[463.77282895  86.01449562]]
-[[ 20.75388361 880.57998028]
-[ 22.60932184 880.57998028]
-[ 23.13388849 880.57998028]
-[ 23.38764215 880.57998028]
-[ 23.57321955 880.57998028]
-[ 23.73419977 880.57998028]
-[ 23.88986994 880.57998028]
-[ 24.05603815 880.57998028]
-[ 24.26117731 880.57998028]
-[ 24.61743952 880.57998028]]
-Working on 250417_ctrl T 850
-[[441.51277036  86.01449562]
-[451.21389341  86.01449562]
-[453.87341489  86.01449562]
-[455.20914623  86.01449562]
-[456.18966923  86.01449562]
-[457.04321198  86.01449562]
-[457.87388147  86.01449562]
-[458.77047978  86.01449562]
-[459.89379249  86.01449562]
-[461.91959002  86.01449562]]
-[[ 19.57025146 850.00022501]
-[ 21.33053589 850.00022501]
-[ 21.81311035 850.00022501]
-[ 22.05548096 850.00022501]
-[ 22.23339844 850.00022501]
-[ 22.38827515 850.00022501]
-[ 22.53900146 850.00022501]
-[ 22.70169067 850.00022501]
-[ 22.90551758 850.00022501]
-[ 23.27310181 850.00022501]]
-Working on 250416_seed1x1 T 850
-[[438.59037453  86.01449562]
-[449.80617856  86.01449562]
-[452.61319896  86.01449562]
-[454.01788646  86.01449562]
-[455.10049822  86.01449562]
-[456.09111237  86.01449562]
-[457.10392704  86.01449562]
-[458.27668638  86.01449562]
-[459.93314796  86.01449562]
-[464.02208026  86.01449562]]
-[[ 18.03191351 820.48240784]
-[ 20.06703924 820.48240784]
-[ 20.57637762 820.48240784]
-[ 20.83126044 820.48240784]
-[ 21.02770209 820.48240784]
-[ 21.20745062 820.48240784]
-[ 21.39122748 820.48240784]
-[ 21.60402655 820.48240784]
-[ 21.90459418 820.48240784]
-[ 22.64653753 820.48240784]]
-Working on 250415_unseed T 1010
-[[462.78404726  58.90495112]
-[473.39875537  58.90495112]
-[476.72614253  58.90495112]
-[478.63286453  58.90495112]
-[480.06462994  58.90495112]
-[481.30483176  58.90495112]
-[482.4976052   58.90495112]
-[483.76370763  58.90495112]
-[485.30513016  58.90495112]
-[487.85650819  58.90495112]]
-[[  29.35709406 1046.33642006]
-[  31.28314997 1046.33642006]
-[  31.88690973 1046.33642006]
-[  32.23288751 1046.33642006]
-[  32.49268366 1046.33642006]
-[  32.71772028 1046.33642006]
-[  32.93415094 1046.33642006]
-[  33.16388727 1046.33642006]
-[  33.44358087 1046.33642006]
-[  33.90653253 1046.33642006]]
-Working on 250417_ctrl T 1010
-[[462.32204096  58.90495112]
-[471.97069005  58.90495112]
-[475.14183263  58.90495112]
-[477.0076855   58.90495112]
-[478.41876405  58.90495112]
-[479.64534283  58.90495112]
-[480.82449322  58.90495112]
-[482.07529075  58.90495112]
-[483.59468094  58.90495112]
-[486.11359912  58.90495112]]
-[[  28.26519775 1010.00046834]
-[  30.01596069 1010.00046834]
-[  30.59136963 1010.00046834]
-[  30.92993164 1010.00046834]
-[  31.18597412 1010.00046834]
-[  31.40853882 1010.00046834]
-[  31.62249756 1010.00046834]
-[  31.84945679 1010.00046834]
-[  32.12515259 1010.00046834]
-[  32.58221436 1010.00046834]]
-Working on 250416_seed1x1 T 1010
-[[459.98341792  58.90495112]
-[470.46122282  58.90495112]
-[473.82880637  58.90495112]
-[475.77992942  58.90495112]
-[477.26585064  58.90495112]
-[478.5741677   58.90495112]
-[479.86802078  58.90495112]
-[481.29406787  58.90495112]
-[483.12006071  58.90495112]
-[486.45434348  58.90495112]]
-[[ 26.83278631 974.92634919]
-[ 28.73400091 974.92634919]
-[ 29.34505438 974.92634919]
-[ 29.6990888  974.92634919]
-[ 29.96871161 974.92634919]
-[ 30.20610785 974.92634919]
-[ 30.44087958 974.92634919]
-[ 30.69963812 974.92634919]
-[ 31.03096747 974.92634919]
-[ 31.63597845 974.92634919]]
-Working on 250415_unseed Z 300
-Working on 250417_ctrl Z 300
-Working on 250416_seed1x1 Z 300
-Working on 250415_unseed Z 500
-Working on 250417_ctrl Z 500
-Working on 250416_seed1x1 Z 500
-Working on 250415_unseed Z 850
-Working on 250417_ctrl Z 850
-Working on 250416_seed1x1 Z 850
-Working on 250415_unseed U 200
-Working on 250417_ctrl U 200
-Working on 250416_seed1x1 U 200
-Working on 250415_unseed U 500
-Working on 250417_ctrl U 500
-Working on 250416_seed1x1 U 500
-Working on 250415_unseed U 850
-Working on 250417_ctrl U 850
-Working on 250416_seed1x1 U 850
+ 0010-01-02 18:00:00 *0010-01-02-64800*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-64800.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-64800.nc.nff_4mps']
+1288 115.67756 -49.588726
+<xarray.UxDataArray 'TC_R4' (n_face: 7213)> Size: 58kB
+[7213 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-02 18:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-03 00:00:00 *0010-01-03-00000*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-03-00000.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-03-00000.nc.nff_4mps']
+1288 119.448222 -51.717661
+<xarray.UxDataArray 'TC_R4' (n_face: 6748)> Size: 54kB
+[6748 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-03 00:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-03 06:00:00 *0010-01-03-21600*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-03-21600.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-03-21600.nc.nff_4mps']
+1288 123.783907 -53.598614
+<xarray.UxDataArray 'TC_R4' (n_face: 6335)> Size: 51kB
+[6335 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-03 06:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-03 12:00:00 *0010-01-03-43200*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-03-43200.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-03-43200.nc.nff_4mps']
+1288 128.954591 -55.919174
+<xarray.UxDataArray 'TC_R4' (n_face: 5839)> Size: 47kB
+[5839 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-03 12:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-01 18:00:00 *0010-01-01-64800*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-64800.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-01-64800.nc.nff_4mps']
+1289 342.75 -9.839023
+<xarray.UxDataArray 'TC_R4' (n_face: 9490)> Size: 76kB
+[9490 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-01 18:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-02 00:00:00 *0010-01-02-00000*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-00000.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-00000.nc.nff_4mps']
+1289 341.792685 -10.700072
+<xarray.UxDataArray 'TC_R4' (n_face: 9494)> Size: 76kB
+[9494 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-02 00:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-02 06:00:00 *0010-01-02-21600*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-21600.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-21600.nc.nff_4mps']
+1289 339.957265 -11.488293
+<xarray.UxDataArray 'TC_R4' (n_face: 9590)> Size: 77kB
+[9590 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-02 06:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-02 12:00:00 *0010-01-02-43200*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-43200.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-43200.nc.nff_4mps']
+1289 338.042672 -12.045934
+<xarray.UxDataArray 'TC_R4' (n_face: 9740)> Size: 78kB
+[9740 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-02 12:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-02 18:00:00 *0010-01-02-64800*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-64800.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-02-64800.nc.nff_4mps']
+1289 336.542669 -12.228689
+<xarray.UxDataArray 'TC_R4' (n_face: 9817)> Size: 79kB
+[9817 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-02 18:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-03 00:00:00 *0010-01-03-00000*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-03-00000.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-03-00000.nc.nff_4mps']
+1289 335.457251 -12.509748
+<xarray.UxDataArray 'TC_R4' (n_face: 9902)> Size: 79kB
+[9902 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-03 00:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-03 06:00:00 *0010-01-03-21600*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-03-21600.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_4mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-03-21600.nc.nff_4mps']
+1289 334.5 -13.100056
