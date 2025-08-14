@@ -835,32 +835,627 @@ Dimensions without coordinates: n_face
 Coordinates:
     time     object 8B 0010-01-10 00:00:00
 Dimensions without coordinates: n_face
-Traceback (most recent call last):
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
-    response = self._make_request(
-               ^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/urllib3/connectionpool.py", line 534, in _make_request
-    response = conn.getresponse()
-               ^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/urllib3/connection.py", line 516, in getresponse
-    httplib_response = super().getresponse()
-                       ^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/http/client.py", line 1378, in getresponse
-    response.begin()
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/http/client.py", line 318, in begin
-    version, status, reason = self._read_status()
-                              ^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/http/client.py", line 287, in _read_status
-    raise RemoteDisconnected("Remote end closed connection without"
-http.client.RemoteDisconnected: Remote end closed connection without response
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
 
-During handling of the above exception, another exception occurred:
+ 0010-01-10 06:00:00 *0010-01-10-21600*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-10-21600.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-10-21600.nc.nff_2mps']
+1289 313.707534 -20.990626
+<xarray.UxDataArray 'TC_R2' (n_face: 10674)> Size: 85kB
+[10674 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-10 06:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
 
+ 0010-01-10 12:00:00 *0010-01-10-43200*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-10-43200.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-10-43200.nc.nff_2mps']
+1289 313.292947 -21.122537
+<xarray.UxDataArray 'TC_R2' (n_face: 10665)> Size: 85kB
+[10665 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-10 12:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-10 18:00:00 *0010-01-10-64800*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-10-64800.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-10-64800.nc.nff_2mps']
+1289 312.957529 -21.059184
+<xarray.UxDataArray 'TC_R2' (n_face: 10658)> Size: 85kB
+[10658 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-10 18:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-11 00:00:00 *0010-01-11-00000*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-11-00000.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-11-00000.nc.nff_2mps']
+1289 312.75 -21.123828
+<xarray.UxDataArray 'TC_R2' (n_face: 10657)> Size: 85kB
+[10657 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-11 00:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-11 06:00:00 *0010-01-11-21600*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-11-21600.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-11-21600.nc.nff_2mps']
+1289 312.207532 -21.462008
+<xarray.UxDataArray 'TC_R2' (n_face: 10621)> Size: 85kB
+[10621 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-11 06:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-11 12:00:00 *0010-01-11-43200*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-11-43200.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-11-43200.nc.nff_2mps']
+1289 311.25 -21.581872
+<xarray.UxDataArray 'TC_R2' (n_face: 10596)> Size: 85kB
+[10596 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-11 12:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-11 18:00:00 *0010-01-11-64800*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-11-64800.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-11-64800.nc.nff_2mps']
+1289 310.707516 -21.29148
+<xarray.UxDataArray 'TC_R2' (n_face: 10597)> Size: 85kB
+[10597 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-11 18:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-12 00:00:00 *0010-01-12-00000*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-12-00000.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-12-00000.nc.nff_2mps']
+1289 310.292922 -21.065487
+<xarray.UxDataArray 'TC_R2' (n_face: 10606)> Size: 85kB
+[10606 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-12 00:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-12 06:00:00 *0010-01-12-21600*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-12-21600.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-12-21600.nc.nff_2mps']
+1289 309.542915 -20.995234
+<xarray.UxDataArray 'TC_R2' (n_face: 10586)> Size: 85kB
+[10586 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-12 06:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-12 12:00:00 *0010-01-12-43200*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-12-43200.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-12-43200.nc.nff_2mps']
+1289 308.457487 -20.656155
+<xarray.UxDataArray 'TC_R2' (n_face: 10568)> Size: 85kB
+[10568 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-12 12:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-12 18:00:00 *0010-01-12-64800*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-12-64800.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-12-64800.nc.nff_2mps']
+1289 306.957478 -20.686779
+<xarray.UxDataArray 'TC_R2' (n_face: 10504)> Size: 84kB
+[10504 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-12 18:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-13 00:00:00 *0010-01-13-00000*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-13-00000.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-13-00000.nc.nff_2mps']
+1289 305.457469 -20.761466
+<xarray.UxDataArray 'TC_R2' (n_face: 10409)> Size: 83kB
+[10409 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-13 00:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-13 06:00:00 *0010-01-13-21600*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-13-21600.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-13-21600.nc.nff_2mps']
+1289 303.957455 -20.450582
+<xarray.UxDataArray 'TC_R2' (n_face: 10334)> Size: 83kB
+[10334 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-13 06:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-13 12:00:00 *0010-01-13-43200*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-13-43200.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-13-43200.nc.nff_2mps']
+1289 302.457448 -20.590176
+<xarray.UxDataArray 'TC_R2' (n_face: 10210)> Size: 82kB
+[10210 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-13 12:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-13 18:00:00 *0010-01-13-64800*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-13-64800.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-13-64800.nc.nff_2mps']
+1289 300.75 -21.124921
+<xarray.UxDataArray 'TC_R2' (n_face: 10064)> Size: 81kB
+[10064 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-13 18:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-14 00:00:00 *0010-01-14-00000*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-14-00000.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-14-00000.nc.nff_2mps']
+1289 299.25 -21.722752
+<xarray.UxDataArray 'TC_R2' (n_face: 9939)> Size: 80kB
+[9939 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-14 00:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-14 06:00:00 *0010-01-14-21600*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-14-21600.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-14-21600.nc.nff_2mps']
+1289 297.542855 -22.423864
+<xarray.UxDataArray 'TC_R2' (n_face: 9810)> Size: 78kB
+[9810 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-14 06:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-14 12:00:00 *0010-01-14-43200*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-14-43200.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-14-43200.nc.nff_2mps']
+1289 296.792861 -23.25526
+<xarray.UxDataArray 'TC_R2' (n_face: 9740)> Size: 78kB
+[9740 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-14 12:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-14 18:00:00 *0010-01-14-64800*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-14-64800.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-14-64800.nc.nff_2mps']
+1289 296.25 -24.365909
+<xarray.UxDataArray 'TC_R2' (n_face: 9677)> Size: 77kB
+[9677 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-14 18:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-15 00:00:00 *0010-01-15-00000*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-15-00000.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-15-00000.nc.nff_2mps']
+1289 296.042884 -25.494948
+<xarray.UxDataArray 'TC_R2' (n_face: 9634)> Size: 77kB
+[9634 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-15 00:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-15 06:00:00 *0010-01-15-21600*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-15-21600.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-15-21600.nc.nff_2mps']
+1289 296.25 -26.864386
+<xarray.UxDataArray 'TC_R2' (n_face: 9601)> Size: 77kB
+[9601 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-15 06:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-15 12:00:00 *0010-01-15-43200*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-15-43200.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-15-43200.nc.nff_2mps']
+1289 297.0 -28.123222
+<xarray.UxDataArray 'TC_R2' (n_face: 9583)> Size: 77kB
+[9583 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-15 12:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-15 18:00:00 *0010-01-15-64800*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-15-64800.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-15-64800.nc.nff_2mps']
+1289 297.957544 -29.327299
+<xarray.UxDataArray 'TC_R2' (n_face: 9561)> Size: 76kB
+[9561 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-15 18:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-16 00:00:00 *0010-01-16-00000*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-16-00000.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-16-00000.nc.nff_2mps']
+1289 299.792992 -30.302907
+<xarray.UxDataArray 'TC_R2' (n_face: 9581)> Size: 77kB
+[9581 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-16 00:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-16 06:00:00 *0010-01-16-21600*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-16-21600.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-16-21600.nc.nff_2mps']
+1289 301.707613 -30.822296
+<xarray.UxDataArray 'TC_R2' (n_face: 9605)> Size: 77kB
+[9605 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-16 06:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-16 12:00:00 *0010-01-16-43200*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-16-43200.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-16-43200.nc.nff_2mps']
+1289 304.293071 -31.478802
+<xarray.UxDataArray 'TC_R2' (n_face: 9639)> Size: 77kB
+[9639 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-16 12:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-16 18:00:00 *0010-01-16-64800*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-16-64800.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-16-64800.nc.nff_2mps']
+1289 307.5 -32.215283
+<xarray.UxDataArray 'TC_R2' (n_face: 9631)> Size: 77kB
+[9631 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-16 18:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-03 12:00:00 *0010-01-03-43200*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-03-43200.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-03-43200.nc.nff_2mps']
+1290 246.20723 -15.668507
+<xarray.UxDataArray 'TC_R2' (n_face: 9767)> Size: 78kB
+[9767 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-03 12:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-03 18:00:00 *0010-01-03-64800*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-03-64800.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-03-64800.nc.nff_2mps']
+1290 246.207234 -15.165019
+<xarray.UxDataArray 'TC_R2' (n_face: 9789)> Size: 78kB
+[9789 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-03 18:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-04 00:00:00 *0010-01-04-00000*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-04-00000.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-04-00000.nc.nff_2mps']
+1290 246.207238 -14.662122
+<xarray.UxDataArray 'TC_R2' (n_face: 9795)> Size: 78kB
+[9795 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-04 00:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-04 06:00:00 *0010-01-04-21600*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-04-21600.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-04-21600.nc.nff_2mps']
+1290 246.207239 -14.470035
+<xarray.UxDataArray 'TC_R2' (n_face: 9804)> Size: 78kB
+[9804 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-04 06:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-04 12:00:00 *0010-01-04-43200*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-04-43200.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-04-43200.nc.nff_2mps']
+1290 246.542653 -14.505572
+<xarray.UxDataArray 'TC_R2' (n_face: 9787)> Size: 78kB
+[9787 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-04 12:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-04 18:00:00 *0010-01-04-64800*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-04-64800.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-04-64800.nc.nff_2mps']
+1290 246.75 -14.527296
+<xarray.UxDataArray 'TC_R2' (n_face: 9765)> Size: 78kB
+[9765 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-04 18:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-05 00:00:00 *0010-01-05-00000*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-05-00000.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-05-00000.nc.nff_2mps']
+1290 246.957241 -14.548823
+<xarray.UxDataArray 'TC_R2' (n_face: 9748)> Size: 78kB
+[9748 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-05 00:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-05 06:00:00 *0010-01-05-21600*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-05-21600.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-05-21600.nc.nff_2mps']
+1290 247.292656 -14.390019
+<xarray.UxDataArray 'TC_R2' (n_face: 9736)> Size: 78kB
+[9736 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-05 06:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-05 12:00:00 *0010-01-05-43200*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-05-43200.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-05-43200.nc.nff_2mps']
+1290 247.5 -13.9042
+<xarray.UxDataArray 'TC_R2' (n_face: 9740)> Size: 78kB
+[9740 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-05 12:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-05 18:00:00 *0010-01-05-64800*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-05-64800.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-05-64800.nc.nff_2mps']
+1290 247.707247 -13.924135
+<xarray.UxDataArray 'TC_R2' (n_face: 9726)> Size: 78kB
+[9726 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-05 18:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-06 00:00:00 *0010-01-06-00000*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-06-00000.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-06-00000.nc.nff_2mps']
+1290 247.707247 -13.924135
+<xarray.UxDataArray 'TC_R2' (n_face: 9726)> Size: 78kB
+[9726 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-06 00:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-04 12:00:00 *0010-01-04-43200*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-04-43200.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-04-43200.nc.nff_2mps']
+1291 80.792701 8.145141
+<xarray.UxDataArray 'TC_R2' (n_face: 9212)> Size: 74kB
+[9212 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-04 12:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-05 00:00:00 *0010-01-05-00000*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-05-00000.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-05-00000.nc.nff_2mps']
+1291 77.25 8.049273
+<xarray.UxDataArray 'TC_R2' (n_face: 9298)> Size: 74kB
+[9298 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-05 00:00:00
+Dimensions without coordinates: n_face
+	 U850
+	 V850
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0010-01-05 06:00:00 *0010-01-05-21600*
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-05-21600.nc']
+['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/nff_2mps/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0010-01-05-21600.nc.nff_2mps']
+1291 75.207281 8.70635
+<xarray.UxDataArray 'TC_R2' (n_face: 9361)> Size: 75kB
+[9361 values with dtype=float64]
+Coordinates:
+    time     object 8B 0010-01-05 06:00:00
+Dimensions without coordinates: n_face
+	 U850
 Traceback (most recent call last):
   File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/plt_TC_masks_over_fields.py", line 83, in <module>
     main()
-  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/plt_TC_masks_over_fields.py", line 63, in main
-    hv.save(mcont, os.path.join(DIRO, '%s_stm%d_%s.png' % (STRF(truedt)[1:-1], row['stmnum'], MNM)))
+  File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/plt_TC_masks_over_fields.py", line 80, in main
+    hv.save(hrast, os.path.join(DIRO, '%s_stm%d_%s.png' % (STRF(truedt)[1:-1], row['stmnum'], fld)))
   File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/holoviews/util/__init__.py", line 824, in save
     return renderer_obj.save(obj, filename, fmt=fmt, resources=resources,
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -873,55 +1468,22 @@ Traceback (most recent call last):
   File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/holoviews/plotting/bokeh/renderer.py", line 125, in _figure_data
     img = get_screenshot_as_png(plot.state, driver=state.webdriver)
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/bokeh/io/export.py", line 278, in get_screenshot_as_png
-    [width, height, dpr] = _maximize_viewport(web_driver)
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/bokeh/io/export.py", line 454, in _maximize_viewport
-    viewport_size: tuple[int, int, int] = web_driver.execute_script(calculate_viewport_size)
-                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/bokeh/io/export.py", line 277, in get_screenshot_as_png
+    wait_until_render_complete(web_driver, timeout)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/bokeh/io/export.py", line 388, in wait_until_render_complete
+    WebDriverWait(driver, timeout, poll_frequency=0.1).until(is_bokeh_render_complete)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/selenium/webdriver/support/wait.py", line 96, in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/bokeh/io/export.py", line 385, in is_bokeh_render_complete
+    return cast(bool, driver.execute_script('return window._bokeh_render_complete;'))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 414, in execute_script
     return self.execute(command, {"script": script, "args": converted_args})["value"]
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 352, in execute
-    response = self.command_executor.execute(driver_command, params)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/selenium/webdriver/remote/remote_connection.py", line 306, in execute
-    return self._request(command_info[0], url, body=data)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/selenium/webdriver/remote/remote_connection.py", line 326, in _request
-    response = self._conn.request(method, url, body=body, headers=headers)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/urllib3/_request_methods.py", line 143, in request
-    return self.request_encode_body(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/urllib3/_request_methods.py", line 278, in request_encode_body
-    return self.urlopen(method, url, **extra_kw)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/urllib3/poolmanager.py", line 443, in urlopen
-    response = conn.urlopen(method, u.request_uri, **kw)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/urllib3/connectionpool.py", line 841, in urlopen
-    retries = retries.increment(
-              ^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/urllib3/util/retry.py", line 474, in increment
-    raise reraise(type(error), error, _stacktrace)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/urllib3/util/util.py", line 38, in reraise
-    raise value.with_traceback(tb)
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
-    response = self._make_request(
-               ^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/urllib3/connectionpool.py", line 534, in _make_request
-    response = conn.getresponse()
-               ^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/urllib3/connection.py", line 516, in getresponse
-    httplib_response = super().getresponse()
-                       ^^^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/http/client.py", line 1378, in getresponse
-    response.begin()
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/http/client.py", line 318, in begin
-    version, status, reason = self._read_status()
-                              ^^^^^^^^^^^^^^^^^^^
-  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/http/client.py", line 287, in _read_status
-    raise RemoteDisconnected("Remote end closed connection without"
-urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 354, in execute
+    self.error_handler.check_response(response)
+  File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: Failed to decode response from marionette
+

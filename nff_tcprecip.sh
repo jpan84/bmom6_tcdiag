@@ -26,7 +26,7 @@
 ###TEMPESTEXTREMESDIR=/glade/work/zarzycki/derecho/tempestextremes/
 TEMPESTEXTREMESDIR=/glade/work/zarzycki/tempestextremes_noMPI
 
-SPTH=17
+SPTH=5
 GCD=8
 UQSTR=b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl
 PATHTOFILES=/glade/derecho/scratch/jpan/archive/${UQSTR}/atm/hist_0010_h1i/
@@ -50,6 +50,7 @@ DATESTRING=`date +"%s%N"`
 FILELISTNAME=filelist.txt.${DATESTRING}
 OUTLISTNAME=outlist.txt.${DATESTRING}
 TRAJFILENAME=trajectories.txt.${UQSTR}
+TRAJFILENAME=trajectories.txt.${UQSTR}.0010
 touch $FILELISTNAME $OUTLISTNAME
 
 ignoreyear=999999999
@@ -72,7 +73,9 @@ BINC=$( echo "$GCD / $BINW + 1" | bc )
 UMEANRMV="_DIFF(UBOT,_MEAN{${GCD}}(UBOT))"
 VMEANRMV="_DIFF(VBOT,_MEAN{${GCD}}(VBOT))"
 
-STR_NFE1="--in_nodefile ${TRAJFILENAME} --in_nodefile_type SN --in_fmt ${SN_FMT} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_nodefile ${TRAJFILENAME}.radspd --out_fmt ${SN_FMT},radspd,r${SPTH} --calculate radspd=radial_wind_profile(${UMEANRMV},${VMEANRMV},${BINC},${BINW});r${SPTH}=lastwhere(radspd,>=,${SPTH})*${BINW}"
+rm ${TRAJFILENAME}.radspd
+
+STR_NFE1="--in_nodefile ${TRAJFILENAME} --in_nodefile_type SN --in_fmt ${SN_FMT} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_nodefile ${TRAJFILENAME}.radspd --out_fmt ${SN_FMT},radspd,r${SPTH} --calculate radspd=radial_wind_profile(UBOT,VBOT,${BINC},${BINW});r${SPTH}=lastwhere(radspd,>=,${SPTH})*${BINW}"
 
 $TEMPESTEXTREMESDIR/bin/NodeFileEditor ${STR_NFE1}
 

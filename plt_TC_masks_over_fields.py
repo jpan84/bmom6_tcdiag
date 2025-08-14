@@ -11,15 +11,15 @@ from holoviews.operation import contours as hvcontours
 CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
 ATM = '/glade/derecho/scratch/jpan/archive/%s/atm'
 H1I = os.path.join(ATM % CASE, 'hist/') #h1i path
-MASKS = os.path.join(ATM % CASE, 'nff_17mps/') #masks path
+MASKS = os.path.join(ATM % CASE, 'nff_2mps/') #masks path
 PARQ = '/glade/u/home/jpan/aquaptc/tempest/250417_ctrl.parquet' #TC parquet
 CAMGRID = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
-DIRO = './TC_mask_plots_R17/'
+DIRO = './TC_mask_plots_R2/'
 
 STRF = lambda dtobj: f'*{dtobj.year:04}-{dtobj.month:02}-{dtobj.day:02}-{3600*dtobj.hour:05}*'
 
 BBDEG = 12.
-MNM = 'TC_R17'
+MNM = 'TC_R2'
 
 def main():
    if not os.path.exists(DIRO):
