@@ -28,9 +28,9 @@ TEMPESTEXTREMESDIR=/glade/work/zarzycki/tempestextremes_noMPI
 
 SPTH=5
 GCD=8
-UQSTR=b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl
-PATHTOFILES=/glade/derecho/scratch/jpan/archive/${UQSTR}/atm/hist_0010_h1i/
-DIRO=/glade/derecho/scratch/jpan/archive/${UQSTR}/atm/nff_${SPTH}mps
+UQSTR=b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1
+PATHTOFILES=/glade/derecho/scratch/jpan/jpan_tcfields/${UQSTR}/hist_0012-0014_h1i/
+DIRO=/glade/derecho/scratch/jpan/jpan_tcfields/${UQSTR}/nff_${SPTH}mps
 mkdir -p $DIRO
 CONNECTDAT=/glade/u/home/jpan/ne120np4_connect_v2.dat
 CONNECTFLAG=""
@@ -49,8 +49,7 @@ cd /glade/u/home/jpan/aquaptc/tempest
 DATESTRING=`date +"%s%N"`
 FILELISTNAME=filelist.txt.${DATESTRING}
 OUTLISTNAME=outlist.txt.${DATESTRING}
-TRAJFILENAME=trajectories.txt.${UQSTR}
-TRAJFILENAME=trajectories.txt.${UQSTR}.0010
+TRAJFILENAME=trajectories.txt.${UQSTR}.0012-0014
 touch $FILELISTNAME $OUTLISTNAME
 
 ignoreyear=999999999
@@ -75,7 +74,7 @@ VMEANRMV="_DIFF(VBOT,_MEAN{${GCD}}(VBOT))"
 
 rm ${TRAJFILENAME}.radspd
 
-STR_NFE1="--in_nodefile ${TRAJFILENAME} --in_nodefile_type SN --in_fmt ${SN_FMT} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_nodefile ${TRAJFILENAME}.radspd --out_fmt ${SN_FMT},radspd,r${SPTH} --calculate radspd=radial_wind_profile(UBOT,VBOT,${BINC},${BINW});r${SPTH}=lastwhere(radspd,>=,${SPTH})*${BINW}"
+STR_NFE1="--in_nodefile ${TRAJFILENAME} --in_nodefile_type SN --in_fmt ${SN_FMT} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_nodefile ${TRAJFILENAME}.radspd${SPTH} --out_fmt ${SN_FMT},radspd,r${SPTH} --calculate radspd=radial_wind_profile(UBOT,VBOT,${BINC},${BINW});r${SPTH}=lastwhere(radspd,>=,${SPTH})*${BINW}"
 
 $TEMPESTEXTREMESDIR/bin/NodeFileEditor ${STR_NFE1}
 
@@ -83,7 +82,7 @@ $TEMPESTEXTREMESDIR/bin/NodeFileEditor ${STR_NFE1}
 
 ###$TEMPESTEXTREMESDIR/bin/NodeFileEditor ${STR_NFE2}
 
-STR_NFF="--in_nodefile ${TRAJFILENAME}.radspd --in_nodefile_type SN --in_fmt ${SN_FMT},radspd,r${SPTH} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_data_list ${OUTLISTNAME} --maskvar TC_R${SPTH} --bydist r${SPTH}"
+STR_NFF="--in_nodefile ${TRAJFILENAME}.radspd${SPTH} --in_nodefile_type SN --in_fmt ${SN_FMT},radspd,r${SPTH} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_data_list ${OUTLISTNAME} --maskvar TC_R${SPTH} --bydist r${SPTH}"
 ###--bycontour _PROD(_SIGN(lat),_CURL{8,1.0}(U850,V850)),-1e-5,5.5,0.5"
 ###PSL,${DCU_PSLFOMAG},${DCU_PSLFODIST},0"
 

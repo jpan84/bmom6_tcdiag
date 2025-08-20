@@ -18,7 +18,7 @@ import sznl_funcs
 import pltsettings
 
 ### hist file params
-OUTDIR = 'linevslat_new_sznl_diff'
+OUTDIR = 'linevslat_h1i_0012-0014'
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
 HISTS = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/*.h0a.*.nc'
 CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1']
@@ -36,8 +36,11 @@ USER_DEF = {'RESTOM', 'PRECT', 'NCF'}
 
 #h1i mode
 #HISTS = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/*.h1i.0010*.nc'
-H1I = False
-H1IVARS = {'CF500'}
+HISTS = '/glade/derecho/scratch/jpan/jpan_tcfields/%s/hist_0012-0014_h1i/cat_h1i_0012-0014.nc'
+HISTS = '/glade/derecho/scratch/jpan/jpan_tcfields/%s/nff_4mps/cat_4mps.nc'
+H1I = True
+H1IVARS = {'TC_R4'}
+#H1IVARS = {'CF500'}
 #USER_DEF = {'CF500'}
 
 def main():

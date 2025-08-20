@@ -16,29 +16,24 @@ import matplotlib.pyplot as plt
 MODES = ['compute', 'plot']
 mode = sys.argv[1]
 
-ARCHV = '/glade/campaign/univ/upsu0032/jpan_tcfields/'
-ALIAS = '250417_ctrl'
+SPTH = 4
+
+#ARCHV = '/glade/campaign/univ/upsu0032/jpan_tcfields/'
+ARCHV = '/glade/derecho/scratch/jpan/jpan_tcfields/'
+ALIAS = '250415_unseed'
 CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s' % ALIAS
-DIRO = './tcfields2mps_%s_ocn/' % ALIAS
+DIRO = './tcfields%dmps_%s/' % (SPTH, ALIAS)
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
-RAWALL = 'hist_0010_h1i/cat_h1i.nc'
-RAWTCS = 'TC_R2_masked/*.h1i.*.nc'
-EDDALL = 'yhoureddy/yhoureddy_h1i.nc'
-#EDDTCS = 'yhoureddy_TC_R2_masked/yhoureddy_h1i.nc'
-EDDTCS = 'yhoureddy_mask_after/yhoureddy_h1i.nc'
+RAWALL = 'hist_0012-0014_h1i/cat_h1i_0012-0014.nc'
+RAWTCS = 'hist_0012-0014_h1i/TC_R%d_masked_h1i_0012-0014.nc' % SPTH
+EDDALL = 'hist_0012-0014_h1i/yhoureddy_h1i_0012-0014.nc'
+EDDTCS = 'hist_0012-0014_h1i/TC_R%d_masked_yhoureddy_h1i_0012-0014.nc' % SPTH
 
-OCNALL = 'hist_0010_h1i/cat_sfc_0010.nc'
-OCNTCS = 'TC_R2_masked/cat_sfc_0010.nc'
-OCAALL = 'yhoureddy/yhouranom_sfc_0010.nc'
-OCATCS = 'yhoureddy_mask_after/yhouranom_sfc_0010.nc'
-
-#R8 sensitivity test
-#RAWALL = 'hist_0010_h1i/cat_h1i_1459.nc'
-#RAWTCS = 'TC_R8_masked/cat_h1i_R8.nc'
-#EDDALL = 'yhoureddy/yhoureddy_h1i_1459.nc'
-#EDDTCS = 'yhoureddy_TC_R8_masked/yhoureddy_h1i.nc'
-#DIRO = './tcfields8mps_%s/' % ALIAS
+OCNALL = 'hist_0012-0014_h1i/cat_sfc_0012-0014.nc'
+OCNTCS = 'hist_0012-0014_h1i/TC_R%d_masked_sfc_0012-0014.nc' % SPTH
+OCAALL = 'hist_0012-0014_h1i/yhoureddy_sfc_0012-0014.nc'
+OCATCS = 'hist_0012-0014_h1i/TC_R%d_masked_yhoureddy_sfc_0012-0014.nc' % SPTH
 
 g = 9.81
 
@@ -52,13 +47,13 @@ eddy_fluxes=dict(VTBOT=('VBOT', 'TBOT', True), VT850=('V850', 'T850', True), VT5
                  WT850=(-1, 'OMEGA850', 'T850', False), WT500=(-1, 'OMEGA500', 'T500', False),\
                  WU850=(-1, 'OMEGA850', 'U850', False), WU500=(-1, 'OMEGA500', 'U500', False),\
                  WQ850=(-1, 'OMEGA850', 'Q850', False), WZ850=(-1, 'OMEGA850', 'Z850', False), WZ500=(-1, 'OMEGA500', 'Z500', False)) 
-eddy_fluxes=dict(VT850=('V850', 'T850', True),\
-                 VU200=('V200', 'U200', True),\
-                 VQ850=('V850', 'Q850', True),\
-                 WT850=(-1, 'OMEGA850', 'T850', False),\
-                 WU500=(-1, 'OMEGA500', 'U500', False),\
-                 WQ850=(-1, 'OMEGA850', 'Q850', False))
-eddy_fluxes, signed_vars = dict(VT850=('V850', 'T850', True)), dict(TAUY=(-1, 'TAUY', True))
+###eddy_fluxes=dict(VT850=('V850', 'T850', True),\
+###                 VU200=('V200', 'U200', True),\
+###                 VQ850=('V850', 'Q850', True),\
+###                 WT850=(-1, 'OMEGA850', 'T850', False),\
+###                 WU500=(-1, 'OMEGA500', 'U500', False),\
+###                 WQ850=(-1, 'OMEGA850', 'Q850', False))
+###eddy_fluxes, signed_vars = dict(VT850=('V850', 'T850', True)), dict(TAUY=(-1, 'TAUY', True))
 
 #MOM fields
 ocn_signed = dict(hflso=(1, 'hflso', False), hfsso=(1, 'hfsso', False))
