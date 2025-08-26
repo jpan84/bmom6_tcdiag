@@ -25,7 +25,7 @@ CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.B
 ALIASES = ['UNSEED', 'CTRL', 'SEED']
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
-DO_DIFF = True
+DO_DIFF = False
 
 zmlats = (-90, 90, 0.5)
 LATLAB = np.array([-90., -60., -30., 0., 30., 60., 90.])
