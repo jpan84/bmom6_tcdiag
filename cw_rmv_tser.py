@@ -6,17 +6,17 @@ from datetime import timedelta as tdel
 import matplotlib.pyplot as plt
 
 MASK = '/glade/derecho/scratch/jpan/jpan_tcfields/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/dSSTAm0.1_AND_TC_R4_runmax15d.nc'
-MASK = '/glade/derecho/scratch/jpan/jpan_tcfields/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/nff_4mps/cat_4mps_sx0.66av1.nc'
+#MASK = '/glade/derecho/scratch/jpan/jpan_tcfields/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/nff_4mps/cat_4mps_sx0.66av1.nc'
 ORIG = '/glade/derecho/scratch/jpan/jpan_tcfields/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/hist_0012-0014_h1i/yhoureddy_sfc_0012-0014.nc'
 NoTC = '/glade/derecho/scratch/jpan/jpan_tcfields/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/SSTA_noTC_15d.nc'
 NoTC2 = '/glade/derecho/scratch/jpan/jpan_tcfields/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/SSTA_noTC_huili.nc'
 MASKNM = 'tos'
-MASKNM = 'TC_R4'
+#MASKNM = 'TC_R4'
 SSTANM = 'tos'
 LATNM, LONNM = 'yh', 'xh'
-LATNM, LONNM = 'lat', 'lon'
+#LATNM, LONNM = 'lat', 'lon'
 
-DIRO = './CTRL_cw_series_15d/'
+DIRO = './CTRL_cw_series_15d_mask15d/'
 
 def main():
    if not os.path.exists(DIRO):
