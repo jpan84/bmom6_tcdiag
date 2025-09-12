@@ -5,7 +5,7 @@
 #qcmd -q casper -l walltime=00:30:00 -l select=1:ncpus=36:mem=128GB -A UCIS0005 python3 streamf_sznl.py 0
 
 #import paths as pt
-OUTDIR = './streamf_sznl/'
+OUTDIR = './streamf_sznl_0005-0015/'
 
 import sys
 sys.path.append('/glade/u/home/jpan/aquaptc/aquapgrid/')
@@ -27,8 +27,8 @@ print(sys.argv)
 DIFF = bool(int(sys.argv[1])) #False if len(sys.argv) < 3 else bool(sys.argv[2])
 #DIRIDX2 = None if not DIFF else int(sys.argv[3])
 fname = 'ymonmean.nc' #'cdo_ann_means.nc' #'*h0a*.nc'
-DIR1 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/%s' % fname
-DIR2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist_regrid_0.25x0.25_onpres/%s' % fname
+DIR1 = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/%s' % fname
+DIR2 = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist_regrid_0.25x0.25_onpres/%s' % fname
 pres_name = 'plev'
 DIAB_VARS = ['DTCOND', 'QRL', 'QRS']
 plotfileargs = (DIR1.split('/')[-4], DIR2.split('/')[-4] if DIFF else '')

@@ -5,12 +5,12 @@ import matplotlib.colors as colors
 import matplotlib.ticker as mticker
 import numpy as np
 
-DIRI = './streamf_sznl'
+DIRI = './streamf_sznl_0005-0015'
 FILI = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl__TEM.nc'
 DIFF = False
 
-FILI = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl_b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed_TEM.nc'
-DIFF = True
+#FILI = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl_b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1_TEM.nc'
+#DIFF = True
 
 YSCL = lambda lat: np.sin(np.deg2rad(lat))
 YLAB = np.arange(-90, 90.1, 30).astype(np.int_)

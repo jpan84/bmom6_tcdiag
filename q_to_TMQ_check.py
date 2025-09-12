@@ -23,8 +23,8 @@ ZLIM = [(-1.5, 1.5), (0, 80), (-16, 16)]
 
 
 def main():
-   if not os.path.exists(OUTDIR):
-      os.makedirs(OUTDIR)
+   #if not os.path.exists(OUTDIR):
+   #   os.makedirs(OUTDIR)
 
    dss = [ux.open_mfdataset(GRIDFN, FILI % cs) for cs in CASES]
    ds = dss[0]
@@ -51,7 +51,7 @@ def main():
       if ii in {0, 2}:
          toplt = sznl[ii] - sznl[1]
       for jj, szn in enumerate(toplt.season):
-         ax.plot(YSCL(toplt['lat']), toplt.sel(season=szn), color=LNCLR[jj], linestyle='dashdot')
+         ax.plot(YSCL(toplt['latitudes']), toplt.sel(season=szn), color=LNCLR[jj], linestyle='dashdot')
          ax.axhline(y=0, linestyle='dotted', color='gray')
          ax.set_xticks(YLOC, YLAB)
          ax.set_ylim(*ZLIM[ii])

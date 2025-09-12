@@ -122,7 +122,7 @@ def main(FN, CTRL=None):
 
    #FN = 'tcstats-QPC4ctrl'
    print('Hists and scatters...')
-   plt.rc('font', size=20)
+   plt.rc('font', size=14)
    kde_dict = dict()
    for k in tc_stats:
       print(k)
@@ -157,7 +157,7 @@ def main(FN, CTRL=None):
          ax_histx = fig.add_subplot(gs[0, 0], sharex=ax)
          ax_histy = fig.add_subplot(gs[1, 1], sharey=ax)
          # Draw the scatter plot and marginals.
-         kde_k_dep = scatter_hist(tc_stats[k], tc_stats[depvar], ax, ax_histx, ax_histy, k, depvar, ctrl_kde=ctrl_kde, weights=tc_stats['ace'])
+         kde_k_dep = scatter_hist(tc_stats[k], tc_stats[depvar], ax, ax_histx, ax_histy, k, depvar, ctrl_kde=ctrl_kde)#, weights=tc_stats['ace'])
          kde_dict[(k, depvar)] = kde_k_dep
          ax.set_xlabel(k)
          ax.set_ylabel(depvar)
@@ -186,14 +186,17 @@ def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname, ctrl_kde=None, weig
       ymin, ymax = XLIMS[yname]
    xgrid, ygrid = np.mgrid[xmin:xmax:100j, ymin:ymax:100j]
    pos = np.vstack([xgrid.ravel(), ygrid.ravel()])
-   z = kde(pos).reshape(xgrid.shape)
+   z = kde(pos).reshape(xgrid.shape) * len(x)
 
    if ctrl_kde is None:
       csf = ax.contourf(xgrid, ygrid, z)
       cs = ax.contour(xgrid, ygrid, z, colors='black')
       ax.clabel(cs, **clabelkwargs)
+      plt.colorbar(csf, ax=ax_histy)
    else:
-      zctrl = ctrl_kde[(xname, yname)](pos).reshape(xgrid.shape)
+      #print(ctrl_kde)
+      ckobj = ctrl_kde[(xname, yname)]
+      zctrl = ckobj[0](pos).reshape(xgrid.shape) * ckobj[1]
       #pctdif = (z - zctrl) / zctrl * 100
       cs = ax.contour(xgrid, ygrid, zctrl, colors='black', zorder=2)
       csf = ax.contourf(xgrid, ygrid, z - zctrl, cmap='bwr', norm=mcolors.CenteredNorm(), levels=np.concatenate((-cs.levels[::-1], cs.levels[1:])), zorder=1, extend='both')
@@ -201,14 +204,14 @@ def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname, ctrl_kde=None, weig
       plt.colorbar(csf, ax=ax_histy)
 
    # the scatter plot:
-   ax.scatter(x, y)
+   #ax.scatter(x, y, marker='x', c='gray', s=10)
 
    ax_histx.hist(x, bins=20, edgecolor='black')
    ax_histy.hist(y, bins=20, edgecolor='black', orientation='horizontal')
    ax_histx.set_yticks([])
    ax_histy.set_xticks([])
 
-   return kde
+   return kde, len(x)
 
 def mps2cat(wspd):
    dif = wspd - SSHS
