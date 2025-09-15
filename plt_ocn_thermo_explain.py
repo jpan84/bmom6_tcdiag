@@ -4,6 +4,7 @@ from sznl_funcs import stack_hemi_sznl
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 import matplotlib.gridspec as gspec
+import matplotlib.ticker as mticker
 
 TCDENS = '/glade/u/home/jpan/aquaptc/tempest/250725_density_sznl/tcdens.nc' #output from track_dens.py
 OCN_YZ = '/glade/u/home/jpan/aquaptc/bmom6_tcdiag/ocn_yz_plts_diff/sznlzm.nc' #output from plt_ocn_yz.py
@@ -11,7 +12,11 @@ H1IALL = '/glade/u/home/jpan/aquaptc/bmom6_tcdiag/tcfields2mps_%s_full/means_all
 H1ITCS = '/glade/u/home/jpan/aquaptc/bmom6_tcdiag/tcfields2mps_%s_full/means_tcs.nc'
 HU_HTF = '/glade/u/home/jpan/aquaptc/bmom6_tcdiag/sznl_transports_newdiff/HT_HU.nc' #output from sznl_transports_1.py
 CAM_2D = '/glade/u/home/jpan/aquaptc/bmom6_tcdiag/linevslat_new_sznl_diff/sznlzm.nc' #output from sznl_zm_ux_1.py
-ATMTEM = ''
+ATMTEM = '/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf_sznl_0005-0015/%s'
+
+TEMNCS = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl_b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed_TEM.nc',\
+          'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl__TEM.nc',
+          'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl_b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1_TEM.nc']
 
 ALIS = ['250415_unseed', '250417_ctrl', '250416_seed1x1']
 
@@ -23,7 +28,7 @@ LIMLAB = np.arange(200, 1500, 200)
 LIMLOC = ZSCL(LIMLAB)
 
 YSCL = lambda lat: np.sin(np.deg2rad(lat))
-YLAB = np.array([-90, -60, -45, -30, -15, 0, 15, 30, 45, 60, 90]).astype(np.int_)
+YLAB = np.arange(-50, 51, 10) #np.array([-90, -60, -45, -30, -15, 0, 15, 30, 45, 60, 90]).astype(np.int_)
 YLOC = YSCL(YLAB)
 
 def main():
@@ -33,6 +38,7 @@ def main():
    h1itcs = xr.concat([xr.open_dataset(H1ITCS % al).expand_dims(case=[al]) for al in ALIS], dim='case')
    huhtds = xr.open_dataset(HU_HTF)
    cam_2d = xr.open_dataset(CAM_2D)
+   temds = xr.concat([xr.open_dataset(ATMTEM % TEMNCS[ii]).expand_dims(case=[al]) for ii, al in enumerate(ALIS)], dim='case')
 
    #mirror and stack the seasons of TC density
    for dv in tcdens.data_vars:
@@ -110,13 +116,17 @@ def main():
 
 
    ############### Plot OHU and ACE density above vmo, thetao #################################
-   sf_ctkwargs = {'colors': 'green', 'levels': np.array([0.5, 2, 8])}#2.**np.arange(-2, 7, 1)}
+   sf_ctkwargs = {'colors': 'green', 'levels': 10.**np.arange(9, 12)}#np.array([0.5, 2, 8])}#2.**np.arange(-2, 7, 1)}
    sf_ctkwargs['levels'] = np.concatenate((-sf_ctkwargs['levels'][::-1], sf_ctkwargs['levels']))
    plt.rc('font', size=16)
    plt.rcParams['figure.figsize'] = (24, 9)
    fig, axes = plt.subplots(2, 3, layout='constrained')
    fig.suptitle('Ocean Heat Uptake [W m$^{-2}$], ACE [10$^4$ kt$^2$ yr$^{-1}$ (10$^6$ km$^2$)$^{-1}$]\
-                  \nOcean Eulerian Mean Mass Streamfunction, Potential Temp [K]')
+                  \nOcean Residual Mass Streamfunction, Potential Temp [K]')
+   acelims = [(-5, 5), (-5, 5), (-30, 30)]
+   ohulims = [(-5, 5), (-120, 120), (-25, 25)]
+   thelims = [(-.2, .21, .04), (0, 37, 4), (-1.2, 1.3, .4)]
+
    for ii, szn in enumerate(ocn_yz['season']):
       for jj in range(len(ALIS)):
          outer_spec = axes[ii, jj].get_subplotspec()
@@ -125,14 +135,14 @@ def main():
          ax_bot = fig.add_subplot(gs[1], sharex=ax_top)
          axes[ii, jj].axis('off')
 
-         sf = (ocn_yz['vmo']).isel(case=jj)
+         sf = (ocn_yz['vmo'] + ocn_yz['vhGM']).isel(case=jj)
          if jj != 1:
-            sf = sf - (ocn_yz['vmo']).isel(case=1)
+            sf = sf - (ocn_yz['vmo'] + ocn_yz['vhGM']).isel(case=1)
          sf = sf.sel(season=szn)
          expo = 1e10 if jj == 1 else 1e9
-         ax_bot.contour(YSCL(ocn_yz['yq']), ZSCL(ocn_yz['zl']), sf / expo, **sf_ctkwargs)
+         ax_bot.contour(YSCL(ocn_yz['yq']), ZSCL(ocn_yz['zl']), sf, **sf_ctkwargs)
          ax_bot.set_xticks(YLOC, YLAB)
-         ax_bot.set_xlim(-.5, .5)
+         ax_bot.set_xlim(-1 / np.sqrt(2), 1 / np.sqrt(2))
          ax_bot.set_yticks(LIMLOC, LIMLAB)
          ax_bot.set_ylim(ZSCL(800), ZSCL(0))
          ax_bot.set_xlabel('Latitude [°]')
@@ -141,7 +151,7 @@ def main():
          thta = ocn_yz['thetao'].isel(case=jj) if jj == 1 else ocn_yz['thetao'].isel(case=jj) - ocn_yz['thetao'].isel(case=1)
          th_kw = dict(cmap='cividis', levels=np.arange(0, 37, 4))
          if jj != 1:
-            th_kw = dict(cmap='RdBu_r', levels=np.arange(-3, 3.01, .5))
+            th_kw = dict(cmap='RdBu_r', levels=np.arange(*thelims[jj]))
          csf = ax_bot.contourf(YSCL(ocn_yz['yh']), ZSCL(ocn_yz['zl']), thta.sel(season=szn), extend='both', **th_kw)
          cax = ax_bot.inset_axes([1, 0, .05, 1], transform=ax_bot.transAxes)
          plt.colorbar(csf, label='Potential temp [K]', cax=cax, pad=.01)
@@ -154,12 +164,12 @@ def main():
 
          ax_top.plot(YSCL(tcdens['lat']), pltdens, linestyle='dashed', color='black')
          acelim = (-5, 5) if jj <= 1 else (-25, 25)
-         ax_top.set_ylim(*acelim)
+         ax_top.set_ylim(*acelims[jj])
          ax_top.set_ylabel('ACE')
          axt2 = ax_top.twinx()
          axt2.plot(YSCL(huhtds['lat']), ohuall, color='maroon')
          ohulim = (-120, 120) if jj == 1 else (-13, 13)
-         axt2.set_ylim(*ohulim)
+         axt2.set_ylim(*ohulims[jj])
          axt2.set_ylabel('OHU', color='maroon')
          axt2.tick_params(axis='y', colors='maroon')
          #axt2.plot(YSCL(h1itcs['latitudes']), tauxtcs, linestyle='-.')
@@ -168,71 +178,59 @@ def main():
    #fig.tight_layout()
    fig.get_layout_engine().set(w_pad=.25, h_pad=0.15)
    #plt.show()
-   plt.savefig('ocn_yz_plts_diff/ACE_OHU_vmo_theto.png', bbox_inches='tight')
+   plt.savefig('ocn_yz_plts_diff/ACE_OHU_resid_thetao.png', bbox_inches='tight')
    plt.close()
    #########################################################################################
 
 
-   ############### Plot atmo Eulerian sf above vmo, thetao #################################
-   sf_ctkwargs = {'colors': 'green', 'levels': np.array([0.5, 2, 8])}#2.**np.arange(-2, 7, 1)}
+   ############### Plot atmo Eulerian sf above vresid, thetao #################################
+   sf_cfkwargs = {'levels': 2.**np.arange(-2, 7, 1), 'norm': colors.SymLogNorm(2.**-1)}
+   sf_cfkwargs['levels'] = np.concatenate((-sf_cfkwargs['levels'][::-1], sf_cfkwargs['levels']))
+   sf_ctkwargs = {'colors': 'black', 'levels': 2.**np.arange(-2, 7, 1)}
    sf_ctkwargs['levels'] = np.concatenate((-sf_ctkwargs['levels'][::-1], sf_ctkwargs['levels']))
    plt.rc('font', size=16)
-   plt.rcParams['figure.figsize'] = (24, 9)
+   plt.rcParams['figure.figsize'] = (24, 12)
    fig, axes = plt.subplots(2, 3, layout='constrained')
-   fig.suptitle('Ocean Heat Uptake [W m$^{-2}$], ACE [10$^4$ kt$^2$ yr$^{-1}$ (10$^6$ km$^2$)$^{-1}$]\
-                  \nOcean Eulerian Mean Mass Streamfunction, Potential Temp [K]')
+   fig.suptitle('Atmosphere Eulerian mean mass streamfunction\
+                  \nOcean Residual Mass Streamfunction')
    for ii, szn in enumerate(ocn_yz['season']):
       for jj in range(len(ALIS)):
          outer_spec = axes[ii, jj].get_subplotspec()
-         gs = gspec.GridSpecFromSubplotSpec(2, 1, subplot_spec=outer_spec, height_ratios=[1, 4])
+         gs = gspec.GridSpecFromSubplotSpec(2, 1, subplot_spec=outer_spec, height_ratios=[1, 1])
          ax_top = fig.add_subplot(gs[0])
          ax_bot = fig.add_subplot(gs[1], sharex=ax_top)
          axes[ii, jj].axis('off')
 
-         sf = (ocn_yz['vmo']).isel(case=jj)
+         sf = (ocn_yz['vmo'] + ocn_yz['vhGM']).isel(case=jj)
          if jj != 1:
-            sf = sf - (ocn_yz['vmo']).isel(case=1)
+            sf = sf - (ocn_yz['vmo'] + ocn_yz['vhGM']).isel(case=1)
          sf = sf.sel(season=szn)
          expo = 1e10 if jj == 1 else 1e9
+         csf = ax_bot.contourf(YSCL(ocn_yz['yq']), ZSCL(ocn_yz['zl']), sf / expo, cmap='coolwarm' if jj == 1 else 'bwr', **sf_cfkwargs)
+         cax = ax_bot.inset_axes([1, 0, .05, 1], transform=ax_bot.transAxes)
+         plt.colorbar(csf, label='[10$^{%d}$ kg/s]' % int(np.log10(expo)), cax=cax, pad=.01)
          ax_bot.contour(YSCL(ocn_yz['yq']), ZSCL(ocn_yz['zl']), sf / expo, **sf_ctkwargs)
          ax_bot.set_xticks(YLOC, YLAB)
-         ax_bot.set_xlim(-.5, .5)
-         ax_bot.set_yticks(LIMLOC, LIMLAB)
-         ax_bot.set_ylim(ZSCL(800), ZSCL(0))
+         ax_bot.set_xlim(-1, 1)
+         ax_bot.set_yticks(ZLOC, ZLAB)
+         ax_bot.invert_yaxis()
          ax_bot.set_xlabel('Latitude [°]')
          ax_bot.set_ylabel('Depth [m]')
 
-         thta = ocn_yz['thetao'].isel(case=jj) if jj == 1 else ocn_yz['thetao'].isel(case=jj) - ocn_yz['thetao'].isel(case=1)
-         th_kw = dict(cmap='cividis', levels=np.arange(0, 37, 4))
-         if jj != 1:
-            th_kw = dict(cmap='RdBu_r', levels=np.arange(-3, 3.01, .5))
-         csf = ax_bot.contourf(YSCL(ocn_yz['yh']), ZSCL(ocn_yz['zl']), thta.sel(season=szn), extend='both', **th_kw)
-         cax = ax_bot.inset_axes([1, 0, .05, 1], transform=ax_bot.transAxes)
-         plt.colorbar(csf, label='Potential temp [K]', cax=cax, pad=.01)
-
-         pltdens = tcdens['ace'].isel(run=jj) if jj == 1 else tcdens['ace'].isel(run=jj) - tcdens['ace'].isel(run=1)
-         pltdens = pltdens.sel(season=szn)
-         ohuall = huhtds['ohu'].isel(case=jj) if jj == 1 else huhtds['ohu'].isel(case=jj) - huhtds['ohu'].isel(case=1)
-         ohuall = ohuall.sel(season=szn)
-         #tauxtcs = fldnet(h1itcs, 'TAUX').sel(season=szn).isel(case=jj)
-
-         ax_top.plot(YSCL(tcdens['lat']), pltdens, linestyle='dashed', color='black')
-         acelim = (-5, 5) if jj <= 1 else (-25, 25)
-         ax_top.set_ylim(*acelim)
-         ax_top.set_ylabel('ACE')
-         axt2 = ax_top.twinx()
-         axt2.plot(YSCL(huhtds['lat']), ohuall, color='maroon')
-         ohulim = (-120, 120) if jj == 1 else (-13, 13)
-         axt2.set_ylim(*ohulim)
-         axt2.set_ylabel('OHU', color='maroon')
-         axt2.tick_params(axis='y', colors='maroon')
-         #axt2.plot(YSCL(h1itcs['latitudes']), tauxtcs, linestyle='-.')
-         axt2.hlines(0, -1, 1, linestyles='dotted', colors='gray')
+         mmc = temds['PSI_EM'].isel(case=jj, season=ii)
+         csf = ax_top.contourf(YSCL(temds['lat']), temds['plev'], mmc / expo, cmap='coolwarm' if jj == 1 else 'bwr', **sf_cfkwargs)
+         ax_top.contour(YSCL(temds['lat']), temds['plev'], mmc / expo, **sf_ctkwargs)
+         ax_top.set_ylim(1000, 100)
+         ax_top.set_yscale('log')
+         ax_top.yaxis.set_minor_formatter(mticker.ScalarFormatter())
+         ax_top.yaxis.set_major_formatter(mticker.ScalarFormatter())
+         ax_top.set_ylabel('Pressure [hPa]')
+         ax_top.set_yticks(np.arange(100, 1001, 100))
 
    #fig.tight_layout()
    fig.get_layout_engine().set(w_pad=.25, h_pad=0.15)
    #plt.show()
-   plt.savefig('ocn_yz_plts_diff/ACE_OHU_vmo_theto.png', bbox_inches='tight')
+   plt.savefig('ocn_yz_plts_diff/atmo_ocn_sfunc.png', bbox_inches='tight')
    plt.close()
    #########################################################################################
 

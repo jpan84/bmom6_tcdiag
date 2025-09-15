@@ -22,7 +22,7 @@ def main():
    plt.rc('font', size=16)
    plt.rcParams['figure.figsize'] = (30, 12)
    latlim = 1 / np.sqrt(2)
-   subplot_kw = dict(xlim=(-latlim, latlim), ylim=(100, 1000), yscale='log')
+   subplot_kw = dict(xlim=(-latlim, latlim), ylim=(200, 1000), yscale='log')
    fig, axes = plt.subplots(2, 3, layout='constrained', sharex=True, sharey=True, subplot_kw=subplot_kw)
    axes[0][0].invert_yaxis()
 
@@ -46,7 +46,7 @@ def main():
          ax.contour(sinlat, dss[csi]['plev'] / 100, 0 * pltlw * 86400, colors='green', levels=clevs['tdot'])# * levfac[csi])
          ax.contour(sinlat, dss[csi]['plev'] / 100, 0 * pltsw * 86400, colors='orange', levels=clevs['tdot'])# * levfac[csi])
          ax.set_xticks(np.sin(np.deg2rad(np.arange(-45, 46, 5))), np.arange(-45, 46, 5))
-         ax.set_yticks(np.arange(100, 1001, 100), np.arange(100, 1001, 100))
+         ax.set_yticks(np.arange(200, 1001, 100), np.arange(200, 1001, 100))
    plt.savefig('q_cldamt.png', bbox_inches='tight')
    plt.close()
 
