@@ -1,13 +1,6 @@
 nohup: ignoring input
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 7324133.casper-pbs with qsub arguments:
-    qsub  -l select=1:ncpus=36:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=02:05:00
+Waiting on job launch; 7998865.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:25:00
 
-
-Obtaining dp3d...
-<xarray.UxDataArray (time: 120, lev: 26, n_face: 777602)> Size: 19GB
-dask.array<add, shape=(120, 26, 777602), dtype=float64, chunksize=(1, 26, 777602), chunktype=numpy.ndarray>
-Coordinates:
-* time     (time) object 960B 0005-02-15 00:00:00 ... 0015-01-16 12:00:00
-* lev      (lev) float64 208B 3.545 7.389 13.97 23.94 ... 929.6 970.6 992.6
-Dimensions without coordinates: n_face
+trop_cld_rad.py done.
