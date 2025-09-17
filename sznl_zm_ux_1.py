@@ -18,30 +18,32 @@ import sznl_funcs
 import pltsettings
 
 ### hist file params
-OUTDIR = 'linevslat_h1i_0012-0014'
+OUTDIR = 'linevslat_h0a_diff'
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-HISTS = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/*.h0a.*.nc'
+HISTS = '/glade/campaign/univ/upsu0032/jpan_aquaptc//%s/atm/hist/*.h0a.*.nc'
 CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1']
 ALIASES = ['UNSEED', 'CTRL', 'SEED']
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
-DO_DIFF = False
+DO_DIFF = True
 
 zmlats = (-90, 90, 0.5)
-LATLAB = np.array([-90., -60., -30., 0., 30., 60., 90.])
+LATLAB = np.array([-90., -60., -50., -40., -30., -20, -10, 0., 10., 20., 30., 40., 50., 60., 90.])
 lncolors = ['blue', 'orange']
 #TODO: allow diffing between cases and selecting of months/seasons
-SKIP = {'AEROD_v'}
-USER_DEF = {'RESTOM', 'PRECT', 'NCF'}
+SKIP = {'AEROD_v', 'area', 'areawt', 'lat', 'lon'}
+USER_DEF = {'RESTOM', 'PRECT', 'NCF', 'FLUS', 'LWAHU', 'SWAHU'}
+
 
 #h1i mode
 #HISTS = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/*.h1i.0010*.nc'
-HISTS = '/glade/derecho/scratch/jpan/jpan_tcfields/%s/hist_0012-0014_h1i/cat_h1i_0012-0014.nc'
-HISTS = '/glade/derecho/scratch/jpan/jpan_tcfields/%s/nff_4mps/cat_4mps.nc'
-H1I = True
+#HISTS = '/glade/derecho/scratch/jpan/jpan_tcfields/%s/hist_0012-0014_h1i/cat_h1i_0012-0014.nc'
+#HISTS = '/glade/derecho/scratch/jpan/jpan_tcfields/%s/nff_4mps/cat_4mps.nc'
+H1I = False
 H1IVARS = {'TC_R4'}
 #H1IVARS = {'CF500'}
 #USER_DEF = {'CF500'}
+
 
 def main():
    if not os.path.exists(OUTDIR):
@@ -106,6 +108,7 @@ def main():
          ax.set_title(ALIASES[ii] + (' difference' if (DO_DIFF and (ii == 0 or ii == 2)) else '') )
          ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=4, prop=dict(size=12))
          ax.set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB.astype(np.int_))
+         [ax.axvline(np.sin(np.deg2rad(ll)), c='gray', lw=0.5) for ll in LATLAB]
 
       if DO_DIFF:
          ###make the difference panels share y
@@ -142,6 +145,12 @@ def udef(ds, dv):
       return ds['FSNT'] - ds['FLNT']
    if dv == 'NCF':
       return ds['LWCF'] + ds['SWCF']
+   if dv == 'FLUS':
+      return ds['FLNS'] + ds['FLDS']
+   if ds == 'SWAHU':
+      return ds['FSNT'] - ds['FSNS']
+   if ds == 'LWAHU':
+      return ds['FLNS'] - ds['FLNT']
    if dv == 'CF500':
       return ux.UxDataArray((ds['OMEGA500'] < 0).astype(np.float64).data, dims=ds['OMEGA500'].dims,\
              coords=ds['OMEGA500'].coords, uxgrid=ds.uxgrid)
