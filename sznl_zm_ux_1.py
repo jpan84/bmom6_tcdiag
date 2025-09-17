@@ -32,7 +32,7 @@ LATLAB = np.array([-90., -60., -50., -40., -30., -20, -10, 0., 10., 20., 30., 40
 lncolors = ['blue', 'orange']
 #TODO: allow diffing between cases and selecting of months/seasons
 SKIP = {'AEROD_v', 'area', 'areawt', 'lat', 'lon'}
-USER_DEF = {'RESTOM', 'PRECT', 'NCF', 'FLUS', 'LWAHU', 'SWAHU'}
+USER_DEF = {'RESTOM', 'PRECT', 'NCF', 'FLUS', 'LWAHU', 'SWAHU', 'PALB'}
 
 
 #h1i mode
@@ -147,10 +147,12 @@ def udef(ds, dv):
       return ds['LWCF'] + ds['SWCF']
    if dv == 'FLUS':
       return ds['FLNS'] + ds['FLDS']
-   if ds == 'SWAHU':
+   if dv == 'SWAHU':
       return ds['FSNT'] - ds['FSNS']
-   if ds == 'LWAHU':
+   if dv == 'LWAHU':
       return ds['FLNS'] - ds['FLNT']
+   if dv == 'PALB':
+      return ds['FSUTOA'] / ds['FSDTOA']
    if dv == 'CF500':
       return ux.UxDataArray((ds['OMEGA500'] < 0).astype(np.float64).data, dims=ds['OMEGA500'].dims,\
              coords=ds['OMEGA500'].coords, uxgrid=ds.uxgrid)
