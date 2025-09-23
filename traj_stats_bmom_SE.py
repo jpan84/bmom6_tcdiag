@@ -27,7 +27,7 @@ COLS = [None, 'ncol', 'lon', 'lat', 'pres', 'wspd', 'year', 'month', 'day', 'hou
 TYPS = [None, int, float, float, float, float, int, int, int, int]
 CTYP = {COLS[i+1]: TYPS[i+1] for i in range(len(COLS[1:]))}
 
-XLIMS = dict(pmins=(8.5e4,1.01e5), ace=(0,80), maxu=(15,120), genlon=(0,360), genlat=(-40, 40))
+XLIMS = dict(pmins=(8.5e4,1.01e5), ace=(0,80), maxu=(15,120), genlon=(0,360), genlat=(-25, 25))
 YLIMS = dict(pmins=(0, 6e-4))
 clabelkwargs = {'inline': 1, 'fontsize': 10, 'colors': 'black', 'fmt': '%.1e'}
 
@@ -188,6 +188,9 @@ def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname, ctrl_kde=None, weig
    pos = np.vstack([xgrid.ravel(), ygrid.ravel()])
    z = kde(pos).reshape(xgrid.shape) * len(x)
 
+   if (xname, yname) == ('genday', 'genlat'):
+      print(xgrid[:, 0], ygrid[0, :])
+
    if ctrl_kde is None:
       csf = ax.contourf(xgrid, ygrid, z)
       cs = ax.contour(xgrid, ygrid, z, colors='black')
@@ -202,6 +205,7 @@ def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname, ctrl_kde=None, weig
       csf = ax.contourf(xgrid, ygrid, z - zctrl, cmap='bwr', norm=mcolors.CenteredNorm(), levels=np.concatenate((-cs.levels[::-1], cs.levels[1:])), zorder=1, extend='both')
       ax.clabel(cs, **clabelkwargs)
       plt.colorbar(csf, ax=ax_histy)
+   plt.ylim(ymin, ymax)
 
    # the scatter plot:
    #ax.scatter(x, y, marker='x', c='gray', s=10)
