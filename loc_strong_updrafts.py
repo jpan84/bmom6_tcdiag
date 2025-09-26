@@ -9,8 +9,8 @@ DIRI = '/glade/derecho/scratch/jpan/jpan_tcfields/b.e23.BMOM.ne120np4_sx0.66av1.
 CASES = ['250415_unseed', '250417_ctrl', '250416_seed1x1']
 
 #OMVALS = 10. ** np.arange(.6, 1.7, .2)
-OMVALS = np.arange(16, 25, 2)
-TSLC = slice(None, None, 10)
+OMVALS = np.arange(16, 27, 1)
+TSLC = slice(None, None, 20)
 a_e = 6.371e6
 
 def main():
