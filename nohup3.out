@@ -3,3 +3,5 @@ nohup: ignoring input
 Waiting on job launch; 9514057.casper-pbs with qsub arguments:
     qsub  -l select=1:ncpus=36:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=04:05:00
 
+Opening history files...
+Terminated

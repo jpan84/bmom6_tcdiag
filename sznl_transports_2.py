@@ -23,7 +23,7 @@ g = 9.79764
 OM = 7.2921e-5
 a_e = 6.371e6
 
-inflds = [('Q', 'VQ'), ('T', 'VT'), ('U', 'VU'), ('Z3', None)]
+inflds = [('Q', 'VQ')]#, ('T', 'VT'), ('U', 'VU'), ('Z3', None)]
 
 def main():
    print('Opening history files...')
@@ -47,7 +47,7 @@ def main():
       print('Working on transports', fldtup, '...')
       tprt = [merid_transport_no_stationary(ds['V'], ds[fldtup[0]], None if fldtup[1] is None else ds[fldtup[1]], dp3d, lats=mom_h_lat.data) for ds in camdss]
       tprtdss = [xr.Dataset(data_vars={'V' + fldtup[0] + '_mean': tup[1].to_xarray(), 'V' + fldtup[0] + '_tot': tup[0].to_xarray()}).assign_coords(\
-                   coords=dict(camdss[jj]['time'])) for jj, tup in enumerate(tprt)]
+                   coords=dict(time=camdss[jj]['time'])) for jj, tup in enumerate(tprt)]
       momeans = [td.groupby('time.month').mean('time') for td in tprtdss]
       szmeans = [mm.map(lambda da: stack_hemi_sznl(monthly2sznl(da), antisym=True)) for mm in momeans]
       outdss = [xr.merge([ds, szmeans[jj]]) for jj, ds in enumerate(outdss)]
