@@ -1,3 +1,8 @@
+#Step 1: obtain hybrid-level pressure thickness from hyb_delta_pressure.py
+#Step 2: run cdo commands to obtain monthly norms of vertically integrated meridional fluxes. e.g.,
+#   cdo --debug ymonmean -vertsum -mul [ [ -cat -apply,-selvar,VQ [ *h0a*.nc ] ] [ -selvar,dp3d dp_monthly.nc ] ] vqdp_monthly.nc
+#   setsid nohup cdo --debug ymonmean -vertsum -mul [ [ -mul [ [ -cat -apply,-selvar,V [ *h0a*.nc ] ] [ -cat -apply,-selvar,Q [ *h0a*.nc ] ] ] ] [ -selvar,dp3d dp_monthly.nc ] ] vqdp_mmc_monthly.nc &> vqdp_mmc_monthly.out
+
 import sys
 import os
 import math
@@ -6,10 +11,12 @@ import xarray as xr
 import uxarray as ux
 from dask.diagnostics import ProgressBar
 from sznl_funcs import monthly2sznl, stack_hemi_sznl
+import matplotlib.pyplot as plt
 
 MODE = sys.argv[1] #'compute', 'plot'
 
 FILO = 'transports_3D_conserv.nc'
+DIRO = 'merid_tprt_conserv/'
 
 CAMGR = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 CAMDIR = '/glade/campaign/univ/upsu0032/jpan_aquaptc//%s/atm/hist/'
@@ -17,11 +24,13 @@ MOMH = '/glade/derecho/scratch/jpan/archive/%s/ocn/hist/*mom6.hm*[0-9][0-9][0-9]
 CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1']
 ALIASES = ['UNSEED', 'CTRL', 'SEED']
 
-
 P0 = 1e5
 g = 9.79764
 OM = 7.2921e-5
 a_e = 6.371e6
+cp = 1005
+lv = 2.501e6
+LATLAB = np.array([-90., -60., -50., -40., -30., -20, -10, 0., 10., 20., 30., 40., 50., 60., 90.])
 
 #inflds = [('Q', 'VQ')]#, ('T', 'VT'), ('U', 'VU'), ('Z3', None)]
 tprtfiles = dict(q=('vqdp_monthly.nc', 'vqdp_mmc_monthly.nc'), T=('vTdp_monthly.nc', 'vTdp_mmc_monthly.nc'), u=('vudp_monthly.nc', 'vudp_mmc_monthly.nc'), Z=(None, 'vZdp_mmc_monthly.nc'))
@@ -89,46 +98,58 @@ def main():
 
    eddds = totds - mmcds
    circs = ['total', 'mmc', 'eddy']
-   dss = xr.concat([ds.expand_dims(circ=circs[ii]) for ii, ds in enumerate([totds, mmcds, eddds])], dim='circ')
-   print(dss)
+   masterds = xr.concat([ds.expand_dims(circ=[circs[ii]]) for ii, ds in enumerate([totds, mmcds, eddds])], dim='circ')
+   masterds = ux.UxDataset(masterds, uxgrid=ux.open_grid(CAMGR))
+   print(masterds)
 
+   momds = xr.open_mfdataset(MOMH % CASES[1])
+   zmds = masterds.map(lambda uxda: uxda.zonal_mean(lat=momds['yh'].data))
+   szds = zmds.assign_coords(coords=dict(month=masterds.month, circ=masterds.circ, case=masterds.case)).map(lambda da: monthly2sznl(da))
+   print(szds)
+   mirds = szds.map(lambda da: stack_hemi_sznl(da, antisym=True))
 
-def main_slow():
-   print('Opening history files...')
-   camdss = [ux.open_mfdataset(CAMGR, CAMH % cs) for cs in CASES]
-   momdss = [xr.open_mfdataset(MOMH % cs) for cs in CASES]
-
-   print('Obtaining MOM lats and dp3d...')
-   mom_h_lat = momdss[0]['yh']
-   aterm = (camdss[0]['hyai'].isel(ilev=slice(1, None)) - camdss[0]['hyai'].isel(ilev=slice(None, -1)).data) * P0
-   bterm = (camdss[0]['hybi'].isel(ilev=slice(1, None)) - camdss[0]['hybi'].isel(ilev=slice(None, -1)).data) * camdss[0]['PS']
-   dp3d = aterm + bterm
-   dp3d = dp3d.rename(dict(ilev='lev')).assign_coords(lev=camdss[0]['lev'])
-
-   #print('Computing V Q transport...')
-   #vqtr = [merid_transport_no_stationary(ds['V'], ds['Q'], ds['VQ'], dp3d, lats=mom_h_lat.data) for ds in camdss]
-   #vqdss = [xr.Dataset(data_vars=dict(vqmean=tup[1].to_xarray(), vqtot=tup[0].to_xarray())) for tup in vqtr]
-   #print(vqdss[0])
-
-   outdss = [xr.Dataset(coords=dict(case=ali)) for ali in ALIASES]
-   for ii, fldtup in enumerate(inflds):
-      print('Working on transports', fldtup, '...')
-      tprt = [merid_transport_no_stationary(ds['V'], ds[fldtup[0]], None if fldtup[1] is None else ds[fldtup[1]], dp3d, lats=mom_h_lat.data) for ds in camdss]
-      tprtdss = [xr.Dataset(data_vars={'V' + fldtup[0] + '_mean': tup[1].to_xarray(), 'V' + fldtup[0] + '_tot': tup[0].to_xarray()}).assign_coords(\
-                   coords=dict(time=camdss[jj]['time'])) for jj, tup in enumerate(tprt)]
-      momeans = [td.groupby('time.month').mean('time') for td in tprtdss]
-      szmeans = [mm.map(lambda da: stack_hemi_sznl(monthly2sznl(da), antisym=True)) for mm in momeans]
-      outdss = [xr.merge([ds, szmeans[jj]]) for jj, ds in enumerate(outdss)]
-
-   outds = xr.concat(outdss, dim='case')
-   print('Saving output .nc...')
-   with ProgressBar():
-      outds.to_netcdf(FILO)
-   print(sys.argv[0], 'done.')
+   coslat = np.cos(np.deg2rad(mirds.latitudes))
+   zontot_transport = mirds * 2 * np.pi * a_e * coslat / g
+   zontot_transport.to_netcdf(FILO)
 
 def main_plot():
-   return
+   if not os.path.exists(DIRO):
+      os.makedirs(DIRO)
 
+   ds = xr.open_dataset(FILO)
+   coslat = np.cos(np.deg2rad(ds.latitudes))
+   sinlat = np.sin(np.deg2rad(ds.latitudes))
+   ds = ds.assign(variables=dict(LE=lv*ds.q, SE=cp*ds.T, GP=g*ds.Z, AMu=a_e*coslat*ds.u))
+   ds = ds.assign(variables=dict(menth=ds.LE+ds.SE, MSE=ds.LE+ds.SE+ds.GP))
+   
+   plt.rc('font', size=16)
+   plt.rcParams['figure.figsize'] = (30, 6)
+   subplot_kw = dict(xlim=(-1, 1), sharey=False)
+   lncolors = ['blue', 'orange']
+   linkw = dict(total=dict(linewidth=2.5, linestyle='solid'), mmc=dict(linewidth=1.0, linestyle='solid'), eddy=dict(linewidth=1.0, linestyle='dashed'))
+
+   for dv in ds.data_vars:
+      fig, axes = plt.subplots(1, 3, subplot_kw=subplot_kw)
+      fig.suptitle('%s meridional transport' % str(dv))
+      for ii, cs in enumerate(ds['case']):
+         ax = axes[ii]
+         pltda = ds[dv].sel(case=cs)
+         if not cs == 'CTRL':
+            pltda = pltda - ds[dv].sel(case='CTRL')
+         for tt, szn in enumerate(ds['season']):
+            for jj, cr in enumerate(ds['circ']):
+               ax.plot(sinlat, pltda.sel(season=szn, circ=cr), color=lncolors[tt], **linkw[str(cr.data)])
+         ax.axhline(0, c='gray', linestyle='dotted')
+         [ax.axvline(np.sin(np.deg2rad(ll)), c='gray', lw=0.5) for ll in LATLAB]
+         ax.set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB.astype(np.int_))
+         ylims = ax.get_ylim()
+         maxy = max(np.abs(ylims))
+         ax.set_ylim(-maxy, maxy)
+
+      plt.savefig(os.path.join(DIRO, '%s.png' % str(dv)), bbox_inches='tight')
+      plt.close()
+
+#too slow
 def merid_transport_no_stationary(vwnd, sclr, vxsclr, dp, lats=(-90, 90, 5)):
    prodofmeans = vwnd * sclr
    fld2tr = lambda fld: 2 * np.pi * a_e * ((fld * dp).sum(dim='lev') / g).zonal_mean(lat=lats) #3D field to vertically integrated transport
