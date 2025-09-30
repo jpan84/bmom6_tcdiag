@@ -1,3 +1,4 @@
+#Ex: python3 -u hyb_delta_pressure.py /glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist dp_monthly.nc
 import sys
 import os
 import xarray as xr
