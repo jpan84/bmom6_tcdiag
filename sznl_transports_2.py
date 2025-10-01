@@ -133,7 +133,7 @@ def main_plot():
    plt.rcParams['figure.figsize'] = (30, 6)
    subplot_kw = dict(xlim=(-1, 1), sharey=False)
    lncolors = ['blue', 'orange']
-   linkw = dict(total=dict(linewidth=2.0, linestyle='solid'), mmc=dict(linewidth=1.0, linestyle='solid'), eddy=dict(linewidth=1.2, linestyle='dotted'))
+   linkw = dict(total=dict(linewidth=2.0, linestyle='solid'), mmc=dict(linewidth=0.8, linestyle='solid'), eddy=dict(linewidth=1.2, linestyle='dotted'))
 
    for dv in ds.data_vars:
       fig, axes = plt.subplots(1, 3, subplot_kw=subplot_kw)
@@ -149,9 +149,12 @@ def main_plot():
          ax.axhline(0, c='gray', lw=0.5)
          [ax.axvline(np.sin(np.deg2rad(ll)), c='gray', lw=0.5) for ll in LATLAB]
          ax.set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB.astype(np.int_))
+
          ylims = ax.get_ylim()
          maxy = max(np.abs(ylims))
          ax.set_ylim(-maxy, maxy)
+         if cs == 'SEED':
+            ax.set_ylim(*axes[1].get_ylim())
 
       plt.savefig(os.path.join(DIRO, '%s.png' % str(dv)), bbox_inches='tight')
       plt.close()

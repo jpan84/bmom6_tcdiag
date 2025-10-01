@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 CTLDIR = './tcfields4mps_250417_ctrl/'
 EXPDIR = './tcfields4mps_250416_seed1x1/'
-#EXPDIR = './tcfields4mps_250415_unseed/'
+EXPDIR = './tcfields4mps_250415_unseed/'
 #EXPDIR = './tcfields4mps_250417_ctrl/'
 DIRO = './tcfieldsdiff/'
 
@@ -15,6 +15,9 @@ latvar = 'yh'
 #FLD = ['TAUX_neg', 'TAUX_pos']
 #SGN = 1
 #latvar = 'latitudes'
+FLD = ['VQ850_neg', 'VQ850_pos']
+SGN = 1
+latvar = 'latitudes'
 
 lv = 2.501e6 #default from MOM6
 rho_l = 1.0e3 #default from CAM zm micro
@@ -44,14 +47,14 @@ diff = [flds[1] - flds[0], flds[-1] - flds[-2]]
 #diff = [flds[1] - 0*flds[0], flds[-1] - 0*flds[-2]]
 
 # !outside Portion of field outside TCs instead of all
-diff = [(flds[1] - flds[-1]) - (flds[0] - flds[-2]), flds[-1] - flds[-2]]
+#diff = [(flds[1] - flds[-1]) - (flds[0] - flds[-2]), flds[-1] - flds[-2]]
 
 plt.rc('font', size=14)
 sinlat = YSCL(ctlall[latvar])
 for ii, szn in enumerate(diff[0]['season']):
-   #plt.plot(sinlat, diff[0].sel(season=szn), color=['blue', 'orange'][ii], label=str(szn.data) + '_all')
+   plt.plot(sinlat, diff[0].sel(season=szn), color=['blue', 'orange'][ii], label=str(szn.data) + '_all')
    plt.plot(sinlat, diff[1].sel(season=szn), color=['blue', 'orange'][ii], linestyle='dashed', label=str(szn.data) + '_TCs')
-   plt.plot(sinlat, diff[0].sel(season=szn), color=['blue', 'orange'][ii], linestyle='dotted', label=str(szn.data) + '_non-TC') # !outside
+   #plt.plot(sinlat, diff[0].sel(season=szn), color=['blue', 'orange'][ii], linestyle='dotted', label=str(szn.data) + '_non-TC') # !outside
    plt.xlim(YSCL(YLAB[0]), YSCL(YLAB[-1]))
    plt.xticks(YSCL(YLAB), YLAB)
    plt.axhline(0, linestyle='dotted', color='gray')
@@ -60,18 +63,21 @@ for ii, szn in enumerate(diff[0]['season']):
    #plt.ylim(-18, 32)
    #plt.yticks(np.arange(-16, 33, 4))
    #plt.title('LHFLX UNSEED–CTRL')
-   plt.ylim(-.025, .025)
-   plt.title('TAUX SEED–CTRL')
+   #plt.ylim(-.025, .025)
+   #plt.title('TAUX SEED–CTRL')
 
    # !outside
-   plt.ylim(-35, 35)
-   plt.yticks(np.arange(-32, 33, 4))
-   plt.title('LHFLX SEED–CTRL')
+   #plt.ylim(-35, 35)
+   #plt.yticks(np.arange(-32, 33, 4))
+   #plt.title('LHFLX SEED–CTRL')
 
    #plt.ylim(-2.1, 2.1)
    #plt.title('P–E [mm d$^{-1}$] CTRL')
 
+   #plt.ylim(-7e-3, 7e-3)
+   plt.title('V\'Q\'850 [m/s kg/kg] UNSEED$-$CTRL')
+
    plt.legend()
 
-plt.savefig(os.path.join(DIRO, 'SEED-CTRL_LHFLX_outside.png'))
+plt.savefig(os.path.join(DIRO, 'UNSEED-CTRL_VQ850.png'))
 plt.show()
