@@ -1,7 +1,8 @@
 #Step 1: obtain hybrid-level pressure thickness from hyb_delta_pressure.py
 #Step 2: run cdo commands to obtain monthly norms of vertically integrated meridional fluxes. e.g.,
-#   cdo --debug ymonmean -vertsum -mul [ [ -cat -apply,-selvar,VQ [ *h0a*.nc ] ] [ -selvar,dp3d dp_monthly.nc ] ] vqdp_monthly.nc
-#   setsid nohup cdo --debug ymonmean -vertsum -mul [ [ -mul [ [ -cat -apply,-selvar,V [ *h0a*.nc ] ] [ -cat -apply,-selvar,Q [ *h0a*.nc ] ] ] ] [ -selvar,dp3d dp_monthly.nc ] ] vqdp_mmc_monthly.nc &> vqdp_mmc_monthly.out
+#   cdo selvar,VQ,VT,VU,Q,T,U,Z3,V -cat *h0a*.nc cat_merid.nc
+#   setsid nohup cdo --debug ymonmean -vertsum -mul [ [ -selvar,VQ cat_merid.nc ] [ -selvar,dp3d dp_monthly.nc ] ] vqdp_monthly.nc &> vqdp_monthly.out
+#   setsid nohup cdo --debug ymonmean -vertsum -mul [ [ -mul [ [ -selvar,V cat_merid.nc ] [ -selvar,Q cat_merid.nc ] ] ] [ -selvar,dp3d dp_monthly.nc ] ] vqdp_mmc_monthly.nc &> vqdp_mmc_monthly.out
 
 import sys
 import os
@@ -36,6 +37,7 @@ LATLAB = np.array([-90., -60., -50., -40., -30., -20, -10, 0., 10., 20., 30., 40
 tprtfiles = dict(q=('vqdp_monthly.nc', 'vqdp_mmc_monthly.nc'), T=('vTdp_monthly.nc', 'vTdp_mmc_monthly.nc'), u=('vudp_monthly.nc', 'vudp_mmc_monthly.nc'), Z=(None, 'vZdp_mmc_monthly.nc'))
 
 def main():
+   print('Processing total transports...')
    trtot = [{kk: ux.open_mfdataset(CAMGR, os.path.join(CAMDIR % cs, vv[1])) if vv[0] is None else ux.open_mfdataset(CAMGR, os.path.join(CAMDIR % cs, vv[0])) for kk, vv in tprtfiles.items()} for cs in CASES]
    #print([list(dd['q'].data_vars.values())[1] for dd in trtot])
    trtot = [{kk: list(vv.data_vars.values())[-1] for kk, vv in dd.items()} for dd in trtot] #pick out the data_var containing the transport field (at idx -1)
@@ -91,17 +93,20 @@ def main():
       trmmc.append(case_data)
    '''
 
+   print('Processing MMC transports...')
    trmmc = [{kk: ux.open_mfdataset(CAMGR, os.path.join(CAMDIR % cs, vv[1])) for kk, vv in tprtfiles.items()} for cs in CASES]
    trmmc = [{kk: list(vv.data_vars.values())[-1] for kk, vv in dd.items()} for dd in trmmc]
    trmmc = [ux.UxDataset(data_vars=dd).groupby('time.month').mean('time') for dd in trmmc]
    mmcds = xr.concat([ds.expand_dims(case=[ALIASES[ii]]) for ii, ds in enumerate(trmmc)], dim='case')
 
+   print('Computing eddy as total minus MMC...')
    eddds = totds - mmcds
    circs = ['total', 'mmc', 'eddy']
    masterds = xr.concat([ds.expand_dims(circ=[circs[ii]]) for ii, ds in enumerate([totds, mmcds, eddds])], dim='circ')
    masterds = ux.UxDataset(masterds, uxgrid=ux.open_grid(CAMGR))
    print(masterds)
 
+   print('Aggregating zonally and seasonally...')
    momds = xr.open_mfdataset(MOMH % CASES[1])
    zmds = masterds.map(lambda uxda: uxda.zonal_mean(lat=momds['yh'].data))
    szds = zmds.assign_coords(coords=dict(month=masterds.month, circ=masterds.circ, case=masterds.case)).map(lambda da: monthly2sznl(da))
@@ -111,6 +116,8 @@ def main():
    coslat = np.cos(np.deg2rad(mirds.latitudes))
    zontot_transport = mirds * 2 * np.pi * a_e * coslat / g
    zontot_transport.to_netcdf(FILO)
+
+   print(sys.argv[0], 'done.')
 
 def main_plot():
    if not os.path.exists(DIRO):
@@ -126,7 +133,7 @@ def main_plot():
    plt.rcParams['figure.figsize'] = (30, 6)
    subplot_kw = dict(xlim=(-1, 1), sharey=False)
    lncolors = ['blue', 'orange']
-   linkw = dict(total=dict(linewidth=2.5, linestyle='solid'), mmc=dict(linewidth=1.0, linestyle='solid'), eddy=dict(linewidth=1.0, linestyle='dashed'))
+   linkw = dict(total=dict(linewidth=2.0, linestyle='solid'), mmc=dict(linewidth=1.0, linestyle='solid'), eddy=dict(linewidth=1.2, linestyle='dotted'))
 
    for dv in ds.data_vars:
       fig, axes = plt.subplots(1, 3, subplot_kw=subplot_kw)
@@ -139,7 +146,7 @@ def main_plot():
          for tt, szn in enumerate(ds['season']):
             for jj, cr in enumerate(ds['circ']):
                ax.plot(sinlat, pltda.sel(season=szn, circ=cr), color=lncolors[tt], **linkw[str(cr.data)])
-         ax.axhline(0, c='gray', linestyle='dotted')
+         ax.axhline(0, c='gray', lw=0.5)
          [ax.axvline(np.sin(np.deg2rad(ll)), c='gray', lw=0.5) for ll in LATLAB]
          ax.set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB.astype(np.int_))
          ylims = ax.get_ylim()
