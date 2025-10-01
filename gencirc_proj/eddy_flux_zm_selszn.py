@@ -18,8 +18,8 @@ def main():
 
    EMF500_zm = EMFds['V500'].zonal_mean(lat=LATS)
    EHF500_zm = EHFds['V500'].zonal_mean(lat=LATS)
-   EMF500_zm, EHF500_zm = EMF500_zm.assign_coords(time=EMF500.time), EHF500_zm.assign_coords(time=EHF500_zm.time)
-   print(EMF500_zm.sel(time=szn.isin(['DJF', 'MAM']), latitudes=slice(0, EMF500_zm.latitudes[-1]))
+   EMF500_zm, EHF500_zm = EMF500_zm.assign_coords(time=EMFds.time), EHF500_zm.assign_coords(time=EHFds.time)
+   print(EMF500_zm.sel(time=szn.isin(['DJF', 'MAM']), latitudes=slice(0, EMF500_zm.latitudes[-1])))
 
    zmds = xr.Dataset(data_vars=dict(EHF500=EHF500_zm.to_xarray(), EMF500=EMF500_zm.to_xarray()))
    nhwarmds = zmds.sel(time=szn.isin(['JJA', 'SON']), latitudes=slice(-5, LATBND))
@@ -27,6 +27,7 @@ def main():
    shmir = shwarmds.isel(latitudes=slice(None, None, -1)).assign_coords(latitudes=nhwarmds.latitudes)
 
    outds = xr.concat([nhwarmds, shwarmds], dim='time')
+   outds = outds.map(lambda da: da.assign_attrs(dict(zonal_mean='True')))
    outds.to_netcdf(os.path.join(DIRI, 'EHF_EMF_500_warmhemi_0012-0014.nc'))
 
 if __name__ == '__main__':

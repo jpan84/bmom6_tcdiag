@@ -2,3 +2,55 @@
 Waiting on job launch; 9633712.casper-pbs with qsub arguments:
     qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=01:40:00
 
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/gencirc_proj/eddy_flux_zm_selszn.py", line 22
+print(EMF500_zm.sel(time=szn.isin(['DJF', 'MAM']), latitudes=slice(0, EMF500_zm.latitudes[-1]))
+^
+SyntaxError: '(' was never closed
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 9633806.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=01:40:00
+
+Traceback (most recent call last):
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/gencirc_proj/eddy_flux_zm_selszn.py", line 33, in <module>
+main()
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/gencirc_proj/eddy_flux_zm_selszn.py", line 21, in main
+EMF500_zm, EHF500_zm = EMF500_zm.assign_coords(time=EMF500.time), EHF500_zm.assign_coords(time=EHF500_zm.time)
+^^^^^^
+NameError: name 'EMF500' is not defined. Did you mean: 'EMF500_zm'?
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 9633914.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=01:40:00
+
+<xarray.UxDataArray 'V500_zonal_mean' (time: 2184, latitudes: 16)> Size: 140kB
+dask.array<getitem, shape=(2184, 16), dtype=float32, chunksize=(2184, 16), chunktype=numpy.ndarray>
+Coordinates:
+* latitudes  (latitudes) int64 128B 0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30
+* time       (time) object 17kB 0012-01-01 00:00:00 ... 0014-12-31 18:00:00
+Attributes:
+zonal_mean:  True
+Traceback (most recent call last):
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/gencirc_proj/eddy_flux_zm_selszn.py", line 33, in <module>
+main()
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/gencirc_proj/eddy_flux_zm_selszn.py", line 30, in main
+outds.to_netcdf(os.path.join(DIRI, 'EHF_EMF_500_warmhemi_0012-0014.nc'))
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/dataset.py", line 2372, in to_netcdf
+return to_netcdf(  # type: ignore[return-value]  # mypy cannot resolve the overloads:(
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 1873, in to_netcdf
+dump_to_store(
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/api.py", line 1920, in dump_to_store
+store.store(variables, attrs, check_encoding, writer, unlimited_dims=unlimited_dims)
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/common.py", line 451, in store
+self.set_variables(
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/common.py", line 489, in set_variables
+target, source = self.prepare_variable(
+^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 587, in prepare_variable
+nc4_var.setncatts(attrs)
+File "src/netCDF4/_netCDF4.pyx", line 4739, in netCDF4._netCDF4.Variable.setncatts
+File "src/netCDF4/_netCDF4.pyx", line 1888, in netCDF4._netCDF4._set_att
+TypeError: illegal data type for attribute b'zonal_mean', must be one of dict_keys(['S1', 'i1', 'u1', 'i2', 'u2', 'i4', 'u4', 'i8', 'u8', 'f4', 'f8']), got b1
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 9635078.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:40:00
+
