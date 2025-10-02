@@ -28,7 +28,7 @@ LIMLAB = np.arange(200, 1500, 200)
 LIMLOC = ZSCL(LIMLAB)
 
 YSCL = lambda lat: np.sin(np.deg2rad(lat))
-YLAB = np.arange(-50, 51, 10) #np.array([-90, -60, -45, -30, -15, 0, 15, 30, 45, 60, 90]).astype(np.int_)
+YLAB = np.arange(-60, 61, 10) #np.array([-90, -60, -45, -30, -15, 0, 15, 30, 45, 60, 90]).astype(np.int_)
 YLOC = YSCL(YLAB)
 
 def main():
@@ -182,7 +182,7 @@ def main():
    plt.close()
    #########################################################################################
 
-
+   '''
    ############### Plot atmo Eulerian sf above vresid, thetao #################################
    sf_cfkwargs = {'levels': 2.**np.arange(-2, 7, 1), 'norm': colors.SymLogNorm(2.**-1)}
    sf_cfkwargs['levels'] = np.concatenate((-sf_cfkwargs['levels'][::-1], sf_cfkwargs['levels']))
@@ -190,16 +190,66 @@ def main():
    sf_ctkwargs['levels'] = np.concatenate((-sf_ctkwargs['levels'][::-1], sf_ctkwargs['levels']))
    plt.rc('font', size=16)
    plt.rcParams['figure.figsize'] = (24, 12)
-   fig, axes = plt.subplots(2, 3, layout='constrained')
+   # --- NEW/MODIFIED CODE START ---
+   
+   # Define the master GridSpec
+   # 2 rows for seasons (ii), 6 columns for 3 cases (jj) + 3 colorbars
+   # width_ratios: [1.0, 0.05] repeated 3 times.
+   gs_ratios = [1.0, 0.05] * 3
+   fig = plt.figure(figsize=plt.rcParams['figure.figsize'])
+   gs = fig.add_gridspec(nrows=2, ncols=6, wspace=0.1, hspace=0.1,
+                         height_ratios=[1, 1], # You only have 2 vertical plots per main cell, but we'll use subplots for separation.
+                         width_ratios=gs_ratios)
+   
    fig.suptitle('Atmosphere Eulerian mean mass streamfunction\
-                  \nOcean Residual Mass Streamfunction')
+                               \nOcean Residual Mass Streamfunction')
+   
+   # Remove the old fig, axes = plt.subplots(...) line
+   # fig, axes = plt.subplots(2, 3, layout='constrained') 
+   
+   # --- NEW/MODIFIED CODE END -
+   #fig, axes = plt.subplots(2, 3, layout='constrained')
+   #fig.suptitle('Atmosphere Eulerian mean mass streamfunction\
+   #               \nOcean Residual Mass Streamfunction')
    for ii, szn in enumerate(ocn_yz['season']):
       for jj in range(len(ALIS)):
+          
          outer_spec = axes[ii, jj].get_subplotspec()
-         gs = gspec.GridSpecFromSubplotSpec(2, 1, subplot_spec=outer_spec, height_ratios=[1, 1])
-         ax_top = fig.add_subplot(gs[0])
-         ax_bot = fig.add_subplot(gs[1], sharex=ax_top)
+         #gs = gspec.GridSpecFromSubplotSpec(2, 1, subplot_spec=outer_spec, height_ratios=[1, 1])
+         gs = gspec.GridSpecFromSubplotSpec(2, 2, subplot_spec=outer_spec, height_ratios=[1, 1], width_ratios=[1, 0.05], wspace=0.05) # Add a column for cax
+         ax_top = fig.add_subplot(gs[0, 0]) # Change index to 0, 0
+         ax_bot = fig.add_subplot(gs[1, 0], sharex=ax_top) # Change index to 1, 0
+         cax = fig.add_subplot(gs[:, 1]) # Create the colorbar axis spanning both rows in the second column
+         #ax_top = fig.add_subplot(gs[0])
+         #ax_bot = fig.add_subplot(gs[1], sharex=ax_top)
          axes[ii, jj].axis('off')
+         
+
+         # --- MODIFIED CODE START ---            
+         # Calculate the starting column index for this plot group (0, 2, or 4)
+         col_start = jj * 2 
+         
+         # Use a sub-GridSpec *within the cell* to separate ax_top and ax_bot vertically
+         # This is simpler and more reliable than trying to manage the vertical split 
+         # with the top-level GridSpec.
+
+         # Get the cell for the main plot area (spanning 2 rows, 1 column)
+         plot_spec = gs[ii, col_start] 
+         
+         # Create a GridSpecFromSubplotSpec to manage the vertical split (ax_top/ax_bot)
+         # This GridSpec now only manages the vertical split inside ONE of the main cells.
+         gs_vertical = plot_spec.subgridspec(2, 1, height_ratios=[1, 1], hspace=0.0) 
+         
+         # Add the subplots
+         ax_top = fig.add_subplot(gs_vertical[0, 0])
+         ax_bot = fig.add_subplot(gs_vertical[1, 0], sharex=ax_top)
+         
+         # Add the colorbar axes to the next column (col_start + 1)
+         cax = fig.add_subplot(gs[ii, col_start + 1]) 
+         
+         # The placeholder axes[ii, jj] and its .axis('off') are gone.
+         
+         # --- MODIFIED CODE END ---
 
          sf = (ocn_yz['vmo'] + ocn_yz['vhGM']).isel(case=jj)
          if jj != 1:
@@ -207,7 +257,7 @@ def main():
          sf = sf.sel(season=szn)
          expo = 1e10 if jj == 1 else 1e9
          csf = ax_bot.contourf(YSCL(ocn_yz['yq']), ZSCL(ocn_yz['zl']), sf / expo, cmap='coolwarm' if jj == 1 else 'bwr', **sf_cfkwargs)
-         cax = ax_bot.inset_axes([1, 0, .05, 1], transform=ax_bot.transAxes)
+         #cax = axes[ii][jj].inset_axes([1, 0, .05, 1], transform=axes[ii][jj].transAxes)
          plt.colorbar(csf, label='[10$^{%d}$ kg/s]' % int(np.log10(expo)), cax=cax, pad=.01)
          ax_bot.contour(YSCL(ocn_yz['yq']), ZSCL(ocn_yz['zl']), sf / expo, **sf_ctkwargs)
          ax_bot.set_xticks(YLOC, YLAB)
@@ -226,10 +276,124 @@ def main():
          ax_top.yaxis.set_major_formatter(mticker.ScalarFormatter())
          ax_top.set_ylabel('Pressure [hPa]')
          ax_top.set_yticks(np.arange(100, 1001, 100))
+         ax_top.set_xticklabels([])
 
    #fig.tight_layout()
-   fig.get_layout_engine().set(w_pad=.25, h_pad=0.15)
+   #fig.get_layout_engine().set(w_pad=.25, h_pad=0.15)
    #plt.show()
+   plt.savefig('ocn_yz_plts_diff/atmo_ocn_sfunc.png', bbox_inches='tight')
+   plt.close()
+   #########################################################################################
+   '''
+
+   ############### Plot atmo Eulerian sf above vresid, thetao #################################
+   sf_cfkwargs = {'levels': 2.**np.arange(-2, 7, 1), 'norm': colors.SymLogNorm(2.**-1)}
+   sf_cfkwargs['levels'] = np.concatenate((-sf_cfkwargs['levels'][::-1], sf_cfkwargs['levels']))
+   sf_ctkwargs = {'colors': 'black', 'levels': 2.**np.arange(-2, 7, 1)}
+   sf_ctkwargs['levels'] = np.concatenate((-sf_ctkwargs['levels'][::-1], sf_ctkwargs['levels']))
+   
+   # Define symmetric ticks for the colorbars
+   pos_ticks = 2.**np.arange(0, 7, 2) # [1., 4., 16., 64.]
+   base_sym_ticks = np.concatenate((-pos_ticks[::-1], [0], pos_ticks))
+   
+   plt.rc('font', size=16)
+   plt.rcParams['figure.figsize'] = (24, 12)
+   
+   # --- NEW/MODIFIED CODE START: Unified GridSpec for spacing control ---
+   
+   # Total Grid Dimensions: 2 rows, 8 columns (3 Plot, 3 Cax, 2 Gap)
+   # [Plot, Cax, Gap, Plot, Cax, Gap, Plot, Cax]
+   gs_ratios = [1.3, 0.05, 0.5, 1.3, 0.05, 0.5, 1.3, 0.05] 
+   # Increased gap ratio from 0.1 to 0.5 for wider separation between the 3 major columns.
+   
+   fig = plt.figure(figsize=plt.rcParams['figure.figsize'])
+   gs = fig.add_gridspec(nrows=2, ncols=8, wspace=0.1, hspace=0.2,
+                         height_ratios=[1, 1],
+                         width_ratios=gs_ratios)
+   
+   fig.suptitle('Atmosphere Eulerian mean mass streamfunction\
+                   \nOcean Residual Mass Streamfunction')
+   
+   # --- NEW/MODIFIED CODE END ---
+   
+   for ii, szn in enumerate(ocn_yz['season']):
+      for jj in range(len(ALIS)):
+         
+         # Calculate the starting column index for this plot group (0, 3, or 6)
+         # 0: First plot group (Cols 0, 1)
+         # 1: Second plot group (Cols 3, 4)
+         # 2: Third plot group (Cols 6, 7)
+         col_start = jj * 3 
+
+         # 1. Create sub-GridSpec for vertical plot splitting (ax_top/ax_bot)
+         # The main plot area is in the first column of the group (col_start)
+         plot_spec = gs[ii, col_start] 
+         
+         # Create a GridSpecFromSubplotSpec to manage the tight vertical split (ax_top/ax_bot)
+         gs_vertical = plot_spec.subgridspec(2, 1, height_ratios=[1, 1], hspace=0.0)
+         
+         # Add the subplots
+         ax_top = fig.add_subplot(gs_vertical[0, 0])
+         ax_bot = fig.add_subplot(gs_vertical[1, 0], sharex=ax_top)
+         
+         # Add the colorbar axes to the second column of the group (col_start + 1)
+         cax = fig.add_subplot(gs[ii, col_start + 1]) 
+         
+         # --- NEW: Set Thicker Borders (Spines) for ax_top and ax_bot ---
+         border_thickness = 2.0
+         for axis in [ax_top, ax_bot]:
+            for spine in axis.spines.values():
+                spine.set_linewidth(border_thickness)
+         # ---------------------------------------------------------------
+         
+         sf = (ocn_yz['vmo'] + ocn_yz['vhGM']).isel(case=jj)
+         if jj != 1:
+            sf = sf - (ocn_yz['vmo'] + ocn_yz['vhGM']).isel(case=1)
+         sf = sf.sel(season=szn)
+         expo = 1e10 if jj == 1 else 1e9
+         
+         # Determine correct symmetric ticks for the current expo
+         current_ticks = base_sym_ticks# * (1e10 / expo)
+
+         csf = ax_bot.contourf(YSCL(ocn_yz['yq']), ZSCL(ocn_yz['zl']), sf / expo, cmap='coolwarm' if jj == 1 else 'bwr', **sf_cfkwargs)
+         
+         # --- MODIFIED: Use the newly created cax and defined ticks ---
+         plt.colorbar(csf, label='[10$^{%d}$ kg/s]' % int(np.log10(expo)), 
+                      cax=cax, pad=.01, ticks=current_ticks)
+         # -------------------------------------------------------------
+         
+         ax_bot.contour(YSCL(ocn_yz['yq']), ZSCL(ocn_yz['zl']), sf / expo, **sf_ctkwargs)
+         ax_bot.set_xticks(YLOC, YLAB) # Keeps xtick labels on ax_bot
+         ax_bot.set_xlim(-1, 1)
+         ax_bot.set_yticks(ZLOC, ZLAB)
+         ax_bot.invert_yaxis()
+         ax_bot.set_xlabel('Latitude [°]')
+         ax_bot.set_ylabel('Depth [m]')
+
+         mmc = temds['PSI_EM'].isel(case=jj, season=ii)
+         csf = ax_top.contourf(YSCL(temds['lat']), temds['plev'], mmc / expo, cmap='coolwarm' if jj == 1 else 'bwr', extend='both', **sf_cfkwargs)
+         ax_top.contour(YSCL(temds['lat']), temds['plev'], mmc / expo, **sf_ctkwargs)
+         ax_top.set_ylim(1000, 100)
+         ax_top.set_yscale('log')
+         ax_top.yaxis.set_minor_formatter(mticker.ScalarFormatter())
+         ax_top.yaxis.set_major_formatter(mticker.ScalarFormatter())
+         ax_top.set_ylabel('Pressure [hPa]')
+         ax_top.set_yticks(np.arange(100, 1001, 100))
+
+         label_index = (ii * 3) + jj
+         panel_label = f'({chr(97 + label_index)})'
+         ax_top.set_title(panel_label, loc='left')
+         
+         # --- NEW/MODIFIED: Ensure no xtick labels on ax_top ---
+         ax_top.tick_params(labelbottom=False) 
+         # ax_top.set_xticklabels([]) is now redundant but keeping tick_params is cleaner
+         # -------------------------------------------------------
+
+   # 231    #fig.tight_layout() # tight_layout is not used with GridSpec
+   # 232    #fig.get_layout_engine().set(w_pad=.25, h_pad=0.15) # Remove constrained_layout engine commands
+   # 233    #plt.show()
+   
+   # Assuming the output commands remain the same
    plt.savefig('ocn_yz_plts_diff/atmo_ocn_sfunc.png', bbox_inches='tight')
    plt.close()
    #########################################################################################

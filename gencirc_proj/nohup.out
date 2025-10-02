@@ -54,3 +54,10 @@ TypeError: illegal data type for attribute b'zonal_mean', must be one of dict_ke
 Waiting on job launch; 9635078.casper-pbs with qsub arguments:
     qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:40:00
 
+<xarray.UxDataArray 'V500_zonal_mean' (time: 2184, latitudes: 16)> Size: 140kB
+dask.array<getitem, shape=(2184, 16), dtype=float32, chunksize=(2184, 16), chunktype=numpy.ndarray>
+Coordinates:
+* latitudes  (latitudes) int64 128B 0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30
+* time       (time) object 17kB 0012-01-01 00:00:00 ... 0014-12-31 18:00:00
+Attributes:
+zonal_mean:  True
