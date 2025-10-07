@@ -8,14 +8,14 @@ FILI = ['/glade/derecho/scratch/jpan/jpan_tcfields/b.e23.BMOM.ne120np4_sx0.66av1
         '/glade/derecho/scratch/jpan/jpan_tcfields/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/cw_15d_sznlzm.nc',
         '/glade/derecho/scratch/jpan/jpan_tcfields/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/cw_15d_sznlzm_SEED-CTRL.nc']
 DIRO = './SST_noTC'
-TTL = ['UNSEED–CTRL SST [K]', 'CTRL cold wakes [K]', 'SEED–CTRL SST [K]']
+TTL = ['UNSEED–CTRL', 'CTRL', 'SEED–CTRL']
 FLDNM = 'tos'
 
 LNCLR = ['blue', 'orange']
 YSCL = lambda lat: np.sin(np.deg2rad(lat))
-YLAB = np.array([-90, -60, -45, -30, -15, 0, 15, 30, 45, 60, 90]).astype(np.int_)
+YLAB = np.array([-90, -60, -50, -40, -30, -20, -10, 0, 10, 20, 30, 40, 50, 60, 90]).astype(np.int_)
 YLOC = YSCL(YLAB)
-ZLIM = [(-.24, .4), (-.24, .4), (-1.2, 2.0)]
+ZLIM = [(-.18, .3), (-.18, .3), (-1.2, 2.0)]
 
 def main():
    if not os.path.exists(DIRO):
@@ -27,17 +27,22 @@ def main():
    toplt = [stack_hemi_sznl(ds[FLDNM], latnm='lat') for ds in dss]
    origds = xr.open_dataset('./linevslat_new_sznl_diff/sznlzm.nc')
 
-   plt.rc('font', size=16)
+   plt.rc('font', size=18)
    plt.rcParams['figure.figsize'] = (30, 6)
    subplot_kw = dict(xlim=(-1, 1))
    fig, axes = plt.subplot_mosaic([['(a)', '(b)', '(c)']], layout='constrained', sharey=False, subplot_kw=subplot_kw)
 
    for ii, (lbl, ax) in enumerate(axes.items()):
+      [ax.axvline(yl, linewidth=0.5, color='gray') for yl in YLOC]
+      ax.set_xlabel('Latitude [°]')
+      ax.set_ylabel('SST [K]')
       for jj, szn in enumerate(toplt[ii].season):
-         ax.plot(YSCL(toplt[ii]['lat']), toplt[ii].sel(season=szn), color=LNCLR[jj], linestyle='dashdot')
+         ax.plot(YSCL(toplt[ii]['lat']), toplt[ii].sel(season=szn), color=LNCLR[jj], linestyle='dashdot', label='%s cold wakes' % str(szn.data))
          if ii in {0, 2}:
-            ax.plot(YSCL(origds['latitudes']), origds['TS'].isel(case=ii).sel(season=szn), color=LNCLR[jj])
-         ax.axhline(y=0, linestyle='dotted', color='gray')
+            ax.plot(YSCL(origds['latitudes']), origds['TS'].isel(case=ii).sel(season=szn), color=LNCLR[jj], label='%s SST' % str(szn.data))
+         if ii == 0:
+            ax.legend()
+         ax.axhline(y=0, linewidth=0.5, color='gray')
          ax.set_xticks(YLOC, YLAB)
          ax.set_ylim(*ZLIM[ii])
          ax.set_title(TTL[ii])

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 FILI = ['250415_unseed.parquet', '250417_ctrl.parquet', '250416_seed1x1.parquet']
 ALIASES = ['UNSEED', 'CTRL', 'SEED']
-PBINS = np.arange(830, 1030, 10)
+PBINS = np.arange(830, 1030, 5)
 
 dfs = [pd.read_parquet(f) for f in FILI]
 pmins = [df.groupby('stmnum')['pres'].min() / 100 for df in dfs]
