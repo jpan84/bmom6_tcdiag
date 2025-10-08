@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 import xarray as xr
 import numpy as np
 
-FILI = '/glade/work/jpan/597_gencirc_gfdl/model_results/postprocessed_251003_jpan_DJF_zonsym_midlat.nc'
-QFIL = '/glade/work/jpan/597_gencirc_gfdl/ModelCopy/input/midlatitude_forcing_from_HK81.nc'
+FILI = '/glade/work/jpan/597_gencirc_gfdl/model_results/postprocessed_251008_jpan_DJF_zonsym_strat.nc'
+QFIL = '/glade/work/jpan/597_gencirc_gfdl/ModelCopy/input/midlatitude_forcing_from_HK81_sigmax0.1.nc'
 DIRO = 'hw2_figs/'
 
 def main():
@@ -16,16 +16,16 @@ def main():
    #print(qds['heating'].sel(level=0.5, method='nearest').max())
 
    plt_psi = ds['psi_anom'].isel(time=slice(14, None)).mean(dim='time')
-   plt_psi = plt_psi.sel(level=850)
-   #plt_psi = (plt_psi.sel(level=250) - plt_psi.sel(level=850)) / 2
-   psilevs = 1e6 * np.arange(1, 21, 1)
+   plt_psi = plt_psi.sel(level=3)
+   #plt_psi = (plt_psi.sel(level=20) + plt_psi.sel(level=70)) / 2
+   psilevs = 1e6 * 2 * np.arange(1, 21, 1)
    psilevs = np.concatenate((-psilevs[::-1], psilevs))
    print(ds.time.isel(time=slice(14, None)))
 
    ax = stereoplot.NPstereoaxes(0)
-   ax.contour(qds['longitude'], qds['latitude'], qds['heating'].sel(level=0.5, method='nearest') * 86400, transform=ccrs.PlateCarree(), levels=[1], colors='red')
+   ax.contour(qds['longitude'], qds['latitude'], qds['heating'].sel(level=0.05, method='nearest') * 86400, transform=ccrs.PlateCarree(), levels=[1], colors='red')
    ax.contour(plt_psi['longitude'], plt_psi['latitude'], plt_psi, transform=ccrs.PlateCarree(), levels=psilevs, colors='black')
-   ax.set_title('(b)', loc='left')
+   ax.set_title('(d)', loc='left')
 
    plt.show()
    plt.close()

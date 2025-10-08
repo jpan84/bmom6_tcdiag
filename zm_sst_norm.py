@@ -20,7 +20,7 @@ def main():
    print('Selecting latitude range...')
    nhsst = [ds[FLDNM].sel(indexers={LATNM: slice(MINLAT, MAXLAT)}) for ds in dss]
    shsst = [ds[FLDNM].sel(indexers={LATNM: slice(-MAXLAT, -MINLAT)}) for ds in dss]
-   selsst = [xr.concat([nhsst[ii], shsst[ii]]).expand_dims(case=[ALIASES[ii]]) for ii in range(len(nhsst))]
+   selsst = [xr.concat([nhsst[ii], shsst[ii]], dim=LATNM).expand_dims(case=[ALIASES[ii]]) for ii in range(len(nhsst))]
 
    print('Taking zonal and day-of-year means...')
    zmnorm = xr.concat([ss.mean(dim=LONNM).groupby('time.dayofyear').mean() for ss in selsst], dim='case')
