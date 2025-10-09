@@ -12,9 +12,12 @@ DIRO = './tcfieldsdiff/'
 #FLD = ['hflso_neg', 'hflso_pos']
 #SGN = -1
 #latvar = 'yh'
-FLD = ['TAUX_neg', 'TAUX_pos']
+FLD = ['PRECT']
 SGN = 1
 latvar = 'latitudes'
+#FLD = ['TAUX_neg', 'TAUX_pos']
+#SGN = 1
+#latvar = 'latitudes'
 #FLD = ['VQ850_neg', 'VQ850_pos']
 #SGN = 1
 #latvar = 'latitudes'
@@ -24,8 +27,12 @@ rho_l = 1.0e3 #default from CAM zm micro
 mps2mmph = 1e3 * 3.6e3
 mps2mmpd = 1e3 * 8.64e4
 
+AVGLATBND = (20, 30)
+
 YSCL = lambda lat: np.sin(np.deg2rad(lat))
 YLAB = np.arange(-50, 51, 10)
+
+wgtavg = lambda var, wgt: (var * wgt).sum() / wgt.sum()
 
 if not os.path.exists(DIRO):
    os.makedirs(DIRO)
@@ -60,11 +67,21 @@ for ii, szn in enumerate(diff[0]['season']):
    plt.axhline(0, linewidth=0.5, color='gray')
    [plt.axvline(ll, linewidth=0.5, color='gray') for ll in YSCL(YLAB)]
 
+   toavg_all = diff[0].sel(indexers={'season': szn, latvar: slice(*AVGLATBND)})
+   toavg_tcs = diff[1].sel(indexers={'season': szn, latvar: slice(*AVGLATBND)})
+   coslat = np.cos(np.deg2rad(toavg_all[latvar]))
+
+   print(str(szn.data), 'average over', AVGLATBND)
+   print('All:', wgtavg(toavg_all, coslat).data)
+   print('TCs:', wgtavg(toavg_tcs, coslat).data)
+
    #plt.ylim(-18, 32)
    #plt.yticks(np.arange(-16, 33, 4))
-   #plt.title('LHFLX UNSEED–CTRL')
-   plt.ylim(-.02, .02)
-   plt.title('TAUX UNSEED–CTRL')
+   plt.title('LHFLX SEED–CTRL')
+   #plt.ylim(-.02, .02)
+   #plt.title('TAUX UNSEED–CTRL')
+
+   #plt.title('PRECT SEED-CTRL')
 
    #plt.ylim(-.12, .12)
    #plt.title('TAUX CTRL')
@@ -82,5 +99,5 @@ for ii, szn in enumerate(diff[0]['season']):
 
    #plt.legend()
 
-plt.savefig(os.path.join(DIRO, 'UNSEED-CTRL_TAUX.png'))
+#plt.savefig(os.path.join(DIRO, 'UNSEED-CTRL_TAUX.png'))
 plt.show()

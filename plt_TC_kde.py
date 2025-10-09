@@ -56,9 +56,11 @@ for ii, ax in enumerate(axes):
    csf = ax.contourf(xgr, ygr, tocf, cmap=cmap, levels=cflvls)
    plt.colorbar(csf)
    ax.contour(xgr, ygr, zvals[1], colors='black', levels=np.arange(.05, .36, .05))
-   ax.scatter(sstds.dayofyear, sstds['tos'].isel(case=ii).idxmax('yh'), c='orange', marker='.')
+   ax.scatter(sstds.dayofyear, sstds['tos'].isel(case=ii).idxmax('yh'), c='darkviolet', marker='.')
    ax.set_xticks(TICKDOY, [dt.strftime('%m-%d') for dt in TICKDATES], rotation=45)
-   ax.tick_params(axis='both', labelleft=True)
+   ax.tick_params(axis='both', labelleft=True, right=True, top=True)
+   ax.set_title(TTLS[ii][1])
+   ax.set_title(TTLS[ii][0], loc='left')
    ax.set_xlabel('mm-dd')
    ax.set_ylabel('Latitude')
 

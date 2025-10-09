@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import xarray as xr
 import numpy as np
 
-FILI = '/glade/work/jpan/597_gencirc_gfdl/model_results/postprocessed_251008_jpan_DJF_zonsym_strat.nc'
+FILI = '/glade/work/jpan/597_gencirc_gfdl/model_results/postprocessed_251003_jpan_DJF_subtrop.nc'
 QFIL = '/glade/work/jpan/597_gencirc_gfdl/ModelCopy/input/midlatitude_forcing_from_HK81_sigmax0.1.nc'
 DIRO = 'hw2_figs/'
 
@@ -16,7 +16,7 @@ def main():
    #print(qds['heating'].sel(level=0.5, method='nearest').max())
 
    plt_psi = ds['psi_anom'].isel(time=slice(14, None)).mean(dim='time')
-   plt_psi = plt_psi.sel(level=3)
+   plt_psi = plt_psi.sel(level=300)
    #plt_psi = (plt_psi.sel(level=20) + plt_psi.sel(level=70)) / 2
    psilevs = 1e6 * 2 * np.arange(1, 21, 1)
    psilevs = np.concatenate((-psilevs[::-1], psilevs))
