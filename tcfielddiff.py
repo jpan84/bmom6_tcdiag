@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 CTLDIR = './tcfields4mps_250417_ctrl/'
 EXPDIR = './tcfields4mps_250416_seed1x1/'
-EXPDIR = './tcfields4mps_250415_unseed/'
+#EXPDIR = './tcfields4mps_250415_unseed/'
 #EXPDIR = './tcfields4mps_250417_ctrl/'
 DIRO = './tcfieldsdiff/'
 
@@ -77,11 +77,11 @@ for ii, szn in enumerate(diff[0]['season']):
 
    #plt.ylim(-18, 32)
    #plt.yticks(np.arange(-16, 33, 4))
-   plt.title('LHFLX SEED–CTRL')
+   #plt.title('LHFLX SEED–CTRL')
    #plt.ylim(-.02, .02)
    #plt.title('TAUX UNSEED–CTRL')
 
-   #plt.title('PRECT SEED-CTRL')
+   plt.title('PRECT SEED-CTRL')
 
    #plt.ylim(-.12, .12)
    #plt.title('TAUX CTRL')
