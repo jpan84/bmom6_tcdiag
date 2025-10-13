@@ -6,10 +6,10 @@ Lv = 2.501e6
 Rv = 461.5
 
 FILI = 'linevslat_h0a_diff/sznlzm.nc'
-SZN = 'JJA'
+SZN = 'SON'
 
 LATBND = (-50, 50)
-
+YLIM = [(-5, 5), (-25, 25)]
 
 def es(T):
    aterm = -6810.5245 / T
@@ -39,16 +39,26 @@ qdef = qsat - ds['QREFHT'].sel(case='CTRL')
 dqsat_frac = dqsat / qdef
 dqa_frac = dqa / qdef
 
+plt.rc('font', size=16)
 plt.rcParams['figure.figsize'] = (15, 4.5)
 fig, axes = plt.subplots(1, 2)
 
+orilh = ds['LHFLX'].sel(case='CTRL')
 for ii, cs in enumerate(['UNSEED', 'SEED']):
-   axes[ii].plot(ds['latitudes'], dLH_frac.sel(case=cs), color='black')
-   axes[ii].plot(ds['latitudes'], dU_frac.sel(case=cs), label='U')
-   axes[ii].plot(ds['latitudes'], dqsat_frac.sel(case=cs), label='Ts')
-   axes[ii].plot(ds['latitudes'], dqa_frac.sel(case=cs), label='qa')
-   axes[ii].plot(ds['latitudes'], (dU_frac + dqsat_frac - dqa_frac).sel(case=cs), color='gray')
+   axes[ii].plot(ds['latitudes'], orilh * dLH_frac.sel(case=cs), color='black', linewidth=3, label='truth')
+   axes[ii].plot(ds['latitudes'], orilh * dU_frac.sel(case=cs), label='wind speed')
+   axes[ii].plot(ds['latitudes'], orilh * dqsat_frac.sel(case=cs), label='SST')
+   axes[ii].plot(ds['latitudes'], orilh * -dqa_frac.sel(case=cs), label='qa')
+   axes[ii].plot(ds['latitudes'], orilh * (dU_frac + dqsat_frac - dqa_frac).sel(case=cs), label='linear estimate', linewidth=3, color='gray')
    axes[ii].axhline(0, linestyle='dotted', color='black')
-   axes[ii].legend()
+   [axes[ii].axvline(ll, color='gray', linewidth=0.5) for ll in range(-50, 51, 10)]
+   axes[ii].legend(fontsize=12)
 
+   axes[ii].set_title(['(a)', '(b)'][ii], loc='left')
+   axes[ii].set_title('%s$-$CTRL' % cs)
+   axes[ii].set_xlabel('Latitude')
+   axes[ii].set_ylabel('LHFLX [W m$^{-2}$]')
+   axes[ii].set_ylim(*YLIM[ii])
+
+fig.tight_layout()
 plt.show()

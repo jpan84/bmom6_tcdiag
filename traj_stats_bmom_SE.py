@@ -178,6 +178,15 @@ def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname, ctrl_kde=None, weig
 
    #kde beneath the scatter
    points = np.vstack([x, y])
+   if (xname, yname) == ('genday', 'genlat'):
+      print(points.shape)
+      boy_pts, eoy_pts = points[0, :] <= 50, points[0, :] > 315
+      print(boy_pts.sum(), eoy_pts.sum())
+      boy_rpt, eoy_rpt = points[:, boy_pts].copy(), points[:, eoy_pts].copy()
+      boy_rpt[0, :] += 365
+      eoy_rpt[0, :] -= 365
+      points = np.hstack([eoy_rpt, points, boy_rpt])
+      print(points.shape)
    kde = stats.gaussian_kde(points, weights=weights)
    xmin, xmax, ymin, ymax = min(x), max(x), min(y), max(y)
    if xname in XLIMS:
@@ -188,8 +197,8 @@ def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname, ctrl_kde=None, weig
    pos = np.vstack([xgrid.ravel(), ygrid.ravel()])
    z = kde(pos).reshape(xgrid.shape) * len(x)
 
-   if (xname, yname) == ('genday', 'genlat'):
-      print(xgrid[:, 0], ygrid[0, :])
+   #if (xname, yname) == ('genday', 'genlat'):
+   #   print(xgrid[:, 0], ygrid[0, :])
 
    if ctrl_kde is None:
       csf = ax.contourf(xgrid, ygrid, z)

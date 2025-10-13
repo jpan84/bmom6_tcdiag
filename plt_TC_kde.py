@@ -27,6 +27,7 @@ xgr, ygr = np.mgrid[1:365:365j, -25:25:100j]
 print(xgr[:, 0], ygr[0, ygr.shape[1]//2:], ygr[0, :ygr.shape[1]//2])
 
 kdeobjs = [pk[('genday', 'genlat')][0] for pk in pkls]
+[ko.set_bandwidth(0.18) for ko in kdeobjs]
 nstms = [pk[('genday', 'genlat')][1] for pk in pkls]
 print(kdeobjs[0])
 print(nstms)
@@ -51,12 +52,12 @@ fig, axes = plt.subplots(1, 3, sharey=True, sharex=True)
 
 for ii, ax in enumerate(axes):
    tocf = zvals[ii] if ii == 1 else zvals[ii] - zvals[1]
-   cflvls = np.arange(.05, .36, .05) if ii == 1 else np.arange(-0.5, 0.51, .05)
+   cflvls = np.arange(.05, .46, .05) if ii == 1 else np.arange(-0.5, 0.51, .05)
    cmap = 'viridis' if ii == 1 else 'bwr'
    csf = ax.contourf(xgr, ygr, tocf, cmap=cmap, levels=cflvls)
    plt.colorbar(csf)
-   ax.contour(xgr, ygr, zvals[1], colors='black', levels=np.arange(.05, .36, .05))
-   ax.scatter(sstds.dayofyear, sstds['tos'].isel(case=ii).idxmax('yh'), c='darkviolet', marker='.')
+   ax.contour(xgr, ygr, zvals[1], colors='black', levels=np.arange(.05, .61, .05))
+   ax.scatter(sstds.dayofyear, sstds['tos'].isel(case=ii).idxmax('yh'), c='aqua', marker='.')
    ax.set_xticks(TICKDOY, [dt.strftime('%m-%d') for dt in TICKDATES], rotation=45)
    ax.tick_params(axis='both', labelleft=True, right=True, top=True)
    ax.set_title(TTLS[ii][1])
