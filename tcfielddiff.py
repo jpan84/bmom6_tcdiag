@@ -5,22 +5,22 @@ import matplotlib.pyplot as plt
 
 CTLDIR = './tcfields4mps_250417_ctrl/'
 EXPDIR = './tcfields4mps_250416_seed1x1/'
-#EXPDIR = './tcfields4mps_250415_unseed/'
+EXPDIR = './tcfields4mps_250415_unseed/'
 #EXPDIR = './tcfields4mps_250417_ctrl/'
 DIRO = './tcfieldsdiff/'
 
 #FLD = ['hflso_neg', 'hflso_pos']
 #SGN = -1
-#latvar = 'yh'
-FLD = ['PRECT']
-SGN = 1
+latvar = 'yh'
+#FLD = ['PRECT']
+#SGN = 1
 latvar = 'latitudes'
 #FLD = ['TAUX_neg', 'TAUX_pos']
 #SGN = 1
 #latvar = 'latitudes'
-#FLD = ['VQ850_neg', 'VQ850_pos']
-#SGN = 1
-#latvar = 'latitudes'
+FLD = ['VQ850_neg', 'VQ850_pos']
+SGN = 1
+latvar = 'latitudes'
 
 lv = 2.501e6 #default from MOM6
 rho_l = 1.0e3 #default from CAM zm micro
@@ -47,24 +47,32 @@ dss = [ctlall, expall, ctltcs, exptcs]
 #dss = [ds.interp(coords=dict(latitudes=ds.yh.data)) for ds in dss]
 
 flds = [SGN * sum([ds[dv] for dv in FLD]) for ds in dss]
-diff = [flds[1] - flds[0], flds[-1] - flds[-2]]
+#diff = [flds[1] - flds[0], flds[-1] - flds[-2]]
 
 #P minus E
 #flds = [((ds['hflso_neg'] + ds['hflso_pos']) / lv / rho_l + ds['PRECT'].rename(latitudes='yh')) * mps2mmpd for ds in dss]
 #diff = [flds[1] - 0*flds[0], flds[-1] - 0*flds[-2]]
+#flds = [-((ds['hflso_neg'] + ds['hflso_pos']) / lv / rho_l) * mps2mmpd for ds in dss] #E
+#flds = [ds['PRECT'] * mps2mmpd for ds in dss] #P
+diff = [flds[1] - flds[0], flds[-1] - flds[-2], (flds[1] - flds[-1]) - (flds[0] - flds[-2])]
 
 # !outside Portion of field outside TCs instead of all
 #diff = [(flds[1] - flds[-1]) - (flds[0] - flds[-2]), flds[-1] - flds[-2]]
 
 plt.rc('font', size=14)
 sinlat = YSCL(ctlall[latvar])
+ax0 = plt.axes()
+#ax1 = plt.gca().twinx()
+#ax0.set_ylabel('TC fractional contribution')
+#ax1.plot(sinlat, diff[1].sum('season') / diff[0].sum('season'), linewidth=2.5, color='black') #ratio for ctrl only
+#ax1.plot(sinlat.sel(latitudes=slice(14, 40)), (diff[1].sum('season') / diff[0].sum('season')).sel(latitudes=slice(14, 40)), linewidth=3, color='black') #ratio for ctrl only
 for ii, szn in enumerate(diff[0]['season']):
-   plt.plot(sinlat, diff[0].sel(season=szn), color=['blue', 'orange'][ii], label=str(szn.data) + ' total')
-   plt.plot(sinlat, diff[1].sel(season=szn), color=['blue', 'orange'][ii], linestyle='dashed', label=str(szn.data) + ' TCs')
-   #plt.plot(sinlat, diff[0].sel(season=szn), color=['blue', 'orange'][ii], linestyle='dotted', label=str(szn.data) + '_non-TC') # !outside
-   plt.xlim(YSCL(YLAB[0]), YSCL(YLAB[-1]))
-   plt.xticks(YSCL(YLAB), YLAB)
-   plt.axhline(0, linewidth=0.5, color='gray')
+   ax0.plot(sinlat, diff[0].sel(season=szn), color=['blue', 'orange'][ii], label=str(szn.data) + ' total')
+   ax0.plot(sinlat, diff[1].sel(season=szn), color=['blue', 'orange'][ii], linestyle='dashed', label=str(szn.data) + ' TCs')
+   #ax0.plot(sinlat, diff[2].sel(season=szn), color=['blue', 'orange'][ii], linestyle='dotted', label=str(szn.data) + '_non-TC') # !outside
+   ax0.set_xlim(YSCL(YLAB[0]), YSCL(YLAB[-1]))
+   ax0.set_xticks(YSCL(YLAB), YLAB)
+   ax0.axhline(0, linewidth=0.5, color='gray')
    [plt.axvline(ll, linewidth=0.5, color='gray') for ll in YSCL(YLAB)]
 
    toavg_all = diff[0].sel(indexers={'season': szn, latvar: slice(*AVGLATBND)})
@@ -81,7 +89,11 @@ for ii, szn in enumerate(diff[0]['season']):
    #plt.ylim(-.02, .02)
    #plt.title('TAUX UNSEED–CTRL')
 
-   plt.title('PRECT SEED-CTRL')
+   #plt.ylim(-1.3 / 5, 1.3 / 5)
+   #plt.title('P [mm d$^{-1}$] CTRL')
+   plt.title('(a)', loc='left')
+   #ax0.set_ylim(0, 18)
+   #ax1.set_ylim(0, 0.18)
 
    #plt.ylim(-.12, .12)
    #plt.title('TAUX CTRL')
@@ -94,10 +106,14 @@ for ii, szn in enumerate(diff[0]['season']):
    #plt.ylim(-2.1, 2.1)
    #plt.title('P–E [mm d$^{-1}$] CTRL')
 
-   #plt.ylim(-7e-3, 7e-3)
-   #plt.title('V\'Q\'850 [m/s kg/kg] UNSEED$-$CTRL')
+   ax0.set_ylim(-7e-3, 7e-3)
+   ax0.set_ylim(-3e-4, 3e-4)
+   #ax1.set_ylim(-.12, .12)
+   plt.title('UNSEED$-$CTRL $v$\'$q$\'$_{850}$ [m s$^{-1}$ kg kg$^{-1}$]')
 
-   #plt.legend()
+   ax0.set_xlabel('Latitude')
+   #ax0.legend(ncol=3, fontsize=11, framealpha=1)
+   #ax1.legend(*ax0.get_legend_handles_labels(), fontsize=11, framealpha=1, ncol=3)
 
-#plt.savefig(os.path.join(DIRO, 'UNSEED-CTRL_TAUX.png'))
+plt.savefig(os.path.join(DIRO, 'UNSEED-CTRL_VQ850.png'))
 plt.show()

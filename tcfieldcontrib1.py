@@ -20,7 +20,7 @@ SPTH = 4
 
 #ARCHV = '/glade/campaign/univ/upsu0032/jpan_tcfields/'
 ARCHV = '/glade/derecho/scratch/jpan/jpan_tcfields/'
-ALIAS = '250415_unseed'
+ALIAS = '250417_ctrl'
 CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s' % ALIAS
 DIRO = './tcfields%dmps_%s/' % (SPTH, ALIAS)
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
@@ -70,7 +70,7 @@ NEWLATS = np.arange(-50, 51, 10)
 
 RATLIMS = dict(PRECT=0.7, TAUX_neg=0.5, TAUX_pos=1, TAUY_neg=0.6, TAUY_pos=1, UMF500_neg=0.35, UMF500_pos=0.65,\
             VQ850_neg=0.6, VQ850_pos=0.6, VT850_neg=0.6, VT850_pos=0.6, VU200_neg=0.3, VU200_pos=0.25, WQ850_neg=0.5, WQ850_pos=0.5, WT850_neg=0.4, WT850_pos=0.6, WU500_neg=0.8, WU500_pos=0.7)
-YLIMS = dict(PRECT=(0, 2.2e-7), TAUX_neg=(-0.12, .01), TAUX_pos=(-5e-3, .03), TAUY_neg=(-.1, .1), TAUY_pos=(-.1, .1), UMF500_neg=(-.012, .012), UMF500_pos=(-.012, .012),\
+YLIMS = dict(PRECT=(0, 2.2e-7), TAUX_neg=(-0.12, .01), TAUX_pos=(-5e-3, .03), TAUY_neg=(-.1, .1), TAUY_pos=(-.1, .1), UMF500_neg=(-.012, .012), UMF500_pos=(0, .012),\
             VQ850_neg=(-.009, .009), VQ850_pos=(-.009, .009), VT850_neg=(-5, 5), VT850_pos=(-5, 5), VU200_neg=(-100, 100), VU200_pos=(-100, 100), WQ850_neg=(-1e-4, 1e-5), WQ850_pos=(-2e-5, 5e-4),\
             WT850_neg=(-0.15, 0), WT850_pos=(0, .15), WU500_neg=(-.8, .05), WU500_pos=(-.05, .8))
 
@@ -119,7 +119,7 @@ def main_plot():
    allds = xr.open_dataset(os.path.join(DIRO, 'means_all.nc'))
    tcsds = xr.open_dataset(os.path.join(DIRO, 'means_tcs.nc'))
 
-   plt.rc('font', size=16)
+   plt.rc('font', size=20)
 
    for dv in allds.data_vars:
       print('Plotting', dv)
@@ -136,10 +136,11 @@ def main_plot():
          axes[1].plot(sinlats, ratio[tt], color=LCLRS[tt])
          axes[1].set_title('TCs / all')
          for ii, pltda in enumerate([allds[dv], tcsds[dv]]):
-            axes[0].plot(sinlats, pltda.sel(season=szn), label=str(szn.values), color=LCLRS[tt], linestyle=LSTYS[ii])
+            axes[0].plot(sinlats, pltda.sel(season=szn), label=str(szn.values) + ('_TC' if ii == 1 else '_all'), color=LCLRS[tt], linestyle=LSTYS[ii])
             axes[0].set_title(str(dv))
-      axes[0].legend()
+      axes[0].legend(ncol=2, fontsize=16)
       [ax.set_xticks(np.sin(np.deg2rad(NEWLATS)), NEWLATS) for ax in axes]
+      [[ax.axvline(sl, color='gray', linewidth=0.5) for sl in np.sin(np.deg2rad(NEWLATS))] for ax in axes]
       axes[1].set_xlabel('Latitude [°]')
       if str(dv) in RATLIMS:
          axes[1].set_ylim(0, RATLIMS[dv])

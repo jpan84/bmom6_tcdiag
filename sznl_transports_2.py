@@ -24,6 +24,7 @@ CAMDIR = '/glade/campaign/univ/upsu0032/jpan_aquaptc//%s/atm/hist/'
 MOMH = '/glade/derecho/scratch/jpan/archive/%s/ocn/hist/*mom6.hm*[0-9][0-9][0-9][0-9]-[0-9][0-9].nc'
 CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1']
 ALIASES = ['UNSEED', 'CTRL', 'SEED']
+TTLS = ['UNSEED$-$CTRL', 'CTRL', 'SEED$-$CTRL']
 
 P0 = 1e5
 g = 9.79764
@@ -133,11 +134,11 @@ def main_plot():
    plt.rcParams['figure.figsize'] = (30, 6)
    subplot_kw = dict(xlim=(-1, 1), sharey=False)
    lncolors = ['blue', 'orange']
-   linkw = dict(total=dict(linewidth=2.0, linestyle='solid'), mmc=dict(linewidth=0.8, linestyle='solid'), eddy=dict(linewidth=1.2, linestyle='dotted'))
+   linkw = dict(total=dict(linewidth=2.2, linestyle='solid', marker='D', ms=2.5), mmc=dict(linewidth=0.8, linestyle='solid'), eddy=dict(linewidth=1.2, linestyle='dotted'))
 
    for dv in ds.data_vars:
       fig, axes = plt.subplots(1, 3, subplot_kw=subplot_kw)
-      fig.suptitle('%s meridional transport' % str(dv))
+      fig.suptitle('%s meridional transport' % str(dv) + ('[kg/s]' if str(dv) == 'q' else ''))
       for ii, cs in enumerate(ds['case']):
          ax = axes[ii]
          pltda = ds[dv].sel(case=cs)
@@ -149,6 +150,9 @@ def main_plot():
          ax.axhline(0, c='gray', lw=0.5)
          [ax.axvline(np.sin(np.deg2rad(ll)), c='gray', lw=0.5) for ll in LATLAB]
          ax.set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB.astype(np.int_))
+         ax.set_xlabel('Latitude')
+         ax.set_title(['(a)', '(b)', '(c)'][ii], loc='left')
+         ax.set_title(TTLS[ii])
 
          ylims = ax.get_ylim()
          maxy = max(np.abs(ylims))
@@ -156,6 +160,12 @@ def main_plot():
          if cs == 'SEED':
             ax.set_ylim(*axes[1].get_ylim())
 
+      leg_artists = [axes[1].plot(0, np.nan, label=kk, color='black', **vv) for kk, vv in linkw.items()]
+      #[la[0].remove() for la in leg_artists if la[0].get_label() == 'total']
+      [axes[1].plot(0, 0, label=str(ds.season[ii].data), color=lncolors[ii]) for ii in range(ds.season.size)]
+      axes[1].legend()
+
+      fig.tight_layout()
       plt.savefig(os.path.join(DIRO, '%s.png' % str(dv)), bbox_inches='tight')
       plt.close()
 

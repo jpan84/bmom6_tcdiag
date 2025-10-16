@@ -15,7 +15,7 @@ E_TC = np.array([[-8.98e7, 3.69e8], [-8.14e7, 3.69e8]])
 E_zm = np.array([[-3.02e7, -2.72e7], [-8.24e6, -1.57e8]])
 
 #reverse the sign of UNSEED for easier comparison with SEED
-BARS = [[('+P', -mP_zm), ('-E', -E_zm), ('$+\partial_y (vq)$', -vqc_zm)], [('-P', mP_zm), ('E', E_zm), ('$-\partial_y (vq)$', vqc_zm)]]
+BARS = [[('+P', -mP_zm), ('-E', -E_zm), ('$+\partial_y (vq)$', -vqc_zm)], [('-P', mP_zm), ('+E', E_zm), ('$-\partial_y (vq)$', vqc_zm)]]
 
 fig, axes = plt.subplots(2, 2)
 
@@ -31,10 +31,12 @@ for ii, szn in enumerate(ROWS):
       axes[ii][jj].set_ylim(*YLIMS[jj])
       axes[ii][jj].set_title(LETTERS[ii][jj], loc='left')
 
-      axes[ii][jj].set_ylabel('$q$ tendency [kg s$^{-1}$]')
+      axes[ii][jj].set_ylabel(('$q$' if sgn == 1 else '$-q$') + ' tendency [kg s$^{-1}$]')
       if ii == 0:
          axes[ii][jj].set_title(COLS[jj], fontsize=14)
 
 fig.suptitle('20-30°N water vapor budget', fontsize=16)
 fig.tight_layout()
+
+plt.savefig('iwv_20-30_bar.png', bbox_inches='tight')
 plt.show()
