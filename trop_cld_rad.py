@@ -7,6 +7,9 @@ from sznl_funcs import monthly2sznl, stack_hemi_sznl
 CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1']
 YMM = '/glade/campaign/univ/upsu0032/jpan_aquaptc/%s/atm/hist_regrid_0.25x0.25_onpres/ymonmean.nc'
 
+letters = [['(a)', '(b)', '(c)'], ['(d)', '(e)', '(f)']]
+CSTTL = ['UNSEED$-$CTRL', 'CTRL', 'SEED$-$CTRL']
+
 pltvars = ['CLDICE', 'CLDLIQ', 'Q', 'QRL', 'QRS']
 clevs = dict(cldfrac=2.**np.arange(-1, 7, 2) / 100, tdot=0.5 * np.arange(1, 10))
 clevs = {k: np.concatenate((-clevs[k][::-1], clevs[k])) for k in clevs}
@@ -19,11 +22,11 @@ qlevs = [np.arange(-3e-4, 3.1e-4, 5e-5), np.arange(0, 3.1e-2, 5e-3), np.arange(-
 def main():
    dss = [xr.open_dataset(YMM % cs).rename(time='month') for cs in CASES]
 
-   plt.rc('font', size=16)
+   plt.rc('font', size=20)
    plt.rcParams['figure.figsize'] = (30, 12)
-   latlim = 1 / np.sqrt(2)
+   latlim = np.sin(np.deg2rad(50))#1 / np.sqrt(2)
    subplot_kw = dict(xlim=(-latlim, latlim), ylim=(200, 1000), yscale='log')
-   fig, axes = plt.subplots(2, 3, layout='constrained', sharex=True, sharey=True, subplot_kw=subplot_kw)
+   fig, axes = plt.subplots(2, 3, sharex=True, sharey=True, subplot_kw=subplot_kw) #layout='constrained'
    axes[0][0].invert_yaxis()
 
    sznl_stacked = dict()
@@ -42,15 +45,24 @@ def main():
          pltcld = sznl_stacked['CLOUD'][csi].sel(season=szn) if not do_diff else sznl_stacked['CLOUD'][csi].sel(season=szn) - sznl_stacked['CLOUD'][1].sel(season=szn)
          pltlw = sznl_stacked['QRL'][csi].sel(season=szn) if not do_diff else sznl_stacked['QRL'][csi].sel(season=szn) - sznl_stacked['QRL'][1].sel(season=szn)
          pltsw = sznl_stacked['QRS'][csi].sel(season=szn) if not do_diff else sznl_stacked['QRS'][csi].sel(season=szn) - sznl_stacked['QRS'][1].sel(season=szn)
-         ax.contour(sinlat, dss[csi]['plev'] / 100, pltcld, colors='gray', levels=clevs['cldamt'])# * levfac[csi])
+         ax.contour(sinlat, dss[csi]['plev'] / 100, pltcld, colors='black', levels=clevs['cldamt'])# * levfac[csi])
          ax.contour(sinlat, dss[csi]['plev'] / 100, 0 * pltlw * 86400, colors='green', levels=clevs['tdot'])# * levfac[csi])
          ax.contour(sinlat, dss[csi]['plev'] / 100, 0 * pltsw * 86400, colors='orange', levels=clevs['tdot'])# * levfac[csi])
-         ax.set_xticks(np.sin(np.deg2rad(np.arange(-45, 46, 5))), np.arange(-45, 46, 5))
+         ax.tick_params(right=True, top=True, labelbottom=True, labelleft=True)
+         ax.set_xticks(np.sin(np.deg2rad(np.arange(-50, 51, 5))), np.arange(-50, 51, 5))
+         [lbl.set_visible(False) for ii, lbl in enumerate(ax.get_xticklabels()) if ii % 2]
          ax.set_yticks(np.arange(200, 1001, 100), np.arange(200, 1001, 100))
+         ax.set_title(letters[szj][csi], loc='left')
+         ax.set_xlabel('Latitude')
+
+         if szj == 0:
+            ax.set_title(CSTTL[csi], fontsize=28)
+         if csi == 0:
+            ax.set_ylabel(szn + '   ', rotation='horizontal', fontsize=28)
    plt.savefig('q_cldamt.png', bbox_inches='tight')
    plt.close()
 
-print(sys.argv[0], 'done.')
+   print(sys.argv[0], 'done.')
 
 if __name__ == '__main__':
    main()
