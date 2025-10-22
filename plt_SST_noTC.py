@@ -27,23 +27,28 @@ def main():
    toplt = [stack_hemi_sznl(ds[FLDNM], latnm='lat') for ds in dss]
    origds = xr.open_dataset('./linevslat_new_sznl_diff/sznlzm.nc')
 
-   plt.rc('font', size=18)
-   plt.rcParams['figure.figsize'] = (30, 6)
+   plt.rc('font', size=15)
+   plt.rcParams['figure.figsize'] = (18, 4)
    subplot_kw = dict(xlim=(-1, 1))
    fig, axes = plt.subplot_mosaic([['(a)', '(b)', '(c)']], layout='constrained', sharey=False, subplot_kw=subplot_kw)
 
+   ax1 = None
    for ii, (lbl, ax) in enumerate(axes.items()):
       [ax.axvline(yl, linewidth=0.5, color='gray') for yl in YLOC]
       ax.set_xlabel('Latitude [°]')
-      ax.set_ylabel('SST [K]')
+      ax.set_ylabel('[°C]')
       for jj, szn in enumerate(toplt[ii].season):
          ax.plot(YSCL(toplt[ii]['lat']), toplt[ii].sel(season=szn), color=LNCLR[jj], linestyle='dashdot', label='%s cold wakes' % str(szn.data))
          if ii in {0, 2}:
             ax.plot(YSCL(origds['latitudes']), origds['TS'].isel(case=ii).sel(season=szn), color=LNCLR[jj], label='%s SST' % str(szn.data))
+         else:
+            ax1 = ax.twinx() if ax1 is None else ax1
+            ax1.plot(YSCL(origds['latitudes']), origds['TS'].isel(case=ii).sel(season=szn) - 273.15, color=LNCLR[jj], label='%s SST' % str(szn.data))
+            ax1.set_ylabel('CTRL SST [°C]')
          if ii == 0:
-            ax.legend()
+            ax.legend(loc='lower center', fontsize=11, ncol=2)
          ax.axhline(y=0, linewidth=0.5, color='gray')
-         ax.set_xticks(YLOC, YLAB)
+         ax.set_xticks(YLOC, ['' if yl % 30 else yl for yl in YLAB])
          ax.set_ylim(*ZLIM[ii])
          ax.set_title(TTL[ii])
          ax.set_title(lbl, loc='left')
