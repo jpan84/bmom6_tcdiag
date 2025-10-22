@@ -19,6 +19,7 @@ TEMNCS = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl_b.e23.BMOM.
           'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl_b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1_TEM.nc']
 
 ALIS = ['250415_unseed', '250417_ctrl', '250416_seed1x1']
+TTLS = ['UNSEED$-$CTRL', 'CTRL', 'SEED$-$CTRL']
 
 ZSCL = np.vectorize(lambda zl: zl / 2850 if zl <= 2000 else 2000 / 2850 + (zl - 2000) / 2000 * 850 / 2850)
 ZLAB = np.arange(1000, 5000, 1000)
@@ -311,8 +312,8 @@ def main():
                          height_ratios=[1, 1],
                          width_ratios=gs_ratios)
    
-   fig.suptitle('Atmosphere Eulerian mean mass streamfunction\
-                   \nOcean Residual Mass Streamfunction')
+   #fig.suptitle('Atmosphere Eulerian mean mass streamfunction\
+                   #\nOcean Residual Mass Streamfunction')
    
    # --- NEW/MODIFIED CODE END ---
    
@@ -363,12 +364,14 @@ def main():
          # -------------------------------------------------------------
          
          ax_bot.contour(YSCL(ocn_yz['yq']), ZSCL(ocn_yz['zl']), sf / expo, **sf_ctkwargs)
-         ax_bot.set_xticks(YLOC, YLAB) # Keeps xtick labels on ax_bot
+         ax_bot.set_xticks(YLOC, ['' if yl % 20 else yl for yl in YLAB]) # Keeps xtick labels on ax_bot
          ax_bot.set_xlim(-1, 1)
          ax_bot.set_yticks(ZLOC, ZLAB)
          ax_bot.invert_yaxis()
          ax_bot.set_xlabel('Latitude [°]')
          ax_bot.set_ylabel('Depth [m]')
+         ax_bot.tick_params(right=True)
+         ax_bot.tick_params(length=7, width=1.3, which='both')
 
          mmc = temds['PSI_EM'].isel(case=jj, season=ii)
          csf = ax_top.contourf(YSCL(temds['lat']), temds['plev'], mmc / expo, cmap='coolwarm' if jj == 1 else 'bwr', extend='both', **sf_cfkwargs)
@@ -378,11 +381,15 @@ def main():
          ax_top.yaxis.set_minor_formatter(mticker.ScalarFormatter())
          ax_top.yaxis.set_major_formatter(mticker.ScalarFormatter())
          ax_top.set_ylabel('Pressure [hPa]')
-         ax_top.set_yticks(np.arange(100, 1001, 100))
+         ax_top.set_yticks(np.arange(200, 1001, 200))
+         ax_top.tick_params(top=True, right=True, length=7, width=1.3, which='both')
+         ax_top.tick_params(which='minor', labelsize=0)
 
          label_index = (ii * 3) + jj
          panel_label = f'({chr(97 + label_index)})'
          ax_top.set_title(panel_label, loc='left')
+         if ii == 0:
+            ax_top.set_title(TTLS[jj], fontsize=24)
          
          # --- NEW/MODIFIED: Ensure no xtick labels on ax_top ---
          ax_top.tick_params(labelbottom=False) 
