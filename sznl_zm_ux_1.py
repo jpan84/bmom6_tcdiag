@@ -36,11 +36,12 @@ USER_DEF = {'RESTOM', 'PRECT', 'NCF', 'FLUS', 'LWAHU', 'SWAHU', 'PALB'}
 
 
 #h1i mode
+OUTDIR = 'linevslat_h1i_0012-0014'
 #HISTS = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/*.h1i.0010*.nc'
-#HISTS = '/glade/derecho/scratch/jpan/jpan_tcfields/%s/hist_0012-0014_h1i/cat_h1i_0012-0014.nc'
+HISTS = '/glade/derecho/scratch/jpan/jpan_tcfields/%s/hist_0012-0014_h1i/cat_botspd.nc'
 #HISTS = '/glade/derecho/scratch/jpan/jpan_tcfields/%s/nff_4mps/cat_4mps.nc'
-H1I = False
-H1IVARS = {'TC_R4'}
+H1I = True
+H1IVARS = {'wspd_bot'}
 #H1IVARS = {'CF500'}
 #USER_DEF = {'CF500'}
 
@@ -133,7 +134,7 @@ def main():
          outds = outds.assign(variables={dv: xr.concat(sznzm, dim=xr.Variable('case', ALIASES))})
 
    print('Saving to .nc...')
-   outds.to_netcdf(os.path.join(OUTDIR, 'sznlzm.nc'))
+   outds.to_netcdf(os.path.join(OUTDIR, 'botspd_tot_sznlzm.nc'))
 
    print(sys.argv[0], 'done.')
 
