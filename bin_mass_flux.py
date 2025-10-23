@@ -23,10 +23,10 @@ a = 6.371e6
 #CASE1 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.*.nc'
 #CASE2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.*.nc'\
 #         % (alias2, alias2)
-FILIS = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0012-01-01-*.nc'
+FILIS = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0012-*-0*-*.nc'
 ALIS = ['250415_unseed', '250417_ctrl', '250416_seed1x1']
 CASES = ['UNSEED', 'CTRL', 'SEED']
-FILO = 'umf500_0012dd0x_histo_mse850_SST.pkl'
+#FILO = 'umf500_0012dd0x_histo_mse850_SST.pkl'
 
 SSTbins = np.concatenate((np.arange(295., 306.), np.arange(306, 309, 0.25), np.arange(309, 313)))
 
@@ -57,8 +57,8 @@ def main():
    mtds = xr.Dataset(data_vars=dict(UMF500=mtout, mwidth=m_d, swidth=s_d))
    stds = xr.Dataset(data_vars=dict(UMF500=stout, mwidth=m_d, swidth=s_d))
 
-   mtds.to_netcdf('umf500_0012-01-01_07-20warm.nc')
-   stds.to_netcdf('umf500_0012-01-01_20-33warm.nc')
+   mtds.to_netcdf('umf500_0012dd0x_07-20warm.nc')
+   stds.to_netcdf('umf500_0012dd0x_20-33warm.nc')
 
    print(sys.argv[0], 'done')
 
@@ -81,7 +81,7 @@ def compute_umf_hist(ds, innerlat=5., outerlat=30., hemi='warm', msebins=np.aran
       print('Processing time', str(tt.data))
       umf_b_2d, mse_edges, sst_edges, _ = bin_umf_2d(umf500.sel(time=tt), mse850.sel(time=tt), selds['SST'].sel(time=tt),\
                                           msebins, sstbins, selds['time'].size / 2) #Divide time size by 2 because I've filtered out half of the year
-      print(umf_b_2d.shape, mse_edges.shape, sst_edges.shape)
+      #print(umf_b_2d.shape, mse_edges.shape, sst_edges.shape)
       if m_e is None and s_e is None:
          m_e, s_e = mse_edges, sst_edges
 

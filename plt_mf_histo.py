@@ -1,45 +1,81 @@
 import pickle
 import os
+import xarray as xr
 import matplotlib.pyplot as plt
 
-FILI = 'umf500_0012dd0x_histo_mse850_SST.pkl'
+FILI = 'umf500_0012dd0x_07-20warm.nc'
+FILI = 'umf500_0012dd0x_20-33warm.nc'
 DIRO = 'mf_histo_SST'
+TTLS = ['UNSEED$-$CTRL', 'CTRL', 'SEED$-$CTRL']
 
-RAWVLIM = dict(vmin=0, vmax=1.5e11)
-DIFSZNVLIM = dict(vmin=-1.5e11, vmax=1.5e11)
-DIFCASEVLIM = dict(vmin=-5e10, vmax=5e10)
+ds = xr.open_dataset(FILI).sum(dim='time') #forgot to change time normalization in 1st script when retaining time dim so need to sum here instead of avg
+umfdif = ds['UMF500'].copy()
+umfdif.loc[dict(case=['UNSEED', 'SEED'])] -= umfdif.sel(case='CTRL')
+print(umfdif.max())
+umfdif /= ds['mwidth'].data[None, :, None]
+umfdif /= ds['swidth'].data[None, None, :]
 
-XLIM = (3.0e5, 3.8e5)
-YLIM = (27, 37.1)
 
-if not os.path.exists(DIRO):
-   os.makedirs(DIRO)
-
-histos = None
-with open(FILI, 'rb') as fl:
-   histos = pickle.load(fl)
-
-#print(histos)
-ALIS = histos.pop(0)
-HEM = histos.pop(0)
-
-MSE850 = histos[0][1]
-SST = histos[0][2] - 273.15
+#RAWVLIM = dict(vmin=0, vmax=1.5e11)
+#DIFSZNVLIM = dict(vmin=-1.5e11, vmax=1.5e11)
+#DIFCASEVLIM = dict(vmin=-5e10, vmax=5e10)
 
 plt.rc('font', size=14)
+plt.rcParams['figure.figsize'] = [16, 5]
 
+#deep tropical (Moist Tropics) case
+fig, axes = plt.subplots(1, 3, sharex=True, sharey=True, subplot_kw=dict(xlim=(3.2, 3.8), ylim=(29, 37)), layout='constrained')
+fig.suptitle('500 hPa UMF [kg s$^{{-1}}$ (°C J kg$^{{-1}}$)$^{-1}$]')
+for ii, ax in enumerate(axes):
+   rawda = ds['UMF500'].isel(case=ii)
+   pckw = dict(cmap='nipy_spectral', vmin=0, vmax=3.5e7) if ii == 1 else dict(cmap='bwr', vmin=-1e7, vmax=1e7)
+   pltda = umfdif.isel(case=ii).T
+   pc = ax.pcolormesh(ds['MSE850'] / 1e5, ds['SST'] - 273.15, pltda, shading='nearest', **pckw)
+   plt.colorbar(pc, ax=ax, extend='both')
+
+   ax.tick_params(right=True, top=True, labelleft=True)
+   ax.set_xlabel('MSE 850 [$10^5$ J kg$^{-1}$]')
+   ax.set_ylabel('SST [°C]')
+   ax.set_title(f'{TTLS[ii]}\nsum: {rawda.sum():.3e} kg s$^{{-1}}$')
+   ax.set_title(['(a)', '(b)', '(c)'][ii], loc='left')
+
+plt.show()
+
+#subtropical (Subtropical Transition Zone) case
+fig, axes = plt.subplots(1, 3, sharex=True, sharey=True, subplot_kw=dict(xlim=(3.2, 3.8), ylim=(26, 34)), layout='constrained')
+fig.suptitle('500 hPa UMF [kg s$^{{-1}}$ (°C J kg$^{{-1}}$)$^{-1}$]')
+for ii, ax in enumerate(axes):
+   rawda = ds['UMF500'].isel(case=ii)
+   pckw = dict(cmap='nipy_spectral', vmin=0, vmax=3.5e7) if ii == 1 else dict(cmap='bwr', vmin=-1e7, vmax=1e7)
+   pltda = umfdif.isel(case=ii).T
+   pc = ax.pcolormesh(ds['MSE850'] / 1e5, ds['SST'] - 273.15, pltda, shading='nearest', **pckw)
+   plt.colorbar(pc, ax=ax, extend='both')
+
+   ax.tick_params(right=True, top=True, labelleft=True)
+   ax.set_xlabel('MSE 850 [$10^5$ J kg$^{-1}$]')
+   ax.set_ylabel('SST [°C]')
+   ax.set_title(f'{TTLS[ii]}\nsum: {rawda.sum():.3e} kg s$^{{-1}}$')
+   ax.set_title(['(d)', '(e)', '(f)'][ii], loc='left')
+
+plt.show()
+
+exit()
 #plot every raw histogram
-for ii, al in enumerate(ALIS):
-   for jj, hm in enumerate(HEM):
-      plt.pcolormesh(MSE850, SST, histos[ii * 2 + jj][0].T, shading='flat', cmap='viridis', **RAWVLIM)
-      plt.xlim(*XLIM)
-      plt.ylim(*YLIM)
-      plt.xlabel('MSE 850 [J kg$^{-1}$]')
-      plt.ylabel('SST [°C]')
-      plt.title(f'{al} 500 hPa UMF [kg s$^{{-1}}$]\n{histos[ii * 2 + jj][0].sum():.3e}')
-      plt.colorbar(extend='max')
-      plt.savefig(os.path.join(DIRO, 'umf_binned_2d_%s_%s.png' % (al, hm)), bbox_inches='tight')
-      plt.close()
+for ii, al in enumerate(ds['case']):
+   #for jj, hm in enumerate(HEM):
+   rawda = ds['UMF500'].sel(case=al)
+   pltda = umfdif.sel(case=al)
+   plt.pcolormesh(ds['MSE850'] / 1e5, ds['SST'] - 273.15, pltda, shading='nearest', cmap='viridis', **RAWVLIM)
+   plt.xlim(*XLIM)
+   plt.ylim(*YLIM)
+   plt.xlabel('MSE 850 [J kg$^{-1}$]')
+   plt.ylabel('SST [°C]')
+   plt.title(f'{al} 500 hPa UMF [kg s$^{{-1}}$]\n{rawda.sum():.3e}')
+   plt.colorbar(extend='max')
+
+   plt.show()
+      #plt.savefig(os.path.join(DIRO, 'umf_binned_2d_%s_%s.png' % (al, hm)), bbox_inches='tight')
+      #plt.close()
 
 #plot every seasonal difference
 for ii, al in enumerate(ALIS):
