@@ -8,7 +8,7 @@ Rv = 461.5
 YSCL = lambda deglat: np.sin(np.deg2rad(deglat))
 
 FILI = 'linevslat_h0a_diff/sznlzm.nc'
-SZN = 'SON'
+SZN = 'JJA'
 
 LATBND = (-50, 50)
 YLIM = [(-6, 6), (-30, 30)]
@@ -94,9 +94,9 @@ plt.rcParams['figure.figsize'] = (15, 4.5)
 fig, axes = plt.subplots(1, 2)
 
 for ii, cs in enumerate(['UNSEED', 'SEED']):
-   axes[ii].plot(sinlat, orilh * dU_frac.sel(case=cs), label='U10 h0a')
-   axes[ii].plot(sinlat, orilh * dU_frac_h1i.sel(case=cs), label='UBOT h1i', color='C0', linestyle='dotted')
-   axes[ii].plot(sinlat, orilh * dU_frac_nTC.sel(case=cs), label='UBOT non-TC')
+   axes[ii].plot(sinlat, orilh * dU_frac.sel(case=cs), label='U10 monthly mean')
+   axes[ii].plot(sinlat, orilh * dU_frac_h1i.sel(case=cs), label='$|U|_{bot}$', color='C0', linestyle='dotted')
+   axes[ii].plot(sinlat, orilh * dU_frac_nTC.sel(case=cs), label='$|U|_{bot}$ non-TC', color='C8')
 
    axes[ii].axhline(0, c='gray', lw=0.5)
    [axes[ii].axvline(YSCL(ll), color='gray', linewidth=0.5) for ll in range(-50, 51, 10)]
@@ -104,7 +104,7 @@ for ii, cs in enumerate(['UNSEED', 'SEED']):
    axes[ii].set_xticks(YSCL(np.arange(-50, 51, 10)), np.arange(-50, 51, 10))
    axes[ii].tick_params(right=True)
 
-   axes[ii].set_title(['(a)', '(b)'][ii], loc='left')
+   axes[ii].set_title(['(c)', '(d)'][ii], loc='left')
    axes[ii].set_title('%s$-$CTRL' % cs)
    axes[ii].set_xlabel('Latitude')
    axes[ii].set_ylabel('LHFLX [W m$^{-2}$]')
