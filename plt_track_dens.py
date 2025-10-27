@@ -6,11 +6,15 @@ from sznl_funcs import stack_hemi_sznl
 FILI = '/glade/u/home/jpan/aquaptc/tempest/251002_density_sznl/tcdens.nc'
 SZN = 'SON'
 
+YSCL = lambda deglat: np.sin(np.deg2rad(deglat))
 LATLAB = np.arange(-90, 90.1, 15).astype(np.int_)
 LATLAB = np.array([-90, -60, -50, -40, -30, -20, -10, 0, 10, 20, 30, 40, 50, 60, 90])
 LATLOC = np.sin(np.deg2rad(LATLAB))
 LATLAB2 = np.arange(-90, 91, 30)
-LATLOC2 = np.sin(np.deg2rad(LATLAB2))
+LATLOC2 = YSCL(LATLAB2)
+
+MT = YSCL(np.array([10, 20]))
+STZ = YSCL(np.array([20, 30]))
 
 ds = xr.open_dataset(FILI)
 sinlat = np.sin(np.deg2rad(ds['lat']))
@@ -44,7 +48,7 @@ axes[0][0].legend(loc='best', fontsize=12)
 axes[0][1].set_title('CTRL')
 axes[0][1].plot(sinlat, lysplt.isel(run=1), label='lysis')
 axes[0][1].plot(sinlat, genplt.isel(run=1), label='genesis')
-axes[0][1].axhline(0, color='gray', linestyle='dotted')
+axes[0][1].axhline(0, color='gray', linewidth=0.5)
 [axes[0][1].axvline(ll, color='gray', linewidth=0.5) for ll in LATLOC]
 axes[0][1].legend(loc='best', fontsize=12)
 axes[0][1].set_title('(b)', loc='left')
@@ -53,7 +57,7 @@ axes[0][2].set_title('SEED–CTRL')
 axes[0][2].plot(sinlat, lysplt.isel(run=2) - lysplt.isel(run=1))
 axes[0][2].plot(sinlat, genplt.isel(run=2) - genplt.isel(run=1))
 axes[0][2].plot(sinlat, sdsplt, color='maroon', linestyle='dashdot', label='seed events')
-axes[0][2].axhline(0, color='gray', linestyle='dotted')
+axes[0][2].axhline(0, color='gray', linewidth=0.5)
 [axes[0][2].axvline(ll, color='gray', linewidth=0.5) for ll in LATLOC]
 axes[0][2].set_title('(c)', loc='left')
 axes[0][2].legend(loc='best', fontsize=12)
@@ -63,7 +67,7 @@ axes[1][0].plot(sinlat, allplt.isel(run=0) - allplt.isel(run=1), linestyle='dash
 axes[1][0].set_yticks(np.arange(-20, 40, 10))
 axes[1][0].set_ylim(-21, 33)
 axes[1][0].set_xticks(LATLOC2, LATLAB2)
-axes[1][0].axhline(0, color='gray', linestyle='dotted')
+axes[1][0].axhline(0, color='gray', linewidth=0.5)
 [axes[1][0].axvline(ll, color='gray', linewidth=0.5) for ll in LATLOC]
 axes[1][0].set_title('(d)', loc='left')
 
@@ -71,19 +75,22 @@ axes[1][1].plot(sinlat, aceplt.isel(run=1), label='ACE [10$^4$ kt$^2$]', color='
 axes[1][1].plot(sinlat, allplt.isel(run=1), label='6-hourly TC fixes', linestyle='dashed', color='black')
 axes[1][1].legend(loc='best', fontsize=12)
 axes[1][1].set_xlabel('Latitude')
-axes[1][1].axhline(0, color='gray', linestyle='dotted')
+axes[1][1].axhline(0, color='gray', linewidth=0.5)
 [axes[1][1].axvline(ll, color='gray', linewidth=0.5) for ll in LATLOC]
 axes[1][1].set_title('(e)', loc='left')
 
 axes[1][2].plot(sinlat, aceplt.isel(run=2) - aceplt.isel(run=1), color='darkgreen')
 axes[1][2].plot(sinlat, allplt.isel(run=2) - allplt.isel(run=1), linestyle='dashed', color='black')
-axes[1][2].axhline(0, color='gray', linestyle='dotted')
+axes[1][2].axhline(0, color='gray', linewidth=0.5)
 [axes[1][2].axvline(ll, color='gray', linewidth=0.5) for ll in LATLOC]
 axes[1][2].set_title('(f)', loc='left')
+
+[ax.axvspan(*MT, fill=True, fc='purple', zorder=2, alpha=0.08) for ax in axes.ravel()]
+[ax.axvspan(*STZ, fill=True, fc='yellow', zorder=2, alpha=0.12) for ax in axes.ravel()]
 
 fig.suptitle('%s TC density plots [yr$^{-1}$ (10$^6$ km$^2$)$^{-1}$]' % SZN)
 
 fig.tight_layout()
 #plt.show()
-plt.savefig('/glade/u/home/jpan/aquaptc/tempest/251002_density_sznl/masterplot_%s.png' % SZN)
+plt.savefig('/glade/u/home/jpan/aquaptc/tempest/251002_density_sznl/masterplot_%s.svg' % SZN)
 plt.close()

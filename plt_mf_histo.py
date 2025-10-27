@@ -2,9 +2,10 @@ import pickle
 import os
 import xarray as xr
 import matplotlib.pyplot as plt
+import matplotlib.colors as colors
 
-FILI = 'umf500_0012dd0x_07-20warm.nc'
-FILI = 'umf500_0012dd0x_20-33warm.nc'
+FILI = 'umf500_0012_07-20warm.nc'
+FILI = 'umf500_0012_20-33warm.nc'
 DIRO = 'mf_histo_SST'
 TTLS = ['UNSEED$-$CTRL', 'CTRL', 'SEED$-$CTRL']
 
@@ -25,36 +26,42 @@ plt.rcParams['figure.figsize'] = [16, 5]
 
 #deep tropical (Moist Tropics) case
 fig, axes = plt.subplots(1, 3, sharex=True, sharey=True, subplot_kw=dict(xlim=(3.2, 3.8), ylim=(29, 37)), layout='constrained')
-fig.suptitle('500 hPa UMF [kg s$^{{-1}}$ (°C J kg$^{{-1}}$)$^{-1}$]')
+fig.suptitle('JJASON 500 hPa UMF [kg s$^{{-1}}$ (°C J kg$^{{-1}}$)$^{-1}$]')
 for ii, ax in enumerate(axes):
    rawda = ds['UMF500'].isel(case=ii)
-   pckw = dict(cmap='nipy_spectral', vmin=0, vmax=3.5e7) if ii == 1 else dict(cmap='bwr', vmin=-1e7, vmax=1e7)
+   pckw = dict(cmap='nipy_spectral', vmin=0, vmax=3.5e7) if ii == 1 else dict(cmap='seismic', vmin=-2e7, vmax=2e7) if ii == 2\
+             else dict(cmap='seismic', vmin=-4e6, vmax=4e6)
    pltda = umfdif.isel(case=ii).T
    pc = ax.pcolormesh(ds['MSE850'] / 1e5, ds['SST'] - 273.15, pltda, shading='nearest', **pckw)
-   plt.colorbar(pc, ax=ax, extend='both')
+   cb = plt.colorbar(pc, ax=ax, extend='both')
+   #if ii != 1:
+   #   cb.ax.set_yscale('log')
 
    ax.tick_params(right=True, top=True, labelleft=True)
    ax.set_xlabel('MSE 850 [$10^5$ J kg$^{-1}$]')
    ax.set_ylabel('SST [°C]')
-   ax.set_title(f'{TTLS[ii]}\nsum: {rawda.sum():.3e} kg s$^{{-1}}$')
+   ax.set_title(f'{TTLS[ii]}\nsum: {rawda.sum():.2e} kg s$^{{-1}}$')
    ax.set_title(['(a)', '(b)', '(c)'][ii], loc='left')
 
 plt.show()
 
 #subtropical (Subtropical Transition Zone) case
 fig, axes = plt.subplots(1, 3, sharex=True, sharey=True, subplot_kw=dict(xlim=(3.2, 3.8), ylim=(26, 34)), layout='constrained')
-fig.suptitle('500 hPa UMF [kg s$^{{-1}}$ (°C J kg$^{{-1}}$)$^{-1}$]')
+fig.suptitle('JJASON 500 hPa UMF [kg s$^{{-1}}$ (°C J kg$^{{-1}}$)$^{-1}$]')
 for ii, ax in enumerate(axes):
    rawda = ds['UMF500'].isel(case=ii)
-   pckw = dict(cmap='nipy_spectral', vmin=0, vmax=3.5e7) if ii == 1 else dict(cmap='bwr', vmin=-1e7, vmax=1e7)
+   pckw = dict(cmap='nipy_spectral', vmin=0, vmax=3.5e7) if ii == 1 else dict(cmap='seismic', vmin=-2e7, vmax=2e7) if ii == 2\
+             else dict(cmap='seismic', vmin=-4e6, vmax=4e6)
    pltda = umfdif.isel(case=ii).T
    pc = ax.pcolormesh(ds['MSE850'] / 1e5, ds['SST'] - 273.15, pltda, shading='nearest', **pckw)
-   plt.colorbar(pc, ax=ax, extend='both')
+   cb = plt.colorbar(pc, ax=ax, extend='both')
+   #if ii != 1:
+   #   cb.ax.set_yscale('log')
 
    ax.tick_params(right=True, top=True, labelleft=True)
    ax.set_xlabel('MSE 850 [$10^5$ J kg$^{-1}$]')
    ax.set_ylabel('SST [°C]')
-   ax.set_title(f'{TTLS[ii]}\nsum: {rawda.sum():.3e} kg s$^{{-1}}$')
+   ax.set_title(f'{TTLS[ii]}\nsum: {rawda.sum():.2e} kg s$^{{-1}}$')
    ax.set_title(['(d)', '(e)', '(f)'][ii], loc='left')
 
 plt.show()
@@ -80,7 +87,7 @@ for ii, al in enumerate(ds['case']):
 #plot every seasonal difference
 for ii, al in enumerate(ALIS):
    dif = histos[ii * 2][0].T - histos[ii * 2 + 1][0].T
-   plt.pcolormesh(MSE850, SST, dif, shading='flat', cmap='bwr', **DIFSZNVLIM)
+   plt.pcolormesh(MSE850, SST, dif, shading='flat', cmap='seismic', **DIFSZNVLIM)
    plt.xlim(*XLIM)
    plt.ylim(*YLIM)
    plt.xlabel('MSE 850 [J kg$^{-1}$]')
@@ -94,7 +101,7 @@ for ii, al in enumerate(ALIS):
 for ii, al in enumerate(ALIS):
    for jj, hm in enumerate(HEM):
       dif = histos[ii * 2 + jj][0].T - histos[2 + jj][0].T
-      plt.pcolormesh(MSE850, SST, dif, shading='flat', cmap='bwr', **DIFCASEVLIM)
+      plt.pcolormesh(MSE850, SST, dif, shading='flat', cmap='seismic', **DIFCASEVLIM)
       plt.xlim(*XLIM)
       plt.ylim(*YLIM)
       plt.xlabel('MSE 850 [J kg$^{-1}$]')

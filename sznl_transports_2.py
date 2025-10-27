@@ -34,6 +34,10 @@ cp = 1005
 lv = 2.501e6
 LATLAB = np.array([-90., -60., -50., -40., -30., -20, -10, 0., 10., 20., 30., 40., 50., 60., 90.])
 
+YSCL = lambda deglat: np.sin(np.deg2rad(deglat))
+MT = YSCL(np.array([10, 20]))
+STZ = YSCL(np.array([20, 30]))
+
 #inflds = [('Q', 'VQ')]#, ('T', 'VT'), ('U', 'VU'), ('Z3', None)]
 tprtfiles = dict(q=('vqdp_monthly.nc', 'vqdp_mmc_monthly.nc'), T=('vTdp_monthly.nc', 'vTdp_mmc_monthly.nc'), u=('vudp_monthly.nc', 'vudp_mmc_monthly.nc'), Z=(None, 'vZdp_mmc_monthly.nc'))
 
@@ -130,27 +134,30 @@ def main_plot():
    ds = ds.assign(variables=dict(LE=lv*ds.q, SE=cp*ds.T, GP=g*ds.Z, AMu=a_e*coslat*ds.u))
    ds = ds.assign(variables=dict(menth=ds.LE+ds.SE, MSE=ds.LE+ds.SE+ds.GP))
    
-   plt.rc('font', size=16)
-   plt.rcParams['figure.figsize'] = (30, 6)
+   plt.rc('font', size=14)
+   plt.rcParams['figure.figsize'] = (18, 5)
    subplot_kw = dict(xlim=(-1, 1), sharey=False)
    lncolors = ['blue', 'orange']
-   linkw = dict(total=dict(linewidth=2.2, linestyle='solid', marker='D', ms=2.5), mmc=dict(linewidth=0.8, linestyle='solid'), eddy=dict(linewidth=1.2, linestyle='dotted'))
+   linkw = dict(total=dict(linewidth=0.8, linestyle='solid', marker='D', ms=1.5), mmc=dict(linewidth=0.8, linestyle='solid'), eddy=dict(linewidth=1.2, linestyle='dotted'))
 
    for dv in ds.data_vars:
       fig, axes = plt.subplots(1, 3, subplot_kw=subplot_kw)
-      fig.suptitle('%s meridional transport' % str(dv) + ('[kg/s]' if str(dv) == 'q' else ''))
+      
       for ii, cs in enumerate(ds['case']):
          ax = axes[ii]
          pltda = ds[dv].sel(case=cs)
          if not cs == 'CTRL':
             pltda = pltda - ds[dv].sel(case='CTRL')
-         for tt, szn in enumerate(ds['season']):
-            for jj, cr in enumerate(ds['circ']):
-               ax.plot(sinlat, pltda.sel(season=szn, circ=cr), color=lncolors[tt], **linkw[str(cr.data)])
+         for jj, cr in enumerate(ds['circ']):
+            for tt, szn in enumerate(ds['season']):
+               ax.plot(sinlat, pltda.sel(season=szn, circ=cr), color=lncolors[tt], label=str(szn.data) + ' ' + str(cr.data), **linkw[str(cr.data)])
          ax.axhline(0, c='gray', lw=0.5)
          [ax.axvline(np.sin(np.deg2rad(ll)), c='gray', lw=0.5) for ll in LATLAB]
-         ax.set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB.astype(np.int_))
+         ax.axvspan(*MT, fc='purple', alpha=0.08)
+         ax.axvspan(*STZ, fc='yellow', alpha=0.12)
+         ax.set_xticks(np.sin(np.deg2rad(LATLAB)), labels=[ll if (ll % 20 == 0 or ll % 90 == 0) else '' for ll in LATLAB.astype(np.int_)])
          ax.set_xlabel('Latitude')
+         ax.set_ylabel('%s meridional transport' % str(dv) + (' [kg/s]' if str(dv) == 'q' else ''))
          ax.set_title(['(a)', '(b)', '(c)'][ii], loc='left')
          ax.set_title(TTLS[ii])
 
@@ -160,13 +167,13 @@ def main_plot():
          if cs == 'SEED':
             ax.set_ylim(*axes[1].get_ylim())
 
-      leg_artists = [axes[1].plot(0, np.nan, label=kk, color='black', **vv) for kk, vv in linkw.items()]
+      #leg_artists = [axes[1].plot(0, np.nan, label=kk, color='black', **vv) for kk, vv in linkw.items()]
       #[la[0].remove() for la in leg_artists if la[0].get_label() == 'total']
-      [axes[1].plot(0, 0, label=str(ds.season[ii].data), color=lncolors[ii]) for ii in range(ds.season.size)]
-      axes[1].legend()
+      #[axes[1].plot(0, 0, label=str(ds.season[ii].data), color=lncolors[ii]) for ii in range(ds.season.size)]
+      axes[1].legend(ncol=3, fontsize=11)
 
       fig.tight_layout()
-      plt.savefig(os.path.join(DIRO, '%s.png' % str(dv)), bbox_inches='tight')
+      plt.savefig(os.path.join(DIRO, '%s.svg' % str(dv)), bbox_inches='tight')
       plt.close()
 
 #too slow
