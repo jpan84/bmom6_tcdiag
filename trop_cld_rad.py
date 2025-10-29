@@ -59,7 +59,7 @@ def main():
             ax.set_title(CSTTL[csi], fontsize=28)
          if csi == 0:
             ax.set_ylabel(szn + '   ', rotation='horizontal', fontsize=28)
-   plt.savefig('q_cldamt.png', bbox_inches='tight')
+   plt.savefig('q_cldamt.svg', bbox_inches='tight')
    plt.close()
 
    print(sys.argv[0], 'done.')

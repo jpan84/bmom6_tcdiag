@@ -6,9 +6,11 @@ import matplotlib.pyplot as plt
 Lv = 2.501e6
 Rv = 461.5
 YSCL = lambda deglat: np.sin(np.deg2rad(deglat))
+MT = YSCL(np.array([10, 20]))
+STZ = YSCL(np.array([20, 30]))
 
 FILI = 'linevslat_h0a_diff/sznlzm.nc'
-SZN = 'JJA'
+SZN = 'SON'
 
 LATBND = (-50, 50)
 YLIM = [(-6, 6), (-30, 30)]
@@ -55,6 +57,8 @@ for ii, cs in enumerate(['UNSEED', 'SEED']):
    axes[ii].plot(sinlat, orilh * -dqa_frac.sel(case=cs), label='qa')
 
    axes[ii].axhline(0, c='gray', lw=0.5)
+   axes[ii].axvspan(*MT, fc='purple', alpha=.08)
+   axes[ii].axvspan(*STZ, fc='yellow', alpha=.12)
    [axes[ii].axvline(YSCL(ll), color='gray', linewidth=0.5) for ll in range(-50, 51, 10)]
    axes[ii].set_xticks(YSCL(np.arange(-50, 51, 10)), np.arange(-50, 51, 10))
    axes[ii].legend(fontsize=12)
@@ -67,7 +71,8 @@ for ii, cs in enumerate(['UNSEED', 'SEED']):
    axes[ii].set_ylim(*YLIM[ii])
 
 fig.tight_layout()
-plt.show()
+#plt.show()
+plt.savefig('./linevslat_h1i_0012-0014/LH_decomp_%s_h0a.svg' % SZN)
 plt.close()
 
 #########################################################################
@@ -99,6 +104,8 @@ for ii, cs in enumerate(['UNSEED', 'SEED']):
    axes[ii].plot(sinlat, orilh * dU_frac_nTC.sel(case=cs), label='$|U|_{bot}$ non-TC', color='C8')
 
    axes[ii].axhline(0, c='gray', lw=0.5)
+   axes[ii].axvspan(*MT, fc='purple', alpha=.08)
+   axes[ii].axvspan(*STZ, fc='yellow', alpha=.12)
    [axes[ii].axvline(YSCL(ll), color='gray', linewidth=0.5) for ll in range(-50, 51, 10)]
    axes[ii].legend(fontsize=12)
    axes[ii].set_xticks(YSCL(np.arange(-50, 51, 10)), np.arange(-50, 51, 10))
@@ -111,4 +118,5 @@ for ii, cs in enumerate(['UNSEED', 'SEED']):
    axes[ii].set_ylim(*YLIM[ii])
 
 fig.tight_layout()
+plt.savefig('./linevslat_h1i_0012-0014/LH_decomp_%s_dyn.svg' % SZN)
 plt.show()

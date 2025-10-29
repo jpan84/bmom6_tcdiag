@@ -31,6 +31,8 @@ LIMLOC = ZSCL(LIMLAB)
 YSCL = lambda lat: np.sin(np.deg2rad(lat))
 YLAB = np.arange(-60, 61, 10) #np.array([-90, -60, -45, -30, -15, 0, 15, 30, 45, 60, 90]).astype(np.int_)
 YLOC = YSCL(YLAB)
+MT = YSCL(np.array([10, 20]))
+STZ = YSCL(np.array([20, 30]))
 
 def main():
    tcdens = xr.open_dataset(TCDENS)
@@ -133,6 +135,7 @@ def main():
          outer_spec = axes[ii, jj].get_subplotspec()
          gs = gspec.GridSpecFromSubplotSpec(2, 1, subplot_spec=outer_spec, height_ratios=[1, 4])
          ax_top = fig.add_subplot(gs[0])
+         ax_top.set_title([['(a)', '(b)', '(c)'], ['(d)', '(e)', '(f)']][ii][jj], loc='left')
          ax_bot = fig.add_subplot(gs[1], sharex=ax_top)
          axes[ii, jj].axis('off')
 
@@ -143,7 +146,7 @@ def main():
          expo = 1e10 if jj == 1 else 1e9
          ax_bot.contour(YSCL(ocn_yz['yq']), ZSCL(ocn_yz['zl']), sf, **sf_ctkwargs)
          ax_bot.set_xticks(YLOC, YLAB)
-         ax_bot.set_xlim(-1 / np.sqrt(2), 1 / np.sqrt(2))
+         ax_bot.set_xlim(*YSCL(np.array([-50, 50])))
          ax_bot.set_yticks(LIMLOC, LIMLAB)
          ax_bot.set_ylim(ZSCL(800), ZSCL(0))
          ax_bot.set_xlabel('Latitude [°]')
@@ -165,6 +168,8 @@ def main():
 
          ax_top.plot(YSCL(tcdens['lat']), pltdens, linestyle='dashed', color='black')
          acelim = (-5, 5) if jj <= 1 else (-25, 25)
+         ax_top.axvspan(*MT, fc='purple', alpha=.08)
+         ax_top.axvspan(*STZ, fc='yellow', alpha=.12)
          ax_top.set_ylim(*acelims[jj])
          ax_top.set_ylabel('ACE')
          axt2 = ax_top.twinx()
@@ -179,7 +184,7 @@ def main():
    #fig.tight_layout()
    fig.get_layout_engine().set(w_pad=.25, h_pad=0.15)
    #plt.show()
-   plt.savefig('ocn_yz_plts_diff/ACE_OHU_resid_thetao.png', bbox_inches='tight')
+   plt.savefig('ocn_yz_plts_diff/ACE_OHU_resid_thetao.svg', bbox_inches='tight')
    plt.close()
    #########################################################################################
 
@@ -401,7 +406,7 @@ def main():
    # 233    #plt.show()
    
    # Assuming the output commands remain the same
-   plt.savefig('ocn_yz_plts_diff/atmo_ocn_sfunc.png', bbox_inches='tight')
+   plt.savefig('ocn_yz_plts_diff/atmo_ocn_sfunc.svg', bbox_inches='tight')
    plt.close()
    #########################################################################################
 

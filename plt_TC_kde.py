@@ -66,7 +66,7 @@ for ii, ax in enumerate(axes):
    ax.set_ylabel('Latitude')
 
 fig.tight_layout()
-plt.savefig('TC_genlat_kde_sst.png')
+plt.savefig('TC_genlat_kde_sst.svg')
 plt.show()
 
 #dfs = [pd.read_parquet(pq) for pq in PQTS]

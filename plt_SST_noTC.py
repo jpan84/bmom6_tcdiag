@@ -17,6 +17,9 @@ YLAB = np.array([-90, -60, -50, -40, -30, -20, -10, 0, 10, 20, 30, 40, 50, 60, 9
 YLOC = YSCL(YLAB)
 ZLIM = [(-.18, .3), (-.18, .3), (-1.2, 2.0)]
 
+MT = YSCL(np.array([10, 20]))
+STZ = YSCL(np.array([20, 30]))
+
 def main():
    if not os.path.exists(DIRO):
       os.makedirs(DIRO)
@@ -48,12 +51,14 @@ def main():
          if ii == 0:
             ax.legend(loc='lower center', fontsize=11, ncol=2)
          ax.axhline(y=0, linewidth=0.5, color='gray')
+         ax.axvspan(*MT, fc='purple', alpha=.08)
+         ax.axvspan(*STZ, fc='yellow', alpha=.12)
          ax.set_xticks(YLOC, ['' if yl % 30 else yl for yl in YLAB])
          ax.set_ylim(*ZLIM[ii])
          ax.set_title(TTL[ii])
          ax.set_title(lbl, loc='left')
 
-   plt.savefig(os.path.join(DIRO, 'delta_cw_SST.png'))
+   plt.savefig(os.path.join(DIRO, 'delta_cw_SST.svg'))
    plt.close()
 
 if __name__ == '__main__':

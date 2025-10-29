@@ -9,18 +9,18 @@ EXPDIR = './tcfields4mps_250415_unseed/'
 #EXPDIR = './tcfields4mps_250417_ctrl/'
 DIRO = './tcfieldsdiff/'
 
-#FLD = ['hflso_neg', 'hflso_pos']
-#SGN = -1
+FLD = ['hflso_neg', 'hflso_pos']
+SGN = -1
 latvar = 'yh'
-#FLD = ['PRECT']
+FLD = ['PRECT']
+SGN = 1
+latvar = 'latitudes'
+#FLD = ['TAUX_neg', 'TAUX_pos']
 #SGN = 1
-latvar = 'latitudes'
-FLD = ['TAUX_neg', 'TAUX_pos']
-SGN = 1
-latvar = 'latitudes'
-FLD = ['VQ850_neg', 'VQ850_pos']
-SGN = 1
-latvar = 'latitudes'
+#latvar = 'latitudes'
+#FLD = ['VQ850_neg', 'VQ850_pos']
+#SGN = 1
+#latvar = 'latitudes'
 
 lv = 2.501e6 #default from MOM6
 rho_l = 1.0e3 #default from CAM zm micro
@@ -109,6 +109,80 @@ OUTNM = 'UNSEED-CTRL_VQ850.png'
 #MULTC = 1
 #OUTNM = 'SEED-CTRL_VQ850.png'
 
+#E UNSEED
+LTR = '(a)'
+TTL = 'E [mm d$^{-1}$] UNSEED$-$CTRL'
+ZLIMS = (-.26, .26)
+ZTICKS = None
+NONTC = True
+PLTFRAC = False
+ISCTRL = False
+LGND = False
+MULTC = 1
+OUTNM = 'UNSEED-CTRL_E.png'
+
+#E CTRL
+LTR = '(b)'
+TTL = 'E [mm d$^{-1}$] CTRL'
+ZLIMS = (0, 7.8)
+ZTICKS = None
+NONTC = True
+PLTFRAC = True
+ISCTRL = True
+LGND = False
+FRACLIM = (0, .055)
+MULTC = 5
+OUTNM = 'CTRL_E.png'
+
+##E SEED
+LTR = '(c)'
+TTL = 'E [mm d$^{-1}$] SEED$-$CTRL'
+ZLIMS = (-1.3, 1.3)
+ZTICKS = None
+NONTC = True
+PLTFRAC = False
+ISCTRL = False
+LGND = False
+MULTC = 1
+OUTNM = 'SEED-CTRL_E.png'
+
+#P UNSEED
+LTR = '(d)'
+TTL = 'P [mm d$^{-1}$] UNSEED$-$CTRL'
+ZLIMS = (-1.3, 1.3)
+ZTICKS = None
+NONTC = True
+PLTFRAC = False
+ISCTRL = False
+LGND = False
+MULTC = 1
+OUTNM = 'UNSEED-CTRL_P.png'
+
+#P CTRL
+#LTR = '(e)'
+#TTL = 'P [mm d$^{-1}$] CTRL'
+#ZLIMS = (0, 18)
+#ZTICKS = None
+#NONTC = True
+#PLTFRAC = True
+#ISCTRL = True
+#LGND = False
+#FRACLIM = (0, .18)
+#MULTC = 5
+#OUTNM = 'CTRL_P.png'
+
+##P SEED
+#LTR = '(f)'
+#TTL = 'P [mm d$^{-1}$] SEED$-$CTRL'
+#ZLIMS = (-6.5, 6.5)
+#ZTICKS = None
+#NONTC = True
+#PLTFRAC = False
+#ISCTRL = False
+#LGND = False
+#MULTC = 1
+#OUTNM = 'SEED-CTRL_P.png'
+
 
 ###################################################################################
 
@@ -130,10 +204,10 @@ flds = [SGN * sum([ds[dv] for dv in FLD]) for ds in dss]
 #P minus E
 #flds = [((ds['hflso_neg'] + ds['hflso_pos']) / lv / rho_l + ds['PRECT'].rename(latitudes='yh')) * mps2mmpd for ds in dss]
 ctlfac = 0 if ISCTRL else 1
-diff = [flds[1] - ctlfac*flds[0], flds[-1] - ctlfac*flds[-2]]
+#diff = [flds[1] - ctlfac*flds[0], flds[-1] - ctlfac*flds[-2]]
 #flds = [-((ds['hflso_neg'] + ds['hflso_pos']) / lv / rho_l) * mps2mmpd for ds in dss] #E
-#flds = [ds['PRECT'] * mps2mmpd for ds in dss] #P
-#diff = [flds[1] - flds[0], flds[-1] - flds[-2], (flds[1] - flds[-1]) - (flds[0] - flds[-2])]
+flds = [ds['PRECT'] * mps2mmpd for ds in dss] #P
+diff = [flds[1] - ctlfac*flds[0], flds[-1] - ctlfac*flds[-2], (flds[1] - flds[-1]) - ctlfac*(flds[0] - flds[-2])]
 
 # !outside Portion of field outside TCs instead of all
 #diff = [(flds[1] - flds[-1]) - (flds[0] - flds[-2]), flds[-1] - flds[-2]]
@@ -152,6 +226,7 @@ if PLTFRAC:
       ax1.set_ylim(-.06, .06)
    else:
       ax1.plot(sinlat, diff[1].sum('season') / diff[0].sum('season'), linewidth=2.5, color='black') #ratio for ctrl only
+      ax1.set_ylim(*FRACLIM)
    
 for ii, szn in enumerate(diff[0]['season']):
    ax0.plot(sinlat, diff[0].sel(season=szn), color=['blue', 'orange'][ii], label=str(szn.data) + ' total')
