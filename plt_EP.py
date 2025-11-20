@@ -7,6 +7,9 @@ import numpy as np
 
 DIRI = './streamf_sznl_0005-0015'
 FILI = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl__TEM.nc'
+
+DIRI = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251010_ctrlbr/atm'
+FILI = '0012_JJASON_onpres_0.25_EPF_tm.nc'
 DIFF = False
 
 #FILI = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl_b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1_TEM.nc'
@@ -36,8 +39,11 @@ def main():
    for sfi, sfn in enumerate(plotfields):
       for szj, szn in enumerate(['JJA', 'SON']):
          ax = axes[szj, sfi]
-         CSF = ax.contourf(YSCL(ds['lat']), ds['plev'], plotfields[sfi].isel(season=szj).data * 86400, **contourfkwargs)
-         CS1 = ax.contour(YSCL(ds['lat']), ds['plev'], plotfields[sfi].isel(season=szj).data * 86400, **contourkwargs)
+         curplt = plotfields[sfi] * 86400 # * (1 / 86400 / 100)
+         if 'season' in curplt.dims:
+            curplt = curplt.isel(season=szj)
+         CSF = ax.contourf(YSCL(ds['lat']), ds['plev'], curplt, **contourfkwargs)
+         CS1 = ax.contour(YSCL(ds['lat']), ds['plev'], curplt, **contourkwargs)
          if sfi == 0 and szj == 0:
             ax.yaxis.set_minor_formatter(mticker.ScalarFormatter())
             ax.yaxis.set_major_formatter(mticker.ScalarFormatter())

@@ -27,6 +27,8 @@ def main():
    if inds[PNM].units == 'Pa':
       inds = inds.assign_coords(coords={PNM: inds[PNM] / 100})
       inds[PNM].attrs['units'] = 'hPa'
+   inds = inds.chunk({'plev': -1})
+   print(inds)
 
    #compute relevant constant scaling factors
    exn = exner_hPa(inds[PNM])
@@ -34,8 +36,10 @@ def main():
    sinlat = np.sin(np.deg2rad(inds['lat']))
    dens = dens0 * inds[PNM] / p0
    EPfac = ae * dens * coslat
+   print('EPfac', EPfac.max())
    inds = inds.assign_coords(zs=(PNM, -Hd * np.log(inds[PNM].data / p0)))
-   print(inds['zs'])
+   #print(inds['zs']) 
+   #print(dens)
 
    print('Computing EHF and EMF using Reynolds decomp...')
    vth_tot = inds['VT'] / exn
@@ -50,6 +54,7 @@ def main():
 
    print('EPphi, EMF term...')
    epy_emf = EPfac * -emf
+   #print(emf.sel(lat=30, method='nearest').isel(time=3).compute())
 
    print('EPphi, uw adv...')
    U_z = inds['U'].differentiate('zs', edge_order=2)
@@ -62,14 +67,25 @@ def main():
    U_y = yderiv(inds['U'], coslat)
    epz_adv = EPfac * Psi_vT * -U_y
 
+   print('Computing divergences...')
    EPterms = [epy_emf, epy_adv, epz_ehf, epz_adv]
+   EPnms = ['EPy_EMF', 'EPy_adv', 'EPz_EHF', 'EPz_adv']
+   zderiv = lambda var, _: var.differentiate('zs', edge_order=2)
+   divfns = [yderiv, yderiv, zderiv, zderiv]
+   EPd = [divfns[ii](ept, coslat) / EPfac for ii, ept in enumerate(EPterms)]
+
+   EPds = xr.Dataset(data_vars={EPnms[ii]: ept for ii, ept in enumerate(EPterms)})
+   EPds = EPds.assign(variables={EPnms[ii] + '_d': epd for ii, epd in enumerate(EPd)})
+   print(EPds)
+   with ProgressBar():
+      EPds.to_netcdf(os.path.join(DIRI, '_'.join(TOTFLX.split('_')[:-1]) + '_EPF.nc'))
 
 def exner_hPa(plevs):
    assert(plevs.units == 'hPa')
    return (plevs / p0) ** (Rd / cp)
 
 def yderiv(var, coslat):
-   return np.rad2deg((var * coslat).differentiate(LATNM) / ae / coslat)
+   return np.rad2deg((var * coslat).differentiate(LATNM)) / ae / coslat
 
 if __name__ == '__main__':
    main()
