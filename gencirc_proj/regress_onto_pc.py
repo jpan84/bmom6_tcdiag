@@ -96,21 +96,3 @@ for lag in np.arange(-8, 10, 2):
       plt.title('mode %d, lag %d d' % (md + 1, lag))
       plt.savefig('%s_reg_mode%d_d%d.png' % (var3d, md + 1, lag), bbox_inches='tight')
       plt.close()
-   continue
-
-
-   plt.plot(meds[LATNM], meds[var2d], c='black', lw=2.5)
-   [plt.axvline(ll, lw=0.5, c='gray') for ll in np.arange(-5, 35, 5)]
-   plt.ylabel('Mean %s [%s]' % (var2d, meds[var2d].attrs['units']))
-   plt.xlabel('Lat [°]')
-   plt.ylim(290, 310)
-   ax1 = plt.gca().twinx()
-   ax1.axhline(0, lw=0.5, c='gray')
-   [plt.plot(varreg[LATNM], varreg.isel(mode=ii), lw=2, label=ii + 1) for ii in range(2)]
-   plt.ylabel('%s regressed on PC [%s]\nlag = %d d' % (var2d, meds[var2d].attrs['units'], lag))
-   plt.xlim(-5, 30)
-   ax1.set_ylim(-.04, .08)
-   #plt.show()
-   plt.legend()
-   plt.savefig('%s_reg_d%d.png' % (var2d, lag), bbox_inches='tight')
-   plt.close()
