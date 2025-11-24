@@ -97,6 +97,8 @@ def main(FN, CTRL=None):
       #print(tcdf)
       print(tn)
       tcdf['stmnum'] = tn
+      tcdf['isgen'] = (tcdf.index == tcdf.index[0])
+      tcdf['islys'] = (tcdf.index == tcdf.index[-1])
       dfs.append(tcdf)
 
    print('Computing stats...')

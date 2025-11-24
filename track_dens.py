@@ -18,7 +18,7 @@ MS2KT = 1.9438
 a_e = 6.371e6 #m
 LATLABS = np.arange(-90, 90.1, 30)
 FIXYLIM = (0, 70)
-DLAT = 0.5
+DLAT = 1.5
 
 SZNS = ['DJF', 'MAM', 'JJA', 'SON']
 SZMOs = [{12, 1, 2}, {3, 4, 5}, {6, 7, 8}, {9, 10, 11}]
@@ -28,11 +28,13 @@ FILI = ['250415_unseed.parquet', '250417_ctrl.parquet', '250416_seed1x1.parquet'
 labels = ['unseed', 'ctrl', 'seed']
 events = ['250415_unseed_production_unseed_events.parquet', None, '250416_seed1x1_production_seed_events.parquet']
 rename_dict = dict(clat='lat', clon='lon')
-DOUT = '250725_density_sznl'
+DOUT = '251124_density_sznl'
 
 #FILI = ['250415_unseed_JJASOND.parquet', '250417_ctrl_JJASOND.parquet']
 #labels = ['unseed', 'ctrl']
 #DOUT = '250423_density_JJASOND'
+
+nhmask, shmask = None, None #boolean mask is set in make_bin_grid_1d to help hemi selection
 
 def main():
    #extidx = FILI.rfind('.')
@@ -41,8 +43,9 @@ def main():
       os.makedirs(DOUT)
 
    dfs = [pd.read_parquet(f) for f in FILI]
+   #TODO !1124: add a flag indicating the true genesis point before splitting into months
    print(dfs[0].index, type(dfs[0].index))
-   print(dfs[0].groupby(dfs[0].index.month))
+   #print(dfs[0].groupby(dfs[0].index.month))
    trange = [df.index.max() - df.index[0] for df in dfs]
    print(trange)
    totyrs = [tr.total_seconds() / 86400 / 365 for tr in trange]
@@ -57,11 +60,16 @@ def main():
       #print(usdf['dt'])
 
    bininfo = make_bin_grid_1d(latbnds=(-90., 90.), dlat=DLAT)
+   global nhmask, shmask
+   nhmask = (bininfo[1] > 0) & (abs(bininfo[1]) > 1e-2) #omits bins centered at 0 deg lat
+   shmask = (bininfo[1] < 0) & (abs(bininfo[1]) > 1e-2)
+   print(nhmask, shmask)
 
    plt.rc('font', size=14)
 
    outdss = []
    for sznnm, sznmos in zip(SZNS, SZMOs):
+      print('\nWorking on season', sznnm)
       szn_dfs = [df[df.index.month.isin(sznmos)] for df in dfs]
 
       uniq = plot_lat_binned(szn_dfs, bininfo, totyrs, unique_tracks_of_storm_1d, 'unique storms', 'unique_track_dens_%.1f_%s.png' % (DLAT, sznnm))
@@ -82,6 +90,8 @@ def main():
          sddens = xr.DataArray(seeds / (bininfo[2] / 1e6 / 1e3**2) / totyrs[-1], dims=['lat'], coords=[bininfo[1]])
    
          outdss[-1] = outdss[-1].assign(variables=dict(unseeds=usdens, seeds=sddens))
+
+         #TODO !1124: go through genesis points and see if they're close enough in time and space to seeding events
    
       xr.concat(outdss, dim='season').to_netcdf(os.path.join(DOUT, 'tcdens.nc'))
 
@@ -90,7 +100,10 @@ def plot_lat_binned(dfs, bininfo, totyrs, varfunc, ylabel, filo, norm='per milli
    for ii, df in enumerate(dfs):
       for stm in df['stmnum'].unique():
          pltdat[ii] += varfunc(df[df['stmnum'] == stm], bininfo, **fkwargs)
-      print(ylabel, '\t', pltdat[ii].sum())
+      print('\t', ylabel, '\t\t\t', pltdat[ii][nhmask].sum(), '\t\t\t', pltdat[ii][shmask].sum())
+      #print(pltdat[ii].shape)
+      #print(pltdat[ii])
+      #print(pltdat[ii].ravel()[nhmask.ravel()])
       pltdat[ii] = pltdat[ii] / (bininfo[2] / 1e6 / 1e3**2) / totyrs[ii]
       
       plt.plot(np.sin(np.deg2rad(bininfo[1])), pltdat[ii], label=labels[ii])
@@ -115,6 +128,7 @@ def make_bin_grid_1d(latbnds=(-50., 50.), dlat=0.5):
    bini = np.arange(sinbnds[0], sinbnds[1] + 1e-3, true_dsin) #bin interfaces in sin(lat) space
    binm = (bini[1:] + bini[:-1]) / 2
    area = 2 * np.pi * a_e**2 * true_dsin
+
    return np.rad2deg(np.arcsin(bini)), np.rad2deg(np.arcsin(binm)), area
 
 #Binary search latitude bins and accumulate the desired quantity
@@ -145,12 +159,14 @@ def bin_ace_of_storm_1d(stmdf, bininfo):
    return accum_bin_map_1d(stmdf, bininfo, 'wspd', ace)
 
 def genesis_pts_1d(stmdf, bininfo):
-   gendf = stmdf.groupby('stmnum').first().reset_index()
-   return sixhrly_fixes_of_storm_1d(gendf, bininfo)
+   #gendf = stmdf.groupby('stmnum').first().reset_index() #wrong for seasonally split dataframes
+   #return sixhrly_fixes_of_storm_1d(gendf, bininfo)
+   return accum_bin_map_1d(stmdf, bininfo, 'isgen', lambda ig: int(ig), dtype=np.int_, rettype=np.int_)
 
 def lysis_pts_1d(stmdf, bininfo):
-   lysdf = stmdf.groupby('stmnum').last().reset_index()
-   return sixhrly_fixes_of_storm_1d(lysdf, bininfo)
+   #lysdf = stmdf.groupby('stmnum').last().reset_index()
+   #return sixhrly_fixes_of_storm_1d(lysdf, bininfo)
+   return accum_bin_map_1d(stmdf, bininfo, 'islys', lambda il: int(il), dtype=np.int_, rettype=np.int_)
 
 if __name__ == '__main__':
    main()
