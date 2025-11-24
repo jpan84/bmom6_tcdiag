@@ -69,7 +69,7 @@ def main():
 
    outdss = []
    for sznnm, sznmos in zip(SZNS, SZMOs):
-      print('\nWorking on season', sznnm)
+      #print('\nWorking on season', sznnm)
       szn_dfs = [df[df.index.month.isin(sznmos)] for df in dfs]
 
       uniq = plot_lat_binned(szn_dfs, bininfo, totyrs, unique_tracks_of_storm_1d, 'unique storms', 'unique_track_dens_%.1f_%s.png' % (DLAT, sznnm))
@@ -100,7 +100,8 @@ def plot_lat_binned(dfs, bininfo, totyrs, varfunc, ylabel, filo, norm='per milli
    for ii, df in enumerate(dfs):
       for stm in df['stmnum'].unique():
          pltdat[ii] += varfunc(df[df['stmnum'] == stm], bininfo, **fkwargs)
-      print('\t', ylabel, '\t\t\t', pltdat[ii][nhmask].sum(), '\t\t\t', pltdat[ii][shmask].sum())
+      #print('\t', ylabel, '\t\t\t', pltdat[ii][nhmask].sum(), '\t\t\t', pltdat[ii][shmask].sum())
+      print(df.index[0].month, ylabel, labels[ii], pltdat[ii][nhmask].sum(), pltdat[ii][shmask].sum(), sep=',')
       #print(pltdat[ii].shape)
       #print(pltdat[ii])
       #print(pltdat[ii].ravel()[nhmask.ravel()])
