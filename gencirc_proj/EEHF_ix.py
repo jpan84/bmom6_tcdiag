@@ -2,6 +2,7 @@ import xarray as xr
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
+from dask.diagnostics import ProgressBar
 
 MO_WTs = np.array([30, 31, 31, 30, 31, 30])
 ticklevs = np.array([50, 70, 100, 200, 300, 500, 700, 850])
@@ -35,10 +36,11 @@ plt.contour(ds['lat'], ds['plev'], bbox, color='black')
 plt.savefig('EHF_JJASON_10yr.png')
 plt.close()
 
-h1ds = xr.open_mfdataset(FILI_h1)
-ehf_h1 = h1ds['VT'] - ds['V'] * ds['T']
+h1ds = xr.open_mfdataset(FILI_h1).squeeze()
+ehf_h1 = h1ds['VT'] - h1ds['V'] * h1ds['T']
 masswt = ds['plev'] * np.cos(np.deg2rad(ds['lat']))
 eehf_ix = (ehf_tm * ehf_h1 * masswt * bbox * isneg).sum(['plev', 'lat'])
+print(eehf_ix)
 stdix = (eehf_ix - eehf_ix.mean(dim='time')) / eehf_ix.std(dim='time')
 with ProgressBar():
    xr.Dataset(data_vars=dict(eehf_ix_std=stdix)).to_netcdf('0012-0013_JJASON_EEHF_ix_std.nc')

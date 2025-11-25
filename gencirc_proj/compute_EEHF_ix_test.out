@@ -1,0 +1,13 @@
+nohup: ignoring input
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 631791.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UPSU0032 -q casper@casper-pbs -l walltime=02:31:00
+
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/gencirc_proj/EEHF_ix.py:34: UserWarning: The following kwargs were not used by contour: 'color'
+plt.contour(ds['lat'], ds['plev'], bbox, color='black')
+<xarray.DataArray (time: 4)> Size: 32B
+dask.array<getitem, shape=(4,), dtype=float64, chunksize=(1,), chunktype=numpy.ndarray>
+Coordinates:
+lon      float64 8B 0.0
+* time     (time) object 32B 0012-06-01 00:00:00 ... 0012-06-01 18:00:00
+[                                        ] | 0% Completed | 377.11 us[#                                       ] | 3% Completed | 111.04 ms[##                                      ] | 6% Completed | 211.51 ms[######                                  ] | 15% Completed | 312.09 ms[##########                              ] | 25% Completed | 413.72 ms[##############                          ] | 35% Completed | 514.12 ms[#################                       ] | 44% Completed | 614.52 ms[###################                     ] | 49% Completed | 716.00 ms[###################                     ] | 49% Completed | 816.24 ms[######################                  ] | 55% Completed | 916.50 ms[#########################               ] | 62% Completed | 1.02 s[############################            ] | 72% Completed | 1.12 s[###############################         ] | 79% Completed | 1.22 s[##################################      ] | 85% Completed | 1.32 s[####################################    ] | 92% Completed | 1.42 s[######################################  ] | 96% Completed | 1.52 s[########################################] | 100% Completed | 1.62 s

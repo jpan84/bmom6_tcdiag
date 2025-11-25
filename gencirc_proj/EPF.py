@@ -6,8 +6,8 @@ from dask.diagnostics import ProgressBar
 DIRI = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251010_ctrlbr/atm'
 #EHFFIL = '0012_JJASON_onpres_0.25_VTeddy.nc'
 #EMFFIL = '0012_JJASON_onpres_0.25_VUeddy.nc'
-MMCFIL = '0012_JJASON_onpres_0.25_zm.nc'
-TOTFLX = '0012_JJASON_onpres_0.25_zmprods.nc'
+MMCFIL = '0012-0013_JJASON_onpres_1deg_zm1.nc'
+TOTFLX = '0012-0013_JJASON_onpres_1deg_zmprods.nc'
 
 Rd = 287
 cp = 1005
