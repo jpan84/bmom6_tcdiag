@@ -85,7 +85,7 @@ def main():
          ax.yaxis.set_minor_formatter(mticker.ScalarFormatter())
          ax.yaxis.set_major_formatter(mticker.ScalarFormatter())
          ax.set_ylabel('Pressure [hPa]')
-         ax.set_yticks(np.arange(100, 1001, 100))
+         ax.set_yticks([50, 70, 100, 200, 300, 500, 700, 850], [50, 70, 100, 200, 300, 500, 700, 850])#np.arange(100, 1001, 100))
          cb = plt.colorbar(csf, ax=axes)
          cbt = cb.get_ticks()
          cbt = np.concatenate((cbt[:cbt.size // 2 + 1], -cbt[:cbt.size // 2 + 1][::-1]))
@@ -93,7 +93,7 @@ def main():
          cb.set_ticklabels(['%.1f' % tk for tk in cbt])
          ax.invert_yaxis()
       ax.set_xticks(np.arange(-90, 91, 10))
-      plt.xlim(-35, 35)
+      plt.xlim(-10, 60)
       ax.set_title('%s\n[m s$^{-1}$ day$^{-1}$]' % plottitles[sfi])
       ax.set_xlabel('Latitude [°]')
 
