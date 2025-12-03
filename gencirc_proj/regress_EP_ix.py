@@ -12,6 +12,7 @@ EVFIL = './ehf_events_sep3_sig1.0.nc'
 LATNM, PNM = 'lat', 'plev'
 TDEV = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251010_ctrlbr/atm/0012-0013_JJASON_onpres_1deg_EPF_anom.nc'
 laghrs = np.arange(-336, 337, 48.)
+#laghrs = np.arange(-96, 97, 6.)
 lagtdels = [tdel(hours=hh) for hh in laghrs]
 
 ofld = xr.open_dataset(TDEV).squeeze() #other cesm hist fields to regress (preprocessed into zonal mean temporal anom)
@@ -70,13 +71,18 @@ for ii, mlag in enumerate(lagtdels):
 
    #print(evds['peaks'].data)
    #print(evds['peaks'].data + mlag)
-   snaps = [[], [], []]
-   for ev in (evds['peaks'].data + mlag):
-      if ev in ofld['time']:
-         snaps[0].append(EPy.sel(time=ev).isel(**islc))
-         snaps[1].append(EPz.sel(time=ev).isel(**islc))
-         snaps[2].append(EPd.sel(time=ev).isel(**islc))
-   compo = [sum(ll) / len(ll) for ll in snaps]
+   compo = []
+   comptimes = np.intersect1d((evds['troughs'] + mlag), ofld['time'], assume_unique=True)
+   compo.append(EPy.sel(time=comptimes).isel(**islc).mean(dim='time'))
+   compo.append(EPz.sel(time=comptimes).isel(**islc).mean(dim='time'))
+   compo.append(EPd.sel(time=comptimes).isel(**islc).mean(dim='time'))
+   #snaps = [[], [], []]
+   #for ev in (evds['peaks'].data + mlag):
+   #   if ev in ofld['time']:
+   #      snaps[0].append(EPy.sel(time=ev).isel(**islc))
+   #      snaps[1].append(EPz.sel(time=ev).isel(**islc))
+   #      snaps[2].append(EPd.sel(time=ev).isel(**islc))
+   #compo = [sum(ll) / len(ll) for ll in snaps]
    divplt, plty, pltz = compo[2] * 86400, compo[0] / 1e2, compo[1]
 
    #plt.contourf(varreg[LATNM], varreg[PNM], varreg.sel(mode=md), levels=np.arange(-1, 1.01, 0.05), cmap='seismic')
@@ -90,5 +96,5 @@ for ii, mlag in enumerate(lagtdels):
    plt.colorbar(csf)
    #plt.show()
    plt.title('lag %dh' % laghrs[ii])
-   plt.savefig('%s_cmp_ix_h%d.png' % ('EPF', laghrs[ii]), bbox_inches='tight')
+   plt.savefig('PEHF_%s_cmp_ix_h%d.png' % ('EPF', laghrs[ii]), bbox_inches='tight')
    plt.close()
