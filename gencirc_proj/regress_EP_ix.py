@@ -8,6 +8,7 @@ import matplotlib.colors as colors
 
 VAR = 'eehf_ix_std'
 IXFIL = './0012-0013_JJASON_EEHF_ix_std.nc'
+EVFIL = './ehf_events_sep3_sig1.0.nc'
 LATNM, PNM = 'lat', 'plev'
 TDEV = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251010_ctrlbr/atm/0012-0013_JJASON_onpres_1deg_EPF_anom.nc'
 laghrs = np.arange(-336, 337, 48.)
@@ -15,6 +16,10 @@ lagtdels = [tdel(hours=hh) for hh in laghrs]
 
 ofld = xr.open_dataset(TDEV).squeeze() #other cesm hist fields to regress (preprocessed into zonal mean temporal anom)
 ixds = xr.open_dataset(IXFIL)
+evds = xr.open_dataset(EVFIL)
+
+#print(evds)
+#print(evds['peaks'])
 
 #globs = sorted(glob.glob(os.path.join(PCDIR, PCGL)))
 #dss = [xr.open_dataset(gl) for gl in globs]
@@ -61,4 +66,29 @@ for ii, mlag in enumerate(lagtdels):
    #plt.show()
    plt.title('lag %dh' % -laghrs[ii])
    plt.savefig('%s_reg_ix_h%d.png' % ('EPF', -laghrs[ii]), bbox_inches='tight')
+   plt.close()
+
+   #print(evds['peaks'].data)
+   #print(evds['peaks'].data + mlag)
+   snaps = [[], [], []]
+   for ev in (evds['peaks'].data + mlag):
+      if ev in ofld['time']:
+         snaps[0].append(EPy.sel(time=ev).isel(**islc))
+         snaps[1].append(EPz.sel(time=ev).isel(**islc))
+         snaps[2].append(EPd.sel(time=ev).isel(**islc))
+   compo = [sum(ll) / len(ll) for ll in snaps]
+   divplt, plty, pltz = compo[2] * 86400, compo[0] / 1e2, compo[1]
+
+   #plt.contourf(varreg[LATNM], varreg[PNM], varreg.sel(mode=md), levels=np.arange(-1, 1.01, 0.05), cmap='seismic')
+   csf = plt.contourf(pltlat, pltp, divplt, **contourfkwargs)
+   qv = plt.quiver(pltlat, pltp, plty, pltz, scale=1e6, pivot='mid')
+   plt.contour(pltlat, pltp, bbox.isel(**islc), levels=[0.5], zorder=99)
+   plt.ylim(8.5e2, 5e1)
+   plt.yscale('log')
+   plt.gca().set_yticks([50, 70, 100, 200, 300, 500, 700, 850], [50, 70, 100, 200, 300, 500, 700, 850])
+   plt.xlim(-10, 60)
+   plt.colorbar(csf)
+   #plt.show()
+   plt.title('lag %dh' % laghrs[ii])
+   plt.savefig('%s_cmp_ix_h%d.png' % ('EPF', laghrs[ii]), bbox_inches='tight')
    plt.close()
