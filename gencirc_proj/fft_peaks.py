@@ -23,6 +23,7 @@ for yr, ds_yr in gb:
    pwrs.append(psd)
    #print(freqs[:5], psd[:5])
 
+plt.rc('font', size=16)
 pd_yr = 1. / freqs
 pspec = np.mean(pwrs, axis=0)
 plt.plot(fq, pspec)
@@ -34,7 +35,7 @@ print(fr_ticks)
 #plt.gca().set_xticks(fr_ticks)
 ax1 = plt.gca().twiny()
 ax1.set_xticks(fr_ticks, labels=pd_ticks)
-#plt.show()
+plt.show()
 plt.close()
 
 sepdays = 3

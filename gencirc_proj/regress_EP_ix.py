@@ -12,7 +12,7 @@ EVFIL = './ehf_events_sep3_sig1.0.nc'
 LATNM, PNM = 'lat', 'plev'
 TDEV = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251010_ctrlbr/atm/0012-0013_JJASON_onpres_1deg_EPF_anom.nc'
 laghrs = np.arange(-336, 337, 48.)
-#laghrs = np.arange(-96, 97, 6.)
+laghrs = np.arange(-96, 97, 6.)
 lagtdels = [tdel(hours=hh) for hh in laghrs]
 
 ofld = xr.open_dataset(TDEV).squeeze() #other cesm hist fields to regress (preprocessed into zonal mean temporal anom)
