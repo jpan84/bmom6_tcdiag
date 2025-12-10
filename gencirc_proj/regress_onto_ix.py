@@ -31,7 +31,7 @@ var2d = 'FLUT'
 laghrs = np.arange(-336, 337, 48.)
 lagtds = [tdel(hours=hh) for hh in laghrs]
 cnorm = colors.Normalize(vmin=-laghrs.max(), vmax=-laghrs.min())
-cmap = cm.get_cmap('managua_r')
+cmap = cm.get_cmap('Paired') #get_cmap('managua_r')
 mpbl = cm.ScalarMappable(norm=cnorm, cmap=cmap)
 mpbl.set_array([])
 plt.rc('font', size=16)
@@ -43,16 +43,16 @@ ax1 = plt.gca().twinx()
 for ii, lh in enumerate(laghrs):
    compotimes = np.intersect1d((evds['peaks'] - lagtds[ii]), anomds[var2d]['time'], assume_unique=True)
    compo = anomds[var2d].sel(time=compotimes).mean(dim='time')
-   #ax1.plot(anomds['lat'], reg_on_pc(anomds[var2d].assign_coords(time=anomds['time'] + lagtds[ii])),\
-   #             label='%dh' % -lh, c=cmap(cnorm(-lh))) #negative sign so that lag < 0 means before EEHF index peaks
-   ax1.plot(anomds['lat'], compo, c=cmap(cnorm(-lh)), ls='dashed')
+   ax1.plot(anomds['lat'], reg_on_pc(anomds[var2d].assign_coords(time=anomds['time'] + lagtds[ii])),\
+                label='%dh' % -lh, c=cmap(cnorm(-lh))) #negative sign so that lag < 0 means before EEHF index peaks
+   #ax1.plot(anomds['lat'], compo, c=cmap(cnorm(-lh)), ls='dashed')
 ax1.axhline(0, lw=0.5, c='gray')
-ax1.set_ylim(-4, 4)
+ax1.set_ylim(-2.5, 2.5)
 cb = plt.colorbar(mpbl, ax=plt.gca(), pad=0.1)
 cb.set_label('lag [days]')
 cb.ax.set_yticks(-laghrs, -(laghrs / 24).astype(np.int_))
 plt.savefig('OLRzm_reg_on_ix.png', bbox_inches='tight')
-plt.show()
+#plt.show()
 plt.close()
 
 autoreg = []
@@ -72,7 +72,7 @@ var2d = 'vIVT'
 laghrs = np.arange(-336, 337, 48.)
 lagtds = [tdel(hours=hh) for hh in laghrs]
 cnorm = colors.Normalize(vmin=-laghrs.max(), vmax=-laghrs.min())
-cmap = cm.get_cmap('managua_r')
+cmap = cm.get_cmap('Paired') #get_cmap('managua_r')
 mpbl = cm.ScalarMappable(norm=cnorm, cmap=cmap)
 mpbl.set_array([])
 plt.rc('font', size=16)
@@ -95,11 +95,11 @@ plt.close()
 
 meands = avvds
 anomds = vards
-var2d = 'TMQ'
+var2d = 'FLUT'
 laghrs = np.arange(-336, 337, 48.)
 lagtds = [tdel(hours=hh) for hh in laghrs]
 cnorm = colors.Normalize(vmin=-laghrs.max(), vmax=-laghrs.min())
-cmap = cm.get_cmap('managua_r')
+cmap = cm.get_cmap('Paired')
 mpbl = cm.ScalarMappable(norm=cnorm, cmap=cmap)
 mpbl.set_array([])
 plt.rc('font', size=16)
@@ -109,13 +109,16 @@ plt.xlabel('Lat')
 plt.ylabel(var2d + ' [%s]' % meands[var2d].attrs['units'])
 ax1 = plt.gca().twinx()
 for ii, lh in enumerate(laghrs):
+   compotimes = np.intersect1d((evds['peaks'] - lagtds[ii]), anomds[var2d]['time'], assume_unique=True)
+   compo = anomds[var2d].sel(time=compotimes).mean(dim='time')
    ax1.plot(anomds['lat'], reg_on_pc(anomds[var2d].assign_coords(time=anomds['time'] + lagtds[ii])),\
-                label='%dh' % -lh, c=cmap(cnorm(-lh)))
+                label='%dh' % -lh, c=cmap(cnorm(-lh))) #negative sign so that lag < 0 means before EEHF index peaks
+   #ax1.plot(anomds['lat'], compo, c=cmap(cnorm(-lh)), ls='dashed')
 ax1.axhline(0, lw=0.5, c='gray')
-#ax1.set_ylim(-2.5, 2.5)
+ax1.set_ylim(-80, 80)
 cb = plt.colorbar(mpbl, ax=plt.gca(), pad=0.1)
 cb.set_label('lag [days]')
 cb.ax.set_yticks(-laghrs, -(laghrs / 24).astype(np.int_))
-plt.savefig('CWVvar_reg_on_ix.png', bbox_inches='tight')
+plt.savefig('OLRvar_reg_on_ix.png', bbox_inches='tight')
 plt.show()
 plt.close()

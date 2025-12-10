@@ -11,6 +11,8 @@ IXFIL = './0012-0013_JJASON_EEHF_ix_std.nc'
 EVFIL = './ehf_events_sep3_sig1.0.nc'
 LATNM, PNM = 'lat', 'plev'
 TDEV = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251010_ctrlbr/atm/0012-0013_JJASON_onpres_1deg_EPF_anom.nc'
+U_NC = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251010_ctrlbr/atm/0012-0013_JJASON_onpres_1deg_zm1.nc'
+TMDS = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251010_ctrlbr/atm/0012-0013_JJASON_onpres_1deg_zm1_tm.nc'
 laghrs = np.arange(-336, 337, 48.)
 laghrs = np.arange(-96, 97, 6.)
 lagtdels = [tdel(hours=hh) for hh in laghrs]
@@ -18,6 +20,8 @@ lagtdels = [tdel(hours=hh) for hh in laghrs]
 ofld = xr.open_dataset(TDEV).squeeze() #other cesm hist fields to regress (preprocessed into zonal mean temporal anom)
 ixds = xr.open_dataset(IXFIL)
 evds = xr.open_dataset(EVFIL)
+u_ds = xr.open_dataset(U_NC).squeeze().assign_coords(plev=ofld['plev'])
+tmds = xr.open_dataset(TMDS).squeeze().assign_coords(plev=ofld['plev'])
 
 #print(evds)
 #print(evds['peaks'])
@@ -39,6 +43,7 @@ bbox = (ofld['plev'] <= 850) & (ofld['plev'] >= 300) & (ofld['lat'] >= 0) & (ofl
 print(bbox.sum() / bbox.size)
 
 plt.rcParams['figure.figsize'] = (10, 6)
+plt.rc('font', size=16)
 contourkwargs = {'colors': 'black', 'levels': .02 * 2.**np.arange(-1, 7, 1)}
 contourkwargs['levels'] = np.concatenate((-contourkwargs['levels'][::-1], contourkwargs['levels']))
 contourfkwargs = {'cmap': 'RdYlBu_r', 'levels': contourkwargs['levels'], 'norm': colors.SymLogNorm(0.01), 'extend': 'both'}
@@ -72,10 +77,11 @@ for ii, mlag in enumerate(lagtdels):
    #print(evds['peaks'].data)
    #print(evds['peaks'].data + mlag)
    compo = []
-   comptimes = np.intersect1d((evds['troughs'] + mlag), ofld['time'], assume_unique=True)
+   comptimes = np.intersect1d((evds['peaks'] + mlag), ofld['time'], assume_unique=True)
    compo.append(EPy.sel(time=comptimes).isel(**islc).mean(dim='time'))
    compo.append(EPz.sel(time=comptimes).isel(**islc).mean(dim='time'))
    compo.append(EPd.sel(time=comptimes).isel(**islc).mean(dim='time'))
+   compo.append(u_ds['U'].sel(time=comptimes).isel(**islc).mean(dim='time'))
    #snaps = [[], [], []]
    #for ev in (evds['peaks'].data + mlag):
    #   if ev in ofld['time']:
@@ -84,11 +90,14 @@ for ii, mlag in enumerate(lagtdels):
    #      snaps[2].append(EPd.sel(time=ev).isel(**islc))
    #compo = [sum(ll) / len(ll) for ll in snaps]
    divplt, plty, pltz = compo[2] * 86400, compo[0] / 1e2, compo[1]
+   pltu = compo[3]
 
    #plt.contourf(varreg[LATNM], varreg[PNM], varreg.sel(mode=md), levels=np.arange(-1, 1.01, 0.05), cmap='seismic')
    csf = plt.contourf(pltlat, pltp, divplt, **contourfkwargs)
    qv = plt.quiver(pltlat, pltp, plty, pltz, scale=1e6, pivot='mid')
    plt.contour(pltlat, pltp, bbox.isel(**islc), levels=[0.5], zorder=99)
+   plt.contour(pltlat, pltp, pltu, levels=[0.], zorder=98)
+   plt.contour(pltlat, pltp, tmds['U'].isel(**islc), levels=[0.], colors='gray', linestyles='dashed', zorder=97)
    plt.ylim(8.5e2, 5e1)
    plt.yscale('log')
    plt.gca().set_yticks([50, 70, 100, 200, 300, 500, 700, 850], [50, 70, 100, 200, 300, 500, 700, 850])
@@ -96,5 +105,5 @@ for ii, mlag in enumerate(lagtdels):
    plt.colorbar(csf)
    #plt.show()
    plt.title('lag %dh' % laghrs[ii])
-   plt.savefig('PEHF_%s_cmp_ix_h%d.png' % ('EPF', laghrs[ii]), bbox_inches='tight')
+   plt.savefig('%s_cmp_ix_h%d.png' % ('EPF', laghrs[ii]), bbox_inches='tight')
    plt.close()
