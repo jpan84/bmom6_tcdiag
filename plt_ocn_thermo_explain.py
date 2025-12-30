@@ -356,7 +356,8 @@ def main():
          if jj != 1:
             sf = sf - (ocn_yz['vmo'] + ocn_yz['vhGM']).isel(case=1)
          sf = sf.sel(season=szn)
-         expo = 1e10 if jj == 1 else 1e9
+         cexpo = 1e10 #ctrl exponent for contours
+         expo = 1e10 if jj == 1 else 1e9 #exponent for shading (diff for non-CTRL)
          
          # Determine correct symmetric ticks for the current expo
          current_ticks = base_sym_ticks# * (1e10 / expo)
@@ -368,7 +369,8 @@ def main():
                       cax=cax, pad=.01, ticks=current_ticks)
          # -------------------------------------------------------------
          
-         ax_bot.contour(YSCL(ocn_yz['yq']), ZSCL(ocn_yz['zl']), sf / expo, **sf_ctkwargs)
+         #ax_bot.contour(YSCL(ocn_yz['yq']), ZSCL(ocn_yz['zl']), sf / expo, **sf_ctkwargs)
+         ax_bot.contour(YSCL(ocn_yz['yq']), ZSCL(ocn_yz['zl']), (ocn_yz['vmo'] + ocn_yz['vhGM']).isel(case=1, season=ii) / cexpo, **sf_ctkwargs)
          ax_bot.set_xticks(YLOC, ['' if yl % 20 else yl for yl in YLAB]) # Keeps xtick labels on ax_bot
          ax_bot.set_xlim(-1, 1)
          ax_bot.set_yticks(ZLOC, ZLAB)
@@ -380,7 +382,8 @@ def main():
 
          mmc = temds['PSI_EM'].isel(case=jj, season=ii)
          csf = ax_top.contourf(YSCL(temds['lat']), temds['plev'], mmc / expo, cmap='coolwarm' if jj == 1 else 'bwr', extend='both', **sf_cfkwargs)
-         ax_top.contour(YSCL(temds['lat']), temds['plev'], mmc / expo, **sf_ctkwargs)
+         #ax_top.contour(YSCL(temds['lat']), temds['plev'], mmc / expo, **sf_ctkwargs)
+         ax_top.contour(YSCL(temds['lat']), temds['plev'], temds['PSI_EM'].isel(case=1, season=ii) / cexpo, **sf_ctkwargs)
          ax_top.set_ylim(1000, 100)
          ax_top.set_yscale('log')
          ax_top.yaxis.set_minor_formatter(mticker.ScalarFormatter())
@@ -406,7 +409,7 @@ def main():
    # 233    #plt.show()
    
    # Assuming the output commands remain the same
-   plt.savefig('ocn_yz_plts_diff/atmo_ocn_sfunc.svg', bbox_inches='tight')
+   plt.savefig('ms_rev_plts/atmo_ocn_sfunc.svg', bbox_inches='tight')
    plt.close()
    #########################################################################################
 
