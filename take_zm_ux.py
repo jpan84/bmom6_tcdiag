@@ -13,12 +13,12 @@ LATS = (-90, 90, 1.)
 ds = ux.open_mfdataset(UGRD, os.path.join(DIRI, FILI))
 outds = None
 for dv in VARS:
-   zm = ds[dv].zonal_mean(lats=LATS)
+   zm = ds[dv].zonal_mean(lat=LATS)
    if outds is None:
       outds = xr.Dataset(data_vars={dv: zm})
    else:
       outds = outds.assign(variables={dv: zm})
 
-outds = outds.assign_attrs(script_from=sys.argv[0])
+outds = outds.assign_attrs(script_from=sys.argv[0], zonal_mean=str(outds.attrs['zonal_mean']))
 with ProgressBar():
    outds.to_netcdf(os.path.join(DIRI, FILI + '.zm.nc'))
