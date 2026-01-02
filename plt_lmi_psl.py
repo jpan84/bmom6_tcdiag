@@ -6,8 +6,19 @@ FILI = ['250415_unseed.parquet', '250417_ctrl.parquet', '250416_seed1x1.parquet'
 ALIASES = ['UNSEED', 'CTRL', 'SEED']
 PBINS = np.arange(830, 1030, 5)
 
+SZNS = ['DJF', 'MAM', 'JJA', 'SON']
+SZMOs = [{12, 1, 2}, {3, 4, 5}, {6, 7, 8}, {9, 10, 11}]
+WARM = [-1, -1, 1, 1] #sign of warm hemi
+
 dfs = [pd.read_parquet(f) for f in FILI]
-pmins = [df.groupby('stmnum')['pres'].min() / 100 for df in dfs]
+dfs_filtered = [
+    df[np.logical_or.reduce([
+        (df.index.month.isin(mos) & (np.sign(df['lat']) == sgn)) 
+        for mos, sgn in zip(SZMOs, WARM)
+    ])] 
+    for df in dfs
+]
+pmins = [df.groupby('stmnum')['pres'].min() / 100 for df in dfs_filtered]
 meanvals = [pm.mean() for pm in pmins]
 print(min(pmins[2]))
 
