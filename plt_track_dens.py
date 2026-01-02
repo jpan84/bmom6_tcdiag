@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sznl_funcs import stack_hemi_sznl
 
-FILI = '/glade/u/home/jpan/aquaptc/tempest/251002_density_sznl/tcdens.nc'
+FILI = '/glade/u/home/jpan/aquaptc/tempest/251124_density_sznl/tcdens.nc'
 SZN = 'SON'
 
 YSCL = lambda deglat: np.sin(np.deg2rad(deglat))

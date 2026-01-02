@@ -404,6 +404,15 @@ def main():
          # ax_top.set_xticklabels([]) is now redundant but keeping tick_params is cleaner
          # -------------------------------------------------------
 
+         if ii == 0 and jj == 1:
+            y1, y2 = 85, 80
+            ax_top.annotate('', xy=(MT[0], y1), xytext=(MT[1], y1), arrowprops=dict(arrowstyle=f'-[, widthB=0, lengthB=0',\
+                           lw=1.5, color='purple', connectionstyle=f'bar,fraction={1/6}'), annotation_clip=False)
+            ax_top.text(sum(MT) / 2, y2, 'MT', ha='center', va='bottom', fontsize=10, fontweight='bold', transform=ax_top.transData, c='purple')
+            ax_top.annotate('', xy=(STZ[0], y1), xytext=(STZ[1], y1), arrowprops=dict(arrowstyle=f'-[, widthB=0, lengthB=0',\
+                           lw=1.5, color='#E4D00A', connectionstyle=f'bar,fraction={1/6}'), annotation_clip=False)
+            ax_top.text(sum(STZ) / 2, y2, 'STZ', ha='center', va='bottom', fontsize=10, fontweight='bold', transform=ax_top.transData, c='#E4D00A')
+
    # 231    #fig.tight_layout() # tight_layout is not used with GridSpec
    # 232    #fig.get_layout_engine().set(w_pad=.25, h_pad=0.15) # Remove constrained_layout engine commands
    # 233    #plt.show()

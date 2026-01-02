@@ -29,7 +29,7 @@ def main():
    plt.rc('font', size=14)
    plt.rcParams['figure.figsize'] = (16, 4)
    subplot_kw = dict(xlim=(-1, 1))
-   fig, axes = plt.subplot_mosaic([['(a)', '(b)', '(c)']], layout='constrained', sharey=True, subplot_kw=subplot_kw)
+   fig, axes = plt.subplot_mosaic([['(a)', '(b)', '(c)']], sharey=True, subplot_kw=subplot_kw, layout='constrained')
    [ax.tick_params(right=True, labelleft=True) for _, ax in axes.items()]
 
    for ii, (lbl, ax) in enumerate(axes.items()):
@@ -46,7 +46,17 @@ def main():
       ax.set_title(lbl, loc='left')
       ax.legend(loc='upper left', ncol=2, prop=dict(size=14))
 
+   y1, y2 = 0.195, 0.200
+   axes['(b)'].annotate('', xy=(MT[0], y1), xytext=(MT[1], y1), arrowprops=dict(arrowstyle=f'-[, widthB=0, lengthB=0',\
+                           lw=1.5, color='purple', connectionstyle=f'bar,fraction={1/6}'), annotation_clip=False)
+   axes['(b)'].text(sum(MT) / 2, y2, 'MT', ha='center', va='bottom', fontsize=10, fontweight='bold', transform=axes['(b)'].transData, c='purple')
+   axes['(b)'].annotate('', xy=(STZ[0], y1), xytext=(STZ[1], y1), arrowprops=dict(arrowstyle=f'-[, widthB=0, lengthB=0',\
+                           lw=1.5, color='#E4D00A', connectionstyle=f'bar,fraction={1/6}'), annotation_clip=False)
+   axes['(b)'].text(sum(STZ) / 2, y2, 'STZ', ha='center', va='bottom', fontsize=10, fontweight='bold', transform=axes['(b)'].transData, c='#E4D00A')
+
+   #fig.tight_layout()
    plt.savefig(os.path.join(DIRI, 'replot_%s.svg' % FLDNM))
+   plt.show()
    plt.close()
 
 if __name__ == '__main__':
