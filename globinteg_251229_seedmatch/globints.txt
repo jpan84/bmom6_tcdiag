@@ -1,0 +1,35 @@
+
+ /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm/hist/*h0a.[0-9]*.nc
+(12,) 
+
+Q mean 40.691098266857836
+DCQ mean -4.8794712296787655e-05
+T mean 2667475.748140877
+U mean 77674.68319059353
+V mean -6.9263507074178525
+
+ /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm/hist/*h0a.[0-9]*.nc
+(12,) 
+
+Q mean 40.691098266857836
+KE sum 2.0963475687145108e+21
+GP sum 3.885121898168252e+23
+SH sum 1.366026947243309e+24
+LH sum 5.190514314262287e+22
+
+ /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm/hist/*h0a.[0-9]*.nc
+(12,) 
+
+Q mean 40.691098266857836
+DCQ mean -4.8794712296787655e-05
+T mean 2667475.748140877
+U mean 77674.68319059353
+V mean -6.9263507074178525
+KE sum 2.0963475687145108e+21
+GP sum 3.885121898168252e+23
+SH sum 1.366026947243309e+24
+LH sum 5.190514314262287e+22
+MASS sum 5.265146437376733e+18
+AAMu sum 1.4393215888093004e+26
+DIAB mean -7.2313178918200105
+MSE sum 1.8064442801951745e+24

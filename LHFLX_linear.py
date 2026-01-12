@@ -100,7 +100,7 @@ fig, axes = plt.subplots(1, 2)
 
 for ii, cs in enumerate(['UNSEED', 'SEED']):
    axes[ii].plot(sinlat, orilh * dU_frac.sel(case=cs), label='U10 monthly mean')
-   axes[ii].plot(sinlat, orilh * dU_frac_h1i.sel(case=cs), label='$|U|_{bot}$', color='C0', linestyle='dotted')
+   #axes[ii].plot(sinlat, orilh * dU_frac_h1i.sel(case=cs), label='$|U|_{bot}$', color='C0', linestyle='dotted')
    axes[ii].plot(sinlat, orilh * dU_frac_nTC.sel(case=cs), label='$|U|_{bot}$ non-TC', color='C8')
 
    axes[ii].axhline(0, c='gray', lw=0.5)
@@ -118,5 +118,5 @@ for ii, cs in enumerate(['UNSEED', 'SEED']):
    axes[ii].set_ylim(*YLIM[ii])
 
 fig.tight_layout()
-plt.savefig('./linevslat_h1i_0012-0014/LH_decomp_%s_dyn.svg' % SZN)
+plt.savefig('./ms_rev_plts/LH_decomp_%s_dyn.svg' % SZN)
 plt.show()
