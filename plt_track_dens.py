@@ -3,8 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sznl_funcs import stack_hemi_sznl
 
-FILI = '/glade/u/home/jpan/aquaptc/tempest/251124_density_sznl/tcdens.nc'
-SZN = 'SON'
+FILI = '/glade/u/home/jpan/aquaptc/tempest/260112_density_sznl/tcdens.nc'
+SZN = 'JJA'
 
 YSCL = lambda deglat: np.sin(np.deg2rad(deglat))
 LATLAB = np.arange(-90, 90.1, 15).astype(np.int_)
@@ -97,6 +97,6 @@ axes[1][2].set_title('(f)', loc='left')
 fig.suptitle('%s TC density plots [yr$^{-1}$ (10$^6$ km$^2$)$^{-1}$]' % SZN)
 
 fig.tight_layout()
-plt.savefig('/glade/u/home/jpan/aquaptc/tempest/251230_density_sznl/masterplot_%s.svg' % SZN)
+plt.savefig('/glade/u/home/jpan/aquaptc/tempest/260112_density_sznl/masterplot_%s.svg' % SZN)
 plt.show()
 plt.close()

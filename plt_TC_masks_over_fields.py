@@ -9,7 +9,7 @@ import holoviews as hv
 from holoviews.operation import contours as hvcontours
 
 
-NFF = '/glade/derecho/scratch/jpan/jpan_tcfields/%s/'
+NFF = '/glade/derecho/scratch/jpan/jpan_tcfields1/%s/'
 
 CASE = 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl'
 ATM = '/glade/campaign/univ/upsu0032/jpan_aquaptc/%s/atm'
@@ -17,7 +17,7 @@ H1I = os.path.join(ATM % CASE, 'hist/') #h1i path
 MASKS = os.path.join(NFF % CASE, 'nff_4mps/', 'cat_4mps.nc') #masks path
 PARQ = '/glade/u/home/jpan/aquaptc/tempest/250417_ctrl.parquet' #TC parquet
 CAMGRID = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
-DIRO = './TC_mask_plots_R4_1029/'
+DIRO = './TC_mask_plots_R4_0113/'
 
 STRF = lambda dtobj: f'*h1i.{dtobj.year:04}-{dtobj.month:02}-{dtobj.day:02}-{3600*dtobj.hour:05}*'
 
@@ -73,10 +73,10 @@ def main():
       framekwargs = dict(height=800, width=800, xlim=lonbnds, ylim=latbnds, fontsize=hvfont)
       #mrast = msub.plot.rasterize(method='polygon', backend='bokeh')
       mrast = msub.plot.polygons(rasterize=True, backend='bokeh')
-      mcont = hvcontours(mrast, levels=[0.5]).opts(show_legend=False, color='orange', line_width=3, **framekwargs)
+      mcont = hvcontours(mrast, levels=[0.5]).opts(show_legend=False, cmap=['orange'], line_width=3, **framekwargs)
       hv.save(mcont, os.path.join(DIRO, '%s_stm%d_%s.png' % (STRF(truedt)[1:-1], row['stmnum'], MNM)))
-      #For field in ['U850', 'V850', 'PRECT', 'OMEGA500', 'PS']
-      for fld in ['U850', 'V850', 'PRECT', 'OMEGA500', 'PS']:
+      #For field in ['UBOT', 'VBOT', 'PRECT', 'OMEGA500', 'PS']
+      for fld in ['UBOT', 'VBOT', 'PRECT', 'OMEGA500', 'PS']:
          print('\t', fld)
          #contourf/rasterize plot field
          hsub = hds[fld].subset.bounding_box(lonbnds, latbnds).squeeze()
@@ -87,7 +87,7 @@ def main():
             hrast = hrast.opts(cnorm='log', clim=(1e-8, 1e-5))
          if fld in ['PRECT', 'PS']:
             hrast = hrast.opts(cmap='viridis')
-         if fld in ['OMEGA500', 'U850', 'V850']:
+         if fld in ['OMEGA500', 'UBOT', 'VBOT']:
             hrast = hrast.opts(symmetric=True, cmap='seismic')
          #contour mask
          hrast *= mcont

@@ -24,8 +24,11 @@ a = 6.371e6
 #CASE2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.*.nc'\
 #         % (alias2, alias2)
 FILIS = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0012-*-0*-*.nc'
+FILIS = '/glade/derecho/scratch/jpan/jpan_tcfields1/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/hist_0012-0014_h1i/TC_R4_masked_h1i_0012-0014.nc' # !TC-only
 ALIS = ['250415_unseed', '250417_ctrl', '250416_seed1x1']
 CASES = ['UNSEED', 'CTRL', 'SEED']
+LATFIL = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-06-25-21600.nc'
+LATDA = None
 #FILO = 'umf500_0012dd0x_histo_mse850_SST.pkl'
 
 SSTbins = np.concatenate((np.arange(295., 306.), np.arange(306, 309, 0.25), np.arange(309, 313)))
@@ -35,6 +38,7 @@ SSTbins = np.concatenate((np.arange(295., 306.), np.arange(306, 309, 0.25), np.a
 #TODO: split seasons
 #TODO: check why NH and SH selections differ in number of cols
 def main():
+   global LATDA
    #print(sys.argv)
    #ds = xr.open_mfdataset(CASE1)
 
@@ -43,9 +47,19 @@ def main():
    m_d, s_d = None, None
    for ii, al in enumerate(ALIS):
       print('Working on', al)
-      ds = xr.open_mfdataset(FILIS % (al, al))
-      mtda, m_d, s_d = compute_umf_hist(ds.drop_vars(['time_bounds', 'time_written', 'date_written']), hemi='warm', sstbins=SSTbins, innerlat=7., outerlat=20.)
-      stda, _, _ = compute_umf_hist(ds.drop_vars(['time_bounds', 'time_written', 'date_written']), hemi='warm', sstbins=SSTbins, innerlat=20., outerlat=33.)
+      #ds = xr.open_mfdataset(FILIS % (al, al))
+      ds = xr.open_mfdataset(FILIS % al) # !TC-only
+      #print(ds)
+      ds = ds.sel(time=ds['time'].dt.year == 12)
+      ds = ds.sel(time=ds['time'].dt.day == 1).compute() # !TC-only
+      if LATFIL:
+         LATDA = xr.open_dataset(LATFIL)['lat']
+      #print(ds)
+      #print(ds['lat'])
+      #print(ds['lat'].data)
+
+      mtda, m_d, s_d = compute_umf_hist(ds, hemi='warm', sstbins=SSTbins, innerlat=7., outerlat=20.) #.drop_vars(['time_bounds', 'time_written', 'date_written'])
+      stda, _, _ = compute_umf_hist(ds, hemi='warm', sstbins=SSTbins, innerlat=20., outerlat=33.) #.drop_vars(['time_bounds', 'time_written', 'date_written']
       mtda, stda = mtda.expand_dims(case=[CASES[ii]]), stda.expand_dims(case=[CASES[ii]])
 
       if mtout is None:
@@ -57,8 +71,8 @@ def main():
    mtds = xr.Dataset(data_vars=dict(UMF500=mtout, mwidth=m_d, swidth=s_d))
    stds = xr.Dataset(data_vars=dict(UMF500=stout, mwidth=m_d, swidth=s_d))
 
-   mtds.to_netcdf('umf500_0012dd0x_07-20warm.nc')
-   stds.to_netcdf('umf500_0012dd0x_20-33warm.nc')
+   mtds.to_netcdf('umf500TC_0012dd01_07-20warm.nc')
+   stds.to_netcdf('umf500TC_0012dd01_20-33warm.nc')
 
    print(sys.argv[0], 'done')
 
@@ -68,7 +82,7 @@ def compute_umf_hist(ds, innerlat=5., outerlat=30., hemi='warm', msebins=np.aran
    #print(ds.data_vars)
    nhsel, shsel = sel_unstruct_tropics(ds, innerlat=innerlat, outerlat=outerlat, hemi=hemi)
    selds = xr.concat((nhsel, shsel), 'ncol')
-   #print(selds)
+   print(selds['Z850'].shape)
    #print(selds.time)
 
    mse850 = g * selds['Z850'] + cp * selds['T850'] + lv * selds['Q850']
@@ -96,9 +110,14 @@ def compute_umf_hist(ds, innerlat=5., outerlat=30., hemi='warm', msebins=np.aran
 
 def sel_unstruct_tropics(ds, innerlat=5., outerlat=30., hemi='warm'):
    szn = ds['time'].dt.season
+   lats = ds['lat']
+   if not LATDA is None:
+      lats = LATDA
+   print(LATDA.data)
+   print(szn)
    if hemi == 'warm':
-      nh = ds.sel(time=szn.isin(['JJA', 'SON'])).isel(ncol=((ds['lat'] > innerlat) & (ds['lat'] < outerlat)).all(dim='time').compute())
-      sh = ds.sel(time=szn.isin(['DJF', 'MAM'])).isel(ncol=((ds['lat'] < -innerlat) & (ds['lat'] > -outerlat)).all(dim='time').compute())
+      nh = ds.sel(time=szn.isin(['JJA', 'SON'])).isel(ncol=((lats > innerlat) & (lats < outerlat)).compute())#.all(dim='time').compute()) # !TC-only
+      sh = ds.sel(time=szn.isin(['DJF', 'MAM'])).isel(ncol=((lats < -innerlat) & (lats > -outerlat)).compute())#.all(dim='time').compute())
       return nh, sh
    if hemi == 'cool':
       nh = ds.sel(time=szn.isin(['DJF', 'MAM'])).isel(ncol=((ds['lat'] > innerlat) & (ds['lat'] < outerlat)).all(dim='time').compute())
@@ -107,6 +126,7 @@ def sel_unstruct_tropics(ds, innerlat=5., outerlat=30., hemi='warm'):
 
 
 def bin_umf_2d(umf, varx, vary, binsx, binsy, ntime):
+   #print(umf.shape)
    umfsum, xedges, yedges, binnum = binned_statistic_2d(x=varx.data.ravel(), y=vary.data.ravel(),\
                  values=umf.data.ravel(), statistic='sum', bins=[binsx, binsy])
    return umfsum / ntime, xedges, yedges, binnum

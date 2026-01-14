@@ -1,1467 +1,924 @@
 nohup: ignoring input
-/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 181878.casper-pbs with qsub arguments:
-    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=02:30:00
+                         ncol         lon        lat  ...  stmnum  isgen  islys
+dt                                                    ...                      
+2005-02-01 06:00:00  297965.0  185.792728 -19.201424  ...       0   True  False
+2005-02-01 12:00:00  297966.0  186.000000 -19.194777  ...       0  False  False
+2005-02-01 18:00:00  296892.0  186.000000 -19.401177  ...       0  False  False
+2005-02-02 00:00:00  296899.0  186.207317 -19.394232  ...       0  False  False
+2005-02-02 06:00:00  296892.0  186.000000 -19.401177  ...       0  False  False
+...                       ...         ...        ...  ...     ...    ...    ...
+2015-01-31 00:00:00  296864.0  183.542720 -19.465540  ...    2619  False  False
+2015-01-31 06:00:00  295794.0  184.500000 -20.192625  ...    2619  False  False
+2015-01-31 12:00:00  294730.0  185.457318 -20.913062  ...    2619  False  False
+2015-01-31 18:00:00  293661.0  186.750000 -21.613181  ...    2619  False  False
+2015-02-01 00:00:00  293671.0  187.707331 -22.110811  ...    2619  False   True
 
-Working on 250415_unseed
-Processing time 0012-01-01 00:00:00
-Processing time 0012-01-01 06:00:00
-Processing time 0012-01-01 12:00:00
-Processing time 0012-01-01 18:00:00
-Processing time 0012-01-02 00:00:00
-Processing time 0012-01-02 06:00:00
-Processing time 0012-01-02 12:00:00
-Processing time 0012-01-02 18:00:00
-Processing time 0012-01-03 00:00:00
-Processing time 0012-01-03 06:00:00
-Processing time 0012-01-03 12:00:00
-Processing time 0012-01-03 18:00:00
-Processing time 0012-01-04 00:00:00
-Processing time 0012-01-04 06:00:00
-Processing time 0012-01-04 12:00:00
-Processing time 0012-01-04 18:00:00
-Processing time 0012-01-05 00:00:00
-Processing time 0012-01-05 06:00:00
-Processing time 0012-01-05 12:00:00
-Processing time 0012-01-05 18:00:00
-Processing time 0012-01-06 00:00:00
-Processing time 0012-01-06 06:00:00
-Processing time 0012-01-06 12:00:00
-Processing time 0012-01-06 18:00:00
-Processing time 0012-01-07 00:00:00
-Processing time 0012-01-07 06:00:00
-Processing time 0012-01-07 12:00:00
-Processing time 0012-01-07 18:00:00
-Processing time 0012-01-08 00:00:00
-Processing time 0012-01-08 06:00:00
-Processing time 0012-01-08 12:00:00
-Processing time 0012-01-08 18:00:00
-Processing time 0012-01-09 00:00:00
-Processing time 0012-01-09 06:00:00
-Processing time 0012-01-09 12:00:00
-Processing time 0012-01-09 18:00:00
-Processing time 0012-01-10 00:00:00
-Processing time 0012-01-10 06:00:00
-Processing time 0012-01-10 12:00:00
-Processing time 0012-01-10 18:00:00
-Processing time 0012-01-11 00:00:00
-Processing time 0012-01-11 06:00:00
-Processing time 0012-01-11 12:00:00
-Processing time 0012-01-11 18:00:00
-Processing time 0012-01-12 00:00:00
-Processing time 0012-01-12 06:00:00
-Processing time 0012-01-12 12:00:00
-Processing time 0012-01-12 18:00:00
-Processing time 0012-01-13 00:00:00
-Processing time 0012-01-13 06:00:00
-Processing time 0012-01-13 12:00:00
-Processing time 0012-01-13 18:00:00
-Processing time 0012-01-14 00:00:00
-Processing time 0012-01-14 06:00:00
-Processing time 0012-01-14 12:00:00
-Processing time 0012-01-14 18:00:00
-Processing time 0012-01-15 00:00:00
-Processing time 0012-01-15 06:00:00
-Processing time 0012-01-15 12:00:00
-Processing time 0012-01-15 18:00:00
-Processing time 0012-01-16 00:00:00
-Processing time 0012-01-16 06:00:00
-Processing time 0012-01-16 12:00:00
-Processing time 0012-01-16 18:00:00
-Processing time 0012-01-17 00:00:00
-Processing time 0012-01-17 06:00:00
-Processing time 0012-01-17 12:00:00
-Processing time 0012-01-17 18:00:00
-Processing time 0012-01-18 00:00:00
-Processing time 0012-01-18 06:00:00
-Processing time 0012-01-18 12:00:00
-Processing time 0012-01-18 18:00:00
-Processing time 0012-01-19 00:00:00
-Processing time 0012-01-19 06:00:00
-Processing time 0012-01-19 12:00:00
-Processing time 0012-01-19 18:00:00
-Processing time 0012-01-20 00:00:00
-Processing time 0012-01-20 06:00:00
-Processing time 0012-01-20 12:00:00
-Processing time 0012-01-20 18:00:00
-Processing time 0012-01-21 00:00:00
-Processing time 0012-01-21 06:00:00
-Processing time 0012-01-21 12:00:00
-Processing time 0012-01-21 18:00:00
-Processing time 0012-01-22 00:00:00
-Processing time 0012-01-22 06:00:00
-Processing time 0012-01-22 12:00:00
-Processing time 0012-01-22 18:00:00
-Processing time 0012-01-23 00:00:00
-Processing time 0012-01-23 06:00:00
-Processing time 0012-01-23 12:00:00
-Processing time 0012-01-23 18:00:00
-Processing time 0012-01-24 00:00:00
-Processing time 0012-01-24 06:00:00
-Processing time 0012-01-24 12:00:00
-Processing time 0012-01-24 18:00:00
-Processing time 0012-01-25 00:00:00
-Processing time 0012-01-25 06:00:00
-Processing time 0012-01-25 12:00:00
-Processing time 0012-01-25 18:00:00
-Processing time 0012-01-26 00:00:00
-Processing time 0012-01-26 06:00:00
-Processing time 0012-01-26 12:00:00
-Processing time 0012-01-26 18:00:00
-Processing time 0012-01-27 00:00:00
-Processing time 0012-01-27 06:00:00
-Processing time 0012-01-27 12:00:00
-Processing time 0012-01-27 18:00:00
-Processing time 0012-01-28 00:00:00
-Processing time 0012-01-28 06:00:00
-Processing time 0012-01-28 12:00:00
-Processing time 0012-01-28 18:00:00
-Processing time 0012-01-29 00:00:00
-Processing time 0012-01-29 06:00:00
-Processing time 0012-01-29 12:00:00
-Processing time 0012-01-29 18:00:00
-Processing time 0012-01-30 00:00:00
-Processing time 0012-01-30 06:00:00
-Processing time 0012-01-30 12:00:00
-Processing time 0012-01-30 18:00:00
-Processing time 0012-01-31 00:00:00
-Processing time 0012-01-31 06:00:00
-Processing time 0012-01-31 12:00:00
-Processing time 0012-01-31 18:00:00
-Processing time 0012-02-01 00:00:00
-Processing time 0012-02-01 06:00:00
-Processing time 0012-02-01 12:00:00
-Processing time 0012-02-01 18:00:00
-Processing time 0012-02-02 00:00:00
-Processing time 0012-02-02 06:00:00
-Processing time 0012-02-02 12:00:00
-Processing time 0012-02-02 18:00:00
-Processing time 0012-02-03 00:00:00
-Processing time 0012-02-03 06:00:00
-Processing time 0012-02-03 12:00:00
-Processing time 0012-02-03 18:00:00
-Processing time 0012-02-04 00:00:00
-Processing time 0012-02-04 06:00:00
-Processing time 0012-02-04 12:00:00
-Processing time 0012-02-04 18:00:00
-Processing time 0012-02-05 00:00:00
-Processing time 0012-02-05 06:00:00
-Processing time 0012-02-05 12:00:00
-Processing time 0012-02-05 18:00:00
-Processing time 0012-02-06 00:00:00
-Processing time 0012-02-06 06:00:00
-Processing time 0012-02-06 12:00:00
-Processing time 0012-02-06 18:00:00
-Processing time 0012-02-07 00:00:00
-Processing time 0012-02-07 06:00:00
-Processing time 0012-02-07 12:00:00
-Processing time 0012-02-07 18:00:00
-Processing time 0012-02-08 00:00:00
-Processing time 0012-02-08 06:00:00
-Processing time 0012-02-08 12:00:00
-Processing time 0012-02-08 18:00:00
-Processing time 0012-02-09 00:00:00
-Processing time 0012-02-09 06:00:00
-Processing time 0012-02-09 12:00:00
-Processing time 0012-02-09 18:00:00
-Processing time 0012-02-10 00:00:00
-Processing time 0012-02-10 06:00:00
-Processing time 0012-02-10 12:00:00
-Processing time 0012-02-10 18:00:00
-Processing time 0012-02-11 00:00:00
-Processing time 0012-02-11 06:00:00
-Processing time 0012-02-11 12:00:00
-Processing time 0012-02-11 18:00:00
-Processing time 0012-02-12 00:00:00
-Processing time 0012-02-12 06:00:00
-Processing time 0012-02-12 12:00:00
-Processing time 0012-02-12 18:00:00
-Processing time 0012-02-13 00:00:00
-Processing time 0012-02-13 06:00:00
-Processing time 0012-02-13 12:00:00
-Processing time 0012-02-13 18:00:00
-Processing time 0012-02-14 00:00:00
-Processing time 0012-02-14 06:00:00
-Processing time 0012-02-14 12:00:00
-Processing time 0012-02-14 18:00:00
-Processing time 0012-02-15 00:00:00
-Processing time 0012-02-15 06:00:00
-Processing time 0012-02-15 12:00:00
-Processing time 0012-02-15 18:00:00
-Processing time 0012-02-16 00:00:00
-Processing time 0012-02-16 06:00:00
-Processing time 0012-02-16 12:00:00
-Processing time 0012-02-16 18:00:00
-Processing time 0012-02-17 00:00:00
-Processing time 0012-02-17 06:00:00
-Processing time 0012-02-17 12:00:00
-Processing time 0012-02-17 18:00:00
-Processing time 0012-02-18 00:00:00
-Processing time 0012-02-18 06:00:00
-Processing time 0012-02-18 12:00:00
-Processing time 0012-02-18 18:00:00
-Processing time 0012-02-19 00:00:00
-Processing time 0012-02-19 06:00:00
-Processing time 0012-02-19 12:00:00
-Processing time 0012-02-19 18:00:00
-Processing time 0012-02-20 00:00:00
-Processing time 0012-02-20 06:00:00
-Processing time 0012-02-20 12:00:00
-Processing time 0012-02-20 18:00:00
-Processing time 0012-02-21 00:00:00
-Processing time 0012-02-21 06:00:00
-Processing time 0012-02-21 12:00:00
-Processing time 0012-02-21 18:00:00
-Processing time 0012-02-22 00:00:00
-Processing time 0012-02-22 06:00:00
-Processing time 0012-02-22 12:00:00
-Processing time 0012-02-22 18:00:00
-Processing time 0012-02-23 00:00:00
-Processing time 0012-02-23 06:00:00
-Processing time 0012-02-23 12:00:00
-Processing time 0012-02-23 18:00:00
-Processing time 0012-02-24 00:00:00
-Processing time 0012-02-24 06:00:00
-Processing time 0012-02-24 12:00:00
-Processing time 0012-02-24 18:00:00
-Processing time 0012-02-25 00:00:00
-Processing time 0012-02-25 06:00:00
-Processing time 0012-02-25 12:00:00
-Processing time 0012-02-25 18:00:00
-Processing time 0012-02-26 00:00:00
-Processing time 0012-02-26 06:00:00
-Processing time 0012-02-26 12:00:00
-Processing time 0012-02-26 18:00:00
-Processing time 0012-02-27 00:00:00
-Processing time 0012-02-27 06:00:00
-Processing time 0012-02-27 12:00:00
-Processing time 0012-02-27 18:00:00
-Processing time 0012-02-28 00:00:00
-Processing time 0012-02-28 06:00:00
-Processing time 0012-02-28 12:00:00
-Processing time 0012-02-28 18:00:00
-Processing time 0012-03-01 00:00:00
-Processing time 0012-03-01 06:00:00
-Processing time 0012-03-01 12:00:00
-Processing time 0012-03-01 18:00:00
-Processing time 0012-03-02 00:00:00
-Processing time 0012-03-02 06:00:00
-Processing time 0012-03-02 12:00:00
-Processing time 0012-03-02 18:00:00
-Processing time 0012-03-03 00:00:00
-Processing time 0012-03-03 06:00:00
-Processing time 0012-03-03 12:00:00
-Processing time 0012-03-03 18:00:00
-Processing time 0012-03-04 00:00:00
-Processing time 0012-03-04 06:00:00
-Processing time 0012-03-04 12:00:00
-Processing time 0012-03-04 18:00:00
-Processing time 0012-03-05 00:00:00
-Processing time 0012-03-05 06:00:00
-Processing time 0012-03-05 12:00:00
-Processing time 0012-03-05 18:00:00
-Processing time 0012-03-06 00:00:00
-Processing time 0012-03-06 06:00:00
-Processing time 0012-03-06 12:00:00
-Processing time 0012-03-06 18:00:00
-Processing time 0012-03-07 00:00:00
-Processing time 0012-03-07 06:00:00
-Processing time 0012-03-07 12:00:00
-Processing time 0012-03-07 18:00:00
-Processing time 0012-03-08 00:00:00
-Processing time 0012-03-08 06:00:00
-Processing time 0012-03-08 12:00:00
-Processing time 0012-03-08 18:00:00
-Processing time 0012-03-09 00:00:00
-Processing time 0012-03-09 06:00:00
-Processing time 0012-03-09 12:00:00
-Processing time 0012-03-09 18:00:00
-Processing time 0012-03-10 00:00:00
-Processing time 0012-03-10 06:00:00
-Processing time 0012-03-10 12:00:00
-Processing time 0012-03-10 18:00:00
-Processing time 0012-03-11 00:00:00
-Processing time 0012-03-11 06:00:00
-Processing time 0012-03-11 12:00:00
-Processing time 0012-03-11 18:00:00
-Processing time 0012-03-12 00:00:00
-Processing time 0012-03-12 06:00:00
-Processing time 0012-03-12 12:00:00
-Processing time 0012-03-12 18:00:00
-Processing time 0012-03-13 00:00:00
-Processing time 0012-03-13 06:00:00
-Processing time 0012-03-13 12:00:00
-Processing time 0012-03-13 18:00:00
-Processing time 0012-03-14 00:00:00
-Processing time 0012-03-14 06:00:00
-Processing time 0012-03-14 12:00:00
-Processing time 0012-03-14 18:00:00
-Processing time 0012-03-15 00:00:00
-Processing time 0012-03-15 06:00:00
-Processing time 0012-03-15 12:00:00
-Processing time 0012-03-15 18:00:00
-Processing time 0012-03-16 00:00:00
-Processing time 0012-03-16 06:00:00
-Processing time 0012-03-16 12:00:00
-Processing time 0012-03-16 18:00:00
-Processing time 0012-03-17 00:00:00
-Processing time 0012-03-17 06:00:00
-Processing time 0012-03-17 12:00:00
-Processing time 0012-03-17 18:00:00
-Processing time 0012-03-18 00:00:00
-Processing time 0012-03-18 06:00:00
-Processing time 0012-03-18 12:00:00
-Processing time 0012-03-18 18:00:00
-Processing time 0012-03-19 00:00:00
-Processing time 0012-03-19 06:00:00
-Processing time 0012-03-19 12:00:00
-Processing time 0012-03-19 18:00:00
-Processing time 0012-03-20 00:00:00
-Processing time 0012-03-20 06:00:00
-Processing time 0012-03-20 12:00:00
-Processing time 0012-03-20 18:00:00
-Processing time 0012-03-21 00:00:00
-Processing time 0012-03-21 06:00:00
-Processing time 0012-03-21 12:00:00
-Processing time 0012-03-21 18:00:00
-Processing time 0012-03-22 00:00:00
-Processing time 0012-03-22 06:00:00
-Processing time 0012-03-22 12:00:00
-Processing time 0012-03-22 18:00:00
-Processing time 0012-03-23 00:00:00
-Processing time 0012-03-23 06:00:00
-Processing time 0012-03-23 12:00:00
-Processing time 0012-03-23 18:00:00
-Processing time 0012-03-24 00:00:00
-Processing time 0012-03-24 06:00:00
-Processing time 0012-03-24 12:00:00
-Processing time 0012-03-24 18:00:00
-Processing time 0012-03-25 00:00:00
-Processing time 0012-03-25 06:00:00
-Processing time 0012-03-25 12:00:00
-Processing time 0012-03-25 18:00:00
-Processing time 0012-03-26 00:00:00
-Processing time 0012-03-26 06:00:00
-Processing time 0012-03-26 12:00:00
-Processing time 0012-03-26 18:00:00
-Processing time 0012-03-27 00:00:00
-Processing time 0012-03-27 06:00:00
-Processing time 0012-03-27 12:00:00
-Processing time 0012-03-27 18:00:00
-Processing time 0012-03-28 00:00:00
-Processing time 0012-03-28 06:00:00
-Processing time 0012-03-28 12:00:00
-Processing time 0012-03-28 18:00:00
-Processing time 0012-03-29 00:00:00
-Processing time 0012-03-29 06:00:00
-Processing time 0012-03-29 12:00:00
-Processing time 0012-03-29 18:00:00
-Processing time 0012-03-30 00:00:00
-Processing time 0012-03-30 06:00:00
-Processing time 0012-03-30 12:00:00
-Processing time 0012-03-30 18:00:00
-Processing time 0012-03-31 00:00:00
-Processing time 0012-03-31 06:00:00
-Processing time 0012-03-31 12:00:00
-Processing time 0012-03-31 18:00:00
-Processing time 0012-04-01 00:00:00
-Processing time 0012-04-01 06:00:00
-Processing time 0012-04-01 12:00:00
-Processing time 0012-04-01 18:00:00
-Processing time 0012-04-02 00:00:00
-Processing time 0012-04-02 06:00:00
-Processing time 0012-04-02 12:00:00
-Processing time 0012-04-02 18:00:00
-Processing time 0012-04-03 00:00:00
-Processing time 0012-04-03 06:00:00
-Processing time 0012-04-03 12:00:00
-Processing time 0012-04-03 18:00:00
-Processing time 0012-04-04 00:00:00
-Processing time 0012-04-04 06:00:00
-Processing time 0012-04-04 12:00:00
-Processing time 0012-04-04 18:00:00
-Processing time 0012-04-05 00:00:00
-Processing time 0012-04-05 06:00:00
-Processing time 0012-04-05 12:00:00
-Processing time 0012-04-05 18:00:00
-Processing time 0012-04-06 00:00:00
-Processing time 0012-04-06 06:00:00
-Processing time 0012-04-06 12:00:00
-Processing time 0012-04-06 18:00:00
-Processing time 0012-04-07 00:00:00
-Processing time 0012-04-07 06:00:00
-Processing time 0012-04-07 12:00:00
-Processing time 0012-04-07 18:00:00
-Processing time 0012-04-08 00:00:00
-Processing time 0012-04-08 06:00:00
-Processing time 0012-04-08 12:00:00
-Processing time 0012-04-08 18:00:00
-Processing time 0012-04-09 00:00:00
-Processing time 0012-04-09 06:00:00
-Processing time 0012-04-09 12:00:00
-Processing time 0012-04-09 18:00:00
-Processing time 0012-04-10 00:00:00
-Processing time 0012-04-10 06:00:00
-Processing time 0012-04-10 12:00:00
-Processing time 0012-04-10 18:00:00
-Processing time 0012-04-11 00:00:00
-Processing time 0012-04-11 06:00:00
-Processing time 0012-04-11 12:00:00
-Processing time 0012-04-11 18:00:00
-Processing time 0012-04-12 00:00:00
-Processing time 0012-04-12 06:00:00
-Processing time 0012-04-12 12:00:00
-Processing time 0012-04-12 18:00:00
-Processing time 0012-04-13 00:00:00
-Processing time 0012-04-13 06:00:00
-Processing time 0012-04-13 12:00:00
-Processing time 0012-04-13 18:00:00
-Processing time 0012-04-14 00:00:00
-Processing time 0012-04-14 06:00:00
-Processing time 0012-04-14 12:00:00
-Processing time 0012-04-14 18:00:00
-Processing time 0012-04-15 00:00:00
-Processing time 0012-04-15 06:00:00
-Processing time 0012-04-15 12:00:00
-Processing time 0012-04-15 18:00:00
-Processing time 0012-04-16 00:00:00
-Processing time 0012-04-16 06:00:00
-Processing time 0012-04-16 12:00:00
-Processing time 0012-04-16 18:00:00
-Processing time 0012-04-17 00:00:00
-Processing time 0012-04-17 06:00:00
-Processing time 0012-04-17 12:00:00
-Processing time 0012-04-17 18:00:00
-Processing time 0012-04-18 00:00:00
-Processing time 0012-04-18 06:00:00
-Processing time 0012-04-18 12:00:00
-Processing time 0012-04-18 18:00:00
-Processing time 0012-04-19 00:00:00
-Processing time 0012-04-19 06:00:00
-Processing time 0012-04-19 12:00:00
-Processing time 0012-04-19 18:00:00
-Processing time 0012-04-20 00:00:00
-Processing time 0012-04-20 06:00:00
-Processing time 0012-04-20 12:00:00
-Processing time 0012-04-20 18:00:00
-Processing time 0012-04-21 00:00:00
-Processing time 0012-04-21 06:00:00
-Processing time 0012-04-21 12:00:00
-Processing time 0012-04-21 18:00:00
-Processing time 0012-04-22 00:00:00
-Processing time 0012-04-22 06:00:00
-Processing time 0012-04-22 12:00:00
-Processing time 0012-04-22 18:00:00
-Processing time 0012-04-23 00:00:00
-Processing time 0012-04-23 06:00:00
-Processing time 0012-04-23 12:00:00
-Processing time 0012-04-23 18:00:00
-Processing time 0012-04-24 00:00:00
-Processing time 0012-04-24 06:00:00
-Processing time 0012-04-24 12:00:00
-Processing time 0012-04-24 18:00:00
-Processing time 0012-04-25 00:00:00
-Processing time 0012-04-25 06:00:00
-Processing time 0012-04-25 12:00:00
-Processing time 0012-04-25 18:00:00
-Processing time 0012-04-26 00:00:00
-Processing time 0012-04-26 06:00:00
-Processing time 0012-04-26 12:00:00
-Processing time 0012-04-26 18:00:00
-Processing time 0012-04-27 00:00:00
-Processing time 0012-04-27 06:00:00
-Processing time 0012-04-27 12:00:00
-Processing time 0012-04-27 18:00:00
-Processing time 0012-04-28 00:00:00
-Processing time 0012-04-28 06:00:00
-Processing time 0012-04-28 12:00:00
-Processing time 0012-04-28 18:00:00
-Processing time 0012-04-29 00:00:00
-Processing time 0012-04-29 06:00:00
-Processing time 0012-04-29 12:00:00
-Processing time 0012-04-29 18:00:00
-Processing time 0012-04-30 00:00:00
-Processing time 0012-04-30 06:00:00
-Processing time 0012-04-30 12:00:00
-Processing time 0012-04-30 18:00:00
-Processing time 0012-05-01 00:00:00
-Processing time 0012-05-01 06:00:00
-Processing time 0012-05-01 12:00:00
-Processing time 0012-05-01 18:00:00
-Processing time 0012-05-02 00:00:00
-Processing time 0012-05-02 06:00:00
-Processing time 0012-05-02 12:00:00
-Processing time 0012-05-02 18:00:00
-Processing time 0012-05-03 00:00:00
-Processing time 0012-05-03 06:00:00
-Processing time 0012-05-03 12:00:00
-Processing time 0012-05-03 18:00:00
-Processing time 0012-05-04 00:00:00
-Processing time 0012-05-04 06:00:00
-Processing time 0012-05-04 12:00:00
-Processing time 0012-05-04 18:00:00
-Processing time 0012-05-05 00:00:00
-Processing time 0012-05-05 06:00:00
-Processing time 0012-05-05 12:00:00
-Processing time 0012-05-05 18:00:00
-Processing time 0012-05-06 00:00:00
-Processing time 0012-05-06 06:00:00
-Processing time 0012-05-06 12:00:00
-Processing time 0012-05-06 18:00:00
-Processing time 0012-05-07 00:00:00
-Processing time 0012-05-07 06:00:00
-Processing time 0012-05-07 12:00:00
-Processing time 0012-05-07 18:00:00
-Processing time 0012-05-08 00:00:00
-Processing time 0012-05-08 06:00:00
-Processing time 0012-05-08 12:00:00
-Processing time 0012-05-08 18:00:00
-Processing time 0012-05-09 00:00:00
-Processing time 0012-05-09 06:00:00
-Processing time 0012-05-09 12:00:00
-Processing time 0012-05-09 18:00:00
-Processing time 0012-05-10 00:00:00
-Processing time 0012-05-10 06:00:00
-Processing time 0012-05-10 12:00:00
-Processing time 0012-05-10 18:00:00
-Processing time 0012-05-11 00:00:00
-Processing time 0012-05-11 06:00:00
-Processing time 0012-05-11 12:00:00
-Processing time 0012-05-11 18:00:00
-Processing time 0012-05-12 00:00:00
-Processing time 0012-05-12 06:00:00
-Processing time 0012-05-12 12:00:00
-Processing time 0012-05-12 18:00:00
-Processing time 0012-05-13 00:00:00
-Processing time 0012-05-13 06:00:00
-Processing time 0012-05-13 12:00:00
-Processing time 0012-05-13 18:00:00
-Processing time 0012-05-14 00:00:00
-Processing time 0012-05-14 06:00:00
-Processing time 0012-05-14 12:00:00
-Processing time 0012-05-14 18:00:00
-Processing time 0012-05-15 00:00:00
-Processing time 0012-05-15 06:00:00
-Processing time 0012-05-15 12:00:00
-Processing time 0012-05-15 18:00:00
-Processing time 0012-05-16 00:00:00
-Processing time 0012-05-16 06:00:00
-Processing time 0012-05-16 12:00:00
-Processing time 0012-05-16 18:00:00
-Processing time 0012-05-17 00:00:00
-Processing time 0012-05-17 06:00:00
-Processing time 0012-05-17 12:00:00
-Processing time 0012-05-17 18:00:00
-Processing time 0012-05-18 00:00:00
-Processing time 0012-05-18 06:00:00
-Processing time 0012-05-18 12:00:00
-Processing time 0012-05-18 18:00:00
-Processing time 0012-05-19 00:00:00
-Processing time 0012-05-19 06:00:00
-Processing time 0012-05-19 12:00:00
-Processing time 0012-05-19 18:00:00
-Processing time 0012-05-20 00:00:00
-Processing time 0012-05-20 06:00:00
-Processing time 0012-05-20 12:00:00
-Processing time 0012-05-20 18:00:00
-Processing time 0012-05-21 00:00:00
-Processing time 0012-05-21 06:00:00
-Processing time 0012-05-21 12:00:00
-Processing time 0012-05-21 18:00:00
-Processing time 0012-05-22 00:00:00
-Processing time 0012-05-22 06:00:00
-Processing time 0012-05-22 12:00:00
-Processing time 0012-05-22 18:00:00
-Processing time 0012-05-23 00:00:00
-Processing time 0012-05-23 06:00:00
-Processing time 0012-05-23 12:00:00
-Processing time 0012-05-23 18:00:00
-Processing time 0012-05-24 00:00:00
-Processing time 0012-05-24 06:00:00
-Processing time 0012-05-24 12:00:00
-Processing time 0012-05-24 18:00:00
-Processing time 0012-05-25 00:00:00
-Processing time 0012-05-25 06:00:00
-Processing time 0012-05-25 12:00:00
-Processing time 0012-05-25 18:00:00
-Processing time 0012-05-26 00:00:00
-Processing time 0012-05-26 06:00:00
-Processing time 0012-05-26 12:00:00
-Processing time 0012-05-26 18:00:00
-Processing time 0012-05-27 00:00:00
-Processing time 0012-05-27 06:00:00
-Processing time 0012-05-27 12:00:00
-Processing time 0012-05-27 18:00:00
-Processing time 0012-05-28 00:00:00
-Processing time 0012-05-28 06:00:00
-Processing time 0012-05-28 12:00:00
-Processing time 0012-05-28 18:00:00
-Processing time 0012-05-29 00:00:00
-Processing time 0012-05-29 06:00:00
-Processing time 0012-05-29 12:00:00
-Processing time 0012-05-29 18:00:00
-Processing time 0012-05-30 00:00:00
-Processing time 0012-05-30 06:00:00
-Processing time 0012-05-30 12:00:00
-Processing time 0012-05-30 18:00:00
-Processing time 0012-05-31 00:00:00
-Processing time 0012-05-31 06:00:00
-Processing time 0012-05-31 12:00:00
-Processing time 0012-05-31 18:00:00
-Processing time 0012-06-01 00:00:00
-Processing time 0012-06-01 06:00:00
-Processing time 0012-06-01 12:00:00
-Processing time 0012-06-01 18:00:00
-Processing time 0012-06-02 00:00:00
-Processing time 0012-06-02 06:00:00
-Processing time 0012-06-02 12:00:00
-Processing time 0012-06-02 18:00:00
-Processing time 0012-06-03 00:00:00
-Processing time 0012-06-03 06:00:00
-Processing time 0012-06-03 12:00:00
-Processing time 0012-06-03 18:00:00
-Processing time 0012-06-04 00:00:00
-Processing time 0012-06-04 06:00:00
-Processing time 0012-06-04 12:00:00
-Processing time 0012-06-04 18:00:00
-Processing time 0012-06-05 00:00:00
-Processing time 0012-06-05 06:00:00
-Processing time 0012-06-05 12:00:00
-Processing time 0012-06-05 18:00:00
-Processing time 0012-06-06 00:00:00
-Processing time 0012-06-06 06:00:00
-Processing time 0012-06-06 12:00:00
-Processing time 0012-06-06 18:00:00
-Processing time 0012-06-07 00:00:00
-Processing time 0012-06-07 06:00:00
-Processing time 0012-06-07 12:00:00
-Processing time 0012-06-07 18:00:00
-Processing time 0012-06-08 00:00:00
-Processing time 0012-06-08 06:00:00
-Processing time 0012-06-08 12:00:00
-Processing time 0012-06-08 18:00:00
-Processing time 0012-06-09 00:00:00
-Processing time 0012-06-09 06:00:00
-Processing time 0012-06-09 12:00:00
-Processing time 0012-06-09 18:00:00
-Processing time 0012-06-10 00:00:00
-Processing time 0012-06-10 06:00:00
-Processing time 0012-06-10 12:00:00
-Processing time 0012-06-10 18:00:00
-Processing time 0012-06-11 00:00:00
-Processing time 0012-06-11 06:00:00
-Processing time 0012-06-11 12:00:00
-Processing time 0012-06-11 18:00:00
-Processing time 0012-06-12 00:00:00
-Processing time 0012-06-12 06:00:00
-Processing time 0012-06-12 12:00:00
-Processing time 0012-06-12 18:00:00
-Processing time 0012-06-13 00:00:00
-Processing time 0012-06-13 06:00:00
-Processing time 0012-06-13 12:00:00
-Processing time 0012-06-13 18:00:00
-Processing time 0012-06-14 00:00:00
-Processing time 0012-06-14 06:00:00
-Processing time 0012-06-14 12:00:00
-Processing time 0012-06-14 18:00:00
-Processing time 0012-06-15 00:00:00
-Processing time 0012-06-15 06:00:00
-Processing time 0012-06-15 12:00:00
-Processing time 0012-06-15 18:00:00
-Processing time 0012-06-16 00:00:00
-Processing time 0012-06-16 06:00:00
-Processing time 0012-06-16 12:00:00
-Processing time 0012-06-16 18:00:00
-Processing time 0012-06-17 00:00:00
-Processing time 0012-06-17 06:00:00
-Processing time 0012-06-17 12:00:00
-Processing time 0012-06-17 18:00:00
-Processing time 0012-06-18 00:00:00
-Processing time 0012-06-18 06:00:00
-Processing time 0012-06-18 12:00:00
-Processing time 0012-06-18 18:00:00
-Processing time 0012-06-19 00:00:00
-Processing time 0012-06-19 06:00:00
-Processing time 0012-06-19 12:00:00
-Processing time 0012-06-19 18:00:00
-Processing time 0012-06-20 00:00:00
-Processing time 0012-06-20 06:00:00
-Processing time 0012-06-20 12:00:00
-Processing time 0012-06-20 18:00:00
-Processing time 0012-06-21 00:00:00
-Processing time 0012-06-21 06:00:00
-Processing time 0012-06-21 12:00:00
-Processing time 0012-06-21 18:00:00
-Processing time 0012-06-22 00:00:00
-Processing time 0012-06-22 06:00:00
-Processing time 0012-06-22 12:00:00
-Processing time 0012-06-22 18:00:00
-Processing time 0012-06-23 00:00:00
-Processing time 0012-06-23 06:00:00
-Processing time 0012-06-23 12:00:00
-Processing time 0012-06-23 18:00:00
-Processing time 0012-06-24 00:00:00
-Processing time 0012-06-24 06:00:00
-Processing time 0012-06-24 12:00:00
-Processing time 0012-06-24 18:00:00
-Processing time 0012-06-25 00:00:00
-Processing time 0012-06-25 06:00:00
-Processing time 0012-06-25 12:00:00
-Processing time 0012-06-25 18:00:00
-Processing time 0012-06-26 00:00:00
-Processing time 0012-06-26 06:00:00
-Processing time 0012-06-26 12:00:00
-Processing time 0012-06-26 18:00:00
-Processing time 0012-06-27 00:00:00
-Processing time 0012-06-27 06:00:00
-Processing time 0012-06-27 12:00:00
-Processing time 0012-06-27 18:00:00
-Processing time 0012-06-28 00:00:00
-Processing time 0012-06-28 06:00:00
-Processing time 0012-06-28 12:00:00
-Processing time 0012-06-28 18:00:00
-Processing time 0012-06-29 00:00:00
-Processing time 0012-06-29 06:00:00
-Processing time 0012-06-29 12:00:00
-Processing time 0012-06-29 18:00:00
-Processing time 0012-06-30 00:00:00
-Processing time 0012-06-30 06:00:00
-Processing time 0012-06-30 12:00:00
-Processing time 0012-06-30 18:00:00
-Processing time 0012-07-01 00:00:00
-Processing time 0012-07-01 06:00:00
-Processing time 0012-07-01 12:00:00
-Processing time 0012-07-01 18:00:00
-Processing time 0012-07-02 00:00:00
-Processing time 0012-07-02 06:00:00
-Processing time 0012-07-02 12:00:00
-Processing time 0012-07-02 18:00:00
-Processing time 0012-07-03 00:00:00
-Processing time 0012-07-03 06:00:00
-Processing time 0012-07-03 12:00:00
-Processing time 0012-07-03 18:00:00
-Processing time 0012-07-04 00:00:00
-Processing time 0012-07-04 06:00:00
-Processing time 0012-07-04 12:00:00
-Processing time 0012-07-04 18:00:00
-Processing time 0012-07-05 00:00:00
-Processing time 0012-07-05 06:00:00
-Processing time 0012-07-05 12:00:00
-Processing time 0012-07-05 18:00:00
-Processing time 0012-07-06 00:00:00
-Processing time 0012-07-06 06:00:00
-Processing time 0012-07-06 12:00:00
-Processing time 0012-07-06 18:00:00
-Processing time 0012-07-07 00:00:00
-Processing time 0012-07-07 06:00:00
-Processing time 0012-07-07 12:00:00
-Processing time 0012-07-07 18:00:00
-Processing time 0012-07-08 00:00:00
-Processing time 0012-07-08 06:00:00
-Processing time 0012-07-08 12:00:00
-Processing time 0012-07-08 18:00:00
-Processing time 0012-07-09 00:00:00
-Processing time 0012-07-09 06:00:00
-Processing time 0012-07-09 12:00:00
-Processing time 0012-07-09 18:00:00
-Processing time 0012-07-10 00:00:00
-Processing time 0012-07-10 06:00:00
-Processing time 0012-07-10 12:00:00
-Processing time 0012-07-10 18:00:00
-Processing time 0012-07-11 00:00:00
-Processing time 0012-07-11 06:00:00
-Processing time 0012-07-11 12:00:00
-Processing time 0012-07-11 18:00:00
-Processing time 0012-07-12 00:00:00
-Processing time 0012-07-12 06:00:00
-Processing time 0012-07-12 12:00:00
-Processing time 0012-07-12 18:00:00
-Processing time 0012-07-13 00:00:00
-Processing time 0012-07-13 06:00:00
-Processing time 0012-07-13 12:00:00
-Processing time 0012-07-13 18:00:00
-Processing time 0012-07-14 00:00:00
-Processing time 0012-07-14 06:00:00
-Processing time 0012-07-14 12:00:00
-Processing time 0012-07-14 18:00:00
-Processing time 0012-07-15 00:00:00
-Processing time 0012-07-15 06:00:00
-Processing time 0012-07-15 12:00:00
-Processing time 0012-07-15 18:00:00
-Processing time 0012-07-16 00:00:00
-Processing time 0012-07-16 06:00:00
-Processing time 0012-07-16 12:00:00
-Processing time 0012-07-16 18:00:00
-Processing time 0012-07-17 00:00:00
-Processing time 0012-07-17 06:00:00
-Processing time 0012-07-17 12:00:00
-Processing time 0012-07-17 18:00:00
-Processing time 0012-07-18 00:00:00
-Processing time 0012-07-18 06:00:00
-Processing time 0012-07-18 12:00:00
-Processing time 0012-07-18 18:00:00
-Processing time 0012-07-19 00:00:00
-Processing time 0012-07-19 06:00:00
-Processing time 0012-07-19 12:00:00
-Processing time 0012-07-19 18:00:00
-Processing time 0012-07-20 00:00:00
-Processing time 0012-07-20 06:00:00
-Processing time 0012-07-20 12:00:00
-Processing time 0012-07-20 18:00:00
-Processing time 0012-07-21 00:00:00
-Processing time 0012-07-21 06:00:00
-Processing time 0012-07-21 12:00:00
-Processing time 0012-07-21 18:00:00
-Processing time 0012-07-22 00:00:00
-Processing time 0012-07-22 06:00:00
-Processing time 0012-07-22 12:00:00
-Processing time 0012-07-22 18:00:00
-Processing time 0012-07-23 00:00:00
-Processing time 0012-07-23 06:00:00
-Processing time 0012-07-23 12:00:00
-Processing time 0012-07-23 18:00:00
-Processing time 0012-07-24 00:00:00
-Processing time 0012-07-24 06:00:00
-Processing time 0012-07-24 12:00:00
-Processing time 0012-07-24 18:00:00
-Processing time 0012-07-25 00:00:00
-Processing time 0012-07-25 06:00:00
-Processing time 0012-07-25 12:00:00
-Processing time 0012-07-25 18:00:00
-Processing time 0012-07-26 00:00:00
-Processing time 0012-07-26 06:00:00
-Processing time 0012-07-26 12:00:00
-Processing time 0012-07-26 18:00:00
-Processing time 0012-07-27 00:00:00
-Processing time 0012-07-27 06:00:00
-Processing time 0012-07-27 12:00:00
-Processing time 0012-07-27 18:00:00
-Processing time 0012-07-28 00:00:00
-Processing time 0012-07-28 06:00:00
-Processing time 0012-07-28 12:00:00
-Processing time 0012-07-28 18:00:00
-Processing time 0012-07-29 00:00:00
-Processing time 0012-07-29 06:00:00
-Processing time 0012-07-29 12:00:00
-Processing time 0012-07-29 18:00:00
-Processing time 0012-07-30 00:00:00
-Processing time 0012-07-30 06:00:00
-Processing time 0012-07-30 12:00:00
-Processing time 0012-07-30 18:00:00
-Processing time 0012-07-31 00:00:00
-Processing time 0012-07-31 06:00:00
-Processing time 0012-07-31 12:00:00
-Processing time 0012-07-31 18:00:00
-Processing time 0012-08-01 00:00:00
-Processing time 0012-08-01 06:00:00
-Processing time 0012-08-01 12:00:00
-Processing time 0012-08-01 18:00:00
-Processing time 0012-08-02 00:00:00
-Processing time 0012-08-02 06:00:00
-Processing time 0012-08-02 12:00:00
-Processing time 0012-08-02 18:00:00
-Processing time 0012-08-03 00:00:00
-Processing time 0012-08-03 06:00:00
-Processing time 0012-08-03 12:00:00
-Processing time 0012-08-03 18:00:00
-Processing time 0012-08-04 00:00:00
-Processing time 0012-08-04 06:00:00
-Processing time 0012-08-04 12:00:00
-Processing time 0012-08-04 18:00:00
-Processing time 0012-08-05 00:00:00
-Processing time 0012-08-05 06:00:00
-Processing time 0012-08-05 12:00:00
-Processing time 0012-08-05 18:00:00
-Processing time 0012-08-06 00:00:00
-Processing time 0012-08-06 06:00:00
-Processing time 0012-08-06 12:00:00
-Processing time 0012-08-06 18:00:00
-Processing time 0012-08-07 00:00:00
-Processing time 0012-08-07 06:00:00
-Processing time 0012-08-07 12:00:00
-Processing time 0012-08-07 18:00:00
-Processing time 0012-08-08 00:00:00
-Processing time 0012-08-08 06:00:00
-Processing time 0012-08-08 12:00:00
-Processing time 0012-08-08 18:00:00
-Processing time 0012-08-09 00:00:00
-Processing time 0012-08-09 06:00:00
-Processing time 0012-08-09 12:00:00
-Processing time 0012-08-09 18:00:00
-Processing time 0012-08-10 00:00:00
-Processing time 0012-08-10 06:00:00
-Processing time 0012-08-10 12:00:00
-Processing time 0012-08-10 18:00:00
-Processing time 0012-08-11 00:00:00
-Processing time 0012-08-11 06:00:00
-Processing time 0012-08-11 12:00:00
-Processing time 0012-08-11 18:00:00
-Processing time 0012-08-12 00:00:00
-Processing time 0012-08-12 06:00:00
-Processing time 0012-08-12 12:00:00
-Processing time 0012-08-12 18:00:00
-Processing time 0012-08-13 00:00:00
-Processing time 0012-08-13 06:00:00
-Processing time 0012-08-13 12:00:00
-Processing time 0012-08-13 18:00:00
-Processing time 0012-08-14 00:00:00
-Processing time 0012-08-14 06:00:00
-Processing time 0012-08-14 12:00:00
-Processing time 0012-08-14 18:00:00
-Processing time 0012-08-15 00:00:00
-Processing time 0012-08-15 06:00:00
-Processing time 0012-08-15 12:00:00
-Processing time 0012-08-15 18:00:00
-Processing time 0012-08-16 00:00:00
-Processing time 0012-08-16 06:00:00
-Processing time 0012-08-16 12:00:00
-Processing time 0012-08-16 18:00:00
-Processing time 0012-08-17 00:00:00
-Processing time 0012-08-17 06:00:00
-Processing time 0012-08-17 12:00:00
-Processing time 0012-08-17 18:00:00
-Processing time 0012-08-18 00:00:00
-Processing time 0012-08-18 06:00:00
-Processing time 0012-08-18 12:00:00
-Processing time 0012-08-18 18:00:00
-Processing time 0012-08-19 00:00:00
-Processing time 0012-08-19 06:00:00
-Processing time 0012-08-19 12:00:00
-Processing time 0012-08-19 18:00:00
-Processing time 0012-08-20 00:00:00
-Processing time 0012-08-20 06:00:00
-Processing time 0012-08-20 12:00:00
-Processing time 0012-08-20 18:00:00
-Processing time 0012-08-21 00:00:00
-Processing time 0012-08-21 06:00:00
-Processing time 0012-08-21 12:00:00
-Processing time 0012-08-21 18:00:00
-Processing time 0012-08-22 00:00:00
-Processing time 0012-08-22 06:00:00
-Processing time 0012-08-22 12:00:00
-Processing time 0012-08-22 18:00:00
-Processing time 0012-08-23 00:00:00
-Processing time 0012-08-23 06:00:00
-Processing time 0012-08-23 12:00:00
-Processing time 0012-08-23 18:00:00
-Processing time 0012-08-24 00:00:00
-Processing time 0012-08-24 06:00:00
-Processing time 0012-08-24 12:00:00
-Processing time 0012-08-24 18:00:00
-Processing time 0012-08-25 00:00:00
-Processing time 0012-08-25 06:00:00
-Processing time 0012-08-25 12:00:00
-Processing time 0012-08-25 18:00:00
-Processing time 0012-08-26 00:00:00
-Processing time 0012-08-26 06:00:00
-Processing time 0012-08-26 12:00:00
-Processing time 0012-08-26 18:00:00
-Processing time 0012-08-27 00:00:00
-Processing time 0012-08-27 06:00:00
-Processing time 0012-08-27 12:00:00
-Processing time 0012-08-27 18:00:00
-Processing time 0012-08-28 00:00:00
-Processing time 0012-08-28 06:00:00
-Processing time 0012-08-28 12:00:00
-Processing time 0012-08-28 18:00:00
-Processing time 0012-08-29 00:00:00
-Processing time 0012-08-29 06:00:00
-Processing time 0012-08-29 12:00:00
-Processing time 0012-08-29 18:00:00
-Processing time 0012-08-30 00:00:00
-Processing time 0012-08-30 06:00:00
-Processing time 0012-08-30 12:00:00
-Processing time 0012-08-30 18:00:00
-Processing time 0012-08-31 00:00:00
-Processing time 0012-08-31 06:00:00
-Processing time 0012-08-31 12:00:00
-Processing time 0012-08-31 18:00:00
-Processing time 0012-09-01 00:00:00
-Processing time 0012-09-01 06:00:00
-Processing time 0012-09-01 12:00:00
-Processing time 0012-09-01 18:00:00
-Processing time 0012-09-02 00:00:00
-Processing time 0012-09-02 06:00:00
-Processing time 0012-09-02 12:00:00
-Processing time 0012-09-02 18:00:00
-Processing time 0012-09-03 00:00:00
-Processing time 0012-09-03 06:00:00
-Processing time 0012-09-03 12:00:00
-Processing time 0012-09-03 18:00:00
-Processing time 0012-09-04 00:00:00
-Processing time 0012-09-04 06:00:00
-Processing time 0012-09-04 12:00:00
-Processing time 0012-09-04 18:00:00
-Processing time 0012-09-05 00:00:00
-Processing time 0012-09-05 06:00:00
-Processing time 0012-09-05 12:00:00
-Processing time 0012-09-05 18:00:00
-Processing time 0012-09-06 00:00:00
-Processing time 0012-09-06 06:00:00
-Processing time 0012-09-06 12:00:00
-Processing time 0012-09-06 18:00:00
-Processing time 0012-09-07 00:00:00
-Processing time 0012-09-07 06:00:00
-Processing time 0012-09-07 12:00:00
-Processing time 0012-09-07 18:00:00
-Processing time 0012-09-08 00:00:00
-Processing time 0012-09-08 06:00:00
-Processing time 0012-09-08 12:00:00
-Processing time 0012-09-08 18:00:00
-Processing time 0012-09-09 00:00:00
-Processing time 0012-09-09 06:00:00
-Processing time 0012-09-09 12:00:00
-Processing time 0012-09-09 18:00:00
-Processing time 0012-09-10 00:00:00
-Processing time 0012-09-10 06:00:00
-Processing time 0012-09-10 12:00:00
-Processing time 0012-09-10 18:00:00
-Processing time 0012-09-11 00:00:00
-Processing time 0012-09-11 06:00:00
-Processing time 0012-09-11 12:00:00
-Processing time 0012-09-11 18:00:00
-Processing time 0012-09-12 00:00:00
-Processing time 0012-09-12 06:00:00
-Processing time 0012-09-12 12:00:00
-Processing time 0012-09-12 18:00:00
-Processing time 0012-09-13 00:00:00
-Processing time 0012-09-13 06:00:00
-Processing time 0012-09-13 12:00:00
-Processing time 0012-09-13 18:00:00
-Processing time 0012-09-14 00:00:00
-Processing time 0012-09-14 06:00:00
-Processing time 0012-09-14 12:00:00
-Processing time 0012-09-14 18:00:00
-Processing time 0012-09-15 00:00:00
-Processing time 0012-09-15 06:00:00
-Processing time 0012-09-15 12:00:00
-Processing time 0012-09-15 18:00:00
-Processing time 0012-09-16 00:00:00
-Processing time 0012-09-16 06:00:00
-Processing time 0012-09-16 12:00:00
-Processing time 0012-09-16 18:00:00
-Processing time 0012-09-17 00:00:00
-Processing time 0012-09-17 06:00:00
-Processing time 0012-09-17 12:00:00
-Processing time 0012-09-17 18:00:00
-Processing time 0012-09-18 00:00:00
-Processing time 0012-09-18 06:00:00
-Processing time 0012-09-18 12:00:00
-Processing time 0012-09-18 18:00:00
-Processing time 0012-09-19 00:00:00
-Processing time 0012-09-19 06:00:00
-Processing time 0012-09-19 12:00:00
-Processing time 0012-09-19 18:00:00
-Processing time 0012-09-20 00:00:00
-Processing time 0012-09-20 06:00:00
-Processing time 0012-09-20 12:00:00
-Processing time 0012-09-20 18:00:00
-Processing time 0012-09-21 00:00:00
-Processing time 0012-09-21 06:00:00
-Processing time 0012-09-21 12:00:00
-Processing time 0012-09-21 18:00:00
-Processing time 0012-09-22 00:00:00
-Processing time 0012-09-22 06:00:00
-Processing time 0012-09-22 12:00:00
-Processing time 0012-09-22 18:00:00
-Processing time 0012-09-23 00:00:00
-Processing time 0012-09-23 06:00:00
-Processing time 0012-09-23 12:00:00
-Processing time 0012-09-23 18:00:00
-Processing time 0012-09-24 00:00:00
-Processing time 0012-09-24 06:00:00
-Processing time 0012-09-24 12:00:00
-Processing time 0012-09-24 18:00:00
-Processing time 0012-09-25 00:00:00
-Processing time 0012-09-25 06:00:00
-Processing time 0012-09-25 12:00:00
-Processing time 0012-09-25 18:00:00
-Processing time 0012-09-26 00:00:00
-Processing time 0012-09-26 06:00:00
-Processing time 0012-09-26 12:00:00
-Processing time 0012-09-26 18:00:00
-Processing time 0012-09-27 00:00:00
-Processing time 0012-09-27 06:00:00
-Processing time 0012-09-27 12:00:00
-Processing time 0012-09-27 18:00:00
-Processing time 0012-09-28 00:00:00
-Processing time 0012-09-28 06:00:00
-Processing time 0012-09-28 12:00:00
-Processing time 0012-09-28 18:00:00
-Processing time 0012-09-29 00:00:00
-Processing time 0012-09-29 06:00:00
-Processing time 0012-09-29 12:00:00
-Processing time 0012-09-29 18:00:00
-Processing time 0012-09-30 00:00:00
-Processing time 0012-09-30 06:00:00
-Processing time 0012-09-30 12:00:00
-Processing time 0012-09-30 18:00:00
-Processing time 0012-10-01 00:00:00
-Processing time 0012-10-01 06:00:00
-Processing time 0012-10-01 12:00:00
-Processing time 0012-10-01 18:00:00
-Processing time 0012-10-02 00:00:00
-Processing time 0012-10-02 06:00:00
-Processing time 0012-10-02 12:00:00
-Processing time 0012-10-02 18:00:00
-Processing time 0012-10-03 00:00:00
-Processing time 0012-10-03 06:00:00
-Processing time 0012-10-03 12:00:00
-Processing time 0012-10-03 18:00:00
-Processing time 0012-10-04 00:00:00
-Processing time 0012-10-04 06:00:00
-Processing time 0012-10-04 12:00:00
-Processing time 0012-10-04 18:00:00
-Processing time 0012-10-05 00:00:00
-Processing time 0012-10-05 06:00:00
-Processing time 0012-10-05 12:00:00
-Processing time 0012-10-05 18:00:00
-Processing time 0012-10-06 00:00:00
-Processing time 0012-10-06 06:00:00
-Processing time 0012-10-06 12:00:00
-Processing time 0012-10-06 18:00:00
-Processing time 0012-10-07 00:00:00
-Processing time 0012-10-07 06:00:00
-Processing time 0012-10-07 12:00:00
-Processing time 0012-10-07 18:00:00
-Processing time 0012-10-08 00:00:00
-Processing time 0012-10-08 06:00:00
-Processing time 0012-10-08 12:00:00
-Processing time 0012-10-08 18:00:00
-Processing time 0012-10-09 00:00:00
-Processing time 0012-10-09 06:00:00
-Processing time 0012-10-09 12:00:00
-Processing time 0012-10-09 18:00:00
-Processing time 0012-10-10 00:00:00
-Processing time 0012-10-10 06:00:00
-Processing time 0012-10-10 12:00:00
-Processing time 0012-10-10 18:00:00
-Processing time 0012-10-11 00:00:00
-Processing time 0012-10-11 06:00:00
-Processing time 0012-10-11 12:00:00
-Processing time 0012-10-11 18:00:00
-Processing time 0012-10-12 00:00:00
-Processing time 0012-10-12 06:00:00
-Processing time 0012-10-12 12:00:00
-Processing time 0012-10-12 18:00:00
-Processing time 0012-10-13 00:00:00
-Processing time 0012-10-13 06:00:00
-Processing time 0012-10-13 12:00:00
-Processing time 0012-10-13 18:00:00
-Processing time 0012-10-14 00:00:00
-Processing time 0012-10-14 06:00:00
-Processing time 0012-10-14 12:00:00
-Processing time 0012-10-14 18:00:00
-Processing time 0012-10-15 00:00:00
-Processing time 0012-10-15 06:00:00
-Processing time 0012-10-15 12:00:00
-Processing time 0012-10-15 18:00:00
-Processing time 0012-10-16 00:00:00
-Processing time 0012-10-16 06:00:00
-Processing time 0012-10-16 12:00:00
-Processing time 0012-10-16 18:00:00
-Processing time 0012-10-17 00:00:00
-Processing time 0012-10-17 06:00:00
-Processing time 0012-10-17 12:00:00
-Processing time 0012-10-17 18:00:00
-Processing time 0012-10-18 00:00:00
-Processing time 0012-10-18 06:00:00
-Processing time 0012-10-18 12:00:00
-Processing time 0012-10-18 18:00:00
-Processing time 0012-10-19 00:00:00
-Processing time 0012-10-19 06:00:00
-Processing time 0012-10-19 12:00:00
-Processing time 0012-10-19 18:00:00
-Processing time 0012-10-20 00:00:00
-Processing time 0012-10-20 06:00:00
-Processing time 0012-10-20 12:00:00
-Processing time 0012-10-20 18:00:00
-Processing time 0012-10-21 00:00:00
-Processing time 0012-10-21 06:00:00
-Processing time 0012-10-21 12:00:00
-Processing time 0012-10-21 18:00:00
-Processing time 0012-10-22 00:00:00
-Processing time 0012-10-22 06:00:00
-Processing time 0012-10-22 12:00:00
-Processing time 0012-10-22 18:00:00
-Processing time 0012-10-23 00:00:00
-Processing time 0012-10-23 06:00:00
-Processing time 0012-10-23 12:00:00
-Processing time 0012-10-23 18:00:00
-Processing time 0012-10-24 00:00:00
-Processing time 0012-10-24 06:00:00
-Processing time 0012-10-24 12:00:00
-Processing time 0012-10-24 18:00:00
-Processing time 0012-10-25 00:00:00
-Processing time 0012-10-25 06:00:00
-Processing time 0012-10-25 12:00:00
-Processing time 0012-10-25 18:00:00
-Processing time 0012-10-26 00:00:00
-Processing time 0012-10-26 06:00:00
-Processing time 0012-10-26 12:00:00
-Processing time 0012-10-26 18:00:00
-Processing time 0012-10-27 00:00:00
-Processing time 0012-10-27 06:00:00
-Processing time 0012-10-27 12:00:00
-Processing time 0012-10-27 18:00:00
-Processing time 0012-10-28 00:00:00
-Processing time 0012-10-28 06:00:00
-Processing time 0012-10-28 12:00:00
-Processing time 0012-10-28 18:00:00
-Processing time 0012-10-29 00:00:00
-Processing time 0012-10-29 06:00:00
-Processing time 0012-10-29 12:00:00
-Processing time 0012-10-29 18:00:00
-Processing time 0012-10-30 00:00:00
-Processing time 0012-10-30 06:00:00
-Processing time 0012-10-30 12:00:00
-Processing time 0012-10-30 18:00:00
-Processing time 0012-10-31 00:00:00
-Processing time 0012-10-31 06:00:00
-Processing time 0012-10-31 12:00:00
-Processing time 0012-10-31 18:00:00
-Processing time 0012-11-01 00:00:00
-Processing time 0012-11-01 06:00:00
-Processing time 0012-11-01 12:00:00
-Processing time 0012-11-01 18:00:00
-Processing time 0012-11-02 00:00:00
-Processing time 0012-11-02 06:00:00
-Processing time 0012-11-02 12:00:00
-Processing time 0012-11-02 18:00:00
-Processing time 0012-11-03 00:00:00
-Processing time 0012-11-03 06:00:00
-Processing time 0012-11-03 12:00:00
-Processing time 0012-11-03 18:00:00
-Processing time 0012-11-04 00:00:00
-Processing time 0012-11-04 06:00:00
-Processing time 0012-11-04 12:00:00
-Processing time 0012-11-04 18:00:00
-Processing time 0012-11-05 00:00:00
-Processing time 0012-11-05 06:00:00
-Processing time 0012-11-05 12:00:00
-Processing time 0012-11-05 18:00:00
-Processing time 0012-11-06 00:00:00
-Processing time 0012-11-06 06:00:00
-Processing time 0012-11-06 12:00:00
-Processing time 0012-11-06 18:00:00
-Processing time 0012-11-07 00:00:00
-Processing time 0012-11-07 06:00:00
-Processing time 0012-11-07 12:00:00
-Processing time 0012-11-07 18:00:00
-Processing time 0012-11-08 00:00:00
-Processing time 0012-11-08 06:00:00
-Processing time 0012-11-08 12:00:00
-Processing time 0012-11-08 18:00:00
-Processing time 0012-11-09 00:00:00
-Processing time 0012-11-09 06:00:00
-Processing time 0012-11-09 12:00:00
-Processing time 0012-11-09 18:00:00
-Processing time 0012-11-10 00:00:00
-Processing time 0012-11-10 06:00:00
-Processing time 0012-11-10 12:00:00
-Processing time 0012-11-10 18:00:00
-Processing time 0012-11-11 00:00:00
-Processing time 0012-11-11 06:00:00
-Processing time 0012-11-11 12:00:00
-Processing time 0012-11-11 18:00:00
-Processing time 0012-11-12 00:00:00
-Processing time 0012-11-12 06:00:00
-Processing time 0012-11-12 12:00:00
-Processing time 0012-11-12 18:00:00
-Processing time 0012-11-13 00:00:00
-Processing time 0012-11-13 06:00:00
-Processing time 0012-11-13 12:00:00
-Processing time 0012-11-13 18:00:00
-Processing time 0012-11-14 00:00:00
-Processing time 0012-11-14 06:00:00
-Processing time 0012-11-14 12:00:00
-Processing time 0012-11-14 18:00:00
-Processing time 0012-11-15 00:00:00
-Processing time 0012-11-15 06:00:00
-Processing time 0012-11-15 12:00:00
-Processing time 0012-11-15 18:00:00
-Processing time 0012-11-16 00:00:00
-Processing time 0012-11-16 06:00:00
-Processing time 0012-11-16 12:00:00
-Processing time 0012-11-16 18:00:00
-Processing time 0012-11-17 00:00:00
-Processing time 0012-11-17 06:00:00
-Processing time 0012-11-17 12:00:00
-Processing time 0012-11-17 18:00:00
-Processing time 0012-11-18 00:00:00
-Processing time 0012-11-18 06:00:00
-Processing time 0012-11-18 12:00:00
-Processing time 0012-11-18 18:00:00
-Processing time 0012-11-19 00:00:00
-Processing time 0012-11-19 06:00:00
-Processing time 0012-11-19 12:00:00
-Processing time 0012-11-19 18:00:00
-Processing time 0012-11-20 00:00:00
-Processing time 0012-11-20 06:00:00
-Processing time 0012-11-20 12:00:00
-Processing time 0012-11-20 18:00:00
-Processing time 0012-11-21 00:00:00
-Processing time 0012-11-21 06:00:00
-Processing time 0012-11-21 12:00:00
-Processing time 0012-11-21 18:00:00
-Processing time 0012-11-22 00:00:00
-Processing time 0012-11-22 06:00:00
-Processing time 0012-11-22 12:00:00
-Processing time 0012-11-22 18:00:00
-Processing time 0012-11-23 00:00:00
-Processing time 0012-11-23 06:00:00
-Processing time 0012-11-23 12:00:00
-Processing time 0012-11-23 18:00:00
-Processing time 0012-11-24 00:00:00
-Processing time 0012-11-24 06:00:00
-Processing time 0012-11-24 12:00:00
-Processing time 0012-11-24 18:00:00
-Processing time 0012-11-25 00:00:00
-Processing time 0012-11-25 06:00:00
-Processing time 0012-11-25 12:00:00
-Processing time 0012-11-25 18:00:00
-Processing time 0012-11-26 00:00:00
-Processing time 0012-11-26 06:00:00
-Processing time 0012-11-26 12:00:00
-Processing time 0012-11-26 18:00:00
-Processing time 0012-11-27 00:00:00
-Processing time 0012-11-27 06:00:00
-Processing time 0012-11-27 12:00:00
-Processing time 0012-11-27 18:00:00
-Processing time 0012-11-28 00:00:00
-Processing time 0012-11-28 06:00:00
-Processing time 0012-11-28 12:00:00
-Processing time 0012-11-28 18:00:00
-Processing time 0012-11-29 00:00:00
-Processing time 0012-11-29 06:00:00
-Processing time 0012-11-29 12:00:00
-Processing time 0012-11-29 18:00:00
-Processing time 0012-11-30 00:00:00
-Processing time 0012-11-30 06:00:00
-Processing time 0012-11-30 12:00:00
-Processing time 0012-11-30 18:00:00
-Processing time 0012-12-01 00:00:00
-Processing time 0012-12-01 06:00:00
-Processing time 0012-12-01 12:00:00
-Processing time 0012-12-01 18:00:00
-Processing time 0012-12-02 00:00:00
-Processing time 0012-12-02 06:00:00
-Processing time 0012-12-02 12:00:00
-Processing time 0012-12-02 18:00:00
-Processing time 0012-12-03 00:00:00
-Processing time 0012-12-03 06:00:00
-Processing time 0012-12-03 12:00:00
-Processing time 0012-12-03 18:00:00
-Processing time 0012-12-04 00:00:00
-Processing time 0012-12-04 06:00:00
-Processing time 0012-12-04 12:00:00
-Processing time 0012-12-04 18:00:00
-Processing time 0012-12-05 00:00:00
-Processing time 0012-12-05 06:00:00
-Processing time 0012-12-05 12:00:00
-Processing time 0012-12-05 18:00:00
-Processing time 0012-12-06 00:00:00
-Processing time 0012-12-06 06:00:00
-Processing time 0012-12-06 12:00:00
-Processing time 0012-12-06 18:00:00
-Processing time 0012-12-07 00:00:00
-Processing time 0012-12-07 06:00:00
-Processing time 0012-12-07 12:00:00
-Processing time 0012-12-07 18:00:00
-Processing time 0012-12-08 00:00:00
-Processing time 0012-12-08 06:00:00
-Processing time 0012-12-08 12:00:00
-Processing time 0012-12-08 18:00:00
-Processing time 0012-12-09 00:00:00
-Processing time 0012-12-09 06:00:00
-Processing time 0012-12-09 12:00:00
-Processing time 0012-12-09 18:00:00
-Processing time 0012-12-10 00:00:00
-Processing time 0012-12-10 06:00:00
-Processing time 0012-12-10 12:00:00
-Processing time 0012-12-10 18:00:00
-Processing time 0012-12-11 00:00:00
-Processing time 0012-12-11 06:00:00
-Processing time 0012-12-11 12:00:00
-Processing time 0012-12-11 18:00:00
-Processing time 0012-12-12 00:00:00
-Processing time 0012-12-12 06:00:00
-Processing time 0012-12-12 12:00:00
-Processing time 0012-12-12 18:00:00
-Processing time 0012-12-13 00:00:00
-Processing time 0012-12-13 06:00:00
-Processing time 0012-12-13 12:00:00
-Processing time 0012-12-13 18:00:00
-Processing time 0012-12-14 00:00:00
-Processing time 0012-12-14 06:00:00
-Processing time 0012-12-14 12:00:00
-Processing time 0012-12-14 18:00:00
-Processing time 0012-12-15 00:00:00
-Processing time 0012-12-15 06:00:00
-Processing time 0012-12-15 12:00:00
-Processing time 0012-12-15 18:00:00
-Processing time 0012-12-16 00:00:00
-Processing time 0012-12-16 06:00:00
-Processing time 0012-12-16 12:00:00
-Processing time 0012-12-16 18:00:00
-Processing time 0012-12-17 00:00:00
-Processing time 0012-12-17 06:00:00
-Processing time 0012-12-17 12:00:00
-Processing time 0012-12-17 18:00:00
-Processing time 0012-12-18 00:00:00
-Processing time 0012-12-18 06:00:00
-Processing time 0012-12-18 12:00:00
-Processing time 0012-12-18 18:00:00
-Processing time 0012-12-19 00:00:00
-Processing time 0012-12-19 06:00:00
-Processing time 0012-12-19 12:00:00
-Processing time 0012-12-19 18:00:00
-Processing time 0012-12-20 00:00:00
-Processing time 0012-12-20 06:00:00
-Processing time 0012-12-20 12:00:00
-Processing time 0012-12-20 18:00:00
-Processing time 0012-12-21 00:00:00
-Processing time 0012-12-21 06:00:00
-Processing time 0012-12-21 12:00:00
-Processing time 0012-12-21 18:00:00
-Processing time 0012-12-22 00:00:00
-Processing time 0012-12-22 06:00:00
-Processing time 0012-12-22 12:00:00
-Processing time 0012-12-22 18:00:00
-Processing time 0012-12-23 00:00:00
-Processing time 0012-12-23 06:00:00
-Processing time 0012-12-23 12:00:00
-Processing time 0012-12-23 18:00:00
-Processing time 0012-12-24 00:00:00
-Processing time 0012-12-24 06:00:00
-Processing time 0012-12-24 12:00:00
-Processing time 0012-12-24 18:00:00
-Processing time 0012-12-25 00:00:00
-Processing time 0012-12-25 06:00:00
-Processing time 0012-12-25 12:00:00
-Processing time 0012-12-25 18:00:00
-Processing time 0012-12-26 00:00:00
-Processing time 0012-12-26 06:00:00
-Processing time 0012-12-26 12:00:00
-Processing time 0012-12-26 18:00:00
-Processing time 0012-12-27 00:00:00
-Processing time 0012-12-27 06:00:00
-Processing time 0012-12-27 12:00:00
-Processing time 0012-12-27 18:00:00
-Processing time 0012-12-28 00:00:00
-Processing time 0012-12-28 06:00:00
-Processing time 0012-12-28 12:00:00
-Processing time 0012-12-28 18:00:00
-Processing time 0012-12-29 00:00:00
-Processing time 0012-12-29 06:00:00
-Processing time 0012-12-29 12:00:00
-Processing time 0012-12-29 18:00:00
-Processing time 0012-12-30 00:00:00
-Processing time 0012-12-30 06:00:00
-Processing time 0012-12-30 12:00:00
-Processing time 0012-12-30 18:00:00
-Processing time 0012-12-31 00:00:00
-Processing time 0012-12-31 06:00:00
-Processing time 0012-12-31 12:00:00
-Processing time 0012-12-31 18:00:00
-Terminated
+[58656 rows x 14 columns]
+
+ 0012-08-15 00:00:00 *h1i.0012-08-15-00000*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-08-15-00000.nc']
+[]
+1968 125.792789 13.963628
+<xarray.UxDataArray 'TC_R4' (n_face: 10794)> Size: 86kB
+[10794 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-08-15 00:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-12-08 18:00:00 *h1i.0012-12-08-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-12-08-64800.nc']
+[]
+2015 183.957303 15.172711
+<xarray.UxDataArray 'TC_R4' (n_face: 9084)> Size: 73kB
+[9084 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-12-08 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-03-14 18:00:00 *h1i.0012-03-14-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-03-14-64800.nc']
+[]
+1877 203.792777 -16.557474
+<xarray.UxDataArray 'TC_R4' (n_face: 9751)> Size: 78kB
+[9751 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-03-14 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-06-11 06:00:00 *h1i.0012-06-11-21600*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-06-11-21600.nc']
+[]
+1919 199.5 13.463248
+<xarray.UxDataArray 'TC_R4' (n_face: 9544)> Size: 76kB
+[9544 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-06-11 06:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-02-06 06:00:00 *h1i.0012-02-06-21600*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-02-06-21600.nc']
+[]
+1851 170.25 6.653384
+<xarray.UxDataArray 'TC_R4' (n_face: 9231)> Size: 74kB
+[9231 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-02-06 06:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-01-07 06:00:00 *h1i.0012-01-07-21600*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-01-07-21600.nc']
+[]
+1825 297.75 9.798894
+<xarray.UxDataArray 'TC_R4' (n_face: 10193)> Size: 82kB
+[10193 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-01-07 06:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-08-27 06:00:00 *h1i.0012-08-27-21600*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-08-27-21600.nc']
+[]
+1976 54.957125 20.498512
+<xarray.UxDataArray 'TC_R4' (n_face: 10401)> Size: 83kB
+[10401 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-08-27 06:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-05-17 18:00:00 *h1i.0012-05-17-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-05-17-64800.nc']
+[]
+1908 117.75 -12.667198
+<xarray.UxDataArray 'TC_R4' (n_face: 10105)> Size: 81kB
+[10105 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-05-17 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-06-05 18:00:00 *h1i.0012-06-05-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-06-05-64800.nc']
+[]
+1920 171.957278 -13.372006
+<xarray.UxDataArray 'TC_R4' (n_face: 9190)> Size: 74kB
+[9190 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-06-05 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-01-31 12:00:00 *h1i.0012-01-31-43200*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-01-31-43200.nc']
+[]
+1848 125.042856 -19.200763
+<xarray.UxDataArray 'TC_R4' (n_face: 10472)> Size: 84kB
+[10472 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-01-31 12:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-01-13 12:00:00 *h1i.0012-01-13-43200*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-01-13-43200.nc']
+[]
+1833 33.0 8.835261
+<xarray.UxDataArray 'TC_R4' (n_face: 10717)> Size: 86kB
+[10717 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-01-13 12:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-05-31 18:00:00 *h1i.0012-05-31-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-05-31-64800.nc']
+[]
+1916 159.75 -9.157904
+<xarray.UxDataArray 'TC_R4' (n_face: 9642)> Size: 77kB
+[9642 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-05-31 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-12-18 18:00:00 *h1i.0012-12-18-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-12-18-64800.nc']
+[]
+2032 269.25 7.706641
+<xarray.UxDataArray 'TC_R4' (n_face: 9057)> Size: 72kB
+[9057 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-12-18 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-10-23 12:00:00 *h1i.0012-10-23-43200*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-10-23-43200.nc']
+[]
+1992 202.707582 -36.22879
+<xarray.UxDataArray 'TC_R4' (n_face: 9053)> Size: 72kB
+[9053 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-10-23 12:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-04-09 00:00:00 *h1i.0012-04-09-00000*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-04-09-00000.nc']
+[]
+1888 253.292676 13.149209
+<xarray.UxDataArray 'TC_R4' (n_face: 9417)> Size: 75kB
+[9417 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-04-09 00:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-09-01 18:00:00 *h1i.0012-09-01-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-09-01-64800.nc']
+[]
+1981 162.207279 -8.576072
+<xarray.UxDataArray 'TC_R4' (n_face: 9511)> Size: 76kB
+[9511 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-09-01 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-03-07 18:00:00 *h1i.0012-03-07-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-03-07-64800.nc']
+[]
+1871 117.207373 -16.305965
+<xarray.UxDataArray 'TC_R4' (n_face: 9980)> Size: 80kB
+[9980 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-03-07 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-06-14 12:00:00 *h1i.0012-06-14-43200*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-06-14-43200.nc']
+[]
+1926 358.707291 11.454454
+<xarray.UxDataArray 'TC_R4' (n_face: 9064)> Size: 73kB
+[9064 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-06-14 12:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-12-08 00:00:00 *h1i.0012-12-08-00000*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-12-08-00000.nc']
+[]
+2022 153.0 -9.377099
+<xarray.UxDataArray 'TC_R4' (n_face: 10113)> Size: 81kB
+[10113 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-12-08 00:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-04-09 18:00:00 *h1i.0012-04-09-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-04-09-64800.nc']
+[]
+1889 266.792679 -29.418852
+<xarray.UxDataArray 'TC_R4' (n_face: 9062)> Size: 72kB
+[9062 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-04-09 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-12-24 12:00:00 *h1i.0012-12-24-43200*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-12-24-43200.nc']
+[]
+2035 229.707152 16.925321
+<xarray.UxDataArray 'TC_R4' (n_face: 10882)> Size: 87kB
+[10882 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-12-24 12:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-06-04 06:00:00 *h1i.0012-06-04-21600*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-06-04-21600.nc']
+[]
+1921 159.95727 -10.388986
+<xarray.UxDataArray 'TC_R4' (n_face: 9635)> Size: 77kB
+[9635 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-06-04 06:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-06-21 18:00:00 *h1i.0012-06-21-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-06-21-64800.nc']
+[]
+1932 39.957395 14.419221
+<xarray.UxDataArray 'TC_R4' (n_face: 11018)> Size: 88kB
+[11018 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-06-21 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-09-10 00:00:00 *h1i.0012-09-10-00000*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-09-10-00000.nc']
+[]
+1974 134.380444 61.502109
+<xarray.UxDataArray 'TC_R4' (n_face: 4751)> Size: 38kB
+[4751 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-09-10 00:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-07-29 00:00:00 *h1i.0012-07-29-00000*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-07-29-00000.nc']
+[]
+1952 100.292717 -9.596041
+<xarray.UxDataArray 'TC_R4' (n_face: 9226)> Size: 74kB
+[9226 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-07-29 00:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-05-19 06:00:00 *h1i.0012-05-19-21600*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-05-19-21600.nc']
+[]
+1905 225.207045 -20.906951
+<xarray.UxDataArray 'TC_R4' (n_face: 10689)> Size: 86kB
+[10689 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-05-19 06:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-07-21 00:00:00 *h1i.0012-07-21-00000*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-07-21-00000.nc']
+[]
+1945 170.25 -11.2961
+<xarray.UxDataArray 'TC_R4' (n_face: 9220)> Size: 74kB
+[9220 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-07-21 00:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-08-26 18:00:00 *h1i.0012-08-26-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-08-26-64800.nc']
+[]
+1977 69.75 20.718737
+<xarray.UxDataArray 'TC_R4' (n_face: 9500)> Size: 76kB
+[9500 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-08-26 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-08-04 18:00:00 *h1i.0012-08-04-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-08-04-64800.nc']
+[]
+1959 178.707291 13.289444
+<xarray.UxDataArray 'TC_R4' (n_face: 9089)> Size: 73kB
+[9089 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-08-04 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-07-21 06:00:00 *h1i.0012-07-21-21600*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-07-21-21600.nc']
+[]
+1948 54.20727 -7.320782
+<xarray.UxDataArray 'TC_R4' (n_face: 11039)> Size: 88kB
+[11039 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-07-21 06:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-12-05 00:00:00 *h1i.0012-12-05-00000*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-12-05-00000.nc']
+[]
+2013 62.792637 15.24998
+<xarray.UxDataArray 'TC_R4' (n_face: 10013)> Size: 80kB
+[10013 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-12-05 00:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-09-13 00:00:00 *h1i.0012-09-13-00000*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-09-13-00000.nc']
+[]
+1986 82.5 -10.206516
+<xarray.UxDataArray 'TC_R4' (n_face: 9137)> Size: 73kB
+[9137 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-09-13 00:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-11-16 12:00:00 *h1i.0012-11-16-43200*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-11-16-43200.nc']
+[]
+2000 99.75 -11.091563
+<xarray.UxDataArray 'TC_R4' (n_face: 9220)> Size: 74kB
+[9220 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-11-16 12:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-06-18 18:00:00 *h1i.0012-06-18-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-06-18-64800.nc']
+[]
+1931 63.75 -9.250682
+<xarray.UxDataArray 'TC_R4' (n_face: 10058)> Size: 80kB
+[10058 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-06-18 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-04-04 06:00:00 *h1i.0012-04-04-21600*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-04-04-21600.nc']
+[]
+1887 191.25 8.297083
+<xarray.UxDataArray 'TC_R4' (n_face: 9277)> Size: 74kB
+[9277 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-04-04 06:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-12-06 12:00:00 *h1i.0012-12-06-43200*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-12-06-43200.nc']
+[]
+2018 222.542858 16.807866
+<xarray.UxDataArray 'TC_R4' (n_face: 10948)> Size: 88kB
+[10948 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-12-06 12:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-11-05 00:00:00 *h1i.0012-11-05-00000*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-11-05-00000.nc']
+[]
+1995 108.894249 -47.171919
+<xarray.UxDataArray 'TC_R4' (n_face: 7730)> Size: 62kB
+[7730 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-11-05 00:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-06-23 18:00:00 *h1i.0012-06-23-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-06-23-64800.nc']
+[]
+1935 27.207328 -10.704807
+<xarray.UxDataArray 'TC_R4' (n_face: 10105)> Size: 81kB
+[10105 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-06-23 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-12-09 18:00:00 *h1i.0012-12-09-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-12-09-64800.nc']
+[]
+2021 113.25 13.83057
+<xarray.UxDataArray 'TC_R4' (n_face: 9775)> Size: 78kB
+[9775 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-12-09 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-05-02 06:00:00 *h1i.0012-05-02-21600*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-05-02-21600.nc']
+[]
+1897 171.957265 -18.783975
+<xarray.UxDataArray 'TC_R4' (n_face: 9135)> Size: 73kB
+[9135 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-05-02 06:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-09-01 18:00:00 *h1i.0012-09-01-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-09-01-64800.nc']
+[]
+1980 355.707272 22.650035
+<xarray.UxDataArray 'TC_R4' (n_face: 9078)> Size: 73kB
+[9078 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-09-01 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-06-13 18:00:00 *h1i.0012-06-13-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-06-13-64800.nc']
+[]
+1924 212.25 -16.018027
+<xarray.UxDataArray 'TC_R4' (n_face: 10404)> Size: 83kB
+[10404 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-06-13 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-06-30 06:00:00 *h1i.0012-06-30-21600*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-06-30-21600.nc']
+[]
+1942 201.542726 -9.080666
+<xarray.UxDataArray 'TC_R4' (n_face: 9735)> Size: 78kB
+[9735 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-06-30 06:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-12-16 00:00:00 *h1i.0012-12-16-00000*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-12-16-00000.nc']
+[]
+2027 201.207323 11.403046
+<xarray.UxDataArray 'TC_R4' (n_face: 9640)> Size: 77kB
+[9640 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-12-16 00:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-12-02 18:00:00 *h1i.0012-12-02-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-12-02-64800.nc']
+[]
+2013 75.75 14.030315
+<xarray.UxDataArray 'TC_R4' (n_face: 9350)> Size: 75kB
+[9350 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-12-02 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-01-11 12:00:00 *h1i.0012-01-11-43200*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-01-11-43200.nc']
+[]
+1826 297.75 22.194717
+<xarray.UxDataArray 'TC_R4' (n_face: 9833)> Size: 79kB
+[9833 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-01-11 12:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-09-03 00:00:00 *h1i.0012-09-03-00000*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-09-03-00000.nc']
+[]
+1981 154.5 -7.455849
+<xarray.UxDataArray 'TC_R4' (n_face: 10020)> Size: 80kB
+[10020 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-09-03 00:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-05-15 18:00:00 *h1i.0012-05-15-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-05-15-64800.nc']
+[]
+1905 225.542609 -13.057115
+<xarray.UxDataArray 'TC_R4' (n_face: 11228)> Size: 90kB
+[11228 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-05-15 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-12-20 00:00:00 *h1i.0012-12-20-00000*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-12-20-00000.nc']
+[]
+2030 202.5 13.398078
+<xarray.UxDataArray 'TC_R4' (n_face: 9723)> Size: 78kB
+[9723 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-12-20 00:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-12-01 12:00:00 *h1i.0012-12-01-43200*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-12-01-43200.nc']
+[]
+2011 82.292627 -32.969479
+<xarray.UxDataArray 'TC_R4' (n_face: 9072)> Size: 73kB
+[9072 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-12-01 12:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-06-30 12:00:00 *h1i.0012-06-30-43200*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-06-30-43200.nc']
+[]
+1943 27.542733 -9.147203
+<xarray.UxDataArray 'TC_R4' (n_face: 10175)> Size: 81kB
+[10175 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-06-30 12:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-11-10 18:00:00 *h1i.0012-11-10-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-11-10-64800.nc']
+[]
+1997 260.792686 14.610333
+<xarray.UxDataArray 'TC_R4' (n_face: 9181)> Size: 73kB
+[9181 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-11-10 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-09-02 12:00:00 *h1i.0012-09-02-43200*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-09-02-43200.nc']
+[]
+1974 43.083897 36.660598
+<xarray.UxDataArray 'TC_R4' (n_face: 9158)> Size: 73kB
+[9158 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-09-02 12:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-03-25 12:00:00 *h1i.0012-03-25-43200*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-03-25-43200.nc']
+[]
+1881 35.25 -16.590176
+<xarray.UxDataArray 'TC_R4' (n_face: 10634)> Size: 85kB
+[10634 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-03-25 12:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-12-19 00:00:00 *h1i.0012-12-19-00000*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-12-19-00000.nc']
+[]
+2027 188.792737 18.339462
+<xarray.UxDataArray 'TC_R4' (n_face: 9164)> Size: 73kB
+[9164 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-12-19 00:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-12-11 06:00:00 *h1i.0012-12-11-21600*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-12-11-21600.nc']
+[]
+2024 40.5 14.905688
+<xarray.UxDataArray 'TC_R4' (n_face: 11017)> Size: 88kB
+[11017 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-12-11 06:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
+	 VBOT
+	 PRECT
+	 OMEGA500
+	 PS
+
+ 0012-09-05 18:00:00 *h1i.0012-09-05-64800*
+['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-09-05-64800.nc']
+[]
+1982 315.0 23.427837
+<xarray.UxDataArray 'TC_R4' (n_face: 10486)> Size: 84kB
+[10486 values with dtype=float64]
+Coordinates:
+    time     object 8B 0012-09-05 18:00:00
+Dimensions without coordinates: n_face
+1.0 0.0
+	 UBOT
