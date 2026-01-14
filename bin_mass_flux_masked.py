@@ -82,12 +82,14 @@ def compute_umf_hist(ds, innerlat=5., outerlat=30., hemi='warm', msebins=np.aran
    #print(ds.data_vars)
    nhsel, shsel = sel_unstruct_tropics(ds, innerlat=innerlat, outerlat=outerlat, hemi=hemi)
    selds = xr.concat((nhsel, shsel), 'ncol')
-   print(selds['Z850'].shape)
+   #print(selds['Z850'].shape)
+   print((selds['OMEGA500'] < 0).sum().compute())
    #print(selds.time)
 
    mse850 = g * selds['Z850'] + cp * selds['T850'] + lv * selds['Q850']
    area = selds['area'] * a**2
    umf500 = (selds['OMEGA500'] < 0) * (-selds['OMEGA500'] * area / g)
+   print(area.sum().compute())
 
    hist_snaps = []
    m_e, s_e = None, None
@@ -100,6 +102,7 @@ def compute_umf_hist(ds, innerlat=5., outerlat=30., hemi='warm', msebins=np.aran
          m_e, s_e = mse_edges, sst_edges
 
       hist_snaps.append(np.nan_to_num(umf_b_2d, nan=0.0))
+      #print(umf_b_2d.sum())
 
    #print(len(hist_snaps), hist_snaps[0].shape)
    hist_snaps = np.stack(hist_snaps, axis=0)
@@ -113,8 +116,8 @@ def sel_unstruct_tropics(ds, innerlat=5., outerlat=30., hemi='warm'):
    lats = ds['lat']
    if not LATDA is None:
       lats = LATDA
-   print(LATDA.data)
-   print(szn)
+   #print(LATDA.data)
+   #print(szn)
    if hemi == 'warm':
       nh = ds.sel(time=szn.isin(['JJA', 'SON'])).isel(ncol=((lats > innerlat) & (lats < outerlat)).compute())#.all(dim='time').compute()) # !TC-only
       sh = ds.sel(time=szn.isin(['DJF', 'MAM'])).isel(ncol=((lats < -innerlat) & (lats > -outerlat)).compute())#.all(dim='time').compute())
