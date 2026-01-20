@@ -8,8 +8,10 @@ SEDFIL = sys.argv[1]
 PARFIL = sys.argv[2]
 dt_fmt = '%Y-%m-%d %H:%M:%S'
 
-lags = np.arange(6, 25, 6.)
-rngs = np.arange(0.5, 10.1, 0.5)
+lags = np.arange(6, 13, 6.)
+rngs = np.arange(1, 3.1, 0.5)
+#lags = np.arange(6, 7, 6.)
+#rngs = np.arange(1, 3, 1.)
 tab1 = np.zeros((lags.size, rngs.size)) #count exactly one match
 tab2 = np.zeros(tab1.shape) #more than one match
 
@@ -20,6 +22,7 @@ def main():
    #print(pdf.head())
 
    sdf['dt'] = sdf['dt'].apply(cftime.datetime.strptime, args=(dt_fmt,), calendar='noleap')
+   pdf = pdf[pdf['isgen']]
    try:
       pdf['dt'] = pdf['dt'].apply(cftime.datetime.strptime, args=(dt_fmt,), calendar='noleap')
    except ValueError: #tc_stats post-processing accidentally interpolated leap days
@@ -42,6 +45,7 @@ def main():
       for jj, rg in enumerate(rngs):
          print('Working on lag, range', ll, rg)
          for ix, rw in sdf.iterrows():
+            print('\t', rw['dt'])
             dtmatch = pdf[(pdf['dt'] - rw['dt'] <= dt.timedelta(hours=ll)) & (pdf['dt'] - rw['dt'] >= dt.timedelta(hours=lags[0]))]
             #print(rw['dt'])
             #print(dtmatch)
@@ -50,6 +54,10 @@ def main():
                tab1[ii, jj] += 1
             elif inrng.shape[0] > 1:
                tab2[ii, jj] += 1
+
+   print(tab1 / sdf.shape[0])
+   print('\n')
+   print(tab2 / sdf.shape[0])
 
 def gcd_deg(clon, clat, ser_lon, ser_lat):
    clonr, clatr = np.deg2rad(clon), np.deg2rad(clat)
