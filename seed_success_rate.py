@@ -8,6 +8,11 @@ SEDFIL = sys.argv[1]
 PARFIL = sys.argv[2]
 dt_fmt = '%Y-%m-%d %H:%M:%S'
 
+lags = np.arange(6, 25, 6.)
+rngs = np.arange(0.5, 10.1, 0.5)
+tab1 = np.zeros((lags.size, rngs.size)) #count exactly one match
+tab2 = np.zeros(tab1.shape) #more than one match
+
 def main():
    sdf = pd.read_csv(SEDFIL)
    pdf = pd.read_csv(PARFIL)
@@ -24,14 +29,27 @@ def main():
       pdf['dt'] = pdf['dt'].apply(lambda d: cftime.datetime(d.year, d.month, d.day, d.hour, calendar='noleap'))
    pdf['dt'] = pdf['dt'] - dt.timedelta(days=2000 * 365)
 
-   for ix, rw in sdf.iterrows(): 
-      #print(type(rw['dt']))
-      dtmatch = pdf[pdf['dt'] == rw['dt']]
-      #print(np.deg2rad(dtmatch['lon']))
-      print(rw['clon'], rw['clat'])
-      print(dtmatch)
-      print(gcd_deg(rw['clon'], rw['clat'], dtmatch['lon'], dtmatch['lat']))
-      break
+   #for ix, rw in sdf.iterrows(): 
+   #   #print(type(rw['dt']))
+   #   dtmatch = pdf[pdf['dt'] == rw['dt']]
+   #   #print(np.deg2rad(dtmatch['lon']))
+   #   print(rw['clon'], rw['clat'])
+   #   print(dtmatch)
+   #   print(gcd_deg(rw['clon'], rw['clat'], dtmatch['lon'], dtmatch['lat']))
+   #   break
+
+   for ii, ll in enumerate(lags):
+      for jj, rg in enumerate(rngs):
+         print('Working on lag, range', ll, rg)
+         for ix, rw in sdf.iterrows():
+            dtmatch = pdf[(pdf['dt'] - rw['dt'] <= dt.timedelta(hours=ll)) & (pdf['dt'] - rw['dt'] >= dt.timedelta(hours=lags[0]))]
+            #print(rw['dt'])
+            #print(dtmatch)
+            inrng = dtmatch[gcd_deg(rw['clon'], rw['clat'], dtmatch['lon'], dtmatch['lat']) <= rg]
+            if inrng.shape[0] == 1:
+               tab1[ii, jj] += 1
+            elif inrng.shape[0] > 1:
+               tab2[ii, jj] += 1
 
 def gcd_deg(clon, clat, ser_lon, ser_lat):
    clonr, clatr = np.deg2rad(clon), np.deg2rad(clat)
