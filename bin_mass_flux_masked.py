@@ -28,7 +28,7 @@ FILIS = '/glade/derecho/scratch/jpan/jpan_tcfields1/b.e23.BMOM.ne120np4_sx0.66av
 ALIS = ['250415_unseed', '250417_ctrl', '250416_seed1x1']
 CASES = ['UNSEED', 'CTRL', 'SEED']
 LATFIL = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.0012-06-25-21600.nc'
-LATDA = None
+LATDA, AREDA = None, None
 #FILO = 'umf500_0012dd0x_histo_mse850_SST.pkl'
 
 SSTbins = np.concatenate((np.arange(295., 306.), np.arange(306, 309, 0.25), np.arange(309, 313)))
@@ -38,7 +38,7 @@ SSTbins = np.concatenate((np.arange(295., 306.), np.arange(306, 309, 0.25), np.a
 #TODO: split seasons
 #TODO: check why NH and SH selections differ in number of cols
 def main():
-   global LATDA
+   global LATDA, AREDA
    #print(sys.argv)
    #ds = xr.open_mfdataset(CASE1)
 
@@ -53,8 +53,12 @@ def main():
       ds = ds.sel(time=ds['time'].dt.year == 12)
       ds = ds.sel(time=ds['time'].dt.day == 1).compute() # !TC-only
       if LATFIL:
-         LATDA = xr.open_dataset(LATFIL)['lat']
-      #print(ds)
+         latds = xr.open_dataset(LATFIL)
+         LATDA = latds['lat']
+         AREDA = latds['area']
+         ds['lat'] = LATDA.broadcast_like(ds['time'])
+         ds['area'] = AREDA.broadcast_like(ds['time'])
+      print(ds)
       #print(ds['lat'])
       #print(ds['lat'].data)
 
@@ -114,13 +118,13 @@ def compute_umf_hist(ds, innerlat=5., outerlat=30., hemi='warm', msebins=np.aran
 def sel_unstruct_tropics(ds, innerlat=5., outerlat=30., hemi='warm'):
    szn = ds['time'].dt.season
    lats = ds['lat']
-   if not LATDA is None:
-      lats = LATDA
+   #if not LATDA is None:
+   #   lats = LATDA
    #print(LATDA.data)
    #print(szn)
    if hemi == 'warm':
-      nh = ds.sel(time=szn.isin(['JJA', 'SON'])).isel(ncol=((lats > innerlat) & (lats < outerlat)).compute())#.all(dim='time').compute()) # !TC-only
-      sh = ds.sel(time=szn.isin(['DJF', 'MAM'])).isel(ncol=((lats < -innerlat) & (lats > -outerlat)).compute())#.all(dim='time').compute())
+      nh = ds.sel(time=szn.isin(['JJA', 'SON'])).isel(ncol=((lats > innerlat) & (lats < outerlat)).all(dim='time').compute()) # !TC-only
+      sh = ds.sel(time=szn.isin(['DJF', 'MAM'])).isel(ncol=((lats < -innerlat) & (lats > -outerlat)).all(dim='time').compute())
       return nh, sh
    if hemi == 'cool':
       nh = ds.sel(time=szn.isin(['DJF', 'MAM'])).isel(ncol=((ds['lat'] > innerlat) & (ds['lat'] < outerlat)).all(dim='time').compute())

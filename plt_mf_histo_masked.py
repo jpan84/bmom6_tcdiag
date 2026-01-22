@@ -4,8 +4,8 @@ import xarray as xr
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 
-FILI = 'umf500TC_0012dd0x_07-20warm.nc'
-FILI = 'umf500TC_0012dd0x_20-33warm.nc'
+FILI = 'umf500TC_0012dd01_07-20warm.nc'
+FILI = 'umf500TC_0012dd01_20-33warm.nc'
 DIRO = 'mf_histo_TC_R4'
 TTLS = ['UNSEED$-$CTRL', 'CTRL', 'SEED$-$CTRL']
 

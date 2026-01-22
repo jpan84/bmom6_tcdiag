@@ -1,10 +1,5 @@
 nohup: ignoring input
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 826624.casper-pbs with qsub arguments:
-    qsub  -l select=1:ncpus=16:mem=128GB -A UPSU0032 -q casper@casper-pbs -l walltime=02:05:00
+Waiting on job launch; 1709591.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:35:00
 
-Traceback (most recent call last):
-File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/take_zm_ux.py", line 22, in <module>
-outds = outds.assign_attrs(script_from=sys.argv[0], zonal_mean=str(outds.attrs['zonal_mean']))
-~~~~~~~~~~~^^^^^^^^^^^^^^
-KeyError: 'zonal_mean'

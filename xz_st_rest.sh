@@ -22,6 +22,7 @@ for dir in "${ARCHREST}"/*/; do
   for nc in "${files[@]}"; do
     #xz "${nc}"
     ###xz too expensive to run on interactive node
-    qcmd -q main -l walltime=00:02:00 -A UPSU0063 xz -v "${nc}"
+    ###qcmd -q main -l walltime=00:10:00 -A UPSU0032 xz -v "${nc}"
+    qcmd -q main -l walltime=00:02:00 -l job_priority=economy -A UPSU0032 -- xz -T128 --block-size=64MiB -v "${nc}"
   done
 done

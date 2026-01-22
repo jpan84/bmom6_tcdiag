@@ -6,6 +6,8 @@ import datetime as dt
 
 SEDFIL = sys.argv[1]
 PARFIL = sys.argv[2]
+LAT1 = float(sys.argv[3]) #lower bound (positive, inclusive)
+LAT2 = float(sys.argv[4]) #upper bound (positive, exclusive)
 dt_fmt = '%Y-%m-%d %H:%M:%S'
 
 lags = np.arange(6, 13, 6.)
@@ -22,6 +24,8 @@ def main():
    #print(pdf.head())
 
    sdf['dt'] = sdf['dt'].apply(cftime.datetime.strptime, args=(dt_fmt,), calendar='noleap')
+   sdf = sdf[(sdf['clat'] >= LAT1) & (sdf['clat'] < LAT2) | (sdf['clat'] <= LAT1) & (sdf['clat'] > LAT2)]
+
    pdf = pdf[pdf['isgen']]
    try:
       pdf['dt'] = pdf['dt'].apply(cftime.datetime.strptime, args=(dt_fmt,), calendar='noleap')
