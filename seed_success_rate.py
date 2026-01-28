@@ -9,9 +9,10 @@ PARFIL = sys.argv[2]
 LAT1 = float(sys.argv[3]) #lower bound (positive, inclusive)
 LAT2 = float(sys.argv[4]) #upper bound (positive, exclusive)
 dt_fmt = '%Y-%m-%d %H:%M:%S'
+print(sys.argv, '\n')
 
 lags = np.arange(6, 13, 6.)
-rngs = np.arange(1, 3.1, 0.5)
+rngs = np.arange(2, 3.1, 0.5)
 #lags = np.arange(6, 7, 6.)
 #rngs = np.arange(1, 3, 1.)
 tab1 = np.zeros((lags.size, rngs.size)) #count exactly one match
@@ -24,7 +25,7 @@ def main():
    #print(pdf.head())
 
    sdf['dt'] = sdf['dt'].apply(cftime.datetime.strptime, args=(dt_fmt,), calendar='noleap')
-   sdf = sdf[(sdf['clat'] >= LAT1) & (sdf['clat'] < LAT2) | (sdf['clat'] <= LAT1) & (sdf['clat'] > LAT2)]
+   sdf = sdf[(sdf['clat'] >= LAT1) & (sdf['clat'] < LAT2) | (sdf['clat'] <= -LAT1) & (sdf['clat'] > -LAT2)]
 
    pdf = pdf[pdf['isgen']]
    try:
@@ -49,7 +50,8 @@ def main():
       for jj, rg in enumerate(rngs):
          print('Working on lag, range', ll, rg)
          for ix, rw in sdf.iterrows():
-            print('\t', rw['dt'])
+            if rw['dt'].day == 1 and rw['dt'].hour == 0:
+               print('\t', rw['dt'])
             dtmatch = pdf[(pdf['dt'] - rw['dt'] <= dt.timedelta(hours=ll)) & (pdf['dt'] - rw['dt'] >= dt.timedelta(hours=lags[0]))]
             #print(rw['dt'])
             #print(dtmatch)
@@ -69,8 +71,10 @@ def gcd_deg(clon, clat, ser_lon, ser_lat):
 
    dlat = ser_latr - clatr
    dlon = ser_lonr - clonr
+   #dlon = (dlon + np.pi) % (2 * np.pi) - np.pi
 
    hav = np.sin(dlat / 2)**2 + np.cos(clatr) * np.cos(ser_latr) * np.sin(dlon / 2)**2
+   hav = np.clip(hav, 0, 1)
    gcdr = 2 * np.arctan2(np.sqrt(hav), np.sqrt(1 - hav))
    return np.rad2deg(gcdr)
 

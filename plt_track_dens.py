@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from sznl_funcs import stack_hemi_sznl
 
 FILI = '/glade/u/home/jpan/aquaptc/tempest/260112_density_sznl/tcdens.nc'
-SZN = 'JJA'
+SZN = 'SON'
 
 YSCL = lambda deglat: np.sin(np.deg2rad(deglat))
 LATLAB = np.arange(-90, 90.1, 15).astype(np.int_)
@@ -59,7 +59,7 @@ axes[0][1].annotate('', xy=(STZ[0], 2.35), xytext=(STZ[1], 2.35), arrowprops=dic
                         lw=1.5, color='#E4D00A', connectionstyle=f'bar,fraction={1/6}'), annotation_clip=False)
 axes[0][1].text(sum(STZ) / 2, 2.6, 'STZ', ha='center', va='bottom', fontsize=10, fontweight='bold', transform=axes[0][1].transData, c='#E4D00A')
 
-axes[0][2].set_title('SEED–CTRL')
+axes[0][2].set_title('MSEED–CTRL')
 axes[0][2].plot(sinlat, lysplt.isel(run=2) - lysplt.isel(run=1))
 axes[0][2].plot(sinlat, genplt.isel(run=2) - genplt.isel(run=1))
 axes[0][2].plot(sinlat, sdsplt, color='maroon', linestyle='dashdot', label='seed events')

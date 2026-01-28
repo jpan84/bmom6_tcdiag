@@ -1,420 +1,273 @@
 nohup: ignoring input
-/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 1709647.casper-pbs with qsub arguments:
-    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l job_priority=premium -l walltime=00:35:00
+['seed_success_rate.py', 'seed_stats/250416_seed1x1_production_seed_events.csv', '/glade/u/home/jpan/aquaptc/tempest/250416_seed1x1.csv', '10', '15'] 
 
-Working on 250415_unseed
-<xarray.Dataset> Size: 5GB
-Dimensions:    (time: 48, ncol: 777602, bnds: 2)
-Coordinates:
-* time       (time) object 384B 0012-01-01 00:00:00 ... 0012-12-01 18:00:00
-Dimensions without coordinates: ncol, bnds
-Data variables: (12/33)
-CAPE       (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0
-FLUT       (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0
-OMEGA500   (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0
-OMEGA850   (time, ncol) float32 149MB 0.0 0.0 0.0 -0.0 ... -0.0 -0.0 -0.0
-PRECT      (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0
-PS         (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0
-...         ...
-Z850       (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0
-area       (time, ncol) float64 299MB 2.748e-06 9.16e-06 ... 2.29e-05
-areawt     (ncol) float64 6MB 0.0 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0 0.0
-lat        (time, ncol) float64 299MB -35.26 -35.36 -35.52 ... 35.62 35.46
-lon        (ncol) float64 6MB 0.0 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0 0.0
-time_bnds  (time, bnds) object 768B 0011-12-31 18:00:00 ... 0012-12-01 18...
-Attributes: (12/15)
-CDI:               Climate Data Interface version 2.4.4 (https://mpimet.m...
-Conventions:       CF-1.0
-source:            CAM
-ne:                120
-np:                4
-case:              b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_u...
-...                ...
-topography_file:   bnd_topo
-model_doi_url:     not_set
-time_period_freq:  hour_6
-history:           Fri Aug 15 12:55:54 2025: ncks -D 1 -O -4 -L 1 TC_R4_m...
-NCO:               netCDF Operators version 5.3.1 (Homepage = http://nco....
-CDO:               Climate Data Operators version 2.4.4 (https://mpimet.m...
-<xarray.DataArray 'OMEGA500' ()> Size: 8B
-array(27832)
-<xarray.DataArray 'area' ()> Size: 8B
-array(2.6905277e+15)
-Processing time 0012-01-01 00:00:00
-Processing time 0012-01-01 06:00:00
-Processing time 0012-01-01 12:00:00
-Processing time 0012-01-01 18:00:00
-Processing time 0012-02-01 00:00:00
-Processing time 0012-02-01 06:00:00
-Processing time 0012-02-01 12:00:00
-Processing time 0012-02-01 18:00:00
-Processing time 0012-03-01 00:00:00
-Processing time 0012-03-01 06:00:00
-Processing time 0012-03-01 12:00:00
-Processing time 0012-03-01 18:00:00
-Processing time 0012-04-01 00:00:00
-Processing time 0012-04-01 06:00:00
-Processing time 0012-04-01 12:00:00
-Processing time 0012-04-01 18:00:00
-Processing time 0012-05-01 00:00:00
-Processing time 0012-05-01 06:00:00
-Processing time 0012-05-01 12:00:00
-Processing time 0012-05-01 18:00:00
-Processing time 0012-06-01 00:00:00
-Processing time 0012-06-01 06:00:00
-Processing time 0012-06-01 12:00:00
-Processing time 0012-06-01 18:00:00
-Processing time 0012-07-01 00:00:00
-Processing time 0012-07-01 06:00:00
-Processing time 0012-07-01 12:00:00
-Processing time 0012-07-01 18:00:00
-Processing time 0012-08-01 00:00:00
-Processing time 0012-08-01 06:00:00
-Processing time 0012-08-01 12:00:00
-Processing time 0012-08-01 18:00:00
-Processing time 0012-09-01 00:00:00
-Processing time 0012-09-01 06:00:00
-Processing time 0012-09-01 12:00:00
-Processing time 0012-09-01 18:00:00
-Processing time 0012-10-01 00:00:00
-Processing time 0012-10-01 06:00:00
-Processing time 0012-10-01 12:00:00
-Processing time 0012-10-01 18:00:00
-Processing time 0012-11-01 00:00:00
-Processing time 0012-11-01 06:00:00
-Processing time 0012-11-01 12:00:00
-Processing time 0012-11-01 18:00:00
-Processing time 0012-12-01 00:00:00
-Processing time 0012-12-01 06:00:00
-Processing time 0012-12-01 12:00:00
-Processing time 0012-12-01 18:00:00
-<xarray.DataArray 'OMEGA500' ()> Size: 8B
-array(4495)
-<xarray.DataArray 'area' ()> Size: 8B
-array(2.48236508e+15)
-Processing time 0012-01-01 00:00:00
-Processing time 0012-01-01 06:00:00
-Processing time 0012-01-01 12:00:00
-Processing time 0012-01-01 18:00:00
-Processing time 0012-02-01 00:00:00
-Processing time 0012-02-01 06:00:00
-Processing time 0012-02-01 12:00:00
-Processing time 0012-02-01 18:00:00
-Processing time 0012-03-01 00:00:00
-Processing time 0012-03-01 06:00:00
-Processing time 0012-03-01 12:00:00
-Processing time 0012-03-01 18:00:00
-Processing time 0012-04-01 00:00:00
-Processing time 0012-04-01 06:00:00
-Processing time 0012-04-01 12:00:00
-Processing time 0012-04-01 18:00:00
-Processing time 0012-05-01 00:00:00
-Processing time 0012-05-01 06:00:00
-Processing time 0012-05-01 12:00:00
-Processing time 0012-05-01 18:00:00
-Processing time 0012-06-01 00:00:00
-Processing time 0012-06-01 06:00:00
-Processing time 0012-06-01 12:00:00
-Processing time 0012-06-01 18:00:00
-Processing time 0012-07-01 00:00:00
-Processing time 0012-07-01 06:00:00
-Processing time 0012-07-01 12:00:00
-Processing time 0012-07-01 18:00:00
-Processing time 0012-08-01 00:00:00
-Processing time 0012-08-01 06:00:00
-Processing time 0012-08-01 12:00:00
-Processing time 0012-08-01 18:00:00
-Processing time 0012-09-01 00:00:00
-Processing time 0012-09-01 06:00:00
-Processing time 0012-09-01 12:00:00
-Processing time 0012-09-01 18:00:00
-Processing time 0012-10-01 00:00:00
-Processing time 0012-10-01 06:00:00
-Processing time 0012-10-01 12:00:00
-Processing time 0012-10-01 18:00:00
-Processing time 0012-11-01 00:00:00
-Processing time 0012-11-01 06:00:00
-Processing time 0012-11-01 12:00:00
-Processing time 0012-11-01 18:00:00
-Processing time 0012-12-01 00:00:00
-Processing time 0012-12-01 06:00:00
-Processing time 0012-12-01 12:00:00
-Processing time 0012-12-01 18:00:00
-Working on 250417_ctrl
-<xarray.Dataset> Size: 5GB
-Dimensions:    (time: 48, ncol: 777602, bnds: 2)
-Coordinates:
-* time       (time) object 384B 0012-01-01 00:00:00 ... 0012-12-01 18:00:00
-Dimensions without coordinates: ncol, bnds
-Data variables: (12/33)
-CAPE       (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0
-FLUT       (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0
-OMEGA500   (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0
-OMEGA850   (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... 0.0 0.0 -0.0 -0.0
-PRECT      (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0
-PS         (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0
-...         ...
-Z850       (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0
-area       (time, ncol) float64 299MB 2.748e-06 9.16e-06 ... 2.29e-05
-areawt     (ncol) float64 6MB 0.0 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0 0.0
-lat        (time, ncol) float64 299MB -35.26 -35.36 -35.52 ... 35.62 35.46
-lon        (ncol) float64 6MB 0.0 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0 0.0
-time_bnds  (time, bnds) object 768B 0011-12-31 18:00:00 ... 0012-12-01 18...
-Attributes: (12/15)
-CDI:               Climate Data Interface version 2.4.4 (https://mpimet.m...
-Conventions:       CF-1.0
-source:            CAM
-ne:                120
-np:                4
-case:              b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl
-...                ...
-topography_file:   bnd_topo
-model_doi_url:     not_set
-time_period_freq:  hour_6
-history:           Mon Aug 18 09:04:48 2025: ncks -O -4 -L 1 -D 2 TC_R4_m...
-NCO:               netCDF Operators version 5.3.1 (Homepage = http://nco....
-CDO:               Climate Data Operators version 2.4.4 (https://mpimet.m...
-<xarray.DataArray 'OMEGA500' ()> Size: 8B
-array(42849)
-<xarray.DataArray 'area' ()> Size: 8B
-array(2.6905277e+15)
-Processing time 0012-01-01 00:00:00
-Processing time 0012-01-01 06:00:00
-Processing time 0012-01-01 12:00:00
-Processing time 0012-01-01 18:00:00
-Processing time 0012-02-01 00:00:00
-Processing time 0012-02-01 06:00:00
-Processing time 0012-02-01 12:00:00
-Processing time 0012-02-01 18:00:00
-Processing time 0012-03-01 00:00:00
-Processing time 0012-03-01 06:00:00
-Processing time 0012-03-01 12:00:00
-Processing time 0012-03-01 18:00:00
-Processing time 0012-04-01 00:00:00
-Processing time 0012-04-01 06:00:00
-Processing time 0012-04-01 12:00:00
-Processing time 0012-04-01 18:00:00
-Processing time 0012-05-01 00:00:00
-Processing time 0012-05-01 06:00:00
-Processing time 0012-05-01 12:00:00
-Processing time 0012-05-01 18:00:00
-Processing time 0012-06-01 00:00:00
-Processing time 0012-06-01 06:00:00
-Processing time 0012-06-01 12:00:00
-Processing time 0012-06-01 18:00:00
-Processing time 0012-07-01 00:00:00
-Processing time 0012-07-01 06:00:00
-Processing time 0012-07-01 12:00:00
-Processing time 0012-07-01 18:00:00
-Processing time 0012-08-01 00:00:00
-Processing time 0012-08-01 06:00:00
-Processing time 0012-08-01 12:00:00
-Processing time 0012-08-01 18:00:00
-Processing time 0012-09-01 00:00:00
-Processing time 0012-09-01 06:00:00
-Processing time 0012-09-01 12:00:00
-Processing time 0012-09-01 18:00:00
-Processing time 0012-10-01 00:00:00
-Processing time 0012-10-01 06:00:00
-Processing time 0012-10-01 12:00:00
-Processing time 0012-10-01 18:00:00
-Processing time 0012-11-01 00:00:00
-Processing time 0012-11-01 06:00:00
-Processing time 0012-11-01 12:00:00
-Processing time 0012-11-01 18:00:00
-Processing time 0012-12-01 00:00:00
-Processing time 0012-12-01 06:00:00
-Processing time 0012-12-01 12:00:00
-Processing time 0012-12-01 18:00:00
-<xarray.DataArray 'OMEGA500' ()> Size: 8B
-array(53952)
-<xarray.DataArray 'area' ()> Size: 8B
-array(2.48236508e+15)
-Processing time 0012-01-01 00:00:00
-Processing time 0012-01-01 06:00:00
-Processing time 0012-01-01 12:00:00
-Processing time 0012-01-01 18:00:00
-Processing time 0012-02-01 00:00:00
-Processing time 0012-02-01 06:00:00
-Processing time 0012-02-01 12:00:00
-Processing time 0012-02-01 18:00:00
-Processing time 0012-03-01 00:00:00
-Processing time 0012-03-01 06:00:00
-Processing time 0012-03-01 12:00:00
-Processing time 0012-03-01 18:00:00
-Processing time 0012-04-01 00:00:00
-Processing time 0012-04-01 06:00:00
-Processing time 0012-04-01 12:00:00
-Processing time 0012-04-01 18:00:00
-Processing time 0012-05-01 00:00:00
-Processing time 0012-05-01 06:00:00
-Processing time 0012-05-01 12:00:00
-Processing time 0012-05-01 18:00:00
-Processing time 0012-06-01 00:00:00
-Processing time 0012-06-01 06:00:00
-Processing time 0012-06-01 12:00:00
-Processing time 0012-06-01 18:00:00
-Processing time 0012-07-01 00:00:00
-Processing time 0012-07-01 06:00:00
-Processing time 0012-07-01 12:00:00
-Processing time 0012-07-01 18:00:00
-Processing time 0012-08-01 00:00:00
-Processing time 0012-08-01 06:00:00
-Processing time 0012-08-01 12:00:00
-Processing time 0012-08-01 18:00:00
-Processing time 0012-09-01 00:00:00
-Processing time 0012-09-01 06:00:00
-Processing time 0012-09-01 12:00:00
-Processing time 0012-09-01 18:00:00
-Processing time 0012-10-01 00:00:00
-Processing time 0012-10-01 06:00:00
-Processing time 0012-10-01 12:00:00
-Processing time 0012-10-01 18:00:00
-Processing time 0012-11-01 00:00:00
-Processing time 0012-11-01 06:00:00
-Processing time 0012-11-01 12:00:00
-Processing time 0012-11-01 18:00:00
-Processing time 0012-12-01 00:00:00
-Processing time 0012-12-01 06:00:00
-Processing time 0012-12-01 12:00:00
-Processing time 0012-12-01 18:00:00
-Working on 250416_seed1x1
-<xarray.Dataset> Size: 5GB
-Dimensions:    (time: 48, ncol: 777602, bnds: 2)
-Coordinates:
-* time       (time) object 384B 0012-01-01 00:00:00 ... 0012-12-01 18:00:00
-Dimensions without coordinates: ncol, bnds
-Data variables: (12/33)
-CAPE       (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0
-FLUT       (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0
-OMEGA500   (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... -0.0 -0.0 0.0 -0.0
-OMEGA850   (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0
-PRECT      (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0
-PS         (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0
-...         ...
-Z850       (time, ncol) float32 149MB 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0
-area       (time, ncol) float64 299MB 2.748e-06 9.16e-06 ... 2.29e-05
-areawt     (ncol) float64 6MB 0.0 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0 0.0
-lat        (time, ncol) float64 299MB -35.26 -35.36 -35.52 ... 35.62 35.46
-lon        (ncol) float64 6MB 0.0 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0 0.0
-time_bnds  (time, bnds) object 768B 0011-12-31 18:00:00 ... 0012-12-01 18...
-Attributes: (12/15)
-CDI:               Climate Data Interface version 2.4.4 (https://mpimet.m...
-Conventions:       CF-1.0
-source:            CAM
-ne:                120
-np:                4
-case:              b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_s...
-...                ...
-topography_file:   bnd_topo
-model_doi_url:     not_set
-time_period_freq:  hour_6
-history:           Mon Aug 18 09:06:08 2025: ncks -O -4 -L 1 -D 2 TC_R4_m...
-NCO:               netCDF Operators version 5.3.1 (Homepage = http://nco....
-CDO:               Climate Data Operators version 2.4.4 (https://mpimet.m...
-<xarray.DataArray 'OMEGA500' ()> Size: 8B
-array(221861)
-<xarray.DataArray 'area' ()> Size: 8B
-array(2.6905277e+15)
-Processing time 0012-01-01 00:00:00
-Processing time 0012-01-01 06:00:00
-Processing time 0012-01-01 12:00:00
-Processing time 0012-01-01 18:00:00
-Processing time 0012-02-01 00:00:00
-Processing time 0012-02-01 06:00:00
-Processing time 0012-02-01 12:00:00
-Processing time 0012-02-01 18:00:00
-Processing time 0012-03-01 00:00:00
-Processing time 0012-03-01 06:00:00
-Processing time 0012-03-01 12:00:00
-Processing time 0012-03-01 18:00:00
-Processing time 0012-04-01 00:00:00
-Processing time 0012-04-01 06:00:00
-Processing time 0012-04-01 12:00:00
-Processing time 0012-04-01 18:00:00
-Processing time 0012-05-01 00:00:00
-Processing time 0012-05-01 06:00:00
-Processing time 0012-05-01 12:00:00
-Processing time 0012-05-01 18:00:00
-Processing time 0012-06-01 00:00:00
-Processing time 0012-06-01 06:00:00
-Processing time 0012-06-01 12:00:00
-Processing time 0012-06-01 18:00:00
-Processing time 0012-07-01 00:00:00
-Processing time 0012-07-01 06:00:00
-Processing time 0012-07-01 12:00:00
-Processing time 0012-07-01 18:00:00
-Processing time 0012-08-01 00:00:00
-Processing time 0012-08-01 06:00:00
-Processing time 0012-08-01 12:00:00
-Processing time 0012-08-01 18:00:00
-Processing time 0012-09-01 00:00:00
-Processing time 0012-09-01 06:00:00
-Processing time 0012-09-01 12:00:00
-Processing time 0012-09-01 18:00:00
-Processing time 0012-10-01 00:00:00
-Processing time 0012-10-01 06:00:00
-Processing time 0012-10-01 12:00:00
-Processing time 0012-10-01 18:00:00
-Processing time 0012-11-01 00:00:00
-Processing time 0012-11-01 06:00:00
-Processing time 0012-11-01 12:00:00
-Processing time 0012-11-01 18:00:00
-Processing time 0012-12-01 00:00:00
-Processing time 0012-12-01 06:00:00
-Processing time 0012-12-01 12:00:00
-Processing time 0012-12-01 18:00:00
-<xarray.DataArray 'OMEGA500' ()> Size: 8B
-array(263032)
-<xarray.DataArray 'area' ()> Size: 8B
-array(2.48236508e+15)
-Processing time 0012-01-01 00:00:00
-Processing time 0012-01-01 06:00:00
-Processing time 0012-01-01 12:00:00
-Processing time 0012-01-01 18:00:00
-Processing time 0012-02-01 00:00:00
-Processing time 0012-02-01 06:00:00
-Processing time 0012-02-01 12:00:00
-Processing time 0012-02-01 18:00:00
-Processing time 0012-03-01 00:00:00
-Processing time 0012-03-01 06:00:00
-Processing time 0012-03-01 12:00:00
-Processing time 0012-03-01 18:00:00
-Processing time 0012-04-01 00:00:00
-Processing time 0012-04-01 06:00:00
-Processing time 0012-04-01 12:00:00
-Processing time 0012-04-01 18:00:00
-Processing time 0012-05-01 00:00:00
-Processing time 0012-05-01 06:00:00
-Processing time 0012-05-01 12:00:00
-Processing time 0012-05-01 18:00:00
-Processing time 0012-06-01 00:00:00
-Processing time 0012-06-01 06:00:00
-Processing time 0012-06-01 12:00:00
-Processing time 0012-06-01 18:00:00
-Processing time 0012-07-01 00:00:00
-Processing time 0012-07-01 06:00:00
-Processing time 0012-07-01 12:00:00
-Processing time 0012-07-01 18:00:00
-Processing time 0012-08-01 00:00:00
-Processing time 0012-08-01 06:00:00
-Processing time 0012-08-01 12:00:00
-Processing time 0012-08-01 18:00:00
-Processing time 0012-09-01 00:00:00
-Processing time 0012-09-01 06:00:00
-Processing time 0012-09-01 12:00:00
-Processing time 0012-09-01 18:00:00
-Processing time 0012-10-01 00:00:00
-Processing time 0012-10-01 06:00:00
-Processing time 0012-10-01 12:00:00
-Processing time 0012-10-01 18:00:00
-Processing time 0012-11-01 00:00:00
-Processing time 0012-11-01 06:00:00
-Processing time 0012-11-01 12:00:00
-Processing time 0012-11-01 18:00:00
-Processing time 0012-12-01 00:00:00
-Processing time 0012-12-01 06:00:00
-Processing time 0012-12-01 12:00:00
-Processing time 0012-12-01 18:00:00
-bin_mass_flux_masked.py done
+Working on lag, range 6.0 2.0
+	 0005-04-01 00:00:00
+	 0005-06-01 00:00:00
+	 0005-08-01 00:00:00
+	 0005-10-01 00:00:00
+	 0006-01-01 00:00:00
+	 0006-04-01 00:00:00
+	 0006-05-01 00:00:00
+	 0006-11-01 00:00:00
+	 0007-01-01 00:00:00
+	 0007-03-01 00:00:00
+	 0007-05-01 00:00:00
+	 0007-07-01 00:00:00
+	 0007-10-01 00:00:00
+	 0008-02-01 00:00:00
+	 0008-03-01 00:00:00
+	 0008-06-01 00:00:00
+	 0008-10-01 00:00:00
+	 0008-11-01 00:00:00
+	 0009-01-01 00:00:00
+	 0009-03-01 00:00:00
+	 0009-10-01 00:00:00
+	 0009-12-01 00:00:00
+	 0010-04-01 00:00:00
+	 0010-06-01 00:00:00
+	 0010-12-01 00:00:00
+	 0011-01-01 00:00:00
+	 0011-02-01 00:00:00
+	 0011-03-01 00:00:00
+	 0011-04-01 00:00:00
+	 0011-10-01 00:00:00
+	 0011-12-01 00:00:00
+	 0012-02-01 00:00:00
+	 0012-03-01 00:00:00
+	 0012-08-01 00:00:00
+	 0012-09-01 00:00:00
+	 0012-10-01 00:00:00
+	 0013-02-01 00:00:00
+	 0013-04-01 00:00:00
+	 0013-11-01 00:00:00
+	 0014-03-01 00:00:00
+	 0014-04-01 00:00:00
+	 0014-11-01 00:00:00
+	 0015-02-01 00:00:00
+Working on lag, range 6.0 2.5
+	 0005-04-01 00:00:00
+	 0005-06-01 00:00:00
+	 0005-08-01 00:00:00
+	 0005-10-01 00:00:00
+	 0006-01-01 00:00:00
+	 0006-04-01 00:00:00
+	 0006-05-01 00:00:00
+	 0006-11-01 00:00:00
+	 0007-01-01 00:00:00
+	 0007-03-01 00:00:00
+	 0007-05-01 00:00:00
+	 0007-07-01 00:00:00
+	 0007-10-01 00:00:00
+	 0008-02-01 00:00:00
+	 0008-03-01 00:00:00
+	 0008-06-01 00:00:00
+	 0008-10-01 00:00:00
+	 0008-11-01 00:00:00
+	 0009-01-01 00:00:00
+	 0009-03-01 00:00:00
+	 0009-10-01 00:00:00
+	 0009-12-01 00:00:00
+	 0010-04-01 00:00:00
+	 0010-06-01 00:00:00
+	 0010-12-01 00:00:00
+	 0011-01-01 00:00:00
+	 0011-02-01 00:00:00
+	 0011-03-01 00:00:00
+	 0011-04-01 00:00:00
+	 0011-10-01 00:00:00
+	 0011-12-01 00:00:00
+	 0012-02-01 00:00:00
+	 0012-03-01 00:00:00
+	 0012-08-01 00:00:00
+	 0012-09-01 00:00:00
+	 0012-10-01 00:00:00
+	 0013-02-01 00:00:00
+	 0013-04-01 00:00:00
+	 0013-11-01 00:00:00
+	 0014-03-01 00:00:00
+	 0014-04-01 00:00:00
+	 0014-11-01 00:00:00
+	 0015-02-01 00:00:00
+Working on lag, range 6.0 3.0
+	 0005-04-01 00:00:00
+	 0005-06-01 00:00:00
+	 0005-08-01 00:00:00
+	 0005-10-01 00:00:00
+	 0006-01-01 00:00:00
+	 0006-04-01 00:00:00
+	 0006-05-01 00:00:00
+	 0006-11-01 00:00:00
+	 0007-01-01 00:00:00
+	 0007-03-01 00:00:00
+	 0007-05-01 00:00:00
+	 0007-07-01 00:00:00
+	 0007-10-01 00:00:00
+	 0008-02-01 00:00:00
+	 0008-03-01 00:00:00
+	 0008-06-01 00:00:00
+	 0008-10-01 00:00:00
+	 0008-11-01 00:00:00
+	 0009-01-01 00:00:00
+	 0009-03-01 00:00:00
+	 0009-10-01 00:00:00
+	 0009-12-01 00:00:00
+	 0010-04-01 00:00:00
+	 0010-06-01 00:00:00
+	 0010-12-01 00:00:00
+	 0011-01-01 00:00:00
+	 0011-02-01 00:00:00
+	 0011-03-01 00:00:00
+	 0011-04-01 00:00:00
+	 0011-10-01 00:00:00
+	 0011-12-01 00:00:00
+	 0012-02-01 00:00:00
+	 0012-03-01 00:00:00
+	 0012-08-01 00:00:00
+	 0012-09-01 00:00:00
+	 0012-10-01 00:00:00
+	 0013-02-01 00:00:00
+	 0013-04-01 00:00:00
+	 0013-11-01 00:00:00
+	 0014-03-01 00:00:00
+	 0014-04-01 00:00:00
+	 0014-11-01 00:00:00
+	 0015-02-01 00:00:00
+Working on lag, range 12.0 2.0
+	 0005-04-01 00:00:00
+	 0005-06-01 00:00:00
+	 0005-08-01 00:00:00
+	 0005-10-01 00:00:00
+	 0006-01-01 00:00:00
+	 0006-04-01 00:00:00
+	 0006-05-01 00:00:00
+	 0006-11-01 00:00:00
+	 0007-01-01 00:00:00
+	 0007-03-01 00:00:00
+	 0007-05-01 00:00:00
+	 0007-07-01 00:00:00
+	 0007-10-01 00:00:00
+	 0008-02-01 00:00:00
+	 0008-03-01 00:00:00
+	 0008-06-01 00:00:00
+	 0008-10-01 00:00:00
+	 0008-11-01 00:00:00
+	 0009-01-01 00:00:00
+	 0009-03-01 00:00:00
+	 0009-10-01 00:00:00
+	 0009-12-01 00:00:00
+	 0010-04-01 00:00:00
+	 0010-06-01 00:00:00
+	 0010-12-01 00:00:00
+	 0011-01-01 00:00:00
+	 0011-02-01 00:00:00
+	 0011-03-01 00:00:00
+	 0011-04-01 00:00:00
+	 0011-10-01 00:00:00
+	 0011-12-01 00:00:00
+	 0012-02-01 00:00:00
+	 0012-03-01 00:00:00
+	 0012-08-01 00:00:00
+	 0012-09-01 00:00:00
+	 0012-10-01 00:00:00
+	 0013-02-01 00:00:00
+	 0013-04-01 00:00:00
+	 0013-11-01 00:00:00
+	 0014-03-01 00:00:00
+	 0014-04-01 00:00:00
+	 0014-11-01 00:00:00
+	 0015-02-01 00:00:00
+Working on lag, range 12.0 2.5
+	 0005-04-01 00:00:00
+	 0005-06-01 00:00:00
+	 0005-08-01 00:00:00
+	 0005-10-01 00:00:00
+	 0006-01-01 00:00:00
+	 0006-04-01 00:00:00
+	 0006-05-01 00:00:00
+	 0006-11-01 00:00:00
+	 0007-01-01 00:00:00
+	 0007-03-01 00:00:00
+	 0007-05-01 00:00:00
+	 0007-07-01 00:00:00
+	 0007-10-01 00:00:00
+	 0008-02-01 00:00:00
+	 0008-03-01 00:00:00
+	 0008-06-01 00:00:00
+	 0008-10-01 00:00:00
+	 0008-11-01 00:00:00
+	 0009-01-01 00:00:00
+	 0009-03-01 00:00:00
+	 0009-10-01 00:00:00
+	 0009-12-01 00:00:00
+	 0010-04-01 00:00:00
+	 0010-06-01 00:00:00
+	 0010-12-01 00:00:00
+	 0011-01-01 00:00:00
+	 0011-02-01 00:00:00
+	 0011-03-01 00:00:00
+	 0011-04-01 00:00:00
+	 0011-10-01 00:00:00
+	 0011-12-01 00:00:00
+	 0012-02-01 00:00:00
+	 0012-03-01 00:00:00
+	 0012-08-01 00:00:00
+	 0012-09-01 00:00:00
+	 0012-10-01 00:00:00
+	 0013-02-01 00:00:00
+	 0013-04-01 00:00:00
+	 0013-11-01 00:00:00
+	 0014-03-01 00:00:00
+	 0014-04-01 00:00:00
+	 0014-11-01 00:00:00
+	 0015-02-01 00:00:00
+Working on lag, range 12.0 3.0
+	 0005-04-01 00:00:00
+	 0005-06-01 00:00:00
+	 0005-08-01 00:00:00
+	 0005-10-01 00:00:00
+	 0006-01-01 00:00:00
+	 0006-04-01 00:00:00
+	 0006-05-01 00:00:00
+	 0006-11-01 00:00:00
+	 0007-01-01 00:00:00
+	 0007-03-01 00:00:00
+	 0007-05-01 00:00:00
+	 0007-07-01 00:00:00
+	 0007-10-01 00:00:00
+	 0008-02-01 00:00:00
+	 0008-03-01 00:00:00
+	 0008-06-01 00:00:00
+	 0008-10-01 00:00:00
+	 0008-11-01 00:00:00
+	 0009-01-01 00:00:00
+	 0009-03-01 00:00:00
+	 0009-10-01 00:00:00
+	 0009-12-01 00:00:00
+	 0010-04-01 00:00:00
+	 0010-06-01 00:00:00
+	 0010-12-01 00:00:00
+	 0011-01-01 00:00:00
+	 0011-02-01 00:00:00
+	 0011-03-01 00:00:00
+	 0011-04-01 00:00:00
+	 0011-10-01 00:00:00
+	 0011-12-01 00:00:00
+	 0012-02-01 00:00:00
+	 0012-03-01 00:00:00
+	 0012-08-01 00:00:00
+	 0012-09-01 00:00:00
+	 0012-10-01 00:00:00
+	 0013-02-01 00:00:00
+	 0013-04-01 00:00:00
+	 0013-11-01 00:00:00
+	 0014-03-01 00:00:00
+	 0014-04-01 00:00:00
+	 0014-11-01 00:00:00
+	 0015-02-01 00:00:00
+[[0.93367347 0.94047619 0.94047619]
+ [0.93367347 0.94047619 0.94047619]]
+
+
+[[0. 0. 0.]
+ [0. 0. 0.]]
