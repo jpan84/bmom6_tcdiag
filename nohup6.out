@@ -1,150 +1,63 @@
 nohup: ignoring input
-/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 1442354.casper-pbs with qsub arguments:
-    qsub  -l select=1:ncpus=16:mem=128GB -A UPSU0063 -q casper@casper-pbs -l walltime=02:00:00
+['seed_success_rate.py', 'seed_stats/251229_seed_match_seed_events.csv', '/glade/u/home/jpan/aquaptc/tempest/MSEED_2yrs.csv', '10', '15'] 
 
-Working on 250415_unseed
-<xarray.Dataset> Size: 381GB
-Dimensions:    (time: 4380, ncol: 777602, bnds: 2)
-Coordinates:
-* time       (time) object 35kB 0012-01-01 00:00:00 ... 0014-12-31 18:00:00
-Dimensions without coordinates: ncol, bnds
-Data variables: (12/33)
-CAPE       (time, ncol) float32 14GB dask.array<chunksize=(1, 777602), meta=np.ndarray>
-FLUT       (time, ncol) float32 14GB dask.array<chunksize=(1, 777602), meta=np.ndarray>
-OMEGA500   (time, ncol) float32 14GB dask.array<chunksize=(1, 777602), meta=np.ndarray>
-OMEGA850   (time, ncol) float32 14GB dask.array<chunksize=(1, 777602), meta=np.ndarray>
-PRECT      (time, ncol) float32 14GB dask.array<chunksize=(1, 777602), meta=np.ndarray>
-PS         (time, ncol) float32 14GB dask.array<chunksize=(1, 777602), meta=np.ndarray>
-...         ...
-Z850       (time, ncol) float32 14GB dask.array<chunksize=(1, 777602), meta=np.ndarray>
-area       (ncol) float64 6MB dask.array<chunksize=(777602,), meta=np.ndarray>
-areawt     (ncol) float64 6MB dask.array<chunksize=(777602,), meta=np.ndarray>
-lat        (ncol) float64 6MB dask.array<chunksize=(777602,), meta=np.ndarray>
-lon        (ncol) float64 6MB dask.array<chunksize=(777602,), meta=np.ndarray>
-time_bnds  (time, bnds) object 70kB dask.array<chunksize=(1, 2), meta=np.ndarray>
-Attributes: (12/15)
-CDI:               Climate Data Interface version 2.4.4 (https://mpimet.m...
-Conventions:       CF-1.0
-source:            CAM
-ne:                120
-np:                4
-case:              b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_u...
-...                ...
-topography_file:   bnd_topo
-model_doi_url:     not_set
-time_period_freq:  hour_6
-history:           Fri Aug 15 12:55:54 2025: ncks -D 1 -O -4 -L 1 TC_R4_m...
-NCO:               netCDF Operators version 5.3.1 (Homepage = http://nco....
-CDO:               Climate Data Operators version 2.4.4 (https://mpimet.m...
-<xarray.Dataset> Size: 4GB
-Dimensions:    (time: 48, ncol: 777602, bnds: 2)
-Coordinates:
-* time       (time) object 384B 0012-01-01 00:00:00 ... 0012-12-01 18:00:00
-Dimensions without coordinates: ncol, bnds
-Data variables: (12/33)
-CAPE       (time, ncol) float32 149MB dask.array<chunksize=(1, 777602), meta=np.ndarray>
-FLUT       (time, ncol) float32 149MB dask.array<chunksize=(1, 777602), meta=np.ndarray>
-OMEGA500   (time, ncol) float32 149MB dask.array<chunksize=(1, 777602), meta=np.ndarray>
-OMEGA850   (time, ncol) float32 149MB dask.array<chunksize=(1, 777602), meta=np.ndarray>
-PRECT      (time, ncol) float32 149MB dask.array<chunksize=(1, 777602), meta=np.ndarray>
-PS         (time, ncol) float32 149MB dask.array<chunksize=(1, 777602), meta=np.ndarray>
-...         ...
-Z850       (time, ncol) float32 149MB dask.array<chunksize=(1, 777602), meta=np.ndarray>
-area       (ncol) float64 6MB dask.array<chunksize=(777602,), meta=np.ndarray>
-areawt     (ncol) float64 6MB dask.array<chunksize=(777602,), meta=np.ndarray>
-lat        (ncol) float64 6MB dask.array<chunksize=(777602,), meta=np.ndarray>
-lon        (ncol) float64 6MB dask.array<chunksize=(777602,), meta=np.ndarray>
-time_bnds  (time, bnds) object 768B dask.array<chunksize=(1, 2), meta=np.ndarray>
-Attributes: (12/15)
-CDI:               Climate Data Interface version 2.4.4 (https://mpimet.m...
-Conventions:       CF-1.0
-source:            CAM
-ne:                120
-np:                4
-case:              b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_u...
-...                ...
-topography_file:   bnd_topo
-model_doi_url:     not_set
-time_period_freq:  hour_6
-history:           Fri Aug 15 12:55:54 2025: ncks -D 1 -O -4 -L 1 TC_R4_m...
-NCO:               netCDF Operators version 5.3.1 (Homepage = http://nco....
-CDO:               Climate Data Operators version 2.4.4 (https://mpimet.m...
-<xarray.DataArray 'season' (time: 48)> Size: 576B
-array(['DJF', 'DJF', 'DJF', 'DJF', 'DJF', 'DJF', 'DJF', 'DJF', 'MAM',
-'MAM', 'MAM', 'MAM', 'MAM', 'MAM', 'MAM', 'MAM', 'MAM', 'MAM',
-'MAM', 'MAM', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA',
-'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'SON', 'SON', 'SON', 'SON',
-'SON', 'SON', 'SON', 'SON', 'SON', 'SON', 'SON', 'SON', 'DJF',
-'DJF', 'DJF', 'DJF'], dtype='<U3')
-Coordinates:
-* time     (time) object 384B 0012-01-01 00:00:00 ... 0012-12-01 18:00:00
-Attributes:
-standard_name:  time
-long_name:      time
-bounds:         time_bnds
-axis:           T
-Processing time 0012-01-01 00:00:00
-Processing time 0012-01-01 06:00:00
-Processing time 0012-01-01 12:00:00
-Processing time 0012-01-01 18:00:00
-Processing time 0012-02-01 00:00:00
-Processing time 0012-02-01 06:00:00
-Processing time 0012-02-01 12:00:00
-Processing time 0012-02-01 18:00:00
-Processing time 0012-03-01 00:00:00
-Processing time 0012-03-01 06:00:00
-Processing time 0012-03-01 12:00:00
-Processing time 0012-03-01 18:00:00
-Processing time 0012-04-01 00:00:00
-Processing time 0012-04-01 06:00:00
-Processing time 0012-04-01 12:00:00
-Processing time 0012-04-01 18:00:00
-Processing time 0012-05-01 00:00:00
-Processing time 0012-05-01 06:00:00
-Processing time 0012-05-01 12:00:00
-Processing time 0012-05-01 18:00:00
-Processing time 0012-06-01 00:00:00
-Processing time 0012-06-01 06:00:00
-Processing time 0012-06-01 12:00:00
-Processing time 0012-06-01 18:00:00
-Processing time 0012-07-01 00:00:00
-Processing time 0012-07-01 06:00:00
-Processing time 0012-07-01 12:00:00
-Processing time 0012-07-01 18:00:00
-Processing time 0012-08-01 00:00:00
-Processing time 0012-08-01 06:00:00
-Processing time 0012-08-01 12:00:00
-Processing time 0012-08-01 18:00:00
-Processing time 0012-09-01 00:00:00
-Processing time 0012-09-01 06:00:00
-Processing time 0012-09-01 12:00:00
-Processing time 0012-09-01 18:00:00
-Processing time 0012-10-01 00:00:00
-Processing time 0012-10-01 06:00:00
-Processing time 0012-10-01 12:00:00
-Processing time 0012-10-01 18:00:00
-Processing time 0012-11-01 00:00:00
-Processing time 0012-11-01 06:00:00
-Processing time 0012-11-01 12:00:00
-Processing time 0012-11-01 18:00:00
-Processing time 0012-12-01 00:00:00
-Processing time 0012-12-01 06:00:00
-Processing time 0012-12-01 12:00:00
-Processing time 0012-12-01 18:00:00
-<xarray.DataArray 'season' (time: 48)> Size: 576B
-array(['DJF', 'DJF', 'DJF', 'DJF', 'DJF', 'DJF', 'DJF', 'DJF', 'MAM',
-'MAM', 'MAM', 'MAM', 'MAM', 'MAM', 'MAM', 'MAM', 'MAM', 'MAM',
-'MAM', 'MAM', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA',
-'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'SON', 'SON', 'SON', 'SON',
-'SON', 'SON', 'SON', 'SON', 'SON', 'SON', 'SON', 'SON', 'DJF',
-'DJF', 'DJF', 'DJF'], dtype='<U3')
-Coordinates:
-* time     (time) object 384B 0012-01-01 00:00:00 ... 0012-12-01 18:00:00
-Attributes:
-standard_name:  time
-long_name:      time
-bounds:         time_bnds
-axis:           T
-Processing time 0012-01-01 00:00:00
-Terminated
+Working on lag, range 6.0 2.0
+	 0005-05-01 00:00:00
+	 0005-11-01 00:00:00
+	 0005-12-01 00:00:00
+	 0006-02-01 00:00:00
+	 0006-06-01 00:00:00
+	 0006-08-01 00:00:00
+	 0006-12-01 00:00:00
+	 0007-01-01 00:00:00
+Working on lag, range 6.0 2.5
+	 0005-05-01 00:00:00
+	 0005-11-01 00:00:00
+	 0005-12-01 00:00:00
+	 0006-02-01 00:00:00
+	 0006-06-01 00:00:00
+	 0006-08-01 00:00:00
+	 0006-12-01 00:00:00
+	 0007-01-01 00:00:00
+Working on lag, range 6.0 3.0
+	 0005-05-01 00:00:00
+	 0005-11-01 00:00:00
+	 0005-12-01 00:00:00
+	 0006-02-01 00:00:00
+	 0006-06-01 00:00:00
+	 0006-08-01 00:00:00
+	 0006-12-01 00:00:00
+	 0007-01-01 00:00:00
+Working on lag, range 12.0 2.0
+	 0005-05-01 00:00:00
+	 0005-11-01 00:00:00
+	 0005-12-01 00:00:00
+	 0006-02-01 00:00:00
+	 0006-06-01 00:00:00
+	 0006-08-01 00:00:00
+	 0006-12-01 00:00:00
+	 0007-01-01 00:00:00
+Working on lag, range 12.0 2.5
+	 0005-05-01 00:00:00
+	 0005-11-01 00:00:00
+	 0005-12-01 00:00:00
+	 0006-02-01 00:00:00
+	 0006-06-01 00:00:00
+	 0006-08-01 00:00:00
+	 0006-12-01 00:00:00
+	 0007-01-01 00:00:00
+Working on lag, range 12.0 3.0
+	 0005-05-01 00:00:00
+	 0005-11-01 00:00:00
+	 0005-12-01 00:00:00
+	 0006-02-01 00:00:00
+	 0006-06-01 00:00:00
+	 0006-08-01 00:00:00
+	 0006-12-01 00:00:00
+	 0007-01-01 00:00:00
+[[0.56818182 0.57575758 0.58333333]
+ [0.56818182 0.57575758 0.58333333]]
+
+
+[[0. 0. 0.]
+ [0. 0. 0.]]
