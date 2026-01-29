@@ -40,7 +40,8 @@ def main():
       pdf = pdf[~pdf['dt'].apply(lambda x: x.month == 2 and x.day == 29)]
       pdf['dt'] = pdf['dt'].apply(lambda d: cftime.datetime(d.year, d.month, d.day, d.hour, calendar='noleap'))
    pdf['dt'] = pdf['dt'] - dt.timedelta(days=2000 * 365)
-   pdf['istouched'] = False #flag for whether a discrete storm has been touched by unseed
+   #pdf['istouched'] = False #flag for whether a discrete storm has been touched by unseed
+   pdf['unseed_pt'] = False #flag for whether a fix is associated with an unseed event
 
 
    for ix, rw in sdf.iterrows():
@@ -50,39 +51,31 @@ def main():
       #print(rw['dt'])
       #print(dtmatch)
       inrng = dtmatch[gcd_deg(rw['clon'], rw['clat'], dtmatch['lon'], dtmatch['lat']) <= RNG]
-      inrng = inrng.drop_duplicates(subset=['stmnum'], keep='first')
+      #inrng = inrng.drop_duplicates(subset=['stmnum'], keep='first')
       if inrng.shape[0] == 1:
          frac1 += 1
       elif inrng.shape[0] > 1:
          print(inrng)
          frac2 += 1
 
-      #flag storms that were touched by unseed
-      pdf.loc[pdf['stmnum'].isin(inrng['stmnum']), 'istouched'] = True
+      #flag storms and fixes that were touched by unseed
+      #pdf.loc[pdf['stmnum'].isin(inrng['stmnum']), 'istouched'] = True
+      pdf.loc[inrng.index, 'unseed_pt'] = True
 
-   #for ii, ll in enumerate(lags):
-   #   for jj, rg in enumerate(rngs):
-   #      print('Working on lag, range', ll, rg)
-   #      for ix, rw in sdf.iterrows():
-   #         if rw['dt'].day == 1 and rw['dt'].hour == 0:
-   #            print('\t', rw['dt'])
-   #         dtmatch = pdf[(pdf['dt'] - rw['dt'] <= dt.timedelta(hours=ll)) & (pdf['dt'] - rw['dt'] >= dt.timedelta(hours=lags[0]))]
-   #         #print(rw['dt'])
-   #         #print(dtmatch)
-   #         inrng = dtmatch[gcd_deg(rw['clon'], rw['clat'], dtmatch['lon'], dtmatch['lat']) <= rg]
-   #         if inrng.shape[0] == 1:
-   #            tab1[ii, jj] += 1
-   #         elif inrng.shape[0] > 1:
-   #            tab2[ii, jj] += 1
+   #count the number of unseed events applied to each trajectory
+   attempt_cnt = pdf[pdf['unseed_pt'] == True].groupby('stmnum').size()
+   pdf['istouched'] = pdf['stmnum'].map(attempt_cnt).fillna(0).astype(int)
 
    print(sdf.shape)
    print('Exactly one match:', frac1 / sdf.shape[0])
    print('\n')
    print('More than one match:', frac2 / sdf.shape[0], '\n')
 
-   tchd = pdf[pdf['istouched']].drop_duplicates(subset=['stmnum'], keep='first').shape[0]
-   nstm = pdf.drop_duplicates(subset=['stmnum'], keep='first').shape[0]
-   print('storms touched by unseed:', tchd, '/', nstm)
+   #tchd = pdf[pdf['istouched']].drop_duplicates(subset=['stmnum'], keep='first').shape[0]
+   #nstm = pdf.drop_duplicates(subset=['stmnum'], keep='first').shape[0]
+   #print('storms touched by unseed:', tchd, '/', nstm)
+
+   pdf.to_csv(PARFIL + '.flagged.csv')
 
 def gcd_deg(clon, clat, ser_lon, ser_lat):
    clonr, clatr = np.deg2rad(clon), np.deg2rad(clat)
