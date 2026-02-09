@@ -4,9 +4,9 @@ import xarray as xr
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 
-FILI = 'umf500_0012_07-20warm.nc'
-FILI = 'umf500_0012_20-33warm.nc'
-DIRO = 'mf_histo_SST'
+FILI = 'umf500_0012dd01_07-20warm.nc'
+#FILI = 'umf500_0012dd01_20-33warm.nc'
+DIRO = 'mf_histo_btbc'
 TTLS = ['UNSEED$-$CTRL', 'CTRL', 'SEED$-$CTRL']
 
 ds = xr.open_dataset(FILI).sum(dim='time') #forgot to change time normalization in 1st script when retaining time dim so need to sum here instead of avg

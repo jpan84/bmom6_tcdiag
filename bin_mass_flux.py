@@ -23,10 +23,14 @@ a = 6.371e6
 #CASE1 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.*.nc'
 #CASE2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.*.nc'\
 #         % (alias2, alias2)
-FILIS = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0012-*-0*-*.nc'
+FILIS = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0012-*-01-*.nc'
 ALIS = ['250415_unseed', '250417_ctrl', '250416_seed1x1']
 CASES = ['UNSEED', 'CTRL', 'SEED']
 #FILO = 'umf500_0012dd0x_histo_mse850_SST.pkl'
+
+mse850_f = lambda ds: g * ds['Z850'] + cp * ds['T850'] + lv * ds['Q850']
+sst_f = lambda ds: ds['SST']
+umf500_f = lambda ds: (ds['OMEGA500'] < 0) * (-ds['OMEGA500'] * ds['area'] * a**2 / g)
 
 SSTbins = np.concatenate((np.arange(295., 306.), np.arange(306, 309, 0.25), np.arange(309, 313)))
 
@@ -35,8 +39,7 @@ SSTbins = np.concatenate((np.arange(295., 306.), np.arange(306, 309, 0.25), np.a
 #TODO: split seasons
 #TODO: check why NH and SH selections differ in number of cols
 def main():
-   #print(sys.argv)
-   #ds = xr.open_mfdataset(CASE1)
+   global SSTbins
 
 
    mtout, stout = None, None
@@ -44,8 +47,8 @@ def main():
    for ii, al in enumerate(ALIS):
       print('Working on', al)
       ds = xr.open_mfdataset(FILIS % (al, al))
-      mtda, m_d, s_d = compute_umf_hist(ds.drop_vars(['time_bounds', 'time_written', 'date_written']), hemi='warm', sstbins=SSTbins, innerlat=7., outerlat=20.)
-      stda, _, _ = compute_umf_hist(ds.drop_vars(['time_bounds', 'time_written', 'date_written']), hemi='warm', sstbins=SSTbins, innerlat=20., outerlat=33.)
+      mtda, m_d, s_d = compute_umf_hist(ds.drop_vars(['time_bounds', 'time_written', 'date_written']), hemi='warm', ybins=SSTbins, innerlat=7., outerlat=20.)
+      stda, _, _ = compute_umf_hist(ds.drop_vars(['time_bounds', 'time_written', 'date_written']), hemi='warm', ybins=SSTbins, innerlat=20., outerlat=33.)
       mtda, stda = mtda.expand_dims(case=[CASES[ii]]), stda.expand_dims(case=[CASES[ii]])
 
       if mtout is None:
@@ -57,30 +60,25 @@ def main():
    mtds = xr.Dataset(data_vars=dict(UMF500=mtout, mwidth=m_d, swidth=s_d))
    stds = xr.Dataset(data_vars=dict(UMF500=stout, mwidth=m_d, swidth=s_d))
 
-   mtds.to_netcdf('umf500_0012dd0x_07-20warm.nc')
-   stds.to_netcdf('umf500_0012dd0x_20-33warm.nc')
+   mtds.to_netcdf('umf500_0012dd01_07-20warm.nc')
+   stds.to_netcdf('umf500_0012dd01_20-33warm.nc')
 
    print(sys.argv[0], 'done')
 
 
 
-def compute_umf_hist(ds, innerlat=5., outerlat=30., hemi='warm', msebins=np.arange(2.8e5, 4.01e5, 5e3), sstbins=np.arange(295, 315)): #try SST, TMQ
+def compute_umf_hist(ds, innerlat=5., outerlat=30., hemi='warm', thevarf=umf500_f, xvarf=mse850_f, yvarf=sst_f,\
+                     xbins=np.arange(2.8e5, 4.01e5, 5e3), ybins=np.arange(295, 315), xnm='MSE850', ynm='SST'):
    #print(ds.data_vars)
    nhsel, shsel = sel_unstruct_tropics(ds, innerlat=innerlat, outerlat=outerlat, hemi=hemi)
    selds = xr.concat((nhsel, shsel), 'ncol')
-   #print(selds)
-   #print(selds.time)
-
-   mse850 = g * selds['Z850'] + cp * selds['T850'] + lv * selds['Q850']
-   area = selds['area'] * a**2
-   umf500 = (selds['OMEGA500'] < 0) * (-selds['OMEGA500'] * area / g)
 
    hist_snaps = []
    m_e, s_e = None, None
    for tt in selds['time']:
       print('Processing time', str(tt.data))
-      umf_b_2d, mse_edges, sst_edges, _ = bin_umf_2d(umf500.sel(time=tt), mse850.sel(time=tt), selds['SST'].sel(time=tt),\
-                                          msebins, sstbins, selds['time'].size / 2) #Divide time size by 2 because I've filtered out half of the year
+      umf_b_2d, mse_edges, sst_edges, _ = bin_umf_2d(umf500_f(selds).sel(time=tt), xvarf(selds).sel(time=tt), yvarf(selds).sel(time=tt),\
+                                          xbins, ybins, selds['time'].size / 2) #Divide time size by 2 because I've filtered out half of the year
       #print(umf_b_2d.shape, mse_edges.shape, sst_edges.shape)
       if m_e is None and s_e is None:
          m_e, s_e = mse_edges, sst_edges
@@ -92,7 +90,7 @@ def compute_umf_hist(ds, innerlat=5., outerlat=30., hemi='warm', msebins=np.aran
    m_c, s_c = (m_e[1:] + m_e[:-1]) / 2, (s_e[1:] + s_e[:-1]) / 2
    m_d, s_d = m_e[1:] - m_e[:-1], s_e[1:] - s_e[:-1]
 
-   return xr.DataArray(hist_snaps, dims=['time', 'MSE850', 'SST'], coords=[selds['time'], m_c, s_c]), m_d, s_d
+   return xr.DataArray(hist_snaps, dims=['time', xnm, ynm], coords=[selds['time'], m_c, s_c]), m_d, s_d
 
 def sel_unstruct_tropics(ds, innerlat=5., outerlat=30., hemi='warm'):
    szn = ds['time'].dt.season
