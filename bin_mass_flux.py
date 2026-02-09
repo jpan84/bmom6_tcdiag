@@ -26,42 +26,37 @@ a = 6.371e6
 FILIS = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0012-*-01-*.nc'
 ALIS = ['250415_unseed', '250417_ctrl', '250416_seed1x1']
 CASES = ['UNSEED', 'CTRL', 'SEED']
+VARO = 'UMF500'
 #FILO = 'umf500_0012dd0x_histo_mse850_SST.pkl'
 
 mse850_f = lambda ds: g * ds['Z850'] + cp * ds['T850'] + lv * ds['Q850']
 sst_f = lambda ds: ds['SST']
 umf500_f = lambda ds: (ds['OMEGA500'] < 0) * (-ds['OMEGA500'] * ds['area'] * a**2 / g)
 
+umf850_f = lambda ds: (ds['OMEGA850'] < 0) * (ds['PRECT'] > 1e-8) * (-ds['OMEGA850'] * ds['area'] * a**2 / g)
+
 SSTbins = np.concatenate((np.arange(295., 306.), np.arange(306, 309, 0.25), np.arange(309, 313)))
 
-#TODO: allow flexible latitude bins?
-#TODO: allow diffing cases
-#TODO: split seasons
+
 #TODO: check why NH and SH selections differ in number of cols
 def main():
    global SSTbins
 
-
-   mtout, stout = None, None
-   m_d, s_d = None, None
+   outda = None
+   x_d, y_d = None, None
    for ii, al in enumerate(ALIS):
       print('Working on', al)
       ds = xr.open_mfdataset(FILIS % (al, al))
-      mtda, m_d, s_d = compute_umf_hist(ds.drop_vars(['time_bounds', 'time_written', 'date_written']), hemi='warm', ybins=SSTbins, innerlat=7., outerlat=20.)
-      stda, _, _ = compute_umf_hist(ds.drop_vars(['time_bounds', 'time_written', 'date_written']), hemi='warm', ybins=SSTbins, innerlat=20., outerlat=33.)
-      mtda, stda = mtda.expand_dims(case=[CASES[ii]]), stda.expand_dims(case=[CASES[ii]])
+      da, x_d, y_d = compute_umf_hist(ds.drop_vars(['time_bounds', 'time_written', 'date_written']), hemi='warm', ybins=SSTbins, innerlat=7., outerlat=20.)
+      da = da.expand_dims(case=[CASES[ii]])
 
-      if mtout is None:
-         mtout, stout = mtda, stda
+      if outda is None:
+         outda = da
       else:
-         mtout, stout = xr.concat([mtout, mtda], dim='case'), xr.concat([stout, stda], dim='case')
-      #topkl.append(compute_umf_hist(ds, hemi='cool', capebins=SSTbins))
+         outda = xr.concat([outda, da], dim='case')
 
-   mtds = xr.Dataset(data_vars=dict(UMF500=mtout, mwidth=m_d, swidth=s_d))
-   stds = xr.Dataset(data_vars=dict(UMF500=stout, mwidth=m_d, swidth=s_d))
-
-   mtds.to_netcdf('umf500_0012dd01_07-20warm.nc')
-   stds.to_netcdf('umf500_0012dd01_20-33warm.nc')
+   outds = xr.Dataset(data_vars={VARO: outda, 'xwidth': x_d, 'ywidth': y_d})
+   outds.to_netcdf('%s_0012dd01_07-20warm.nc' % VARO)
 
    print(sys.argv[0], 'done')
 

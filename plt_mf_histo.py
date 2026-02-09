@@ -4,7 +4,7 @@ import xarray as xr
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 
-FILI = 'umf500_0012dd01_07-20warm.nc'
+FILI = 'UMF500_0012dd01_07-20warm.nc'
 #FILI = 'umf500_0012dd01_20-33warm.nc'
 DIRO = 'mf_histo_btbc'
 TTLS = ['UNSEED$-$CTRL', 'CTRL', 'SEED$-$CTRL']
@@ -13,8 +13,8 @@ ds = xr.open_dataset(FILI).sum(dim='time') #forgot to change time normalization 
 umfdif = ds['UMF500'].copy()
 umfdif.loc[dict(case=['UNSEED', 'SEED'])] -= umfdif.sel(case='CTRL')
 print(umfdif.max())
-umfdif /= ds['mwidth'].data[None, :, None]
-umfdif /= ds['swidth'].data[None, None, :]
+umfdif /= ds['xwidth'].data[None, :, None]
+umfdif /= ds['ywidth'].data[None, None, :]
 
 
 #RAWVLIM = dict(vmin=0, vmax=1.5e11)
