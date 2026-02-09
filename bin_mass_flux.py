@@ -23,10 +23,11 @@ a = 6.371e6
 #CASE1 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl.cam.h1i.*.nc'
 #CASE2 = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist_0010_h1i/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.*.nc'\
 #         % (alias2, alias2)
-FILIS = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0012-*-01-*.nc'
+FILIS = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0012-*-0*-*.nc'
 ALIS = ['250415_unseed', '250417_ctrl', '250416_seed1x1']
 CASES = ['UNSEED', 'CTRL', 'SEED']
-VARO = 'UMF500'
+VARO = 'UMF850'
+ILAT, OLAT = 0, 30
 #FILO = 'umf500_0012dd0x_histo_mse850_SST.pkl'
 
 mse850_f = lambda ds: g * ds['Z850'] + cp * ds['T850'] + lv * ds['Q850']
@@ -36,6 +37,8 @@ umf500_f = lambda ds: (ds['OMEGA500'] < 0) * (-ds['OMEGA500'] * ds['area'] * a**
 umf850_f = lambda ds: (ds['OMEGA850'] < 0) * (ds['PRECT'] > 1e-8) * (-ds['OMEGA850'] * ds['area'] * a**2 / g)
 
 SSTbins = np.concatenate((np.arange(295., 306.), np.arange(306, 309, 0.25), np.arange(309, 313)))
+OM850b = np.concatenate((np.arange(-2, -.5, .25), np.arange(-.5, -.1, .05), np.arange(-.1, .01, .01)))#np.arange(-10, 0.25, 0.25)
+OM500b = np.concatenate((np.arange(-4, -.5, .25), np.arange(-.5, -.2, .1), np.arange(-.2, 0, .02), np.arange(0, .51, .1)))#np.arange(-20, 3, 0.5)
 
 
 #TODO: check why NH and SH selections differ in number of cols
@@ -47,7 +50,9 @@ def main():
    for ii, al in enumerate(ALIS):
       print('Working on', al)
       ds = xr.open_mfdataset(FILIS % (al, al))
-      da, x_d, y_d = compute_umf_hist(ds.drop_vars(['time_bounds', 'time_written', 'date_written']), hemi='warm', ybins=SSTbins, innerlat=7., outerlat=20.)
+      #da, x_d, y_d = compute_umf_hist(ds.drop_vars(['time_bounds', 'time_written', 'date_written']), hemi='warm', ybins=SSTbins, innerlat=7., outerlat=20.)
+      da, x_d, y_d = compute_umf_hist(ds.drop_vars(['time_bounds', 'time_written', 'date_written']), hemi='warm', innerlat=ILAT, outerlat=OLAT,\
+                                        thevarf=umf850_f, xvarf=lambda x: x['OMEGA850'], yvarf=lambda x: x['OMEGA500'], xbins=OM850b, ybins=OM500b, xnm='OM850', ynm='OM500')
       da = da.expand_dims(case=[CASES[ii]])
 
       if outda is None:
@@ -56,7 +61,7 @@ def main():
          outda = xr.concat([outda, da], dim='case')
 
    outds = xr.Dataset(data_vars={VARO: outda, 'xwidth': x_d, 'ywidth': y_d})
-   outds.to_netcdf('%s_0012dd01_07-20warm.nc' % VARO)
+   outds.to_netcdf('%s_0012dd0x_%02d-%02dwarm.nc' % (VARO, ILAT, OLAT))
 
    print(sys.argv[0], 'done')
 
