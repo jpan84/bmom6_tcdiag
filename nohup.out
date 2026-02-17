@@ -6298,3 +6298,4 @@ Plotting WQ850_pos
 Plotting WQ850_neg
 QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/glade/derecho/scratch/jpan/tmp/runtime-jpan'
 QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/glade/derecho/scratch/jpan/tmp/runtime-jpan'
+Error: No command provided to execute
