@@ -10,8 +10,8 @@ DIRS = ['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av
 pres_name = 'plev'
 mylev = 700.
 ILAT, OLAT = 5., 30.
-WINDOW = 2. #deglat
-STEP = 0.01
+WINDOW = 1. #deglat
+STEP = 0.02
 
 YSCL = lambda lat: np.sin(np.deg2rad(lat))
 YINV = lambda mu: np.rad2deg(np.arcsin(mu))
@@ -28,8 +28,8 @@ def main():
    root_init = [np.abs(ps).idxmin(dim='lat') for ps in psis]
    max_init = [ps.idxmax(dim='lat') for ps in psis]
 
-   rt_intp = [ps.interp(lat=np.arange(root_init[ii] - WINDOW, root_init[ii] + WINDOW + STEP, STEP), method='cubic') for ii, ps in enumerate(psis)]
-   mx_intp = [ps.interp(lat=np.arange(max_init[ii] - WINDOW, max_init[ii] + WINDOW + STEP, STEP), method='cubic') for ii, ps in enumerate(psis)]
+   rt_intp = [ps.interp(lat=np.arange(root_init[ii].min(dim='month') - WINDOW, root_init[ii].max(dim='month') + WINDOW + STEP, STEP), method='cubic') for ii, ps in enumerate(psis)]
+   mx_intp = [ps.interp(lat=np.arange(max_init[ii].min(dim='month') - WINDOW, max_init[ii].max(dim='month') + WINDOW + STEP, STEP), method='cubic') for ii, ps in enumerate(psis)]
    #mx_intp
 
    #plt.rcParams['figure.figsize'] = (5, 10)
