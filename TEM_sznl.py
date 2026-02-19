@@ -24,7 +24,7 @@ from sznl_funcs import monthly2sznl, stack_hemi_sznl
 
 print(sys.argv)
 #DIRIDX = int(sys.argv[1])
-DIFF = bool(int(sys.argv[1])) #False if len(sys.argv) < 3 else bool(sys.argv[2])
+DIFF = bool(int(sys.argv[1])) if len(sys.argv) > 1 else None #False if len(sys.argv) < 3 else bool(sys.argv[2])
 #DIRIDX2 = None if not DIFF else int(sys.argv[3])
 fname = 'ymonmean.nc' #'cdo_ann_means.nc' #'*h0a*.nc'
 DIR1 = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/%s' % fname
