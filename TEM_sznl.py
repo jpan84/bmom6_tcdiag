@@ -129,7 +129,7 @@ def comppsi(HIST_DS):
    print('Computing Eulerian mean mass streamfunction...')
    #compute the streamfunction assoc w/ Eulerian-mean V
    V_ZM = HIST_DS.V.mean(dim='lon')
-   V_ZMEM = V_ZM.groupby('time.month').mean(dim='time')
+   V_ZMEM = V_ZM
    coslat = np.cos(HIST_DS.lat * np.pi / 180)
    sinlat = np.sin(HIST_DS.lat * np.pi / 180)
    latcirc = 2 * np.pi * c.a * coslat #circumference at each latitude
@@ -137,9 +137,9 @@ def comppsi(HIST_DS):
    PSI_EM = trapint(integrand, HIST_DS[pres_name]) * 100
 
    print('Computing vT term (quasi-Stokes mass streamfunction)...')
-   VTH_ZMEM = thta(HIST_DS.VT, HIST_DS[pres_name]).groupby('time.month').mean(dim=['time', 'lon']) 
-   TH_MEAN = thta(HIST_DS.T, HIST_DS[pres_name]).groupby('time.month').mean(dim=['time', 'lon'])
-   V_MEAN = HIST_DS.V.groupby('time.month').mean(dim=['time', 'lon'])
+   VTH_ZMEM = thta(HIST_DS.VT, HIST_DS[pres_name]).mean(dim='lon') 
+   TH_MEAN = thta(HIST_DS.T, HIST_DS[pres_name]).mean(dim='lon')
+   V_MEAN = HIST_DS.V.mean(dim='lon')
    VTH_MEAN = V_MEAN * TH_MEAN
    EHF = VTH_ZMEM - VTH_MEAN #- VTH_STN
 
@@ -160,8 +160,8 @@ def comppsi(HIST_DS):
    print('Computing merid EPF, EMF term...')
    EPfac = c.a * HIST_DS['dens'] * coslat
    EP_qs = EPfac * PSI_vel
-   UV_ZMEM = HIST_DS['VU'].groupby('time.month').mean(dim=['time', 'lon'])
-   U_MEAN = HIST_DS['U'].groupby('time.month').mean(dim=['time', 'lon'])
+   UV_ZMEM = HIST_DS['VU'].mean(dim='lon')
+   U_MEAN = HIST_DS['U'].mean(dim='lon')
    EMF = UV_ZMEM - U_MEAN * V_MEAN
    EPy_EMF = EPfac * -EMF
    EPy_EMF_d = yderiv(EPy_EMF, coslat) / EPfac
