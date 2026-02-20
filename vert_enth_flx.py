@@ -1,9 +1,11 @@
 import xarray as xr
+import numpy as np
 import os
 import sys
 import matplotlib.pyplot as plt
+from sznl_funcs import monthly2sznl, stack_hemi_sznl
 
-DIRS = ['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/',\
+DIRS = ['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist_regrid_0.25x0.25_onpres/',\
         '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist_regrid_0.25x0.25_onpres/',\
         '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm/hist_regrid_0.25x0.25_onpres/']
 ALIS = ['UNSEED', 'CTRL', 'MSEED']
@@ -17,9 +19,14 @@ cp = 1005
 Rd = 287
 
 def main():
+   if not os.path.exists(DIRO):
+      os.makedirs(DIRO)
+
    print('Opening datasets...')
    dss = [xr.open_mfdataset(os.path.join(dr, FILI)).expand_dims(case=[ALIS[ii]]) for ii, dr in enumerate(DIRS)]
-   inds = xr.concat(dss, dim='case')
+   inds = xr.concat(dss, dim='case').chunk(dict(plev=-1)).groupby('time.month').mean(dim='time')
+   #print(inds)
+   #exit()
 
    print('Taking zonal means...')
    wzm = inds['OMEGA'].mean(dim='lon')
@@ -44,7 +51,23 @@ def main():
    print(sys.argv[0], 'done computing.')
 
 def main_plot():
-   return
+   ds = xr.open_dataset(FILO)
+
+   dT_mmc = ds['dT_wadv_mmc'] + ds['dT_wwrk_mmc']
+   dT_tre = ds['dT_wflx_tre'] + ds['dT_wflx_tre']
+
+   m2s = lambda da: monthly2sznl(da)
+   shs = lambda da: stack_hemi_sznl(da, antisym=False, latnm='lat')
+
+   dT_mmc_sznl = shs(m2s(dT_mmc))
+   dT_tre_sznl = shs(m2s(dT_tre))
+
+   plt.contourf(ds['lat'], ds['plev'], dT_tre_sznl.sel(season='SON', case='CTRL'), cmap='bwr', levels=np.arange(-8e-5, 8.1e-5, 1e-5))
+   #plt.contourf(ds['lat'], ds['plev'], dT_tre_sznl.sel(season='SON', case='UNSEED') - dT_tre_sznl.sel(season='SON', case='CTRL'), cmap='RdBu_r', levels=np.arange(-4e-6, 4.1e-6, 5e-7))
+   plt.colorbar()
+   plt.xlim(-30, 30)
+   plt.ylim(1e5, 1e4)
+   plt.show()
 
 if __name__ == '__main__':
    if sys.argv[1] == 'compute':
