@@ -3,3 +3,91 @@ nohup: ignoring input
 Waiting on job launch; 2427394.casper-pbs with qsub arguments:
     qsub  -l select=1:ncpus=16:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=02:45:00
 
+['ITCZ_monthly.py']
+Computing Eulerian mean mass streamfunction...
+None
+Computing vT term (quasi-Stokes mass streamfunction)...
+Setting up log-p coords...
+Computing quasi-Stokes velocity streamfunction...
+Computing merid EPF, EMF term...
+Computing merid EPF, quasi-Stokes uw advection term...
+Computing vert EPF, EHF (Coriolis) term...
+Computing vert EPF, quasi-Stokes uv advection term...
+Skipping vertical EMF term b/c not avail.
+Computing Eulerian mean mass streamfunction...
+None
+Computing vT term (quasi-Stokes mass streamfunction)...
+Setting up log-p coords...
+Computing quasi-Stokes velocity streamfunction...
+Computing merid EPF, EMF term...
+Computing merid EPF, quasi-Stokes uw advection term...
+Computing vert EPF, EHF (Coriolis) term...
+Computing vert EPF, quasi-Stokes uv advection term...
+Skipping vertical EMF term b/c not avail.
+Computing Eulerian mean mass streamfunction...
+None
+Computing vT term (quasi-Stokes mass streamfunction)...
+Setting up log-p coords...
+Computing quasi-Stokes velocity streamfunction...
+Computing merid EPF, EMF term...
+Computing merid EPF, quasi-Stokes uw advection term...
+Computing vert EPF, EHF (Coriolis) term...
+Computing vert EPF, quasi-Stokes uv advection term...
+Skipping vertical EMF term b/c not avail.
+<xarray.DataArray 'lat' (case: 3, time: 30)> Size: 720B
+array([[10.965, 13.965, 15.165, 14.205, 12.805,  9.965, 11.725, 13.645,
+15.125, 14.905, 12.105, 10.425, 11.505, 14.785, 15.025, 13.645,
+11.785,  9.705, 10.425, 13.385, 14.325, 14.485, 11.865,  9.865,
+9.945, 13.525, 15.445, 14.205, 10.125,  9.845],
+[11.555, 14.135, 15.855, 14.015, 10.595,  9.655, 10.195, 14.075,
+15.515, 13.055, 11.455,  9.915,  9.655, 13.155, 14.255, 13.875,
+11.675,  9.375, 10.415, 14.295, 14.895, 14.135, 11.095,  9.455,
+11.255, 14.895, 15.495, 14.075, 11.735,  9.935],
+[11.525, 14.685, 15.245, 13.925, 11.665,  9.445, 10.725, 13.985,
+14.785, 13.405, 12.165,  9.125, 10.165, 13.405, 14.245, 13.465,
+11.205,  9.305, 10.685, 13.665, 15.265, 12.105, 10.965,  9.045,
+nan,    nan,    nan,    nan,    nan,    nan]])
+Coordinates:
+* time     (time) object 240B 0005-06-16 00:00:00 ... 0009-11-16 00:00:00
+* case     (case) object 24B 'UNSEED' 'CTRL' 'MSEED'
+mu       (case, time) float64 720B 0.1902 0.2413 0.2616 ... nan nan nan
+plev     float64 8B 700.0
+<xarray.DataArray 'lat' (case: 3, time: 30)> Size: 720B
+array([[17.925, 20.465, 21.665, 22.105, 21.145, 17.945, 19.785, 19.965,
+23.025, 23.305, 21.005, 19.405, 19.545, 21.305, 22.165, 22.705,
+20.045, 18.405, 17.705, 20.925, 22.005, 22.105, 20.725, 18.925,
+17.645, 20.465, 22.205, 21.965, 20.365, 20.025],
+[19.145, 20.525, 23.845, 22.725, 19.845, 17.825, 17.105, 20.885,
+22.865, 21.685, 20.485, 19.445, 17.505, 21.365, 22.205, 23.065,
+20.265, 19.245, 17.885, 20.945, 22.725, 21.645, 20.945, 18.585,
+18.485, 21.905, 23.165, 21.645, 19.985, 18.445],
+[18.905, 20.905, 21.965, 21.925, 19.865, 17.625, 18.985, 20.865,
+21.845, 21.725, 20.005, 18.665, 17.505, 20.585, 21.445, 22.325,
+19.925, 17.745, 17.945, 21.125, 23.145, 21.605, 19.645, 18.005,
+nan,    nan,    nan,    nan,    nan,    nan]])
+Coordinates:
+* time     (time) object 240B 0005-06-16 00:00:00 ... 0009-11-16 00:00:00
+* case     (case) object 24B 'UNSEED' 'CTRL' 'MSEED'
+mu       (case, time) float64 720B 0.3078 0.3496 0.3692 ... nan nan nan
+plev     float64 8B 700.0
+Traceback (most recent call last):
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/ITCZ_monthly.py", line 72, in <module>
+main()
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/ITCZ_monthly.py", line 54, in main
+outds = xr.Dataset(data_vars=dict(zerolat=rt_da, maxlat=mx_da, itcz_width=itcz_wid))
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/dataset.py", line 746, in __init__
+variables, coord_names, dims, indexes, _ = merge_data_and_coords(
+^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/dataset.py", line 459, in merge_data_and_coords
+return merge_core(
+^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/merge.py", line 701, in merge_core
+variables, out_indexes = merge_collected(
+^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/merge.py", line 290, in merge_collected
+merged_vars[name] = unique_variable(
+^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/xarray/core/merge.py", line 144, in unique_variable
+raise MergeError(
+xarray.core.merge.MergeError: conflicting values for variable 'mu' on objects to be combined. You can skip this check by specifying compat='override'.

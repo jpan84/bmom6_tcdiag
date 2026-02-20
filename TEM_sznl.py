@@ -5,7 +5,7 @@
 #qcmd -q casper -l walltime=00:30:00 -l select=1:ncpus=36:mem=128GB -A UCIS0005 python3 streamf_sznl.py 0
 
 #import paths as pt
-OUTDIR = './streamf_sznl_seedmatch/'
+OUTDIR = './streamf_sznl_seedmatch_delaymean/'
 
 import sys
 sys.path.append('/glade/u/home/jpan/aquaptc/aquapgrid/')
@@ -71,7 +71,7 @@ def main():
    print('Computing seasonal means...')
    #print(plotfields[0])
    #print(plotfields[0].transpose('month', ...))
-   plotfields = [monthly2sznl(pf) for pf in plotfields]
+   plotfields = [monthly2sznl(pf.groupby('time.month').mean(dim='time')) for pf in plotfields]
    print('Mirroring hemispheres...')
    antisym = [True, True, True, True, True, False, False, False, False, False, False, True, True]
    plotfields = [stack_hemi_sznl(pf, antisym=antisym[ii], latnm='lat') for ii, pf in enumerate(plotfields)]

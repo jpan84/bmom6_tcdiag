@@ -20,7 +20,7 @@ YINV = lambda mu: np.rad2deg(np.arcsin(mu))
 def main():
    dss = [xr.open_mfdataset(os.path.join(dr, '*.h0a.000[5-9]*.nc')) for dr in DIRS]
    dss = [ds.sel(time=ds['time'].dt.month.isin(np.arange(6, 12))) for ds in dss]
-   dss = [ds.assign_coords(coords=dict(mu=YSCL(ds['lat']))) for ds in dss]
+   #dss = [ds.assign_coords(coords=dict(mu=YSCL(ds['lat']))) for ds in dss]
    for ii, ds in enumerate(dss):
       if ds[pres_name].units == 'Pa':
          dss[ii] = ds.assign_coords(coords={pres_name: ds[pres_name] / 100})
