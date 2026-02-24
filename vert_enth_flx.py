@@ -29,13 +29,16 @@ def main():
    #exit()
 
    print('Taking zonal means...')
+   vzm = inds['V'].mean(dim='lon')
    wzm = inds['OMEGA'].mean(dim='lon')
    tzm = inds['T'].mean(dim='lon')
+   vt = inds['VT'].mean(dim='lon')
    wt = inds['OMEGAT'].mean(dim='lon')
 
    print('Reynolds decomposing')
    wt_mmc = wzm * tzm
    wt_tre = wt - wt_mmc #no stationary eddies
+   vt_tre = vt - vzm * tzm
    
    print('Computing T tendencies...')
    dT_wadv_mmc = -wzm * tzm.differentiate(PNM, edge_order=2)
@@ -44,7 +47,7 @@ def main():
    dT_wwrk_tre = Rd * wt_tre / cp / inds[PNM]
 
    print('Saving to .nc...')
-   dvs = dict(dT_wadv_mmc=dT_wadv_mmc, dT_wwrk_mmc=dT_wwrk_mmc, dT_wflx_tre=dT_wflx_tre, dT_wwrk_tre=dT_wwrk_tre)
+   dvs = dict(dT_wadv_mmc=dT_wadv_mmc, dT_wwrk_mmc=dT_wwrk_mmc, dT_wflx_tre=dT_wflx_tre, dT_wwrk_tre=dT_wwrk_tre, OMEGAT_tre=wt_tre, VT_tre=vt_tre)
    outds = xr.Dataset(data_vars=dvs)
    outds.to_netcdf(FILO)
 
@@ -62,11 +65,20 @@ def main_plot():
    dT_mmc_sznl = shs(m2s(dT_mmc))
    dT_tre_sznl = shs(m2s(dT_tre))
 
-   plt.contourf(ds['lat'], ds['plev'], dT_tre_sznl.sel(season='SON', case='CTRL'), cmap='bwr', levels=np.arange(-8e-5, 8.1e-5, 1e-5))
+   #plt.contourf(ds['lat'], ds['plev'], dT_tre_sznl.sel(season='SON', case='CTRL'), cmap='bwr', levels=np.arange(-8e-5, 8.1e-5, 1e-5))
    #plt.contourf(ds['lat'], ds['plev'], dT_tre_sznl.sel(season='SON', case='UNSEED') - dT_tre_sznl.sel(season='SON', case='CTRL'), cmap='RdBu_r', levels=np.arange(-4e-6, 4.1e-6, 5e-7))
+   #plt.contourf(ds['lat'], ds['plev'], shs(m2s(-ds['OMEGAT_tre'])).sel(season='SON', case='CTRL'), cmap='bwr', levels=np.arange(-0.25, 0.26, .05))
+   plt.contourf(ds['lat'], ds['plev'], shs(m2s(-ds['OMEGAT_tre'])).sel(season='SON', case='UNSEED') - shs(m2s(-ds['OMEGAT_tre'])).sel(season='SON', case='CTRL'), cmap='RdBu_r', levels=np.arange(-0.01, 0.011, .002))
    plt.colorbar()
    plt.xlim(-30, 30)
    plt.ylim(1e5, 1e4)
+   plt.show()
+
+def main_vT():
+   ds = xr.open_dataset(FILO)
+   vt850_sznl = stack_hemi_sznl(monthly2sznl(ds['VT_tre'].interp(plev=8.5e4)), antisym=True, latnm='lat')
+   #plt.plot(ds['lat'], vt850_sznl.sel(season='SON', case='CTRL'))
+   plt.plot(ds['lat'], vt850_sznl.sel(season='SON', case='UNSEED') - vt850_sznl.sel(season='SON', case='CTRL'))
    plt.show()
 
 if __name__ == '__main__':
@@ -74,3 +86,5 @@ if __name__ == '__main__':
       main()
    if sys.argv[1] == 'plot':
       main_plot()
+   if sys.argv[1] == 'vT':
+      main_vT()

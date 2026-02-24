@@ -19,7 +19,12 @@ YINV = lambda mu: np.rad2deg(np.arcsin(mu))
 
 def main():
    dss = [xr.open_mfdataset(os.path.join(dr, '*.h0a.000[5-9]*.nc')) for dr in DIRS]
-   dss = [ds.sel(time=ds['time'].dt.month.isin(np.arange(6, 12))) for ds in dss]
+   dsnh = [ds.sel(time=ds['time'].dt.month.isin(np.arange(6, 12))).sortby('lat') for ds in dss]
+   dssh = [ds.sel(time=ds['time'].dt.month.isin([12, 1, 2, 3, 4, 5]))
+             .assign_coords(coords=dict(lat=-ds['lat']))
+             .sortby('lat')
+             .assign({vr: lambda x, vr=vr: -x[vr] for vr in ['V', 'VT', 'VU']}) for ds in dss]
+   dss = [xr.concat([ds, dssh[ii]], dim='time') for ii, ds in enumerate(dsnh)]
    #dss = [ds.assign_coords(coords=dict(mu=YSCL(ds['lat']))) for ds in dss]
    for ii, ds in enumerate(dss):
       if ds[pres_name].units == 'Pa':
@@ -51,13 +56,14 @@ def main():
 
    itcz_loc = rt_da
    itcz_wid = mx_da - rt_da #[mx_fin[ii] - rf for ii, rf in enumerate(rt_fin)]
-   outds = xr.Dataset(data_vars=dict(zerolat=rt_da, maxlat=mx_da, itcz_width=itcz_wid))
+   outds = xr.Dataset(data_vars=dict(zerolat=rt_da, maxlat=mx_da, itcz_width=itcz_wid)).assign_attrs(djfmam_flipped=str(True))
    outds.to_netcdf('ITCZ_monthly_0005-0009.nc')
 
    plt.rcParams['figure.figsize'] = (12, 5)
    fig, axes = plt.subplots(1, 3, sharex=True, sharey=True)
    for ii, ax in enumerate(axes):
       ax.hist(itcz_loc.isel(case=ii))
+      ax.set_title(itcz_loc.isel(case=ii).mean(dim='time'))
    plt.savefig('itcz_loc_test.png', bbox_inches='tight')
    plt.close()
 
@@ -65,6 +71,7 @@ def main():
    fig, axes = plt.subplots(1, 3, sharex=True, sharey=True)
    for ii, ax in enumerate(axes):
       ax.hist(itcz_wid.isel(case=ii))
+      ax.set_title(itcz_wid.isel(case=ii).mean(dim='time'))
    plt.savefig('itcz_wid_test.png', bbox_inches='tight')
    plt.close()
 
