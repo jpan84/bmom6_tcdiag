@@ -27,15 +27,18 @@ a = 6.371e6
 FILIS = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0007-*-1*-*.nc'
 ALIS = ['250415_unseed', '250417_ctrl', '251229_seedmatch']#'250416_seed1x1']
 pths = ['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist', '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm/hist']
-dtstr = '*.h1i.000[6-7]-*.nc'
+dtstr = '*.h1i.0009-*-01-*.nc' #'*.h1i.000[6-7]-*.nc'
 CASES = ['UNSEED', 'CTRL', 'MSEED']
-VARO = 'UMF850'
-ILAT, OLAT = 0, 30
+VARO = 'UMF500'
+ILAT, OLAT = 5, 35
 
 mse850_f = lambda ds: g * ds['Z850'] + cp * ds['T850'] + lv * ds['Q850']
+spdbot_f = lambda ds: np.sqrt(ds['UBOT']**2 + ds['VBOT']**2)
 sst_f = lambda ds: ds['SST']
+lat_f = lambda ds: ds['lat']
 umf500_f = lambda ds: (ds['OMEGA500'] < 0) * (-ds['OMEGA500'] * ds['area'] * a**2 / g)
 umf850_f = lambda ds: (ds['OMEGA850'] < 0) * (-ds['OMEGA850'] * ds['area'] * a**2 / g) #* (ds['PRECT'] > 1e-8)
+dmf500_f = lambda ds: (ds['OMEGA500'] > 0) * (-ds['OMEGA500'] * ds['area'] * a**2 / g)
 
 SSTbins = np.concatenate((np.arange(295., 306.), np.arange(306, 309, 0.25), np.arange(309, 313)))
 OM850b = np.concatenate((np.arange(-10, -2, 1), np.arange(-2, -.5, .25), np.arange(-.5, -.1, .05), np.arange(-.1, .01, .01)))
@@ -43,9 +46,15 @@ OM850b = np.concatenate((np.arange(-10, -2, 1), np.arange(-2, -.5, .25), np.aran
 OM500b = np.concatenate((np.arange(-20, -4, 2), np.arange(-4, -.5, .25), np.arange(-.5, -.2, .1), np.arange(-.2, 0, .02), np.arange(0, .51, .1)))
 #OM500b = np.arange(-80, 10, 2)
 FLUTb = np.concatenate((np.arange(80, 180, 5), np.arange(180, 361, 5)))
+latb_500u = np.concatenate((np.arange(5, 8, 0.5), np.arange(8, 14, 0.25), np.arange(14, 20, 0.5), np.arange(20, 36, 1)))
+latb_500d = np.arange(5, 36, 1)
+UBOTb = np.arange(0, 41, 2)
 
 hist_kw = dict(hemi='warm', xnm='FLUT', ynm='OM500', innerlat=ILAT, outerlat=OLAT, thevarf=umf850_f, xvarf=lambda x: x['FLUT'], yvarf=lambda x: x['OMEGA500'], xbins=FLUTb, ybins=OM500b)
 hist_kw = dict(hemi='warm', xnm='OM850', ynm='OM500', innerlat=ILAT, outerlat=OLAT, thevarf=umf850_f, xvarf=lambda x: x['OMEGA850'], yvarf=lambda x: x['OMEGA500'], xbins=OM850b, ybins=OM500b)
+hist_kw = dict(hemi='warm', xnm='lat', ynm='SST', innerlat=ILAT, outerlat=OLAT, thevarf=umf500_f, xvarf=lat_f, yvarf=sst_f, xbins=latb_500u, ybins=SSTbins)
+hist_kw = dict(hemi='warm', xnm='lat', ynm='SST', innerlat=ILAT, outerlat=OLAT, thevarf=dmf500_f, xvarf=lat_f, yvarf=sst_f, xbins=latb_500d, ybins=SSTbins)
+hist_kw = dict(hemi='warm', xnm='lat', ynm='UBOT', innerlat=ILAT, outerlat=OLAT, thevarf=umf500_f, xvarf=lat_f, yvarf=spdbot_f, xbins=latb_500u, ybins=UBOTb)
 
 #TODO: check why NH and SH selections differ in number of cols
 def main():
@@ -69,7 +78,7 @@ def main():
          outda = xr.concat([outda, da], dim='case')
 
    outds = xr.Dataset(data_vars={VARO: outda, 'xwidth': x_d, 'ywidth': y_d})
-   outds.to_netcdf('%s_%s_%s_yy0607_%02d-%02d%s_allprec.nc' % (VARO, hist_kw['xnm'], hist_kw['ynm'], ILAT, OLAT, hist_kw['hemi']))
+   outds.to_netcdf('0302_test_mf_vars/%s_%s_%s_yy09dd01_%02d-%02d%s_allprec.nc' % (VARO, hist_kw['xnm'], hist_kw['ynm'], ILAT, OLAT, hist_kw['hemi']))
 
    print(sys.argv[0], 'done')
 

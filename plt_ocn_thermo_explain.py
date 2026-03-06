@@ -16,10 +16,10 @@ ATMTEM = '/glade/u/home/jpan/aquaptc/bmom6_tcdiag/streamf_sznl_0005-0015/%s'
 
 TEMNCS = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl_b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed_TEM.nc',\
           'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl__TEM.nc',
-          'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl_b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1_TEM.nc']
+          'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl_b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch_TEM.nc']
 
 ALIS = ['250415_unseed', '250417_ctrl', '250416_seed1x1']
-TTLS = ['UNSEED$-$CTRL', 'CTRL', 'SEED$-$CTRL']
+TTLS = ['UNSEED$-$CTRL', 'CTRL', 'MSEED$-$CTRL']
 
 ZSCL = np.vectorize(lambda zl: zl / 2850 if zl <= 2000 else 2000 / 2850 + (zl - 2000) / 2000 * 850 / 2850)
 ZLAB = np.arange(1000, 5000, 1000)
@@ -418,7 +418,7 @@ def main():
    # 233    #plt.show()
    
    # Assuming the output commands remain the same
-   plt.savefig('ms_rev_plts/atmo_ocn_sfunc.svg', bbox_inches='tight')
+   plt.savefig('ms_rev_plts/atmo_ocn_sfunc_mseed.svg', bbox_inches='tight')
    plt.close()
    #########################################################################################
 

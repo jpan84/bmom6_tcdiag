@@ -3,8 +3,10 @@ nohup: ignoring input
 Waiting on job launch; 5161390.desched1 with qsub arguments:
     qsub  -l select=1:ncpus=4:mem=128GB -A UPSU0032 -q develop@desched1 -l walltime=00:17:00
 
-Opening datasets...
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
+OpeTerminated
+
+qcmd job 2434204.casper-pbs has been terminated
+504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
 result = blockwise(
 /glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
 result = blockwise(

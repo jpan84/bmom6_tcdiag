@@ -6,3 +6,89 @@ Waiting on job launch; 2538949.casper-pbs with qsub arguments:
 ['ITCZ_monthly.py']
 Computing Eulerian mean mass streamfunction...
 None
+Computing vT term (quasi-Stokes mass streamfunction)...
+Setting up log-p coords...
+Computing quasi-Stokes velocity streamfunction...
+Computing merid EPF, EMF term...
+Computing merid EPF, quasi-Stokes uw advection term...
+Computing vert EPF, EHF (Coriolis) term...
+Computing vert EPF, quasi-Stokes uv advection term...
+Skipping vertical EMF term b/c not avail.
+Computing Eulerian mean mass streamfunction...
+None
+Computing vT term (quasi-Stokes mass streamfunction)...
+Setting up log-p coords...
+Computing quasi-Stokes velocity streamfunction...
+Computing merid EPF, EMF term...
+Computing merid EPF, quasi-Stokes uw advection term...
+Computing vert EPF, EHF (Coriolis) term...
+Computing vert EPF, quasi-Stokes uv advection term...
+Skipping vertical EMF term b/c not avail.
+Computing Eulerian mean mass streamfunction...
+None
+Computing vT term (quasi-Stokes mass streamfunction)...
+Setting up log-p coords...
+Computing quasi-Stokes velocity streamfunction...
+Computing merid EPF, EMF term...
+Computing merid EPF, quasi-Stokes uw advection term...
+Computing vert EPF, EHF (Coriolis) term...
+Computing vert EPF, quasi-Stokes uv advection term...
+Skipping vertical EMF term b/c not avail.
+<xarray.DataArray 'lat' (case: 3, time: 59)> Size: 1kB
+array([[15.105, 12.905, 12.085, 10.385, 10.965, 13.965, 15.165, 14.205,
+12.805,  9.965, 11.545, 13.965, 15.385, 15.605, 11.365, 10.645,
+11.725, 13.645, 15.125, 14.905, 12.105, 10.425, 10.765, 14.365,
+14.925, 15.605, 12.185,  9.725, 11.505, 14.785, 15.025, 13.645,
+11.785,  9.705, 10.545, 13.845, 14.645, 13.525, 12.505, 10.205,
+10.425, 13.385, 14.325, 14.485, 11.865,  9.865, 10.245, 13.065,
+14.625, 13.765, 11.105,  9.865,  9.945, 13.525, 15.445, 14.205,
+10.125,  9.845,  9.525],
+[14.665, 13.745, 12.605, 10.345, 11.565, 14.125, 15.865, 14.025,
+10.605,  9.665, 11.365, 14.525, 15.005, 14.245, 11.505, 10.045,
+10.185, 14.065, 15.525, 13.065, 11.445,  9.925, 10.525, 13.785,
+14.745, 14.385, 10.525,  9.325,  9.665, 13.165, 14.265, 13.865,
+11.665,  9.365, 10.625, 12.605, 14.425, 14.025, 12.645,  9.825,
+10.425, 14.285, 14.885, 14.145, 11.085,  9.465,  9.365, 12.765,
+14.245, 13.665, 11.465,  9.165, 11.245, 14.905, 15.505, 14.065,
+11.745,  9.945, 10.625],
+[14.675, 13.495, 11.635,  9.995, 11.515, 14.675, 15.235, 13.915,
+11.675,  9.435, 11.695, 13.675, 14.715, 13.835, 10.855,  9.195,
+10.715, 13.975, 14.795, 13.395, 12.175,  9.135, 11.115, 13.375,
+14.215, 13.855, 10.775,  8.975, 10.155, 13.415, 14.235, 13.455,
+11.195,  9.295,  9.695, 13.595, 14.135, 12.675, 11.635,  9.035,
+10.695, 13.655, 15.255, 12.095, 10.975,  9.035, 10.375, 13.275,
+nan,    nan,    nan,    nan,    nan,    nan,    nan,    nan,
+nan,    nan,    nan]])
+Coordinates:
+* time     (time) object 472B 0005-02-15 00:00:00 ... 0009-12-16 12:00:00
+* case     (case) object 24B 'UNSEED' 'CTRL' 'MSEED'
+plev     float64 8B 700.0
+<xarray.DataArray 'lat' (case: 3, time: 59)> Size: 1kB
+array([[21.885, 21.105, 20.225, 20.085, 17.925, 20.465, 21.665, 22.105,
+21.145, 17.945, 19.905, 20.625, 21.885, 23.105, 20.565, 20.225,
+19.785, 19.965, 23.025, 23.305, 21.005, 19.405, 19.265, 21.385,
+22.745, 23.205, 20.385, 19.045, 19.545, 21.305, 22.165, 22.705,
+20.045, 18.405, 19.245, 20.825, 22.105, 21.425, 20.885, 18.505,
+17.705, 20.925, 22.005, 22.105, 20.725, 18.925, 18.165, 19.845,
+21.045, 21.885, 20.905, 17.865, 17.645, 20.465, 22.205, 21.965,
+20.365, 20.025, 17.885],
+[22.485, 22.085, 21.605, 18.405, 19.145, 20.525, 23.845, 22.725,
+19.845, 17.825, 20.305, 21.205, 23.585, 22.365, 20.585, 18.665,
+17.105, 20.885, 22.865, 21.685, 20.485, 19.445, 18.905, 20.705,
+21.285, 21.665, 20.365, 18.065, 17.505, 21.365, 22.205, 23.065,
+20.265, 19.245, 17.905, 20.125, 21.205, 21.625, 21.525, 18.405,
+17.885, 20.945, 22.725, 21.645, 20.945, 18.585, 17.225, 20.765,
+22.185, 21.605, 20.065, 17.665, 18.485, 21.905, 23.165, 21.645,
+19.985, 18.445, 17.605],
+[22.665, 22.065, 19.905, 18.905, 18.905, 20.905, 21.965, 21.925,
+19.865, 17.625, 19.605, 20.865, 22.625, 21.405, 19.625, 17.805,
+18.985, 20.865, 21.845, 21.725, 20.005, 18.665, 19.165, 20.125,
+22.085, 22.385, 20.465, 17.925, 17.505, 20.585, 21.445, 22.325,
+19.925, 17.745, 18.145, 20.965, 21.265, 21.425, 20.465, 17.565,
+17.945, 21.125, 23.145, 21.605, 19.645, 18.005, 18.165, 21.605,
+nan,    nan,    nan,    nan,    nan,    nan,    nan,    nan,
+nan,    nan,    nan]])
+Coordinates:
+* time     (time) object 472B 0005-02-15 00:00:00 ... 0009-12-16 12:00:00
+* case     (case) object 24B 'UNSEED' 'CTRL' 'MSEED'
+plev     float64 8B 700.0

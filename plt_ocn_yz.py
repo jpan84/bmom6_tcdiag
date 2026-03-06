@@ -13,8 +13,8 @@ MODES = ['compute', 'plot']
 DO_DIFF = True
 HISTS = '/glade/derecho/scratch/jpan/archive/%s/ocn/hist/*mom6.hm*[0-9][0-9][0-9][0-9]-[0-9][0-9].nc'
 CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1']
-ALIASES = ['UNSEED', 'CTRL', 'SEED']
-DIRO = './ocn_yz_plts_diff/'
+ALIASES = ['UNSEED', 'CTRL', 'MSEED']
+DIRO = './ocn_yz_plts_mseed/'
 
 DIMS3D = {('time', 'zl', 'yq', 'xq'), ('time', 'zl', 'yq', 'xh'), ('time', 'zl', 'yh', 'xq'), ('time', 'zl', 'yh', 'xh')}
 ANTISYM_STR = ['vorticity', 'meridional', 'y transport', 'y velocity']
