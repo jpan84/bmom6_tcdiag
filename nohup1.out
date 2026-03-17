@@ -1,180 +1,775 @@
 nohup: ignoring input
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 2678212.casper-pbs with qsub arguments:
-    qsub  -l select=1:ncpus=8:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=01:50:00
+Waiting on job launch; 2847898.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=8:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=01:59:00
 
-Opening datasets...
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-/glade/u/home/jpan/miniconda3/envs/aquapux2504/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 24
-result = blockwise(
-Taking zonal means...
-Including v fluxes...
-Reynolds decomposing...
-Computing T tendencies...
-Saving to .nc...
-vert_enth_flx.py done computing.
+Working on 250415_unseed
+<xarray.DataArray (time: 724)> Size: 6kB
+array([304.80872755, 304.81794312, 304.82380063, 304.81502526,
+304.81076924, 304.81984533, 304.82449133, 304.81262377,
+304.81278278, 304.81878036, 304.82327722, 304.81327751,
+304.81418688, 304.8211418 , 304.82449946, 304.81513327,
+304.81221157, 304.81926578, 304.82790805, 304.81968867,
+304.8156951 , 304.81772036, 304.8289755 , 304.82179017,
+304.81263498, 304.81188517, 304.8219427 , 304.81880835,
+304.80959515, 304.80699573, 304.8185714 , 304.82008285,
+304.80831367, 304.8030977 , 304.8099246 , 304.82029981,
+304.81296716, 304.80733138, 304.81071674, 304.82368339,
+304.81443502, 304.8083316 , 304.80387032, 304.81090821,
+304.80360786, 304.80007049, 304.79084748, 304.7971774 ,
+304.79260161, 304.78878181, 304.7792337 , 304.78053109,
+304.78124416, 304.78123461, 304.77714426, 304.77334267,
+304.77974362, 304.78232829, 304.77666381, 304.77028154,
+304.78120414, 304.78553007, 304.78132074, 304.77617607,
+304.78469787, 304.78680767, 304.78811057, 304.78081211,
+304.7859484 , 304.78330086, 304.78278876, 304.78010112,
+304.78897446, 304.7887768 , 304.7864924 , 304.78143705,
+304.78892818, 304.79325237, 304.7867478 , 304.77923375,
+...
+304.9097995 , 304.92580156, 304.92368853, 304.90436032,
+304.88709003, 304.90315536, 304.89359581, 304.87900278,
+304.86448218, 304.87446846, 304.86073167, 304.84623955,
+304.84197366, 304.84850282, 304.8362122 , 304.83248987,
+304.83487014, 304.83790317, 304.82578167, 304.82908086,
+304.83103207, 304.82801704, 304.82156578, 304.8332704 ,
+304.83524849, 304.82730665, 304.8270678 , 304.83597677,
+304.83820497, 304.82903656, 304.83521033, 304.84600806,
+304.84230292, 304.83192228, 304.8435629 , 304.85357205,
+304.84701464, 304.83474819, 304.84599883, 304.85421364,
+304.84364257, 304.83115179, 304.84576335, 304.85478027,
+304.83803701, 304.82856704, 304.84595902, 304.85410354,
+304.84202247, 304.83920476, 304.85585151, 304.85959608,
+304.85165242, 304.85497447, 304.8695306 , 304.86898219,
+304.85865926, 304.86418369, 304.87591653, 304.86771144,
+304.86193058, 304.86917092, 304.87927646, 304.86706014,
+304.86015087, 304.86763298, 304.87361697, 304.85650359,
+304.84952152, 304.86435257, 304.87579389, 304.85971932,
+304.85201295, 304.86752915, 304.87509425, 304.86154254,
+304.85626046, 304.86897171, 304.87184558, 304.8624654 ])
+Coordinates:
+* time     (time) object 6kB 0009-01-01 00:00:00 ... 0009-06-30 18:00:00
+Processing time 0009-01-01 00:00:00
+Processing time 0009-01-01 06:00:00
+Processing time 0009-01-01 12:00:00
+Processing time 0009-01-01 18:00:00
+Processing time 0009-01-02 00:00:00
+Processing time 0009-01-02 06:00:00
+Processing time 0009-01-02 12:00:00
+Processing time 0009-01-02 18:00:00
+Processing time 0009-01-03 00:00:00
+Processing time 0009-01-03 06:00:00
+Processing time 0009-01-03 12:00:00
+Processing time 0009-01-03 18:00:00
+Processing time 0009-01-04 00:00:00
+Processing time 0009-01-04 06:00:00
+Processing time 0009-01-04 12:00:00
+Processing time 0009-01-04 18:00:00
+Processing time 0009-01-05 00:00:00
+Processing time 0009-01-05 06:00:00
+Processing time 0009-01-05 12:00:00
+Processing time 0009-01-05 18:00:00
+Processing time 0009-01-06 00:00:00
+Processing time 0009-01-06 06:00:00
+Processing time 0009-01-06 12:00:00
+Processing time 0009-01-06 18:00:00
+Processing time 0009-01-07 00:00:00
+Processing time 0009-01-07 06:00:00
+Processing time 0009-01-07 12:00:00
+Processing time 0009-01-07 18:00:00
+Processing time 0009-01-08 00:00:00
+Processing time 0009-01-08 06:00:00
+Processing time 0009-01-08 12:00:00
+Processing time 0009-01-08 18:00:00
+Processing time 0009-01-09 00:00:00
+Processing time 0009-01-09 06:00:00
+Processing time 0009-01-09 12:00:00
+Processing time 0009-01-09 18:00:00
+Processing time 0009-01-10 00:00:00
+Processing time 0009-01-10 06:00:00
+Processing time 0009-01-10 12:00:00
+Processing time 0009-01-10 18:00:00
+Processing time 0009-01-11 00:00:00
+Processing time 0009-01-11 06:00:00
+Processing time 0009-01-11 12:00:00
+Processing time 0009-01-11 18:00:00
+Processing time 0009-01-12 00:00:00
+Processing time 0009-01-12 06:00:00
+Processing time 0009-01-12 12:00:00
+Processing time 0009-01-12 18:00:00
+Processing time 0009-01-13 00:00:00
+Processing time 0009-01-13 06:00:00
+Processing time 0009-01-13 12:00:00
+Processing time 0009-01-13 18:00:00
+Processing time 0009-01-14 00:00:00
+Processing time 0009-01-14 06:00:00
+Processing time 0009-01-14 12:00:00
+Processing time 0009-01-14 18:00:00
+Processing time 0009-01-15 00:00:00
+Processing time 0009-01-15 06:00:00
+Processing time 0009-01-15 12:00:00
+Processing time 0009-01-15 18:00:00
+Processing time 0009-01-16 00:00:00
+Processing time 0009-01-16 06:00:00
+Processing time 0009-01-16 12:00:00
+Processing time 0009-01-16 18:00:00
+Processing time 0009-01-17 00:00:00
+Processing time 0009-01-17 06:00:00
+Processing time 0009-01-17 12:00:00
+Processing time 0009-01-17 18:00:00
+Processing time 0009-01-18 00:00:00
+Processing time 0009-01-18 06:00:00
+Processing time 0009-01-18 12:00:00
+Processing time 0009-01-18 18:00:00
+Processing time 0009-01-19 00:00:00
+Processing time 0009-01-19 06:00:00
+Processing time 0009-01-19 12:00:00
+Processing time 0009-01-19 18:00:00
+Processing time 0009-01-20 00:00:00
+Processing time 0009-01-20 06:00:00
+Processing time 0009-01-20 12:00:00
+Processing time 0009-01-20 18:00:00
+Processing time 0009-01-21 00:00:00
+Processing time 0009-01-21 06:00:00
+Processing time 0009-01-21 12:00:00
+Processing time 0009-01-21 18:00:00
+Processing time 0009-01-22 00:00:00
+Processing time 0009-01-22 06:00:00
+Processing time 0009-01-22 12:00:00
+Processing time 0009-01-22 18:00:00
+Processing time 0009-01-23 00:00:00
+Processing time 0009-01-23 06:00:00
+Processing time 0009-01-23 12:00:00
+Processing time 0009-01-23 18:00:00
+Processing time 0009-01-24 00:00:00
+Processing time 0009-01-24 06:00:00
+Processing time 0009-01-24 12:00:00
+Processing time 0009-01-24 18:00:00
+Processing time 0009-01-25 00:00:00
+Processing time 0009-01-25 06:00:00
+Processing time 0009-01-25 12:00:00
+Processing time 0009-01-25 18:00:00
+Processing time 0009-01-26 00:00:00
+Processing time 0009-01-26 06:00:00
+Processing time 0009-01-26 12:00:00
+Processing time 0009-01-26 18:00:00
+Processing time 0009-01-27 00:00:00
+Processing time 0009-01-27 06:00:00
+Processing time 0009-01-27 12:00:00
+Processing time 0009-01-27 18:00:00
+Processing time 0009-01-28 00:00:00
+Processing time 0009-01-28 06:00:00
+Processing time 0009-01-28 12:00:00
+Processing time 0009-01-28 18:00:00
+Processing time 0009-01-29 00:00:00
+Processing time 0009-01-29 06:00:00
+Processing time 0009-01-29 12:00:00
+Processing time 0009-01-29 18:00:00
+Processing time 0009-01-30 00:00:00
+Processing time 0009-01-30 06:00:00
+Processing time 0009-01-30 12:00:00
+Processing time 0009-01-30 18:00:00
+Processing time 0009-01-31 00:00:00
+Processing time 0009-01-31 06:00:00
+Processing time 0009-01-31 12:00:00
+Processing time 0009-01-31 18:00:00
+Processing time 0009-02-01 00:00:00
+Processing time 0009-02-01 06:00:00
+Processing time 0009-02-01 12:00:00
+Processing time 0009-02-01 18:00:00
+Processing time 0009-02-02 00:00:00
+Processing time 0009-02-02 06:00:00
+Processing time 0009-02-02 12:00:00
+Processing time 0009-02-02 18:00:00
+Processing time 0009-02-03 00:00:00
+Processing time 0009-02-03 06:00:00
+Processing time 0009-02-03 12:00:00
+Processing time 0009-02-03 18:00:00
+Processing time 0009-02-04 00:00:00
+Processing time 0009-02-04 06:00:00
+Processing time 0009-02-04 12:00:00
+Processing time 0009-02-04 18:00:00
+Processing time 0009-02-05 00:00:00
+Processing time 0009-02-05 06:00:00
+Processing time 0009-02-05 12:00:00
+Processing time 0009-02-05 18:00:00
+Processing time 0009-02-06 00:00:00
+Processing time 0009-02-06 06:00:00
+Processing time 0009-02-06 12:00:00
+Processing time 0009-02-06 18:00:00
+Processing time 0009-02-07 00:00:00
+Processing time 0009-02-07 06:00:00
+Processing time 0009-02-07 12:00:00
+Processing time 0009-02-07 18:00:00
+Processing time 0009-02-08 00:00:00
+Processing time 0009-02-08 06:00:00
+Processing time 0009-02-08 12:00:00
+Processing time 0009-02-08 18:00:00
+Processing time 0009-02-09 00:00:00
+Processing time 0009-02-09 06:00:00
+Processing time 0009-02-09 12:00:00
+Processing time 0009-02-09 18:00:00
+Processing time 0009-02-10 00:00:00
+Processing time 0009-02-10 06:00:00
+Processing time 0009-02-10 12:00:00
+Processing time 0009-02-10 18:00:00
+Processing time 0009-02-11 00:00:00
+Processing time 0009-02-11 06:00:00
+Processing time 0009-02-11 12:00:00
+Processing time 0009-02-11 18:00:00
+Processing time 0009-02-12 00:00:00
+Processing time 0009-02-12 06:00:00
+Processing time 0009-02-12 12:00:00
+Processing time 0009-02-12 18:00:00
+Processing time 0009-02-13 00:00:00
+Processing time 0009-02-13 06:00:00
+Processing time 0009-02-13 12:00:00
+Processing time 0009-02-13 18:00:00
+Processing time 0009-02-14 00:00:00
+Processing time 0009-02-14 06:00:00
+Processing time 0009-02-14 12:00:00
+Processing time 0009-02-14 18:00:00
+Processing time 0009-02-15 00:00:00
+Processing time 0009-02-15 06:00:00
+Processing time 0009-02-15 12:00:00
+Processing time 0009-02-15 18:00:00
+Processing time 0009-02-16 00:00:00
+Processing time 0009-02-16 06:00:00
+Processing time 0009-02-16 12:00:00
+Processing time 0009-02-16 18:00:00
+Processing time 0009-02-17 00:00:00
+Processing time 0009-02-17 06:00:00
+Processing time 0009-02-17 12:00:00
+Processing time 0009-02-17 18:00:00
+Processing time 0009-02-18 00:00:00
+Processing time 0009-02-18 06:00:00
+Processing time 0009-02-18 12:00:00
+Processing time 0009-02-18 18:00:00
+Processing time 0009-02-19 00:00:00
+Processing time 0009-02-19 06:00:00
+Processing time 0009-02-19 12:00:00
+Processing time 0009-02-19 18:00:00
+Processing time 0009-02-20 00:00:00
+Processing time 0009-02-20 06:00:00
+Processing time 0009-02-20 12:00:00
+Processing time 0009-02-20 18:00:00
+Processing time 0009-02-21 00:00:00
+Processing time 0009-02-21 06:00:00
+Processing time 0009-02-21 12:00:00
+Processing time 0009-02-21 18:00:00
+Processing time 0009-02-22 00:00:00
+Processing time 0009-02-22 06:00:00
+Processing time 0009-02-22 12:00:00
+Processing time 0009-02-22 18:00:00
+Processing time 0009-02-23 00:00:00
+Processing time 0009-02-23 06:00:00
+Processing time 0009-02-23 12:00:00
+Processing time 0009-02-23 18:00:00
+Processing time 0009-02-24 00:00:00
+Processing time 0009-02-24 06:00:00
+Processing time 0009-02-24 12:00:00
+Processing time 0009-02-24 18:00:00
+Processing time 0009-02-25 00:00:00
+Processing time 0009-02-25 06:00:00
+Processing time 0009-02-25 12:00:00
+Processing time 0009-02-25 18:00:00
+Processing time 0009-02-26 00:00:00
+Processing time 0009-02-26 06:00:00
+Processing time 0009-02-26 12:00:00
+Processing time 0009-02-26 18:00:00
+Processing time 0009-02-27 00:00:00
+Processing time 0009-02-27 06:00:00
+Processing time 0009-02-27 12:00:00
+Processing time 0009-02-27 18:00:00
+Processing time 0009-02-28 00:00:00
+Processing time 0009-02-28 06:00:00
+Processing time 0009-02-28 12:00:00
+Processing time 0009-02-28 18:00:00
+Processing time 0009-03-01 00:00:00
+Processing time 0009-03-01 06:00:00
+Processing time 0009-03-01 12:00:00
+Processing time 0009-03-01 18:00:00
+Processing time 0009-03-02 00:00:00
+Processing time 0009-03-02 06:00:00
+Processing time 0009-03-02 12:00:00
+Processing time 0009-03-02 18:00:00
+Processing time 0009-03-03 00:00:00
+Processing time 0009-03-03 06:00:00
+Processing time 0009-03-03 12:00:00
+Processing time 0009-03-03 18:00:00
+Processing time 0009-03-04 00:00:00
+Processing time 0009-03-04 06:00:00
+Processing time 0009-03-04 12:00:00
+Processing time 0009-03-04 18:00:00
+Processing time 0009-03-05 00:00:00
+Processing time 0009-03-05 06:00:00
+Processing time 0009-03-05 12:00:00
+Processing time 0009-03-05 18:00:00
+Processing time 0009-03-06 00:00:00
+Processing time 0009-03-06 06:00:00
+Processing time 0009-03-06 12:00:00
+Processing time 0009-03-06 18:00:00
+Processing time 0009-03-07 00:00:00
+Processing time 0009-03-07 06:00:00
+Processing time 0009-03-07 12:00:00
+Processing time 0009-03-07 18:00:00
+Processing time 0009-03-08 00:00:00
+Processing time 0009-03-08 06:00:00
+Processing time 0009-03-08 12:00:00
+Processing time 0009-03-08 18:00:00
+Processing time 0009-03-09 00:00:00
+Processing time 0009-03-09 06:00:00
+Processing time 0009-03-09 12:00:00
+Processing time 0009-03-09 18:00:00
+Processing time 0009-03-10 00:00:00
+Processing time 0009-03-10 06:00:00
+Processing time 0009-03-10 12:00:00
+Processing time 0009-03-10 18:00:00
+Processing time 0009-03-11 00:00:00
+Processing time 0009-03-11 06:00:00
+Processing time 0009-03-11 12:00:00
+Processing time 0009-03-11 18:00:00
+Processing time 0009-03-12 00:00:00
+Processing time 0009-03-12 06:00:00
+Processing time 0009-03-12 12:00:00
+Processing time 0009-03-12 18:00:00
+Processing time 0009-03-13 00:00:00
+Processing time 0009-03-13 06:00:00
+Processing time 0009-03-13 12:00:00
+Processing time 0009-03-13 18:00:00
+Processing time 0009-03-14 00:00:00
+Processing time 0009-03-14 06:00:00
+Processing time 0009-03-14 12:00:00
+Processing time 0009-03-14 18:00:00
+Processing time 0009-03-15 00:00:00
+Processing time 0009-03-15 06:00:00
+Processing time 0009-03-15 12:00:00
+Processing time 0009-03-15 18:00:00
+Processing time 0009-03-16 00:00:00
+Processing time 0009-03-16 06:00:00
+Processing time 0009-03-16 12:00:00
+Processing time 0009-03-16 18:00:00
+Processing time 0009-03-17 00:00:00
+Processing time 0009-03-17 06:00:00
+Processing time 0009-03-17 12:00:00
+Processing time 0009-03-17 18:00:00
+Processing time 0009-03-18 00:00:00
+Processing time 0009-03-18 06:00:00
+Processing time 0009-03-18 12:00:00
+Processing time 0009-03-18 18:00:00
+Processing time 0009-03-19 00:00:00
+Processing time 0009-03-19 06:00:00
+Processing time 0009-03-19 12:00:00
+Processing time 0009-03-19 18:00:00
+Processing time 0009-03-20 00:00:00
+Processing time 0009-03-20 06:00:00
+Processing time 0009-03-20 12:00:00
+Processing time 0009-03-20 18:00:00
+Processing time 0009-03-21 00:00:00
+Processing time 0009-03-21 06:00:00
+Processing time 0009-03-21 12:00:00
+Processing time 0009-03-21 18:00:00
+Processing time 0009-03-22 00:00:00
+Processing time 0009-03-22 06:00:00
+Processing time 0009-03-22 12:00:00
+Processing time 0009-03-22 18:00:00
+Processing time 0009-03-23 00:00:00
+Processing time 0009-03-23 06:00:00
+Processing time 0009-03-23 12:00:00
+Processing time 0009-03-23 18:00:00
+Processing time 0009-03-24 00:00:00
+Processing time 0009-03-24 06:00:00
+Processing time 0009-03-24 12:00:00
+Processing time 0009-03-24 18:00:00
+Processing time 0009-03-25 00:00:00
+Processing time 0009-03-25 06:00:00
+Processing time 0009-03-25 12:00:00
+Processing time 0009-03-25 18:00:00
+Processing time 0009-03-26 00:00:00
+Processing time 0009-03-26 06:00:00
+Processing time 0009-03-26 12:00:00
+Processing time 0009-03-26 18:00:00
+Processing time 0009-03-27 00:00:00
+Processing time 0009-03-27 06:00:00
+Processing time 0009-03-27 12:00:00
+Processing time 0009-03-27 18:00:00
+Processing time 0009-03-28 00:00:00
+Processing time 0009-03-28 06:00:00
+Processing time 0009-03-28 12:00:00
+Processing time 0009-03-28 18:00:00
+Processing time 0009-03-29 00:00:00
+Processing time 0009-03-29 06:00:00
+Processing time 0009-03-29 12:00:00
+Processing time 0009-03-29 18:00:00
+Processing time 0009-03-30 00:00:00
+Processing time 0009-03-30 06:00:00
+Processing time 0009-03-30 12:00:00
+Processing time 0009-03-30 18:00:00
+Processing time 0009-03-31 00:00:00
+Processing time 0009-03-31 06:00:00
+Processing time 0009-03-31 12:00:00
+Processing time 0009-03-31 18:00:00
+Processing time 0009-04-01 00:00:00
+Processing time 0009-04-01 06:00:00
+Processing time 0009-04-01 12:00:00
+Processing time 0009-04-01 18:00:00
+Processing time 0009-04-02 00:00:00
+Processing time 0009-04-02 06:00:00
+Processing time 0009-04-02 12:00:00
+Processing time 0009-04-02 18:00:00
+Processing time 0009-04-03 00:00:00
+Processing time 0009-04-03 06:00:00
+Processing time 0009-04-03 12:00:00
+Processing time 0009-04-03 18:00:00
+Processing time 0009-04-04 00:00:00
+Processing time 0009-04-04 06:00:00
+Processing time 0009-04-04 12:00:00
+Processing time 0009-04-04 18:00:00
+Processing time 0009-04-05 00:00:00
+Processing time 0009-04-05 06:00:00
+Processing time 0009-04-05 12:00:00
+Processing time 0009-04-05 18:00:00
+Processing time 0009-04-06 00:00:00
+Processing time 0009-04-06 06:00:00
+Processing time 0009-04-06 12:00:00
+Processing time 0009-04-06 18:00:00
+Processing time 0009-04-07 00:00:00
+Processing time 0009-04-07 06:00:00
+Processing time 0009-04-07 12:00:00
+Processing time 0009-04-07 18:00:00
+Processing time 0009-04-08 00:00:00
+Processing time 0009-04-08 06:00:00
+Processing time 0009-04-08 12:00:00
+Processing time 0009-04-08 18:00:00
+Processing time 0009-04-09 00:00:00
+Processing time 0009-04-09 06:00:00
+Processing time 0009-04-09 12:00:00
+Processing time 0009-04-09 18:00:00
+Processing time 0009-04-10 00:00:00
+Processing time 0009-04-10 06:00:00
+Processing time 0009-04-10 12:00:00
+Processing time 0009-04-10 18:00:00
+Processing time 0009-04-11 00:00:00
+Processing time 0009-04-11 06:00:00
+Processing time 0009-04-11 12:00:00
+Processing time 0009-04-11 18:00:00
+Processing time 0009-04-12 00:00:00
+Processing time 0009-04-12 06:00:00
+Processing time 0009-04-12 12:00:00
+Processing time 0009-04-12 18:00:00
+Processing time 0009-04-13 00:00:00
+Processing time 0009-04-13 06:00:00
+Processing time 0009-04-13 12:00:00
+Processing time 0009-04-13 18:00:00
+Processing time 0009-04-14 00:00:00
+Processing time 0009-04-14 06:00:00
+Processing time 0009-04-14 12:00:00
+Processing time 0009-04-14 18:00:00
+Processing time 0009-04-15 00:00:00
+Processing time 0009-04-15 06:00:00
+Processing time 0009-04-15 12:00:00
+Processing time 0009-04-15 18:00:00
+Processing time 0009-04-16 00:00:00
+Processing time 0009-04-16 06:00:00
+Processing time 0009-04-16 12:00:00
+Processing time 0009-04-16 18:00:00
+Processing time 0009-04-17 00:00:00
+Processing time 0009-04-17 06:00:00
+Processing time 0009-04-17 12:00:00
+Processing time 0009-04-17 18:00:00
+Processing time 0009-04-18 00:00:00
+Processing time 0009-04-18 06:00:00
+Processing time 0009-04-18 12:00:00
+Processing time 0009-04-18 18:00:00
+Processing time 0009-04-19 00:00:00
+Processing time 0009-04-19 06:00:00
+Processing time 0009-04-19 12:00:00
+Processing time 0009-04-19 18:00:00
+Processing time 0009-04-20 00:00:00
+Processing time 0009-04-20 06:00:00
+Processing time 0009-04-20 12:00:00
+Processing time 0009-04-20 18:00:00
+Processing time 0009-04-21 00:00:00
+Processing time 0009-04-21 06:00:00
+Processing time 0009-04-21 12:00:00
+Processing time 0009-04-21 18:00:00
+Processing time 0009-04-22 00:00:00
+Processing time 0009-04-22 06:00:00
+Processing time 0009-04-22 12:00:00
+Processing time 0009-04-22 18:00:00
+Processing time 0009-04-23 00:00:00
+Processing time 0009-04-23 06:00:00
+Processing time 0009-04-23 12:00:00
+Processing time 0009-04-23 18:00:00
+Processing time 0009-04-24 00:00:00
+Processing time 0009-04-24 06:00:00
+Processing time 0009-04-24 12:00:00
+Processing time 0009-04-24 18:00:00
+Processing time 0009-04-25 00:00:00
+Processing time 0009-04-25 06:00:00
+Processing time 0009-04-25 12:00:00
+Processing time 0009-04-25 18:00:00
+Processing time 0009-04-26 00:00:00
+Processing time 0009-04-26 06:00:00
+Processing time 0009-04-26 12:00:00
+Processing time 0009-04-26 18:00:00
+Processing time 0009-04-27 00:00:00
+Processing time 0009-04-27 06:00:00
+Processing time 0009-04-27 12:00:00
+Processing time 0009-04-27 18:00:00
+Processing time 0009-04-28 00:00:00
+Processing time 0009-04-28 06:00:00
+Processing time 0009-04-28 12:00:00
+Processing time 0009-04-28 18:00:00
+Processing time 0009-04-29 00:00:00
+Processing time 0009-04-29 06:00:00
+Processing time 0009-04-29 12:00:00
+Processing time 0009-04-29 18:00:00
+Processing time 0009-04-30 00:00:00
+Processing time 0009-04-30 06:00:00
+Processing time 0009-04-30 12:00:00
+Processing time 0009-04-30 18:00:00
+Processing time 0009-05-01 00:00:00
+Processing time 0009-05-01 06:00:00
+Processing time 0009-05-01 12:00:00
+Processing time 0009-05-01 18:00:00
+Processing time 0009-05-02 00:00:00
+Processing time 0009-05-02 06:00:00
+Processing time 0009-05-02 12:00:00
+Processing time 0009-05-02 18:00:00
+Processing time 0009-05-03 00:00:00
+Processing time 0009-05-03 06:00:00
+Processing time 0009-05-03 12:00:00
+Processing time 0009-05-03 18:00:00
+Processing time 0009-05-04 00:00:00
+Processing time 0009-05-04 06:00:00
+Processing time 0009-05-04 12:00:00
+Processing time 0009-05-04 18:00:00
+Processing time 0009-05-05 00:00:00
+Processing time 0009-05-05 06:00:00
+Processing time 0009-05-05 12:00:00
+Processing time 0009-05-05 18:00:00
+Processing time 0009-05-06 00:00:00
+Processing time 0009-05-06 06:00:00
+Processing time 0009-05-06 12:00:00
+Processing time 0009-05-06 18:00:00
+Processing time 0009-05-07 00:00:00
+Processing time 0009-05-07 06:00:00
+Processing time 0009-05-07 12:00:00
+Processing time 0009-05-07 18:00:00
+Processing time 0009-05-08 00:00:00
+Processing time 0009-05-08 06:00:00
+Processing time 0009-05-08 12:00:00
+Processing time 0009-05-08 18:00:00
+Processing time 0009-05-09 00:00:00
+Processing time 0009-05-09 06:00:00
+Processing time 0009-05-09 12:00:00
+Processing time 0009-05-09 18:00:00
+Processing time 0009-05-10 00:00:00
+Processing time 0009-05-10 06:00:00
+Processing time 0009-05-10 12:00:00
+Processing time 0009-05-10 18:00:00
+Processing time 0009-05-11 00:00:00
+Processing time 0009-05-11 06:00:00
+Processing time 0009-05-11 12:00:00
+Processing time 0009-05-11 18:00:00
+Processing time 0009-05-12 00:00:00
+Processing time 0009-05-12 06:00:00
+Processing time 0009-05-12 12:00:00
+Processing time 0009-05-12 18:00:00
+Processing time 0009-05-13 00:00:00
+Processing time 0009-05-13 06:00:00
+Processing time 0009-05-13 12:00:00
+Processing time 0009-05-13 18:00:00
+Processing time 0009-05-14 00:00:00
+Processing time 0009-05-14 06:00:00
+Processing time 0009-05-14 12:00:00
+Processing time 0009-05-14 18:00:00
+Processing time 0009-05-15 00:00:00
+Processing time 0009-05-15 06:00:00
+Processing time 0009-05-15 12:00:00
+Processing time 0009-05-15 18:00:00
+Processing time 0009-05-16 00:00:00
+Processing time 0009-05-16 06:00:00
+Processing time 0009-05-16 12:00:00
+Processing time 0009-05-16 18:00:00
+Processing time 0009-05-17 00:00:00
+Processing time 0009-05-17 06:00:00
+Processing time 0009-05-17 12:00:00
+Processing time 0009-05-17 18:00:00
+Processing time 0009-05-18 00:00:00
+Processing time 0009-05-18 06:00:00
+Processing time 0009-05-18 12:00:00
+Processing time 0009-05-18 18:00:00
+Processing time 0009-05-19 00:00:00
+Processing time 0009-05-19 06:00:00
+Processing time 0009-05-19 12:00:00
+Processing time 0009-05-19 18:00:00
+Processing time 0009-05-20 00:00:00
+Processing time 0009-05-20 06:00:00
+Processing time 0009-05-20 12:00:00
+Processing time 0009-05-20 18:00:00
+Processing time 0009-05-21 00:00:00
+Processing time 0009-05-21 06:00:00
+Processing time 0009-05-21 12:00:00
+Processing time 0009-05-21 18:00:00
+Processing time 0009-05-22 00:00:00
+Processing time 0009-05-22 06:00:00
+Processing time 0009-05-22 12:00:00
+Processing time 0009-05-22 18:00:00
+Processing time 0009-05-23 00:00:00
+Processing time 0009-05-23 06:00:00
+Processing time 0009-05-23 12:00:00
+Processing time 0009-05-23 18:00:00
+Processing time 0009-05-24 00:00:00
+Processing time 0009-05-24 06:00:00
+Processing time 0009-05-24 12:00:00
+Processing time 0009-05-24 18:00:00
+Processing time 0009-05-25 00:00:00
+Processing time 0009-05-25 06:00:00
+Processing time 0009-05-25 12:00:00
+Processing time 0009-05-25 18:00:00
+Processing time 0009-05-26 00:00:00
+Processing time 0009-05-26 06:00:00
+Processing time 0009-05-26 12:00:00
+Processing time 0009-05-26 18:00:00
+Processing time 0009-05-27 00:00:00
+Processing time 0009-05-27 06:00:00
+Processing time 0009-05-27 12:00:00
+Processing time 0009-05-27 18:00:00
+Processing time 0009-05-28 00:00:00
+Processing time 0009-05-28 06:00:00
+Processing time 0009-05-28 12:00:00
+Processing time 0009-05-28 18:00:00
+Processing time 0009-05-29 00:00:00
+Processing time 0009-05-29 06:00:00
+Processing time 0009-05-29 12:00:00
+Processing time 0009-05-29 18:00:00
+Processing time 0009-05-30 00:00:00
+Processing time 0009-05-30 06:00:00
+Processing time 0009-05-30 12:00:00
+Processing time 0009-05-30 18:00:00
+Processing time 0009-05-31 00:00:00
+Processing time 0009-05-31 06:00:00
+Processing time 0009-05-31 12:00:00
+Processing time 0009-05-31 18:00:00
+Processing time 0009-06-01 00:00:00
+Processing time 0009-06-01 06:00:00
+Processing time 0009-06-01 12:00:00
+Processing time 0009-06-01 18:00:00
+Processing time 0009-06-02 00:00:00
+Processing time 0009-06-02 06:00:00
+Processing time 0009-06-02 12:00:00
+Processing time 0009-06-02 18:00:00
+Processing time 0009-06-03 00:00:00
+Processing time 0009-06-03 06:00:00
+Processing time 0009-06-03 12:00:00
+Processing time 0009-06-03 18:00:00
+Processing time 0009-06-04 00:00:00
+Processing time 0009-06-04 06:00:00
+Processing time 0009-06-04 12:00:00
+Processing time 0009-06-04 18:00:00
+Processing time 0009-06-05 00:00:00
+Processing time 0009-06-05 06:00:00
+Processing time 0009-06-05 12:00:00
+Processing time 0009-06-05 18:00:00
+Processing time 0009-06-06 00:00:00
+Processing time 0009-06-06 06:00:00
+Processing time 0009-06-06 12:00:00
+Processing time 0009-06-06 18:00:00
+Processing time 0009-06-07 00:00:00
+Processing time 0009-06-07 06:00:00
+Processing time 0009-06-07 12:00:00
+Processing time 0009-06-07 18:00:00
+Processing time 0009-06-08 00:00:00
+Processing time 0009-06-08 06:00:00
+Processing time 0009-06-08 12:00:00
+Processing time 0009-06-08 18:00:00
+Processing time 0009-06-09 00:00:00
+Processing time 0009-06-09 06:00:00
+Processing time 0009-06-09 12:00:00
+Processing time 0009-06-09 18:00:00
+Processing time 0009-06-10 00:00:00
+Processing time 0009-06-10 06:00:00
+Processing time 0009-06-10 12:00:00
+Processing time 0009-06-10 18:00:00
+Processing time 0009-06-11 00:00:00
+Processing time 0009-06-11 06:00:00
+Processing time 0009-06-11 12:00:00
+Processing time 0009-06-11 18:00:00
+Processing time 0009-06-12 00:00:00
+Processing time 0009-06-12 06:00:00
+Processing time 0009-06-12 12:00:00
+Processing time 0009-06-12 18:00:00
+Processing time 0009-06-13 00:00:00
+Processing time 0009-06-13 06:00:00
+Processing time 0009-06-13 12:00:00
+Processing time 0009-06-13 18:00:00
+Processing time 0009-06-14 00:00:00
+Processing time 0009-06-14 06:00:00
+Processing time 0009-06-14 12:00:00
+Processing time 0009-06-14 18:00:00
+Processing time 0009-06-15 00:00:00
+Processing time 0009-06-15 06:00:00
+Processing time 0009-06-15 12:00:00
+Processing time 0009-06-15 18:00:00
+Processing time 0009-06-16 00:00:00
+Processing time 0009-06-16 06:00:00
+Processing time 0009-06-16 12:00:00
+Processing time 0009-06-16 18:00:00
+Processing time 0009-06-17 00:00:00
+Processing time 0009-06-17 06:00:00
+Processing time 0009-06-17 12:00:00
+Processing time 0009-06-17 18:00:00
+Processing time 0009-06-18 00:00:00
+Processing time 0009-06-18 06:00:00
+Processing time 0009-06-18 12:00:00
+Processing time 0009-06-18 18:00:00
+Processing time 0009-06-19 00:00:00
+Processing time 0009-06-19 06:00:00
+Processing time 0009-06-19 12:00:00
+Processing time 0009-06-19 18:00:00
+Processing time 0009-06-20 00:00:00
+Processing time 0009-06-20 06:00:00
+Processing time 0009-06-20 12:00:00
+Processing time 0009-06-20 18:00:00
+Processing time 0009-06-21 00:00:00
+Processing time 0009-06-21 06:00:00
+Processing time 0009-06-21 12:00:00
+Processing time 0009-06-21 18:00:00
+Processing time 0009-06-22 00:00:00
+Processing time 0009-06-22 06:00:00
+Processing time 0009-06-22 12:00:00
+Processing time 0009-06-22 18:00:00
+Processing time 0009-06-23 00:00:00
+Processing time 0009-06-23 06:00:00
+Processing time 0009-06-23 12:00:00
+Processing time 0009-06-23 18:00:00
+Processing time 0009-06-24 00:00:00
+Processing time 0009-06-24 06:00:00
+Processing time 0009-06-24 12:00:00
+Processing time 0009-06-24 18:00:00
+Processing time 0009-06-25 00:00:00
+Processing time 0009-06-25 06:00:00
+Processing time 0009-06-25 12:00:00
+Processing time 0009-06-25 18:00:00
+Processing time 0009-06-26 00:00:00
+Processing time 0009-06-26 06:00:00
+Processing time 0009-06-26 12:00:00
+Processing time 0009-06-26 18:00:00
+Processing time 0009-06-27 00:00:00
+Processing time 0009-06-27 06:00:00
+Processing time 0009-06-27 12:00:00
+Processing time 0009-06-27 18:00:00
+Processing time 0009-06-28 00:00:00
+Processing time 0009-06-28 06:00:00
+Processing time 0009-06-28 12:00:00
+Processing time 0009-06-28 18:00:00
+Processing time 0009-06-29 00:00:00
+Processing time 0009-06-29 06:00:00
+Processing time 0009-06-29 12:00:00
+Processing time 0009-06-29 18:00:00
+Processing time 0009-06-30 00:00:00
+Processing time 0009-06-30 06:00:00
+Processing time 0009-06-30 12:00:00
+Processing time 0009-06-30 18:00:00
+Working on 250417_ctrl

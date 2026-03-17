@@ -5,12 +5,14 @@ import matplotlib.pyplot as plt
 from sznl_funcs import monthly2sznl, stack_hemi_sznl
 
 CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1']
-YMM = '/glade/campaign/univ/upsu0032/jpan_aquaptc/%s/atm/hist_regrid_0.25x0.25_onpres/ymonmean.nc'
+CSDIR = ['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl',\
+         '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch']
+YMM = '%s/atm/hist_regrid_0.25x0.25_onpres/ymonmean.nc'
 
 letters = [['(a)', '(b)', '(c)'], ['(d)', '(e)', '(f)']]
-CSTTL = ['UNSEED$-$CTRL', 'CTRL', 'SEED$-$CTRL']
+CSTTL = ['UNSEED$-$CTRL', 'CTRL', 'MSEED$-$CTRL']
 
-pltvars = ['CLDICE', 'CLDLIQ', 'Q', 'QRL', 'QRS']
+pltvars = ['CLDICE', 'CLDLIQ', 'Q', 'QRL', 'QRS', 'T']
 clevs = dict(cldfrac=2.**np.arange(-1, 7, 2) / 100, tdot=0.5 * np.arange(1, 10))
 clevs = {k: np.concatenate((-clevs[k][::-1], clevs[k])) for k in clevs}
 levfac = [0.1, 1, 0.25]
@@ -18,9 +20,10 @@ levfac = [0.1, 1, 0.25]
 clevs = dict(cldfrac=np.array([.1, 1, 10, 25]) / 100, tdot=np.array([.01, .1, 1, 2.5]), cldamt=10. ** np.arange(-7, -1))
 clevs = {k: np.concatenate((-clevs[k][::-1], clevs[k])) for k in clevs}
 qlevs = [np.arange(-3e-4, 3.1e-4, 5e-5), np.arange(0, 3.1e-2, 5e-3), np.arange(-3.5e-3, 3.6e-3, 5e-4)]
+qlevs[-1] = qlevs[0]
 
 def main():
-   dss = [xr.open_dataset(YMM % cs).rename(time='month') for cs in CASES]
+   dss = [xr.open_dataset(YMM % cd).rename(time='month') for cd in CSDIR]
 
    plt.rc('font', size=20)
    plt.rcParams['figure.figsize'] = (30, 12)
@@ -40,12 +43,15 @@ def main():
          ax, do_diff = axes[szj][csi], csi != 1
          sinlat = np.sin(np.deg2rad(dss[csi]['lat']))
          pltq = sznl_stacked['Q'][csi].sel(season=szn) if not do_diff else sznl_stacked['Q'][csi].sel(season=szn) - sznl_stacked['Q'][1].sel(season=szn)
-         csf = ax.contourf(sinlat, dss[csi]['plev'] / 100, pltq, cmap='BrBG' if do_diff else 'YlGnBu', levels=qlevs[csi])
+         pltT = sznl_stacked['T'][csi].sel(season=szn) if not do_diff else sznl_stacked['T'][csi].sel(season=szn) - sznl_stacked['T'][1].sel(season=szn)
+         #csf = ax.contourf(sinlat, dss[csi]['plev'] / 100, pltq, cmap='BrBG' if do_diff else 'YlGnBu', levels=qlevs[csi])
+         csf = ax.contourf(sinlat, dss[csi]['plev'] / 100, pltq / sznl_stacked['Q'][csi].sel(season=szn) / pltT * 100 if do_diff else pltq, cmap='bwr' if do_diff else 'YlGnBu', levels=np.arange(-50, 51, 5) if do_diff else qlevs[csi])
          plt.colorbar(csf, ax=ax)
          pltcld = sznl_stacked['CLOUD'][csi].sel(season=szn) if not do_diff else sznl_stacked['CLOUD'][csi].sel(season=szn) - sznl_stacked['CLOUD'][1].sel(season=szn)
          pltlw = sznl_stacked['QRL'][csi].sel(season=szn) if not do_diff else sznl_stacked['QRL'][csi].sel(season=szn) - sznl_stacked['QRL'][1].sel(season=szn)
          pltsw = sznl_stacked['QRS'][csi].sel(season=szn) if not do_diff else sznl_stacked['QRS'][csi].sel(season=szn) - sznl_stacked['QRS'][1].sel(season=szn)
-         ax.contour(sinlat, dss[csi]['plev'] / 100, pltcld, colors='black', levels=clevs['cldamt'])# * levfac[csi])
+         ax.contour(sinlat, dss[csi]['plev'] / 100, 0 * pltcld, colors='black', levels=clevs['cldamt'])# * levfac[csi])
+         ax.contour(sinlat, dss[csi]['plev'] / 100, pltq, colors='black', levels=qlevs[csi][qlevs[csi] != 0])
          ax.contour(sinlat, dss[csi]['plev'] / 100, 0 * pltlw * 86400, colors='green', levels=clevs['tdot'])# * levfac[csi])
          ax.contour(sinlat, dss[csi]['plev'] / 100, 0 * pltsw * 86400, colors='orange', levels=clevs['tdot'])# * levfac[csi])
          ax.tick_params(right=True, top=True, labelbottom=True, labelleft=True)
@@ -59,7 +65,7 @@ def main():
             ax.set_title(CSTTL[csi], fontsize=28)
          if csi == 0:
             ax.set_ylabel(szn + '   ', rotation='horizontal', fontsize=28)
-   plt.savefig('q_cldamt.svg', bbox_inches='tight')
+   plt.savefig('dQ_QdT_MSEED.svg', bbox_inches='tight')
    plt.close()
 
    print(sys.argv[0], 'done.')

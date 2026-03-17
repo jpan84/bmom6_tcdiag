@@ -27,9 +27,10 @@ a = 6.371e6
 FILIS = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s/atm/hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.%s.cam.h1i.0007-*-1*-*.nc'
 ALIS = ['250415_unseed', '250417_ctrl', '251229_seedmatch']#'250416_seed1x1']
 pths = ['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist', '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm/hist']
-dtstr = '*.h1i.0009-*-01-*.nc' #'*.h1i.000[6-7]-*.nc'
-CASES = ['UNSEED', 'CTRL', 'MSEED']
-VARO = 'UMF500'
+#pths = ['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist']
+dtstr = '*.h1i.0009-0[1-6]-*-*.nc' #'*.h1i.000[6-7]-*.nc'
+CASES = ['UNSEED', 'CTRL', 'SEED']
+VARO = 'areasr'
 ILAT, OLAT = 5, 35
 
 mse850_f = lambda ds: g * ds['Z850'] + cp * ds['T850'] + lv * ds['Q850']
@@ -55,6 +56,8 @@ hist_kw = dict(hemi='warm', xnm='OM850', ynm='OM500', innerlat=ILAT, outerlat=OL
 hist_kw = dict(hemi='warm', xnm='lat', ynm='SST', innerlat=ILAT, outerlat=OLAT, thevarf=umf500_f, xvarf=lat_f, yvarf=sst_f, xbins=latb_500u, ybins=SSTbins)
 hist_kw = dict(hemi='warm', xnm='lat', ynm='SST', innerlat=ILAT, outerlat=OLAT, thevarf=dmf500_f, xvarf=lat_f, yvarf=sst_f, xbins=latb_500d, ybins=SSTbins)
 hist_kw = dict(hemi='warm', xnm='lat', ynm='UBOT', innerlat=ILAT, outerlat=OLAT, thevarf=umf500_f, xvarf=lat_f, yvarf=spdbot_f, xbins=latb_500u, ybins=UBOTb)
+hist_kw = dict(hemi='warm', xnm='SSTr', ynm='MSE850', innerlat=ILAT, outerlat=OLAT, thevarf=umf500_f, xvarf=lambda x: x['SSTr'], yvarf=mse850_f, xbins=np.arange(-5, 5.1, 0.25), ybins=np.arange(2.8e5, 4.01e5, 5e3))
+hist_kw = dict(hemi='warm', xnm='SSTr', ynm='MSE850', innerlat=ILAT, outerlat=OLAT, thevarf=lambda x: x['area'], xvarf=lambda x: x['SSTr'], yvarf=mse850_f, xbins=np.arange(-5, 5.1, 0.25), ybins=np.arange(2.8e5, 4.01e5, 5e3))
 
 #TODO: check why NH and SH selections differ in number of cols
 def main():
@@ -66,6 +69,7 @@ def main():
       print('Working on', al)
       #ds = xr.open_mfdataset(FILIS % (al, al))
       ds = xr.open_mfdataset(os.path.join(pths[ii], dtstr))
+      ds = compute_rel_SST(ds)
       #da, x_d, y_d = compute_umf_hist(ds.drop_vars(['time_bounds', 'time_written', 'date_written']), hemi='warm', ybins=SSTbins, innerlat=7., outerlat=20.)
       #da, x_d, y_d = compute_umf_hist(ds.drop_vars(['time_bounds', 'time_written', 'date_written']), hemi='warm', innerlat=ILAT, outerlat=OLAT,\
       #                                  thevarf=umf850_f, xvarf=lambda x: x['OMEGA850'], yvarf=lambda x: x['OMEGA500'], xbins=OM850b, ybins=OM500b, xnm='OM850', ynm='OM500')
@@ -78,7 +82,7 @@ def main():
          outda = xr.concat([outda, da], dim='case')
 
    outds = xr.Dataset(data_vars={VARO: outda, 'xwidth': x_d, 'ywidth': y_d})
-   outds.to_netcdf('0302_test_mf_vars/%s_%s_%s_yy09dd01_%02d-%02d%s_allprec.nc' % (VARO, hist_kw['xnm'], hist_kw['ynm'], ILAT, OLAT, hist_kw['hemi']))
+   outds.to_netcdf('0302_test_mf_vars/%s_%s_%s_yy09mm01-06_%02d-%02d%s.nc' % (VARO, hist_kw['xnm'], hist_kw['ynm'], ILAT, OLAT, hist_kw['hemi']))
 
    print(sys.argv[0], 'done')
 
@@ -125,6 +129,12 @@ def bin_umf_2d(umf, varx, vary, binsx, binsy, ntime):
    umfsum, xedges, yedges, binnum = binned_statistic_2d(x=varx.data.ravel(), y=vary.data.ravel(),\
                  values=umf.data.ravel(), statistic='sum', bins=[binsx, binsy])
    return umfsum / ntime, xedges, yedges, binnum
+
+def compute_rel_SST(ds, troplat=30.):
+   ds_trop = ds.isel(ncol=((ds['lat'] > -troplat) & (ds['lat'] < troplat)).all(dim='time').compute())
+   meansst = (ds_trop['SST'] * ds_trop['area']).sum(dim='ncol') / ds_trop['area'].sum(dim='ncol')
+   print(meansst.compute())
+   return ds.assign(SSTr=ds['SST'] - meansst)
 
 if __name__ == '__main__':
    main()

@@ -13,6 +13,9 @@ FILI = 'UMF850_OM850_OM500_yy0607_00-30warm.nc'
 #FILI = 'UMF850_OM850_OM500_yy0607_00-30warm_allprec.nc'
 DIRI = './0302_test_mf_vars/'
 FILI = 'UMF500_lat_UBOT_yy09dd01_05-35warm_allprec.nc'
+FILI = 'UMF500_SSTr_MSE850_yy09dd0x_05-35warm.nc'
+FILI = 'UMF500_SSTr_MSE850_yy09dd1x_05-35warm_SEED.nc'
+FILI = 'UMF500_SSTr_MSE850_yy09mm01-06_05-35warm.nc'
 #DIRO = 'mf_histo_btbc'
 THEVAR, XVAR, YVAR = FILI.split('_')[:3]
 TTLS = ['UNSEED$-$CTRL', 'CTRL', 'MSEED$-$CTRL']
@@ -53,15 +56,19 @@ pckw = [dict(cmap='seismic', vmin=-4e-3, vmax=4e-3), dict(cmap='nipy_spectral', 
 subplot_kw = dict(xlim=(5, 35), ylim=(0, 40))
 pckw = [dict(cmap='seismic', vmin=-5e-4, vmax=5e-4), dict(cmap='nipy_spectral', vmin=0, vmax=1e-3), dict(cmap='seismic', vmin=-5e-4, vmax=5e-4)]
 
+#SSTr, MSE850
+subplot_kw = dict(ylim=(3.2e5, 3.8e5), xlim=(-5, 5))
+pckw = [dict(cmap='seismic', vmin=-3e6, vmax=3e6), dict(cmap='nipy_spectral', vmin=0, vmax=3.5e7), dict(cmap='seismic', vmin=-3e6, vmax=3e6)]
+
 plt.rc('font', size=14)
 plt.rcParams['figure.figsize'] = [16, 5]
 
 #deep tropical (Moist Tropics) case
 fig, axes = plt.subplots(1, 3, sharex=True, sharey=True, subplot_kw=subplot_kw, layout='constrained')
 fig.suptitle('JJASON 500 hPa UMF [kg s$^{{-1}}$ (°C J kg$^{{-1}}$)$^{-1}$]')
-fig.suptitle('JJASON 850 hPa UMF [kg s$^{{-1}}$ (Pa s$^{{-1}}$)$^{-2}$]')
+#fig.suptitle('JJASON 850 hPa UMF [kg s$^{{-1}}$ (Pa s$^{{-1}}$)$^{-2}$]')
 #fig.suptitle('JJASON 850 hPa UMF [kg s$^{{-1}}$ (Pa s$^{{-1}}$ W m$^{{-2}}$)$^{-1}$]')
-fig.suptitle('JJASON 500 hPa UMF [kg s$^{{-1}}$ (°C m s$^{{-1}}$)$^{-1}$]')
+#fig.suptitle('JJASON 500 hPa UMF [kg s$^{{-1}}$ (°C m s$^{{-1}}$)$^{-1}$]')
 for ii, ax in enumerate(axes):
    rawda = ds[THEVAR].isel(case=ii)
    pltda = umfdif.isel(case=ii).T
@@ -79,8 +86,8 @@ for ii, ax in enumerate(axes):
    #ax.set_xlabel('OLR [W m$^{-2}$]')
    ax.set_xlabel('lat [deg]')
    ax.set_ylabel('$\omega_{500}$ [Pa s$^{-1}$]')
-   ax.set_ylabel('SST [°C]')
-   ax.set_ylabel('UBOT speed [m/s]')
+   ax.set_xlabel('SST\' [°C]')
+   ax.set_ylabel('MSE850 [J/kg]')
    ax.set_title(f'{TTLS[ii]}\nsum: {rawda.sum():.2e} kg s$^{{-1}}$')
    ax.set_title(['(a)', '(b)', '(c)'][ii], loc='left')
 
