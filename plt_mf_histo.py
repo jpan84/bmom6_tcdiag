@@ -15,7 +15,7 @@ DIRI = './0302_test_mf_vars/'
 FILI = 'UMF500_lat_UBOT_yy09dd01_05-35warm_allprec.nc'
 FILI = 'UMF500_SSTr_MSE850_yy09dd0x_05-35warm.nc'
 FILI = 'UMF500_SSTr_MSE850_yy09dd1x_05-35warm_SEED.nc'
-FILI = 'UMF500_SSTr_MSE850_yy09mm01-06_05-35warm.nc'
+FILI = 'areasr_SSTr_MSE850_yy09mm01-06_05-35warm.nc'
 #DIRO = 'mf_histo_btbc'
 THEVAR, XVAR, YVAR = FILI.split('_')[:3]
 TTLS = ['UNSEED$-$CTRL', 'CTRL', 'MSEED$-$CTRL']
@@ -59,6 +59,10 @@ pckw = [dict(cmap='seismic', vmin=-5e-4, vmax=5e-4), dict(cmap='nipy_spectral', 
 #SSTr, MSE850
 subplot_kw = dict(ylim=(3.2e5, 3.8e5), xlim=(-5, 5))
 pckw = [dict(cmap='seismic', vmin=-3e6, vmax=3e6), dict(cmap='nipy_spectral', vmin=0, vmax=3.5e7), dict(cmap='seismic', vmin=-3e6, vmax=3e6)]
+
+#SSTr, MSE850, areasr
+subplot_kw = dict(ylim=(3.2e5, 3.8e5), xlim=(-5, 5))
+pckw = [dict(cmap='seismic', vmin=-2e-5, vmax=2e-5), dict(cmap='nipy_spectral', vmin=0, vmax=2e-4), dict(cmap='seismic', vmin=-2e-5, vmax=2e-5)]
 
 plt.rc('font', size=14)
 plt.rcParams['figure.figsize'] = [16, 5]

@@ -29,7 +29,7 @@ ALIS = ['250415_unseed', '250417_ctrl', '251229_seedmatch']#'250416_seed1x1']
 pths = ['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist', '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm/hist']
 #pths = ['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist']
 dtstr = '*.h1i.0009-0[1-6]-*-*.nc' #'*.h1i.000[6-7]-*.nc'
-CASES = ['UNSEED', 'CTRL', 'SEED']
+CASES = ['UNSEED', 'CTRL', 'MSEED']
 VARO = 'areasr'
 ILAT, OLAT = 5, 35
 
@@ -40,6 +40,7 @@ lat_f = lambda ds: ds['lat']
 umf500_f = lambda ds: (ds['OMEGA500'] < 0) * (-ds['OMEGA500'] * ds['area'] * a**2 / g)
 umf850_f = lambda ds: (ds['OMEGA850'] < 0) * (-ds['OMEGA850'] * ds['area'] * a**2 / g) #* (ds['PRECT'] > 1e-8)
 dmf500_f = lambda ds: (ds['OMEGA500'] > 0) * (-ds['OMEGA500'] * ds['area'] * a**2 / g)
+area_f = lambda ds: xr.broadcast(ds['area'], ds['SST'])[0]
 
 SSTbins = np.concatenate((np.arange(295., 306.), np.arange(306, 309, 0.25), np.arange(309, 313)))
 OM850b = np.concatenate((np.arange(-10, -2, 1), np.arange(-2, -.5, .25), np.arange(-.5, -.1, .05), np.arange(-.1, .01, .01)))
@@ -57,7 +58,7 @@ hist_kw = dict(hemi='warm', xnm='lat', ynm='SST', innerlat=ILAT, outerlat=OLAT, 
 hist_kw = dict(hemi='warm', xnm='lat', ynm='SST', innerlat=ILAT, outerlat=OLAT, thevarf=dmf500_f, xvarf=lat_f, yvarf=sst_f, xbins=latb_500d, ybins=SSTbins)
 hist_kw = dict(hemi='warm', xnm='lat', ynm='UBOT', innerlat=ILAT, outerlat=OLAT, thevarf=umf500_f, xvarf=lat_f, yvarf=spdbot_f, xbins=latb_500u, ybins=UBOTb)
 hist_kw = dict(hemi='warm', xnm='SSTr', ynm='MSE850', innerlat=ILAT, outerlat=OLAT, thevarf=umf500_f, xvarf=lambda x: x['SSTr'], yvarf=mse850_f, xbins=np.arange(-5, 5.1, 0.25), ybins=np.arange(2.8e5, 4.01e5, 5e3))
-hist_kw = dict(hemi='warm', xnm='SSTr', ynm='MSE850', innerlat=ILAT, outerlat=OLAT, thevarf=lambda x: x['area'], xvarf=lambda x: x['SSTr'], yvarf=mse850_f, xbins=np.arange(-5, 5.1, 0.25), ybins=np.arange(2.8e5, 4.01e5, 5e3))
+hist_kw = dict(hemi='warm', xnm='SSTr', ynm='MSE850', innerlat=ILAT, outerlat=OLAT, thevarf=area_f, xvarf=lambda x: x['SSTr'], yvarf=mse850_f, xbins=np.arange(-5, 5.1, 0.25), ybins=np.arange(2.8e5, 4.01e5, 5e3))
 
 #TODO: check why NH and SH selections differ in number of cols
 def main():

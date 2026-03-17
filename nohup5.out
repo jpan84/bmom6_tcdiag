@@ -1,8 +1,5 @@
 nohup: ignoring input
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 2433664.casper-pbs with qsub arguments:
-    qsub  -l select=1:ncpus=16:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=00:23:00
+Waiting on job launch; 2861784.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=8:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=02:30:00
 
-Terminated
-
-qcmd job 2433664.casper-pbs has been terminated

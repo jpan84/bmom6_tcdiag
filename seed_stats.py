@@ -15,7 +15,7 @@ import geoviews.feature as gf
 import cartopy.crs as ccrs
 '''
 
-alias = '250416_seed1x1_production'
+alias = '251229_seed_match'
 dfcols = ['dt', 'sstlat', 'sstval', 'tid', 'clat', 'clon', 'psamb', 'dp [hPa]', 'rmw_target', 'rmw_final', 'rp']
 logpaths = sorted(glob.glob('/glade/u/home/jpan/work/MOM6_CASEDIRS/%s.out*' % alias))
 
