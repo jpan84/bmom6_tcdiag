@@ -59,7 +59,32 @@ def main_plot():
    plt.rcParams['figure.figsize'] = (12, 5)
    fig, axes = plt.subplots(1, 3, sharex=True, sharey=True)
    for ii, ax in enumerate(axes):
-      csf = ax.contourf(ds['SSTr'], selt[ii]['trel'], selt[ii]['areasr'], cmap='bwr', levels=np.arange(-.3, .31, .05))
+      csf = ax.contourf(ds['SSTr'], selt[ii]['trel'] * ns2d, selt[ii]['areasr'], cmap='bwr', levels=np.arange(-.3, .31, .05))
+      ax.set_xlabel('SST\' [K]')
+      ax.set_ylabel('Days since SST hemi switch')
+      plt.colorbar(csf, ax=ax)
+   plt.show()
+
+def main_plot_umf():
+   testhov = '0302_test_mf_vars/UMF500_SSTr_testhov.nc'
+   ds = xr.open_dataset(testhov)
+   #print(ds['trel'].isel(case=0).values)
+   #print(ds.sel(trel=slice(tdel(days=-15), tdel(days=60))))
+
+   ns2d = 1 / 1e9 / 86400
+   selt = [ds.sel(case=cs) for cs in ds['case']]
+   selt = [st.where((st['trel'].astype(float) * ns2d >= -15) & (st['trel'].astype(float) * ns2d <= 60), drop=True) for st in selt]
+   selt = [st.swap_dims(time='trel') for st in selt]
+   #print(selt[0])
+   selt = [st - selt[1] if ii != 1 else st for ii, st in enumerate(selt)]  
+   print(selt[0])
+
+   plt.rcParams['figure.figsize'] = (12, 5)
+   fig, axes = plt.subplots(1, 3, sharex=True, sharey=True)
+   for ii, ax in enumerate(axes):
+      csf = ax.contourf(ds['SSTr'], selt[ii]['trel'] * ns2d, selt[ii]['areasr'], cmap='bwr', levels=np.arange(-1.5e11, 1.51e11, 2.5e10))
+      ax.set_xlabel('SST\' [K]')
+      ax.set_ylabel('Days since SST hemi switch')
       plt.colorbar(csf, ax=ax)
    plt.show()
 
@@ -113,5 +138,7 @@ def bin_stat(thevar, varx, binsx):
 if __name__ == '__main__':
    if len(sys.argv) > 1 and sys.argv[1] == 'plot':
       main_plot()
+   elif len(sys.argv) > 1 and sys.argv[1] == 'umf':
+      main_plot_umf()
    else:
       main()

@@ -5,23 +5,53 @@ import xarray as xr
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 
-FILI = 'UMF500_0012dd01_07-20warm.nc'
-FILI = 'umf500_0012_07-20warm.nc'
-##FILI = 'umf500_0012dd01_20-33warm.nc'
-#FILI = 'UMF850_OM850_OM500_0007dd1x_00-30warm.nc'
-##FILI = 'UMF850_FLUT_OM500_0012dd0x_00-30warm.nc'
-#FILI = 'UMF850_OM850_OM500_yy0607_00-30warm.nc'
-##FILI = 'UMF850_OM850_OM500_yy0607_00-30warm_allprec.nc'
-#DIRI = './0302_test_mf_vars/'
-DIRI = './'
+DIRI = './0302_test_mf_vars/'
 #FILI = 'UMF500_lat_UBOT_yy09dd01_05-35warm_allprec.nc'
 #FILI = 'UMF500_SSTr_MSE850_yy09dd0x_05-35warm.nc'
-#FILI = 'UMF500_SSTr_MSE850_yy09dd1x_05-35warm_SEED.nc'
-#FILI = 'areasr_SSTr_MSE850_yy09dd01_05-35warm.nc'
+MFIL = 'UMF500_SSTr_MSE850_yy09mm01-06_05-35warm.nc'
+AFIL = 'areasr_SSTr_MSE850_yy09mm01-06_05-35warm.nc'
 #DIRO = 'mf_histo_btbc'
-THEVAR, XVAR, YVAR = FILI.split('_')[:3]
-THEVAR, XVAR, YVAR = 'UMF500', 'MSE850', 'SST'
-TTLS = ['UNSEED$-$CTRL', 'CTRL', 'SEED$-$CTRL']
+MVAR, XVAR, YVAR = MFIL.split('_')[:3]
+AVAR, _, _ = AFIL.split('_')[:3]
+
+TTLS = ['UNSEED$-$CTRL', 'CTRL', 'MSEED$-$CTRL']
+
+mds = xr.open_dataset(os.path.join(DIRI, MFIL)).sum(dim='time')
+ads = xr.open_dataset(os.path.join(DIRI, AFIL)).sum(dim='time')
+
+mfrac = mds[MVAR] / mds[MVAR].sum()
+afrac = ads[AVAR] / ads[AVAR].sum()
+relcon = mfrac / afrac
+relcon.loc[dict(case=['UNSEED', 'MSEED'])] -= relcon.sel(case='CTRL')
+
+#SSTr, MSE850
+subplot_kw = dict(ylim=(3.2, 3.8), xlim=(-5, 5))
+#pckw = [dict(cmap='seismic', vmin=-3e6, vmax=3e6), dict(cmap='nipy_spectral', vmin=0, vmax=3.5e7), dict(cmap='seismic', vmin=-3e6, vmax=3e6)]
+pckw = [dict(cmap='nipy_spectral', norm=colors.LogNorm(vmin=1e-1, vmax=1e3)) for _ in range(3)] #raw
+pckw = [dict(cmap='bwr', norm=colors.SymLogNorm(1e-2, vmin=-1e2, vmax=1e2)), dict(cmap='nipy_spectral', norm=colors.LogNorm(vmin=1e-1, vmax=1e3))] #diff
+pckw.append(pckw[0])
+
+plt.rc('font', size=14)
+plt.rcParams['figure.figsize'] = [16, 5]
+
+#deep tropical (Moist Tropics) case
+fig, axes = plt.subplots(1, 3, sharex=True, sharey=True, subplot_kw=subplot_kw, layout='constrained')
+fig.suptitle('JJASON ratio of 500 hPa UMF to surface area [fraction / fraction]')
+for ii, ax in enumerate(axes):
+   pltda = relcon.isel(case=ii).T
+   pc = ax.pcolormesh(mds[XVAR], mds[YVAR] / 1e5, pltda, shading='nearest', **pckw[ii])
+   cb = plt.colorbar(pc, ax=ax, extend='both')
+
+   ax.tick_params(right=True, top=True, labelleft=True)
+   ax.set_yticks(np.arange(3.2, 3.9, .1))
+   ax.set_xlabel('SST\' [°C]')
+   ax.set_ylabel('MSE850 [10$^5$ J kg$^{-1}$]')
+   ax.set_title(f'{TTLS[ii]}')
+   ax.set_title(['(a)', '(b)', '(c)'][ii], loc='left')
+
+plt.show()
+
+exit()
 
 ds = xr.open_dataset(os.path.join(DIRI, FILI)).sum(dim='time') / 2 #forgot to change time normalization in 1st script when retaining time dim so need to sum here instead of avg
 umfdif = ds[THEVAR].copy()

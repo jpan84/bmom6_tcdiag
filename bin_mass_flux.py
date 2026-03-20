@@ -28,7 +28,7 @@ FILIS = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av
 ALIS = ['250415_unseed', '250417_ctrl', '251229_seedmatch']#'250416_seed1x1']
 pths = ['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist', '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm/hist']
 #pths = ['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist']
-dtstr = '*.h1i.0009-0[1-6]-*-*.nc' #'*.h1i.000[6-7]-*.nc'
+dtstr = '*.h1i.0009-*-01-*.nc' #'*.h1i.000[6-7]-*.nc'
 CASES = ['UNSEED', 'CTRL', 'MSEED']
 VARO = 'areasr'
 ILAT, OLAT = 5, 35
@@ -58,7 +58,7 @@ hist_kw = dict(hemi='warm', xnm='lat', ynm='SST', innerlat=ILAT, outerlat=OLAT, 
 hist_kw = dict(hemi='warm', xnm='lat', ynm='SST', innerlat=ILAT, outerlat=OLAT, thevarf=dmf500_f, xvarf=lat_f, yvarf=sst_f, xbins=latb_500d, ybins=SSTbins)
 hist_kw = dict(hemi='warm', xnm='lat', ynm='UBOT', innerlat=ILAT, outerlat=OLAT, thevarf=umf500_f, xvarf=lat_f, yvarf=spdbot_f, xbins=latb_500u, ybins=UBOTb)
 hist_kw = dict(hemi='warm', xnm='SSTr', ynm='MSE850', innerlat=ILAT, outerlat=OLAT, thevarf=umf500_f, xvarf=lambda x: x['SSTr'], yvarf=mse850_f, xbins=np.arange(-5, 5.1, 0.25), ybins=np.arange(2.8e5, 4.01e5, 5e3))
-hist_kw = dict(hemi='warm', xnm='SSTr', ynm='MSE850', innerlat=ILAT, outerlat=OLAT, thevarf=area_f, xvarf=lambda x: x['SSTr'], yvarf=mse850_f, xbins=np.arange(-5, 5.1, 0.25), ybins=np.arange(2.8e5, 4.01e5, 5e3))
+hist_kw = dict(hemi='warm', xnm='SSTr', ynm='MSE850', innerlat=ILAT, outerlat=OLAT, thevarf=area_f, xvarf=lambda x: x['SSTr'], yvarf=mse850_f, xbins=np.arange(-8, 4.51, 0.25), ybins=np.arange(2.8e5, 4.01e5, 5e3))
 
 #TODO: check why NH and SH selections differ in number of cols
 def main():
@@ -83,7 +83,7 @@ def main():
          outda = xr.concat([outda, da], dim='case')
 
    outds = xr.Dataset(data_vars={VARO: outda, 'xwidth': x_d, 'ywidth': y_d})
-   outds.to_netcdf('0302_test_mf_vars/%s_%s_%s_yy09mm01-06_%02d-%02d%s.nc' % (VARO, hist_kw['xnm'], hist_kw['ynm'], ILAT, OLAT, hist_kw['hemi']))
+   outds.to_netcdf('0302_test_mf_vars/%s_%s_%s_yy09dd01_%02d-%02d%s.nc' % (VARO, hist_kw['xnm'], hist_kw['ynm'], ILAT, OLAT, hist_kw['hemi']))
 
    print(sys.argv[0], 'done')
 
