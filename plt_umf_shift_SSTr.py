@@ -28,7 +28,7 @@ relcon.loc[dict(case=['UNSEED', 'MSEED'])] -= relcon.sel(case='CTRL')
 subplot_kw = dict(ylim=(3.2, 3.8), xlim=(-5, 5))
 #pckw = [dict(cmap='seismic', vmin=-3e6, vmax=3e6), dict(cmap='nipy_spectral', vmin=0, vmax=3.5e7), dict(cmap='seismic', vmin=-3e6, vmax=3e6)]
 pckw = [dict(cmap='nipy_spectral', norm=colors.LogNorm(vmin=1e-1, vmax=1e3)) for _ in range(3)] #raw
-pckw = [dict(cmap='bwr', norm=colors.SymLogNorm(1e-2, vmin=-1e2, vmax=1e2)), dict(cmap='nipy_spectral', norm=colors.LogNorm(vmin=1e-1, vmax=1e3))] #diff
+pckw = [dict(cmap='bwr', norm=colors.SymLogNorm(1e-3, vmin=-1e2, vmax=1e2)), dict(cmap='nipy_spectral', norm=colors.LogNorm(vmin=1e-1, vmax=1e3))] #diff
 pckw.append(pckw[0])
 
 plt.rc('font', size=14)

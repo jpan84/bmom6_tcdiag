@@ -59,6 +59,7 @@ hist_kw = dict(hemi='warm', xnm='lat', ynm='SST', innerlat=ILAT, outerlat=OLAT, 
 hist_kw = dict(hemi='warm', xnm='lat', ynm='UBOT', innerlat=ILAT, outerlat=OLAT, thevarf=umf500_f, xvarf=lat_f, yvarf=spdbot_f, xbins=latb_500u, ybins=UBOTb)
 hist_kw = dict(hemi='warm', xnm='SSTr', ynm='MSE850', innerlat=ILAT, outerlat=OLAT, thevarf=umf500_f, xvarf=lambda x: x['SSTr'], yvarf=mse850_f, xbins=np.arange(-5, 5.1, 0.25), ybins=np.arange(2.8e5, 4.01e5, 5e3))
 hist_kw = dict(hemi='warm', xnm='SSTr', ynm='MSE850', innerlat=ILAT, outerlat=OLAT, thevarf=area_f, xvarf=lambda x: x['SSTr'], yvarf=mse850_f, xbins=np.arange(-8, 4.51, 0.25), ybins=np.arange(2.8e5, 4.01e5, 5e3))
+hist_kw = dict(hemi='warm', xnm='SSTr', ynm='MSE850r', innerlat=ILAT, outerlat=OLAT, thevarf=area_f, xvarf=lambda x: x['SSTr'], yvarf=lambda x: x['MSE850r'], xbins=np.arange(-8, 4.51, 0.25), ybins=np.arange(-4e4, 4.01e4, 5e3))
 
 #TODO: check why NH and SH selections differ in number of cols
 def main():
@@ -70,7 +71,8 @@ def main():
       print('Working on', al)
       #ds = xr.open_mfdataset(FILIS % (al, al))
       ds = xr.open_mfdataset(os.path.join(pths[ii], dtstr))
-      ds = compute_rel_SST(ds)
+      ds = ds.assign(MSE850=mse850_f(ds))
+      ds = compute_rel_vars(ds, ['SST', 'MSE850'])
       #da, x_d, y_d = compute_umf_hist(ds.drop_vars(['time_bounds', 'time_written', 'date_written']), hemi='warm', ybins=SSTbins, innerlat=7., outerlat=20.)
       #da, x_d, y_d = compute_umf_hist(ds.drop_vars(['time_bounds', 'time_written', 'date_written']), hemi='warm', innerlat=ILAT, outerlat=OLAT,\
       #                                  thevarf=umf850_f, xvarf=lambda x: x['OMEGA850'], yvarf=lambda x: x['OMEGA500'], xbins=OM850b, ybins=OM500b, xnm='OM850', ynm='OM500')
@@ -100,7 +102,7 @@ def compute_umf_hist(ds, innerlat=5., outerlat=30., hemi='warm', thevarf=umf500_
    for tt in selds['time']:
       print('Processing time', str(tt.data))
       umf_b_2d, mse_edges, sst_edges, _ = bin_umf_2d(thevarf(selds).sel(time=tt), xvarf(selds).sel(time=tt), yvarf(selds).sel(time=tt),\
-                                          xbins, ybins, selds['time'].size / 2) #Divide time size by 2 because I've filtered out half of the year
+                                          xbins, ybins, selds['time'].size)
       #print(umf_b_2d.shape, mse_edges.shape, sst_edges.shape)
       if m_e is None and s_e is None:
          m_e, s_e = mse_edges, sst_edges
@@ -131,11 +133,12 @@ def bin_umf_2d(umf, varx, vary, binsx, binsy, ntime):
                  values=umf.data.ravel(), statistic='sum', bins=[binsx, binsy])
    return umfsum / ntime, xedges, yedges, binnum
 
-def compute_rel_SST(ds, troplat=30.):
+def compute_rel_vars(ds, relvars, troplat=30.):
    ds_trop = ds.isel(ncol=((ds['lat'] > -troplat) & (ds['lat'] < troplat)).all(dim='time').compute())
-   meansst = (ds_trop['SST'] * ds_trop['area']).sum(dim='ncol') / ds_trop['area'].sum(dim='ncol')
-   print(meansst.compute())
-   return ds.assign(SSTr=ds['SST'] - meansst)
+   for rv in relvars:
+      meanval = (ds_trop[rv] * ds_trop['area']).sum(dim='ncol') / ds_trop['area'].sum(dim='ncol')
+      ds = ds.assign(variables={rv + 'r': ds[rv] - meanval})
+   return ds
 
 if __name__ == '__main__':
    main()
