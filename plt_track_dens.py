@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sznl_funcs import stack_hemi_sznl
 
-FILI = '/glade/u/home/jpan/aquaptc/tempest/260112_density_sznl/tcdens.nc'
+FILI = '/glade/u/home/jpan/aquaptc/tempest/260324_density/tcdens.nc'
 SZN = 'SON'
 
 YSCL = lambda deglat: np.sin(np.deg2rad(deglat))
@@ -39,8 +39,8 @@ axes[0][0].plot(sinlat, genplt.isel(run=0) - genplt.isel(run=1))
 axes[0][0].plot(sinlat, unsplt, color='maroon', linestyle='dashdot', label='unseed events')
 axes[0][0].axhline(0, color='gray', linewidth=0.5)
 [axes[0][0].axvline(ll, color='gray', linewidth=0.5) for ll in LATLOC]
-axes[0][0].set_yticks(np.arange(-2, 2.1, 1))
-axes[0][0].set_ylim(-2.3, 2.3)
+axes[0][0].set_yticks(np.arange(-1, 1.1, .25))
+axes[0][0].set_ylim(-1.3, 1.3)
 axes[0][0].set_xticks(LATLOC2, LATLAB2)
 axes[0][0].set_title('(a)', loc='left')
 axes[0][0].legend(loc='best', fontsize=12)
@@ -52,12 +52,12 @@ axes[0][1].axhline(0, color='gray', linewidth=0.5)
 [axes[0][1].axvline(ll, color='gray', linewidth=0.5) for ll in LATLOC]
 axes[0][1].legend(loc='best', fontsize=12)
 axes[0][1].set_title('(b)', loc='left')
-axes[0][1].annotate('', xy=(MT[0], 2.35), xytext=(MT[1], 2.35), arrowprops=dict(arrowstyle=f'-[, widthB=0, lengthB=0',\
-                        lw=1.5, color='purple', connectionstyle=f'bar,fraction={1/6}'), annotation_clip=False)
-axes[0][1].text(sum(MT) / 2, 2.6, 'MT', ha='center', va='bottom', fontsize=10, fontweight='bold', transform=axes[0][1].transData, c='purple')
-axes[0][1].annotate('', xy=(STZ[0], 2.35), xytext=(STZ[1], 2.35), arrowprops=dict(arrowstyle=f'-[, widthB=0, lengthB=0',\
-                        lw=1.5, color='#E4D00A', connectionstyle=f'bar,fraction={1/6}'), annotation_clip=False)
-axes[0][1].text(sum(STZ) / 2, 2.6, 'STZ', ha='center', va='bottom', fontsize=10, fontweight='bold', transform=axes[0][1].transData, c='#E4D00A')
+#axes[0][1].annotate('', xy=(MT[0], 1.35), xytext=(MT[1], 1.35), arrowprops=dict(arrowstyle=f'-[, widthB=0, lengthB=0',\
+#                        lw=1.5, color='purple', connectionstyle=f'bar,fraction={1/6}'), annotation_clip=False)
+#axes[0][1].text(sum(MT) / 2, 1.6, 'MT', ha='center', va='bottom', fontsize=10, fontweight='bold', transform=axes[0][1].transData, c='purple')
+#axes[0][1].annotate('', xy=(STZ[0], 1.35), xytext=(STZ[1], 1.35), arrowprops=dict(arrowstyle=f'-[, widthB=0, lengthB=0',\
+#                        lw=1.5, color='#E4D00A', connectionstyle=f'bar,fraction={1/6}'), annotation_clip=False)
+#axes[0][1].text(sum(STZ) / 2, 1.6, 'STZ', ha='center', va='bottom', fontsize=10, fontweight='bold', transform=axes[0][1].transData, c='#E4D00A')
 
 axes[0][2].set_title('MSEED–CTRL')
 axes[0][2].plot(sinlat, lysplt.isel(run=2) - lysplt.isel(run=1))
@@ -70,8 +70,8 @@ axes[0][2].legend(loc='best', fontsize=12)
 
 axes[1][0].plot(sinlat, aceplt.isel(run=0) - aceplt.isel(run=1), color='darkgreen')
 axes[1][0].plot(sinlat, allplt.isel(run=0) - allplt.isel(run=1), linestyle='dashed', color='black')
-axes[1][0].set_yticks(np.arange(-20, 40, 10))
-axes[1][0].set_ylim(-21, 33)
+axes[1][0].set_yticks(np.arange(-10, 13, 2))
+axes[1][0].set_ylim(-11, 13)
 axes[1][0].set_xticks(LATLOC2, LATLAB2)
 axes[1][0].axhline(0, color='gray', linewidth=0.5)
 [axes[1][0].axvline(ll, color='gray', linewidth=0.5) for ll in LATLOC]
@@ -97,6 +97,6 @@ axes[1][2].set_title('(f)', loc='left')
 fig.suptitle('%s TC density plots [yr$^{-1}$ (10$^6$ km$^2$)$^{-1}$]' % SZN)
 
 fig.tight_layout()
-plt.savefig('/glade/u/home/jpan/aquaptc/tempest/260112_density_sznl/masterplot_%s.svg' % SZN)
+plt.savefig('/glade/u/home/jpan/aquaptc/tempest/260324_density/masterplot_%s.png' % SZN)
 plt.show()
 plt.close()
