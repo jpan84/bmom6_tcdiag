@@ -1,26 +1,38 @@
 #from h0a to area-averaged time series, allowing for lat selection and vertical integration
 #keep everything in CESM output units
 
+import os
+from functools import reduce
 import operator
 import consts as c
 import numpy as np
 import xarray as xr
 import uxarray as ux
 
-LATBNDS = (5, 35)
+DIRI = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m/atm/hist/'
+DIRI = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist/'
+DIRI = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/'
+DIRI = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist/'
+DIRI = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm/hist/'
 
-RAWV2D = ['PS', 'TGCLDIWP', 'TGCLDLWP', 'PRECT', 'QFLX', 'TS', 'FLNT', 'FSNT', 'LWCF', 'SWCF', 'FLNS', 'FSNS']
-UDEF2D = dict(TAUAM=[(c.a, 'coslat', 'TAUX')], SHU=[(1, 'FSNS'), (-1, 'FLNS'), (-1, 'SHFLX'), (-1, 'LHFLX')],
-              AHSRC=[(1, 'FSNT'), (-1, 'FSNS'), (1, 'FLNS'), (-1, 'FLNT'), (1, 'SHFLX'), (c.lv, c.rho_w, 'PRECT')],
-              LE = [(c.lv, 'TMQ')])
+HTAPE = '*.h0a.*.nc'
+GRIDF = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
+
+LATBNDS = (-90, 90)
+#LATBNDS = (5, 35)
+
+RAWV2D = ['PS', 'TGCLDIWP', 'TGCLDLWP', 'QFLX', 'TS', 'FLNT', 'FSNT', 'LWCF', 'SWCF', 'FLNS', 'FSNS']
+UDEF2D = dict(TAUAM=[(c.a_e, 'coslat', 'TAUX')], SHU=[(1, 'FSNS'), (-1, 'FLNS'), (-1, 'SHFLX'), (-1, 'LHFLX')],
+              AHSRC=[(1, 'FSNT'), (-1, 'FSNS'), (1, 'FLNS'), (-1, 'FLNT'), (1, 'SHFLX'), (c.lv, c.rho_w, 'PRECC'), (c.lv, c.rho_w, 'PRECL')],
+              LE = [(c.lv, 'TMQ')], PRECT=[(1, 'PRECC'), (1, 'PRECL')])
 RAWV3D = None
 UDEF3D = dict(DSE=[(c.cp, 'T'), (c.g, 'Z3')], KE=[(1, 'UU'), (1, 'VV')], KE_MEAN=[(1, 'U', 'U'), (1, 'V', 'V')],
-              AM=[(c.a, 'coslat', 'U')], CLD_FT=[(1, 'CLDICE'), (1, 'CLDLIQ')], CLD_BL=[(1, 'CLDICE'), (1, 'CLDLIQ')])
+              AM=[(c.a_e, 'coslat', 'U')], CLD_FT=[(1, 'CLDICE'), (1, 'CLDLIQ')], CLD_BL=[(1, 'CLDICE'), (1, 'CLDLIQ')])
 PBNDS = dict(CLD_FT=(1e4, 7e4), CLD_BL=(7e4, 1.1e5))
 
 def main():
-   print('Opening dataset...')
-   ds = ux.open_mfdataset(os.path.join(DIRI, HTAPE))
+   print('Opening dataset', DIRI, '...')
+   ds = ux.open_mfdataset(GRIDF, os.path.join(DIRI, HTAPE))
 
    print('Setting up coords...')
    aterm = ds['hyai'] * c.P0
@@ -44,13 +56,14 @@ def main():
 
    print('Area averaging...')
    aavg = {}
-   for kk, vv in qtys_2d | dp_integ:
+   for kk, vv in (qtys_2d | dp_integ).items():
       latsel = vv.subset.constant_latitude_interval(LATBNDS)
       aavg[kk] = latsel.weighted_mean()
+      print('\t', type(aavg[kk]))
 
    print('Saving output...')
    outds = xr.Dataset(data_vars=aavg)
-   outds.to_netcdf(os.path.join(DIRI, 'AAVG_%.1f_%.1f.nc' % (LATBNDS)))
+   outds.to_netcdf(os.path.join(DIRI, '../AAVG_%.1f_%.1f.nc' % (LATBNDS)))
 
    print(__file__, 'done.')
 
