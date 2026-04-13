@@ -6,6 +6,6 @@ a_e = 6.371000000e6
 P0 = 1e5
 
 #need to double check below
-lv = 2500840
+lv = 2500840.
 cp = 1005
-
+rho_w = 1000.
