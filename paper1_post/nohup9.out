@@ -4,3 +4,31 @@ Waiting on job launch; 5810366.desched1 with qsub arguments:
     qsub  -l select=1:ncpus=16:mem=128GB -A UPSU0032 -q develop@desched1 -l walltime=04:54:00
 
 Opening dataset /glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist/ ...
+Setting up coords...
+Deriving 2D quantities...
+Vertically integrating 3D fields...
+Area averaging...
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+Saving output...
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper1_post/glob_rgnl_avg.py done.

@@ -4,3 +4,32 @@ Waiting on job launch; 5810369.desched1 with qsub arguments:
     qsub  -l select=1:ncpus=16:mem=128GB -A UPSU0032 -q develop@desched1 -l walltime=04:55:00
 
 Opening dataset /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm/hist/ ...
+Setting up coords...
+Deriving 2D quantities...
+Vertically integrating 3D fields...
+Area averaging...
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+Saving output...
+=>> PBS: job killed: walltime 17730 exceeded limit 17700
+Terminated
