@@ -24,11 +24,11 @@ SZNS = ['DJF', 'MAM', 'JJA', 'SON']
 SZMOs = [{12, 1, 2}, {3, 4, 5}, {6, 7, 8}, {9, 10, 11}]
 
 #FILI = sys.argv[1]
-FILI = ['250415_unseed.parquet', '250417_ctrl.parquet', '250416_seed1x1.parquet']
-labels = ['unseed', 'ctrl', 'seed']
-events = ['250415_unseed_production_unseed_events.parquet', None, '250416_seed1x1_production_seed_events.parquet']
+FILI = ['250702_unseed2hPa6m.parquet', '250415_unseed.parquet', '250417_ctrl.parquet', 'MSEED_6yrs.parquet', '250416_seed1x1.parquet']
+labels = ['unseed2', 'unseed', 'ctrl', 'mseed', 'seed']
+events = [('250702_unseed_2hPa6m_unseed_events.parquet', 'us'), ('250415_unseed_production_unseed_events.parquet', 'us'), None, ('251229_seed_match_seed_events.parquet', 'sd'), ('250416_seed1x1_production_seed_events.parquet', 'sd')]
 rename_dict = dict(clat='lat', clon='lon')
-DOUT = '251124_density_sznl'
+DOUT = '260415_density_5exp'
 
 #FILI = ['250415_unseed_JJASOND.parquet', '250417_ctrl_JJASOND.parquet']
 #labels = ['unseed', 'ctrl']
@@ -43,6 +43,8 @@ def main():
       os.makedirs(DOUT)
 
    dfs = [pd.read_parquet(f) for f in FILI]
+   for df in dfs:
+      df['max_lft_wspd'] = df.groupby('stmnum')['wspd'].transform('max')
    #TODO !1124: add a flag indicating the true genesis point before splitting into months
    print(dfs[0].index, type(dfs[0].index))
    #print(dfs[0].groupby(dfs[0].index.month))
@@ -52,10 +54,11 @@ def main():
    print(totyrs)
    #exit()
 
-   usdf, sddf = None, None
+   evdfs = []
    if PLOTSEEDS:
-      usdf = pd.read_parquet(events[0]).rename(columns=rename_dict)
-      sddf = pd.read_parquet(events[-1]).rename(columns=rename_dict)
+      #usdf = pd.read_parquet(events[0]).rename(columns=rename_dict)
+      #sddf = pd.read_parquet(events[-1]).rename(columns=rename_dict)
+      evdfs = [pd.read_parquet(ev[0]).rename(columns=rename_dict) if ev is not None else None for ev in events]
       #print(usdf)
       #print(usdf['dt'])
 
@@ -77,21 +80,26 @@ def main():
       h6hurr = plot_lat_binned(szn_dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly hurricane fixes', '6hr_track_dens_hurr_%.1f_%s.png' % (DLAT, sznnm), wspd_thresh=33)
       h6maj = plot_lat_binned(szn_dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly major hurricane fixes', '6hr_track_dens_major_%.1f_%s.png' % (DLAT, sznnm), wspd_thresh=50)
       ace = plot_lat_binned(szn_dfs, bininfo, totyrs, bin_ace_of_storm_1d, 'ACE [$10^4$ kt$^2$] ', 'ace_binned_%.1f_%s.png' % (DLAT, sznnm))
-      gen = plot_lat_binned(szn_dfs, bininfo, totyrs, genesis_pts_1d, 'genesis points', 'gen_pt_dens_%.1f_%s.png' % (DLAT, sznnm))
+      gen = plot_lat_binned(szn_dfs, bininfo, totyrs, genesis_pts_1d, 'genesis points (storm count)', 'gen_pt_dens_%.1f_%s.png' % (DLAT, sznnm))
+      genhurr = plot_lat_binned(szn_dfs, bininfo, totyrs, genesis_pts_1d, 'genesis points of hurricanes', 'genhurr_pt_dens_%.1f_%s.png' % (DLAT, sznnm), peak_wspd_thresh=33)
       lys = plot_lat_binned(szn_dfs, bininfo, totyrs, lysis_pts_1d, 'lysis points', 'lys_pt_dens_%.1f_%s.png' % (DLAT, sznnm))
    
       outdss.append(xr.Dataset(data_vars=dict(uniq=uniq, h6all=h6all, h6hurr=h6hurr, h6maj=h6maj, ace=ace, gen=gen, lys=lys), attrs=dict(dlat=DLAT)).expand_dims(season=[sznnm]))
    
       if PLOTSEEDS:
-         unseeds = accum_bin_map_1d(usdf[usdf['dt'].dt.month.isin(sznmos)], bininfo, 'psmin', lambda ps: not np.isnan(ps), dtype=np.int_, rettype=np.int_)
-         usdens = xr.DataArray(unseeds / (bininfo[2] / 1e6 / 1e3**2) / totyrs[0], dims=['lat'], coords=[bininfo[1]])
+         evdss = []
+         for ii, ev in enumerate(events):
+            if ev is None:
+               evdss.append(None)
+               continue
+            mydf, accum_ev = evdfs[ii], None
+            if ev[1] == 'us':
+               accum_ev = accum_bin_map_1d(mydf[mydf['dt'].dt.month.isin(sznmos)], bininfo, 'psmin', lambda ps: not np.isnan(ps), dtype=np.int_, rettype=np.int_)
+            elif ev[1] == 'sd':
+               accum_ev = accum_bin_map_1d(mydf[mydf['dt'].dt.month.isin(sznmos)], bininfo, 'lat', lambda lat: 1, dtype=np.int_, rettype=np.int_)
 
-         seeds = accum_bin_map_1d(sddf[sddf['dt'].dt.month.isin(sznmos)], bininfo, 'lat', lambda lat: 1, dtype=np.int_, rettype=np.int_)
-         sddens = xr.DataArray(seeds / (bininfo[2] / 1e6 / 1e3**2) / totyrs[-1], dims=['lat'], coords=[bininfo[1]])
-   
-         outdss[-1] = outdss[-1].assign(variables=dict(unseeds=usdens, seeds=sddens))
-
-         #TODO !1124: go through genesis points and see if they're close enough in time and space to seeding events
+            evdens = xr.DataArray(accum_ev / (bininfo[2] / 1e6 / 1e3**2) / totyrs[ii], dims=['lat'], coords=[bininfo[1]])   
+            outdss[-1] = outdss[-1].assign(variables={labels[ii] + ev[1]: evdens})
    
       xr.concat(outdss, dim='season').to_netcdf(os.path.join(DOUT, 'tcdens.nc'))
 
@@ -101,7 +109,8 @@ def plot_lat_binned(dfs, bininfo, totyrs, varfunc, ylabel, filo, norm='per milli
       for stm in df['stmnum'].unique():
          pltdat[ii] += varfunc(df[df['stmnum'] == stm], bininfo, **fkwargs)
       #print('\t', ylabel, '\t\t\t', pltdat[ii][nhmask].sum(), '\t\t\t', pltdat[ii][shmask].sum())
-      print(df.index[0].month, ylabel, labels[ii], pltdat[ii][nhmask].sum(), pltdat[ii][shmask].sum(), sep=',')
+      with open(os.path.join(DOUT, 'sznl_climo.csv'), 'a') as pfil:
+         print(df.index[0].month, ylabel, labels[ii], pltdat[ii][nhmask].sum(), pltdat[ii][shmask].sum(), totyrs[ii], sep=',', file=pfil)
       #print(pltdat[ii].shape)
       #print(pltdat[ii])
       #print(pltdat[ii].ravel()[nhmask.ravel()])
@@ -159,10 +168,10 @@ def bin_ace_of_storm_1d(stmdf, bininfo):
    ace = lambda wspd: 1e-4 * (MS2KT * wspd)**2
    return accum_bin_map_1d(stmdf, bininfo, 'wspd', ace)
 
-def genesis_pts_1d(stmdf, bininfo):
+def genesis_pts_1d(stmdf, bininfo, peak_wspd_thresh=0):
    #gendf = stmdf.groupby('stmnum').first().reset_index() #wrong for seasonally split dataframes
    #return sixhrly_fixes_of_storm_1d(gendf, bininfo)
-   return accum_bin_map_1d(stmdf, bininfo, 'isgen', lambda ig: int(ig), dtype=np.int_, rettype=np.int_)
+   return accum_bin_map_1d(stmdf[stmdf['max_lft_wspd'] >= peak_wspd_thresh], bininfo, 'isgen', lambda ig: int(ig), dtype=np.int_, rettype=np.int_)
 
 def lysis_pts_1d(stmdf, bininfo):
    #lysdf = stmdf.groupby('stmnum').last().reset_index()

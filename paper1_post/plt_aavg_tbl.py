@@ -12,10 +12,14 @@ DIRIS = [
          ]
 ALIS = ['UNSEED_90', 'UNSEED_50', 'CTL', 'SEED_50', 'SEED_150']
 CTLIX = 2
-FILI = 'AAVG_5.0_35.0.nc'
 
+FILI = 'AAVG_5.0_35.0.nc'
 SELMO = np.arange(6, 12)
 MOWGTS = np.array([30, 31, 31, 30, 31, 30], dtype=np.int_)
+
+FILI = 'AAVG_-90.0_90.0.nc'
+SELMO = np.arange(1, 13)
+MOWGTS = np.array([31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], dtype=np.int_)
 
 PLTVARS = ['DSE', 'LE', 'KE', 'AM', 'TAUAM', 'PS', 'TS', 'PRECT', 'QFLX', 'SHU', 'AHSRC', 'FSNT', 'FLNT', 'SWCF', 'LWCF', 'FSNS', 'FLNS', 'CLD_BL', 'CLD_FT']
 ALTNMS = dict(AHSRC='$Q_a$', QFLX='E')
