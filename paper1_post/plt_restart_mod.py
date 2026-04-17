@@ -39,10 +39,17 @@ def main():
    true_ctr = ds.uxgrid.subset.nearest_neighbor((CLON, CLAT), 1)
    az_mean = lambda da: da.azimuthal_mean((true_ctr.face_lon, true_ctr.face_lat), 5, 0.25)
 
-   test_p = az_mean(p_lev).isel(state=0).squeeze()
+   test_p = mirror_azim_mean(az_mean(p_lev).isel(state=0).squeeze())
    print(test_p)
-   plt.contour(test_p['radius'], lev_coord.isel(state=0), test_p, levels=np.arange(1.5e4, 9.6e4, 5e3))
+   plt.contour(test_p['radius'], lev_coord.isel(state=0), test_p, levels=np.arange(1.5e4, 9.6e4, 5e3), colors='black')
+   plt.ylim(1000, 70)
+   plt.yscale('log')
    plt.show()
+
+def mirror_azim_mean(am):
+   flip = am.isel(radius=slice(-1, None, -1))
+   flip = flip.assign_coords(radius=-flip['radius'])
+   return xr.concat([flip, am], dim='radius')
 
 if __name__ == '__main__':
    main()
