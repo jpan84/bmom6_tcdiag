@@ -1,4 +1,5 @@
 import os
+import consts as c
 import pandas as pd
 import numpy as np
 import uxarray as ux
@@ -14,9 +15,9 @@ DTSTR = '0005-08-07-00000'
 CLAT, CLON = 18.00722, 98.79274
 RADO = 2. #gcd
 
-#DTSTR = '0005-09-03-00000'
-#CLAT, CLON = 29.45009, 141.5423
-#RADO = 3. #gcd
+DTSTR = '0005-09-03-00000'
+CLAT, CLON = 29.45009, 141.5423
+RADO = 3. #gcd
 
 MODSTR = '*%s.nc'
 ORISTR = '*%s.nc.ORIG.nc'
@@ -46,7 +47,14 @@ def main():
    ds = ds.assign(q=q, p_lev=p_lev)
    #print(p_ilev / ps)
 
-   #TODO: compute tangential wind
+   CC_bolton = lambda TK: 611.2 * np.exp(17.67 * (TK - 273.15) / (TK - 273.15 + 243.5))
+   pvap = lambda p, q: p * q / (c.MWH2O / c.MWDRY + q * (1 - c.MWH2O / c.MWDRY))
+   rh = 100 * pvap(p_lev, q) / CC_bolton(ds['T'])
+   #rh = ux.UxDataArray(CC_bolton(ds['T']), uxgrid=ds.uxgrid)
+   print("dp3d:", dp3d.min().values, dp3d.max().values)
+   print("q:", q.min().values, q.max().values)
+   print("p_lev:", p_lev.min().values, p_lev.max().values)
+   print("T:", ds['T'].min().values, ds['T'].max().values)
 
    true_ctr = ds.uxgrid.subset.nearest_neighbor((CLON, CLAT), 1)
    az_mean = lambda da: da.azimuthal_mean((true_ctr.face_lon, true_ctr.face_lat), RADO, GRIDDELTA)
@@ -76,7 +84,9 @@ def main():
 
    tsec = xsect(ds['T'].isel(state=0).squeeze()) - az_mean(ds['T']).isel(state=0).squeeze().isel(radius=-1).data[:, None]
    qsec = xsect(q.isel(state=0).squeeze())
-   plt.contourf(qsec['lon'], lev_coord.isel(state=0), qsec, levels=np.arange(2e-3, 3.1e-2, 2e-3), cmap='YlGnBu')
+   rhsec = xsect(rh.isel(state=0).squeeze())
+   #plt.contourf(qsec['lon'], lev_coord.isel(state=0), qsec, levels=np.arange(2e-3, 3.1e-2, 2e-3), cmap='YlGnBu')
+   plt.contourf(rhsec['lon'], lev_coord.isel(state=0), rhsec, cmap='YlGnBu')#, levels=np.arange(5, 101, 5))
    plt.colorbar()
    plt.contour(tsec['lon'], lev_coord.isel(state=0), tsec, levels=TLEVS, colors='black')
    plt.ylim(1000, 70)
