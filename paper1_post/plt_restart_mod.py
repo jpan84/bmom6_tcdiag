@@ -14,11 +14,18 @@ DTSTR = '0005-08-07-00000'
 CLAT, CLON = 18.00722, 98.79274
 RADO = 2. #gcd
 
+#DTSTR = '0005-09-03-00000'
+#CLAT, CLON = 29.45009, 141.5423
+#RADO = 3. #gcd
+
 MODSTR = '*%s.nc'
 ORISTR = '*%s.nc.ORIG.nc'
 
 PLEVS = levels=np.arange(-1e4, 0, 5e2)
 PLEVS = np.concatenate((PLEVS, -PLEVS[::-1]))
+
+TLEVS = levels=np.arange(-5, 0, .5)
+TLEVS = np.concatenate((TLEVS, -TLEVS[::-1]))
 
 def main():
    orids = ux.open_mfdataset(GRIDF, os.path.join(RSDIR, ORISTR % DTSTR)).expand_dims(state=['before'])
@@ -44,17 +51,38 @@ def main():
    true_ctr = ds.uxgrid.subset.nearest_neighbor((CLON, CLAT), 1)
    az_mean = lambda da: da.azimuthal_mean((true_ctr.face_lon, true_ctr.face_lat), RADO, GRIDDELTA)
 
-   test_p = mirror_azim_mean(az_mean(p_lev).isel(state=0).squeeze())
-   test_p -= test_p.isel(radius=-1)
-   test_vt = mirror_azim_mean(az_mean(uv_to_tang(ds, 'U', 'V', (CLON, CLAT), radbound=RADO)).isel(state=0).squeeze())
-   print(test_vt)
-   #plt.contour(test_p['radius'], lev_coord.isel(state=0), test_p, levels=np.arange(1.5e4, 9.6e4, 5e3), colors='black')
-   plt.contourf(test_vt['radius'], lev_coord.isel(state=0), test_vt, levels=np.arange(-50, 51, 5), cmap='PRGn')
+   #test_p = mirror_azim_mean(az_mean(p_lev).isel(state=0).squeeze())
+   #test_p -= test_p.isel(radius=-1)
+   #test_vt = mirror_azim_mean(az_mean(uv_to_tang(ds, 'U', 'V', (CLON, CLAT), radbound=RADO)).isel(state=0).squeeze())
+   #print(test_vt)
+   ##plt.contour(test_p['radius'], lev_coord.isel(state=0), test_p, levels=np.arange(1.5e4, 9.6e4, 5e3), colors='black')
+   #plt.contourf(test_vt['radius'], lev_coord.isel(state=0), test_vt, levels=np.arange(-50, 51, 5), cmap='PRGn')
+   #plt.colorbar()
+   #plt.contour(test_p['radius'], lev_coord.isel(state=0), test_p, levels=PLEVS, colors='black')
+   #plt.ylim(1000, 70)
+   #plt.yscale('log')
+   #plt.show()
+
+   xsect = lambda da: da.cross_section(start=(CLON - RADO, CLAT), end=(CLON + RADO, CLAT), steps=int(2*RADO/GRIDDELTA))
+
+   psec = xsect(p_lev.isel(state=0).squeeze()) - az_mean(p_lev).isel(state=0).squeeze().isel(radius=-1).data[:, None]
+   vsec = xsect(ds['V'].isel(state=0).squeeze())
+   plt.contourf(vsec['lon'], lev_coord.isel(state=0), vsec, levels=np.arange(-50, 51, 5), cmap='PRGn')
    plt.colorbar()
-   plt.contour(test_p['radius'], lev_coord.isel(state=0), test_p, levels=PLEVS, colors='black')
+   plt.contour(psec['lon'], lev_coord.isel(state=0), psec, levels=PLEVS, colors='black')
    plt.ylim(1000, 70)
    plt.yscale('log')
    plt.show()
+
+   tsec = xsect(ds['T'].isel(state=0).squeeze()) - az_mean(ds['T']).isel(state=0).squeeze().isel(radius=-1).data[:, None]
+   qsec = xsect(q.isel(state=0).squeeze())
+   plt.contourf(qsec['lon'], lev_coord.isel(state=0), qsec, levels=np.arange(2e-3, 3.1e-2, 2e-3), cmap='YlGnBu')
+   plt.colorbar()
+   plt.contour(tsec['lon'], lev_coord.isel(state=0), tsec, levels=TLEVS, colors='black')
+   plt.ylim(1000, 70)
+   plt.yscale('log')
+   plt.show()
+
 
 def mirror_azim_mean(am):
    flip = am.isel(radius=slice(-1, None, -1))
