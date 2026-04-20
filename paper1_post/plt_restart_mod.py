@@ -12,7 +12,7 @@ GRIDDELTA = 0.25
 
 DTSTR = '0005-08-07-00000'
 CLAT, CLON = 18.00722, 98.79274
-RADO = 5. #gcd
+RADO = 2. #gcd
 
 MODSTR = '*%s.nc'
 ORISTR = '*%s.nc.ORIG.nc'
@@ -74,7 +74,10 @@ def uv_to_tang(uxds, unm, vnm, ctrcoord, radbound=None):
    ufac = d1 / d
    vfac = d2 / d
 
-   return myv * vfac - myu * ufac
+   #print(type(ufac))
+   #return ux.UxDataArray(ufac**2+vfac**2, uxgrid=mylat.uxgrid)
+   #return -myu * ufac
+   return myv * vfac + myu * ufac
 
 
 if __name__ == '__main__':
