@@ -6,6 +6,8 @@ import uxarray as ux
 import xarray as xr
 import matplotlib.pyplot as plt
 
+DIRO = './unseed_restart_plts'
+
 RSDIR = '/glade/derecho/scratch/jpan/unseed_restarts_paper1/'
 EVNTS = '~/aquaptc/tempest/250415_unseed_production_unseed_events.parquet'
 GRIDF = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
@@ -22,11 +24,12 @@ RADO = 2. #gcd
 MODSTR = '*%s.nc'
 ORISTR = '*%s.nc.ORIG.nc'
 
-PLEVS = levels=np.arange(-1e4, 0, 5e2)
+PLEVS = np.arange(-1e4, 0, 5e2)
 PLEVS = np.concatenate((PLEVS, -PLEVS[::-1]))
-
-TLEVS = levels=np.arange(-5, 0, .5)
+VLEVS = np.arange(-50, 51, 5)
+TLEVS = levels=np.arange(-10, 0, 1)
 TLEVS = np.concatenate((TLEVS, -TLEVS[::-1]))
+THELEVS = np.arange(340, 381, 5)
 
 def main():
    orids = ux.open_mfdataset(GRIDF, os.path.join(RSDIR, ORISTR % DTSTR)).expand_dims(state=['before'])
@@ -60,6 +63,7 @@ def main():
    true_ctr = ds.uxgrid.subset.nearest_neighbor((CLON, CLAT), 1)
    az_mean = lambda da: da.azimuthal_mean((true_ctr.face_lon, true_ctr.face_lat), RADO, GRIDDELTA)
 
+   #test of azimuthal mean p anom and v tangential
    #test_p = mirror_azim_mean(az_mean(p_lev).isel(state=0).squeeze())
    #test_p -= test_p.isel(radius=-1)
    #test_vt = mirror_azim_mean(az_mean(uv_to_tang(ds, 'U', 'V', (CLON, CLAT), radbound=RADO)).isel(state=0).squeeze())
@@ -74,29 +78,77 @@ def main():
 
    xsect = lambda da: da.cross_section(start=(CLON - RADO, CLAT), end=(CLON + RADO, CLAT), steps=int(2*RADO/GRIDDELTA))
 
-   psec = xsect(p_lev.isel(state=0).squeeze()) - az_mean(p_lev).isel(state=0).squeeze().isel(radius=-1).data[:, None]
-   vsec = xsect(ds['V'].isel(state=0).squeeze())
-   plt.contourf(vsec['lon'], lev_coord.isel(state=0), vsec, levels=np.arange(-50, 51, 5), cmap='PRGn')
-   plt.colorbar()
-   plt.contour(psec['lon'], lev_coord.isel(state=0), psec, levels=PLEVS, colors='black')
-   plt.ylim(1000, 70)
-   plt.yscale('log')
-   #plt.show()
-   plt.close()
+   ##test of p anom and v wind
+   #psec = xsect(p_lev.isel(state=0).squeeze()) - az_mean(p_lev).isel(state=0).squeeze().isel(radius=-1).data[:, None]
+   #vsec = xsect(ds['V'].isel(state=0).squeeze())
+   #plt.contourf(vsec['lon'], lev_coord.isel(state=0), vsec, levels=np.arange(-50, 51, 5), cmap='PRGn')
+   #plt.colorbar()
+   #plt.contour(psec['lon'], lev_coord.isel(state=0), psec, levels=PLEVS, colors='black')
+   #plt.ylim(1000, 70)
+   #plt.yscale('log')
+   ##plt.show()
+   #plt.close()
 
-   tsec = xsect(ds['T'].isel(state=0).squeeze()) - az_mean(ds['T']).isel(state=0).squeeze().isel(radius=-1).data[:, None]
-   qsec = xsect(q.isel(state=0).squeeze())
-   rhsec = xsect(rh.isel(state=0).squeeze())
-   thesec = xsect(thetae_bolton(p_lev, ds['T'], q).isel(state=0).squeeze())
-   #plt.contourf(qsec['lon'], lev_coord.isel(state=0), qsec, levels=np.arange(2e-3, 3.1e-2, 2e-3), cmap='YlGnBu')
-   #plt.contourf(rhsec['lon'], lev_coord.isel(state=0), rhsec, cmap='YlGnBu')#, levels=np.arange(5, 101, 5))
-   plt.contourf(thesec['lon'], lev_coord.isel(state=0), thesec, cmap='YlGnBu', levels=np.arange(340, 381, 5))
-   plt.colorbar()
-   plt.contour(tsec['lon'], lev_coord.isel(state=0), tsec, levels=TLEVS, colors='black')
-   plt.ylim(1000, 70)
-   plt.yscale('log')
+   ##test of T anom and moisture fields
+   #tsec = xsect(ds['T'].isel(state=0).squeeze()) - az_mean(ds['T']).isel(state=0).squeeze().isel(radius=-1).data[:, None]
+   #qsec = xsect(q.isel(state=0).squeeze())
+   #rhsec = xsect(rh.isel(state=0).squeeze())
+   #thesec = xsect(thetae_bolton(p_lev, ds['T'], q).isel(state=0).squeeze())
+   ##plt.contourf(qsec['lon'], lev_coord.isel(state=0), qsec, levels=np.arange(2e-3, 3.1e-2, 2e-3), cmap='YlGnBu')
+   ##plt.contourf(rhsec['lon'], lev_coord.isel(state=0), rhsec, cmap='YlGnBu')#, levels=np.arange(5, 101, 5))
+   #plt.contourf(thesec['lon'], lev_coord.isel(state=0), thesec, cmap='YlGnBu', levels=np.arange(340, 381, 5))
+   #plt.colorbar()
+   #plt.contour(tsec['lon'], lev_coord.isel(state=0), tsec, levels=TLEVS, colors='black')
+   #plt.ylim(1000, 70)
+   #plt.yscale('log')
+   ##plt.show()
+   #plt.close()
+
+   amb_mean = lambda da: da.azimuthal_mean((true_ctr.face_lon, true_ctr.face_lat), 5, 0.5).isel(radius=-1).squeeze().data[..., None]
+   #tsec = xsect(ds['T']).squeeze()
+   #print(tsec - amb_mean(ds['T']))
+
+   plt.rcParams['figure.figsize'] = (12, 6)
+   subplot_kw = dict(ylim=(1000, 70), yscale='log')
+   fig, axes = plt.subplots(2, 3, sharex=True, sharey=True, subplot_kw=subplot_kw)
+
+   psec = xsect(p_lev.squeeze()) - amb_mean(p_lev)
+   tsec = xsect(ds['T'].squeeze()) - amb_mean(ds['T'])
+   vsec = xsect(ds['V'].squeeze())
+   qsec = xsect(ds['q'].squeeze())
+   thesec = xsect(thetae_bolton(p_lev, ds['T'], q)).squeeze()
+
+   csf = axes[0][0].contourf(vsec['lon'], lev_coord.isel(state=0), vsec.isel(state=0), levels=VLEVS, cmap='PRGn')
+   plt.colorbar(csf)
+   axes[0][0].contour(psec['lon'], lev_coord.isel(state=0), psec.isel(state=0), levels=PLEVS, colors='black')
+   axes[0][0].set_title('v (shaded, m/s), p\'(contours, 5 hPa)')
+
+   csf = axes[0][1].contourf(vsec['lon'], lev_coord.isel(state=0), vsec.isel(state=1) - vsec.isel(state=0), levels=VLEVS, cmap='bwr')
+   plt.colorbar(csf)
+   axes[0][1].contour(psec['lon'], lev_coord.isel(state=0), psec.isel(state=1) - psec.isel(state=0), levels=PLEVS, colors='black')
+
+   csf = axes[0][2].contourf(vsec['lon'], lev_coord.isel(state=1), vsec.isel(state=1), levels=VLEVS, cmap='PRGn')
+   plt.colorbar(csf)
+   axes[0][2].contour(psec['lon'], lev_coord.isel(state=1), psec.isel(state=1), levels=PLEVS, colors='black')
+
+   csf = axes[1][0].contourf(thesec['lon'], lev_coord.isel(state=0), thesec.isel(state=0), levels=THELEVS, cmap='YlGnBu')
+   plt.colorbar(csf)
+   axes[1][0].contour(tsec['lon'], lev_coord.isel(state=0), tsec.isel(state=0), levels=TLEVS, colors='black')
+   axes[1][0].set_title('$\\theta_e$ (shaded, K), T\'(contours, 1 K)')
+
+   csf = axes[1][1].contourf(qsec['lon'], lev_coord.isel(state=0), qsec.isel(state=1) - qsec.isel(state=0), levels=np.arange(-2e-2, 2.1e-2, 2e-3), cmap='BrBG')
+   plt.colorbar(csf)
+   axes[1][1].contour(tsec['lon'], lev_coord.isel(state=0), tsec.isel(state=1) - tsec.isel(state=0), levels=TLEVS, colors='black')
+   axes[1][1].set_title('$\delta q$ (shaded, kg/kg)')
+
+   csf = axes[1][2].contourf(thesec['lon'], lev_coord.isel(state=1), thesec.isel(state=1), levels=THELEVS, cmap='YlGnBu')
+   plt.colorbar(csf)
+   axes[1][2].contour(thesec['lon'], lev_coord.isel(state=1), tsec.isel(state=1), levels=TLEVS, colors='black')
+
+   fig.suptitle(DTSTR)
+   fig.tight_layout()
+   plt.savefig(os.path.join(DIRO, DTSTR + '.png'))
    plt.show()
-
 
 def mirror_azim_mean(am):
    flip = am.isel(radius=slice(-1, None, -1))
