@@ -15,9 +15,9 @@ DTSTR = '0005-08-07-00000'
 CLAT, CLON = 18.00722, 98.79274
 RADO = 2. #gcd
 
-DTSTR = '0005-09-03-00000'
-CLAT, CLON = 29.45009, 141.5423
-RADO = 3. #gcd
+#DTSTR = '0005-09-03-00000'
+#CLAT, CLON = 29.45009, 141.5423
+#RADO = 3. #gcd
 
 MODSTR = '*%s.nc'
 ORISTR = '*%s.nc.ORIG.nc'
@@ -48,8 +48,9 @@ def main():
    #print(p_ilev / ps)
 
    CC_bolton = lambda TK: 611.2 * np.exp(17.67 * (TK - 273.15) / (TK - 273.15 + 243.5))
+   CC_3410 = lambda TK: 100 * np.exp(-6810.5245 / TK - 5.08984 * np.log(TK) + 55.2966)
    pvap = lambda p, q: p * q / (c.MWH2O / c.MWDRY + q * (1 - c.MWH2O / c.MWDRY))
-   rh = 100 * pvap(p_lev, q) / CC_bolton(ds['T'])
+   rh = 100 * pvap(p_lev, q) / CC_3410(ds['T'])
    #rh = ux.UxDataArray(CC_bolton(ds['T']), uxgrid=ds.uxgrid)
    print("dp3d:", dp3d.min().values, dp3d.max().values)
    print("q:", q.min().values, q.max().values)
@@ -80,13 +81,16 @@ def main():
    plt.contour(psec['lon'], lev_coord.isel(state=0), psec, levels=PLEVS, colors='black')
    plt.ylim(1000, 70)
    plt.yscale('log')
-   plt.show()
+   #plt.show()
+   plt.close()
 
    tsec = xsect(ds['T'].isel(state=0).squeeze()) - az_mean(ds['T']).isel(state=0).squeeze().isel(radius=-1).data[:, None]
    qsec = xsect(q.isel(state=0).squeeze())
    rhsec = xsect(rh.isel(state=0).squeeze())
+   thesec = xsect(thetae_bolton(p_lev, ds['T'], q).isel(state=0).squeeze())
    #plt.contourf(qsec['lon'], lev_coord.isel(state=0), qsec, levels=np.arange(2e-3, 3.1e-2, 2e-3), cmap='YlGnBu')
-   plt.contourf(rhsec['lon'], lev_coord.isel(state=0), rhsec, cmap='YlGnBu')#, levels=np.arange(5, 101, 5))
+   #plt.contourf(rhsec['lon'], lev_coord.isel(state=0), rhsec, cmap='YlGnBu')#, levels=np.arange(5, 101, 5))
+   plt.contourf(thesec['lon'], lev_coord.isel(state=0), thesec, cmap='YlGnBu', levels=np.arange(340, 381, 5))
    plt.colorbar()
    plt.contour(tsec['lon'], lev_coord.isel(state=0), tsec, levels=TLEVS, colors='black')
    plt.ylim(1000, 70)
@@ -117,6 +121,13 @@ def uv_to_tang(uxds, unm, vnm, ctrcoord, radbound=None):
    #return -myu * ufac
    return myv * vfac + myu * ufac
 
+def thetae_bolton(p, T, q):
+   mixr = q / (1 - q)
+   pvap = p * q / (c.MWH2O / c.MWDRY + q * (1 - c.MWH2O / c.MWDRY))
+   tdew = 243.5 / (17.67 / np.log(pvap / 611.2) - 1) + 273.15
+   tlcl = 1 / (1 / (tdew - 56) + np.log(T / tdew) / 800) + 56
+   thta_lcl = T * (c.P0 / (p - pvap)) ** (c.kapd) * (T / tlcl) ** (0.28 * mixr)
+   return thta_lcl * np.exp((3036 / tlcl - 1.78) * mixr * (1 + 0.448 * mixr))
 
 if __name__ == '__main__':
    main()
