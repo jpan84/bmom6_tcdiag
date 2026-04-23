@@ -58,6 +58,7 @@ def main():
         r'\makecell{{Seeding frequency\\and vortex parametrs\\matched to \\UNSEED\_50}}', 
         r'\makecell{{1 seed per day\\in warm-season\\hemisphere}}'
     ]
+    ##TODO: add q-factor/moisture treatment
     
     # Use .loc to add the row at a specific index name
    ltx_df.loc['Parameter sampling distributions'] = distros
