@@ -20,11 +20,11 @@ def main():
 
    print([df.head() for df in dfs])
    dp_stats = [(df['dp'].quantile(.05), df['dp'].mean(), df['dp'].quantile(.95)) for df in dfs]
-   dp_fstrs = [rf'{tup[1]:.2f} ({tup[0]:.2f}, {tup[2]:.2f})' for tup in dp_stats]
+   dp_fstrs = [rf'\makecell{{{tup[1]:.2f} \\ ({tup[0]:.2f}, {tup[2]:.2f})}}' for tup in dp_stats]
    rp_stats = [(df['rp'].quantile(.05), df['rp'].mean(), df['rp'].quantile(.95)) for df in dfs]
-   rp_fstrs = [rf'{tup[1]:.1f} ({tup[0]:.1f}, {tup[2]:.1f})' for tup in rp_stats]
+   rp_fstrs = [rf'\makecell{{{tup[1]:.1f} \\ ({tup[0]:.1f}, {tup[2]:.1f})}}' for tup in rp_stats]
    clat_stats = [(df['clat_abs'].quantile(.05), df['clat_abs'].mean(), df['clat_abs'].quantile(.95)) for df in dfs]
-   clat_fstrs = [rf'{tup[1]:.1f} ({tup[0]:.1f}, {tup[2]:.1f})' for tup in clat_stats]
+   clat_fstrs = [rf'\makecell{{{tup[1]:.1f} \\ ({tup[0]:.1f}, {tup[2]:.1f})}}' for tup in clat_stats]
 
    print(dp_fstrs)
    print(rp_fstrs)
@@ -39,32 +39,52 @@ def main():
    }
 
    # 29. Create the DataFrame and set the parameter index
-   ltx_df = pd.DataFrame(data, index=[r'$dp$ [hPa]', r'$r_p$ [km]', r'$\phi_c$ [°]'])
+   ltx_df = pd.DataFrame(data, index=[r'$dp$ [hPa]', r'$r_p$ [km]', r'$|\phi_c|$ [°]'])
 
    # 30. Insert the empty CTL column at index 2
    ltx_df.insert(2, 'CTL', '---')
 
    distros = [
-        'Natural (DetectNodes)', 
-        'Natural (DetectNodes)', 
+        r'\makecell{{Natural\\(DetectNodes)}}', 
+        r'\makecell{{Natural\\(DetectNodes)}}', 
         '---', 
-        'Matched to UNSEED\_50', 
-        r'Lat: $\mathcal{U}(5°, 20°)$, $d_p: \mathcal{U}(15 hPa, 40 hPa)$, RMW: \mathcal{U}(150 km, 450 km)$'
+        r'\makecell{{Matched to \\UNSEED\_50}}', 
+        r'\makecell{{Lat: $\mathcal{U}(5°, 20°)$,\\$dp: \mathcal{U}(15 hPa, 40 hPa)$,\\RMW: $\mathcal{U}(150 km, 450 km)$}}'
+    ]
+   descr = [
+        r'\makecell{{DetectNodes thresholds\\SLP: 4 hPa → 2 hPa,\\DZ: 15 m → 6 m}}', 
+        r'\makecell{{Default online\\DetectNodes thresholds\\plus $\zeta$ threshold:\\$8 \times 10^{-5}$ s$^{-1}$}}', 
+        '---', 
+        r'\makecell{{Seeding frequency\\and vortex parametrs\\matched to \\UNSEED\_50}}', 
+        r'\makecell{{1 seed per day\\in warm-season\\hemisphere}}'
     ]
     
     # Use .loc to add the row at a specific index name
    ltx_df.loc['Parameter sampling distributions'] = distros
+   ltx_df.loc['Description'] = descr
+
+   new_order = ['Description', 'Parameter sampling distributions', r'$dp$ [hPa]', r'$r_p$ [km]', r'$|\phi_c|$ [°]']
+   ltx_df = ltx_df.reindex(new_order)
 
    # Display and Export
-   print(ltx_df)
+   print(ltx_df, '\n', '\n')
    latex_table = ltx_df.to_latex(
         escape=False, 
         index=True, 
-        column_format='l|ccccc',
+        column_format='p{2cm}|ccccc',
         caption="Vortex perturbation parameters for each experiment.",
         label="tab:vortex_params"
    )
-   print(latex_table)
+   latex_table = latex_table.replace(r'\begin{tabular}', r'\begin{tabularx}{\textwidth}')
+   latex_table = latex_table.replace(r'\end{tabular}', r'\end{tabularx}')
+
+   print(latex_table, '\n\n')
+
+   final_output = (
+     r"\renewcommand{\arraystretch}{2.8}" + "\n"
+     + latex_table
+   )
+   print(final_output)
 
 if __name__ == '__main__':
    main()
