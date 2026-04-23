@@ -16,3 +16,5 @@ Runi = 8.31432
 Rd = Runi / MWDRY
 Rv = Runi / MWH2O
 kapd = Rd / cp
+
+ALI_LTX = ['UNSEED\_90', 'UNSEED\_50', 'SEED\_50', 'SEED\_150']

@@ -7,6 +7,7 @@ import xarray as xr
 import matplotlib.pyplot as plt
 
 DIRO = './unseed_restart_plts'
+DIRO = './mseed_restart_plts'
 
 RSDIR = '/glade/derecho/scratch/jpan/unseed_restarts_paper1/'
 EVNTS = '~/aquaptc/tempest/250415_unseed_production_unseed_events.parquet'
@@ -17,9 +18,35 @@ DTSTR = '0005-08-07-00000'
 CLAT, CLON = 18.00722, 98.79274
 RADO = 2. #gcd
 
-#DTSTR = '0005-09-03-00000'
-#CLAT, CLON = 29.45009, 141.5423
-#RADO = 3. #gcd
+DTSTR = '0005-09-03-00000'
+CLAT, CLON = 29.45009, 141.5423
+RADO = 3.
+
+DTSTR = '0006-07-22-00000'
+CLAT, CLON = 24.18184, 2.792722
+RADO = 4.5
+
+DTSTR = '0006-09-01-00000'
+CLAT, CLON = 17.22682, 143.0426
+RADO = 3.
+
+RSDIR = '/glade/derecho/scratch/jpan/mseed_restarts_paper1/'
+
+DTSTR = '0005-08-17-00000'
+CLAT, CLON = 19.430189, 290.3278144 - 360
+RADO = 3.
+
+DTSTR = '0006-06-07-00000'
+CLAT, CLON = 23.266556, 187.2309796 - 360
+RADO = 3.
+
+DTSTR = '0006-09-30-00000'
+CLAT, CLON = 20.775221, 22.72787575
+RADO = 5.
+
+DTSTR = '0006-11-14-00000'
+CLAT, CLON = 20.402225, 210.3689465 - 360
+RADO = 3.
 
 MODSTR = '*%s.nc'
 ORISTR = '*%s.nc.ORIG.nc'
