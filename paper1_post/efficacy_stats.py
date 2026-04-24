@@ -19,18 +19,25 @@ def main():
 
    evdfs = [pd.read_parquet(os.path.join(DIRE, ev[0])) if ev is not None else None for ev in EVNTS]
    #TODO: filter unseed dfs by (~dp.isnan())
+   evdfs = [df[~df['rp'].isna()] if df is not None else None for df in evdfs]
    print([df.shape if df is not None else None for df in evdfs])
 
-   print(tot_nTCs(climo))
-   exit()
+   #print(tot_nTCs(climo))
    for ii, df in enumerate(evdfs):
-      print()
+      print('\nWorking on case', ORDER[ii])
+      if EVNTS[ii] is None:
+         continue
       selcase = climo[climo['case'] == ORDER[ii]]
+      ev_pyr = df.shape[0] / selcase['totyrs'].iloc[0] #un/seed events per year
       tccnt = selcase[selcase['varnm'] == 'genesis points (storm count)']
       nTCs = (tccnt['NH'] + tccnt['SH']).sum()
-      if EVNTS[ii] is not None and EVNTS[ii][1] == 'sd':
+      dn = nTCs - tot_nTCs(climo[climo['case'] == 'ctrl']).iloc[0]
+      #print(dn)
+      if EVNTS[ii][1] == 'sd':
          seed_gen = selcase[selcase['varnm'] == 'seeded genesis points']
-         print('The seed conversion rate for %s is %.3f' % (ORDER[ii], (seed_gen['NH'] + seed_gen['SH']).sum() / df.shape[0]))
+         n_converted = (seed_gen['NH'] + seed_gen['SH']).sum()
+         print('The seed conversion rate for %s is %.3f' % (ORDER[ii], n_converted / ev_pyr))
+         print('The efficacy of seeds for %s is %.3f' % (ORDER[ii], dn / n_converted))
 
    exit()
 

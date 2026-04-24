@@ -89,8 +89,15 @@ def main():
       genhurr = plot_lat_binned(szn_dfs, bininfo, totyrs, genesis_pts_1d, 'genesis points of hurricanes', 'genhurr_pt_dens_%.1f_%s.png' % (DLAT, sznnm), peak_wspd_thresh=33)
       lys = plot_lat_binned(szn_dfs, bininfo, totyrs, lysis_pts_1d, 'lysis points', 'lys_pt_dens_%.1f_%s.png' % (DLAT, sznnm))
       us_lys = plot_lat_binned(szn_dfs, bininfo, totyrs, lysis_pts_1d, 'unseeded lysis points', 'us_lys_pt_dens_%.1f_%s.png' % (DLAT, sznnm), check_if_unseed=True)
+
+      #count storms by how many times they were unseeded
+      us0 = plot_lat_binned(szn_dfs, bininfo, totyrs, lysis_pts_1d, 'stms with 0 unseeds', 'us0_%.1f_%s.png' % (DLAT, sznnm), unseed_attempts=0)
+      us1 = plot_lat_binned(szn_dfs, bininfo, totyrs, lysis_pts_1d, 'stms with 1 unseeds', 'us1_%.1f_%s.png' % (DLAT, sznnm), unseed_attempts=1)
+      us2 = plot_lat_binned(szn_dfs, bininfo, totyrs, lysis_pts_1d, 'stms with 2 unseeds', 'us2_%.1f_%s.png' % (DLAT, sznnm), unseed_attempts=2)
+      us3 = plot_lat_binned(szn_dfs, bininfo, totyrs, lysis_pts_1d, 'stms with 3 unseeds', 'us3_%.1f_%s.png' % (DLAT, sznnm), unseed_attempts=3)
    
-      outdss.append(xr.Dataset(data_vars=dict(uniq=uniq, h6all=h6all, h6hurr=h6hurr, h6maj=h6maj, ace=ace, gen=gen, sd_gen=sd_gen, genhurr=genhurr, lys=lys, us_lys=us_lys), attrs=dict(dlat=DLAT)).expand_dims(season=[sznnm]))
+      outdss.append(xr.Dataset(data_vars=dict(uniq=uniq, h6all=h6all, h6hurr=h6hurr, h6maj=h6maj, ace=ace, gen=gen, sd_gen=sd_gen, genhurr=genhurr, lys=lys, us_lys=us_lys,\
+                us0=us0, us1=us1, us2=us2, us3=us3), attrs=dict(dlat=DLAT)).expand_dims(season=[sznnm]))
    
       if PLOTSEEDS:
          evdss = []
@@ -182,10 +189,16 @@ def genesis_pts_1d(stmdf, bininfo, peak_wspd_thresh=0, check_if_seeded=False):
       mydf = mydf[mydf['is_seeded'] == True] if 'is_seeded' in mydf.columns else mydf.iloc[0:0]
    return accum_bin_map_1d(mydf[mydf['max_lft_wspd'] >= peak_wspd_thresh], bininfo, 'isgen', lambda ig: int(ig), dtype=np.int_, rettype=np.int_)
 
-def lysis_pts_1d(stmdf, bininfo, check_if_unseed=False):
+def lysis_pts_1d(stmdf, bininfo, check_if_unseed=False, unseed_attempts=None):
    #lysdf = stmdf.groupby('stmnum').last().reset_index()
    #return sixhrly_fixes_of_storm_1d(lysdf, bininfo)
    mydf = stmdf
+   if unseed_attempts is not None:
+      if 'unseed_pt' in mydf.columns:
+         uscnt = mydf.groupby(mydf['stmnum'])['unseed_pt'].sum() #will only count unseed attempts strictly within season is stmdf is seasonal
+         mydf = mydf[mydf['stmnum'].isin(uscnt[uscnt == unseed_attempts])]
+      else:
+         mydf = mydf.iloc[0:0]
    if check_if_unseed:
       mydf = mydf[mydf['unseed_pt'] == True] if 'unseed_pt' in mydf.columns else mydf.iloc[0:0]
    return accum_bin_map_1d(mydf, bininfo, 'islys', lambda il: int(il), dtype=np.int_, rettype=np.int_)
