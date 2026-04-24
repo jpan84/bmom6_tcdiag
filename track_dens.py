@@ -46,6 +46,9 @@ def main():
    dfs = [pd.read_parquet(f) for f in FILI]
    for df in dfs:
       df['max_lft_wspd'] = df.groupby('stmnum')['wspd'].transform('max')
+      if type(df.index) != pd.core.indexes.datetimes.DatetimeIndex:
+         df['dt'] = pd.to_datetime(df['dt'])
+         df.set_index('dt', inplace=True)
    #TODO !1124: add a flag indicating the true genesis point before splitting into months
    print(dfs[0].index, type(dfs[0].index))
    #print(dfs[0].groupby(dfs[0].index.month))
