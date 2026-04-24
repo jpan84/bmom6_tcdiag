@@ -25,6 +25,7 @@ SZMOs = [{12, 1, 2}, {3, 4, 5}, {6, 7, 8}, {9, 10, 11}]
 
 #FILI = sys.argv[1]
 FILI = ['250702_unseed2hPa6m.parquet', '250415_unseed.parquet', '250417_ctrl.parquet', 'MSEED_6yrs.parquet', '250416_seed1x1.parquet']
+FILI = ['250702_unseed2hPa6m.csv.flagged.parquet', '250415_unseed.csv.flagged.parquet', '250417_ctrl.parquet', '6yrs.seedflagged.parquet', '250416_seed1x1.seedflagged.parquet']
 labels = ['unseed2', 'unseed', 'ctrl', 'mseed', 'seed']
 events = [('250702_unseed_2hPa6m_unseed_events.parquet', 'us'), ('250415_unseed_production_unseed_events.parquet', 'us'), None, ('251229_seed_match_seed_events.parquet', 'sd'), ('250416_seed1x1_production_seed_events.parquet', 'sd')]
 rename_dict = dict(clat='lat', clon='lon')
@@ -81,10 +82,12 @@ def main():
       h6maj = plot_lat_binned(szn_dfs, bininfo, totyrs, sixhrly_fixes_of_storm_1d, '6-hourly major hurricane fixes', '6hr_track_dens_major_%.1f_%s.png' % (DLAT, sznnm), wspd_thresh=50)
       ace = plot_lat_binned(szn_dfs, bininfo, totyrs, bin_ace_of_storm_1d, 'ACE [$10^4$ kt$^2$] ', 'ace_binned_%.1f_%s.png' % (DLAT, sznnm))
       gen = plot_lat_binned(szn_dfs, bininfo, totyrs, genesis_pts_1d, 'genesis points (storm count)', 'gen_pt_dens_%.1f_%s.png' % (DLAT, sznnm))
+      sd_gen = plot_lat_binned(szn_dfs, bininfo, totyrs, genesis_pts_1d, 'seeded genesis points', 'sd_gen_pt_dens_%.1f_%s.png' % (DLAT, sznnm), check_if_seeded=True)
       genhurr = plot_lat_binned(szn_dfs, bininfo, totyrs, genesis_pts_1d, 'genesis points of hurricanes', 'genhurr_pt_dens_%.1f_%s.png' % (DLAT, sznnm), peak_wspd_thresh=33)
       lys = plot_lat_binned(szn_dfs, bininfo, totyrs, lysis_pts_1d, 'lysis points', 'lys_pt_dens_%.1f_%s.png' % (DLAT, sznnm))
+      us_lys = plot_lat_binned(szn_dfs, bininfo, totyrs, lysis_pts_1d, 'unseeded lysis points', 'us_lys_pt_dens_%.1f_%s.png' % (DLAT, sznnm), check_if_unseed=True)
    
-      outdss.append(xr.Dataset(data_vars=dict(uniq=uniq, h6all=h6all, h6hurr=h6hurr, h6maj=h6maj, ace=ace, gen=gen, lys=lys), attrs=dict(dlat=DLAT)).expand_dims(season=[sznnm]))
+      outdss.append(xr.Dataset(data_vars=dict(uniq=uniq, h6all=h6all, h6hurr=h6hurr, h6maj=h6maj, ace=ace, gen=gen, sd_gen=sd_gen, genhurr=genhurr, lys=lys, us_lys=us_lys), attrs=dict(dlat=DLAT)).expand_dims(season=[sznnm]))
    
       if PLOTSEEDS:
          evdss = []
@@ -168,15 +171,21 @@ def bin_ace_of_storm_1d(stmdf, bininfo):
    ace = lambda wspd: 1e-4 * (MS2KT * wspd)**2
    return accum_bin_map_1d(stmdf, bininfo, 'wspd', ace)
 
-def genesis_pts_1d(stmdf, bininfo, peak_wspd_thresh=0):
+def genesis_pts_1d(stmdf, bininfo, peak_wspd_thresh=0, check_if_seeded=False):
    #gendf = stmdf.groupby('stmnum').first().reset_index() #wrong for seasonally split dataframes
    #return sixhrly_fixes_of_storm_1d(gendf, bininfo)
-   return accum_bin_map_1d(stmdf[stmdf['max_lft_wspd'] >= peak_wspd_thresh], bininfo, 'isgen', lambda ig: int(ig), dtype=np.int_, rettype=np.int_)
+   mydf = stmdf
+   if check_if_seeded:
+      mydf = mydf[mydf['is_seeded'] == True] if 'is_seeded' in mydf.columns else mydf.iloc[0:0]
+   return accum_bin_map_1d(mydf[mydf['max_lft_wspd'] >= peak_wspd_thresh], bininfo, 'isgen', lambda ig: int(ig), dtype=np.int_, rettype=np.int_)
 
-def lysis_pts_1d(stmdf, bininfo):
+def lysis_pts_1d(stmdf, bininfo, check_if_unseed=False):
    #lysdf = stmdf.groupby('stmnum').last().reset_index()
    #return sixhrly_fixes_of_storm_1d(lysdf, bininfo)
-   return accum_bin_map_1d(stmdf, bininfo, 'islys', lambda il: int(il), dtype=np.int_, rettype=np.int_)
+   mydf = stmdf
+   if check_if_unseed:
+      mydf = mydf[mydf['unseed_pt'] == True] if 'unseed_pt' in mydf.columns else mydf.iloc[0:0]
+   return accum_bin_map_1d(mydf, bininfo, 'islys', lambda il: int(il), dtype=np.int_, rettype=np.int_)
 
 if __name__ == '__main__':
    main()
