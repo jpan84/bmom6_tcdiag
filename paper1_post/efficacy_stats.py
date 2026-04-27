@@ -51,72 +51,42 @@ def main():
          pct_admitted = 100. * n_admitted / ev_pyr
          print(n_admitted, pct_admitted)
 
-   exit()
+         fig, axes = plt.subplots(1, 2)
 
+         #try0
+         #axes[0].pie([n_admitted, ev_pyr - n_admitted], labels=['TCs', 'denied genesis'], autopct='%1.1f%%', explode=[0.1, 0])#labels=['Unseeding targeted at TCs', 'Unseeding preventing TCs']
+         #axes[0].set_title('Unseeding events')
 
-   nh_warm = df[df['mo_in_szn'].isin(nh_warm_mo)].groupby(['varnm', 'case'], sort=False)['NH'].sum()
-   sh_warm = df[df['mo_in_szn'].isin(sh_warm_mo)].groupby(['varnm', 'case'], sort=False)['SH'].sum()
+         #try0
+         #axes[1].pie(np.arange(4) * nTCs_by_attempts, labels=np.arange(4), autopct='%1.1f%%') #labels=['Unseeding attempts consumed to remove TCs that took %d events' % nn for nn in range(4)],
+         #axes[1].set_title('For unseeding events targeted at TCs,\nhow many events did it take to remove a TC?')
 
-   print(nh_warm + sh_warm)
+         #try0.5
+         #axes[1].pie(nTCs_by_attempts, labels=np.arange(4), autopct='%1.1f%%') #labels=['Unseeding attempts consumed to remove TCs that took %d events' % nn for nn in range(4)],
+         #axes[1].set_title('How many TCs experienced\n$n$ unseeding events?')
 
-   # ... (Your existing loading and calculation code) ...
-   # Assuming combined is the result of nh_warm + sh_warm
-   combined = nh_warm + sh_warm
-   
-   # 1. Filter for just the 3 variables you requested
-   target_vars = ['ACE [$10^4$ kt$^2$] ', 'genesis points (storm count)', 'genesis points of hurricanes']
-   # Use .loc with slice(None) to select specific index levels
-   plot_series = combined.loc[target_vars].rename(index={'genesis points (storm count)': 'Number of TCs', 'genesis points of hurricanes': 'Number of hurricanes'})
-   
-   # 2. Reshape from Series to Matrix (Rows=Vars, Cols=Cases)
-   # unstack('case') moves the 'case' index level to columns
-   plot_df = plot_series.unstack('case')
-   
-   # Reorder columns to ensure 'ctrl' is in the middle for visual balance
-   case_order = ['unseed2', 'unseed', 'ctrl', 'mseed', 'seed']
-   plot_df = plot_df[case_order]
+         #try1
+         axes[0].pie([ev_pyr - n_admitted] + list(nTCs_by_attempts[1:] * np.arange(1, 4)), labels=['denied genesis'] + list(range(1, 4)), autopct=pie_pct_fmt(ev_pyr), explode=[0.1, 0, 0, 0])#labels=['Unseeding targeted at TCs', 'Unseeding preventing TCs']
+         axes[0].set_title('Unseeding events (%.1f annually)' % ev_pyr)
 
-   # 3. Calculate Percent Difference relative to 'ctrl'
-   pct_diff = plot_df.div(plot_df['ctrl'], axis=0).subtract(1).mul(100)
+         #try1
+         axes[1].pie(nTCs_by_attempts, labels=np.arange(4), autopct=pie_pct_fmt(nTCs - n_inelig)) #labels=['Unseeding attempts consumed to remove TCs that took %d events' % nn for nn in range(4)],
+         axes[1].set_title('Warm-season TCs (%.1f annually)\nby number of unseeding attempts' % (nTCs - n_inelig))
 
-   # 4. Plotting
-   fig, ax = plt.subplots(figsize=(12, 7))
-   
-   # Center cmap at 0 using vmin/vmax
-   # Setting vmin/vmax to +/- 200% for clear color gradients
-   im = ax.imshow(pct_diff, cmap='bwr', aspect='auto', vmin=-200, vmax=200)
+         fig.tight_layout()
+         plt.show()
 
-   # Add text annotations
-   for i in range(len(plot_df.index)):
-      for j in range(len(plot_df.columns)):
-         val = plot_df.iloc[i, j]
-         diff = pct_diff.iloc[i, j]
-           
-         if plot_df.columns[j] == 'ctrl':
-            label = f"{val:.2f}\n(REF)"
-         else:
-            prefix = "+" if diff > 0 else ""
-            label = f"{val:.2f}\n({prefix}{diff:.1f}%)"
-           
-         # Change text color based on background darkness
-         text_col = "white" if abs(diff) > 130 else "black"
-         ax.text(j, i, label, ha="center", va="center", color=text_col, fontweight='bold')
-
-   # Styling
-   ax.set_xticks(np.arange(len(case_order)))
-   ax.set_xticklabels(case_order)
-   ax.set_yticks(np.arange(len(plot_df.index)))
-   ax.set_yticklabels(plot_df.index)
-   
-   plt.title("Warm Season Climatology: Absolute Values and % Change vs Ctrl", pad=20)
-   plt.colorbar(im, label="Percent Difference vs Ctrl (%)")
-   plt.tight_layout()
-   plt.show()
 
 #get total number of TCs by case
 def tot_nTCs(df):
    tccnt = df[df['varnm'] == 'genesis points (storm count)']
    return (tccnt['NH'] + tccnt['SH']).groupby(df['case'], sort=False).sum()
+
+def pie_pct_fmt(ntot):
+   def autopct(pct):
+       val = pct * ntot / 100.0
+       return '%1.1f%%\n(%.1f)' % (pct, val)
+   return autopct
 
 if __name__ == '__main__':
    main()
