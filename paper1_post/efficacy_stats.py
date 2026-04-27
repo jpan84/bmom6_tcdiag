@@ -38,6 +38,18 @@ def main():
          n_converted = (seed_gen['NH'] + seed_gen['SH']).sum()
          print('The seed conversion rate for %s is %.3f' % (ORDER[ii], n_converted / ev_pyr))
          print('The efficacy of seeds for %s is %.3f' % (ORDER[ii], dn / n_converted))
+      if EVNTS[ii][1] == 'us':
+         uscnts = [selcase[selcase['varnm'] == 'stms with %d unseeds' % nn] for nn in range(4)]
+         nTCs_by_attempts = [(subdf['NH'] + subdf['SH']).sum() for subdf in uscnts]
+         n_inelig = uscnts[0][~uscnts[0]['mo_in_szn'].isin(nh_warm_mo)]['NH'].sum() + uscnts[0][~uscnts[0]['mo_in_szn'].isin(sh_warm_mo)]['SH'].sum() #approx count of TCs ineligible for unseeding due to undergoing lysis in wrong season
+         #print(n_inelig)
+         nTCs_by_attempts[0] -= n_inelig
+         print(nTCs_by_attempts)
+         pct_of_TCs = 100. * np.array(nTCs_by_attempts) / sum(nTCs_by_attempts) #percent of TCs in the warm-season climo binned by number of attempts
+         print(pct_of_TCs)
+         n_admitted = np.dot(np.arange(4), nTCs_by_attempts) #number of unseed events spent on TCs that do show up in offline warm-season climo
+         pct_admitted = 100. * n_admitted / ev_pyr
+         print(n_admitted, pct_admitted)
 
    exit()
 
