@@ -195,8 +195,16 @@ def lysis_pts_1d(stmdf, bininfo, check_if_unseed=False, unseed_attempts=None):
    mydf = stmdf
    if unseed_attempts is not None:
       if 'unseed_pt' in mydf.columns:
-         uscnt = mydf.groupby(mydf['stmnum'])['unseed_pt'].sum() #will only count unseed attempts strictly within season is stmdf is seasonal
-         mydf = mydf[mydf['stmnum'].isin(uscnt[uscnt == unseed_attempts])]
+         #uscnt = mydf.groupby(mydf['stmnum'])['unseed_pt'].sum() #will only count unseed attempts strictly within season is stmdf is seasonal
+         #print(uscnt, uscnt.index)
+         #print(uscnt)
+         #print(uscnt[uscnt == unseed_attempts].index)
+         #mydf = mydf[mydf['stmnum'].isin(uscnt[uscnt == unseed_attempts].index)]
+         #print(mydf['stmnum'])
+         uscnt_per_row = mydf.groupby('stmnum')['unseed_pt'].transform('sum')
+            
+         # Filter rows where the parent storm matches the count
+         mydf = mydf[uscnt_per_row == unseed_attempts]
       else:
          mydf = mydf.iloc[0:0]
    if check_if_unseed:
