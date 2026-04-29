@@ -22,13 +22,13 @@ frac1, frac2 = 0.0, 0.0
 
 def main():
    global frac1, frac2
-   sdf = pd.read_csv(SEDFIL)
+   full_sdf = pd.read_csv(SEDFIL)
    pdf = pd.read_csv(PARFIL)
    #print(sdf.head())
    #print(pdf.head())
 
-   sdf['dt'] = sdf['dt'].apply(cftime.datetime.strptime, args=(dt_fmt,), calendar='noleap')
-   sdf = sdf[sdf['psmin'].notna()]
+   full_sdf['dt'] = full_sdf['dt'].apply(cftime.datetime.strptime, args=(dt_fmt,), calendar='noleap')
+   sdf = full_sdf[full_sdf['psmin'].notna()]
    print(sdf.head())
    #sdf = sdf[(sdf['clat'] >= LAT1) & (sdf['clat'] < LAT2) | (sdf['clat'] <= -LAT1) & (sdf['clat'] > -LAT2)]
 
@@ -71,9 +71,18 @@ def main():
    print('\n')
    print('More than one match:', frac2 / sdf.shape[0], '\n')
 
-   #tchd = pdf[pdf['istouched']].drop_duplicates(subset=['stmnum'], keep='first').shape[0]
-   #nstm = pdf.drop_duplicates(subset=['stmnum'], keep='first').shape[0]
-   #print('storms touched by unseed:', tchd, '/', nstm)
+   #flag which storms are eligible for unseeding
+   #pdf['righthemi']=False
+   #for each row in pdf
+      #if 'lat' is not nan and 'dt' is in full_sdf['dt']
+         #pdf[row, 'righthemi']=sign(pdf[row, 'lat'] == sign(full_sdf['sstlat']))
+   #pdf['us_elig'] = pdf.groupby('stmnum')['righthemi'].any() #fix this assignment
+
+   hemi_by_dt = full_sdf.set_index('dt')['sstlat'].apply(np.sign).to_dict()
+   pdf['tgt_hemi'] = pdf['dt_obj'].map(hemi_by_dt)
+   pdf['righthemi'] = (np.sign(pdf['lat']) == pdf['tgt_hemi'])
+   elig_by_stm = pdf.groupby('stmnum')['righthemi'].any()
+   pdf['us_elig'] = pdf['stmnum'].map(elig_by_stm)
 
    pdf = pdf.drop(columns=['dt_obj'])
    pdf.to_csv(PARFIL + '.flagged.csv')

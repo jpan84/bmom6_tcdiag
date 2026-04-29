@@ -9,7 +9,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from sznl_funcs import stack_hemi_sznl
 
 FILI = '/glade/u/home/jpan/aquaptc/tempest/260415_density_5exp/tcdens.nc'
-SZN = 'SON'
+SZN = 'JJA'
 TYPE = ['us', 'us', None, 'sd', 'sd']
 
 YSCL = lambda deglat: np.sin(np.deg2rad(deglat))
@@ -62,12 +62,12 @@ for ii, ax in enumerate(axes[:, 0]):
    ax.yaxis.set_major_formatter(ticker.ScalarFormatter())
    ax.axhline(0, color='gray', linewidth=0.5)
    [ax.axvline(ll, color='gray', linewidth=0.5) for ll in LATLOC]
-   ax.set_yticks(np.arange(-1, 1.1, .25))
-   #axes[0][0].set_ylim(-1.3, 1.3)
+   ax.set_yticks(np.concatenate((np.arange(-1, 1.5, .25), np.arange(2, 4))))
+   ax.set_ylim(-1.1, 3.5)
    ax.set_xticks(LATLOC2, LATLAB2)
    ax.set_title('(%s)' % chr(97 + 2 * ii), loc='left')
 
-   ax.set_ylabel(ds['run'][ii].item(), fontsize=18)
+   ax.set_ylabel(str(ds['run'][ii].item()), fontsize=18)
    ax.legend(loc='best', fontsize=12)
 
 for ii, ax in enumerate(axes[:, 1]):
@@ -78,7 +78,7 @@ for ii, ax in enumerate(axes[:, 1]):
    ax.yaxis.set_major_formatter(ticker.ScalarFormatter())
    ax.axhline(0, color='gray', linewidth=0.5)
    [ax.axvline(ll, color='gray', linewidth=0.5) for ll in LATLOC]
-   ax.set_yticks(np.arange(-10, 13, 2))
+   ax.set_yticks(np.concatenate((np.arange(-10, 13, 2), np.arange(15, 35, 5))))
    ax.set_ylim(-12, 31)
    ax.set_xticks(LATLOC2, LATLAB2)
    ax.set_title('(%s)' % chr(98 + 2 * ii), loc='left')

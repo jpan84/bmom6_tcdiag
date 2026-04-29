@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-FILI = '~/aquaptc/tempest/260415_density_5exp/sznl_climo.csv' #from track_dens.py
+FILI = '/glade/u/home/jpan/aquaptc/tempest/260415_density_5exp/sznl_climo.csv' #from track_dens.py
 COLS = ['mo_in_szn', 'varnm', 'case', 'NH', 'SH', 'totyrs']
 nh_warm_mo = [6, 9]
 sh_warm_mo = [2, 3]
@@ -36,8 +36,8 @@ def main():
       if EVNTS[ii][1] == 'sd':
          seed_gen = selcase[selcase['varnm'] == 'seeded genesis points']
          n_converted = (seed_gen['NH'] + seed_gen['SH']).sum()
-         print('The seed conversion rate for %s is %.3f' % (ORDER[ii], n_converted / ev_pyr))
-         print('The efficacy of seeds for %s is %.3f' % (ORDER[ii], dn / n_converted))
+         print('The seed conversion rate for %s is %.1f / %.1f = %.3f' % (ORDER[ii], n_converted, ev_pyr, n_converted / ev_pyr))
+         print('The efficacy of seeds for %s is %.1f / %.1f = %.3f' % (ORDER[ii], dn, n_converted, dn / n_converted))
       if EVNTS[ii][1] == 'us':
          uscnts = [selcase[selcase['varnm'] == 'stms with %d unseeds' % nn] for nn in range(4)]
          nTCs_by_attempts = [(subdf['NH'] + subdf['SH']).sum() for subdf in uscnts]
@@ -73,7 +73,8 @@ def main():
          axes[1].pie(nTCs_by_attempts, labels=np.arange(4), autopct=pie_pct_fmt(nTCs - n_inelig)) #labels=['Unseeding attempts consumed to remove TCs that took %d events' % nn for nn in range(4)],
          axes[1].set_title('Warm-season TCs (%.1f annually)\nby number of unseeding attempts' % (nTCs - n_inelig))
 
-         fig.tight_layout()
+         fig.tight_layout(w_pad=10)
+         plt.savefig(os.path.join(os.path.dirname(FILI), '%s_unseed_pie.png' % ORDER[ii]))
          plt.show()
 
 
