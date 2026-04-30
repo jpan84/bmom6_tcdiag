@@ -28,6 +28,7 @@ TYPS = [None, int, float, float, float, float, int, int, int, int]
 CTYP = {COLS[i+1]: TYPS[i+1] for i in range(len(COLS[1:]))}
 
 XLIMS = dict(pmins=(8.5e4,1.01e5), ace=(0,80), maxu=(15,120), genlon=(0,360), genlat=(-25, 25))
+XLIMS['genmu'] = np.sin(np.deg2rad(XLIMS['genlat']))
 YLIMS = dict(pmins=(0, 6e-4))
 clabelkwargs = {'inline': 1, 'fontsize': 10, 'colors': 'black', 'fmt': '%.1e'}
 
@@ -180,7 +181,12 @@ def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname, ctrl_kde=None, weig
 
    #kde beneath the scatter
    points = np.vstack([x, y])
+
    if (xname, yname) == ('genday', 'genlat'):
+      points = np.vstack([x, np.sin(np.deg2rad(y))])
+      yname = 'genmu'
+
+      #ghost points at beginning and end of year to avoid artificial clipping
       print(points.shape)
       boy_pts, eoy_pts = points[0, :] <= 50, points[0, :] > 315
       print(boy_pts.sum(), eoy_pts.sum())
@@ -189,6 +195,8 @@ def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname, ctrl_kde=None, weig
       eoy_rpt[0, :] -= 365
       points = np.hstack([eoy_rpt, points, boy_rpt])
       print(points.shape)
+
+
    kde = stats.gaussian_kde(points, weights=weights)
    xmin, xmax, ymin, ymax = min(x), max(x), min(y), max(y)
    if xname in XLIMS:

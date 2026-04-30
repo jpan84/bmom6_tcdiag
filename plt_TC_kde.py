@@ -24,6 +24,7 @@ for fl in FILI:
 sstds = xr.open_dataset(SSTS)
 
 xgr, ygr = np.mgrid[1:365:365j, -25:25:100j]
+yinter = np.linspace(-25 - 0.5 / 2, 25 + 0.5 / 2, 101)
 print(xgr[:, 0], ygr[0, ygr.shape[1]//2:], ygr[0, :ygr.shape[1]//2])
 
 kdeobjs = [pk[('genday', 'genlat')][0] for pk in pkls]
