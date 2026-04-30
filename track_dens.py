@@ -25,7 +25,7 @@ SZMOs = [{12, 1, 2}, {3, 4, 5}, {6, 7, 8}, {9, 10, 11}]
 
 #FILI = sys.argv[1]
 FILI = ['250702_unseed2hPa6m.parquet', '250415_unseed.parquet', '250417_ctrl.parquet', 'MSEED_6yrs.parquet', '250416_seed1x1.parquet']
-FILI = ['250702_unseed2hPa6m.csv.flagged.parquet', '250415_unseed.csv.flagged.parquet', '250417_ctrl.parquet', '6yrs.seedflagged.parquet', '250416_seed1x1.seedflagged.parquet']
+FILI = ['250702_unseed2hPa6m.csv.flagged.parquet', '250415_unseed.csv.flagged.parquet', '250417_ctrl.parquet', '6yrs.seedflagged.parquet', '250416_seed1x1.seedflagged.parquet'] #flagged by un/seed_success_rate.py
 labels = ['unseed2', 'unseed', 'ctrl', 'mseed', 'seed']
 events = [('250702_unseed_2hPa6m_unseed_events.parquet', 'us'), ('250415_unseed_production_unseed_events.parquet', 'us'), None, ('251229_seed_match_seed_events.parquet', 'sd'), ('250416_seed1x1_production_seed_events.parquet', 'sd')]
 rename_dict = dict(clat='lat', clon='lon')
@@ -89,6 +89,7 @@ def main():
       genhurr = plot_lat_binned(szn_dfs, bininfo, totyrs, genesis_pts_1d, 'genesis points of hurricanes', 'genhurr_pt_dens_%.1f_%s.png' % (DLAT, sznnm), peak_wspd_thresh=33)
       lys = plot_lat_binned(szn_dfs, bininfo, totyrs, lysis_pts_1d, 'lysis points', 'lys_pt_dens_%.1f_%s.png' % (DLAT, sznnm))
       us_lys = plot_lat_binned(szn_dfs, bininfo, totyrs, lysis_pts_1d, 'unseeded lysis points', 'us_lys_pt_dens_%.1f_%s.png' % (DLAT, sznnm), check_if_unseed=True)
+      miss_us = plot_lat_binned(szn_dfs, bininfo, totyrs, missed_unseed, 'TCs missed by unseed', 'miss_us_pt_dens_%.1f_%s.png' % (DLAT, sznnm))
 
       #count storms by how many times they were unseeded
       us0 = plot_lat_binned(szn_dfs, bininfo, totyrs, lysis_pts_1d, 'stms with 0 unseeds', 'us0_%.1f_%s.png' % (DLAT, sznnm), unseed_attempts=0)
@@ -209,6 +210,15 @@ def lysis_pts_1d(stmdf, bininfo, check_if_unseed=False, unseed_attempts=None):
          mydf = mydf.iloc[0:0]
    if check_if_unseed:
       mydf = mydf[mydf['unseed_pt'] == True] if 'unseed_pt' in mydf.columns else mydf.iloc[0:0]
+   return accum_bin_map_1d(mydf, bininfo, 'islys', lambda il: int(il), dtype=np.int_, rettype=np.int_)
+
+#count the number of storms that underwent lysis in this season and who were at some point eli
+def missed_unseed(stmdf, bininfo):
+   mydf = stmdf[stmdf['islys']]
+   if 'us_elig' in mydf.columns:
+      mydf = mydf[(mydf['istouched'] == 0) & (mydf['us_elig'])]
+   else:
+      mydf = mydf.iloc[0:0]
    return accum_bin_map_1d(mydf, bininfo, 'islys', lambda il: int(il), dtype=np.int_, rettype=np.int_)
 
 if __name__ == '__main__':

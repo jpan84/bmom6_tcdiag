@@ -43,7 +43,8 @@ def main():
          nTCs_by_attempts = [(subdf['NH'] + subdf['SH']).sum() for subdf in uscnts]
          n_inelig = uscnts[0][~uscnts[0]['mo_in_szn'].isin(nh_warm_mo)]['NH'].sum() + uscnts[0][~uscnts[0]['mo_in_szn'].isin(sh_warm_mo)]['SH'].sum() #approx count of TCs ineligible for unseeding due to undergoing lysis in wrong season
          #print(n_inelig)
-         nTCs_by_attempts[0] -= n_inelig
+         missed = selcase[selcase['varnm'] == 'TCs missed by unseed']
+         nTCs_by_attempts[0] = (missed['NH'] + missed['SH']).sum()
          print(nTCs_by_attempts)
          pct_of_TCs = 100. * np.array(nTCs_by_attempts) / sum(nTCs_by_attempts) #percent of TCs in the warm-season climo binned by number of attempts
          print(pct_of_TCs)

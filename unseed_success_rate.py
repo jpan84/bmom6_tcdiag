@@ -79,7 +79,8 @@ def main():
    #pdf['us_elig'] = pdf.groupby('stmnum')['righthemi'].any() #fix this assignment
 
    hemi_by_dt = full_sdf.set_index('dt')['sstlat'].apply(np.sign).to_dict()
-   pdf['tgt_hemi'] = pdf['dt_obj'].map(hemi_by_dt)
+   pdf['tgt_hemi'] = pdf['dt_obj'].map(hemi_by_dt).ffill() #need to fill b/c full_sdf only has entries for restarts with at least one node
+   pdf.loc[pdf['dt_obj'].apply(lambda x: x.hour != 0), 'tgt_hemi'] = np.nan #drop the non-00Z entries b/c they dont determine eligibility
    pdf['righthemi'] = (np.sign(pdf['lat']) == pdf['tgt_hemi'])
    elig_by_stm = pdf.groupby('stmnum')['righthemi'].any()
    pdf['us_elig'] = pdf['stmnum'].map(elig_by_stm)
