@@ -161,7 +161,10 @@ def main(FN, CTRL=None):
          ax_histy = fig.add_subplot(gs[1, 1], sharey=ax)
          # Draw the scatter plot and marginals.
          kde_k_dep = scatter_hist(tc_stats[k], tc_stats[depvar], ax, ax_histx, ax_histy, k, depvar, ctrl_kde=ctrl_kde)#, weights=tc_stats['ace'])
-         kde_dict[(k, depvar)] = kde_k_dep
+         if kde_k_dep[-1] == 'yismu':
+            kde_dict[(k, 'genmu')] = kde_k_dep[:-1]
+         else:
+            kde_dict[(k, depvar)] = kde_k_dep
          ax.set_xlabel(k)
          ax.set_ylabel(depvar)
          #plt.scatter(tc_stats[k], tc_stats[depvar])
@@ -181,10 +184,12 @@ def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname, ctrl_kde=None, weig
 
    #kde beneath the scatter
    points = np.vstack([x, y])
+   xmin, xmax, ymin, ymax = min(x), max(x), min(y), max(y)
 
    if (xname, yname) == ('genday', 'genlat'):
       points = np.vstack([x, np.sin(np.deg2rad(y))])
       yname = 'genmu'
+      ymin, ymax = min(np.sin(np.deg2rad(y))), max(np.sin(np.deg2rad(y)))
 
       #ghost points at beginning and end of year to avoid artificial clipping
       print(points.shape)
@@ -198,7 +203,7 @@ def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname, ctrl_kde=None, weig
 
 
    kde = stats.gaussian_kde(points, weights=weights)
-   xmin, xmax, ymin, ymax = min(x), max(x), min(y), max(y)
+
    if xname in XLIMS:
       xmin, xmax = XLIMS[xname]
    if yname in XLIMS:
@@ -233,6 +238,9 @@ def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname, ctrl_kde=None, weig
    ax_histy.hist(y, bins=20, edgecolor='black', orientation='horizontal')
    ax_histx.set_yticks([])
    ax_histy.set_xticks([])
+
+   if yname == 'genmu':
+      return kde, len(x), 'yismu'
 
    return kde, len(x)
 
