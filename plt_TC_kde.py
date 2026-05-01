@@ -30,7 +30,8 @@ latlim = 25.
 #xgr, ygr = np.mgrid[1:365:365j, -25:25:100j]
 #yinter = np.linspace(-25 - 0.5 / 2, 25 + 0.5 / 2, 101)
 yinter = np.linspace(-YSCL(latlim + 0.5), YSCL(latlim + 0.5), 101)
-xlin = np.linspace(1, 365, 365)
+xlin = np.linspace(1., 365, 365)
+dday = xlin[1] - xlin[0]
 yarea = 2 * np.pi * 6.371e6**2 / 1e6 / 1e3**2 * np.diff(yinter) #million sq km
 ymid = (yinter[:-1] + yinter[1:]) / 2
 xgr, ygr = np.meshgrid(xlin, ymid, indexing='ij')
@@ -38,18 +39,21 @@ yplt = np.rad2deg(np.arcsin(ygr))
 print(xgr[:, 0], ygr[0, ygr.shape[1]//2:], ygr[0, :ygr.shape[1]//2])
 
 kdeobjs = [pk[('genday', 'genmu')][0] for pk in pkls]
-[ko.set_bandwidth(0.18) for ko in kdeobjs]
+[ko.set_bandwidth(0.08) for ko in kdeobjs]
 nstms = [pk[('genday', 'genmu')][1] for pk in pkls]
 print(kdeobjs[0])
 print(nstms)
 
 zvals = [ko.evaluate(np.vstack([xgr.ravel(), ygr.ravel()])).reshape(xgr.shape) * nstms[ii] / NYR / yarea[None, :] for ii, ko in enumerate(kdeobjs)] #stms/yr/doy/million sq km
+raw_integs = [(zv * dday * yarea[None, :]).sum() for zv in zvals]
+renorm = [nstms[ii] / NYR / ri for ii, ri in enumerate(raw_integs)]
+zvals = [zv * renorm[ii] for ii, zv in enumerate(zvals)]
 print(zvals[0])
 znh = [zv[:, ygr.shape[1] // 2:] for zv in zvals] #must compute original kde with periodic boundary conditions
 zsh = [np.roll(zv[:, :ygr.shape[1] // 2][:, ::-1], 182, axis=0) for zv in zvals]
 zplt = [znh[ii] + zsh[ii] for ii in range(len(znh))]
 print(yarea.sum())
-print((zvals[1] * yarea[None, :]).sum())
+print((zvals[1] * dday * yarea[None, :]).sum())
 
 #plt.contourf(xgr[:, ygr.shape[1] // 2:], ygr[:, ygr.shape[1] // 2:], zplt[1])
 plt.rc('font', size=16)
@@ -65,11 +69,11 @@ fig, axes = plt.subplots(1, 3, sharey=True, sharex=True)
 
 for ii, ax in enumerate(axes):
    tocf = zvals[ii] if ii == 1 else zvals[ii] - zvals[1]
-   #cflvls = np.arange(.05, .46, .05) if ii == 1 else np.arange(-0.5, 0.51, .05)
+   cflvls = np.arange(0, 1.7e-2, 2e-3) if ii == 1 else np.arange(-1.6e-2, 1.7e-2, 2e-3)
    cmap = 'viridis' if ii == 1 else 'bwr'
-   csf = ax.contourf(xgr, yplt, tocf, cmap=cmap)#, levels=cflvls)
+   csf = ax.contourf(xgr, yplt, tocf, cmap=cmap, levels=cflvls)
    plt.colorbar(csf)
-   ax.contour(xgr, yplt, zvals[1], colors='black', levels=np.arange(.05, .61, .05))
+   ax.contour(xgr, yplt, zvals[1], colors='black', levels=np.arange(4e-3, 1.7e-2, 2e-3))
    ax.scatter(sstds.dayofyear, sstds['tos'].isel(case=ii).idxmax('yh'), c='aqua', marker='.')
    ax.set_xticks(TICKDOY, [dt.strftime('%m-%d') for dt in TICKDATES], rotation=45)
    ax.tick_params(axis='both', labelleft=True, right=True, top=True)

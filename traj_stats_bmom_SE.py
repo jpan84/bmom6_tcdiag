@@ -201,7 +201,7 @@ def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname, ctrl_kde=None, weig
       eoy_rpt[0, :] -= 365
       points = np.hstack([eoy_rpt, points, boy_rpt])
       print(points.shape)
-      renorm = 465 / 365
+      #renorm = 465 / 365
 
 
    kde = stats.gaussian_kde(points, weights=weights)
@@ -242,7 +242,7 @@ def scatter_hist(x, y, ax, ax_histx, ax_histy, xname, yname, ctrl_kde=None, weig
    ax_histy.set_xticks([])
 
    if yname == 'genmu':
-      return kde, len(x) * renorm, 'yismu'
+      return kde, len(x), 'yismu'
 
    return kde, len(x)
 
