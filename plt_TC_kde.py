@@ -69,12 +69,20 @@ fig, axes = plt.subplots(1, 3, sharey=True, sharex=True)
 
 for ii, ax in enumerate(axes):
    tocf = zvals[ii] if ii == 1 else zvals[ii] - zvals[1]
-   cflvls = np.arange(0, 1.7e-2, 2e-3) if ii == 1 else np.arange(-1.6e-2, 1.7e-2, 2e-3)
+   cflvls = np.arange(0, 2.1e-2, 2e-3) if ii == 1 else np.arange(-2e-2, 2.1e-2, 4e-3)
    cmap = 'viridis' if ii == 1 else 'bwr'
    csf = ax.contourf(xgr, yplt, tocf, cmap=cmap, levels=cflvls)
    plt.colorbar(csf)
-   ax.contour(xgr, yplt, zvals[1], colors='black', levels=np.arange(4e-3, 1.7e-2, 2e-3))
-   ax.scatter(sstds.dayofyear, sstds['tos'].isel(case=ii).idxmax('yh'), c='aqua', marker='.')
+   ax.contour(xgr, yplt, zvals[1], colors='black', levels=np.arange(4e-3, 2e-2, 4e-3))
+
+   tmaxlat = sstds['tos'].isel(case=ii).idxmax('yh')
+   flipdoys = tmaxlat.dayofyear.isel(dayofyear=np.where(np.sign(tmaxlat.data[1:]) - np.sign(tmaxlat.data[:-1]))[0])
+   ax.scatter(sstds.dayofyear, tmaxlat, c='aqua', marker='.')
+   [ax.axvline(fd, c='gray', linestyle='dashed') for fd in flipdoys]
+   fddt = [cftime.num2date(fd, units='days since 0000-12-31', calendar='noleap') for fd in flipdoys]
+   fdmmdd = [ft.strftime('%m-%d') for ft in fddt]
+   [ax.text(fd - 10, 0, fdmmdd[jj]) for jj, fd in enumerate(flipdoys)]
+
    ax.set_xticks(TICKDOY, [dt.strftime('%m-%d') for dt in TICKDATES], rotation=45)
    ax.tick_params(axis='both', labelleft=True, right=True, top=True)
    ax.set_title(TTLS[ii][1])
