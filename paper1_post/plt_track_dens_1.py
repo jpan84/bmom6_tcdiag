@@ -9,7 +9,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from sznl_funcs import stack_hemi_sznl
 
 FILI = '/glade/u/home/jpan/aquaptc/tempest/260415_density_5exp/tcdens.nc'
-SZN = 'JJA'
+SZN = 'JJASON'
 TYPE = ['us', 'us', None, 'sd', 'sd']
 
 YSCL = lambda deglat: np.sin(np.deg2rad(deglat))
@@ -27,59 +27,62 @@ sinlat = np.sin(np.deg2rad(ds['lat']))
 print(ds)
 
 stack_kw = dict(antisym=False, sznnm='season', latnm='lat')
-shs = lambda da: stack_hemi_sznl(da, **stack_kw).sel(season=SZN)
+fszn = lambda da, sz: da.sel(season=sz) if sz in da.season else da.sum('season')
+shs = lambda da: stack_hemi_sznl(da, **stack_kw)
 yvar = lambda da, case: da.sel(run=case) - int(case != 'ctrl') * da.sel(run='ctrl')
-lysplt = shs(ds['lys'])
-genplt = shs(ds['gen'])
-aceplt = shs(ds['ace'])
-fixplt = shs(ds['h6all'])
-us_lys = shs(ds['us_lys'])
-sd_gen = shs(ds['sd_gen'])
-events = [(-1 if TYPE[ii] == 'us' else 1) * shs(ds[str(cs.item()) + TYPE[ii]]) if TYPE[ii] is not None else 0 for ii, cs in enumerate(ds['run'])]
-events = [shs(ds[str(cs.item()) + TYPE[ii]]) if TYPE[ii] is not None else 0 for ii, cs in enumerate(ds['run'])]
+lysplt = fszn(shs(ds['lys']), SZN)
+genplt = fszn(shs(ds['gen']), SZN)
+aceplt = fszn(shs(ds['ace']), SZN)
+fixplt = fszn(shs(ds['h6all']), SZN)
+us_lys = fszn(shs(ds['us_lys']), SZN)
+sd_gen = fszn(shs(ds['sd_gen']), SZN)
+#events = [(-1 if TYPE[ii] == 'us' else 1) * fszn(shs(ds[str(cs.item()) + TYPE[ii]]), SZN) if TYPE[ii] is not None else 0 for ii, cs in enumerate(ds['run'])]
+events = [fszn(shs(ds[str(cs.item()) + TYPE[ii]]), SZN) if TYPE[ii] is not None else 0 for ii, cs in enumerate(ds['run'])]
 #print(events)
 
 plt.rcParams['figure.figsize'] = (10, 20)
 plt.rc('font', size=14)
 fig, axes = plt.subplots(5, 2, sharex=True, sharey='col', subplot_kw=dict(xlim=(-1, 1)))
-[ax.tick_params(labelbottom=True, labelleft=True, right=True) for ax in axes.ravel()]
+[ax.tick_params(labelbottom=True, labelleft=True, top=True, right=True) for ax in axes.ravel()]
 
 for ii, ax in enumerate(axes[:, 0]):
    ax.plot(sinlat, yvar(lysplt, ds['run'][ii]), label='lysis' if TYPE[ii] is None else None)
    ax.plot(sinlat, yvar(genplt, ds['run'][ii]), label='genesis' if TYPE[ii] is None else None)
 
    if TYPE[ii] == 'us':
-      ax.plot(sinlat, us_lys.isel(run=ii), linestyle='dotted', color='C0')
+      ax.plot(sinlat, us_lys.isel(run=ii), linestyle='dotted', color='C0', label='lysis at unseeding')
       #ax.plot(sinlat, yvar(lysplt, ds['run'][ii]) - us_lys.isel(run=ii), linestyle='dashed') #change in natural lysis points
       ax.plot(sinlat, events[ii], color='maroon', linestyle='dashdot', label='unseed events')
 
    if TYPE[ii] == 'sd':
-      ax.plot(sinlat, sd_gen.isel(run=ii), linestyle='dotted', color='C1')
-      ax.plot(sinlat, yvar(genplt, ds['run'][ii]) - sd_gen.isel(run=ii), linestyle='dashed', color='C1') #change in natural gen points
+      ax.plot(sinlat, sd_gen.isel(run=ii), linestyle='dotted', color='C1', label='seeded genesis')
+      ax.plot(sinlat, yvar(genplt, ds['run'][ii]) - sd_gen.isel(run=ii), linestyle='dashed', color='C1', label='natural genesis') #change in natural gen points
       ax.plot(sinlat, events[ii], color='maroon', linestyle='dashdot', label='seed events')
 
-   ax.set_yscale('symlog', linthresh=1.2)
+   ax.set_yscale('symlog', linthresh=3.)
    ax.yaxis.set_major_formatter(ticker.ScalarFormatter())
    ax.axhline(0, color='gray', linewidth=0.5)
    [ax.axvline(ll, color='gray', linewidth=0.5) for ll in LATLOC]
-   ax.set_yticks(np.concatenate((np.arange(-1, 1.5, .25), np.arange(2, 4))))
-   ax.set_ylim(-1.1, 3.5)
+   [ax.axhline(hl, color='gray', linewidth=0.5) for hl in np.arange(-2, 7)]
+   ax.set_yticks(np.concatenate((np.arange(-2.5, 2.5, .5), [3, 4, 6])))
+   ax.set_ylim(-2.7, 6)
    ax.set_xticks(LATLOC2, LATLAB2)
    ax.set_title('(%s)' % chr(97 + 2 * ii), loc='left')
 
-   ax.set_ylabel(str(ds['run'][ii].item()), fontsize=18)
+   ax.set_ylabel(str(ds['run'][ii].item()) + ' – ctrl' if TYPE[ii] is not None else '', fontsize=18)
    ax.legend(loc='best', fontsize=12)
 
 for ii, ax in enumerate(axes[:, 1]):
    ax.plot(sinlat, yvar(aceplt, ds['run'][ii]), label='ACE [10$^4$ kt$^2$]' if TYPE[ii] is None else None, color='darkgreen')
    ax.plot(sinlat, yvar(fixplt, ds['run'][ii]), label='6-hourly TC fixes' if TYPE[ii] is None else None, color='black')
 
-   ax.set_yscale('symlog', linthresh=12)
+   ax.set_yscale('symlog', linthresh=30.)
    ax.yaxis.set_major_formatter(ticker.ScalarFormatter())
    ax.axhline(0, color='gray', linewidth=0.5)
    [ax.axvline(ll, color='gray', linewidth=0.5) for ll in LATLOC]
-   ax.set_yticks(np.concatenate((np.arange(-10, 13, 2), np.arange(15, 35, 5))))
-   ax.set_ylim(-12, 31)
+   [ax.axhline(hl, color='gray', linewidth=0.5) for hl in np.arange(-20, 70, 10)]
+   ax.set_yticks(np.concatenate((np.arange(-25, 30, 5), [30, 40, 60])))
+   ax.set_ylim(-27, 60)
    ax.set_xticks(LATLOC2, LATLAB2)
    ax.set_title('(%s)' % chr(98 + 2 * ii), loc='left')
 

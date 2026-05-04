@@ -25,13 +25,15 @@ plt.rc('font', size=14)
 fig, axes = plt.subplots(2, 3, sharex=True, sharey='row', subplot_kw=dict(xlim=(-1, 1)))
 [ax.tick_params(labelbottom=True, labelleft=True, right=True) for ax in axes.ravel()]
 
+FINSZN = lambda da, sz: da.sel(season=sz) if sz in da.season else da.sum('season')
+
 stack_kw = dict(antisym=False, sznnm='season', latnm='lat')
-lysplt = stack_hemi_sznl(ds['lys'], **stack_kw).sel(season=SZN)#.sum(dim='season')
-genplt = stack_hemi_sznl(ds['gen'], **stack_kw).sel(season=SZN)#.sum(dim='season')
-aceplt = stack_hemi_sznl(ds['ace'], **stack_kw).sel(season=SZN)#.sum(dim='season')
-unsplt = -stack_hemi_sznl(ds['unseeds'], **stack_kw).sel(season=SZN)
-sdsplt = stack_hemi_sznl(ds['seeds'], **stack_kw).sel(season=SZN)
-allplt=stack_hemi_sznl(ds['h6all'], **stack_kw).sel(season=SZN)#.sum(dim='season')
+lysplt = FINSZN(stack_hemi_sznl(ds['lys'], **stack_kw), SZN)
+genplt = FINSZN(stack_hemi_sznl(ds['gen'], **stack_kw), SZN)
+aceplt = FINSZN(stack_hemi_sznl(ds['ace'], **stack_kw), SZN)
+unsplt = FINSZN(-stack_hemi_sznl(ds['unseeds'], **stack_kw), SZN)
+sdsplt = FINSZN(stack_hemi_sznl(ds['seeds'], **stack_kw), SZN)
+allplt = FINSZN(stack_hemi_sznl(ds['h6all'], **stack_kw), SZN)
 
 axes[0][0].set_title('UNSEED–CTRL')
 axes[0][0].plot(sinlat, lysplt.isel(run=0) - lysplt.isel(run=1))
