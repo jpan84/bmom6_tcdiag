@@ -10,6 +10,7 @@ DIRI = '/glade/u/home/jpan/aquaptc/tempest/'
 FILI = ['250415_unseed.kde.pickle', '250417_ctrl.kde.pickle', '250416_seed1x1.kde.pickle']
 PQTS = ['250415_unseed.parquet', '250417_ctrl.parquet', '250416_seed1x1.parquet']
 SSTS = 'zm_sst_ydaymean.nc'
+SSTS = 'sstmaxlat_ydaymean.nc'
 TTLS = [('(a)', 'UNSEED$-$CTRL'), ('(b)', 'CTRL'), ('(c)', 'SEED$-$CTRL')]
 NYR = 10. #maybe update to be more precise (TODO don't hardcode)
 
@@ -59,7 +60,7 @@ print((zvals[1] * dday * yarea[None, :]).sum())
 plt.rc('font', size=16)
 plt.contourf(xgr, yplt, zvals[1])
 plt.contour(xgr, yplt, zvals[1], levels=np.arange(.05, .4, .05))
-plt.scatter(sstds.dayofyear, sstds['tos'].isel(case=1).idxmax('yh'), c='orange', marker='x')
+#plt.scatter(sstds.dayofyear, sstds['tos'].isel(case=1).idxmax('yh'), c='orange', marker='x')
 plt.xticks(TICKDOY, [dt.strftime('%m-%d') for dt in TICKDATES], rotation=45)
 #plt.show()
 plt.close()
@@ -75,7 +76,10 @@ for ii, ax in enumerate(axes):
    plt.colorbar(csf)
    ax.contour(xgr, yplt, zvals[1], colors='black', levels=np.arange(4e-3, 2e-2, 4e-3))
 
-   tmaxlat = sstds['tos'].isel(case=ii).idxmax('yh')
+   #tmaxlat = sstds['tos'].isel(case=ii).idxmax('yh')
+   tmaxlat = sstds['tos'].isel(case=ii)
+   print(tmaxlat.values)
+   #exit()
    flipdoys = tmaxlat.dayofyear.isel(dayofyear=np.where(np.sign(tmaxlat.data[1:]) - np.sign(tmaxlat.data[:-1]))[0])
    ax.scatter(sstds.dayofyear, tmaxlat, c='aqua', marker='.')
    [ax.axvline(fd, c='gray', linestyle='dashed') for fd in flipdoys]

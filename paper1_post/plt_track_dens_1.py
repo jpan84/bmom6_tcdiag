@@ -48,6 +48,11 @@ fig, axes = plt.subplots(5, 2, sharex=True, sharey='col', subplot_kw=dict(xlim=(
 for ii, ax in enumerate(axes[:, 0]):
    ax.plot(sinlat, yvar(lysplt, ds['run'][ii]), label='lysis' if TYPE[ii] is None else None)
    ax.plot(sinlat, yvar(genplt, ds['run'][ii]), label='genesis' if TYPE[ii] is None else None)
+   if TYPE[ii] is None:
+      dsin100mil = 1e8 / 2 / np.pi / (6.371e3)**2 #d(sinlat) to span 100 million sq km
+      ax.annotate('', xy=(0, 7.), xytext=(dsin100mil, 7.), arrowprops=dict(arrowstyle=f'-[, widthB=0, lengthB=0',\
+                      lw=1.5, color='purple', connectionstyle=f'bar,fraction={1/6}'), annotation_clip=False)
+      ax.text(dsin100mil / 2, 9, '$100 \\times 10^6$ km$^2$', ha='center', va='bottom', fontsize=10, fontweight='bold', transform=ax.transData, c='purple')
 
    if TYPE[ii] == 'us':
       ax.plot(sinlat, us_lys.isel(run=ii), linestyle='dotted', color='C0', label='lysis at unseeding')
