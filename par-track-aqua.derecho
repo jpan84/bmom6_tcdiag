@@ -1,9 +1,9 @@
 #!/bin/bash
-#PBS -N tempest.CZ.seedmatch
+#PBS -N tempest.CZ.seedmatch.dev
 #PBS -A UPSU0032
-#PBS -l select=1:ncpus=128:mpiprocs=128:mem=128GB
-#PBS -l walltime=01:48:00
-#PBS -q main
+#PBS -l select=1:ncpus=64:mpiprocs=64:mem=128GB
+#PBS -l walltime=03:00:00
+#PBS -q develop
 #PBS -j oe
 #PBS -m a
 #PBS -M jvp5930@psu.edu
@@ -11,11 +11,21 @@
 
 starttime=$(date -u +"%s")
 
-# modules
+#### modules
+###module load intel
+###module load openmpi
+######module load parallel
+###module load netcdf
+###module load nco
+
+# Derecho modules
+module load cmake
+module load ncarenv
+module load ncarcompilers
 module load intel
-module load openmpi
-module load parallel
-module load nco
+module load cray-mpich
+module load netcdf
+export LD_LIBRARY_PATH=${NCAR_LDFLAGS_NETCDF}64:${NCAR_LDFLAGS_NETCDF}:${LD_LIBRARY_PATH}
 
 echo "MPI info"
 nproc
@@ -46,13 +56,24 @@ FILELISTNAME=filelist.txt.${DATESTRING}
 TRAJFILENAME=trajectories.txt.${UQSTR}
 touch $FILELISTNAME
 
-ignoreyear=999999999
-FILES=$(ls "${PATHTOFILES}"/*.h1i.*.nc | grep -v "$ignoreyear-")
-###echo $FILES
-for f in $FILES
-do
-  #echo "${f};${TOPOFILE}" >> $FILELISTNAME
-  echo "${f}" >> $FILELISTNAME
+###ignoreyear=999999999
+###FILES=$(ls "${PATHTOFILES}"/*.h1i.0006*.nc | grep -v "$ignoreyear-")
+######echo $FILES
+###for f in $FILES
+###do
+###  #echo "${f};${TOPOFILE}" >> $FILELISTNAME
+###  echo "${f}" >> $FILELISTNAME
+###done
+
+for f in "${PATHTOFILES}"/*.h1i.*.nc; do
+  # Extract the YYYY-MM part
+  FILE_DATE=$(echo "$f" | grep -oE '[0-9]{4}-[0-9]{2}')
+
+  # If the date is strictly older than 0015-02, write it.
+  # This automatically "ignores" 0015-02 through 0015-07 and beyond.
+  if [[ "$FILE_DATE" < "0015-02" ]]; then
+    echo "${f}" >> "$FILELISTNAME"
+  fi
 done
 
 starttime=$(date -u +"%s")
@@ -76,7 +97,8 @@ touch cyclones.${DATESTRING}
 
 STR_DETECT="--verbosity 0 --timestride 6hr --in_connect ${CONNECTDAT} --out cyclones_tempest.${DATESTRING} --closedcontourcmd PSL,${DCU_PSLFOMAG},${DCU_PSLFODIST},0;_DIFF(Z300,Z500),${DCU_WCFOMAG},${DCU_WCFODIST},${DCU_WCMAXOFFSET};_PROD(_SIGN(lat),_CURL{8,1.0}(U850,V850)),-8e-5,5.5,0.5 --mergedist ${DCU_MERGEDIST} --searchbymin PSL --outputcmd PSL,min,0;_VECMAG(UBOT,VBOT),max,2"
 echo "calling mpiexec"
-mpiexec --display-allocation --display-map --report-bindings -n 16 $TEMPESTEXTREMESDIR/bin/DetectNodes --in_data_list "${FILELISTNAME}" ${STR_DETECT} </dev/null
+mpiexec  -n 16 $TEMPESTEXTREMESDIR/bin/DetectNodes --in_data_list "${FILELISTNAME}" ${STR_DETECT} </dev/null
+###--display-allocation --display-map --report-bindings
 
 cat cyclones_tempest.${DATESTRING}* >> cyclones.${DATESTRING}
 #rm cyclones_tempest.${DATESTRING}*

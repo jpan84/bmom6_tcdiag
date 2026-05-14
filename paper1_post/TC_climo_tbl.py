@@ -26,7 +26,7 @@ def main():
    # 1. Filter for just the 3 variables you requested
    target_vars = ['ACE [$10^4$ kt$^2$] ', 'genesis points (storm count)', 'genesis points of hurricanes']
    # Use .loc with slice(None) to select specific index levels
-   plot_series = combined.loc[target_vars].rename(index={'genesis points (storm count)': 'Number of TCs', 'genesis points of hurricanes': 'Number of hurricanes'})
+   plot_series = combined.loc[target_vars].rename(index={'genesis points (storm count)': 'Number of TCs', 'genesis points of hurricanes': 'Number of\nhurricanes'})
    
    # 2. Reshape from Series to Matrix (Rows=Vars, Cols=Cases)
    # unstack('case') moves the 'case' index level to columns
@@ -36,15 +36,23 @@ def main():
    case_order = ['unseed2', 'unseed', 'ctrl', 'mseed', 'seed']
    plot_df = plot_df[case_order]
 
+   row_order = [ 
+      'Number of TCs',
+      'Number of\nhurricanes',
+      'ACE [$10^4$ kt$^2$] '
+   ]
+   plot_df = plot_df.reindex(row_order)
+
    # 3. Calculate Percent Difference relative to 'ctrl'
    pct_diff = plot_df.div(plot_df['ctrl'], axis=0).subtract(1).mul(100)
 
    # 4. Plotting
+   plt.rc('font', size=16)
    fig, ax = plt.subplots(figsize=(12, 7))
    
    # Center cmap at 0 using vmin/vmax
    # Setting vmin/vmax to +/- 200% for clear color gradients
-   im = ax.imshow(pct_diff, cmap='bwr', aspect='auto', vmin=-200, vmax=200)
+   im = ax.imshow(pct_diff, cmap='seismic', aspect='auto', vmin=-300, vmax=300)
 
    # Add text annotations
    for i in range(len(plot_df.index)):
@@ -53,10 +61,10 @@ def main():
          diff = pct_diff.iloc[i, j]
            
          if plot_df.columns[j] == 'ctrl':
-            label = f"{val:.2f}\n(REF)"
+            label = f"{val:.1f}"#\n(REF)"
          else:
             prefix = "+" if diff > 0 else ""
-            label = f"{val:.2f}\n({prefix}{diff:.1f}%)"
+            label = f"{val:.1f}\n({prefix}{diff:.1f}%)"
            
          # Change text color based on background darkness
          text_col = "white" if abs(diff) > 130 else "black"
@@ -68,9 +76,10 @@ def main():
    ax.set_yticks(np.arange(len(plot_df.index)))
    ax.set_yticklabels(plot_df.index)
    
-   plt.title("Warm Season Climatology: Absolute Values and % Change vs Ctrl", pad=20)
+   plt.title("Annual warm-season TC activity\n(NH JJASON + SH DJFMAM)", pad=20)
    plt.colorbar(im, label="Percent Difference vs Ctrl (%)")
    plt.tight_layout()
+   plt.savefig('tbl_warm_szn_TCs.svg')
    plt.show()
 
 if __name__ == '__main__':
