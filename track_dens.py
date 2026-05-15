@@ -25,7 +25,7 @@ SZMOs = [{12, 1, 2}, {3, 4, 5}, {6, 7, 8}, {9, 10, 11}]
 
 #FILI = sys.argv[1]
 FILI = ['250702_unseed2hPa6m.parquet', '250415_unseed.parquet', '250417_ctrl.parquet', 'MSEED_6yrs.parquet', '250416_seed1x1.parquet']
-FILI = ['250702_unseed2hPa6m.csv.flagged.parquet', '250415_unseed.csv.flagged.parquet', '250417_ctrl.parquet', '6yrs.seedflagged.parquet', '250416_seed1x1.seedflagged.parquet'] #flagged by un/seed_success_rate.py
+FILI = ['250702_unseed2hPa6m.csv.flagged.parquet', '250415_unseed.csv.flagged.parquet', '250417_ctrl.parquet', '251229_seedmatch.seedflagged.parquet', '250416_seed1x1.seedflagged.parquet'] #flagged by un/seed_success_rate.py
 labels = ['unseed2', 'unseed', 'ctrl', 'mseed', 'seed']
 events = [('250702_unseed_2hPa6m_unseed_events.parquet', 'us'), ('250415_unseed_production_unseed_events.parquet', 'us'), None, ('251229_seed_match_seed_events.parquet', 'sd'), ('250416_seed1x1_production_seed_events.parquet', 'sd')]
 rename_dict = dict(clat='lat', clon='lon')
@@ -42,6 +42,7 @@ def main():
    #DOUT = FILI[:extidx] + '_density'
    if not os.path.exists(DOUT):
       os.makedirs(DOUT)
+   open(os.path.join(DOUT, 'sznl_climo.csv'), 'w').close() #reset the seasonal-total csv file
 
    dfs = [pd.read_parquet(f) for f in FILI]
    for df in dfs:

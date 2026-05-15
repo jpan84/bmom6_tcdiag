@@ -19,6 +19,11 @@ alias = '251229_seed_match'
 dfcols = ['dt', 'sstlat', 'sstval', 'tid', 'clat', 'clon', 'minsep', 'psamb', 'dp', 'rp', 'zp', 'exppr']
 logpaths = sorted(glob.glob('/glade/u/home/jpan/work/MOM6_CASEDIRS/%s.out*' % alias))
 
+pattern1 = '/glade/u/home/jpan/work/MOM6_CASEDIRS/%s.out[1-9]' % alias
+pattern2 = '/glade/u/home/jpan/work/MOM6_CASEDIRS/%s.out[a-o]' % alias
+
+logpaths = sorted(glob.glob(pattern1) + glob.glob(pattern2))
+
 def main():
    seedlog = list(open(logpaths[0], 'r'))
    for pt in logpaths[1:]:

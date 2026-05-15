@@ -5,6 +5,7 @@ import numpy as np
 import uxarray as ux
 import xarray as xr
 import matplotlib.pyplot as plt
+from matplotlib.ticker import ScalarFormatter as SclrFmt
 
 DIRO = './unseed_restart_plts'
 DIRO = './mseed_restart_plts'
@@ -31,6 +32,7 @@ CLAT, CLON = 17.22682, 143.0426
 RADO = 3.
 
 RSDIR = '/glade/derecho/scratch/jpan/mseed_restarts_paper1/'
+EVNTS = '/glade/u/home/jpan/aquaptc/bmom6_tcdiag/seed_stats/251229_seed_match_seed_events.parquet'
 
 DTSTR = '0005-08-17-00000'
 CLAT, CLON = 19.430189, 290.3278144 - 360
@@ -48,6 +50,8 @@ DTSTR = '0006-11-14-00000'
 CLAT, CLON = 20.402225, 210.3689465 - 360
 RADO = 3.
 
+RADO = 5. #standardize lon width
+
 MODSTR = '*%s.nc'
 ORISTR = '*%s.nc.ORIG.nc'
 
@@ -56,13 +60,19 @@ PLEVS = np.concatenate((PLEVS, -PLEVS[::-1]))
 VLEVS = np.arange(-50, 51, 5)
 TLEVS = levels=np.arange(-10, 0, 1)
 TLEVS = np.concatenate((TLEVS, -TLEVS[::-1]))
-THELEVS = np.arange(340, 381, 5)
+THELEVS = np.arange(330, 381, 5)
 
 def main():
    orids = ux.open_mfdataset(GRIDF, os.path.join(RSDIR, ORISTR % DTSTR)).expand_dims(state=['before'])
    modds = ux.open_mfdataset(GRIDF, os.path.join(RSDIR, MODSTR % DTSTR)).expand_dims(state=['after'])
    modds.uxgrid = orids.uxgrid
    ds = ux.concat([orids, modds], dim='state')
+   df = pd.read_parquet(EVNTS)
+   dtobj = np.datetime64(DTSTR[:-6])
+   myrow = df[df['dt'] == dtobj]
+   myrow = df.loc[(df['clat'] - CLAT).abs().idxmin()]
+   print(myrow)
+   print(ds['lev'].attrs)
 
    ps = ds['PSDRY'] + ds['dpQ'].sum('lev')
    aiterm = ds['hyai'] * ds['P0']
@@ -135,7 +145,7 @@ def main():
    #tsec = xsect(ds['T']).squeeze()
    #print(tsec - amb_mean(ds['T']))
 
-   plt.rcParams['figure.figsize'] = (12, 6)
+   plt.rcParams['figure.figsize'] = (15, 7)
    subplot_kw = dict(ylim=(1000, 70), yscale='log')
    fig, axes = plt.subplots(2, 3, sharex=True, sharey=True, subplot_kw=subplot_kw)
 
@@ -145,34 +155,50 @@ def main():
    qsec = xsect(ds['q'].squeeze())
    thesec = xsect(thetae_bolton(p_lev, ds['T'], q)).squeeze()
 
+   startchar = 'a'
+
    csf = axes[0][0].contourf(vsec['lon'], lev_coord.isel(state=0), vsec.isel(state=0), levels=VLEVS, cmap='PRGn')
    plt.colorbar(csf)
    axes[0][0].contour(psec['lon'], lev_coord.isel(state=0), psec.isel(state=0), levels=PLEVS, colors='black')
-   axes[0][0].set_title('v (shaded, m/s), p\'(contours, 5 hPa)')
+   axes[0][0].set_title('v (shaded, m/s),\np\'(contours, 5 hPa)')
+
 
    csf = axes[0][1].contourf(vsec['lon'], lev_coord.isel(state=0), vsec.isel(state=1) - vsec.isel(state=0), levels=VLEVS, cmap='bwr')
    plt.colorbar(csf)
    axes[0][1].contour(psec['lon'], lev_coord.isel(state=0), psec.isel(state=1) - psec.isel(state=0), levels=PLEVS, colors='black')
+   axes[0][1].text(CLON, 100, f"dp = {myrow['dp'] / 100.:.1f} hPa\nrp = {myrow['rp'] / 1000.:.1f} km")
 
    csf = axes[0][2].contourf(vsec['lon'], lev_coord.isel(state=1), vsec.isel(state=1), levels=VLEVS, cmap='PRGn')
    plt.colorbar(csf)
    axes[0][2].contour(psec['lon'], lev_coord.isel(state=1), psec.isel(state=1), levels=PLEVS, colors='black')
 
-   csf = axes[1][0].contourf(thesec['lon'], lev_coord.isel(state=0), thesec.isel(state=0), levels=THELEVS, cmap='YlGnBu')
+   csf = axes[1][0].contourf(thesec['lon'], lev_coord.isel(state=0), thesec.isel(state=0), levels=THELEVS, cmap='YlGnBu', extend='max')
    plt.colorbar(csf)
-   axes[1][0].contour(tsec['lon'], lev_coord.isel(state=0), tsec.isel(state=0), levels=TLEVS, colors='black')
-   axes[1][0].set_title('$\\theta_e$ (shaded, K), T\'(contours, 1 K)')
+   axes[1][0].contour(tsec['lon'], lev_coord.isel(state=0), tsec.isel(state=0), levels=TLEVS, colors='white')
+   axes[1][0].set_title('$\\theta_e$ (shaded, K),\nT\'(contours, 1 K)')
 
    csf = axes[1][1].contourf(qsec['lon'], lev_coord.isel(state=0), qsec.isel(state=1) - qsec.isel(state=0), levels=np.arange(-2e-2, 2.1e-2, 2e-3), cmap='BrBG')
    plt.colorbar(csf)
    axes[1][1].contour(tsec['lon'], lev_coord.isel(state=0), tsec.isel(state=1) - tsec.isel(state=0), levels=TLEVS, colors='black')
    axes[1][1].set_title('$\delta q$ (shaded, kg/kg)')
 
-   csf = axes[1][2].contourf(thesec['lon'], lev_coord.isel(state=1), thesec.isel(state=1), levels=THELEVS, cmap='YlGnBu')
+   csf = axes[1][2].contourf(thesec['lon'], lev_coord.isel(state=1), thesec.isel(state=1), levels=THELEVS, cmap='YlGnBu', extend='max')
    plt.colorbar(csf)
-   axes[1][2].contour(thesec['lon'], lev_coord.isel(state=1), tsec.isel(state=1), levels=TLEVS, colors='black')
+   axes[1][2].contour(thesec['lon'], lev_coord.isel(state=1), tsec.isel(state=1), levels=TLEVS, colors='white')
 
-   fig.suptitle(DTSTR)
+   sfmt = SclrFmt()
+   sfmt.set_scientific(False)
+   sfmt.set_useOffset(False)
+   for ii, ax in enumerate(axes.ravel()):
+      ax.set_title('(' + chr(ord(startchar) + ii) + ')', loc='left')
+      ax.yaxis.set_major_formatter(sfmt)
+      ax.ticklabel_format(style='plain', axis='y')
+      ax.tick_params(labelbottom=True, labelleft=True, right=True, top=True)
+      ax.set_xlabel('lon')
+      ax.set_ylabel(ds['lev'].name)
+      ax.set_yticks([100, 200, 300, 500, 700, 1000])
+
+   fig.suptitle(DTSTR + '\n(lat, lon) = %.2f, %.2f' % (CLAT, CLON))
    fig.tight_layout()
    plt.savefig(os.path.join(DIRO, DTSTR + '.png'))
    plt.show()
