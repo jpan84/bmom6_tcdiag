@@ -23,7 +23,7 @@ MOWGTS = np.array([30, 31, 31, 30, 31, 30], dtype=np.int_)
 
 PLTVARS = ['DSE', 'LE', 'KE', 'KE_MEAN', 'AM', 'TAUAM', 'PS', 'TS', 'PRECT', 'QFLX', 'SHU', 'AHSRC', 'FSNT', 'FLNT', 'SWCF', 'LWCF', 'FSNS', 'FLNS', 'CLD_BL', 'CLD_FT']
 ALTNMS = dict(AHSRC='$Q_a$', QFLX='E')
-MULTBY = dict(PRECT=1e3 * 86400, QFLX=86400, PS=1e-2)
+MULTBY = dict(PRECT=1e3 * 86400, QFLX=86400, PS=1e-2, KE=0.5, KE_MEAN=0.5)
 
 VARLBLS = dict(TS='SST [K]', DSE='DSE [J m$^{-2}$]', LE='LE [J m$^{-2}$]', PRECT='P [mm d$^{-1}$]', QFLX='E [mm d$^{-1}$]')
 

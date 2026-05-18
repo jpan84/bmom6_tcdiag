@@ -29,17 +29,21 @@ def main():
    print(dp_fstrs)
    print(rp_fstrs)
 
+   intcnt = [df[~df['dp'].isna()].shape[0] / ((df['dt'].iloc[-1] - df['dt'].iloc[0]).days / 365.) for df in dfs]
+   #intcnt.insert(2, 0.)
+   int_fstrs = [rf'\makecell{{{ic:.1f}}}' for ic in intcnt]
+
    #ltx_cols = [{'$dp$ [hPa]': dp_fstrs[ii], '$r_p$ [km]': rp_fstrs[ii] for ii in range(len(EVNTS))}
    #ltx_df = pd.DataFrame(columns=
    #df['$dp$ [hPa]'] = []
 
    data = {
-        c.ALI_LTX[ii]: [dp_fstrs[ii], rp_fstrs[ii], clat_fstrs[ii]] 
+        c.ALI_LTX[ii]: [dp_fstrs[ii], rp_fstrs[ii], clat_fstrs[ii], int_fstrs[ii]] 
         for ii in range(len(EVNTS))
    }
 
    # 29. Create the DataFrame and set the parameter index
-   ltx_df = pd.DataFrame(data, index=[r'$dp$ [hPa]', r'$r_p$ [km]', r'$|\phi_c|$ [°]'])
+   ltx_df = pd.DataFrame(data, index=[r'$dp$ [hPa]', r'$r_p$ [km]', r'$|\phi_c|$ [°]', 'Annual intervention count'])
 
    # 30. Insert the empty CTL column at index 2
    ltx_df.insert(2, 'CTL', '---')
@@ -52,19 +56,26 @@ def main():
         r'\makecell{{Lat: $\mathcal{U}(5°, 20°)$,\\$dp: \mathcal{U}(15 hPa, 40 hPa)$,\\RMW: $\mathcal{U}(150 km, 450 km)$}}'
     ]
    descr = [
-        r'\makecell{{DetectNodes thresholds\\SLP: 4 hPa → 2 hPa,\\DZ: 15 m → 6 m}}', 
-        r'\makecell{{Default online\\DetectNodes thresholds\\plus $\zeta$ threshold:\\$8 \times 10^{-5}$ s$^{-1}$}}', 
-        '---', 
-        r'\makecell{{Seeding frequency\\and vortex parametrs\\matched to \\UNSEED\_50}}', 
-        r'\makecell{{1 seed per day\\in warm-season\\hemisphere}}'
+        r'\makecell{{Unseed all TCs\\in warm season\\DetectNodes thresholds\\SLP: 4 hPa → 2 hPa,\\DZ: 15 m → 6 m}}', 
+        r'\makecell{{Unseed all TCs\\in warm season\\Default online\\DetectNodes thresholds\\plus $\zeta$ threshold:\\$8 \times 10^{-5}$ s$^{-1}$}}', 
+        r'\makecell{{Free-running}}', 
+        r'\makecell{{Annual seed count\\and vortex parameters\\matched to \\UNSEED\_50}}', 
+        r'\makecell{{1 seed per day\\in warm season}}'
     ]
-    ##TODO: add q-factor/moisture treatment
-    
+   intint = ['---' if ii == 2 else '24 hours' for ii in range(5)]
+   #print(dfs[0]['dt'])
+
+   ##TODO: add q-factor/moisture treatment
+   ##TODO: add actual description (i.e., unseed all TCs every restart)
+   ##TODO: add intervention counts (# of un/seeds per year)    
     # Use .loc to add the row at a specific index name
    ltx_df.loc['Parameter sampling distributions'] = distros
    ltx_df.loc['Description'] = descr
+   ltx_df.loc['Intervention interval'] = intint
+   ltx_df.loc[r'$q$ factor'] = [2.5, 2.5, '---', 2.5, 0.]
+   #ltx_df.loc['Annual intervention count'] = intcnt
 
-   new_order = ['Description', 'Parameter sampling distributions', r'$dp$ [hPa]', r'$r_p$ [km]', r'$|\phi_c|$ [°]']
+   new_order = ['Description', 'Intervention interval', 'Annual intervention count', 'Parameter sampling distributions', r'$dp$ [hPa]', r'$r_p$ [km]', r'$|\phi_c|$ [°]', r'$q$ factor']
    ltx_df = ltx_df.reindex(new_order)
 
    # Display and Export
@@ -72,7 +83,7 @@ def main():
    latex_table = ltx_df.to_latex(
         escape=False, 
         index=True, 
-        column_format='p{2cm}|ccccc',
+        column_format='p{2cm}|XXXXX',
         caption="Vortex perturbation parameters for each experiment.",
         label="tab:vortex_params"
    )
