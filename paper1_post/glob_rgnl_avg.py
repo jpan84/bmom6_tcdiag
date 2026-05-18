@@ -19,16 +19,17 @@ HTAPE = '*.h0a.*.nc'
 GRIDF = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
 LATBNDS = (-90, 90)
-#LATBNDS = (5, 35)
+LATBNDS = (5, 35)
 
 RAWV2D = ['PS', 'TGCLDIWP', 'TGCLDLWP', 'QFLX', 'TS', 'FLNT', 'FSNT', 'LWCF', 'SWCF', 'FLNS', 'FSNS']
 UDEF2D = dict(TAUAM=[(c.a_e, 'coslat', 'TAUX')], SHU=[(1, 'FSNS'), (-1, 'FLNS'), (-1, 'SHFLX'), (-1, 'LHFLX')],
               AHSRC=[(1, 'FSNT'), (-1, 'FSNS'), (1, 'FLNS'), (-1, 'FLNT'), (1, 'SHFLX'), (c.lv, c.rho_w, 'PRECC'), (c.lv, c.rho_w, 'PRECL')],
               LE = [(c.lv, 'TMQ')], PRECT=[(1, 'PRECC'), (1, 'PRECL')])
 RAWV3D = None
-UDEF3D = dict(DSE=[(c.cp, 'T'), (c.g, 'Z3')], KE=[(1, 'UU'), (1, 'VV')], KE_MEAN=[(1, 'U', 'U'), (1, 'V', 'V')],
+UDEF3D = dict(DSE=[(c.cp, 'T'), (c.g, 'Z3')], LE_3D=[(c.lv, 'Q')], KE=[(1, 'UU'), (1, 'VV')], KE_MEAN=[(1, 'U', 'U'), (1, 'V', 'V')],
               AM=[(c.a_e, 'coslat', 'U')], CLD_FT=[(1, 'CLDICE'), (1, 'CLDLIQ')], CLD_BL=[(1, 'CLDICE'), (1, 'CLDLIQ')])
-PBNDS = dict(CLD_FT=(1e4, 7e4), CLD_BL=(7e4, 1.1e5))
+PTROP = (1e4, 1.1e5)
+PBNDS = dict(DSE=PTROP, LE_3D=PTROP, KE=PTROP, KE_MEAN=PTROP, CLD_FT=(1e4, 7e4), CLD_BL=(7e4, 1.1e5))
 
 def main():
    print('Opening dataset', DIRI, '...')
@@ -63,7 +64,7 @@ def main():
 
    print('Saving output...')
    outds = xr.Dataset(data_vars=aavg)
-   outds.to_netcdf(os.path.join(DIRI, '../AAVG_%.1f_%.1f.nc' % (LATBNDS)))
+   outds.to_netcdf(os.path.join(DIRI, '../AAVG_%.1f_%.1f_rev1.nc' % (LATBNDS)))
 
    print(__file__, 'done.')
 
@@ -84,36 +85,3 @@ def get_dp_clipped(ds, pt, pb):
 
 if __name__ == '__main__':
    main()
-
-#class var2d:
-#   def __init__(self, list: template, varnm=None, pbnds=None):
-#class h0a_reduce:
-#   def __init__(self, ds):
-#      self.ds = ds
-#      #TODO: add dp3d and coslat
-#      aterm = self.ds['hyai'] * c.P0
-#      bterm = self.ds['hybi'] * self.ds['PS']
-#      p_ilev = aterm + bterm
-#      dp3d = p_ilev.diff('ilev').rename(dict(ilev='lev'))
-#
-#      self.ds = self.ds.assign(variables=dict(dp3d=dp3d, p_ilev=p_ilev, coslat=np.cos(np.deg2rad(self.ds['lat']))))
-#
-#   def apply_udef_template(self, template=None, varnm=None):
-#      # 1. Calculate the raw product (your current logic)
-#      terms = [self._get_product(t) for t in definition[:-1]]
-#      total = sum(terms)
-#      
-#      # It's a 2D variable (like PS or SST): return as is
-#      return total
-#
-#   def _get_product(self, tup):
-#      vals = [self.ds[v] if isinstance(v, str) else v for v in tup]
-#      return reduce(operator.mul, vals)
-#
-#   def dp_integ(self, pbnds=None):
-#      # 2. Automated Vertical Handling
-#      if 'lev' in total.dims or 'ilev' in total.dims:
-#          # It's a 3D variable: it needs vertical integration (dp/g)
-#          # This is where your conservative dp logic lives!
-#          return (total * self.ds['dp'] / self.g).sum(dim='lev')
-#      
