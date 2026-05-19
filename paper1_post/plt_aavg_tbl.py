@@ -13,7 +13,7 @@ DIRIS = [
 ALIS = ['UNSEED_90', 'UNSEED_50', 'CTL', 'SEED_50', 'SEED_150']
 CTLIX = 2
 
-FILI = 'AAVG_5.0_35.0.nc'
+FILI = 'AAVG_5.0_35.0_rev1.nc'
 SELMO = np.arange(6, 12)
 MOWGTS = np.array([30, 31, 31, 30, 31, 30], dtype=np.int_)
 
@@ -132,7 +132,7 @@ def main():
       
       for v in vars_in_block:
          ax = axs[grid_vars.index(v)]
-         im = ax.imshow(d_row[v][np.newaxis, :], cmap='bwr', aspect='auto', vmin=-b_max, vmax=b_max)
+         im = ax.imshow(d_row[v][np.newaxis, :], cmap='bwr', aspect='auto', vmin=-0.5*b_max, vmax=0.5*b_max)
          
          # Map clean y-labels and inject cell text matrix
          ax.set_yticks([0]), ax.set_yticklabels([VARLBLS.get(v, v).split(' ')[0]])
@@ -141,7 +141,7 @@ def main():
             ax.text(cc, 0, ('%+.2e' % dif) if cc != CTLIX else ('%.2e' % val), ha='center', va='center', 
                      color='white' if abs(dif/b_max) > 0.5 else 'black')
       
-      fig.colorbar(im, ax=block_axs, orientation='vertical', pad=0.03, label=cbar_lbl)
+      fig.colorbar(im, ax=block_axs, orientation='vertical', pad=0.03, label=cbar_lbl, extend='both')
 
    # 4. Hide structural spacer rows from the canvas and save
    [ax.axis('off') for name, ax in zip(grid_vars, axs) if name == 'SPACER']

@@ -11,6 +11,7 @@ FILI = ['250415_unseed.kde.pickle', '250417_ctrl.kde.pickle', '250416_seed1x1.kd
 PQTS = ['250415_unseed.parquet', '250417_ctrl.parquet', '250416_seed1x1.parquet']
 SSTS = 'zm_sst_ydaymean.nc'
 SSTS = 'sstmaxlat_ydaymean.nc'
+SSTS = 'zm_sst.nc'
 TTLS = [('(a)', 'UNSEED$-$CTRL'), ('(b)', 'CTRL'), ('(c)', 'SEED$-$CTRL')]
 NYR = 10. #maybe update to be more precise (TODO don't hardcode)
 
@@ -71,21 +72,41 @@ fig, axes = plt.subplots(1, 3, sharey=True, sharex=True)
 for ii, ax in enumerate(axes):
    tocf = zvals[ii] if ii == 1 else zvals[ii] - zvals[1]
    cflvls = np.arange(0, 2.1e-2, 2e-3) if ii == 1 else np.arange(-2e-2, 2.1e-2, 4e-3)
-   cmap = 'viridis' if ii == 1 else 'bwr'
+   cmap = 'inferno' if ii == 1 else 'bwr'
    csf = ax.contourf(xgr, yplt, tocf, cmap=cmap, levels=cflvls)
    plt.colorbar(csf)
    ax.contour(xgr, yplt, zvals[1], colors='black', levels=np.arange(4e-3, 2e-2, 4e-3))
 
-   #tmaxlat = sstds['tos'].isel(case=ii).idxmax('yh')
-   tmaxlat = sstds['tos'].isel(case=ii)
-   print(tmaxlat.values)
-   #exit()
-   flipdoys = tmaxlat.dayofyear.isel(dayofyear=np.where(np.sign(tmaxlat.data[1:]) - np.sign(tmaxlat.data[:-1]))[0])
-   ax.scatter(sstds.dayofyear, tmaxlat, c='aqua', marker='.')
-   [ax.axvline(fd, c='gray', linestyle='dashed') for fd in flipdoys]
-   fddt = [cftime.num2date(fd, units='days since 0000-12-31', calendar='noleap') for fd in flipdoys]
+   ##tmaxlat = sstds['tos'].isel(case=ii).idxmax('yh')
+   #tmaxlat = sstds['tos'].isel(case=ii)
+   #print(tmaxlat.values)
+   ##exit()
+   #flipdoys = tmaxlat.dayofyear.isel(dayofyear=np.where(np.sign(tmaxlat.data[1:]) - np.sign(tmaxlat.data[:-1]))[0])
+   #ax.scatter(sstds.dayofyear, tmaxlat, c='aqua', marker='.')
+   #[ax.axvline(fd, c='gray', linestyle='dashed') for fd in flipdoys]
+   #fddt = [cftime.num2date(fd, units='days since 0000-12-31', calendar='noleap') for fd in flipdoys]
+   #fdmmdd = [ft.strftime('%m-%d') for ft in fddt]
+   #[ax.text(fd - 10, 0, fdmmdd[jj]) for jj, fd in enumerate(flipdoys)]
+
+
+   maxes = sstds['tos'].sel(case=['UNSEED', 'CTRL', 'SEED'][ii])#.isel(case=ii).idxmax('yh')
+   sgn_chg = np.sign(maxes).diff(dim='time')
+   chg_idx = sgn_chg['time'].where(sgn_chg != 0, drop=True)
+   half_year = (chg_idx.dt.month > 6).astype(int)
+   grp_key = chg_idx.dt.year + half_year * 0.5
+   chg_idx.coords["half_years"] = grp_key
+   #print(chg_idx)
+   first_flip = chg_idx.groupby('half_years').first()
+   #print(first_flip)
+   flipdoys = first_flip.dt.dayofyear
+   sprg, wntr = flipdoys.where(flipdoys > 182, drop=True).mean(), flipdoys.where(flipdoys <= 182, drop=True).mean()
+
+   [ax.axvline(fd, c='gray', linestyle='dashed') for fd in [sprg, wntr]]
+   ax.scatter(maxes['time'].dt.dayofyear, maxes, alpha=0.2, c='lime', s=0.5)
+
+   fddt = [cftime.num2date(fd, units='days since 0000-12-31', calendar='noleap') for fd in [sprg, wntr]]
    fdmmdd = [ft.strftime('%m-%d') for ft in fddt]
-   [ax.text(fd - 10, 0, fdmmdd[jj]) for jj, fd in enumerate(flipdoys)]
+   [ax.text(fd - 10, 0, fdmmdd[jj]) for jj, fd in enumerate([sprg, wntr])]
 
    ax.set_xticks(TICKDOY, [dt.strftime('%m-%d') for dt in TICKDATES], rotation=45)
    ax.tick_params(axis='both', labelleft=True, right=True, top=True)
