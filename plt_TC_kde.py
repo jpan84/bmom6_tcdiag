@@ -89,7 +89,7 @@ for ii, ax in enumerate(axes):
    #[ax.text(fd - 10, 0, fdmmdd[jj]) for jj, fd in enumerate(flipdoys)]
 
 
-   maxes = sstds['tos'].sel(case=['UNSEED', 'CTRL', 'SEED'][ii])#.isel(case=ii).idxmax('yh')
+   maxes = sstds['tos'].sel(case=['UNSEED', 'CTRL', 'SEED'][ii]).idxmax('yh') #.isel(case=ii).idxmax('yh')
    sgn_chg = np.sign(maxes).diff(dim='time')
    chg_idx = sgn_chg['time'].where(sgn_chg != 0, drop=True)
    half_year = (chg_idx.dt.month > 6).astype(int)
@@ -106,7 +106,7 @@ for ii, ax in enumerate(axes):
 
    fddt = [cftime.num2date(fd, units='days since 0000-12-31', calendar='noleap') for fd in [sprg, wntr]]
    fdmmdd = [ft.strftime('%m-%d') for ft in fddt]
-   [ax.text(fd - 10, 0, fdmmdd[jj]) for jj, fd in enumerate([sprg, wntr])]
+   [ax.text(fd - 10, 0, fdmmdd[jj], c='lime') for jj, fd in enumerate([sprg, wntr])]
 
    ax.set_xticks(TICKDOY, [dt.strftime('%m-%d') for dt in TICKDATES], rotation=45)
    ax.tick_params(axis='both', labelleft=True, right=True, top=True)
