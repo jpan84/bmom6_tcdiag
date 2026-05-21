@@ -18,11 +18,11 @@ import sznl_funcs
 import pltsettings
 
 ### hist file params
-OUTDIR = 'linevslat_h0a_diff'
+OUTDIR = 'linevslat_h0a_diff_5exp_inprog'
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
-HISTS = '/glade/campaign/univ/upsu0032/jpan_aquaptc//%s/atm/hist/*.h0a.*.nc'
-CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1']
-ALIASES = ['UNSEED', 'CTRL', 'SEED']
+HISTS = 'atm/hist/*.h0a.*.nc'
+CASES = ['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m/', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/', '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/']
+ALIASES = ['UNSEED_EX', 'UNSEED', 'CTRL', 'SEED', 'SEED_EX']
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
 DO_DIFF = True
@@ -34,7 +34,10 @@ lncolors = ['blue', 'orange']
 SKIP = {'AEROD_v', 'area', 'areawt', 'lat', 'lon'}
 USER_DEF = {'RESTOM', 'PRECT', 'NCF', 'FLUS', 'LWAHU', 'SWAHU', 'PALB'}
 
+PNLMAP = {0: 1, 1: 2, 2: 3, 3: 0, 4: 2, 5: 4} #produce the horseshoe subplot order
 
+H1I = False
+'''
 #h1i mode
 OUTDIR = 'linevslat_h1i_0012-0014'
 #HISTS = '/glade/derecho/scratch/jpan/archive/%s/atm/hist/*.h1i.0010*.nc'
@@ -44,7 +47,7 @@ H1I = True
 H1IVARS = {'wspd_bot'}
 #H1IVARS = {'CF500'}
 #USER_DEF = {'CF500'}
-
+'''
 
 def main():
    if not os.path.exists(OUTDIR):
@@ -53,7 +56,7 @@ def main():
    pltsettings.set1()
 
    print('Opening datasets...')
-   dss = [ux.open_mfdataset(camgrid, HISTS % cs) for cs in CASES]
+   dss = [ux.open_mfdataset(camgrid, os.path.join(cs, HISTS)) for cs in CASES]
    dvset = set([str(dv) for dv in dss[0].data_vars])
    dvset = dvset | USER_DEF
    outds = None
@@ -83,30 +86,32 @@ def main():
       sznzm = [sznl_funcs.stack_hemi_sznl(da) for da in sznzm]
       sinlat = np.sin(np.deg2rad(sznzm[0]['latitudes']))
 
+      CTLIX = 2
       if DO_DIFF:
-         sznzm[0] = sznzm[0] - sznzm[1]
-         sznzm[2] = sznzm[2] - sznzm[1]
+         for ii in range(len(sznzm)):
+            sznzm[ii] -= int(ii != CTLIX) * sznzm[CTLIX]
 
       print('\tPlotting...')
-      plt.rcParams['figure.figsize'] = (30, 6)
+      plt.rcParams['figure.figsize'] = (30, 12)
       subplot_kw = dict(xlim=(-1, 1), sharey=(not DO_DIFF))
-      fig, axes = plt.subplots(1, 3, subplot_kw=subplot_kw)
+      fig, axes = plt.subplots(2, 3, subplot_kw=subplot_kw)
 
-      for ii, pltda in enumerate(sznzm):
-         ax = axes[ii]
+      for ii in range(len(sznzm)):
+         ax = axes.ravel()[ii]
+         pltda = sznzm[PNLMAP[ii]]
          for tt, szn in enumerate(pltda['season']):
             ax.plot(sinlat, pltda.sel(season=szn), label=str(szn.values), color=lncolors[tt])
          #plt.plot(sinlat, line1.values)
          #if str(dv) == 'TS' and not DO_DIFF:
          #   plt.hlines(273.15 + 26.5, -1, 1, colors='red', linestyles='dashed')
-         if DO_DIFF and (ii == 0 or ii == 2):
+         if DO_DIFF and (PNLMAP[ii] != CTLIX):
             ax.hlines(0, -1, 1, colors='black', linestyles='dashed')
          ax.set_xlabel('Lat [°]')
          try:
             ax.set_ylabel(str(dv) + ' [' + str(das[1].units) + ']')
          except:
             ax.set_ylabel(dv)
-         ax.set_title(ALIASES[ii] + (' difference' if (DO_DIFF and (ii == 0 or ii == 2)) else '') )
+         ax.set_title(ALIASES[PNLMAP[ii]] + (' difference' if (DO_DIFF and (PNLMAP[ii] != CTLIX)) else '') )
          ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=4, prop=dict(size=12))
          ax.set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB.astype(np.int_))
          [ax.axvline(np.sin(np.deg2rad(ll)), c='gray', lw=0.5) for ll in LATLAB]
@@ -119,10 +124,12 @@ def main():
          #miny, maxy = ylims.min(), ylims.max()
          #axes[0].set_ylim(miny, maxy)
          #axes[2].set_ylim(miny, maxy)
-         for aa in [axes[0], axes[2]]:
+         for aa in [axes[1, 0], axes[0, 0], axes[0, 2], axes[1, 2]]:
             ylims = aa.get_ylim()
             maxy = max(np.abs(ylims))
             aa.set_ylim(-maxy, maxy)
+      axes[1, 1].remove()
+      fig.tight_layout()
       plt.savefig(os.path.join(OUTDIR, '%s_sznl.png' % dv), bbox_inches='tight')
       plt.close()
 
@@ -134,7 +141,7 @@ def main():
          outds = outds.assign(variables={dv: xr.concat(sznzm, dim=xr.Variable('case', ALIASES))})
 
    print('Saving to .nc...')
-   outds.to_netcdf(os.path.join(OUTDIR, 'botspd_tot_sznlzm.nc'))
+   outds.to_netcdf(os.path.join(OUTDIR, 'sznlzm.nc'))
 
    print(sys.argv[0], 'done.')
 
