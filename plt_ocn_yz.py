@@ -11,13 +11,14 @@ mode = sys.argv[1]
 MODES = ['compute', 'plot']
 
 DO_DIFF = True
-HISTS = '/glade/derecho/scratch/jpan/archive/%s/ocn/hist/*mom6.hm*[0-9][0-9][0-9][0-9]-[0-9][0-9].nc'
-CASES = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl', 'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1']
-ALIASES = ['UNSEED', 'CTRL', 'MSEED']
-DIRO = './ocn_yz_plts_mseed/'
+HISTS = 'ocn/hist/*mom6.hm*[0-9][0-9][0-9][0-9]-[0-9][0-9].nc'
+CASES = ['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m/', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/', '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/']
+ALIASES = ['UNSEED_EX', 'UNSEED', 'CTRL', 'SEED', 'SEED_EX']
+DIRO = './ocn_yz_plts_5exp_inprog/'
 
 DIMS3D = {('time', 'zl', 'yq', 'xq'), ('time', 'zl', 'yq', 'xh'), ('time', 'zl', 'yh', 'xq'), ('time', 'zl', 'yh', 'xh')}
 ANTISYM_STR = ['vorticity', 'meridional', 'y transport', 'y velocity']
+INCL = {'thetao', 'vmo', 'vhGM'}
 
 ZSCL = np.vectorize(lambda zl: zl / 2850 if zl <= 2000 else 2000 / 2850 + (zl - 2000) / 2000 * 850 / 2850)
 ZLAB = np.arange(1000, 5000, 1000)
@@ -38,7 +39,7 @@ def main():
    if not os.path.exists(DIRO):
       os.makedirs(DIRO)
 
-   dss = [xr.open_mfdataset(HISTS % cs) for cs in CASES]
+   dss = [xr.open_mfdataset(os.path.join(cs, HISTS)) for cs in CASES]
    #dss = [ds.assign(variables=dict(vmo_resid=\
    #       (ds['vmo'] + ds['vhGM']).assign_attrs(long_name='Ocean Mass Residual Y Transport',\
    #       cell_methods=ds['vmo'].attrs['cell_methods'], units=ds['vmo'].attrs['units'])\
@@ -53,6 +54,10 @@ def main():
 
       if dss[0][dv].dims not in DIMS3D:
          print('%s not 3D. Skipping...' % dv)
+         continue
+
+      if INCL is not None and str(dv) not in INCL:
+         print('%s excluded. Skipping...' % dv)
          continue
 
       print('Working on %s...' % dv)
@@ -102,7 +107,7 @@ def main():
       plt.rcParams['figure.figsize'] = (30, 12)
       contourfkwargs = {'cmap': 'coolwarm' if zero_centered else 'rainbow', 'norm': colors.CenteredNorm(vcenter=0, halfrange=vmax) if zero_centered else colors.Normalize(vmin=vmin, vmax=vmax), 'levels': 11}
       subplot_kw = dict(xlim=(-1, 1), ylim=(0, 1))
-      fig, axes = plt.subplots(2, 3, layout='constrained', sharey=True, subplot_kw=subplot_kw)
+      fig, axes = plt.subplots(2, 5, layout='constrained', sharey=True, subplot_kw=subplot_kw)
       plt.suptitle(f"{dv} [{dss[0][dv].attrs['units']}]\n{dss[0][dv].attrs['long_name']}\n{dss[0][dv].attrs['cell_methods']}")
 
       for ii, sz in enumerate(['JJA', 'SON']):

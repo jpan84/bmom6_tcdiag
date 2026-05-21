@@ -96,8 +96,7 @@ def main():
       subplot_kw = dict(xlim=(-1, 1), sharey=(not DO_DIFF))
       fig, axes = plt.subplots(2, 3, subplot_kw=subplot_kw)
 
-      for ii in range(len(sznzm)):
-         ax = axes.ravel()[ii]
+      for ii, ax in enumerate(axes.ravel()):
          pltda = sznzm[PNLMAP[ii]]
          for tt, szn in enumerate(pltda['season']):
             ax.plot(sinlat, pltda.sel(season=szn), label=str(szn.values), color=lncolors[tt])
