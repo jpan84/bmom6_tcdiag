@@ -1,5 +1,35 @@
 nohup: ignoring input
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 6175362.desched1 with qsub arguments:
-    qsub  -l select=1:ncpus=16:mem=256GB -A UPSU0032 -q develop@desched1 -l walltime=02:00:01
+Waiting on job launch; 6225706.desched1 with qsub arguments:
+    qsub  -l select=1:ncpus=8:mem=128GB -A UPSU0032 -q develop@desched1 -l walltime=01:21:00
 
+Opening dataset /glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist/ ...
+Setting up coords...
+Deriving 2D quantities...
+Vertically integrating 3D fields...
+Area averaging...
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+Saving output...
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper1_post/glob_rgnl_avg.py done.

@@ -13,7 +13,7 @@ DIRIS = [
 ALIS = ['UNSEED_90', 'UNSEED_50', 'CTL', 'SEED_50', 'SEED_150']
 CTLIX = 2
 
-FILI = 'AAVG_5.0_35.0_rev1.nc'
+FILI = 'AAVG_10.0_30.0_rev1.nc'
 SELMO = np.arange(6, 12)
 MOWGTS = np.array([30, 31, 31, 30, 31, 30], dtype=np.int_)
 
@@ -23,7 +23,7 @@ MOWGTS = np.array([30, 31, 31, 30, 31, 30], dtype=np.int_)
 
 PLTVARS = ['DSE', 'LE', 'KE', 'KE_MEAN', 'AM', 'TAUAM', 'PS', 'TS', 'PRECT', 'QFLX', 'SHU', 'AHSRC', 'FSNT', 'FLNT', 'SWCF', 'LWCF', 'FSNS', 'FLNS', 'CLD_BL', 'CLD_FT']
 ALTNMS = dict(AHSRC='$Q_a$', QFLX='E')
-MULTBY = dict(PRECT=1e3 * 86400, QFLX=86400, PS=1e-2, KE=0.5, KE_MEAN=0.5)
+MULTBY = dict(PRECT=1e3 * 86400, QFLX=86400, PS=1e-2)#, KE=0.5, KE_MEAN=0.5)
 
 VARLBLS = dict(TS='SST [K]', DSE='DSE [J m$^{-2}$]', LE='LE [J m$^{-2}$]', PRECT='P [mm d$^{-1}$]', QFLX='E [mm d$^{-1}$]')
 
@@ -93,7 +93,7 @@ def main():
       
       for v in vars_in_block:
          ax = axs[grid_vars.index(v)]
-         im = ax.imshow(d_row[v][np.newaxis, :], cmap='bwr', aspect='auto', vmin=-b_max, vmax=b_max)
+         im = ax.imshow(d_row[v][np.newaxis, :], cmap='seismic', aspect='auto', vmin=-b_max, vmax=b_max)
          
          # Map clean y-labels and inject cell text matrix
          ax.set_yticks([0]), ax.set_yticklabels([VARLBLS.get(v, v).split(' ')[0]])
@@ -112,7 +112,7 @@ def main():
    # 1. Define row blocks: (Variable List, Shared Colorbar Label)
    blocks = [
        (['FSNT', 'SWCF', 'FLNT', 'LWCF'], 'Anom [W m$^{-2}$]'),
-       (['CLD_BL', 'CLD_FT'], 'Anom [g kg$^{-1}$]')
+       (['CLD_BL', 'CLD_FT'], 'Anom [kg m$^{-2}$]')
    ]
    
    # Extract row slices for the targeted variables
@@ -132,7 +132,7 @@ def main():
       
       for v in vars_in_block:
          ax = axs[grid_vars.index(v)]
-         im = ax.imshow(d_row[v][np.newaxis, :], cmap='bwr', aspect='auto', vmin=-0.5*b_max, vmax=0.5*b_max)
+         im = ax.imshow(d_row[v][np.newaxis, :], cmap='seismic', aspect='auto', vmin=-0.5*b_max, vmax=0.5*b_max)
          
          # Map clean y-labels and inject cell text matrix
          ax.set_yticks([0]), ax.set_yticklabels([VARLBLS.get(v, v).split(' ')[0]])
