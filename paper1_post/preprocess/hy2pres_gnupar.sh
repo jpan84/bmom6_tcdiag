@@ -1,8 +1,8 @@
 #!/bin/bash -l
 #PBS -N ncremap_hy2pres
 #PBS -A UCIS0005
-#PBS -l walltime=06:00:00
-#PBS -l select=1:ncpus=16:mpiprocs=16:mem=128GB
+#PBS -l walltime=00:55:00
+#PBS -l select=2:ncpus=8:mem=180GB
 #PBS -q casper
 
 set -e
