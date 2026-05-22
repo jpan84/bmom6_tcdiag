@@ -1,3 +1,9 @@
+#cdo zonmean -cat -apply,-selvar,thetao [ b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_uns
+#eed2hPa6m.mom6.hmcust_avg.0009*.nc ] testcdozm.nc
+
+
+
+
 import os
 import sys
 #sys.path.append('/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper1_post/')
