@@ -11,5 +11,5 @@ CONS = True
 for ii, ar in enumerate(ARCHRT):
    hpth = os.path.join(ar, 'atm/hist/')
 
-   proc = subprocess.Popen(f"qcmd -q casper -l walltime=02:21:00 -l select=1:ncpus=16:mem=256GB -A UCIS0005 python3 -u ux_zonmean.py\
+   proc = subprocess.Popen(f"qcmd -q casper -l walltime=01:21:00 -l select=1:ncpus=16:mem=256GB -A UCIS0005 python3 -u ux_zonmean.py\
                     {hpth} {CAMGR} {str(CONS)} {VARS} &> zmdriver.out{ii}", shell=True)
