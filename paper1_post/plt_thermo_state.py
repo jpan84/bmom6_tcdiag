@@ -2,7 +2,7 @@ import numpy as np
 import os
 import sys
 sys.path.append('/glade/u/home/jpan/aquaptc/bmom6_tcdiag/')
-from paths import ARCHRT, ALIA
+from paths import ARCHRT, ALIA, CTLIX, IXHORS
 import consts as c
 import xarray as xr
 from sznl_funcs import stack_hemi_sznl, monthly2sznl
@@ -15,7 +15,6 @@ AFIL = 'atm/uxzm_cons_-90_90_0.25_Z3_T_Q.nc'
 OFIL = 'ocn/hist/cdo_zm_thetao_oml_mlotst.nc'
 ALAT, OLAT = 'latitudes', 'lat'
 
-CTLIX = 2
 TTLS = [ALIA[ii] + '$–$CTL' if ii != CTLIX else 'CTL' for ii in range(len(ALIA))]
 
 ZSCL = np.vectorize(lambda zl: zl / 2850 if zl <= 2000 else 2000 / 2850 + (zl - 2000) / 2000 * 850 / 2850)
@@ -38,15 +37,18 @@ def main():
    dse = [c.g * ds['Z3'] + c.cp * ds['T'] for ds in ads]
    mse = [c.g * ds['Z3'] + c.cp * ds['T'] + c.lv * ds['Q'] for ds in ads]
 
-   def agg_time(listdas, latnm='latitudes'):
+   def agg_time(listdas, latnm='latitudes', diff=True):
       ymonmean = [da.groupby('time.month').mean() for da in listdas]
       twoszns = [stack_hemi_sznl(monthly2sznl(ym.squeeze()), antisym=False, latnm=latnm) for ym in ymonmean]
-      return [ts.mean(dim='season') for ts in twoszns]
+      halfyr = [ts.mean(dim='season') for ts in twoszns]
+      if diff:
+         return [hy - halfyr[CTLIX] if ii != CTLIX else hy for ii, hy in enumerate(halfyr)]
+      return halfyr
 
    dseplt = agg_time(dse)
    mseplt = agg_time(mse)
-   othplt = agg_time([ds['thetao'] for ds in ods], latnm='lat')
-   omlplt = agg_time([ds['mlotst'] for ds in ods], latnm='lat')
+   othplt = agg_time([ds['thetao'] for ds in ods], latnm=OLAT)
+   omlplt = agg_time([ds['oml'] for ds in ods], latnm=OLAT, diff=False)
 
    ############### Plot atmo MSE,DSE above ocean theta,MLdepth #################################
    #TODO: set contour levels
@@ -84,7 +86,7 @@ def main():
    for rr in range(gs.nrows):
       for cc in range(3): #remove the hardcoded 3
          ix1d = rr * 3 + cc
-         if ix1d == len(ALIA): break #map panel to correct horseshoe experiment
+         ixh = IXHORS[ix1d]
          col_start = cc * 3
          sp = gs[rr, col_start]
 
@@ -109,7 +111,7 @@ def main():
          # Determine correct symmetric ticks for the current expo
          current_ticks = base_sym_ticks# * (1e10 / expo)
    
-         csf = ax_bot.contourf(YSCL(othplt[ix1d]['lat']), othplt[ix1d]['zl'], othplt[ix1d])#, cmap='coolwarm' if jj == 1 else 'bwr', **sf_cfkwargs)
+         csf = ax_bot.contourf(YSCL(othplt[ixh]['lat']), othplt[ixh]['zl'], othplt[ixh], cmap='magma' if ixh == CTLIX else 'bwr')#, **sf_cfkwargs)
          
          # --- MODIFIED: Use the newly created cax and defined ticks ---
          #plt.colorbar(csf, label='[10$^{%d}$ kg/s]' % int(np.log10(expo)), 
@@ -117,7 +119,7 @@ def main():
          # -------------------------------------------------------------
          
          #ax_bot.contour(YSCL(ocn_yz['yq']), ZSCL(ocn_yz['zl']), sf / expo, **sf_ctkwargs)
-         ax_bot.plot(YSCL(omlplt[ix1d]['lat']), omlplt[ix1d])
+         ax_bot.plot(YSCL(omlplt[ixh]['lat']), omlplt[ixh])
          ax_bot.set_xticks(YLOC, ['' if yl % 20 else yl for yl in YLAB]) # Keeps xtick labels on ax_bot
          ax_bot.set_xlim(-1, 1)
          ax_bot.set_ylim(0, 600)
@@ -128,8 +130,8 @@ def main():
          ax_bot.tick_params(right=True)
          ax_bot.tick_params(length=7, width=1.3, which='both')
 
-         csf = ax_top.contourf(YSCL(mseplt[ix1d]['latitudes']), mseplt[ix1d]['lev'], mseplt[ix1d])#, cmap='coolwarm' if jj == 1 else 'bwr', extend='both', **sf_cfkwargs)
-         ax_top.contourf(YSCL(dseplt[ix1d]['latitudes']), dseplt[ix1d]['lev'], dseplt[ix1d])
+         csf = ax_top.contourf(YSCL(mseplt[ixh]['latitudes']), mseplt[ixh]['lev'], mseplt[ixh])#, cmap='coolwarm' if jj == 1 else 'bwr', extend='both', **sf_cfkwargs)
+         ax_top.contourf(YSCL(dseplt[ixh]['latitudes']), dseplt[ixh]['lev'], dseplt[ixh])
          #ax_top.contour(YSCL(temds['lat']), temds['plev'], temds['PSI_EM'].isel(case=1, season=ii) / cexpo, **sf_ctkwargs)
          ax_top.set_ylim(1000, 100)
          ax_top.set_yscale('log')
@@ -144,7 +146,7 @@ def main():
          panel_label = f'({chr(97 + label_index)})'
          ax_top.set_title(panel_label, loc='left')
 
-         ax_top.set_title(TTLS[ix1d], fontsize=24)
+         ax_top.set_title(TTLS[ixh], fontsize=24)
          
          # --- NEW/MODIFIED: Ensure no xtick labels on ax_top ---
          ax_top.tick_params(labelbottom=False) 
