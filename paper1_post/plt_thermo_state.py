@@ -13,10 +13,10 @@ import matplotlib.ticker as mticker
 
 AFIL = 'atm/uxzm_cons_-90_90_0.25_Z3_T_Q.nc'
 OFIL = 'ocn/hist/cdo_zm_thetao_oml_mlotst.nc'
+ALAT, OLAT = 'latitudes', 'lat'
 
-TEMNCS = ['b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl_b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed_TEM.nc',\
-          'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl__TEM.nc',
-          'b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl_b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch_TEM.nc']
+CTLIX = 2
+TTLS = [ALIA[ii] + '$–$CTL' if ii != CTLIX else 'CTL' for ii in range(len(ALIA))]
 
 ZSCL = np.vectorize(lambda zl: zl / 2850 if zl <= 2000 else 2000 / 2850 + (zl - 2000) / 2000 * 850 / 2850)
 ZLAB = np.arange(1000, 5000, 1000)
@@ -33,6 +33,7 @@ def main():
    ads = [xr.open_dataset(os.path.join(ar, AFIL)) for ar in ARCHRT] #TODO: make sure uxarray zonal_mean() doesn't drop coords
    ods = [xr.open_dataset(os.path.join(ar, OFIL)) for ar in ARCHRT]
    ads = [ad.isel(time=slice(0, ods[ii]['time'].size)).assign_coords(time=ods[ii]['time']) for ii, ad in enumerate(ads)] #slice for now ATM and OCN time mismatch when still running
+   ads = [ds.assign_coords(lev=xr.open_dataset('/glade/u/home/jpan/grids/L26_hyb.nc')['lev']) for ds in ads]
 
    dse = [c.g * ds['Z3'] + c.cp * ds['T'] for ds in ads]
    mse = [c.g * ds['Z3'] + c.cp * ds['T'] + c.lv * ds['Q'] for ds in ads]
@@ -45,7 +46,7 @@ def main():
    dseplt = agg_time(dse)
    mseplt = agg_time(mse)
    othplt = agg_time([ds['thetao'] for ds in ods], latnm='lat')
-   omlplt = agg_time([ds['oml'] for ds in ods], latnm='lat')
+   omlplt = agg_time([ds['mlotst'] for ds in ods], latnm='lat')
 
    ############### Plot atmo MSE,DSE above ocean theta,MLdepth #################################
    #TODO: set contour levels
@@ -85,7 +86,7 @@ def main():
          ix1d = rr * 3 + cc
          if ix1d == len(ALIA): break #map panel to correct horseshoe experiment
          col_start = cc * 3
-         sp = gs[rr, cc]
+         sp = gs[rr, col_start]
 
          # Create a GridSpecFromSubplotSpec to manage the tight vertical split (ax_top/ax_bot)
          gs_vertical = sp.subgridspec(2, 1, height_ratios=[1, 0.5], hspace=0.0)
@@ -108,29 +109,28 @@ def main():
          # Determine correct symmetric ticks for the current expo
          current_ticks = base_sym_ticks# * (1e10 / expo)
    
-         csf = ax_bot.contourf(YSCL(othplt[ix1d]['lat']), ZSCL(othplt[ix1d]['zl']), othplt[ix1d])#, cmap='coolwarm' if jj == 1 else 'bwr', **sf_cfkwargs)
-         continue
+         csf = ax_bot.contourf(YSCL(othplt[ix1d]['lat']), othplt[ix1d]['zl'], othplt[ix1d])#, cmap='coolwarm' if jj == 1 else 'bwr', **sf_cfkwargs)
          
          # --- MODIFIED: Use the newly created cax and defined ticks ---
-         plt.colorbar(csf, label='[10$^{%d}$ kg/s]' % int(np.log10(expo)), 
-                      cax=cax, pad=.01, ticks=current_ticks)
+         #plt.colorbar(csf, label='[10$^{%d}$ kg/s]' % int(np.log10(expo)), 
+         #             cax=cax, pad=.01, ticks=current_ticks)
          # -------------------------------------------------------------
          
          #ax_bot.contour(YSCL(ocn_yz['yq']), ZSCL(ocn_yz['zl']), sf / expo, **sf_ctkwargs)
-         ax_bot.contour(YSCL(ocn_yz['yq']), ZSCL(ocn_yz['zl']), (ocn_yz['vmo'] + ocn_yz['vhGM']).isel(case=1, season=ii) / cexpo, **sf_ctkwargs)
+         ax_bot.plot(YSCL(omlplt[ix1d]['lat']), omlplt[ix1d])
          ax_bot.set_xticks(YLOC, ['' if yl % 20 else yl for yl in YLAB]) # Keeps xtick labels on ax_bot
          ax_bot.set_xlim(-1, 1)
-         ax_bot.set_yticks(ZLOC, ZLAB)
+         ax_bot.set_ylim(0, 600)
+         #ax_bot.set_yticks(ZLOC, ZLAB)
          ax_bot.invert_yaxis()
          ax_bot.set_xlabel('Latitude [°]')
          ax_bot.set_ylabel('Depth [m]')
          ax_bot.tick_params(right=True)
          ax_bot.tick_params(length=7, width=1.3, which='both')
-   
-         mmc = temds['PSI_EM'].isel(case=jj, season=ii)
-         csf = ax_top.contourf(YSCL(temds['lat']), temds['plev'], mmc / expo, cmap='coolwarm' if jj == 1 else 'bwr', extend='both', **sf_cfkwargs)
-         #ax_top.contour(YSCL(temds['lat']), temds['plev'], mmc / expo, **sf_ctkwargs)
-         ax_top.contour(YSCL(temds['lat']), temds['plev'], temds['PSI_EM'].isel(case=1, season=ii) / cexpo, **sf_ctkwargs)
+
+         csf = ax_top.contourf(YSCL(mseplt[ix1d]['latitudes']), mseplt[ix1d]['lev'], mseplt[ix1d])#, cmap='coolwarm' if jj == 1 else 'bwr', extend='both', **sf_cfkwargs)
+         ax_top.contourf(YSCL(dseplt[ix1d]['latitudes']), dseplt[ix1d]['lev'], dseplt[ix1d])
+         #ax_top.contour(YSCL(temds['lat']), temds['plev'], temds['PSI_EM'].isel(case=1, season=ii) / cexpo, **sf_ctkwargs)
          ax_top.set_ylim(1000, 100)
          ax_top.set_yscale('log')
          ax_top.yaxis.set_minor_formatter(mticker.ScalarFormatter())
@@ -140,11 +140,11 @@ def main():
          ax_top.tick_params(top=True, right=True, length=7, width=1.3, which='both')
          ax_top.tick_params(which='minor', labelsize=0)
    
-         label_index = (ii * 3) + jj
+         label_index = (rr * 3) + cc
          panel_label = f'({chr(97 + label_index)})'
          ax_top.set_title(panel_label, loc='left')
-         if ii == 0:
-            ax_top.set_title(TTLS[jj], fontsize=24)
+
+         ax_top.set_title(TTLS[ix1d], fontsize=24)
          
          # --- NEW/MODIFIED: Ensure no xtick labels on ax_top ---
          ax_top.tick_params(labelbottom=False) 
