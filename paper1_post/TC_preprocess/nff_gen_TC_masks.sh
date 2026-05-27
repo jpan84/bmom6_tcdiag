@@ -1,29 +1,5 @@
 #!/bin/bash
-####PBS -N tempest.NFF
-####PBS -A UCIS0005
-####PBS -l select=1:ncpus=18:mpiprocs=18:mem=80GB
-####PBS -l walltime=01:50:00
-####PBS -q casper
-####PBS -j oe
-####PBS -m a
-####PBS -M jvp5930@psu.edu
-###################################################################
-###
-###starttime=$(date -u +"%s")
-###
-#### Casper modules
-###module load intel
-###module load openmpi
-###module load parallel
-###module load nco
-###
-###echo "MPI info"
-###nproc
-###cat /proc/cpuinfo | grep processor | wc -l
-###grep "cpu cores" /proc/cpuinfo | uniq
-###grep -c processor /proc/cpuinfo
 
-###TEMPESTEXTREMESDIR=/glade/work/zarzycki/derecho/tempestextremes/
 TEMPESTEXTREMESDIR=/glade/work/zarzycki/tempestextremes_noMPI
 
 ###TODO: pass args from driver (SPTH, GCD, UQSTR, PATHTOFILES, FILTVARS)
@@ -49,15 +25,20 @@ TRAJFILENAME=trajectories.txt.${UQSTR}
 touch $FILELISTNAME $OUTLISTNAME
 
 ignoreyear=999999999
+DATE_LIM="0007-02"
 ###FILES=$(ls "${PATHTOFILES}"/*.h1i.*.nc | grep -v "$ignoreyear-")
 FILES=$(find "${PATHTOFILES}" -maxdepth 1 -name "*.h1i.*.nc" ! -name "*$ignoreyear-*" | sort)
 ###echo $FILES
 for f in $FILES
 do
-  #echo "${f};${TOPOFILE}" >> $FILELISTNAME
-  echo "${f}" >> $FILELISTNAME
-  FILENAME=$(basename "$f")
-  echo "${DIRO}/${FILENAME}.nff_${SPTH}mps" >> $OUTLISTNAME
+  FILE_DATE=$(echo "$f" | grep -oE '[0-9]{4}-[0-9]{2}')
+
+  if [[ "$FILE_DATE" < "${DATE_LIM}" ]]; then
+    echo "${f}" >> $FILELISTNAME
+    FILENAME=$(basename "$f")
+    echo "${DIRO}/${FILENAME}.nff_${SPTH}mps" >> $OUTLISTNAME
+  fi
+
 done
 
 starttime=$(date -u +"%s")
@@ -69,6 +50,6 @@ STR_NFE1="--in_nodefile ${TRAJFILENAME} --in_nodefile_type SN --in_fmt ${SN_FMT}
 
 $TEMPESTEXTREMESDIR/bin/NodeFileEditor ${STR_NFE1}
 
-STR_NFF="--in_nodefile ${TRAJFILENAME}.radspd${SPTH} --in_nodefile_type SN --in_fmt ${SN_FMT},radspd,r${SPTH} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_data_list ${OUTLISTNAME} --maskvar TC_R${SPTH} --var \"${FILTVARS//:/,}\" --bydist r${SPTH}"
+STR_NFF="--in_nodefile ${TRAJFILENAME}.radspd${SPTH} --in_nodefile_type SN --in_fmt ${SN_FMT},radspd,r${SPTH} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_data_list ${OUTLISTNAME} --maskvar TC_R${SPTH} --var ${FILTVARS//:/,} --bydist r${SPTH}"
 
 $TEMPESTEXTREMESDIR/bin/NodeFileFilter ${STR_NFF}
