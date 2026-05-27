@@ -7,3 +7,50 @@ MPI info
 256
 cpu cores	: 64
 256
+calling mpiexec
+Invalid /etc/cray/nid value dec0801
+
+Arguments:
+  --in_data <string> [""] 
+  --in_data_list <string> ["filelist.txt.1779896383668799310"] 
+  --in_connect <string> ["/glade/u/home/jpan/ne120np4_connect_v2.dat"] 
+  --diag_connect <bool> [false] 
+  --out <string> ["cyclones_tempest.1779896383668799310"] 
+  --out_file_list <string> [""] 
+  --searchbymin <string> ["PSL"] (default PSL)
+  --searchbymax <string> [""] 
+  --searchbythreshold <string> [""] 
+  --minlon <double> [0.000000] (degrees)
+  --maxlon <double> [0.000000] (degrees)
+  --minlat <double> [0.000000] (degrees)
+  --maxlat <double> [0.000000] (degrees)
+  --minabslat <double> [0.000000] (degrees)
+  --mergedist <double> [6.000000] (degrees)
+  --mergeequal <bool> [false] 
+  --closedcontourcmd <string> ["PSL,200.0,5.5,0;_DIFF(Z300,Z500),-6.0,6.5,1.0;_PROD(_SIGN(lat),_CURL{8,1.0}(U850,V850)),-8e-5,5.5,0.5"] [var,delta,dist,minmaxdist;...]
+  --noclosedcontourcmd <string> [""] [var,delta,dist,minmaxdist;...]
+  --thresholdcmd <string> [""] [var,op,value,dist;...]
+  --outputcmd <string> ["PSL,min,0;_VECMAG(UBOT,VBOT),max,2"] [var,op,dist;...]
+  --timestride <integer> [6] 
+  --timefilter <string> [""] 
+  --latname <string> ["lat"] 
+  --lonname <string> ["lon"] 
+  --regional <bool> [false] 
+  --out_header <bool> [false] 
+  --out_seconds <bool> [false] 
+  --logdir <string> ["."] 
+  --verbosity <integer> [0] 
+------------------------------------------------------------
+Parsing closed contour operations
+..PSL increases by 200.000000 over 5.500000 degrees (min search 0.000000 deg)
+.._DIFF(Z300,Z500) decreases by 6.000000 over 6.500000 degrees (max search 1.000000 deg)
+.._PROD(_SIGN(lat),_CURL{8,1.0}(U850,V850)) decreases by 0.000080 over 5.500000 degrees (max search 0.500000 deg)
+..Done
+Parsing output operations
+..Minimum of PSL within 0.000000 degrees
+..Maximum of _VECMAG(UBOT,VBOT) within 2.000000 degrees
+..Done
+Begin search operation
+..Output will be written to cyclones_tempest.1779896383668799310XXXXXX.dat
+..Logs will be written to ./logXXXXXX.txt
+dec0801.hsn.de.hpc.ucar.edu: rank 0 died from signal 15

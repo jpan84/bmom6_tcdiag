@@ -1,3 +1,4 @@
+1779901251 
 
 The following have been reloaded with a version change:
   1) ncarcompilers/1.1.0 => ncarcompilers/1.2.0
@@ -8,14 +9,14 @@ MPI info
 cpu cores	: 64
 256
 calling mpiexec
-Invalid /etc/cray/nid value dec0660
+Invalid /etc/cray/nid value dec2445
 
 Arguments:
   --in_data <string> [""] 
-  --in_data_list <string> ["filelist.txt.1779896382373072613"] 
+  --in_data_list <string> ["filelist.txt.1779901253067420327"] 
   --in_connect <string> ["/glade/u/home/jpan/ne120np4_connect_v2.dat"] 
   --diag_connect <bool> [false] 
-  --out <string> ["cyclones_tempest.1779896382373072613"] 
+  --out <string> ["cyclones_tempest.1779901253067420327"] 
   --out_file_list <string> [""] 
   --searchbymin <string> ["PSL"] (default PSL)
   --searchbymax <string> [""] 
@@ -51,16 +52,16 @@ Parsing output operations
 ..Maximum of _VECMAG(UBOT,VBOT) within 2.000000 degrees
 ..Done
 Begin search operation
-..Output will be written to cyclones_tempest.1779896382373072613XXXXXX.dat
+..Output will be written to cyclones_tempest.1779901253067420327XXXXXX.dat
 ..Logs will be written to ./logXXXXXX.txt
 ..Done
 ------------------------------------------------------------
-/glade/u/home/jpan/aquaptc/tempest
+/glade/work/jpan/tmpTE.1779901253067420327
 Arguments:
-  --in <string> ["cyclones.1779896382373072613"] 
+  --in <string> ["cyclones.1779901253067420327"] 
   --in_list <string> [""] 
   --in_connect <string> ["/glade/u/home/jpan/ne120np4_connect_v2.dat"] 
-  --out <string> ["trajectories.txt."] 
+  --out <string> ["/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper1_post/TC_preprocess/trajectories.txt."] 
   --in_fmt <string> ["lon,lat,slp,wind"] 
   --range <double> [6.000000] (degrees)
   --mintime <string> ["3"] 
@@ -102,4 +103,3 @@ Filtering paths
 Writing results.. Done
 Cleanup.. Done
 ------------------------------------------------------------
-rm: cannot remove 'cyclones.1779896382373072613.dat': No such file or directory

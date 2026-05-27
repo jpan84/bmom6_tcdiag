@@ -12,10 +12,10 @@ Invalid /etc/cray/nid value dec0660
 
 Arguments:
   --in_data <string> [""] 
-  --in_data_list <string> ["filelist.txt.1779896382373072613"] 
+  --in_data_list <string> ["filelist.txt.1779896643099290981"] 
   --in_connect <string> ["/glade/u/home/jpan/ne120np4_connect_v2.dat"] 
   --diag_connect <bool> [false] 
-  --out <string> ["cyclones_tempest.1779896382373072613"] 
+  --out <string> ["cyclones_tempest.1779896643099290981"] 
   --out_file_list <string> [""] 
   --searchbymin <string> ["PSL"] (default PSL)
   --searchbymax <string> [""] 
@@ -51,13 +51,13 @@ Parsing output operations
 ..Maximum of _VECMAG(UBOT,VBOT) within 2.000000 degrees
 ..Done
 Begin search operation
-..Output will be written to cyclones_tempest.1779896382373072613XXXXXX.dat
+..Output will be written to cyclones_tempest.1779896643099290981XXXXXX.dat
 ..Logs will be written to ./logXXXXXX.txt
 ..Done
 ------------------------------------------------------------
-/glade/u/home/jpan/aquaptc/tempest
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper1_post/TC_preprocess
 Arguments:
-  --in <string> ["cyclones.1779896382373072613"] 
+  --in <string> ["cyclones.1779896643099290981"] 
   --in_list <string> [""] 
   --in_connect <string> ["/glade/u/home/jpan/ne120np4_connect_v2.dat"] 
   --out <string> ["trajectories.txt."] 
@@ -102,4 +102,4 @@ Filtering paths
 Writing results.. Done
 Cleanup.. Done
 ------------------------------------------------------------
-rm: cannot remove 'cyclones.1779896382373072613.dat': No such file or directory
+rm: cannot remove 'cyclones.1779896643099290981.dat': No such file or directory

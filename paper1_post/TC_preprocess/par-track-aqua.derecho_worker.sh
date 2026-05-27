@@ -10,6 +10,8 @@
 ################################################################
 
 starttime=$(date -u +"%s")
+execdir=$(pwd)
+echo "$starttime $PBS_NP"
 
 set -e
 # Derecho modules
@@ -41,14 +43,18 @@ DN_FMT="lon,lat,slp,wind"
 
 ############ TRACKER MECHANICS #####################
 
-###cd /glade/u/home/zarzycki/tempest-scripts/for-joshua
-cd /glade/u/home/jpan/aquaptc/tempest
-
-###ls $PATHTOFILES
-
 DATESTRING=`date +"%s%N"`
+TMPDIR=/glade/work/jpan/tmpTE.${DATESTRING}/
+mkdir -p ${TMPDIR}
+cd ${TMPDIR} || exit 1
+
+cleanup() {
+  rm -rf "${TMPDIR}"
+}
+trap cleanup EXIT
+
 FILELISTNAME=filelist.txt.${DATESTRING}
-TRAJFILENAME=trajectories.txt.${UQSTR}
+TRAJFILENAME=${execdir}/trajectories.txt.${UQSTR}
 touch $FILELISTNAME
 
 DATE_LIM="0007-02"
@@ -83,7 +89,7 @@ touch cyclones.${DATESTRING}
 
 STR_DETECT="--verbosity 0 --timestride 6hr --in_connect ${CONNECTDAT} --out cyclones_tempest.${DATESTRING} --closedcontourcmd PSL,${DCU_PSLFOMAG},${DCU_PSLFODIST},0;_DIFF(Z300,Z500),${DCU_WCFOMAG},${DCU_WCFODIST},${DCU_WCMAXOFFSET};_PROD(_SIGN(lat),_CURL{8,1.0}(U850,V850)),-8e-5,5.5,0.5 --mergedist ${DCU_MERGEDIST} --searchbymin PSL --outputcmd PSL,min,0;_VECMAG(UBOT,VBOT),max,2"
 echo "calling mpiexec"
-mpiexec  -n 16 $TEMPESTEXTREMESDIR/bin/DetectNodes --in_data_list "${FILELISTNAME}" ${STR_DETECT} </dev/null
+mpiexec  -n 64 $TEMPESTEXTREMESDIR/bin/DetectNodes --in_data_list "${FILELISTNAME}" ${STR_DETECT} </dev/null
 ###--display-allocation --display-map --report-bindings
 
 cat cyclones_tempest.${DATESTRING}* >> cyclones.${DATESTRING}
@@ -97,6 +103,7 @@ tottime=$(($endtime-$starttime))
 
 printf "${tottime}\n" >> timing.txt
 
-rm -v cyclones.${DATESTRING}.dat
-rm -v ${FILELISTNAME}
-rm -v log*txt
+rm -rf "${TMPDIR}"
+###rm -v cyclones.${DATESTRING}.dat
+###rm -v ${FILELISTNAME}
+###rm -v log*txt

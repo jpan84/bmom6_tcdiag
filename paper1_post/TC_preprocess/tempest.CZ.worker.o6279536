@@ -8,14 +8,14 @@ MPI info
 cpu cores	: 64
 256
 calling mpiexec
-Invalid /etc/cray/nid value dec1154
+Invalid /etc/cray/nid value dec1182
 
 Arguments:
   --in_data <string> [""] 
-  --in_data_list <string> ["filelist.txt.1779896382798779485"] 
+  --in_data_list <string> ["filelist.txt.1779896644357004717"] 
   --in_connect <string> ["/glade/u/home/jpan/ne120np4_connect_v2.dat"] 
   --diag_connect <bool> [false] 
-  --out <string> ["cyclones_tempest.1779896382798779485"] 
+  --out <string> ["cyclones_tempest.1779896644357004717"] 
   --out_file_list <string> [""] 
   --searchbymin <string> ["PSL"] (default PSL)
   --searchbymax <string> [""] 
@@ -51,6 +51,6 @@ Parsing output operations
 ..Maximum of _VECMAG(UBOT,VBOT) within 2.000000 degrees
 ..Done
 Begin search operation
-..Output will be written to cyclones_tempest.1779896382798779485XXXXXX.dat
+..Output will be written to cyclones_tempest.1779896644357004717XXXXXX.dat
 ..Logs will be written to ./logXXXXXX.txt
-dec1154.hsn.de.hpc.ucar.edu: rank 0 died from signal 15
+dec1182.hsn.de.hpc.ucar.edu: rank 10 died from signal 15
