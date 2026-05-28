@@ -31,16 +31,20 @@ if VARS != 'all':
 for dv in myvars:
    zm = ds[dv].zonal_mean(lat=LATS, conservative=CONS)
    del zm.attrs['zonal_mean'], zm.attrs['conservative']
+   oricoords = dict(ds[dv].coords)
+   #print(oricoords)
+   zm = zm.assign_coords(coords=oricoords)
+   print(zm)
+
    if outds is None:
-      outds = xr.Dataset(data_vars={dv: zm})
-   else:
-      outds = outds.assign(variables={dv: zm})
+      outds = xr.Dataset()#data_vars={dv: zm})
+   outds[dv] = zm
 
 #print(dict(ds.coords))
-oricoords = dict(ds.coords)
+#oricoords = dict(ds.coords)
 #oricoords.pop('n_face')
 
-outds = outds.assign_coords(coords=oricoords)
+#outds = outds.assign_coords(coords=oricoords)
 outds = outds.assign_attrs(script_from=sys.argv[0], conservative='True' if CONS else 'False', zmlats=str(LATS), ugrd=UGRD, infiles=HPTH)#, zonal_mean=str(outds.attrs['zonal_mean']))
 nameflags = ['uxzm', TAPE, ('' if CONS else 'non') + 'cons'] + [str(itm) for itm in LATS] + ([] if VARS == 'all' else myvars)
 with ProgressBar():

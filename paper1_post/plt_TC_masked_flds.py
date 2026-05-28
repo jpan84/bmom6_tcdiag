@@ -7,7 +7,7 @@ import xarray as xr
 from sznl_funcs import stack_hemi_sznl, monthly2sznl
 import matplotlib.pyplot as plt
 
-TOTFIL = 'atm/uxzm_h0a_cons_-90_90_0.25_TAUX.nc'
+TOTFIL = 'atm/uxzm_h0a_noncons_-90_90_0.25_TAUX.nc'
 TCSFIL = 'atm/uxzm_h1i_noncons_-90_90_0.25_TC_R4_TAUX_PRECT.nc'
 ALAT = 'latitudes'
 
@@ -24,7 +24,7 @@ def main(pltvar='TAUX'):
    print([ds.time for ds in totdss])
    def agg_time(listdas, latnm='latitudes', diff=True):
       ymonmean = [da.groupby('time.month').mean() for da in listdas]
-      twoszns = [stack_hemi_sznl(monthly2sznl(ym.squeeze()), antisym=False, latnm=latnm) for ym in ymonmean]
+      twoszns = [stack_hemi_sznl(monthly2sznl(ym), antisym=False, latnm=latnm) for ym in ymonmean]
       halfyr = [ts.mean(dim='season') for ts in twoszns]
       if diff:
          return [hy - halfyr[CTLIX] if ii != CTLIX else hy for ii, hy in enumerate(halfyr)]
@@ -39,8 +39,8 @@ def main(pltvar='TAUX'):
 
    for ii, ax in enumerate(axes.ravel()):
        ixh = IXHORS[ii]
-       ax.plot(YSCL(totplt[ii][ALAT]), totplt[ii])
-       ax.plot(YSCL(tcsplt[ii][ALAT]), tcsplt[ii])
+       ax.plot(YSCL(totplt[ixh][ALAT]), totplt[ixh])
+       ax.plot(YSCL(tcsplt[ixh][ALAT]), tcsplt[ixh])
 
    plt.show()
    #plt.savefig('thermo_state_plt.svg', bbox_inches='tight')
