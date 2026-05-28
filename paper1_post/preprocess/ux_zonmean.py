@@ -8,13 +8,14 @@ import xarray as xr
 from dask.diagnostics import ProgressBar
 
 print(sys.argv)
-PTHPTR = sys.argv[1]#.replace('\\', '')
+PTHPTR = sys.argv[1] #file containing the glob path of model output files
 HPTH = ''
 with open(PTHPTR, 'r') as f:
    HPTH = f.read().strip()
+print(HPTH)
+os.remove(PTHPTR)
 DIRI = os.path.dirname(HPTH)
-TAPE = re.findall(r'h[0-9][ia]', HPTH)
-#TAPE = '*h0a.00[0-9]*.nc' #file names to process
+TAPE = re.findall(r'h[0-9][ia]', HPTH)[0]
 
 UGRD = sys.argv[2]
 CONS = (sys.argv[3] == 'True') #conservative or not
@@ -35,7 +36,11 @@ for dv in myvars:
    else:
       outds = outds.assign(variables={dv: zm})
 
-outds = outds.assign_attrs(script_from=sys.argv[0], conservative='True' if CONS else 'False', zmlats=str(LATS), ugrd=UGRD, infiles=TAPE)#, zonal_mean=str(outds.attrs['zonal_mean']))
+oricoords = dict(ds.coords)
+oricoords.pop('n_face')
+
+outds = outds.assign_coords(coords=oricoords)
+outds = outds.assign_attrs(script_from=sys.argv[0], conservative='True' if CONS else 'False', zmlats=str(LATS), ugrd=UGRD, infiles=HPTH)#, zonal_mean=str(outds.attrs['zonal_mean']))
 nameflags = ['uxzm', TAPE, ('' if CONS else 'non') + 'cons'] + [str(itm) for itm in LATS] + ([] if VARS == 'all' else myvars)
 with ProgressBar():
    outds.to_netcdf(os.path.join(DIRI, '..', '_'.join(nameflags) + '.nc'))
