@@ -36,8 +36,9 @@ for dv in myvars:
    else:
       outds = outds.assign(variables={dv: zm})
 
+#print(dict(ds.coords))
 oricoords = dict(ds.coords)
-oricoords.pop('n_face')
+#oricoords.pop('n_face')
 
 outds = outds.assign_coords(coords=oricoords)
 outds = outds.assign_attrs(script_from=sys.argv[0], conservative='True' if CONS else 'False', zmlats=str(LATS), ugrd=UGRD, infiles=HPTH)#, zonal_mean=str(outds.attrs['zonal_mean']))

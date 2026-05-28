@@ -1,6 +1,6 @@
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 4068294.casper-pbs with qsub arguments:
+Waiting on job launch; 4071110.casper-pbs with qsub arguments:
     qsub  -l select=1:ncpus=16:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=02:00:00
 
-['ux_zonmean.py', 'zmdriver.pthptr3', '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc', 'False', 'TC_R4,TAUX,PRECT']
-/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm/nff_4mps/*h1i.0007*
+['ux_zonmean.py', 'zmdriver.pthptr3', '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc', 'False', 'TAUX']
+/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm/hist/*h0a.*.nc
