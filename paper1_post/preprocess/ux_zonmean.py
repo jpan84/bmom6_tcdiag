@@ -21,7 +21,8 @@ UGRD = sys.argv[2]
 CONS = (sys.argv[3] == 'True') #conservative or not
 VARS = sys.argv[4] #example of comma-separated (no space): PS,PRECT,QFLX
 
-LATS = (-90, 90, 0.25)
+#LATS = (-90, 90, 0.25)
+LATS = (-55, 55.1, 0.5)
 
 ds = ux.open_mfdataset(UGRD, HPTH) #os.path.join(DIRI, TAPE))
 outds = None
@@ -34,7 +35,7 @@ for dv in myvars:
    oricoords = dict(ds[dv].coords)
    #print(oricoords)
    zm = zm.assign_coords(coords=oricoords)
-   print(zm)
+   #print(zm)
 
    if outds is None:
       outds = xr.Dataset()#data_vars={dv: zm})

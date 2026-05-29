@@ -17,6 +17,6 @@ for ii, ar in enumerate(ARCHRT):
    with open(pthptr, 'w') as f:
       f.write(hpth)
 
-   proc = subprocess.Popen(f"qcmd -q casper -l walltime=02:00:00 -l select=1:ncpus=16:mem=256GB -A UCIS0005 python3 -u ux_zonmean.py\
+   proc = subprocess.Popen(f"qcmd -q casper -l walltime=03:00:00 -l select=1:ncpus=16:mem=256GB -A UCIS0005 python3 -u ux_zonmean.py\
                     {pthptr} {CAMGR} {str(CONS)} {VARS} &> zmdriver.out{ii}", shell=True)
    print(proc.args)
