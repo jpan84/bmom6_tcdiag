@@ -1,0 +1,236 @@
+/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m/atm
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0008-06.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0007-10.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0007-07.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0010-08.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0007-02.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0007-09.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0007-08.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0009-05.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0009-11.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0006-12.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0010-02.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0008-09.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0009-02.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0009-06.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0007-03.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0008-05.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0010-07.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0008-04.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0008-07.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0008-11.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0009-03.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0008-02.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0010-03.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0007-05.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0008-01.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0009-04.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0010-06.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0007-12.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0008-10.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0009-08.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0009-01.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0009-09.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0010-10.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0010-04.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0009-12.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0008-03.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0009-10.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0010-05.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0008-12.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0007-06.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0010-09.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0007-11.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0009-07.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0008-08.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0007-04.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0010-01.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3
+Input #00: ./hist/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m.cam.h0a.0007-01.nc
+Vertical : /glade/u/home/jpan/grids/L26_plevs.nc
+ncks: HINT nco_ntp_vrt() input dataset contains "lnsp" variable and thus may be stored on hybrid sigma-pressure grid in ECMWF/IFS/CAMS-format. However, the user must invoke the regridder with either "ncremap --ps_nm=lnsp ..." or "ncks --rgr ps_nm_in=lnsp ..." in order to vertically interpolate data stored in ECMWF/IFS/CAMS-format. Otherwise, expect to receive an INFO message stating that no interpolable variables were found. See http://nco.sf.net/nco.html#cams for more information.
+ncks: INFO nco_ntp_vrt() temperature extrapolated toward/into surface assuming constant moist adiabatic lapse rate = 6.5 K/(100 hPa) for variable T
+ncks: INFO nco_ntp_vrt() geopotential height extrapolated toward/into surface using hypsometric equation with constant global mean virtual temperature = 288 for variable Z3

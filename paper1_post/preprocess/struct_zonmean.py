@@ -17,9 +17,11 @@ for ii, ar in enumerate(ARCHRT):
    hfil = os.path.join(ar, OHST, TAPE0 if OCN_CUST[ii] else TAPE1)
    filo = os.path.join(ar, OHST, 'cdo_zm_' + '_'.join(VARS.split(',')) + '.nc')
 
+   proc = None
    if OCN_CUST[ii]:
       proc = subprocess.Popen(f"module load cdo && qcmd -q casper -l walltime=01:50:00 -l select=1:ncpus=8:mem=128GB -A UCIS0005 -- \
-                                cdo zonmean -cat '-apply,-selvar,{VARS}' \[ {hfil} \] {filo} &> cdozm.out{ii}", shell=True)
+                                cdo zonmean -cat '-apply,-selvar,{VARS}' [ {hfil} ] {filo} &> cdozm.out{ii}", shell=True)
    else:
       proc = subprocess.Popen(f"module load cdo && qcmd -q casper -l walltime=00:30:00 -l select=1:ncpus=8:mem=128GB -A UCIS0005 -- \
-                                cdo zonmean -selvar,{VARS} -cat {hfil} {filo} &> cdozm.out{ii}", shell=True)
+                                cdo zonmean -selvar,{VARS} -cat [ {hfil} ] {filo} &> cdozm.out{ii}", shell=True)
+   print(proc.args)
