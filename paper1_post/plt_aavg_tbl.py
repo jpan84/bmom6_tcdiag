@@ -23,9 +23,9 @@ MOWGTS = np.array([30, 31, 31, 30, 31, 30], dtype=np.int_)
 
 PLTVARS = ['DSE', 'LE', 'KE', 'KE_MEAN', 'AM', 'TAUAM', 'PS', 'TS', 'PRECT', 'QFLX', 'SHU', 'AHSRC', 'FSNT', 'FLNT', 'SWCF', 'LWCF', 'FSNS', 'FLNS', 'CLD_BL', 'CLD_FT']
 ALTNMS = dict(AHSRC='$Q_a$', QFLX='E')
-MULTBY = dict(PRECT=1e3 * 86400, QFLX=86400, PS=1e-2)#, KE=0.5, KE_MEAN=0.5)
+MULTBY = dict(PRECT=1e3 * 86400, QFLX=86400, PS=1e-2, FLNT=-1)#, KE=0.5, KE_MEAN=0.5)
 
-VARLBLS = dict(TS='SST [K]', DSE='DSE [J m$^{-2}$]', LE='LE [J m$^{-2}$]', PRECT='P [mm d$^{-1}$]', QFLX='E [mm d$^{-1}$]')
+VARLBLS = dict(TS='SST [K]', DSE='DSE [J m$^{-2}$]', LE='LE [J m$^{-2}$]', PRECT='P [mm d$^{-1}$]', QFLX='E [mm d$^{-1}$]', FLNT='-FLNT', CLD_BL='CWP$_{sfc-700}$', CLD_FT='CWP$_{700-100}$')
 
 def main():
    dss = [xr.open_dataset(os.path.join(dr, FILI)) for dr in DIRIS]
@@ -61,7 +61,7 @@ def main():
          txtclr = 'white' if abs(toshade[rr, cc]) > 0.5 else 'black'
          ax.text(cc, rr, lbl, ha='center', va='center', color=txtclr)
 
-   plt.savefig(FILI + '.png')
+   plt.savefig(FILI + '.svg')
    plt.close()
    #plt.show()
 
@@ -106,7 +106,7 @@ def main():
 
    # 4. Hide structural spacer rows from the canvas and save
    [ax.axis('off') for name, ax in zip(grid_vars, axs) if name == 'SPACER']
-   plt.savefig(FILI + '_clean_blocks.png', dpi=300, bbox_inches='tight'), plt.close()
+   plt.savefig(FILI + '_clean_blocks.svg', dpi=300, bbox_inches='tight'), plt.close()
 
 # --- Radiation and Cloud Plot for Paper 1 ---
    # 1. Define row blocks: (Variable List, Shared Colorbar Label)
@@ -114,7 +114,7 @@ def main():
        (['FSNT', 'SWCF', 'FLNT', 'LWCF'], 'Anom [W m$^{-2}$]'),
        (['CLD_BL', 'CLD_FT'], 'Anom [kg m$^{-2}$]')
    ]
-   
+
    # Extract row slices for the targeted variables
    v_row = {pv: valtbl[PLTVARS.index(pv), :] for pv in PLTVARS}
    d_row = {pv: diftbl[PLTVARS.index(pv), :] for pv in PLTVARS}
@@ -145,7 +145,7 @@ def main():
 
    # 4. Hide structural spacer rows from the canvas and save
    [ax.axis('off') for name, ax in zip(grid_vars, axs) if name == 'SPACER']
-   plt.savefig(FILI + '_radiation_clouds.png', dpi=300, bbox_inches='tight'), plt.close()
+   plt.savefig(FILI + '_radiation_clouds.svg', dpi=300, bbox_inches='tight'), plt.close()
 
 if __name__ == '__main__':
    main()

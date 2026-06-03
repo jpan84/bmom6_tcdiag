@@ -12,7 +12,8 @@ import matplotlib.gridspec as gspec
 import matplotlib.ticker as mticker
 
 AFIL = 'atm/uxzm_cons_-90_90_0.25_Z3_T_Q.nc'
-OFIL = 'ocn/hist/cdo_zm_thetao_oml_mlotst.nc'
+OFIL = 'ocn/hist/cdo_zm_thetao_oml.nc'
+AFIL = 'atm/uxzm_h0a_noncons_-55_55.1_0.5_Z3_T_Q.nc'
 ALAT, OLAT = 'latitudes', 'lat'
 
 TTLS = [ALIA[ii] + '$–$CTL' if ii != CTLIX else 'CTL' for ii in range(len(ALIA))]
@@ -31,8 +32,8 @@ YLOC = YSCL(YLAB)
 def main():
    ads = [xr.open_dataset(os.path.join(ar, AFIL)) for ar in ARCHRT] #TODO: make sure uxarray zonal_mean() doesn't drop coords
    ods = [xr.open_dataset(os.path.join(ar, OFIL)) for ar in ARCHRT]
-   ads = [ad.isel(time=slice(0, ods[ii]['time'].size)).assign_coords(time=ods[ii]['time']) for ii, ad in enumerate(ads)] #slice for now ATM and OCN time mismatch when still running
-   ads = [ds.assign_coords(lev=xr.open_dataset('/glade/u/home/jpan/grids/L26_hyb.nc')['lev']) for ds in ads]
+   #ads = [ad.isel(time=slice(0, ods[ii]['time'].size)).assign_coords(time=ods[ii]['time']) for ii, ad in enumerate(ads)] #slice for now ATM and OCN time mismatch when still running
+   #ads = [ds.assign_coords(lev=xr.open_dataset('/glade/u/home/jpan/grids/L26_hyb.nc')['lev']) for ds in ads]
 
    dse = [c.g * ds['Z3'] + c.cp * ds['T'] for ds in ads]
    mse = [c.g * ds['Z3'] + c.cp * ds['T'] + c.lv * ds['Q'] for ds in ads]
@@ -51,7 +52,7 @@ def main():
    omlplt = agg_time([ds['oml'] for ds in ods], latnm=OLAT, diff=False)
 
    mse_kw = dict(levels=np.arange(-2000, 2001, 200), cmap='seismic')
-   dse_kw = dict(levels=mse_kw['levels'][mse_kw['levels'] != 0])
+   dse_kw = dict(levels=mse_kw['levels'][mse_kw['levels'] != 0] / 2)
    ctl_kw = dict(levels=np.arange(3e5, 4.01e5, 5e3), cmap='viridis')
    olevs = np.arange(-.2, .21, .02)
    olevs_c = np.arange(0, 40, 4)
@@ -115,10 +116,10 @@ def main():
           ax_bot.set_ylabel('Depth [m]') if cc == 0 else ax_bot.tick_params(labelleft=False)
 
           # --- Plot Atmosphere Data (Top Panel) ---
-          csf_atmo = ax_top.contourf(YSCL(mseplt[ixh]['latitudes']), mseplt[ixh]['lev'], mseplt[ixh], 
+          csf_atmo = ax_top.contourf(YSCL(mseplt[ixh]['latitudes']), mseplt[ixh]['plev'] / 100, mseplt[ixh], 
                                      extend='both', **(mse_kw if not is_control else ctl_kw))
 
-          css_atmo = ax_top.contour(YSCL(dseplt[ixh]['latitudes']), dseplt[ixh]['lev'], dseplt[ixh], 
+          css_atmo = ax_top.contour(YSCL(dseplt[ixh]['latitudes']), dseplt[ixh]['plev'] / 100, dseplt[ixh], 
                                      colors='lime', levels=(dse_kw if not is_control else ctl_kw)['levels'])
           
           if is_control:
