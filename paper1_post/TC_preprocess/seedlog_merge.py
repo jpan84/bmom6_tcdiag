@@ -36,23 +36,22 @@ def main():
       spl = ln.strip('\n').split(' ')
       if not len(spl[0]):
          continue
-      if 'not in same hemisphere' in ln and ln != prevln:
-         data['psmin'], settings = np.nan, []
-         mkplt = True
+
       if spl[0] == 'find-sst-max.py:':
          data['sstlat'] = float(spl[4])
          data['sstval'] = float(spl[-1])
-      if spl[0] in ['sedding', 'lat/lon']:
+      elif spl[0] in ['sedding', 'lat/lon']:
          #211 sedding lat/lon: -8.347259 48.750000
          data['clon'] = float(spl[-1])
          data['clat'] = float(spl[-2])
       elif spl[:2] == ['Debugging', 'restart']:
          #212 Debugging restart file /glade/derecho/scratch/jpan/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250129_unseed_all/run/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250129_unseed_all.cam.r.0001-02-02-00000.nc at time 5407747
          data['tid'] = int(spl[-1])
-      elif spl[0][0] == "'":
-         #200 '/glade/derecho/scratch/jpan/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250129_unseed_all/run/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250129_unseed_all.cam.r.0001-02-02-00000.nc' -> '/glade/derecho/scratch/jpan/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250129_unseed_all/run/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250129_unseed_all.cam.r.0001-02-02-00000.nc.ORIG.nc'
-         dtstr = re.search(r"(\d{4}-\d{2}-\d{2}-\d{5})", spl[0]).group()
+         dtstr = re.search(r"(\d{4}-\d{2}-\d{2}-\d{5})", spl[3]).group()
          print(dtstr)
+      elif 'not in same hemisphere' in ln and ln != prevln:
+         data['psmin'], settings = np.nan, []
+         mkplt = True
       elif spl[:2] == ['minimum', 'separation']:
          data['minsep'] = float(spl[-1])
       elif spl[0][0] == '[':
@@ -82,7 +81,7 @@ def main():
          for jj, param in enumerate(STNG):
             data[param] = settings[jj]
          mkplt = True #make plot now that we have all the info for 1 storm
-      if spl[:3] == ['Average', 'PSDRY', 'out']:
+      if spl[:3] == ['Average', 'PSDRY', 'out:']:
          mkplt = True
 
       #TODO: dtstr to dtobj?
