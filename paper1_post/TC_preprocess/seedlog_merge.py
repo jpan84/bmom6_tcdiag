@@ -1,9 +1,5 @@
-#from seedmatch_stats import dfcols as mscols
-#from seed_stats import dfcols as xscols
-#from unseed_stats import dfcols as uscols
-#
-#print(set(mscols).union(set(xscols), set(uscols)))
-#{'clon', 'sstval', 'exppr', 'tid', 'rmw_target', 'zp', 'rp', 'psamb', 'minsep', 'dt', 'psmin', 'dp', 'sstlat', 'dp [hPa]', 'clat', 'rmw_final'}
+#TODO: clat, clon missing from M/SEED
+#TODO: lingering rp in wrong hemi rows of UNSEED
 
 #construct a pandas dataframe of un/seed events
 import os
@@ -40,7 +36,7 @@ def main():
       if spl[0] == 'find-sst-max.py:':
          data['sstlat'] = float(spl[4])
          data['sstval'] = float(spl[-1])
-      elif spl[0] in ['sedding', 'lat/lon']:
+      elif spl[0] in ['sedding', 'lat/lon:']:
          #211 sedding lat/lon: -8.347259 48.750000
          data['clon'] = float(spl[-1])
          data['clat'] = float(spl[-2])
@@ -49,9 +45,10 @@ def main():
          data['tid'] = int(spl[-1])
          dtstr = re.search(r"(\d{4}-\d{2}-\d{2}-\d{5})", spl[3]).group()
          print(dtstr)
-      elif 'not in same hemisphere' in ln and ln != prevln:
+      elif 'not in same hemisphere' in ln and ln != prevln and 'AttributeError' not in prevln:
          data['psmin'], settings = np.nan, []
          mkplt = True
+         #print('\ttrigger1')
       elif spl[:2] == ['minimum', 'separation']:
          data['minsep'] = float(spl[-1])
       elif spl[0][0] == '[':
@@ -81,12 +78,16 @@ def main():
          for jj, param in enumerate(STNG):
             data[param] = settings[jj]
          mkplt = True #make plot now that we have all the info for 1 storm
-      if spl[:3] == ['Average', 'PSDRY', 'out:']:
+         #print('\ttrigger2')
+      if spl[:3] == ['Average', 'PSDRY', 'out:'] and dtstr is not None:
          mkplt = True
+         #print('\ttrigger3')
 
-      #TODO: dtstr to dtobj?
       if mkplt:
+         #print(ln)
          data['dt'] = dt.strptime('-'.join(dtstr.split('-')[:-1]), '%Y-%m-%d')
+         if np.isnan(data['dp']):
+            data['rp'] = np.nan
          outdf.loc[len(outdf)] = data
 
          mkplt, dtstr = False, None
