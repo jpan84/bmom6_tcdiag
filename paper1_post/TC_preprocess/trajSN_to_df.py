@@ -4,13 +4,12 @@
 import os
 import sys
 sys.path.append('/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper1_post/')
-from paths import ARCHRT
+from paths import ARCHRT, CASENAMES
 import numpy as np
 import pandas as pd
 import datetime as dt
 
-LONGCASES = [os.path.basename(os.path.normpath(ar)) for ar in ARCHRT]
-TRAJFILES = ['trajectories.txt.' + lc for lc in LONGCASES]
+TRAJFILES = ['trajectories.txt.' + lc for lc in CASENAMES]
 
 SSHS = np.array([0, 17, 33, 43, 49, 58, 70, 9999])
 COLS = [None, 'ncol', 'lon', 'lat', 'pres', 'wspd', 'year', 'month', 'day', 'hour']
