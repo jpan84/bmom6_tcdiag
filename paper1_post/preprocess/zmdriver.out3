@@ -4,3 +4,5 @@ Waiting on job launch; 4205847.casper-pbs with qsub arguments:
 
 ['ux_zonmean.py', 'zmdriver.pthptr3', '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc', 'False', 'SST', '-20:20:0.25']
 /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm/hist/*h1i*.nc
+=>> PBS: job killed: walltime 10824 exceeded limit 10800
+Terminated
