@@ -9,13 +9,20 @@ For now, I’ll treat my Github repo located at ~jpan/aquaptc/bmom6\_tcdiag/pape
 * **`seedlog_merge.py`**: scrapes log files of un/seeding interventions to create tables of the vortex params for each intervention
 * **`nff_driver.py`**: runs `nff_gen_TC_masks.sh`, which generates (using the .h1i. files and the output of `par-track_driver.py`) binary masks covering the region surrounding each node where wind speed exceeds X m/s
 
+## **PP1A: Preprocessing TC trajectory statistics**
+**Script Locations:** `/TC_stats/`
+
+* **`seed_success_rate.py`**: calculates the proportion of seeded vortices that match a TempestExtremes trajectory. Flags each trajectory in the csv/parquet output by `trajSN_to_df.py` by whether it was seeded.
+* **`unseed_success_rate.py`**: calculates the proportion of unseeded vortices that match a TempestExtremes trajectory. Flags each node in the csv/parquet output by `trajSN_to_df.py` by whether it corresponds to an unseeding intervention and flags each trajectory by whether it received or was eligible (based on hemisphere/date) to receive an unseeding attempt.
+* **`track_dens.py`**: ingests the outputs of the preceding 2 scripts and `seedlog_merge.py`. Outputs a netcdf with seasonal- and latitude-binned TC genesis/lysis/node/ACE normalized by area. Also outputs a csv of seasonally aggregated and hemispherically separated TC counts/activity metrics.
+
 ## **PP2: Preprocessing coordinate aggregations/interpolations**
 **Script Locations:** `/preprocess/`
 
 * **`hy2pres_driver.py`**: runs `hy2pres_gnupar.sh`, which vertically interpolates CESM CAM output from native hybrid coordinates to pressure coordinates
 * **`zonmean_driver.py`**: runs `ux_zonmean.py`, which takes the zonal mean of raw model output on unstructured meshes. User must specify vars and latitude interval via command line
 * **`struct_zonmean.py`**: calls the cdo (Climate Data Operators) zonmean operator on user-selected vars from MOM6 output
-* **`glob_rgnl_avg.py`**: takes the area-weighted average of user-defined/specified vars from raw model output on unstructured meshes. For 3D vars, the vertical mass-weighted integral \int dp/g is first taken over native model levels, with support for bounds of integration
+* **`glob_rgnl_avg.py`**: takes the area-weighted average of user-defined/specified vars from raw model output on unstructured meshes. Latitude bounds can be specified. For 3D vars, the vertical mass-weighted integral \int dp/g is first taken over native model levels, with support for bounds of integration
 
 ## **Figs. 1–2: UNSEED/MSEED restarts**
 **Script Location:** `/plt_restart_mod.py`
