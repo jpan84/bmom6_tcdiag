@@ -1,5 +1,6 @@
 import uxarray as ux
 import xarray as xr
+import numpy as np
 
 from tcpyPI import pi as tcpi
 from entropy_deficit_wcy import entropy_deficit
@@ -30,8 +31,8 @@ def main():
    vmax, _, ifl, _, _ = pi_xr_ux(SSTC, MSL, phPa, TC, rwv)
    vmax = ux.UxDataArray(vmax, uxgrid=ds.uxgrid)
    vmax_zm = vmax.zonal_mean(lat=(-50, 50, 2)).squeeze()
-   print('IFL', ifl.values)
-   print(vmax_zm.values)
+   #print('IFL', ifl.values)
+   #print(vmax_zm.values)
 
    #plt.plot(vmax_zm.latitudes, vmax_zm)
    #plt.show()
@@ -41,14 +42,17 @@ def main():
    pm = 6e4 #Pa, mid-tropo reference level
    Tm = pintp(ds['T'], pm)
    rhm = q2rh(pm * units('Pa'), Tm, pintp(ds['Q'], pm))
-   print(rhb.max().values)
-   print(rhm.max().values)
+   #print(rhb.max().values)
+   #print(rhm.max().values)
    chi_ent = entropy_deficit(ds['TS'], ds['PSL'], ds['TREFHT'], rhb, pm,\
               Tm, rhm)
-   print(chi_ent.values)
+   #print(chi_ent.values)
 
    #850 absolute vort
-   rv = pintp(ds['U'], 8.5e4).curl(pintp(ds['V'], 8.5e4))
+   #rv = pintp(ds['U'], 8.5e4).curl(pintp(ds['V'], 8.5e4))
+   rv = apply_ux_curl(pintp(ds['U'], 8.5e4), pintp(ds['V'], 8.5e4))
+   rv = ux.UxDataArray(rv, uxgrid=ds.uxgrid)
+   #print(rv.max().values)
    va = rv + 2 * OM * np.sin(np.deg2rad(ds['lat'])).clip(-5e-5, 5e-5)
 
    #250-850 shear magnitude
@@ -61,6 +65,7 @@ def main():
    f3 = np.maximum(vmax, 0) ** 2
    f4 = (25 + shrmag) ** -4
    gpi = f1 * f2 * f3 * f4
+   gpi = ux.UxDataArray(gpi, uxgrid=ds.uxgrid)
    gpi_zm = gpi.zonal_mean(lat=(-50, 50, 2)).squeeze()
 
    plt.plot(gpi_zm.latitudes, gpi_zm)
@@ -73,6 +78,18 @@ def pi_xr_ux(*piargs):
             output_core_dims=[[] for _ in range(len(piargs))],\
             vectorize=True, dask='parallelized',\
             output_dtypes=[float, float, int, float, float])
+
+#TODO: try rewrapping np arrays uu and vv into UxDataArray
+def ux_curl_oop(uu, vv):
+   return uu.curl(vv)
+
+def apply_ux_curl(uu, vv):
+   return xr.apply_ufunc(ux_curl_oop, uu, vv,\
+            input_core_dims=[['n_face'] for _ in range(2)],\
+            output_core_dims=[['n_face']],\
+            vectorize=True, dask='parallelized',\
+            dask_gufunc_kwargs=dict(allow_rechunk=True),\
+            output_dtypes=[uu.dtype])
 
 if __name__ == '__main__':
    main()
