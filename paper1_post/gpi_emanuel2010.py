@@ -54,7 +54,7 @@ def main():
    #850 absolute vort
    print('Vort task graph...')
    #rv = pintp(ds['U'], 8.5e4).curl(pintp(ds['V'], 8.5e4))
-   rv = apply_ux_curl(pintp(ds['U'], 8.5e4), pintp(ds['V'], 8.5e4))
+   rv = apply_ux_curl(pintp(ds['U'], 8.5e4), pintp(ds['V'], 8.5e4), ds.uxgrid)
    #rv = ux.UxDataArray(rv, uxgrid=ds.uxgrid)
    #print(rv.max().values)
    va = (rv + 2 * OM * np.sin(np.deg2rad(ds['lat']))).clip(-5e-5, 5e-5)
@@ -101,7 +101,7 @@ def apply_ux_curl(uu, vv, uxgrid):
 
    node_coords = np.array(
        [uxgrid.node_x.values, uxgrid.node_y.values, uxgrid.node_z.values]
-   )
+   ).T
 
    face_lon_rad = np.deg2rad(face_lon)
    face_lat_rad = np.deg2rad(face_lat)
@@ -124,8 +124,27 @@ def apply_ux_curl(uu, vv, uxgrid):
                 uxgrid.face_node_connectivity.values, uxgrid.node_edge_connectivity.values,\
                 face_lat, face_lon, node_coords, normal_lon, normal_lat)
 
+   print(uu.shape)
+   print([ca.shape for ca in coordargs[1:]])
+
+   # --- EXPLICIT MAPPING FOR DASK ---
+   # We define dummy names for the structural axes so Dask won't think they are 'time'
+   input_dims = [
+       ['n_face'],            # 0. da (uu or vv) -> Core dim matches the data axis
+       [],                    # 1. n_face_scalar -> Constant scalar
+       ['n_face', 'space3'],  # 2. face_coords (777602, 3)
+       ['n_edge', 'two'],     # 3. edge_face_conn (2329471, 2)
+       ['n_face', 'nodes5'],  # 4. face_node_conn (777602, 5)
+       ['n_node', 'edges6'],  # 5. node_edge_conn (780456, 6)
+       ['n_face'],            # 6. face_lat (777602,)
+       ['n_face'],            # 7. face_lon (777602,)
+       ['n_node', 'space3'],  # 8. node_coords (780456, 3)
+       ['n_face', 'space3'],  # 9. normal_lon (777602, 3)
+       ['n_face', 'space3']   # 10. normal_lat (777602, 3)
+   ] #[['n_face']] + [[] for _ in range(len(coordargs))],
+
    callgrad = lambda da: xr.apply_ufunc(gradient._compute_gradients_on_faces, da, *coordargs,\
-                 input_core_dims=[['n_face']] + [[] for _ in range(len(coordargs))],\
+                 input_core_dims=input_dims,\
                  output_core_dims=[['n_face'], ['n_face']], vectorize=True,\
                  dask='parallelized', output_dtypes=[da.dtype, da.dtype])
 
