@@ -28,7 +28,7 @@ For now, I’ll treat my Github repo located at ~jpan/aquaptc/bmom6\_tcdiag/pape
 * **`hy2pres_driver.py`**: runs `hy2pres_gnupar.sh`, which vertically interpolates CESM CAM output from native hybrid coordinates to pressure coordinates
 * **`zonmean_driver.py`**: runs `ux_zonmean.py`, which takes the zonal mean of raw model output on unstructured meshes. User must specify vars and latitude interval via command line
 * **`struct_zonmean.py`**: calls the cdo (Climate Data Operators) zonmean operator on user-selected vars from MOM6 output
-* **`glob_rgnl_avg.py`**: takes the area-weighted average of user-defined/specified vars from raw model output on unstructured meshes. Latitude bounds can be specified. For 3D vars, the vertical mass-weighted integral \int dp/g is first taken over native model levels, with support for bounds of integration
+* **`glob_rgnl_avg.py`**: takes the area-weighted average of user-defined/specified vars from raw model (CAM) output on unstructured meshes. Latitude bounds can be specified. For 3D vars, the vertical mass-weighted integral \int dp/g is first taken over native model levels, with support for bounds of integration
 
 ## **Figs. 1–2: UNSEED/MSEED restarts**
 **Script Location:** `/plt_restart_mod.py`
@@ -82,7 +82,7 @@ Run the script after setting the global var `FILI` to point to the NetCDF output
 Run the script after setting the global vars `DIRI`,`FILI` to point to the parquet output from `trajSN_to_df.py`
 
 ## **Fig. 7: Unseeding efficacy stats**
-**Script Location:** `/plt_lmi_psl.py`
+**Script Location:** `/efficacy_stats.py`
 
 ### **Preprocessing requirements**
 Same as Fig. 4
@@ -92,13 +92,36 @@ Run the script after configuring the following variables at the top of the file.
 
 * **`FILI`**: path to the csv output from `track_dens.py`
 * **`DIRE`**: Directory that contains the parquets of un/seeding interventions from `seedlog_merge.py`
-* **`EVNTS`**: list of tuples where
+* **`EVNTS`**: list of tuples where the first element is the parquet of interventions, and the second is the type of intervention (us=unseed, sd=seed). Elements of the list should be *None* instead of tuple if no interventions were imposed as is the case in CTL.
 
 ## **Figs. 8,10: Area-averaged state metrics**
+**Script Location:** `/plt_aavg_tbl.py`
+
+### **Preprocessing requirements**
+**PP2**: run `glob_rgnl_avg.py` to area-average (and vertically integrate) model output fields
+
+### **Execution Instructions**
+Run the script after setting the global var `FILI` to the basename of the output from `glob_rgnl_avg.py`, assuming `DIRIS` point to the directories where `FILI` is located
 
 ## **Fig. 9: Zonal-mean atmosphere/ocean heat content**
+**Script Location:** `/plt_thermo_state.py`
+
+### **Preprocessing requirements**
+* **PP2 (CAM)**: run `zonmean_driver.py` with `VARS = 'Z3,T,Q'` and `TAPE = 'atm/hist/*.h0a.*.nc'` to obtain monthly zonal-mean static energy terms.
+* **PP2 (MOM)**: run `struct_zonmean.py` with `VARS = 'thetao,oml'` to obtain monthly zonal-mean ocean pot temp and MLD.
+
+### **Execution Instructions**
+Run the script after setting `AFIL`,`OFIL` to the relative path of the preprocessed atm/ocn zonal means within ARCHRT(DOUT\_S\_ROOT).
 
 ## **Fig. 11: Zonal-mean and TC-masked zonal surface stress**
+**Script Location:** `/plt_TC_masked_flds.py`
+
+### **Preprocessing requirements**
+* **PP1**: run `par_track_driver.py` and `nff_driver.py` to mask model output with TC outer radii
+* **PP2**: run `zonmean_driver.py` with `VARS = 'TAUX'` and `TAPE = 'atm/hist/*.h1i.*.nc'` to obtain the total zonal-mean zonal stress. Run again with `TAPE = 'atm/nff_4mps/*.h1i.*.nc'` to obtain the TC-masked zonal stress.
+
+### **Execution Instructions**
+Run the script after setting `TOTFIL`,`TCSFIL` to the relative path of the PP2 outputs within ARCHRT(DOUT\_S\_ROOT).
 
 ## **Table 1: Experiment descriptions and Reed vortex params**
 
