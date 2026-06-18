@@ -54,8 +54,9 @@ def main():
    #850 absolute vort
    print('Vort task graph...')
    #rv = pintp(ds['U'], 8.5e4).curl(pintp(ds['V'], 8.5e4))
-   rv = apply_ux_curl(pintp(ds['U'], 8.5e4), pintp(ds['V'], 8.5e4), ds.uxgrid)
-   #rv = ux.UxDataArray(rv, uxgrid=ds.uxgrid)
+   cargs = grad_mesh_args(ds.uxgrid)
+   rv = apply_ux_curl(pintp(ds['U'], 8.5e4), pintp(ds['V'], 8.5e4), cargs)
+   rv = ux.UxDataArray(rv, uxgrid=ds.uxgrid)
    #print(rv.max().values)
    va = (rv + 2 * OM * np.sin(np.deg2rad(ds['lat']))).clip(-5e-5, 5e-5)
 
@@ -86,13 +87,8 @@ def pi_xr_ux(*piargs):
             vectorize=True, dask='parallelized',\
             output_dtypes=[float, float, int, float, float])
 
-#TODO: try rewrapping np arrays uu and vv into UxDataArray
-def ux_curl_oop(uu, vv):
-   return uu.curl(vv)
-
-#uu, vv should have the same coords (time, n_face)
-#arrays must not be chunked along dim n_face
-def apply_ux_curl(uu, vv, uxgrid):
+def grad_mesh_args(uxgrid):
+   print('Getting mesh descriptors...')
    face_coords = np.array(
        [uxgrid.face_x.values, uxgrid.face_y.values, uxgrid.face_z.values]
    ).T
@@ -120,12 +116,16 @@ def apply_ux_curl(uu, vv, uxgrid):
        ]
    ).T
 
-   coordargs = (uxgrid.n_face, face_coords, uxgrid.edge_face_connectivity.values,\
+   coordargs = (int(uxgrid.n_face), face_coords, uxgrid.edge_face_connectivity.values,\
                 uxgrid.face_node_connectivity.values, uxgrid.node_edge_connectivity.values,\
                 face_lat, face_lon, node_coords, normal_lon, normal_lat)
+   return coordargs
 
-   print(uu.shape)
-   print([ca.shape for ca in coordargs[1:]])
+#uu, vv should have the same coords (time, n_face)
+#arrays must not be chunked along dim n_face
+def apply_ux_curl(uu, vv, coordargs):
+   #print(uu.shape)
+   #print([ca.shape for ca in coordargs[1:]])
 
    # --- EXPLICIT MAPPING FOR DASK ---
    # We define dummy names for the structural axes so Dask won't think they are 'time'
@@ -151,7 +151,7 @@ def apply_ux_curl(uu, vv, uxgrid):
    _, u_y = callgrad(uu)
    v_x, _ = callgrad(vv)
 
-   return ux.UxDataArray(v_x - u_y, uxgrid=uxgrid)
+   return v_x - u_y
 
 
 if __name__ == '__main__':
