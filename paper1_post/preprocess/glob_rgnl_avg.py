@@ -23,6 +23,7 @@ HTAPE = '*.h0a.*.nc'
 #LATBNDS = (-90, 90)
 #LATBNDS = (5, 35)
 LATBNDS = (10, 30)
+LATBNDS = (-30, -10)
 
 RAWV2D = ['PS', 'TGCLDIWP', 'TGCLDLWP', 'QFLX', 'TS', 'FLNT', 'FSNT', 'LWCF', 'SWCF', 'FLNS', 'FSNS']
 UDEF2D = dict(TAUAM=[(c.a_e, 'coslat', 'TAUX')], SHU=[(1, 'FSNS'), (-1, 'FLNS'), (-1, 'SHFLX'), (-1, 'LHFLX')],

@@ -3,3 +3,153 @@ nohup: ignoring input
 Waiting on job launch; 4841646.casper-pbs with qsub arguments:
     qsub  -l select=1:ncpus=16:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=06:00:00
 
+Opening dataset /glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m/atm/hist ...
+Setting up coords...
+Deriving 2D quantities...
+Vertically integrating 3D fields...
+Area averaging...
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+Saving output...
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper1_post/preprocess/glob_rgnl_avg.py done.
+Opening dataset /glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist ...
+Setting up coords...
+Deriving 2D quantities...
+Vertically integrating 3D fields...
+Area averaging...
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+Saving output...
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper1_post/preprocess/glob_rgnl_avg.py done.
+Opening dataset /glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist ...
+Setting up coords...
+Deriving 2D quantities...
+Vertically integrating 3D fields...
+Area averaging...
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+Saving output...
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper1_post/preprocess/glob_rgnl_avg.py done.
+Opening dataset /glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm/hist ...
+Setting up coords...
+Deriving 2D quantities...
+Vertically integrating 3D fields...
+Area averaging...
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+Saving output...
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper1_post/preprocess/glob_rgnl_avg.py done.
+Opening dataset /glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist ...
+Setting up coords...
+Deriving 2D quantities...
+Vertically integrating 3D fields...
+Area averaging...
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+<class 'uxarray.core.dataarray.UxDataArray'>
+Saving output...
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper1_post/preprocess/glob_rgnl_avg.py done.

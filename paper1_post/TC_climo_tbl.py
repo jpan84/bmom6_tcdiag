@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-FILI = '~/aquaptc/tempest/260415_density_5exp/sznl_climo.csv' #from track_dens.py
+FILI = '~/aquaptc/bmom6_tcdiag/paper1_post/TC_stats/260623_density_gmd/sznl_climo.csv' #from track_dens.py
 COLS = ['mo_in_szn', 'varnm', 'case', 'NH', 'SH', 'totyrs']
 
 nh_warm_mo = [6, 9]

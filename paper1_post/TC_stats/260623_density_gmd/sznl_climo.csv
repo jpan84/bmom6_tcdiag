@@ -1,0 +1,300 @@
+2,unique storms,unseed2,1546.0,272.0,8.002739726027396
+2,unique storms,unseed,1887.0,945.0,10.001369863013698
+2,unique storms,ctrl,2177.0,2371.0,10.004794520547945
+2,unique storms,mseed,2742.0,6171.0,15.006849315068493
+2,unique storms,seed,911.0,15267.0,10.004794520547945
+2,6-hourly fixes,unseed2,5613.0,681.0,8.002739726027396
+2,6-hourly fixes,unseed,7126.0,2792.0,10.001369863013698
+2,6-hourly fixes,ctrl,7851.0,6792.0,10.004794520547945
+2,6-hourly fixes,mseed,9567.0,17285.0,15.006849315068493
+2,6-hourly fixes,seed,2750.0,33206.0,10.004794520547945
+2,6-hourly hurricane fixes,unseed2,588.0,75.0,8.002739726027396
+2,6-hourly hurricane fixes,unseed,859.0,109.0,10.001369863013698
+2,6-hourly hurricane fixes,ctrl,974.0,1854.0,10.004794520547945
+2,6-hourly hurricane fixes,mseed,1473.0,7450.0,15.006849315068493
+2,6-hourly hurricane fixes,seed,547.0,22688.0,10.004794520547945
+2,6-hourly major hurricane fixes,unseed2,64.0,6.0,8.002739726027396
+2,6-hourly major hurricane fixes,unseed,128.0,0.0,10.001369863013698
+2,6-hourly major hurricane fixes,ctrl,141.0,559.0,10.004794520547945
+2,6-hourly major hurricane fixes,mseed,291.0,3273.0,15.006849315068493
+2,6-hourly major hurricane fixes,seed,137.0,10923.0,10.004794520547945
+2,ACE [$10^4$ kt$^2$] ,unseed2,1398.9430196643993,163.47476687778547,8.002739726027396
+2,ACE [$10^4$ kt$^2$] ,unseed,1855.0994136023176,488.1702268346119,10.001369863013698
+2,ACE [$10^4$ kt$^2$] ,ctrl,2066.232322456612,2541.635998656358,10.004794520547945
+2,ACE [$10^4$ kt$^2$] ,mseed,2741.474793814517,9867.547922803493,15.006849315068493
+2,ACE [$10^4$ kt$^2$] ,seed,915.6526582604497,28154.513487521053,10.004794520547945
+2,genesis points (storm count),unseed2,355.0,45.0,8.002739726027396
+2,genesis points (storm count),unseed,418.0,191.0,10.001369863013698
+2,genesis points (storm count),ctrl,466.0,311.0,10.004794520547945
+2,genesis points (storm count),mseed,554.0,664.0,15.006849315068493
+2,genesis points (storm count),seed,151.0,910.0,10.004794520547945
+2,seeded genesis points,unseed2,0.0,0.0,8.002739726027396
+2,seeded genesis points,unseed,0.0,0.0,10.001369863013698
+2,seeded genesis points,ctrl,0.0,0.0,10.004794520547945
+2,seeded genesis points,mseed,10.0,264.0,15.006849315068493
+2,seeded genesis points,seed,0.0,824.0,10.004794520547945
+2,genesis points of hurricanes,unseed2,128.0,16.0,8.002739726027396
+2,genesis points of hurricanes,unseed,138.0,35.0,10.001369863013698
+2,genesis points of hurricanes,ctrl,162.0,155.0,10.004794520547945
+2,genesis points of hurricanes,mseed,203.0,439.0,15.006849315068493
+2,genesis points of hurricanes,seed,73.0,865.0,10.004794520547945
+2,lysis points,unseed2,347.0,47.0,8.002739726027396
+2,lysis points,unseed,412.0,192.0,10.001369863013698
+2,lysis points,ctrl,484.0,292.0,10.004794520547945
+2,lysis points,mseed,579.0,612.0,15.006849315068493
+2,lysis points,seed,162.0,866.0,10.004794520547945
+2,unseeded lysis points,unseed2,0.0,7.0,8.002739726027396
+2,unseeded lysis points,unseed,5.0,53.0,10.001369863013698
+2,unseeded lysis points,ctrl,0.0,0.0,10.004794520547945
+2,unseeded lysis points,mseed,0.0,0.0,15.006849315068493
+2,unseeded lysis points,seed,0.0,0.0,10.004794520547945
+2,TCs missed by unseed,unseed2,150.0,18.0,8.002739726027396
+2,TCs missed by unseed,unseed,32.0,78.0,10.001369863013698
+2,TCs missed by unseed,ctrl,0.0,0.0,10.004794520547945
+2,TCs missed by unseed,mseed,0.0,0.0,15.006849315068493
+2,TCs missed by unseed,seed,0.0,0.0,10.004794520547945
+2,stms with 0 unseeds,unseed2,345.0,36.0,8.002739726027396
+2,stms with 0 unseeds,unseed,401.0,96.0,10.001369863013698
+2,stms with 0 unseeds,ctrl,0.0,0.0,10.004794520547945
+2,stms with 0 unseeds,mseed,0.0,0.0,15.006849315068493
+2,stms with 0 unseeds,seed,0.0,0.0,10.004794520547945
+2,stms with 1 unseeds,unseed2,2.0,5.0,8.002739726027396
+2,stms with 1 unseeds,unseed,9.0,66.0,10.001369863013698
+2,stms with 1 unseeds,ctrl,0.0,0.0,10.004794520547945
+2,stms with 1 unseeds,mseed,0.0,0.0,15.006849315068493
+2,stms with 1 unseeds,seed,0.0,0.0,10.004794520547945
+2,stms with 2 unseeds,unseed2,0.0,3.0,8.002739726027396
+2,stms with 2 unseeds,unseed,2.0,25.0,10.001369863013698
+2,stms with 2 unseeds,ctrl,0.0,0.0,10.004794520547945
+2,stms with 2 unseeds,mseed,0.0,0.0,15.006849315068493
+2,stms with 2 unseeds,seed,0.0,0.0,10.004794520547945
+2,stms with 3 unseeds,unseed2,0.0,3.0,8.002739726027396
+2,stms with 3 unseeds,unseed,0.0,5.0,10.001369863013698
+2,stms with 3 unseeds,ctrl,0.0,0.0,10.004794520547945
+2,stms with 3 unseeds,mseed,0.0,0.0,15.006849315068493
+2,stms with 3 unseeds,seed,0.0,0.0,10.004794520547945
+3,unique storms,unseed2,914.0,93.0,8.002739726027396
+3,unique storms,unseed,1095.0,748.0,10.001369863013698
+3,unique storms,ctrl,1260.0,2553.0,10.004794520547945
+3,unique storms,mseed,1700.0,6303.0,15.006849315068493
+3,unique storms,seed,1603.0,13143.0,10.004794520547945
+3,6-hourly fixes,unseed2,2951.0,269.0,8.002739726027396
+3,6-hourly fixes,unseed,3399.0,2216.0,10.001369863013698
+3,6-hourly fixes,ctrl,4156.0,7632.0,10.004794520547945
+3,6-hourly fixes,mseed,5475.0,18679.0,15.006849315068493
+3,6-hourly fixes,seed,3553.0,28255.0,10.004794520547945
+3,6-hourly hurricane fixes,unseed2,205.0,15.0,8.002739726027396
+3,6-hourly hurricane fixes,unseed,278.0,69.0,10.001369863013698
+3,6-hourly hurricane fixes,ctrl,395.0,2306.0,10.004794520547945
+3,6-hourly hurricane fixes,mseed,435.0,9009.0,15.006849315068493
+3,6-hourly hurricane fixes,seed,1828.0,20219.0,10.004794520547945
+3,6-hourly major hurricane fixes,unseed2,7.0,0.0,8.002739726027396
+3,6-hourly major hurricane fixes,unseed,13.0,4.0,10.001369863013698
+3,6-hourly major hurricane fixes,ctrl,48.0,708.0,10.004794520547945
+3,6-hourly major hurricane fixes,mseed,31.0,4134.0,15.006849315068493
+3,6-hourly major hurricane fixes,seed,808.0,9769.0,10.004794520547945
+3,ACE [$10^4$ kt$^2$] ,unseed2,628.5279950178237,57.91458115681168,8.002739726027396
+3,ACE [$10^4$ kt$^2$] ,unseed,773.0046890955159,374.56495477454126,10.001369863013698
+3,ACE [$10^4$ kt$^2$] ,ctrl,970.4842285108152,3013.1051666650515,10.004794520547945
+3,ACE [$10^4$ kt$^2$] ,mseed,1230.8158877672022,11641.250698436535,15.006849315068493
+3,ACE [$10^4$ kt$^2$] ,seed,2449.5247391492708,24592.402043747326,10.004794520547945
+3,genesis points (storm count),unseed2,199.0,20.0,8.002739726027396
+3,genesis points (storm count),unseed,217.0,167.0,10.001369863013698
+3,genesis points (storm count),ctrl,258.0,330.0,10.004794520547945
+3,genesis points (storm count),mseed,355.0,671.0,15.006849315068493
+3,genesis points (storm count),seed,184.0,777.0,10.004794520547945
+3,seeded genesis points,unseed2,0.0,0.0,8.002739726027396
+3,seeded genesis points,unseed,0.0,0.0,10.001369863013698
+3,seeded genesis points,ctrl,0.0,0.0,10.004794520547945
+3,seeded genesis points,mseed,3.0,257.0,15.006849315068493
+3,seeded genesis points,seed,108.0,687.0,10.004794520547945
+3,genesis points of hurricanes,unseed2,54.0,5.0,8.002739726027396
+3,genesis points of hurricanes,unseed,66.0,33.0,10.001369863013698
+3,genesis points of hurricanes,ctrl,76.0,166.0,10.004794520547945
+3,genesis points of hurricanes,mseed,107.0,481.0,15.006849315068493
+3,genesis points of hurricanes,seed,152.0,741.0,10.004794520547945
+3,lysis points,unseed2,198.0,20.0,8.002739726027396
+3,lysis points,unseed,223.0,168.0,10.001369863013698
+3,lysis points,ctrl,257.0,340.0,10.004794520547945
+3,lysis points,mseed,350.0,697.0,15.006849315068493
+3,lysis points,seed,120.0,872.0,10.004794520547945
+3,unseeded lysis points,unseed2,0.0,10.0,8.002739726027396
+3,unseeded lysis points,unseed,0.0,52.0,10.001369863013698
+3,unseeded lysis points,ctrl,0.0,0.0,10.004794520547945
+3,unseeded lysis points,mseed,0.0,0.0,15.006849315068493
+3,unseeded lysis points,seed,0.0,0.0,10.004794520547945
+3,TCs missed by unseed,unseed2,44.0,5.0,8.002739726027396
+3,TCs missed by unseed,unseed,0.0,71.0,10.001369863013698
+3,TCs missed by unseed,ctrl,0.0,0.0,10.004794520547945
+3,TCs missed by unseed,mseed,0.0,0.0,15.006849315068493
+3,TCs missed by unseed,seed,0.0,0.0,10.004794520547945
+3,stms with 0 unseeds,unseed2,198.0,6.0,8.002739726027396
+3,stms with 0 unseeds,unseed,223.0,71.0,10.001369863013698
+3,stms with 0 unseeds,ctrl,0.0,0.0,10.004794520547945
+3,stms with 0 unseeds,mseed,0.0,0.0,15.006849315068493
+3,stms with 0 unseeds,seed,0.0,0.0,10.004794520547945
+3,stms with 1 unseeds,unseed2,0.0,4.0,8.002739726027396
+3,stms with 1 unseeds,unseed,0.0,77.0,10.001369863013698
+3,stms with 1 unseeds,ctrl,0.0,0.0,10.004794520547945
+3,stms with 1 unseeds,mseed,0.0,0.0,15.006849315068493
+3,stms with 1 unseeds,seed,0.0,0.0,10.004794520547945
+3,stms with 2 unseeds,unseed2,0.0,4.0,8.002739726027396
+3,stms with 2 unseeds,unseed,0.0,16.0,10.001369863013698
+3,stms with 2 unseeds,ctrl,0.0,0.0,10.004794520547945
+3,stms with 2 unseeds,mseed,0.0,0.0,15.006849315068493
+3,stms with 2 unseeds,seed,0.0,0.0,10.004794520547945
+3,stms with 3 unseeds,unseed2,0.0,5.0,8.002739726027396
+3,stms with 3 unseeds,unseed,0.0,4.0,10.001369863013698
+3,stms with 3 unseeds,ctrl,0.0,0.0,10.004794520547945
+3,stms with 3 unseeds,mseed,0.0,0.0,15.006849315068493
+3,stms with 3 unseeds,seed,0.0,0.0,10.004794520547945
+6,unique storms,unseed2,252.0,1543.0,8.002739726027396
+6,unique storms,unseed,937.0,1631.0,10.001369863013698
+6,unique storms,ctrl,2830.0,1738.0,10.004794520547945
+6,unique storms,mseed,7347.0,2709.0,15.006849315068493
+6,unique storms,seed,16118.0,618.0,10.004794520547945
+6,6-hourly fixes,unseed2,681.0,5936.0,8.002739726027396
+6,6-hourly fixes,unseed,2629.0,5999.0,10.001369863013698
+6,6-hourly fixes,ctrl,8726.0,6215.0,10.004794520547945
+6,6-hourly fixes,mseed,21003.0,9894.0,15.006849315068493
+6,6-hourly fixes,seed,34693.0,1966.0,10.004794520547945
+6,6-hourly hurricane fixes,unseed2,108.0,713.0,8.002739726027396
+6,6-hourly hurricane fixes,unseed,151.0,654.0,10.001369863013698
+6,6-hourly hurricane fixes,ctrl,2493.0,754.0,10.004794520547945
+6,6-hourly hurricane fixes,mseed,9578.0,1232.0,15.006849315068493
+6,6-hourly hurricane fixes,seed,24170.0,384.0,10.004794520547945
+6,6-hourly major hurricane fixes,unseed2,9.0,87.0,8.002739726027396
+6,6-hourly major hurricane fixes,unseed,2.0,95.0,10.001369863013698
+6,6-hourly major hurricane fixes,ctrl,661.0,106.0,10.004794520547945
+6,6-hourly major hurricane fixes,mseed,4202.0,180.0,15.006849315068493
+6,6-hourly major hurricane fixes,seed,12011.0,74.0,10.004794520547945
+6,ACE [$10^4$ kt$^2$] ,unseed2,185.6685751761247,1521.9033065106564,8.002739726027396
+6,ACE [$10^4$ kt$^2$] ,unseed,491.9737964308621,1501.9393064345727,10.001369863013698
+6,ACE [$10^4$ kt$^2$] ,ctrl,3250.4177499345587,1629.0520766348122,10.004794520547945
+6,ACE [$10^4$ kt$^2$] ,mseed,12365.267036403486,2610.8320729637558,15.006849315068493
+6,ACE [$10^4$ kt$^2$] ,seed,30159.922611986,627.3903377262766,10.004794520547945
+6,genesis points (storm count),unseed2,41.0,360.0,8.002739726027396
+6,genesis points (storm count),unseed,175.0,369.0,10.001369863013698
+6,genesis points (storm count),ctrl,354.0,378.0,10.004794520547945
+6,genesis points (storm count),mseed,731.0,585.0,15.006849315068493
+6,genesis points (storm count),seed,911.0,112.0,10.004794520547945
+6,seeded genesis points,unseed2,0.0,0.0,8.002739726027396
+6,seeded genesis points,unseed,0.0,0.0,10.001369863013698
+6,seeded genesis points,ctrl,0.0,0.0,10.004794520547945
+6,seeded genesis points,mseed,257.0,1.0,15.006849315068493
+6,seeded genesis points,seed,825.0,0.0,10.004794520547945
+6,genesis points of hurricanes,unseed2,21.0,133.0,8.002739726027396
+6,genesis points of hurricanes,unseed,49.0,124.0,10.001369863013698
+6,genesis points of hurricanes,ctrl,196.0,123.0,10.004794520547945
+6,genesis points of hurricanes,mseed,509.0,214.0,15.006849315068493
+6,genesis points of hurricanes,seed,865.0,50.0,10.004794520547945
+6,lysis points,unseed2,50.0,351.0,8.002739726027396
+6,lysis points,unseed,169.0,362.0,10.001369863013698
+6,lysis points,ctrl,328.0,387.0,10.004794520547945
+6,lysis points,mseed,664.0,603.0,15.006849315068493
+6,lysis points,seed,869.0,119.0,10.004794520547945
+6,unseeded lysis points,unseed2,13.0,1.0,8.002739726027396
+6,unseeded lysis points,unseed,50.0,3.0,10.001369863013698
+6,unseeded lysis points,ctrl,0.0,0.0,10.004794520547945
+6,unseeded lysis points,mseed,0.0,0.0,15.006849315068493
+6,unseeded lysis points,seed,0.0,0.0,10.004794520547945
+6,TCs missed by unseed,unseed2,5.0,310.0,8.002739726027396
+6,TCs missed by unseed,unseed,85.0,10.0,10.001369863013698
+6,TCs missed by unseed,ctrl,0.0,0.0,10.004794520547945
+6,TCs missed by unseed,mseed,0.0,0.0,15.006849315068493
+6,TCs missed by unseed,seed,0.0,0.0,10.004794520547945
+6,stms with 0 unseeds,unseed2,32.0,348.0,8.002739726027396
+6,stms with 0 unseeds,unseed,90.0,355.0,10.001369863013698
+6,stms with 0 unseeds,ctrl,0.0,0.0,10.004794520547945
+6,stms with 0 unseeds,mseed,0.0,0.0,15.006849315068493
+6,stms with 0 unseeds,seed,0.0,0.0,10.004794520547945
+6,stms with 1 unseeds,unseed2,11.0,2.0,8.002739726027396
+6,stms with 1 unseeds,unseed,52.0,7.0,10.001369863013698
+6,stms with 1 unseeds,ctrl,0.0,0.0,10.004794520547945
+6,stms with 1 unseeds,mseed,0.0,0.0,15.006849315068493
+6,stms with 1 unseeds,seed,0.0,0.0,10.004794520547945
+6,stms with 2 unseeds,unseed2,5.0,1.0,8.002739726027396
+6,stms with 2 unseeds,unseed,25.0,0.0,10.001369863013698
+6,stms with 2 unseeds,ctrl,0.0,0.0,10.004794520547945
+6,stms with 2 unseeds,mseed,0.0,0.0,15.006849315068493
+6,stms with 2 unseeds,seed,0.0,0.0,10.004794520547945
+6,stms with 3 unseeds,unseed2,2.0,0.0,8.002739726027396
+6,stms with 3 unseeds,unseed,2.0,0.0,10.001369863013698
+6,stms with 3 unseeds,ctrl,0.0,0.0,10.004794520547945
+6,stms with 3 unseeds,mseed,0.0,0.0,15.006849315068493
+6,stms with 3 unseeds,seed,0.0,0.0,10.004794520547945
+9,unique storms,unseed2,120.0,823.0,8.002739726027396
+9,unique storms,unseed,637.0,992.0,10.001369863013698
+9,unique storms,ctrl,2495.0,1008.0,10.004794520547945
+9,unique storms,mseed,6504.0,1092.0,15.006849315068493
+9,unique storms,seed,13479.0,1474.0,10.004794520547945
+9,6-hourly fixes,unseed2,301.0,2592.0,8.002739726027396
+9,6-hourly fixes,unseed,1771.0,3142.0,10.001369863013698
+9,6-hourly fixes,ctrl,7063.0,3223.0,10.004794520547945
+9,6-hourly fixes,mseed,18309.0,3281.0,15.006849315068493
+9,6-hourly fixes,seed,29025.0,3158.0,10.004794520547945
+9,6-hourly hurricane fixes,unseed2,19.0,157.0,8.002739726027396
+9,6-hourly hurricane fixes,unseed,78.0,231.0,10.001369863013698
+9,6-hourly hurricane fixes,ctrl,2203.0,295.0,10.004794520547945
+9,6-hourly hurricane fixes,mseed,8990.0,241.0,15.006849315068493
+9,6-hourly hurricane fixes,seed,20577.0,1983.0,10.004794520547945
+9,6-hourly major hurricane fixes,unseed2,0.0,10.0,8.002739726027396
+9,6-hourly major hurricane fixes,unseed,0.0,8.0,10.001369863013698
+9,6-hourly major hurricane fixes,ctrl,748.0,28.0,10.004794520547945
+9,6-hourly major hurricane fixes,mseed,4053.0,6.0,15.006849315068493
+9,6-hourly major hurricane fixes,seed,9804.0,1048.0,10.004794520547945
+9,ACE [$10^4$ kt$^2$] ,unseed2,68.5498553624166,564.2870088470123,8.002739726027396
+9,ACE [$10^4$ kt$^2$] ,unseed,304.1994238466255,697.1113741202623,10.001369863013698
+9,ACE [$10^4$ kt$^2$] ,ctrl,2993.1235240528385,747.003027850406,10.004794520547945
+9,ACE [$10^4$ kt$^2$] ,mseed,11452.976519930227,722.932510360251,15.006849315068493
+9,ACE [$10^4$ kt$^2$] ,seed,24772.144003192356,2698.6482245435113,10.004794520547945
+9,genesis points (storm count),unseed2,23.0,171.0,8.002739726027396
+9,genesis points (storm count),unseed,131.0,210.0,10.001369863013698
+9,genesis points (storm count),ctrl,307.0,216.0,10.004794520547945
+9,genesis points (storm count),mseed,673.0,230.0,15.006849315068493
+9,genesis points (storm count),seed,778.0,156.0,10.004794520547945
+9,seeded genesis points,unseed2,0.0,0.0,8.002739726027396
+9,seeded genesis points,unseed,0.0,0.0,10.001369863013698
+9,seeded genesis points,ctrl,0.0,0.0,10.004794520547945
+9,seeded genesis points,mseed,277.0,3.0,15.006849315068493
+9,seeded genesis points,seed,693.0,116.0,10.004794520547945
+9,genesis points of hurricanes,unseed2,9.0,46.0,8.002739726027396
+9,genesis points of hurricanes,unseed,28.0,61.0,10.001369863013698
+9,genesis points of hurricanes,ctrl,173.0,71.0,10.004794520547945
+9,genesis points of hurricanes,mseed,459.0,66.0,15.006849315068493
+9,genesis points of hurricanes,seed,722.0,136.0,10.004794520547945
+9,lysis points,unseed2,23.0,178.0,8.002739726027396
+9,lysis points,unseed,137.0,215.0,10.001369863013698
+9,lysis points,ctrl,316.0,216.0,10.004794520547945
+9,lysis points,mseed,718.0,238.0,15.006849315068493
+9,lysis points,seed,856.0,98.0,10.004794520547945
+9,unseeded lysis points,unseed2,7.0,1.0,8.002739726027396
+9,unseeded lysis points,unseed,53.0,0.0,10.001369863013698
+9,unseeded lysis points,ctrl,0.0,0.0,10.004794520547945
+9,unseeded lysis points,mseed,0.0,0.0,15.006849315068493
+9,unseeded lysis points,seed,0.0,0.0,10.004794520547945
+9,TCs missed by unseed,unseed2,7.0,99.0,8.002739726027396
+9,TCs missed by unseed,unseed,64.0,0.0,10.001369863013698
+9,TCs missed by unseed,ctrl,0.0,0.0,10.004794520547945
+9,TCs missed by unseed,mseed,0.0,0.0,15.006849315068493
+9,TCs missed by unseed,seed,0.0,0.0,10.004794520547945
+9,stms with 0 unseeds,unseed2,13.0,177.0,8.002739726027396
+9,stms with 0 unseeds,unseed,64.0,215.0,10.001369863013698
+9,stms with 0 unseeds,ctrl,0.0,0.0,10.004794520547945
+9,stms with 0 unseeds,mseed,0.0,0.0,15.006849315068493
+9,stms with 0 unseeds,seed,0.0,0.0,10.004794520547945
+9,stms with 1 unseeds,unseed2,3.0,1.0,8.002739726027396
+9,stms with 1 unseeds,unseed,57.0,0.0,10.001369863013698
+9,stms with 1 unseeds,ctrl,0.0,0.0,10.004794520547945
+9,stms with 1 unseeds,mseed,0.0,0.0,15.006849315068493
+9,stms with 1 unseeds,seed,0.0,0.0,10.004794520547945
+9,stms with 2 unseeds,unseed2,5.0,0.0,8.002739726027396
+9,stms with 2 unseeds,unseed,14.0,0.0,10.001369863013698
+9,stms with 2 unseeds,ctrl,0.0,0.0,10.004794520547945
+9,stms with 2 unseeds,mseed,0.0,0.0,15.006849315068493
+9,stms with 2 unseeds,seed,0.0,0.0,10.004794520547945
+9,stms with 3 unseeds,unseed2,2.0,0.0,8.002739726027396
+9,stms with 3 unseeds,unseed,2.0,0.0,10.001369863013698
+9,stms with 3 unseeds,ctrl,0.0,0.0,10.004794520547945
+9,stms with 3 unseeds,mseed,0.0,0.0,15.006849315068493
+9,stms with 3 unseeds,seed,0.0,0.0,10.004794520547945

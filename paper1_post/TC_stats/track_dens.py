@@ -23,11 +23,15 @@ DLAT = 1.5
 SZNS = ['DJF', 'MAM', 'JJA', 'SON']
 SZMOs = [{12, 1, 2}, {3, 4, 5}, {6, 7, 8}, {9, 10, 11}]
 
+TJNM = 'trajectories.txt.b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.'
+
 FILI = ['250702_unseed2hPa6m.csv.flagged.parquet', '250415_unseed.csv.flagged.parquet', '250417_ctrl.parquet', '251229_seedmatch.seedflagged.parquet', '250416_seed1x1.seedflagged.parquet'] #flagged by un/seed_success_rate.py
 labels = ['unseed2', 'unseed', 'ctrl', 'mseed', 'seed']
-events = [('250702_unseed_2hPa6m_unseed_events.parquet', 'us'), ('250415_unseed_production_unseed_events.parquet', 'us'), None, ('251229_seed_match_seed_events.parquet', 'sd'), ('250416_seed1x1_production_seed_events.parquet', 'sd')]
+EVDIR = '/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper1_post/TC_preprocess/seed_stats/'
+DIRI = os.path.join(EVDIR, '..')
+events = [('250702_unseed_2hPa6m_events.parquet', 'us'), ('250415_unseed_production_events.parquet', 'us'), None, ('251229_seed_match_events.parquet', 'sd'), ('250416_seed1x1_production_events.parquet', 'sd')]
 rename_dict = dict(clat='lat', clon='lon')
-DOUT = '260415_density_5exp'
+DOUT = '260623_density_gmd'
 
 #FILI = ['250415_unseed_JJASOND.parquet', '250417_ctrl_JJASOND.parquet']
 #labels = ['unseed', 'ctrl']
@@ -42,7 +46,7 @@ def main():
       os.makedirs(DOUT)
    open(os.path.join(DOUT, 'sznl_climo.csv'), 'w').close() #reset the seasonal-total csv file
 
-   dfs = [pd.read_parquet(f) for f in FILI]
+   dfs = [pd.read_parquet(os.path.join(DIRI, TJNM + f)) for f in FILI]
    for df in dfs:
       df['max_lft_wspd'] = df.groupby('stmnum')['wspd'].transform('max')
       if type(df.index) != pd.core.indexes.datetimes.DatetimeIndex:
@@ -61,7 +65,7 @@ def main():
    if PLOTSEEDS:
       #usdf = pd.read_parquet(events[0]).rename(columns=rename_dict)
       #sddf = pd.read_parquet(events[-1]).rename(columns=rename_dict)
-      evdfs = [pd.read_parquet(ev[0]).rename(columns=rename_dict) if ev is not None else None for ev in events]
+      evdfs = [pd.read_parquet(os.path.join(EVDIR, ev[0])).rename(columns=rename_dict) if ev is not None else None for ev in events]
       #print(usdf)
       #print(usdf['dt'])
 

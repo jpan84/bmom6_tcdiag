@@ -7,8 +7,8 @@ import xarray as xr
 from scipy.stats import binned_statistic_2d
 import matplotlib.pyplot as plt
 
-TRAJPQS = ['TC_preprocess/trajectories.txt.%s.parquet' % lc for lc in CASENAMES] [1:]
-SSTZM = 'atm/uxzm_h1i_noncons_-20.0_20.0_0.25_SST.nc'
+TRAJPQS = ['TC_preprocess/trajectories.txt.%s.parquet' % lc for lc in CASENAMES]# [1:]
+SSTZM = 'atm/uxzm_h1i_noncons_-18.0_18.0_0.1_SST.nc'
 
 DOY_GE = np.arange(0.5, 366, 1)
 MU_GE = np.linspace(-1, 1, 200) #mu=sinlat
@@ -19,6 +19,7 @@ MU_GE = np.linspace(-1, 1, 40) #mu=sinlat
 MU2LAT = lambda x: np.rad2deg(np.arcsin(np.clip(x, -1., 1.)))
 LAT2MU = lambda x: np.sin(np.deg2rad(np.clip(x, -90., 90.)))
 GE2GC = lambda x: (x[1:] + x[:-1]) / 2 #grid edges to midpoints
+#GE2GD = lambda x: (x[1:] - x[:-1]) #grid edges to grid deltas
 
 LAT_GE = MU2LAT(MU_GE)
 LAT_GC = GE2GC(LAT_GE)
@@ -41,9 +42,13 @@ def main():
    gen = [df[df['isgen']] for df in dfs]
    print(gen[0])
 
+   bandarea = 2 * np.pi * 6.371e6**2 / 1e6 / 1e3**2 * np.diff(MU_GE)
+   dday = np.diff(DOY_GE)
+
    binout = [binned_statistic_2d(gdf['doy'], LAT2MU(gdf['lat']), gdf['lat'],\
              statistic='count', bins=[DOY_GE, MU_GE])\
              for gdf in gen]
+   binnormed = [bo[0] / totyrs[ii] / dday[:, None] / bandarea[None, :] for ii, bo in enumerate(binout)]
    #genct, _, _, binix
 
    sstdss = []
@@ -56,7 +61,7 @@ def main():
    #print(sstdss)
 
    maxes = [None if ds is None else ds['SST'].idxmax('latitudes') for ds in sstdss]
-   del maxes[0]
+   #del maxes[0]
    #print(maxes)
    #exit()
    #sgn_chg = np.sign(maxes).diff(dim='time')
@@ -74,20 +79,22 @@ def main():
    fig, axes = plt.subplots(2, 3, sharex=True, sharey=True)
 
    for ii, ax in enumerate(axes.ravel()):
-      if ii in [3, 4]: continue
-      ixh = IXHORS[ii] - 1
-      ctlix = CTLIX - 1
+      if ii in [4]:
+         ax.set_axis_off()
+         continue
+      ixh = IXHORS[ii] #- 1
+      ctlix = CTLIX #- 1
       isctl = ixh == ctlix
-      pltar = binout[ixh][0]
+      pltar = binnormed[ixh]
 
       pltts = maxes[ixh] #None if maxes[ixh] is None else maxes[ixh]['SST'].idxmax('latitudes')
       sp, wn = av_SST_flip_doy(pltts)
 
       clevs = np.arange(0, 9) if isctl else np.arange(-8, 9)
       if not isctl:
-         pltar -= binout[ctlix][0]
+         pltar -= binnormed[ctlix]#[0]
       #ax.pcolormesh(DOY_GC, LAT_GC, binout[ixh][0].T, shading='nearest')
-      csf = ax.contourf(DOY_GC, LAT_GC, pltar.T, cmap='inferno' if isctl else 'bwr', levels=clevs)
+      csf = ax.pcolormesh(DOY_GC, LAT_GC, pltar.T, cmap='inferno' if isctl else 'bwr')#, levels=clevs)
       cb = plt.colorbar(csf, ax=ax)
       ax.scatter(pltts['time'].dt.dayofyear, pltts, alpha=0.2, c='lime', s=0.5) if pltts is not None else None
       [ax.axvline(fd, c='gray', linestyle='dashed') if fd is not None else None for fd in [sp, wn]]
