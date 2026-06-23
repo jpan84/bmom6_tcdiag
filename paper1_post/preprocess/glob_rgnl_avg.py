@@ -2,24 +2,26 @@
 #keep everything in CESM output units
 
 import os
+import sys
 from functools import reduce
 import operator
+sys.path.append('/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper1_post/')
+from paths import ARCHRT, CAMGR
 import consts as c
 import numpy as np
 import xarray as xr
 import uxarray as ux
 
-DIRI = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m/atm/hist/'
+#DIRI = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m/atm/hist/'
 #DIRI = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/hist/'
 #DIRI = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm/hist/'
 #DIRI = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm/hist/'
 #DIRI = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm/hist/'
 
 HTAPE = '*.h0a.*.nc'
-GRIDF = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
-LATBNDS = (-90, 90)
-LATBNDS = (5, 35)
+#LATBNDS = (-90, 90)
+#LATBNDS = (5, 35)
 LATBNDS = (10, 30)
 
 RAWV2D = ['PS', 'TGCLDIWP', 'TGCLDLWP', 'QFLX', 'TS', 'FLNT', 'FSNT', 'LWCF', 'SWCF', 'FLNS', 'FSNS']
@@ -32,9 +34,9 @@ UDEF3D = dict(DSE=[(c.cp, 'T'), (c.g, 'Z3')], LE_3D=[(c.lv, 'Q')], KE=[(0.5, 'UU
 PTROP = (1e4, 1.1e5)
 PBNDS = dict(DSE=PTROP, LE_3D=PTROP, KE=PTROP, KE_MEAN=PTROP, CLD_FT=(1e4, 7e4), CLD_BL=(7e4, 1.1e5))
 
-def main():
-   print('Opening dataset', DIRI, '...')
-   ds = ux.open_mfdataset(GRIDF, os.path.join(DIRI, HTAPE))
+def main(diri):
+   print('Opening dataset', diri, '...')
+   ds = ux.open_mfdataset(CAMGR, os.path.join(diri, HTAPE))
 
    print('Setting up coords...')
    aterm = ds['hyai'] * c.P0
@@ -65,7 +67,7 @@ def main():
 
    print('Saving output...')
    outds = xr.Dataset(data_vars=aavg)
-   outds.to_netcdf(os.path.join(DIRI, '../AAVG_%.1f_%.1f_rev1.nc' % (LATBNDS)))
+   outds.to_netcdf(os.path.join(diri, '../AAVG_%.1f_%.1f_rev1.nc' % (LATBNDS)))
 
    print(__file__, 'done.')
 
@@ -85,4 +87,5 @@ def get_dp_clipped(ds, pt, pb):
    return pi_clip.diff('ilev').rename(dict(ilev='lev')).assign_coords(lev=ds['lev'])
 
 if __name__ == '__main__':
-   main()
+   for ar in ARCHRT:
+      main(os.path.join(ar, 'atm/hist'))

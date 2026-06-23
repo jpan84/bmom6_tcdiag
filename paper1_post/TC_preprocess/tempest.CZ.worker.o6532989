@@ -1,0 +1,105 @@
+1782227044 
+
+The following have been reloaded with a version change:
+  1) ncarcompilers/1.1.0 => ncarcompilers/1.2.0
+
+MPI info
+1
+256
+cpu cores	: 64
+256
+calling mpiexec
+Invalid /etc/cray/nid value dec2446
+
+Arguments:
+  --in_data <string> [""] 
+  --in_data_list <string> ["filelist.txt.1782227045761217470"] 
+  --in_connect <string> ["/glade/u/home/jpan/ne120np4_connect_v2.dat"] 
+  --diag_connect <bool> [false] 
+  --out <string> ["cyclones_tempest.1782227045761217470"] 
+  --out_file_list <string> [""] 
+  --searchbymin <string> ["PSL"] (default PSL)
+  --searchbymax <string> [""] 
+  --searchbythreshold <string> [""] 
+  --minlon <double> [0.000000] (degrees)
+  --maxlon <double> [0.000000] (degrees)
+  --minlat <double> [0.000000] (degrees)
+  --maxlat <double> [0.000000] (degrees)
+  --minabslat <double> [0.000000] (degrees)
+  --mergedist <double> [6.000000] (degrees)
+  --mergeequal <bool> [false] 
+  --closedcontourcmd <string> ["PSL,200.0,5.5,0;_DIFF(Z300,Z500),-6.0,6.5,1.0;_PROD(_SIGN(lat),_CURL{8,1.0}(U850,V850)),-8e-5,5.5,0.5"] [var,delta,dist,minmaxdist;...]
+  --noclosedcontourcmd <string> [""] [var,delta,dist,minmaxdist;...]
+  --thresholdcmd <string> [""] [var,op,value,dist;...]
+  --outputcmd <string> ["PSL,min,0;_VECMAG(UBOT,VBOT),max,2"] [var,op,dist;...]
+  --timestride <integer> [6] 
+  --timefilter <string> [""] 
+  --latname <string> ["lat"] 
+  --lonname <string> ["lon"] 
+  --regional <bool> [false] 
+  --out_header <bool> [false] 
+  --out_seconds <bool> [false] 
+  --logdir <string> ["."] 
+  --verbosity <integer> [0] 
+------------------------------------------------------------
+Parsing closed contour operations
+..PSL increases by 200.000000 over 5.500000 degrees (min search 0.000000 deg)
+.._DIFF(Z300,Z500) decreases by 6.000000 over 6.500000 degrees (max search 1.000000 deg)
+.._PROD(_SIGN(lat),_CURL{8,1.0}(U850,V850)) decreases by 0.000080 over 5.500000 degrees (max search 0.500000 deg)
+..Done
+Parsing output operations
+..Minimum of PSL within 0.000000 degrees
+..Maximum of _VECMAG(UBOT,VBOT) within 2.000000 degrees
+..Done
+Begin search operation
+..Output will be written to cyclones_tempest.1782227045761217470XXXXXX.dat
+..Logs will be written to ./logXXXXXX.txt
+..Done
+------------------------------------------------------------
+/glade/work/jpan/tmpTE.1782227045761217470
+Arguments:
+  --in <string> ["cyclones.1782227045761217470"] 
+  --in_list <string> [""] 
+  --in_connect <string> ["/glade/u/home/jpan/ne120np4_connect_v2.dat"] 
+  --out <string> ["/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper1_post/TC_preprocess/trajectories.txt.b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m"] 
+  --in_fmt <string> ["lon,lat,slp,wind"] 
+  --range <double> [6.000000] (degrees)
+  --mintime <string> ["3"] 
+  --time_begin <string> [""] 
+  --time_end <string> [""] 
+  --prioritize <string> [""] 
+  --min_endpoint_dist <double> [0.000000] (degrees)
+  --min_path_dist <double> [0.000000] (degrees)
+  --maxgap <string> ["3"] 
+  --threshold <string> ["wind,>=,10.0,10;lat,<=,50.0,10;lat,>=,-50.0,10"] [col,op,value,count;...]
+  --caltype <string> ["standard"] (none|standard|noleap|360_day)
+  --timefilter <string> [""] 
+  --allow_repeated_times <bool> [true] 
+  --add_velocity <bool> [false] 
+  --out_file_format <string> ["gfdl"] (gfdl|csv|csvnohead)
+  --out_seconds <bool> [false] 
+------------------------------------------------------------
+WARNING: --minlength is deprecated.  Consider using --mintime instead
+Parsing thresholds
+..wind greater than or equal to 10.000000 at least 10 time(s)
+..lat less than or equal to 50.000000 at least 10 time(s)
+..lat greater than or equal to -50.000000 at least 10 time(s)
+..Done
+Loading candidate data
+..Discrete times: 11679 (0005-02-01 06:00:00 to 0013-01-31 18:00:00)
+..Done
+Creating KD trees at each time level.. Done
+Constructing paths
+..Populating set of path segments.. Done
+..Connecting path segments.. Done
+..Done
+Filtering paths
+..Paths rejected (mintime): 7380
+..Paths rejected (minendpointdist): 0
+..Paths rejected (minpathdist): 0
+..Paths rejected (threshold): 10117
+..Total paths found: 1214
+..Done
+Writing results.. Done
+Cleanup.. Done
+------------------------------------------------------------

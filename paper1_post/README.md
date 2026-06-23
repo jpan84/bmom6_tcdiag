@@ -1,11 +1,12 @@
 # **Figure and Table Generating Scripts Documentation**
 For now, I’ll treat my Github repo located at ~jpan/aquaptc/bmom6\_tcdiag/paper1\_post (on NCAR glade) as the root for all paths below. Make sure to set the correct paths within /paths.py: CAMGR should point to the SCRIP file for the atmospheric mesh, and ARCHRT should contain the directories known as $DOUT\_S\_ROOT in CESM parlance.
 
-## **Shared .py variables**
+## **Shared .py variables and routines**
 **Script Locations:** `/`
 
 * **`paths.py`**: contains paths to raw model output, experiment ALIASES, panel index mapping for Figs. 3,6,9,11
 * **`consts.py`**: physical constants
+* **`sznl_funcs.py**:
 
 ## **PP1: Preprocessing TC trajectories in TempestExtremes**
 **Script Locations:** `/TC_preprocess/`

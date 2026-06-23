@@ -2,7 +2,7 @@
 #PBS -N tempest.CZ.worker
 #PBS -A UPSU0032
 #PBS -l select=1:ncpus=64:mpiprocs=64:mem=128GB
-#PBS -l walltime=01:00:00
+#PBS -l walltime=06:00:00
 #PBS -q develop
 #PBS -j oe
 #PBS -m a
@@ -57,7 +57,7 @@ FILELISTNAME=filelist.txt.${DATESTRING}
 TRAJFILENAME=${execdir}/trajectories.txt.${UQSTR}
 touch $FILELISTNAME
 
-DATE_LIM="0007-02"
+DATE_LIM="0020-02"
 for f in "${PATHTOFILES}"/*.h1i.*.nc; do
   # Extract the YYYY-MM part
   FILE_DATE=$(echo "$f" | grep -oE '[0-9]{4}-[0-9]{2}')
