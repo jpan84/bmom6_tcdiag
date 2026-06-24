@@ -96,6 +96,6 @@ for ii, ax in enumerate(axes[:, 1]):
 fig.suptitle('%s TC density plots [yr$^{-1}$ (10$^6$ km$^2$)$^{-1}$]' % SZN)
 
 fig.tight_layout()
-plt.savefig('masterplot_%s.png' % SZN)
-plt.show()
+plt.savefig('masterplot_%s.svg' % SZN)
+#plt.show()
 plt.close()
