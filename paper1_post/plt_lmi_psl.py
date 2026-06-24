@@ -3,18 +3,19 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-DIRI = '~/aquaptc/tempest/'
-FILI = ['250702_unseed2hPa6m.parquet', '250415_unseed.parquet', '250417_ctrl.parquet', '251229_seedmatch.parquet', '250416_seed1x1.parquet']
-ALIASES = ['UNSEED_90', 'UNSEED_50', 'CTRL', 'SEED_50', 'SEED_150']
+DIRI = '~/aquaptc/bmom6_tcdiag/paper1_post/TC_preprocess/'
+#FILI = ['250702_unseed2hPa6m.parquet', '250415_unseed.parquet', '250417_ctrl.parquet', '251229_seedmatch.parquet', '250416_seed1x1.parquet']
+#ALIASES = ['UNSEED_90', 'UNSEED_50', 'CTRL', 'SEED_50', 'SEED_150']
+TRAJNM = 'trajectories.txt.b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.'
 FILI = ['250415_unseed.parquet', '250417_ctrl.parquet', '251229_seedmatch.parquet','250702_unseed2hPa6m.parquet', '250416_seed1x1.parquet']
-ALIASES = ['UNSEED_50', 'CTRL', 'SEED_50', 'UNSEED_90', 'SEED_150']
+ALIASES = ['UNSEED', 'CTRL', 'SEED', 'UNSEED_EX', 'SEED_EX']
 PBINS = np.arange(830, 1030, 5)
 
 SZNS = ['DJF', 'MAM', 'JJA', 'SON']
 SZMOs = [{12, 1, 2}, {3, 4, 5}, {6, 7, 8}, {9, 10, 11}]
 WARM = [-1, -1, 1, 1] #sign of warm hemi
 
-dfs = [pd.read_parquet(os.path.join(DIRI, f)) for f in FILI]
+dfs = [pd.read_parquet(os.path.join(DIRI, TRAJNM + f)) for f in FILI]
 totyrs = [(df.index[-1] - df.index[0]).days / 365. for df in dfs]
 dfs_filtered = [
     df[np.logical_or.reduce([

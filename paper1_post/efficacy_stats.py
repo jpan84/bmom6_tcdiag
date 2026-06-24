@@ -3,13 +3,13 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-FILI = '/glade/u/home/jpan/aquaptc/tempest/260415_density_5exp/sznl_climo.csv' #from track_dens.py
+FILI = '/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper1_post/TC_stats/260623_density_gmd/sznl_climo.csv' #from track_dens.py
 COLS = ['mo_in_szn', 'varnm', 'case', 'NH', 'SH', 'totyrs']
 nh_warm_mo = [6, 9]
 sh_warm_mo = [2, 3]
 
-DIRE = '~/aquaptc/tempest/'
-EVNTS = [('250702_unseed_2hPa6m_unseed_events.parquet', 'us'), ('250415_unseed_production_unseed_events.parquet', 'us'), None, ('251229_seed_match_seed_events.parquet', 'sd'), ('250416_seed1x1_production_seed_events.parquet', 'sd')]
+DIRE = '~/aquaptc/bmom6_tcdiag/paper1_post/TC_preprocess/seed_stats/'
+EVNTS = [('250702_unseed_2hPa6m_events.parquet', 'us'), ('250415_unseed_production_events.parquet', 'us'), None, ('251229_seed_match_events.parquet', 'sd'), ('250416_seed1x1_production_events.parquet', 'sd')]
 ORDER = ['unseed2', 'unseed', 'ctrl', 'mseed', 'seed']
 PIELBL = [['(a)', '(b)'], ['(c)', '(d)']]
 
@@ -23,6 +23,7 @@ def main():
    evdfs = [df[~df['rp'].isna()] if df is not None else None for df in evdfs]
    print([df.shape if df is not None else None for df in evdfs])
 
+   sd_tbl = []
    #print(tot_nTCs(climo))
    for ii, df in enumerate(evdfs):
       print('\nWorking on case', ORDER[ii])
@@ -40,6 +41,8 @@ def main():
          n_converted = (seed_gen['NH'] + seed_gen['SH']).sum()
          print('The seed conversion rate for %s is %.1f / %.1f = %.3f' % (ORDER[ii], n_converted, ev_pyr, n_converted / ev_pyr))
          print('The efficacy of seeds for %s is %.1f / %.1f = %.3f' % (ORDER[ii], dn, n_converted, dn / n_converted))
+
+         sd_tbl.append((ev_pyr, n_converted, dn, n_converted / ev_pyr * 100, dn / n_converted * 100))
 
       if EVNTS[ii][1] == 'us':
          uscnts = [selcase[selcase['varnm'] == 'stms with %d unseeds' % nn] for nn in range(4)]
@@ -94,6 +97,51 @@ def main():
          fig.tight_layout(w_pad=3)
          plt.savefig(os.path.join(os.path.dirname(FILI), '%s_unseed_pie.svg' % ORDER[ii]))
          plt.show()
+
+   print('Seeding stats table:')
+   N_seed, N_prox, delta_TC, seed_conv, resp_eff = sd_tbl[0]
+   N_seed_ex, N_prox_ex, delta_TC_ex, seed_conv_ex, resp_eff_ex = sd_tbl[1]
+   # 3. Format strings using LaTeX \makecell formatting for line breaks inside cells
+   data = {
+       "\\textbf{SEED}": [
+           f"\\makecell{{{seed_conv:.1f}\\%\\\\({N_prox:.1f} / {N_seed:.1f})}}",
+           f"\\makecell{{{resp_eff:.1f}\\%\\\\({delta_TC:.1f} / {N_prox:.1f})}}",
+       ],
+       "\\textbf{SEED\\_EX}": [
+           f"\\makecell{{{seed_conv_ex:.1f}\\%\\\\({N_prox_ex:.1f} / {N_seed_ex:.1f})}}",
+           f"\\makecell{{{resp_eff_ex:.1f}\\%\\\\({delta_TC_ex:.1f} / {N_prox_ex:.1f})}}",
+       ],
+   }
+   
+   index = [
+       "\\textbf{\\makecell{Seed conversion \\\\ rate}}",
+       "\\textbf{\\makecell{Response \\\\ efficiency}}",
+   ]
+   
+   # 4. Create the DataFrame
+   df = pd.DataFrame(data, index=index)
+   
+   # 5. Generate the LaTeX string with the correct styling environments
+   latex_output = df.to_latex(
+       column_format="|c|c|c|",
+       escape=False,  # Prevents pandas from escaping your LaTeX backslashes
+   )
+
+   latex_output = (
+    latex_output.replace("\\toprule", "\\hline")
+    .replace("\\midrule", "\\hline")
+    .replace("\\bottomrule", "\\hline")
+   )
+   
+   # 6. Wrap it in your table layout environments
+   final_table = f"""\\begin{{table}}[h]
+       \\centering
+       \\renewcommand{{\\arraystretch}}{{1.5}}
+   {latex_output}    \\caption{{Metrics for the SEED and SEED\\_EX experiments. (Top row) \\textit{{Seed conversion rate}} $= N_{{\\text{{prox}}}} / N_{{\\text{{seed}}}}$, where $N_{{\\text{{prox}}}}$ is the number of TC genesis points close to a seed in space/time, and $N_{{\\text{{seed}}}}$ is the total number of seeding interventions. (Bottom row) \\textit{{Response efficiency}} $= \\Delta \\text{{TC}} / N_{{\\text{{prox}}}}$, where $\\Delta \\text{{TC}}$ is the net increase in the total number of TCs.}}
+       \\label{{tbl:seed_efficacy}}
+   \\end{{table}}"""
+   
+   print(final_table)
 
 
 #get total number of TCs by case

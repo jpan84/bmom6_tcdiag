@@ -2,20 +2,20 @@ import os
 import numpy as np
 import xarray as xr
 import matplotlib.pyplot as plt
+from paths import ARCHRT, ALIA
 
-DIRIS = [
-         '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m/atm',
-         '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm',
-         '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/atm',
-         '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm',
-         '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm'
-         ]
-ALIS = ['UNSEED_90', 'UNSEED_50', 'CTL', 'SEED_50', 'SEED_150']
+DIRIS = [os.path.join(dr, 'atm/') for dr in ARCHRT]
+ALIS = ALIA
 CTLIX = 2
 
-FILI = 'AAVG_10.0_30.0_rev1.nc'
-SELMO = np.arange(6, 12)
-MOWGTS = np.array([30, 31, 31, 30, 31, 30], dtype=np.int_)
+NHFIL = 'AAVG_10.0_30.0_rev1.nc'
+NHMO = np.arange(6, 12)
+NHWGTS = np.array([30, 31, 31, 30, 31, 30], dtype=np.int_)
+
+SHFIL = 'AAVG_-30.0_-10.0_rev1.nc'
+SHMO = (np.arange(12, 18) - 1) % 12 + 1
+# Output: array([12,  1,  2,  3,  4,  5])
+SHWGTS = np.array([31, 31, 28, 31, 30, 31], dtype=np.int_)
 
 #FILI = 'AAVG_-90.0_90.0.nc'
 #SELMO = np.arange(1, 13)
@@ -28,12 +28,19 @@ MULTBY = dict(PRECT=1e3 * 86400, QFLX=86400, PS=1e-2, FLNT=-1)#, KE=0.5, KE_MEAN
 VARLBLS = dict(TS='SST [K]', DSE='DSE [J m$^{-2}$]', LE='LE [J m$^{-2}$]', PRECT='P [mm d$^{-1}$]', QFLX='E [mm d$^{-1}$]', FLNT='-FLNT', CLD_BL='CWP$_{sfc-700}$', CLD_FT='CWP$_{700-100}$')
 
 def main():
-   dss = [xr.open_dataset(os.path.join(dr, FILI)) for dr in DIRIS]
+   nhdss = [xr.open_dataset(os.path.join(dr, NHFIL)) for dr in DIRIS]
+   shdss = [xr.open_dataset(os.path.join(dr, SHFIL)) for dr in DIRIS]
+   print(SHMO)
    #print(dss[0].time.dt.month)
 
-   tsel = [ds.sel(time=ds['time'].dt.month.isin(SELMO)) for ds in dss]
-   momean = [ds.groupby('time.month').mean() for ds in tsel]
-   finvals = [(ds * MOWGTS).sum() / MOWGTS.sum() for ds in momean]
+   def avgmos(dss, mos, wgts):
+      tsel = [ds.sel(time=ds['time'].dt.month.isin(mos)) for ds in dss]
+      momean = [ds.groupby('time.month').mean() for ds in tsel]
+      return [(ds * wgts).sum() / wgts.sum() for ds in momean]
+
+   nhvals = avgmos(nhdss, NHMO, NHWGTS)
+   shvals = avgmos(shdss, SHMO, SHWGTS)
+   finvals = [(nv + sv) / 2 for nv, sv in zip(nhvals, shvals)]
 
    print(finvals[0])
 
@@ -61,7 +68,7 @@ def main():
          txtclr = 'white' if abs(toshade[rr, cc]) > 0.5 else 'black'
          ax.text(cc, rr, lbl, ha='center', va='center', color=txtclr)
 
-   plt.savefig(FILI + '.svg')
+   plt.savefig(NHFIL + '.svg')
    plt.close()
    #plt.show()
 
@@ -106,7 +113,7 @@ def main():
 
    # 4. Hide structural spacer rows from the canvas and save
    [ax.axis('off') for name, ax in zip(grid_vars, axs) if name == 'SPACER']
-   plt.savefig(FILI + '_clean_blocks.svg', dpi=300, bbox_inches='tight'), plt.close()
+   plt.savefig(NHFIL + '_clean_blocks.svg', dpi=300, bbox_inches='tight'), plt.close()
 
 # --- Radiation and Cloud Plot for Paper 1 ---
    # 1. Define row blocks: (Variable List, Shared Colorbar Label)
@@ -145,7 +152,7 @@ def main():
 
    # 4. Hide structural spacer rows from the canvas and save
    [ax.axis('off') for name, ax in zip(grid_vars, axs) if name == 'SPACER']
-   plt.savefig(FILI + '_radiation_clouds.svg', dpi=300, bbox_inches='tight'), plt.close()
+   plt.savefig(NHFIL + '_radiation_clouds.svg', dpi=300, bbox_inches='tight'), plt.close()
 
 if __name__ == '__main__':
    main()
