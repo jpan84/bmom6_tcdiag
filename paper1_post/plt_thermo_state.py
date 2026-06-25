@@ -51,6 +51,10 @@ def main():
    othplt = agg_time([ds['thetao'] for ds in ods], latnm=OLAT)
    omlplt = agg_time([ds['oml'] for ds in ods], latnm=OLAT, diff=False)
 
+   #divide SEED_EX - CTL by 5
+   for lsds in [dseplt, mseplt, othplt, omlplt]:
+      lsds[-1] /= 5
+
    mse_kw = dict(levels=np.arange(-2000, 2001, 200), cmap='seismic')
    dse_kw = dict(levels=mse_kw['levels'][mse_kw['levels'] != 0] / 2)
    ctl_kw = dict(levels=np.arange(3e5, 4.01e5, 5e3), cmap='viridis')
@@ -162,6 +166,7 @@ def main():
 
    # Assuming the output commands remain the same
    plt.savefig('thermo_state_plt.svg', bbox_inches='tight')
+   plt.show()
    plt.close()
    #########################################################################################
 

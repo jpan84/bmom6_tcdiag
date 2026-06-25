@@ -1,0 +1,5 @@
+nohup: ignoring input
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 6561100.desched1 with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=256GB -A UPSU0032 -q develop@desched1 -l walltime=01:45:00
+

@@ -110,21 +110,23 @@ def main():
       csf = ax.pcolormesh(DOY_GE, MU_GE, pltar.T, shading='flat', cmap=cmap, norm=bnorm)#, levels=clevs)
       cb = plt.colorbar(csf, ax=ax)
       ax.scatter(pltts['time'].dt.dayofyear, LAT2MU(pltts), alpha=0.2, c='lime', s=0.5) if pltts is not None else None
-      [ax.axvline(fd, c='C1', linestyle='dashed') if fd is not None else None for fd in [sp, wn]]
+      [ax.axvline(fd, c='#D01C8B', linestyle='dashed') if fd is not None else None for fd in [sp, wn]]
 
       ax.set_xlim(0.5, 365.5)
       ax.set_ylim(-0.5, 0.5)
       ax.set_xticks(TICKDOY, [dt.strftime('%m-%d') for dt in TICKDATES], rotation=45)
       ax.set_yticks(LAT2MU(np.arange(-30, 31, 10)), np.arange(-30, 31, 10))
       ax.tick_params(axis='both', labelleft=True, labelbottom=True, right=True, top=True)
-      ax.set_title(ALIA[ixh])
-      ax.set_title('(%s)' % chr(ord('a') + ii))
+      ax.set_title(ALIA[ixh] + ('' if isctl else ' – CTL'))
+      ax.set_title('(%s)' % chr(ord('a') + ii), loc='left')
 
-      print(sp, wn)
+      #print(sp, wn)
       fddt = [cftime.num2date(fd, units='days since 0000-12-31', calendar='noleap') if not np.isnan(fd) else None for fd in [sp, wn]]
       fdmmdd = [ft.strftime('%m-%d') if ft is not None else None for ft in fddt]
-      [ax.text(fd - 50, -.1, fdmmdd[jj], c='C1') if not np.isnan(fd) else None for jj, fd in enumerate([sp, wn])]
+      [ax.text(fd - 50, -.02, fdmmdd[jj], c='#D01C8B') if not np.isnan(fd) else None for jj, fd in enumerate([sp, wn])]
 
+   fig.tight_layout()
+   plt.savefig('TC_gen_sznl.svg', bbox_inches='tight')
    plt.show()
 
 def av_SST_flip_doy(maxlat):

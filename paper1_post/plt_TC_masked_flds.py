@@ -32,18 +32,20 @@ def main(pltvar='TAUX', pltsgn=-1):
 
    totplt = agg_time([pltsgn * ds[pltvar] for ds in totdss], latnm=ALAT)
    tcsplt = agg_time([pltsgn * ds[pltvar] for ds in tcsdss], latnm=ALAT)
+   tcsplt[CTLIX] *= 5
 
 
    plt.rc('font', size=16)
    fig, axes = plt.subplots(2, 3, figsize=(22, 9), sharex=True)
 
    for ii, ax in enumerate(axes.ravel()):
+       if ii == 4: continue
        ixh = IXHORS[ii]
        ax.plot(YSCL(totplt[ixh][ALAT]), totplt[ixh], label='mean')
        ax.plot(YSCL(tcsplt[ixh][ALAT]), tcsplt[ixh], label='TC R4')
 
        ax.set_title(TTLS[ixh])
-       ax.set_title('(%s)' % (ord('a') + ii))
+       ax.set_title('(%s)' % chr(ord('a') + ii), loc='left')
        ax.axhline(0, c='gray')
        [ax.axvline(yl, c='gray', lw=0.5) for yl in YLOC]
        ax.set_xticks(YLOC, YLAB)
@@ -54,9 +56,29 @@ def main(pltvar='TAUX', pltsgn=-1):
           ax.set_xlim(YSCL(tcsplt[ixh][ALAT][0]), YSCL(tcsplt[ixh][ALAT][-1]))
           ax.set_ylim(-.015, .015)
 
+   # Target the extra axis
+   extra_ax = axes[1][1]
+   extra_ax.set_axis_off() # Completely turn off ticks, labels, and borders safely
+
+   # Create a clean solid fill box over the empty space
+   extra_ax.add_patch(plt.Rectangle((0, 0.7), 1, 0.3, 
+                                      facecolor='#000080', 
+                                      transform=extra_ax.transAxes, 
+                                      zorder=-1))
+
+   # Add your centered text annotation
+   extra_ax.text(
+         0.5, 0.85, '↑↑ The orange line (TC R4) has been ↑↑\nmultiplied by 5 in panel (b) only.\nAll other lines show true values.',
+         horizontalalignment='center',
+         verticalalignment='center',
+         transform=extra_ax.transAxes,
+         fontsize=18,
+         weight='bold', c='white'
+   )
+
    fig.tight_layout()
-   #plt.show()
    plt.savefig(f'TC_masked_{pltvar}.svg', bbox_inches='tight')
+   plt.show()
    plt.close()
 
 
