@@ -56,12 +56,12 @@ for ii, ax in enumerate(axes[:, 0]):
    if TYPE[ii] == 'us':
       ax.plot(sinlat, us_lys.isel(run=ii), linestyle='dotted', color='C0', label='lysis at unseeding')
       #ax.plot(sinlat, yvar(lysplt, ds['run'][ii]) - us_lys.isel(run=ii), linestyle='dashed') #change in natural lysis points
-      ax.plot(sinlat, events[ii], color='maroon', linestyle='dashdot', label='unseed events')
+      ax.plot(sinlat, events[ii], color='maroon', linestyle='dashdot', label='interventions')
 
    if TYPE[ii] == 'sd':
       ax.plot(sinlat, sd_gen.isel(run=ii), linestyle='dotted', color='C1', label='seeded genesis')
       ax.plot(sinlat, yvar(genplt, ds['run'][ii]) - sd_gen.isel(run=ii), linestyle='dashed', color='C1', label='natural genesis') #change in natural gen points
-      ax.plot(sinlat, events[ii], color='maroon', linestyle='dashdot', label='seed events')
+      ax.plot(sinlat, events[ii], color='maroon', linestyle='dashdot', label='interventions')
 
    ax.set_yscale('symlog', linthresh=3.)
    ax.yaxis.set_major_formatter(ticker.ScalarFormatter())
@@ -109,9 +109,9 @@ bboxes = [ax.get_position() for ax in row_2_axes]
 row_bbox = Bbox.union(bboxes)
 
 # 4. Add slight padding so the box doesn't tightly crowd the axis labels
-padding = 0.02
-padded_bbox = Bbox([[row_bbox.x0 - padding, row_bbox.y0 - padding],
-                    [row_bbox.x1 + padding, row_bbox.y1 + padding]])
+xpad, ypad = .115, .03
+padded_bbox = Bbox([[row_bbox.x0 - xpad, row_bbox.y0 - ypad],
+                    [row_bbox.x1 + xpad, row_bbox.y1 + ypad]])
 
 # 5. Create and style the unsaturated red bounding box
 rect = Rectangle(
@@ -127,8 +127,8 @@ rect = Rectangle(
 )
 
 # 6. Make row 2 axes transparent so the background color peeks through
-for ax in row_2_axes:
-    ax.set_facecolor('none')
+#for ax in row_2_axes:
+#    ax.set_facecolor('none')
 
 # 7. Add the bounding box to the figure canvas
 fig.patches.append(rect)
@@ -138,5 +138,5 @@ fig.suptitle('TC density plots [%s$^{-1}$ (10$^6$ km$^2$)$^{-1}$]' % SZN)
 
 fig.tight_layout()
 plt.savefig('masterplot_%s.svg' % SZN)
-plt.show()
+#plt.show()
 plt.close()

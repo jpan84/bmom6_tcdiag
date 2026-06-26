@@ -33,11 +33,11 @@ def main():
    vmax, _, ifl, _, _ = pi_xr_ux(SSTC, MSL, phPa, TC, rwv)
    vmax = ux.UxDataArray(vmax, uxgrid=ds.uxgrid)
    vmax_zm = vmax.zonal_mean(lat=(-50, 50, 2)).squeeze()
-   #print('IFL', ifl.values)
-   #print(vmax_zm.values)
+   print('IFL', ifl.values)
+   print(vmax_zm.values)
 
-   #plt.plot(vmax_zm.latitudes, vmax_zm)
-   #plt.show()
+   plt.plot(vmax_zm.latitudes, vmax_zm)
+   plt.show()
 
    #Emanuel entropy deficit
    print('Chi task graph...')

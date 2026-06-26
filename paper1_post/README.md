@@ -4,9 +4,9 @@ For now, I’ll treat my Github repo located at ~jpan/aquaptc/bmom6\_tcdiag/pape
 ## **Shared .py variables and routines**
 **Script Locations:** `/`
 
-* **`paths.py`**: contains paths to raw model output, experiment ALIASES, panel index mapping for Figs. 3,6,9,11
+* **`paths.py`**: contains paths to raw model output, experiment ALIASES, and panel index mapping for Figs. 3,6,9,11
 * **`consts.py`**: physical constants
-* **`sznl_funcs.py**:
+* **`sznl_funcs.py**: `monthly2sznl()` converts monthly means to meteorological season means. `stack_hemi_sznl()` mirrors DJF,MAM about the equator and stacks them with JJA,SON to combine equal-and-opposite seasons in hemispherically symmetric model configurations.
 
 ## **PP1: Preprocessing TC trajectories in TempestExtremes**
 **Script Locations:** `/TC_preprocess/`
@@ -108,7 +108,8 @@ Run the script after setting the global var `FILI` to the basename of the output
 **Script Location:** `/plt_thermo_state.py`
 
 ### **Preprocessing requirements**
-* **PP2 (CAM)**: run `zonmean_driver.py` with `VARS = 'Z3,T,Q'` and `TAPE = 'atm/hist/*.h0a.*.nc'` to obtain monthly zonal-mean static energy terms.
+* **PP2 (CAM)**: run `hy2pres_driver.py` to interpolate monthly mean h0a output from native vertical levels to pressure levels.
+* **PP2 (CAM)**: after vertical interpolation, run `zonmean_driver.py` with `VARS = 'Z3,T,Q'` and `TAPE = 'atm/hist_onpres_gnupar/*.h0a.*.nc'` to obtain monthly zonal-mean static energy terms.
 * **PP2 (MOM)**: run `struct_zonmean.py` with `VARS = 'thetao,oml'` to obtain monthly zonal-mean ocean pot temp and MLD.
 
 ### **Execution Instructions**
@@ -125,6 +126,14 @@ Run the script after setting `AFIL`,`OFIL` to the relative path of the preproces
 Run the script after setting `TOTFIL`,`TCSFIL` to the relative path of the PP2 outputs within ARCHRT(DOUT\_S\_ROOT).
 
 ## **Table 1: Experiment descriptions and Reed vortex params**
+**Script Location:** `/methods_tbl.py`
+The only table entries that are dynamically computed are annual intervention count and the vortex params: dp, rp, phi\_c
+
+### **Preprocessing requirements**
+**PP1**: run `seedlog_merge.py` for each experiment to tabulate un/seeding interventions
+
+### **Execution Instructions**
+Run the script after setting `DIRI`,`EVNTS` to point to the parquet outputs from `seedlog_merge.py`.
 
 ## **Table 2: Seeding efficacy stats**
 Follow the instructions for *Fig. 7: unseeding efficacy stats*.

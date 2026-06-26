@@ -13,7 +13,7 @@ import matplotlib.ticker as mticker
 
 AFIL = 'atm/uxzm_cons_-90_90_0.25_Z3_T_Q.nc'
 OFIL = 'ocn/hist/cdo_zm_thetao_oml.nc'
-AFIL = 'atm/uxzm_h0a_noncons_-55_55.1_0.5_Z3_T_Q.nc'
+AFIL = 'atm/uxzm_h0a_noncons_-90.0_90.0_1.5_Z3_T_Q.nc'
 ALAT, OLAT = 'latitudes', 'lat'
 
 TTLS = [ALIA[ii] + '$–$CTL' if ii != CTLIX else 'CTL' for ii in range(len(ALIA))]
@@ -54,11 +54,12 @@ def main():
    #divide SEED_EX - CTL by 5
    for lsds in [dseplt, mseplt, othplt, omlplt]:
       lsds[-1] /= 5
+   TTLS[-1] = '(%s) / 5' % TTLS[-1]
 
-   mse_kw = dict(levels=np.arange(-2000, 2001, 200), cmap='seismic')
+   mse_kw = dict(levels=np.arange(-1000, 1001, 200), cmap='RdBu_r')
    dse_kw = dict(levels=mse_kw['levels'][mse_kw['levels'] != 0] / 2)
-   ctl_kw = dict(levels=np.arange(3e5, 4.01e5, 5e3), cmap='viridis')
-   olevs = np.arange(-.2, .21, .02)
+   ctl_kw = dict(levels=np.arange(3e5, 4.01e5, 5e3), cmap='inferno')
+   olevs = np.arange(-.4, .41, .02)
    olevs_c = np.arange(0, 40, 4)
 
    plt.rc('font', size=16)
@@ -70,7 +71,7 @@ def main():
    gs = fig.add_gridspec(nrows=3, ncols=4, 
                          height_ratios=[1, 1, 0.08], 
                          width_ratios=[1, 1, 1, 0.06],
-                         wspace=0.25, hspace=0.3)
+                         wspace=0.5, hspace=0.5)
 
    # Placeholders to capture mappables for colorbars
    cf_atmo_ctl, cf_atmo_anom = None, None
@@ -79,6 +80,7 @@ def main():
    for rr in range(2): # Process 2 rows of subplots
       for cc in range(3): # Process 3 experiment columns
           ix1d = rr * 3 + cc
+          if ix1d == 4: continue
           ixh = IXHORS[ix1d]
           
           # Target the standard plot grid cell
@@ -96,9 +98,9 @@ def main():
 
           # --- Plot Ocean Data (Bottom Panel) ---
           is_control = (ixh == CTLIX)
-          ocn_cmap = 'magma' if is_control else 'bwr'
+          ocn_cmap = 'magma' if is_control else 'seismic'
           
-          csf_ocn = ax_bot.contourf(YSCL(othplt[ixh]['lat']), othplt[ixh]['zl'], othplt[ixh], cmap=ocn_cmap, levels=olevs_c if is_control else olevs)
+          csf_ocn = ax_bot.contourf(YSCL(othplt[ixh]['lat']), othplt[ixh]['zl'], othplt[ixh], cmap=ocn_cmap, levels=olevs_c if is_control else olevs, extend='both')
           
           # Cache mapping handles for later colorbar generation
           if is_control:
@@ -109,22 +111,23 @@ def main():
           ax_bot.plot(YSCL(omlplt[ixh]['lat']), omlplt[ixh], color='black', linewidth=1.5)
           ax_bot.set_xticks(YLOC, ['' if yl % 20 else yl for yl in YLAB])
           ax_bot.set_xlim(-1, 1)
-          ax_bot.set_ylim(0, 400)
+          ax_bot.set_ylim(0, 200)
+          ax_bot.tick_params(axis='y', labelcolor='C0')
           ax_bot.invert_yaxis()
           
-          if rr == 1: # Only label the true bottom row X-axis
-              ax_bot.set_xlabel('Latitude [°]')
-          else:
-              ax_bot.tick_params(labelbottom=False)
+          #if rr == 1: # Only label the true bottom row X-axis
+          ax_bot.set_xlabel('Latitude [°]')
+          #else:
+          #    ax_bot.tick_params(labelbottom=False)
               
-          ax_bot.set_ylabel('Depth [m]') if cc == 0 else ax_bot.tick_params(labelleft=False)
+          ax_bot.set_ylabel('Depth [m]', color='C0')# if cc == 0 else ax_bot.tick_params(labelleft=False)
 
           # --- Plot Atmosphere Data (Top Panel) ---
           csf_atmo = ax_top.contourf(YSCL(mseplt[ixh]['latitudes']), mseplt[ixh]['plev'] / 100, mseplt[ixh], 
                                      extend='both', **(mse_kw if not is_control else ctl_kw))
 
           css_atmo = ax_top.contour(YSCL(dseplt[ixh]['latitudes']), dseplt[ixh]['plev'] / 100, dseplt[ixh], 
-                                     colors='lime', levels=(dse_kw if not is_control else ctl_kw)['levels'])
+                                     colors='black', levels=(dse_kw if not is_control else ctl_kw)['levels'])
           
           if is_control:
               cf_atmo_ctl = csf_atmo
@@ -134,11 +137,12 @@ def main():
           ax_top.set_ylim(1000, 100)
           ax_top.set_yscale('log')
           ax_top.yaxis.set_minor_formatter(mticker.ScalarFormatter())
+          ax_top.yaxis.minorticks_off()
           ax_top.yaxis.set_major_formatter(mticker.ScalarFormatter())
           
-          ax_top.set_ylabel('Pressure [hPa]') if cc == 0 else ax_top.tick_params(labelleft=False)
+          ax_top.set_ylabel('Pressure [hPa]')# if cc == 0 else ax_top.tick_params(labelleft=False)
           ax_top.set_yticks(np.arange(200, 1001, 200))
-          ax_top.tick_params(labelbottom=False)
+          ax_top.tick_params(labelbottom=False, right=True, top=True)
 
           # Annotations
           label_index = (rr * 3) + cc
@@ -165,6 +169,7 @@ def main():
 
 
    # Assuming the output commands remain the same
+   fig.tight_layout()
    plt.savefig('thermo_state_plt.svg', bbox_inches='tight')
    plt.show()
    plt.close()
