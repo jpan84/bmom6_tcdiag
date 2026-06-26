@@ -1,7 +1,7 @@
 nohup: ignoring input
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 4914059.casper-pbs with qsub arguments:
-    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=03:08:00
+Waiting on job launch; 4913992.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=04:04:00
 
 Dashboard available at: http://127.0.0.1:8787/status
 <xarray.UxDataset> Size: 158GB
@@ -9,7 +9,7 @@ Dimensions:       (case: 5, time: 12, n_face: 777602, plev: 26, nbnd: 2)
 Coordinates:
 * case          (case) object 40B 'UNSEED_EX' 'UNSEED' 'CTL' 'SEED' 'SEED_EX'
 * plev          (plev) float64 208B 9.926e+04 9.706e+04 ... 738.9 354.5
-* time          (time) object 96B 0008-01-16 12:00:00 ... 0008-12-16 12:00:00
+* time          (time) object 96B 0009-01-16 12:00:00 ... 0009-12-16 12:00:00
 Dimensions without coordinates: n_face, nbnd
 Data variables: (12/103)
 AEROD_v       (case, time, n_face) float32 187MB dask.array<chunksize=(1, 1, 777602), meta=np.ndarray>

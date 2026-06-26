@@ -9,19 +9,27 @@ from consts import TCK, OM
 from sznl_funcs import monthly2sznl, stack_hemi_sznl
 import matplotlib.pyplot as plt
 
+from dask.distributed import Client
+
 TSTFIL = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm/hist_onpres_gnupar/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch.cam.h0a.0011-08.onpres.nc'
-dates = '0009'
+dates = '0008'
 hist_onp = 'atm/hist_onpres_gnupar/*.h0a.%s*.onpres.nc' % dates
+
+FILO = os.path.join(ARCHRT[0], 'atm/', 'vmax_PI_ne120_%s.nc' % dates)
 
 pintp = lambda x, p: x.interp(plev=p).drop('plev')
 
 def main():
+   # This automatically spins up a local cluster and hooks xarray/uxarray into it
+   client = Client() 
+   print(f"Dashboard available at: {client.dashboard_link}")
+
    dss = [ux.open_mfdataset(CAMGR, os.path.join(ar, hist_onp)).expand_dims(case=[ALIA[ii]]) for ii, ar in enumerate(ARCHRT)]
    for ds in dss:
       ds.uxgrid = dss[0].uxgrid
    ds = ux.concat(dss, 'case')
    ds = ds.sortby('plev', ascending=False)
-   ds = ds.chunk({'plev': -1})
+   ds = ds.chunk({'time': 1, 'plev': -1, 'n_face': -1})
    print(ds)
 
    print('Task graphs for PI args...')
@@ -37,12 +45,21 @@ def main():
    vmax = ux.UxDataArray(vmax, uxgrid=ds.uxgrid)
 
    print('Saving to netcdf...')
-   xr.Dataset(data_vars=dict(vmax_PI=vmax)).to_netcdf(os.path.join(ARCHRT[0], 'atm/', 'vmax_PI_ne120.nc'))
+   # 1. Convert vmax to a clean, standard numpy or dask array stripped of parent metadata
+   vmax_clean = xr.DataArray(
+       vmax.data, 
+       dims=['case', 'time', 'n_face'],
+       coords={
+         'case': ds.case.values,
+         'time': ds.time.values
+       }
+   )
+   xr.Dataset(data_vars=dict(vmax_PI=vmax)).to_netcdf(FILO)
    print('Saved.')
    exit()
 
 def main_plot():
-   ds = ux.open_mfdataset(CAMGR, os.path.join(ARCHRT[0], 'atm/', 'vmax_PI_ne120_%s.nc' % dates))
+   ds = ux.open_mfdataset(CAMGR, FILO)
    print(ds['vmax_PI'].values)
 
    print('Zonal mean task graph...')

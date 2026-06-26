@@ -1,0 +1,31 @@
+nohup: ignoring input
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+Waiting on job launch; 4913966.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=02:00:59
+
+Dashboard available at: http://127.0.0.1:8787/status
+<xarray.UxDataset> Size: 13GB
+Dimensions:       (case: 5, time: 1, n_face: 777602, plev: 26, nbnd: 2)
+Coordinates:
+* case          (case) object 40B 'UNSEED_EX' 'UNSEED' 'CTL' 'SEED' 'SEED_EX'
+* plev          (plev) float64 208B 9.926e+04 9.706e+04 ... 738.9 354.5
+* time          (time) object 8B 0009-08-16 12:00:00
+Dimensions without coordinates: n_face, nbnd
+Data variables: (12/103)
+AEROD_v       (case, time, n_face) float32 16MB dask.array<chunksize=(1, 1, 777602), meta=np.ndarray>
+CAPE          (case, time, n_face) float32 16MB dask.array<chunksize=(1, 1, 777602), meta=np.ndarray>
+CLDHGH        (case, time, n_face) float32 16MB dask.array<chunksize=(1, 1, 777602), meta=np.ndarray>
+CLDICE        (case, time, plev, n_face) float32 404MB dask.array<chunksize=(1, 1, 26, 777602), meta=np.ndarray>
+CLDLIQ        (case, time, plev, n_face) float32 404MB dask.array<chunksize=(1, 1, 26, 777602), meta=np.ndarray>
+CLDLOW        (case, time, n_face) float32 16MB dask.array<chunksize=(1, 1, 777602), meta=np.ndarray>
+...            ...
+nbdate        (case) int32 20B dask.array<chunksize=(5,), meta=np.ndarray>
+nbsec         (case) int32 20B dask.array<chunksize=(5,), meta=np.ndarray>
+ndbase        (case) int32 20B dask.array<chunksize=(5,), meta=np.ndarray>
+nsbase        (case) int32 20B dask.array<chunksize=(5,), meta=np.ndarray>
+time_bounds   (case, time, nbnd) object 80B dask.array<chunksize=(1, 1, 2), meta=np.ndarray>
+time_written  (case, time) |S8 40B dask.array<chunksize=(1, 1), meta=np.ndarray>
+Task graphs for PI args...
+PI task graph...
+Saving to netcdf...
+Saved.
