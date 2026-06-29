@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from dask.distributed import Client
 
 TSTFIL = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm/hist_onpres_gnupar/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch.cam.h0a.0011-08.onpres.nc'
-dates = '000[8-9]'
+dates = '0008-0009'
 hist_onp = 'atm/hist_onpres_gnupar/*.h0a.%s*.onpres.nc' % dates
 
 FILO = os.path.join(ARCHRT[0], 'atm/', 'vmax_PI_ne120_%s.nc' % dates)
@@ -69,11 +69,11 @@ def main():
 
 def main_plot():
    ds = ux.open_mfdataset(CAMGR, FILO)
-   print(ds['vmax_PI'].values)
+   print(ds['pmin_PI'].values)
 
    print('Zonal mean task graph...')
-   vmax_zm = ds['vmax_PI'].zonal_mean(lat=(-40, 40, 2)).squeeze()
-   vmax_zm = xr.DataArray(vmax_zm).assign_coords(coords=ds['vmax_PI'].coords)
+   vmax_zm = ds['pmin_PI'].zonal_mean(lat=(-40, 40, 2)).squeeze()
+   vmax_zm = xr.DataArray(vmax_zm).assign_coords(coords=ds['pmin_PI'].coords)
 
    print('Time agg task graph...')
    vmax_mm = vmax_zm.groupby('time.month').mean()
@@ -81,9 +81,21 @@ def main_plot():
 
    print(vmax_sm.values)
 
-   print('Computing and plotting...')
-   [plt.plot(vmax_zm.latitudes, vmax_sm.sel(case=cs), label=str(cs.values)) for ii, cs in enumerate(vmax_zm['case'])]
-   plt.legend()
+   lsty = [(0, (5, 0.7)), (0, (5, 3)), None, (0, (1, 3)), (0, (1, 1))]
+   clrs = ['darkblue', 'blue', None, 'red', 'darkred']
+
+   plt.rc('font', size=16)
+   plt.plot(vmax_zm.latitudes, vmax_sm.sel(case='CTL'), label='CTL', c='black', lw=3)
+   plt.ylabel('$p_{min}$ [hPa]')
+   plt.xlim(5, 40)
+   plt.xlabel('Latitude [°]')
+   plt.title('(e)', loc='left')
+   ax2 = plt.gca().twinx()
+   [ax2.plot(vmax_zm.latitudes, vmax_sm.sel(case=cs) - vmax_sm.sel(case='CTL'), label=str(cs.values), ls=lsty[ii], lw=2, c=clrs[ii]) if cs != 'CTL' else None for ii, cs in enumerate(vmax_zm['case'])]
+   ax2.axhline(0, lw=0.5, color='gray')
+   ax2.set_ylabel('$p_{min}$ anomaly [hPa]')
+   plt.legend(loc='lower right')
+   plt.savefig('pmin_PI.svg', bbox_inches='tight')
    plt.show()
 
 
