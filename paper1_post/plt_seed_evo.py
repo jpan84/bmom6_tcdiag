@@ -1,6 +1,7 @@
 import uxarray as ux
 import numpy as np
 import holoviews as hv
+from holoviews import opts
 import os
 import glob
 from paths import ARCHRT, CAMGR
@@ -15,15 +16,24 @@ DEGW = 7.5
 PLEVS = np.concatenate((np.arange(980, 1005, 5), np.arange(1005, 1015, 1)))
 
 def main():
-   pths = [glob.glob(os.path.join(ar, 'atm/hist/', f'*h1i.{fi}*.nc') for fi in FILS[ii]]) for ii, ar in enumerate(DIRS)]
+   pths = [[glob.glob(os.path.join(ar, 'atm/hist/', f'*h1i.{fi}*.nc')) for fi in FILS[ii]] for ii, ar in enumerate(DIRS)]
 
-   dss = [ux.open_mfdataset(CAMGR, [pt for pt in pths[ii]]) for ii, ar in enumerate(DIRS)]
+   print(pths)
+
+   dss = [ux.open_mfdataset(CAMGR, [pt[0] for pt in pths[ii]]) for ii, ar in enumerate(DIRS)]
 
    subs = [ds['PSL'].subset.bounding_box((CTRS[ii][0] - DEGW, CTRS[ii][0] + DEGW), (CTRS[ii][1] - DEGW, CTRS[ii][1] + DEGW)) for ii, ds in enumerate(dss)]
 
-   plts = np.array([[(sb.sel(time=tt) / 100).plot(rasterize=True) for tt in sb['time']] for sb in subs])
+   custom_opts = opts.Image(
+        cmap='viridis', 
+        clim=(PLEVS.min(), PLEVS.max()),
+        color_levels=list(PLEVS),
+        colorbar=True
+   )
 
-   grid_layout = hv.Layout(plts.flatten()).cols(4)
+   plts = [(sb.sel(time=tt) / 100).plot(rasterize=True).opts(custom_opts) for sb in subs for tt in sb['time']]
+
+   grid_layout = hv.Layout(plts).cols(4).opts(shared_axes=False, axiswise=True)
 
    # OPTION A: Save as an interactive HTML file (Best for sharing/viewing in a browser)
    hv.save(grid_layout, 'seed_evo.html', backend='bokeh')
