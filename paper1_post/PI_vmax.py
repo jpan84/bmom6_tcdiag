@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from dask.distributed import Client
 
 TSTFIL = '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm/hist_onpres_gnupar/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch.cam.h0a.0011-08.onpres.nc'
-dates = '0008'
+dates = '000[8-9]'
 hist_onp = 'atm/hist_onpres_gnupar/*.h0a.%s*.onpres.nc' % dates
 
 FILO = os.path.join(ARCHRT[0], 'atm/', 'vmax_PI_ne120_%s.nc' % dates)
@@ -29,7 +29,7 @@ def main():
       ds.uxgrid = dss[0].uxgrid
    ds = ux.concat(dss, 'case')
    ds = ds.sortby('plev', ascending=False)
-   ds = ds.chunk({'time': 1, 'plev': -1, 'n_face': -1})
+   ds = ds.chunk({'time': 1, 'plev': -1, 'n_face': -1}) #correct chunking provided the biggest speedup (several hours down to 0.5 hr for 1 year)
    print(ds)
 
    print('Task graphs for PI args...')
@@ -41,8 +41,9 @@ def main():
 
    #PI vmax
    print('PI task graph...')
-   vmax, _, ifl, _, _ = pi_xr_ux(SSTC, MSL, phPa, TC, rwv)
+   vmax, pmin, ifl, _, _ = pi_xr_ux(SSTC, MSL, phPa, TC, rwv)
    vmax = ux.UxDataArray(vmax, uxgrid=ds.uxgrid)
+   pmin = ux.UxDataArray(pmin, uxgrid=ds.uxgrid)
 
    print('Saving to netcdf...')
    # 1. Convert vmax to a clean, standard numpy or dask array stripped of parent metadata
@@ -54,7 +55,15 @@ def main():
          'time': ds.time.values
        }
    )
-   xr.Dataset(data_vars=dict(vmax_PI=vmax)).to_netcdf(FILO)
+   pmin_clean = xr.DataArray(
+       pmin.data, 
+       dims=['case', 'time', 'n_face'],
+       coords={
+         'case': ds.case.values,
+         'time': ds.time.values
+       }
+   )
+   xr.Dataset(data_vars=dict(vmax_PI=vmax_clean, pmin_PI=pmin_clean)).to_netcdf(FILO)
    print('Saved.')
    exit()
 
@@ -73,7 +82,8 @@ def main_plot():
    print(vmax_sm.values)
 
    print('Computing and plotting...')
-   [plt.plot(vmax_zm.latitudes, vmax_sm.sel(case=cs), label=str(cs)) for ii, cs in enumerate(vmax_zm['case'])]
+   [plt.plot(vmax_zm.latitudes, vmax_sm.sel(case=cs), label=str(cs.values)) for ii, cs in enumerate(vmax_zm['case'])]
+   plt.legend()
    plt.show()
 
 
