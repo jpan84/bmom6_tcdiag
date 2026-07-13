@@ -19,4 +19,4 @@ kapd = Rd / cp
 
 TCK = 273.15
 
-ALI_LTX = ['UNSEED\_90', 'UNSEED\_50', 'SEED\_50', 'SEED\_150']
+ALI_LTX = ['UNSEED\_EX', 'UNSEED', 'SEED', 'SEED\_EX']

@@ -1,6 +1,7 @@
 import uxarray as ux
 import numpy as np
 import holoviews as hv
+hv.extension('matplotlib')
 import panel as pn
 from holoviews import opts
 import os
@@ -14,7 +15,7 @@ FILS = [['0005-08-06-64800', '0005-08-07-00000', '0005-08-07-21600', '0005-08-07
 CTRS = [(98.79, 18.01), (22.73, 20.78)]
 DEGW = 15
 
-PLEVS = np.concatenate((np.arange(990, 1010, 5), np.arange(1010, 1026, 1)))
+PLEVS = np.concatenate((np.arange(990, 1010, 5), np.arange(1010, 1030, 1), np.arange(1030, 1041, 5)))
 clim_min = float(PLEVS.min())
 clim_max = float(PLEVS.max())
 
@@ -86,6 +87,39 @@ def main():
         hooks=[left_align_title]
     )
 
+    custom_opts = opts.Image(
+    # Core Plotting & Colormap (identical to bokeh)
+    cmap='inferno',
+    clim=(clim_min, clim_max),
+    color_levels=list(PLEVS),
+    colorbar=True,
+
+    # Dimensions & Aspect
+    # Matplotlib uses inches for aspect_weight sizing instead of raw pixels.
+    # frame_width=250 + frame_height=250 with data_aspect=1 translates to:
+    aspect='equal',
+    fig_size=250,  # HoloViews uses this as a relative scaling integer for MPL backend
+    
+    # Colorbar layout overrides (Matplotlib specific)
+    # Replaces padding / label_standoff
+    #cbar_padding=0.05,     # Fractional distance between plot and colorbar
+    # cbar_ticks=...       # If you need custom tick locations, use this instead of colorbar_opts
+    clabel='',
+    
+    # Hooks
+    # Note: If your `left_align_title` hook was manipulating `plot.state` using Bokeh properties 
+    # (like title.align = 'left'), it will crash in Matplotlib. 
+    # You will need to rewrite the hook or remove it, as Matplotlib titles align left/center easily.
+    hooks=[left_align_title] 
+    )
+
+    #layout_opts = opts.Layout(
+    # Margin and Truncation Fixes
+    # Matplotlib handles truncation via subplots_adjust rather than individual margins.
+    # subplots_adjust controls (left, bottom, right, top) as fractions of the figure.
+    # This leaves 15% breathing room on the right side for the colorbar/labels.
+    #subplots_adjust={'right': 0.85, 'top': 0.90})
+
     grid_rows = []
 
     for ii, sb in enumerate(subs):
@@ -103,7 +137,8 @@ def main():
             row_plots.append(p)
         
         # Assemble row plots, isolating axis sharing completely
-        hv_row = hv.Layout(row_plots).cols(4).opts(shared_axes=False, axiswise=True)
+        hv_row = hv.Layout(row_plots).cols(4).opts(shared_axes=False, axiswise=True, title=ROW_SUPERTITLES[ii], sublabel_format=None)
+        hv.save(hv_row, f'row_{ii}_plots.svg', fmt='svg', dpi=300)
         
         # Create a beautiful Markdown supertitle for this row segment
         super_title = pn.pane.Markdown(
@@ -120,6 +155,7 @@ def main():
     # Save to your interactive file
     final_layout.save('seed_evo_final.html')
     print("Interactive 2x4 grid with supertitles and customized headers saved successfully!")
+
 
 if __name__ == "__main__":
     main()

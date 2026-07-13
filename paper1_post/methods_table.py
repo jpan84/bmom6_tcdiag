@@ -3,8 +3,8 @@ import numpy as np
 import pandas as pd
 import consts as c
 
-DIRI = '~/aquaptc/bmom6_tcdiag/seed_stats'
-EVNTS = ['250702_unseed_2hPa6m_unseed_events.parquet', '250415_unseed_production_unseed_events.parquet', '251229_seed_match_seed_events.parquet', '250416_seed1x1_production_seed_events.parquet']
+DIRI = './TC_preprocess/seed_stats'
+EVNTS = ['250702_unseed_2hPa6m_events.parquet', '250415_unseed_production_events.parquet', '251229_seed_match_events.parquet', '250416_seed1x1_production_events.parquet']
 
 def main():
    dfs = [pd.read_parquet(os.path.join(DIRI, ev)) for ev in EVNTS]
@@ -62,6 +62,13 @@ def main():
         r'\makecell{{Annual seed count\\and vortex parameters\\matched to \\UNSEED\_50}}', 
         r'\makecell{{1 seed per day\\in warm season}}'
     ]
+   purp = [
+        r'\makecell{{Aggressive unseeding\\to minimize\\TC activity}}',
+        r'\makecell{{Moderate unseeding}}',
+        r'\makecell{{Obtain a baseline\\climatology}}',
+        r'\makecell{{Mirror the forcing\\in UNSEED}}',
+        r'\makecell{{Aggressive seeding\\to probe upper bound}}'
+    ]
    intint = ['---' if ii == 2 else '24 hours' for ii in range(5)]
    #print(dfs[0]['dt'])
 
@@ -70,12 +77,13 @@ def main():
    ##TODO: add intervention counts (# of un/seeds per year)    
     # Use .loc to add the row at a specific index name
    ltx_df.loc['Parameter sampling distributions'] = distros
+   ltx_df.loc['Purpose'] = purp
    ltx_df.loc['Description'] = descr
    ltx_df.loc['Intervention interval'] = intint
-   ltx_df.loc[r'$q$ factor'] = [2.5, 2.5, '---', 2.5, 0.]
+   ltx_df.loc[r'$q$ factor'] = ['2.5', '2.5', '---', '2.5', '0']
    #ltx_df.loc['Annual intervention count'] = intcnt
 
-   new_order = ['Description', 'Intervention interval', 'Annual intervention count', 'Parameter sampling distributions', r'$dp$ [hPa]', r'$r_p$ [km]', r'$|\phi_c|$ [°]', r'$q$ factor']
+   new_order = ['Purpose', 'Description', 'Intervention interval', 'Annual intervention count', 'Parameter sampling distributions', r'$dp$ [hPa]', r'$r_p$ [km]', r'$|\phi_c|$ [°]', r'$q$ factor']
    ltx_df = ltx_df.reindex(new_order)
 
    # Display and Export
