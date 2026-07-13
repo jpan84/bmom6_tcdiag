@@ -30,14 +30,15 @@ UDEF2D = dict(TAUAM=[(c.a_e, 'coslat', 'TAUX')], SHU=[(1, 'FSNS'), (-1, 'FLNS'),
               AHSRC=[(1, 'FSNT'), (-1, 'FSNS'), (1, 'FLNS'), (-1, 'FLNT'), (1, 'SHFLX'), (c.lv, c.rho_w, 'PRECC'), (c.lv, c.rho_w, 'PRECL')],
               LE = [(c.lv, 'TMQ')], PRECT=[(1, 'PRECC'), (1, 'PRECL')])
 RAWV3D = None
-UDEF3D = dict(DSE=[(c.cp, 'T'), (c.g, 'Z3')], LE_3D=[(c.lv, 'Q')], KE=[(0.5, 'UU'), (0.5, 'VV')], KE_MEAN=[(0.5, 'U', 'U'), (0.5, 'V', 'V')],
+UDEF3D = dict(cpT=[(c.cp, 'T')], gZ=[(c.g, 'Z3')], LE_3D=[(c.lv, 'Q')], KE=[(0.5, 'UU'), (0.5, 'VV')], KE_MEAN=[(0.5, 'U', 'U'), (0.5, 'V', 'V')],
               AM=[(c.a_e, 'coslat', 'U')], CLD_FT=[(1, 'CLDICE'), (1, 'CLDLIQ')], CLD_BL=[(1, 'CLDICE'), (1, 'CLDLIQ')])
 PTROP = (1e4, 1.1e5)
-PBNDS = dict(DSE=PTROP, LE_3D=PTROP, KE=PTROP, KE_MEAN=PTROP, CLD_FT=(1e4, 7e4), CLD_BL=(7e4, 1.1e5))
+PBNDS = dict(cpT=PTROP, gZ=PTROP, LE_3D=PTROP, KE=PTROP, KE_MEAN=PTROP, CLD_FT=(1e4, 7e4), CLD_BL=(7e4, 1.1e5))
 
 def main(diri):
    print('Opening dataset', diri, '...')
    ds = ux.open_mfdataset(CAMGR, os.path.join(diri, HTAPE))
+   ds = ds.chunk({'time': 1, 'lev': -1})
 
    print('Setting up coords...')
    aterm = ds['hyai'] * c.P0

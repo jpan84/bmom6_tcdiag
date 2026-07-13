@@ -21,7 +21,7 @@ SHWGTS = np.array([31, 31, 28, 31, 30, 31], dtype=np.int_)
 #SELMO = np.arange(1, 13)
 #MOWGTS = np.array([31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], dtype=np.int_)
 
-PLTVARS = ['DSE', 'LE', 'KE', 'KE_MEAN', 'AM', 'TAUAM', 'PS', 'TS', 'PRECT', 'QFLX', 'SHU', 'AHSRC', 'FSNT', 'FLNT', 'SWCF', 'LWCF', 'FSNS', 'FLNS', 'CLD_BL', 'CLD_FT']
+PLTVARS = ['cpT', 'gZ', 'LE', 'KE', 'KE_MEAN', 'AM', 'TAUAM', 'PS', 'TS', 'PRECT', 'QFLX', 'SHU', 'AHSRC', 'FSNT', 'FLNT', 'SWCF', 'LWCF', 'FSNS', 'FLNS', 'CLD_BL', 'CLD_FT']
 ALTNMS = dict(AHSRC='$Q_a$', QFLX='E')
 MULTBY = dict(PRECT=1e3 * 86400, QFLX=86400, PS=1e-2, FLNT=-1)#, KE=0.5, KE_MEAN=0.5)
 
@@ -77,7 +77,7 @@ def main():
    blocks = [
        (['TS'], 'Anom [K]'),
        (['EKE'], 'Anom [J m$^{-2}$]'),
-       (['DSE', 'LE'], 'Anom [J m$^{-2}$]'),
+       (['cpT', 'gZ', 'LE'], 'Anom [J m$^{-2}$]'),
        (['PRECT', 'QFLX'], 'Anom [mm d$^{-1}$]')
    ]
    
