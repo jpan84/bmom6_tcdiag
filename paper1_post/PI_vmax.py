@@ -86,14 +86,14 @@ def main_plot():
 
    plt.rc('font', size=16)
    plt.plot(vmax_zm.latitudes, vmax_sm.sel(case='CTL'), label='CTL', c='black', lw=3)
-   plt.ylabel('$p_{min}$ [hPa]')
+   plt.ylabel('$p_{m}$ [hPa]')
    plt.xlim(5, 40)
    plt.xlabel('Latitude [°]')
    plt.title('(e)', loc='left')
    ax2 = plt.gca().twinx()
    [ax2.plot(vmax_zm.latitudes, vmax_sm.sel(case=cs) - vmax_sm.sel(case='CTL'), label=str(cs.values), ls=lsty[ii], lw=2, c=clrs[ii]) if cs != 'CTL' else None for ii, cs in enumerate(vmax_zm['case'])]
    ax2.axhline(0, lw=0.5, color='gray')
-   ax2.set_ylabel('$p_{min}$ anomaly [hPa]')
+   ax2.set_ylabel('$p_{m}$ anomaly [hPa]')
    ax2.set_ylim(-30, 27)
    plt.legend(loc='lower right')
    plt.savefig('pmin_PI.svg', bbox_inches='tight')

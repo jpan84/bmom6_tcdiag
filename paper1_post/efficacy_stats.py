@@ -11,6 +11,7 @@ sh_warm_mo = [2, 3]
 DIRE = '~/aquaptc/bmom6_tcdiag/paper1_post/TC_preprocess/seed_stats/'
 EVNTS = [('250702_unseed_2hPa6m_events.parquet', 'us'), ('250415_unseed_production_events.parquet', 'us'), None, ('251229_seed_match_events.parquet', 'sd'), ('250416_seed1x1_production_events.parquet', 'sd')]
 ORDER = ['unseed2', 'unseed', 'ctrl', 'mseed', 'seed']
+CASES = ['UNSEED_EX', 'UNSEED', 'CTL', 'SEED', 'SEED_EX']
 PIELBL = [['(a)', '(b)'], ['(c)', '(d)']]
 
 def main():
@@ -62,40 +63,25 @@ def main():
          plt.rc('font', size=13)
          fig, axes = plt.subplots(1, 2)
 
-         #try0
-         #axes[0].pie([n_admitted, ev_pyr - n_admitted], labels=['TCs', 'denied genesis'], autopct='%1.1f%%', explode=[0.1, 0])#labels=['Unseeding targeted at TCs', 'Unseeding preventing TCs']
-         #axes[0].set_title('Unseeding events')
-
-         #try0
-         #axes[1].pie(np.arange(4) * nTCs_by_attempts, labels=np.arange(4), autopct='%1.1f%%') #labels=['Unseeding attempts consumed to remove TCs that took %d events' % nn for nn in range(4)],
-         #axes[1].set_title('For unseeding events targeted at TCs,\nhow many events did it take to remove a TC?')
-
-         #try0.5
-         #axes[1].pie(nTCs_by_attempts, labels=np.arange(4), autopct='%1.1f%%') #labels=['Unseeding attempts consumed to remove TCs that took %d events' % nn for nn in range(4)],
-         #axes[1].set_title('How many TCs experienced\n$n$ unseeding events?')
-
-         ##try1
-         #axes[0].pie([ev_pyr - n_admitted] + list(nTCs_by_attempts[1:] * np.arange(1, 4)), labels=['denied genesis'] + list(range(1, 4)), autopct=pie_pct_fmt(ev_pyr), explode=[0.1, 0, 0, 0])#labels=['Unseeding targeted at TCs', 'Unseeding preventing TCs']
-         #axes[0].set_title('Unseeding interventions (%.1f annually)' % ev_pyr)
-
-         ##try1
-         #axes[1].pie(nTCs_by_attempts, labels=np.arange(4), autopct=pie_pct_fmt(nTCs - n_inelig)) #labels=['Unseeding attempts consumed to remove TCs that took %d events' % nn for nn in range(4)],
-         #axes[1].set_title('Warm-season TCs (%.1f annually)\nby number of unseeding attempts' % (nTCs - n_inelig))
-
-         #try1.5
-         axes[0].pie([ev_pyr - n_admitted, np.dot(nTCs_by_attempts[1:], np.arange(1, 4))], labels=['denied\ngenesis', 'offline-tracked\nTCs'],
+         #try2
+         pie0 = np.array([ev_pyr - n_admitted, np.dot(nTCs_by_attempts[1:], np.arange(1, 4))])
+         pct0 = pie0 / ev_pyr * 100.
+         axes[0].pie(pie0, labels=['denied\ngenesis', 'offline-tracked\nTCs' + (': %.1f%%' % pct0[1] if pct0[1] <= 10 else '')],
                       colors=['C8', 'C6'], autopct=pie_pct_fmt(ev_pyr), explode=[0, 0])#labels=['Unseeding targeted at TCs', 'Unseeding preventing TCs']
-         axes[0].set_title('Unseeding interventions (%.1f annually)' % ev_pyr)
+         axes[0].set_title('Unseeding interventions\n(%.1f annually)' % ev_pyr)
          axes[0].set_xlabel(PIELBL[ii][0])
-         axes[0].set_ylabel(ORDER[ii], fontsize=16, labelpad=40)
+         axes[0].set_ylabel(CASES[ii], fontsize=16, labelpad=40)
 
-         #try1.5
-         axes[1].pie(nTCs_by_attempts, labels=np.arange(4), autopct=pie_pct_fmt(nTCs - n_inelig), colors=['C0', 'C2', 'C1', 'C3']) #labels=['Unseeding attempts consumed to remove TCs that took %d events' % nn for nn in range(4)],
+         #try2
+         pie1 = np.array(nTCs_by_attempts)
+         pct1 = pie1 / pie1.sum() * 100.
+         labels = [str(jj) + (': %.1f%%' % pct1[jj] if pct1[jj] <= 10 else '') for jj in range(4)]
+         axes[1].pie(nTCs_by_attempts, labels=labels, autopct=pie_pct_fmt(nTCs - n_inelig), colors=['C0', 'C2', 'C1', 'C3']) #labels=['Unseeding attempts consumed to remove TCs that took %d events' % nn for nn in range(4)],
          axes[1].set_title('Warm-season TCs (%.1f annually)\nby number of unseeding attempts' % (nTCs - n_inelig))
          axes[1].set_xlabel(PIELBL[ii][1])
 
          fig.tight_layout(w_pad=3)
-         plt.savefig(os.path.join(os.path.dirname(FILI), '%s_unseed_pie.svg' % ORDER[ii]))
+         plt.savefig(os.path.join(os.path.dirname(FILI), '%s_unseed_pie.svg' % CASES[ii]))
          plt.show()
 
    print('Seeding stats table:')
