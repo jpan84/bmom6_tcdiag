@@ -3,3 +3,5 @@ nohup: ignoring input
 Waiting on job launch; 6214752.desched1 with qsub arguments:
     qsub  -l select=1:ncpus=16:mem=256GB -A UPSU0032 -q develop@desched1 -l walltime=04:01:00
 
+
+qcmd job 6214752.desched1 has been terminated

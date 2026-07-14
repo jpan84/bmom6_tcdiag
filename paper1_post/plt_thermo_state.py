@@ -14,6 +14,7 @@ import matplotlib.ticker as mticker
 AFIL = 'atm/uxzm_cons_-90_90_0.25_Z3_T_Q.nc'
 OFIL = 'ocn/hist/cdo_zm_thetao_oml.nc'
 AFIL = 'atm/uxzm_h0a_noncons_-90.0_90.0_1.5_Z3_T_Q.nc'
+#AFIL = 'atm/uxzm_h0a_noncons_-55_55.1_0.5_Z3_T_Q'
 ALAT, OLAT = 'latitudes', 'lat'
 
 TTLS = [ALIA[ii] + '$–$CTL' if ii != CTLIX else 'CTL' for ii in range(len(ALIA))]
@@ -52,7 +53,7 @@ def main():
    omlplt = agg_time([ds['oml'] for ds in ods], latnm=OLAT, diff=False)
 
    #divide SEED_EX - CTL by 5
-   for lsds in [dseplt, mseplt, othplt, omlplt]:
+   for lsds in [dseplt, mseplt, othplt]:
       lsds[-1] /= 5
    TTLS[-1] = '(%s) / 5' % TTLS[-1]
 
@@ -68,10 +69,12 @@ def main():
    # --- NEW GRIDSPEC ARCHITECTURE ---
    # 2 Main Rows for data plots. 1 Tiny bottom row for shared anomaly colorbars.
    # 3 Columns for your experiments. 1 Tiny right column for the Control absolute colorbars.
-   gs = fig.add_gridspec(nrows=3, ncols=4, 
-                         height_ratios=[1, 1, 0.08], 
-                         width_ratios=[1, 1, 1, 0.06],
-                         wspace=0.5, hspace=0.5)
+   #gs = fig.add_gridspec(nrows=3, ncols=4, 
+   #                      height_ratios=[1, 1, 0.08], 
+   #                      width_ratios=[1, 1, 1, 0.06],
+   #                      wspace=0.5, hspace=0.5)
+   # Clean 2x3 grid architecture since all colorbars now live in the panel (e) slot
+   gs = fig.add_gridspec(nrows=2, ncols=3, wspace=0.4, hspace=0.4)
 
    # Placeholders to capture mappables for colorbars
    cf_atmo_ctl, cf_atmo_anom = None, None
@@ -149,23 +152,88 @@ def main():
           ax_top.set_title(f'({chr(97 + label_index)})', loc='left', fontweight='bold')
           ax_top.set_title(TTLS[ixh], fontsize=20, pad=10)
 
+   ## --- CLEAN COLORBAR ROUTING ---
+   ## 1. Absolute Control Colorbars (Stacked on the far right column)
+   #cax_atmo_ctl = fig.add_subplot(gs[0, 3])
+   #fig.colorbar(cf_atmo_ctl, cax=cax_atmo_ctl, label='CTL Atmo MSE [J/kg]')
+
+   #cax_ocn_ctl = fig.add_subplot(gs[1, 3])
+   #fig.colorbar(cf_ocn_ctl, cax=cax_ocn_ctl, label='CTL Ocean Temp [°C]')
+
+   ## 2. Shared Anomaly Colorbars (Spanning columns 0 to 2 along the bottom row)
+   ## Split the bottom slot into two horizontal tracks using subgridspec
+   #gs_bottom_cbars = gs[2, 0:3].subgridspec(1, 2, wspace=0.4)
+   #
+   #cax_atmo_anom = fig.add_subplot(gs_bottom_cbars[0, 0])
+   #fig.colorbar(cf_atmo_anom, cax=cax_atmo_anom, orientation='horizontal', label='Anom Atmo MSE Anomaly [J/kg]')
+
+   #cax_ocn_anom = fig.add_subplot(gs_bottom_cbars[0, 1])
+   #fig.colorbar(cf_ocn_anom, cax=cax_ocn_anom, orientation='horizontal', label='Anom Ocean Temp Anomaly [°C]')
+
    # --- CLEAN COLORBAR ROUTING ---
-   # 1. Absolute Control Colorbars (Stacked on the far right column)
-   cax_atmo_ctl = fig.add_subplot(gs[0, 3])
-   fig.colorbar(cf_atmo_ctl, cax=cax_atmo_ctl, label='CTL Atmo MSE [J/kg]')
+   # Subdivide the empty panel (e) slot (gs[1, 1]) into 4 vertically stacked horizontal tracks
+   # Added hspace=0.6 to keep labels and colorbar tracks from crowding each other
+   gs_cbar_stack = gs[1, 1].subgridspec(4, 1, hspace=0.6)
+   # Look for where you defined gs_cbar_stack and update it like this:
+   gs_cbar_stack = gs[1,1].subgridspec(
+       4, 1, 
+       height_ratios=[0.2, 0.2, 0.2, 0.2], # Keeps the slots skinny
+       hspace=1.4                          # Adds plenty of vertical padding
+   )
 
-   cax_ocn_ctl = fig.add_subplot(gs[1, 3])
-   fig.colorbar(cf_ocn_ctl, cax=cax_ocn_ctl, label='CTL Ocean Temp [°C]')
+   ## 1. MSE (Absolute Control)
+   #cax_atmo_ctl = fig.add_subplot(gs_cbar_stack[0, 0])
+   #fig.colorbar(cf_atmo_ctl, cax=cax_atmo_ctl, orientation='horizontal')
+   #cax_atmo_ctl.set_title('CTL Atmo MSE [J/kg]', fontsize=14, pad=5)
 
-   # 2. Shared Anomaly Colorbars (Spanning columns 0 to 2 along the bottom row)
-   # Split the bottom slot into two horizontal tracks using subgridspec
-   gs_bottom_cbars = gs[2, 0:3].subgridspec(1, 2, wspace=0.4)
+   ## 2. Ocean (Absolute Control)
+   #cax_ocn_ctl = fig.add_subplot(gs_cbar_stack[1, 0])
+   #fig.colorbar(cf_ocn_ctl, cax=cax_ocn_ctl, orientation='horizontal')
+   #cax_ocn_ctl.set_title('CTL Ocean Temp [°C]', fontsize=14, pad=5)
+
+   ## 3. MSE Anom
+   #cax_atmo_anom = fig.add_subplot(gs_cbar_stack[2, 0])
+   #fig.colorbar(cf_atmo_anom, cax=cax_atmo_anom, orientation='horizontal')
+   #cax_atmo_anom.set_title('Atmo MSE Anomaly [J/kg]', fontsize=14, pad=5)
+
+   ## 4. Ocean Anom
+   #cax_ocn_anom = fig.add_subplot(gs_cbar_stack[3, 0])
+   #fig.colorbar(cf_ocn_anom, cax=cax_ocn_anom, orientation='horizontal')
+   #cax_ocn_anom.set_title('Ocean Temp Anomaly [°C]', fontsize=14, pad=5)
+
+   from matplotlib.ticker import ScalarFormatter
    
-   cax_atmo_anom = fig.add_subplot(gs_bottom_cbars[0, 0])
-   fig.colorbar(cf_atmo_anom, cax=cax_atmo_anom, orientation='horizontal', label='Anom Atmo MSE Anomaly [J/kg]')
-
-   cax_ocn_anom = fig.add_subplot(gs_bottom_cbars[0, 1])
-   fig.colorbar(cf_ocn_anom, cax=cax_ocn_anom, orientation='horizontal', label='Anom Ocean Temp Anomaly [°C]')
+   # 1. MSE (Absolute Control)
+   cax_atmo_ctl = fig.add_subplot(gs_cbar_stack[0, 0])
+   # Added 'shrink=0.7' to make it horizontally/vertically more compact, 
+   # and 'pad' can be managed here if needed, but shrink is best for a constrained cax.
+   cb_atmo = fig.colorbar(cf_atmo_ctl, cax=cax_atmo_ctl, orientation='horizontal')
+   
+   # Force scientific notation on the X-axis of this colorbar
+   formatter = ScalarFormatter(useMathText=True)
+   formatter.set_powerlimits((0, 0))  # Forces scientific notation for all non-zero numbers
+   cax_atmo_ctl.xaxis.set_major_formatter(formatter)
+   cax_atmo_ctl.xaxis.get_offset_text().set_visible(False)
+   
+   cax_atmo_ctl.set_title('CTL Atmo MSE [$10^5$ J/kg]', fontsize=14, pad=8) # Slightly increased pad for breathing room
+   
+   
+   # 2. Ocean (Absolute Control)
+   cax_ocn_ctl = fig.add_subplot(gs_cbar_stack[1, 0])
+   fig.colorbar(cf_ocn_ctl, cax=cax_ocn_ctl, orientation='horizontal')
+   cax_ocn_ctl.set_title('CTL $\\theta_\\text{ocn}$ [°C]', fontsize=14, pad=8)
+   
+   
+   # 3. MSE Anom
+   cax_atmo_anom = fig.add_subplot(gs_cbar_stack[2, 0])
+   fig.colorbar(cf_atmo_anom, cax=cax_atmo_anom, orientation='horizontal')
+   cax_atmo_anom.set_title('Atmo MSE Anomaly [J/kg]', fontsize=14, pad=8)
+   
+   
+   # 4. Ocean Anom
+   cax_ocn_anom = fig.add_subplot(gs_cbar_stack[3, 0])
+   fig.colorbar(cf_ocn_anom, cax=cax_ocn_anom, orientation='horizontal')
+   cax_ocn_anom.set_title('$\\theta_\\text{ocn}$ Anomaly [°C]', fontsize=14, pad=8)
 
 
    # Assuming the output commands remain the same

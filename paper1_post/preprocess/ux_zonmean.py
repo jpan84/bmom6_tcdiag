@@ -20,7 +20,7 @@ CONS = (sys.argv[3] == 'True') #conservative or not
 VARS = sys.argv[4] #example of comma-separated (no space): PS,PRECT,QFLX
 LATS = tuple([float(el) for el in sys.argv[5].split(':')])
 
-ds = ux.open_mfdataset(UGRD, HPTH)
+ds = ux.open_mfdataset(UGRD, HPTH, chunks=dict(n_face=-1, time=1))
 outds = None
 myvars = [str(dv) for dv in ds.data_vars]
 if VARS != 'all':
