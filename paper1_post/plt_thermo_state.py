@@ -58,7 +58,7 @@ def main():
    TTLS[-1] = '(%s) / 5' % TTLS[-1]
 
    mse_kw = dict(levels=np.arange(-1000, 1001, 200), cmap='RdBu_r')
-   dse_kw = dict(levels=mse_kw['levels'][mse_kw['levels'] != 0] / 2)
+   dse_kw = dict(levels=np.arange(-1000, 1001, 51))#mse_kw['levels'][mse_kw['levels'] != 0] / 2)
    ctl_kw = dict(levels=np.arange(3e5, 4.01e5, 5e3), cmap='inferno')
    olevs = np.arange(-.4, .41, .02)
    olevs_c = np.arange(0, 40, 4)
@@ -115,7 +115,8 @@ def main():
           ax_bot.set_xticks(YLOC, ['' if yl % 20 else yl for yl in YLAB])
           ax_bot.set_xlim(-1, 1)
           ax_bot.set_ylim(0, 200)
-          ax_bot.tick_params(axis='y', labelcolor='C0')
+          ax_bot.yaxis.tick_right()
+          ax_bot.tick_params(axis='y', labelcolor='C0', left=True)
           ax_bot.invert_yaxis()
           
           #if rr == 1: # Only label the true bottom row X-axis
@@ -123,6 +124,7 @@ def main():
           #else:
           #    ax_bot.tick_params(labelbottom=False)
               
+          ax_bot.yaxis.set_label_position('right')
           ax_bot.set_ylabel('Depth [m]', color='C0')# if cc == 0 else ax_bot.tick_params(labelleft=False)
 
           # --- Plot Atmosphere Data (Top Panel) ---
@@ -132,16 +134,17 @@ def main():
           css_atmo = ax_top.contour(YSCL(dseplt[ixh]['latitudes']), dseplt[ixh]['plev'] / 100, dseplt[ixh], 
                                      colors='black', levels=(dse_kw if not is_control else ctl_kw)['levels'])
           
-          if is_control:
-              cf_atmo_ctl = csf_atmo
-          elif cf_atmo_anom is None:
-              cf_atmo_anom = csf_atmo
-
           ax_top.set_ylim(1000, 100)
           ax_top.set_yscale('log')
           ax_top.yaxis.set_minor_formatter(mticker.ScalarFormatter())
           ax_top.yaxis.minorticks_off()
           ax_top.yaxis.set_major_formatter(mticker.ScalarFormatter())
+
+          if is_control:
+              cf_atmo_ctl = csf_atmo
+              ax_top.clabel(css_atmo, levels=[3.2e5, 3.5e5], inline=True, fontsize=10, colors='white', fmt='%.1e')
+          elif cf_atmo_anom is None:
+              cf_atmo_anom = csf_atmo
           
           ax_top.set_ylabel('Pressure [hPa]')# if cc == 0 else ax_top.tick_params(labelleft=False)
           ax_top.set_yticks(np.arange(200, 1001, 200))
@@ -152,29 +155,7 @@ def main():
           ax_top.set_title(f'({chr(97 + label_index)})', loc='left', fontweight='bold')
           ax_top.set_title(TTLS[ixh], fontsize=20, pad=10)
 
-   ## --- CLEAN COLORBAR ROUTING ---
-   ## 1. Absolute Control Colorbars (Stacked on the far right column)
-   #cax_atmo_ctl = fig.add_subplot(gs[0, 3])
-   #fig.colorbar(cf_atmo_ctl, cax=cax_atmo_ctl, label='CTL Atmo MSE [J/kg]')
 
-   #cax_ocn_ctl = fig.add_subplot(gs[1, 3])
-   #fig.colorbar(cf_ocn_ctl, cax=cax_ocn_ctl, label='CTL Ocean Temp [°C]')
-
-   ## 2. Shared Anomaly Colorbars (Spanning columns 0 to 2 along the bottom row)
-   ## Split the bottom slot into two horizontal tracks using subgridspec
-   #gs_bottom_cbars = gs[2, 0:3].subgridspec(1, 2, wspace=0.4)
-   #
-   #cax_atmo_anom = fig.add_subplot(gs_bottom_cbars[0, 0])
-   #fig.colorbar(cf_atmo_anom, cax=cax_atmo_anom, orientation='horizontal', label='Anom Atmo MSE Anomaly [J/kg]')
-
-   #cax_ocn_anom = fig.add_subplot(gs_bottom_cbars[0, 1])
-   #fig.colorbar(cf_ocn_anom, cax=cax_ocn_anom, orientation='horizontal', label='Anom Ocean Temp Anomaly [°C]')
-
-   # --- CLEAN COLORBAR ROUTING ---
-   # Subdivide the empty panel (e) slot (gs[1, 1]) into 4 vertically stacked horizontal tracks
-   # Added hspace=0.6 to keep labels and colorbar tracks from crowding each other
-   gs_cbar_stack = gs[1, 1].subgridspec(4, 1, hspace=0.6)
-   # Look for where you defined gs_cbar_stack and update it like this:
    gs_cbar_stack = gs[1,1].subgridspec(
        4, 1, 
        height_ratios=[0.2, 0.2, 0.2, 0.2], # Keeps the slots skinny
