@@ -26,14 +26,21 @@ myvars = [str(dv) for dv in ds.data_vars]
 if VARS != 'all':
    myvars = VARS.split(',')
 for dv in myvars:
-   zm = ds[dv].zonal_mean(lat=LATS, conservative=CONS)
+   zm, oricoords = None, None
+   if '.' in dv:
+      v1, v2 = dv.split('.')
+      zm = (ds[v1] * ds[v2]).zonal_mean(lat=LATS, conservative=CONS)
+      zm = zm.rename(f"{v1}_dot_{v2}")
+      oricoords = dict(ds[v1].coords)
+   else:
+      zm = ds[dv].zonal_mean(lat=LATS, conservative=CONS)
+      oricoords = dict(ds[dv].coords)
    del zm.attrs['zonal_mean'], zm.attrs['conservative']
-   oricoords = dict(ds[dv].coords)
    zm = zm.assign_coords(coords=oricoords)
 
    if outds is None:
       outds = xr.Dataset()
-   outds[dv] = zm
+   outds[zm.name.removesuffix('_zonal_mean')] = zm
 
 outds = outds.assign_attrs(script_from=sys.argv[0], conservative='True' if CONS else 'False', zmlats=str(LATS), ugrd=UGRD, infiles=HPTH)#, zonal_mean=str(outds.attrs['zonal_mean']))
 nameflags = ['uxzm', TAPE, ('' if CONS else 'non') + 'cons'] + [str(itm) for itm in LATS] + ([] if VARS == 'all' else myvars)

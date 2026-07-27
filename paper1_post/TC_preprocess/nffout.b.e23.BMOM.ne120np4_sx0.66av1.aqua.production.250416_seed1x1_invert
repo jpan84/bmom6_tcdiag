@@ -2,7 +2,7 @@ Arguments:
   --in_nodefile <string> ["trajectories.txt.b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1"] 
   --in_nodefile_type <string> ["SN"] [DN|SN]
   --in_data <string> [""] 
-  --in_data_list <string> ["filelist.txt.1785121463228986372"] 
+  --in_data_list <string> ["filelist.txt.1785121912066038420"] 
   --in_data_index <string> [""] 
   --in_connect <string> ["/glade/u/home/jpan/ne120np4_connect_v2.dat"] 
   --diag_connect <bool> [false] 

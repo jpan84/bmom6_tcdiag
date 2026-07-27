@@ -2,7 +2,7 @@ Arguments:
   --in_nodefile <string> ["trajectories.txt.b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m"] 
   --in_nodefile_type <string> ["SN"] [DN|SN]
   --in_data <string> [""] 
-  --in_data_list <string> ["filelist.txt.1785121463228251717"] 
+  --in_data_list <string> ["filelist.txt.1785121912065505115"] 
   --in_data_index <string> [""] 
   --in_connect <string> ["/glade/u/home/jpan/ne120np4_connect_v2.dat"] 
   --diag_connect <bool> [false] 
@@ -15719,5 +15719,4 @@ Autocurating in_data_list
 Generating grid information from connectivity file.. Done
 Processing input (trajectories.txt.b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m)
 ..Reading file.. Done
-..Verifying that all data is available.. Done
-..Calculating "radspd=radial_wind_profile(UBOT,VBOT,33,0.25)"
+..Verifying that all data is available

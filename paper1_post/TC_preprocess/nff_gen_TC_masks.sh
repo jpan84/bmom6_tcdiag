@@ -8,7 +8,7 @@ TEMPESTEXTREMESDIR=/glade/work/zarzycki/tempestextremes_noMPI
 ###UQSTR=b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl
 ###PATHTOFILES=/glade/derecho/scratch/jpan/jpan_tcfields/${UQSTR}/hist_0012-0014_h1i/
 DIRO=${PATHTOFILES}/../nff_${SPTH}mps
-if [ "$INVERT" -eq 1 ]; then
+if [ "$INVERT" = "true" ]; then
     DIRO="${DIRO}_invert"
 fi
 
@@ -29,7 +29,7 @@ TRAJFILENAME=trajectories.txt.${UQSTR}
 touch $FILELISTNAME $OUTLISTNAME
 
 ignoreyear=999999999
-DATE_LIM="0007-02"
+DATE_LIM="0020-02"
 ###FILES=$(ls "${PATHTOFILES}"/*.h1i.*.nc | grep -v "$ignoreyear-")
 FILES=$(find "${PATHTOFILES}" -maxdepth 1 -name "*.h1i.*.nc" ! -name "*$ignoreyear-*" | sort)
 ###echo $FILES
