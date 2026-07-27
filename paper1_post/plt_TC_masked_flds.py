@@ -50,7 +50,9 @@ def main(pltvar='TAUX', pltsgn=-1):
        [ax.axvline(yl, c='gray', lw=0.5) for yl in YLOC]
        ax.set_xticks(YLOC, YLAB)
        ax.tick_params(top=True, right=True, labelbottom=True, labelleft=True)
-       plt.legend()
+       ax.set_xlabel('Latitude [°]')
+       ax.set_ylabel('$\\tau_x$' + ('' if ii == 1 else ' anomaly') + ' [N m$^{-2}$]')
+       ax.legend(loc='upper left')
 
        if not ixh == CTLIX:
           ax.set_xlim(YSCL(tcsplt[ixh][ALAT][0]), YSCL(tcsplt[ixh][ALAT][-1]))
@@ -61,14 +63,14 @@ def main(pltvar='TAUX', pltsgn=-1):
    extra_ax.set_axis_off() # Completely turn off ticks, labels, and borders safely
 
    # Create a clean solid fill box over the empty space
-   extra_ax.add_patch(plt.Rectangle((0, 0.7), 1, 0.3, 
+   extra_ax.add_patch(plt.Rectangle((-0.1, 0.7), 1.2, 0.3, 
                                       facecolor='#000080', 
                                       transform=extra_ax.transAxes, 
                                       zorder=-1))
 
    # Add your centered text annotation
    extra_ax.text(
-         0.5, 0.85, '↑↑ The orange line (TC R4) has been ↑↑\nmultiplied by 5 in panel (b) only.\nAll other lines show true values.',
+         0.5, 0.85, '↑ The orange line (TC R4) has been ↑\nmultiplied by 5 in panel (b) only.\nAll other lines show true values.',
          horizontalalignment='center',
          verticalalignment='center',
          transform=extra_ax.transAxes,
@@ -77,7 +79,7 @@ def main(pltvar='TAUX', pltsgn=-1):
    )
 
    fig.tight_layout()
-   plt.savefig(f'TC_masked_{pltvar}.svg', bbox_inches='tight')
+   plt.savefig(f'TC_masked_{pltvar}.pdf', bbox_inches='tight')
    plt.show()
    plt.close()
 

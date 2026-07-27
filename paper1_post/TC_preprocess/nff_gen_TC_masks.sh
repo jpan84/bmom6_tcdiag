@@ -8,6 +8,10 @@ TEMPESTEXTREMESDIR=/glade/work/zarzycki/tempestextremes_noMPI
 ###UQSTR=b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl
 ###PATHTOFILES=/glade/derecho/scratch/jpan/jpan_tcfields/${UQSTR}/hist_0012-0014_h1i/
 DIRO=${PATHTOFILES}/../nff_${SPTH}mps
+if [ "$INVERT" -eq 1 ]; then
+    DIRO="${DIRO}_invert"
+fi
+
 mkdir -p $DIRO
 CONNECTDAT=/glade/u/home/jpan/ne120np4_connect_v2.dat
 CONNECTFLAG=""
@@ -50,6 +54,6 @@ STR_NFE1="--in_nodefile ${TRAJFILENAME} --in_nodefile_type SN --in_fmt ${SN_FMT}
 
 $TEMPESTEXTREMESDIR/bin/NodeFileEditor ${STR_NFE1}
 
-STR_NFF="--in_nodefile ${TRAJFILENAME}.radspd${SPTH} --in_nodefile_type SN --in_fmt ${SN_FMT},radspd,r${SPTH} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_data_list ${OUTLISTNAME} --maskvar TC_R${SPTH} --var ${FILTVARS//:/,} --bydist r${SPTH}"
+STR_NFF="--in_nodefile ${TRAJFILENAME}.radspd${SPTH} --in_nodefile_type SN --in_fmt ${SN_FMT},radspd,r${SPTH} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_data_list ${OUTLISTNAME} --maskvar TC_R${SPTH} --var ${FILTVARS//:/,} --bydist r${SPTH} --invert ${INVERT}"
 
 $TEMPESTEXTREMESDIR/bin/NodeFileFilter ${STR_NFF}

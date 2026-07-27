@@ -87,46 +87,50 @@ def main():
    print('Seeding stats table:')
    N_seed, N_prox, delta_TC, seed_conv, resp_eff = sd_tbl[0]
    N_seed_ex, N_prox_ex, delta_TC_ex, seed_conv_ex, resp_eff_ex = sd_tbl[1]
-   # 3. Format strings using LaTeX \makecell formatting for line breaks inside cells
+
+   # Using \newline for line breaks; default justification applies
    data = {
-       "\\textbf{SEED}": [
-           f"\\makecell{{{seed_conv:.1f}\\%\\\\({N_prox:.1f} / {N_seed:.1f})}}",
-           f"\\makecell{{{resp_eff:.1f}\\%\\\\({delta_TC:.1f} / {N_prox:.1f})}}",
-       ],
-       "\\textbf{SEED\\_EX}": [
-           f"\\makecell{{{seed_conv_ex:.1f}\\%\\\\({N_prox_ex:.1f} / {N_seed_ex:.1f})}}",
-           f"\\makecell{{{resp_eff_ex:.1f}\\%\\\\({delta_TC_ex:.1f} / {N_prox_ex:.1f})}}",
-       ],
+      "\\textbf{SEED}": [
+         f"{seed_conv:.1f}\\% \\newline ({N_prox:.1f} / {N_seed:.1f})",
+         f"{resp_eff:.1f}\\% \\newline ({delta_TC:.1f} / {N_prox:.1f})",
+      ],
+      "\\textbf{SEED\\_EX}": [
+         f"{seed_conv_ex:.1f}\\% \\newline ({N_prox_ex:.1f} / {N_seed_ex:.1f})",
+         f"{resp_eff_ex:.1f}\\% \\newline ({delta_TC_ex:.1f} / {N_prox_ex:.1f})",
+      ],
    }
-   
+
+   # Standard index strings without makecell or raggedright
    index = [
-       "\\textbf{\\makecell{Seed conversion \\\\ rate}}",
-       "\\textbf{\\makecell{Response \\\\ efficiency}}",
+      "\\textbf{Seed conversion \\newline rate}",
+      "\\textbf{Response \\newline efficiency}",
    ]
-   
+
    # 4. Create the DataFrame
    df = pd.DataFrame(data, index=index)
-   
-   # 5. Generate the LaTeX string with the correct styling environments
+
+   # 5. Generate LaTeX string
+   # p{4cm} allows the text to wrap/break, while c centers the data columns
    latex_output = df.to_latex(
-       column_format="|c|c|c|",
-       escape=False,  # Prevents pandas from escaping your LaTeX backslashes
+      column_format="p{4cm} c c",
+      escape=False,
    )
 
    latex_output = (
-    latex_output.replace("\\toprule", "\\hline")
-    .replace("\\midrule", "\\hline")
-    .replace("\\bottomrule", "\\hline")
+      latex_output.replace("\\toprule", "\\hline")
+      .replace("\\midrule", "\\hline")
+      .replace("\\bottomrule", "\\hline")
    )
-   
-   # 6. Wrap it in your table layout environments
+
+   # 6. Wrap in table environment
    final_table = f"""\\begin{{table}}[h]
-       \\centering
-       \\renewcommand{{\\arraystretch}}{{1.5}}
-   {latex_output}    \\caption{{Metrics for the SEED and SEED\\_EX experiments. (Top row) \\textit{{Seed conversion rate}} $= N_{{\\text{{prox}}}} / N_{{\\text{{seed}}}}$, where $N_{{\\text{{prox}}}}$ is the number of TC genesis points close to a seed in space/time, and $N_{{\\text{{seed}}}}$ is the total number of seeding interventions. (Bottom row) \\textit{{Response efficiency}} $= \\Delta \\text{{TC}} / N_{{\\text{{prox}}}}$, where $\\Delta \\text{{TC}}$ is the net increase in the total number of TCs.}}
-       \\label{{tbl:seed_efficacy}}
+      \\centering
+      \\renewcommand{{\\arraystretch}}{{1.5}}
+      {latex_output}
+      \\caption{{Metrics for the SEED and SEED\\_EX experiments. (Top row) \\textit{{Seed conversion rate}} $= N_{{\\text{{prox}}}} / N_{{\\text{{seed}}}}$, where $N_{{\\text{{prox}}}}$ is the number of TC genesis points close to a seed in space/time, and $N_{{\\text{{seed}}}}$ is the total number of seeding interventions. (Bottom row) \\textit{{Response efficiency}} $= \\Delta \\text{{TC}} / N_{{\\text{{prox}}}}$, where $\\Delta \\text{{TC}}$ is the net increase in the total number of TCs.}}
+      \\label{{tbl:seed_efficacy}}
    \\end{{table}}"""
-   
+
    print(final_table)
 
 

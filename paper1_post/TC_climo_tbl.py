@@ -35,6 +35,7 @@ def main():
    # Reorder columns to ensure 'ctrl' is in the middle for visual balance
    case_order = ['unseed2', 'unseed', 'ctrl', 'mseed', 'seed']
    plot_df = plot_df[case_order]
+   plot_df = plot_df.rename(columns=dict(unseed2='UNSEED_EX', unseed='UNSEED', ctrl='CTL', mseed='SEED', seed='SEED_EX'))
 
    row_order = [ 
       'Number of TCs',
@@ -44,7 +45,7 @@ def main():
    plot_df = plot_df.reindex(row_order)
 
    # 3. Calculate Percent Difference relative to 'ctrl'
-   pct_diff = plot_df.div(plot_df['ctrl'], axis=0).subtract(1).mul(100)
+   pct_diff = plot_df.div(plot_df['CTL'], axis=0).subtract(1).mul(100)
 
    # 4. Plotting
    plt.rc('font', size=16)
@@ -60,7 +61,7 @@ def main():
          val = plot_df.iloc[i, j]
          diff = pct_diff.iloc[i, j]
            
-         if plot_df.columns[j] == 'ctrl':
+         if plot_df.columns[j] == 'CTL':
             label = f"{val:.1f}"#\n(REF)"
          else:
             prefix = "+" if diff > 0 else ""
@@ -72,14 +73,14 @@ def main():
 
    # Styling
    ax.set_xticks(np.arange(len(case_order)))
-   ax.set_xticklabels(case_order)
+   ax.set_xticklabels(list(plot_df.columns))
    ax.set_yticks(np.arange(len(plot_df.index)))
    ax.set_yticklabels(plot_df.index)
    
    plt.title("Annual warm-season TC activity\n(NH JJASON + SH DJFMAM)", pad=20)
-   plt.colorbar(im, label="Percent Difference vs Ctrl (%)")
+   plt.colorbar(im, label="Percent Difference vs. CTL (%)")
    plt.tight_layout()
-   plt.savefig('tbl_warm_szn_TCs.svg')
+   plt.savefig('tbl_warm_szn_TCs.pdf')
    plt.show()
 
 if __name__ == '__main__':

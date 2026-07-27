@@ -8,7 +8,7 @@ DIRI = '~/aquaptc/bmom6_tcdiag/paper1_post/TC_preprocess/'
 #ALIASES = ['UNSEED_90', 'UNSEED_50', 'CTRL', 'SEED_50', 'SEED_150']
 TRAJNM = 'trajectories.txt.b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.'
 FILI = ['250415_unseed.parquet', '250417_ctrl.parquet', '251229_seedmatch.parquet','250702_unseed2hPa6m.parquet', '250416_seed1x1.parquet']
-ALIASES = ['UNSEED', 'CTRL', 'SEED', 'UNSEED_EX', 'SEED_EX']
+ALIASES = ['UNSEED', 'CTL', 'SEED', 'UNSEED_EX', 'SEED_EX']
 PBINS = np.arange(830, 1030, 5)
 
 SZNS = ['DJF', 'MAM', 'JJA', 'SON']
@@ -41,7 +41,7 @@ useaxes[0].set_ylabel('# of warm-season TCs per year')
 [ax.set_title(ALIASES[ii] + ' (mean = %.1f)' % meanvals[ii]) for ii, ax in enumerate(useaxes)]
 [ax.axvline(meanvals[ii], linewidth=2.5, color='black', linestyle='dashed') for ii, ax in enumerate(useaxes)]
 [ax.tick_params(axis='x', labelrotation=45) for ax in useaxes]
-[useaxes[ii].set_title(ss, loc='left') for ii, ss in enumerate(['(a)', '(b)', '(c)', '(d)', '(e)'])]
+[useaxes[ii].set_title(ss, loc='left') for ii, ss in enumerate(['(a)', '(b)', '(c)', '(d)', '(f)'])]
 useaxes[0].set_xticks(np.arange(840, 1030, 20))
 fig.tight_layout()
 plt.savefig('lmi_psl.svg', bbox_inches='tight')
