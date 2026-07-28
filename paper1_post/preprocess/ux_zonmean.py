@@ -43,6 +43,6 @@ for dv in myvars:
    outds[zm.name.removesuffix('_zonal_mean')] = zm
 
 outds = outds.assign_attrs(script_from=sys.argv[0], conservative='True' if CONS else 'False', zmlats=str(LATS), ugrd=UGRD, infiles=HPTH)#, zonal_mean=str(outds.attrs['zonal_mean']))
-nameflags = ['uxzm', os.path.basename(DIRI).split('_'), TAPE, ('' if CONS else 'non') + 'cons'] + [str(itm) for itm in LATS] + ([] if VARS == 'all' else myvars)
+nameflags = ['uxzm', os.path.basename(DIRI).replace('_', ''), TAPE, ('' if CONS else 'non') + 'cons'] + [str(itm) for itm in LATS] + ([] if VARS == 'all' else myvars)
 with ProgressBar():
    outds.to_netcdf(os.path.join(DIRI, '..', '_'.join(nameflags) + '.nc'))
