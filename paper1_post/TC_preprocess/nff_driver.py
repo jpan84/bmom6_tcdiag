@@ -7,7 +7,7 @@ import subprocess
 filtvars = 'TAUX:PRECT:V850:Q850' #need to regrid TC masks to ocean to filter evap
 rgcd = 8
 wspd = 4
-invert = True
+invert = False
 
 for ar in ARCHRT:
    casenm = ar.rstrip('/').split('/')[-1]

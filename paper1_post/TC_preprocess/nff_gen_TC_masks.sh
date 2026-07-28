@@ -54,6 +54,10 @@ STR_NFE1="--in_nodefile ${TRAJFILENAME} --in_nodefile_type SN --in_fmt ${SN_FMT}
 
 $TEMPESTEXTREMESDIR/bin/NodeFileEditor ${STR_NFE1}
 
-STR_NFF="--in_nodefile ${TRAJFILENAME}.radspd${SPTH} --in_nodefile_type SN --in_fmt ${SN_FMT},radspd,r${SPTH} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_data_list ${OUTLISTNAME} --maskvar TC_R${SPTH} --var ${FILTVARS//:/,} --bydist r${SPTH} --invert ${INVERT}"
+STR_NFF="--in_nodefile ${TRAJFILENAME}.radspd${SPTH} --in_nodefile_type SN --in_fmt ${SN_FMT},radspd,r${SPTH} --in_data_list ${FILELISTNAME} --in_connect ${CONNECTDAT} --out_data_list ${OUTLISTNAME} --maskvar TC_R${SPTH} --var ${FILTVARS//:/,} --bydist r${SPTH}"
+
+if [ "$INVERT" = "true" ]; then
+    STR_NFF="${STR_NFF} --invert"
+fi
 
 $TEMPESTEXTREMESDIR/bin/NodeFileFilter ${STR_NFF}
