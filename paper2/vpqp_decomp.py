@@ -5,7 +5,7 @@ from sznl_funcs import stack_hemi_sznl, monthly2sznl
 import xarray as xr
 import matplotlib.pyplot as plt
 
-DIRI = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/atm'
+DIRI = '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/atm'
 totfil = 'uxzm_hist_h1i_noncons_-90.0_90.0_2.0_TAUX_PRECT_V850_Q850_V850.Q850.nc'
 tcsfil = 'uxzm_nff4mps_h1i_noncons_-90.0_90.0_2.0_TAUX_PRECT_V850_Q850_V850.Q850.nc'
 bkgfil = 'uxzm_nff4mpsinvert_h1i_noncons_-90.0_90.0_2.0_TAUX_PRECT_V850_Q850_V850.Q850.nc'
@@ -50,4 +50,5 @@ eddy_terms = agg_time([ls[-1] for ls in [vq_tot, vq_tcs, vq_bkg, vq_t2b, vq_b2t]
 [plt.plot(et.latitudes, et, label=lbls[ii]) for ii, et in enumerate(eddy_terms)]
 plt.plot(eddy_terms[1].latitudes, eddy_terms[1] + eddy_terms[3] + eddy_terms[4], c='black')
 plt.legend()
+plt.savefig('vpqp_covar_terms_test.png')
 plt.show()
