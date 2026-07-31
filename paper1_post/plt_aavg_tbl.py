@@ -23,9 +23,9 @@ SHWGTS = np.array([31, 31, 28, 31, 30, 31], dtype=np.int_)
 
 PLTVARS = ['cpT', 'gZ', 'LE', 'KE', 'KE_MEAN', 'AM', 'TAUAM', 'PS', 'TS', 'PRECT', 'QFLX', 'SHU', 'AHSRC', 'FSNT', 'FLNT', 'SWCF', 'LWCF', 'FSNS', 'FLNS', 'CLD_BL', 'CLD_FT']
 ALTNMS = dict(AHSRC='$Q_a$', QFLX='E')
-MULTBY = dict(PRECT=1e3 * 86400, QFLX=86400, PS=1e-2, FLNT=-1)#, KE=0.5, KE_MEAN=0.5)
+MULTBY = dict(PRECT=1e3 * 86400, QFLX=86400, PS=1e-2, FLNT=-1, FLNTC=-1)#, KE=0.5, KE_MEAN=0.5)
 
-VARLBLS = dict(TS='SST [K]', DSE='DSE [J m$^{-2}$]', LE='LE [J m$^{-2}$]', PRECT='P [mm d$^{-1}$]', QFLX='E [mm d$^{-1}$]', FLNT='-FLNT', CLD_BL='CWP$_{sfc-700}$', CLD_FT='CWP$_{700-100}$')
+VARLBLS = dict(TS='SST [K]', DSE='DSE [J m$^{-2}$]', LE='LE [J m$^{-2}$]', PRECT='P [mm d$^{-1}$]', QFLX='E [mm d$^{-1}$]', FLNT='-FLNT', FLNTC='-FLNTC', CLD_BL='CWP$_{sfc-700}$', CLD_FT='CWP$_{700-100}$')
 
 def main():
    nhdss = [xr.open_dataset(os.path.join(dr, NHFIL)) for dr in DIRIS]
@@ -118,18 +118,24 @@ def main():
 # --- Radiation and Cloud Plot for Paper 1 ---
    # 1. Define row blocks: (Variable List, Shared Colorbar Label)
    blocks = [
-       (['FSNT', 'SWCF', 'FLNT', 'LWCF'], 'Anom [W m$^{-2}$]'),
+       (['FSNT', 'SWCF', 'FSNTC', 'FLNT', 'LWCF', 'FLNTC'], 'Anom [W m$^{-2}$]'),
        (['CLD_BL', 'CLD_FT'], 'Anom [kg m$^{-2}$]')
    ]
 
    # Extract row slices for the targeted variables
    v_row = {pv: valtbl[PLTVARS.index(pv), :] for pv in PLTVARS}
    d_row = {pv: diftbl[PLTVARS.index(pv), :] for pv in PLTVARS}
+   #TODO: remove these manual clearsky definitions once i include them in the preprocessing
+   v_row['FSNTC'] = valtbl[PLTVARS.index('FSNT'), :] - valtbl[PLTVARS.index('SWCF'), :]
+   d_row['FSNTC'] = v_row['FSNTC'] - v_row['FSNTC'][CTLIX]
+   v_row['FLNTC'] = -valtbl[PLTVARS.index('FLNT'), :] + valtbl[PLTVARS.index('LWCF'), :] #the negative in front of FLNT is b/c I already reversed its sign with MULTBY
+   v_row['FLNTC'] *= -1
+   d_row['FLNTC'] = v_row['FLNTC'] - v_row['FLNTC'][CTLIX]
 
    # 2. Build Grid Topology dynamically with 0.4 height spacers between blocks and 0.7 data rows
    grid_vars = [v for b in blocks for v in b[0] + ['SPACER']][:-1]
    hratios = [0.4 if v == 'SPACER' else 0.7 for v in grid_vars]
-   fig, axs = plt.subplots(len(grid_vars), 1, figsize=(8, 2. * len(blocks)), 
+   fig, axs = plt.subplots(len(grid_vars), 1, figsize=(8, 3. * len(blocks)), 
                            gridspec_kw={'height_ratios': hratios, 'hspace': 0}) # hspace=0 removes gaps inside blocks
 
    # 3. Process each group block cleanly
