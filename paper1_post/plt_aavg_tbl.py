@@ -68,7 +68,7 @@ def main():
          txtclr = 'white' if abs(toshade[rr, cc]) > 0.5 else 'black'
          ax.text(cc, rr, lbl, ha='center', va='center', color=txtclr)
 
-   plt.savefig(NHFIL + '.svg')
+   plt.savefig(NHFIL + '.pdf')
    plt.close()
    #plt.show()
 
@@ -113,7 +113,7 @@ def main():
 
    # 4. Hide structural spacer rows from the canvas and save
    [ax.axis('off') for name, ax in zip(grid_vars, axs) if name == 'SPACER']
-   plt.savefig(NHFIL + '_clean_blocks.svg', dpi=300, bbox_inches='tight'), plt.close()
+   plt.savefig(NHFIL + '_clean_blocks.pdf', dpi=300, bbox_inches='tight'), plt.close()
 
 # --- Radiation and Cloud Plot for Paper 1 ---
    # 1. Define row blocks: (Variable List, Shared Colorbar Label)
@@ -152,13 +152,13 @@ def main():
          ax.set_xticks(range(len(ALIS))), ax.set_xticklabels(ALIS if v == vars_in_block[-1] else [])
          for cc, (val, dif) in enumerate(zip(v_row[v], d_row[v])):
             ax.text(cc, 0, ('%+.2e' % dif) if cc != CTLIX else ('%.2e' % val), ha='center', va='center', 
-                     color='white' if abs(dif/b_max) > 0.5 else 'black')
+                     color='white' if abs(dif/b_max) > 0.3 else 'black')
       
       fig.colorbar(im, ax=block_axs, orientation='vertical', pad=0.03, label=cbar_lbl, extend='both')
 
    # 4. Hide structural spacer rows from the canvas and save
    [ax.axis('off') for name, ax in zip(grid_vars, axs) if name == 'SPACER']
-   plt.savefig(NHFIL + '_radiation_clouds.svg', dpi=300, bbox_inches='tight'), plt.close()
+   plt.savefig(NHFIL + '_radiation_clouds.pdf', dpi=300, bbox_inches='tight'), plt.close()
 
 if __name__ == '__main__':
    main()
