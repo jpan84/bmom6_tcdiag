@@ -63,21 +63,29 @@ def main():
    #plt.show()
 
    plt.rc('font', size=16)
-   fig, axes = plt.subplots(2, 3, figsize=(22, 9), sharex=True, sharey=True)
+   fig, axes = plt.subplots(2, 3, figsize=(22, 9), sharex=True)
 
    for ii, ax in enumerate(axes.ravel()):
        if ii == 4: continue
        ixh = IXHORS[ii]
-       ax.plot(YSCL(covs[ixh][0][ALAT]), covs[ixh][0], label='total (TCs + BG)', color='black', linewidth=3)
-       ax.plot(YSCL(covs[ixh][0][ALAT]), sum(covs[ixh][1:4]), label='TCs (3 terms)', color='gray', linewidth=2)
-       ax.plot(YSCL(covs[ixh][0][ALAT]), covs[ixh][1], label=lbls[1], color='blue', linestyle='dotted', linewidth=1)
-       ax.plot(YSCL(covs[ixh][0][ALAT]), covs[ixh][2], label=lbls[2], color='blue', linestyle='dashdot', linewidth=1)
-       ax.plot(YSCL(covs[ixh][0][ALAT]), covs[ixh][3], label=lbls[3], color='blue', linestyle='dashed', linewidth=1)
-       ax.plot(YSCL(covs[ixh][0][ALAT]), covs[ixh][4], label=lbls[4], color='blue', linestyle='solid', linewidth=1)
+
+       if ixh != CTLIX:
+          fac = 1
+          if ii == 5: fac = 5
+          covplot = [(da - covs[CTLIX][jj]) / fac for jj, da in enumerate(covs[ixh])]
+       else:
+          covplot = covs[ixh]
+
+       ax.plot(YSCL(covplot[0][ALAT]), covplot[0], label='total (TCs + BG)', color='black', linewidth=3)
+       ax.plot(YSCL(covplot[0][ALAT]), sum(covplot[1:4]), label='TCs (3 terms)', color='gray', linewidth=2)
+       ax.plot(YSCL(covplot[0][ALAT]), covplot[1], label=lbls[1], color='blue', linestyle='dotted', linewidth=1)
+       ax.plot(YSCL(covplot[0][ALAT]), covplot[2], label=lbls[2], color='blue', linestyle='dashdot', linewidth=1)
+       ax.plot(YSCL(covplot[0][ALAT]), covplot[3], label=lbls[3], color='blue', linestyle='dashed', linewidth=1)
+       ax.plot(YSCL(covplot[0][ALAT]), covplot[4], label=lbls[4], color='blue', linestyle='solid', linewidth=1)
 
        ax.set_title(TTLS[ixh])
        ax.set_title('(%s)' % chr(ord('a') + ii), loc='left')
-       ax.axhline(0, c='gray')
+       ax.axhline(0, c='gray', lw=0.5)
        [ax.axvline(yl, c='gray', lw=0.5) for yl in YLOC]
        ax.set_xticks(YLOC, YLAB)
        ax.tick_params(top=True, right=True, labelbottom=True, labelleft=True)
@@ -87,7 +95,7 @@ def main():
 
        if not ixh == CTLIX:
           ax.set_xlim(YSCL(-60), YSCL(60))
-       #   ax.set_ylim(-.015, .015)
+          ax.set_ylim(-1.2e-3, 1.2e-3)
 
    # Target the extra axis
    extra_ax = axes[1][1]
