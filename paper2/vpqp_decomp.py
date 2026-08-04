@@ -68,8 +68,12 @@ def main():
    for ii, ax in enumerate(axes.ravel()):
        if ii == 4: continue
        ixh = IXHORS[ii]
-       ax.plot(YSCL(covs[ixh][0][ALAT]), covs[ixh][0], label='mean')
-       ax.plot(YSCL(covs[ixh][0][ALAT]), sum(covs[ixh][1:4]), label='TCs')
+       ax.plot(YSCL(covs[ixh][0][ALAT]), covs[ixh][0], label='total (TCs + BG)', color='black', linewidth=3)
+       ax.plot(YSCL(covs[ixh][0][ALAT]), sum(covs[ixh][1:4]), label='TCs (3 terms)', color='gray', linewidth=2)
+       ax.plot(YSCL(covs[ixh][0][ALAT]), covs[ixh][1], label=lbls[1], color='blue', linestyle='dotted', linewidth=1)
+       ax.plot(YSCL(covs[ixh][0][ALAT]), covs[ixh][2], label=lbls[2], color='blue', linestyle='dashdot', linewidth=1)
+       ax.plot(YSCL(covs[ixh][0][ALAT]), covs[ixh][3], label=lbls[3], color='blue', linestyle='dashed', linewidth=1)
+       ax.plot(YSCL(covs[ixh][0][ALAT]), covs[ixh][4], label=lbls[4], color='blue', linestyle='solid', linewidth=1)
 
        ax.set_title(TTLS[ixh])
        ax.set_title('(%s)' % chr(ord('a') + ii), loc='left')
@@ -78,11 +82,11 @@ def main():
        ax.set_xticks(YLOC, YLAB)
        ax.tick_params(top=True, right=True, labelbottom=True, labelleft=True)
        ax.set_xlabel('Latitude [°]')
-       ax.set_ylabel('$\\tau_x$' + ('' if ii == 1 else ' anomaly') + ' [N m$^{-2}$]')
+       ax.set_ylabel('$v\'q\'_{850}$' + ('' if ii == 1 else ' anomaly') + ' [N m$^{-2}$]')
        ax.legend(loc='upper left')
 
-       #if not ixh == CTLIX:
-       #   ax.set_xlim(YSCL(tcsplt[ixh][ALAT][0]), YSCL(tcsplt[ixh][ALAT][-1]))
+       if not ixh == CTLIX:
+          ax.set_xlim(YSCL(-60), YSCL(60))
        #   ax.set_ylim(-.015, .015)
 
    # Target the extra axis
