@@ -114,6 +114,8 @@ def main():
 
       ax.set_xlim(0.5, 365.5)
       ax.set_ylim(-0.5, 0.5)
+      ax.set_xlabel('day of year (mm-dd)')
+      ax.set_ylabel('Latitude [$^\circ$]')
       ax.set_xticks(TICKDOY, [dt.strftime('%m-%d') for dt in TICKDATES], rotation=45)
       ax.set_yticks(LAT2MU(np.arange(-30, 31, 10)), np.arange(-30, 31, 10))
       ax.tick_params(axis='both', labelleft=True, labelbottom=True, right=True, top=True)
@@ -126,7 +128,7 @@ def main():
       [ax.text(fd - 50, -.02, fdmmdd[jj], c='#D01C8B') if not np.isnan(fd) else None for jj, fd in enumerate([sp, wn])]
 
    fig.tight_layout()
-   plt.savefig('TC_gen_sznl.svg', bbox_inches='tight')
+   plt.savefig('TC_gen_sznl.pdf', bbox_inches='tight')
    plt.show()
 
 def av_SST_flip_doy(maxlat):

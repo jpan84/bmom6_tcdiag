@@ -16,7 +16,7 @@ def main():
     for ii, df in enumerate(dfs):
         if 'dp [hPa]' in df.columns:
             dfs[ii] = df.rename(columns={'dp [hPa]': 'dp'})
-        if 'dp' in df.columns:
+        if 'dp' in df.columns and df['dp'].max() > 500:
             dfs[ii].dp /= 100.
         dfs[ii].rp /= 1e3
         dfs[ii]['clat_abs'] = np.abs(dfs[ii]['clat'])
@@ -38,6 +38,7 @@ def main():
 
     intcnt = [df[~df['dp'].isna()].shape[0] / ((df['dt'].iloc[-1] - df['dt'].iloc[0]).days / 365.) for df in dfs]
     int_fstrs = [rf'{ic:.1f}' for ic in intcnt] # No need for \makecell here
+    print('The UNSEED_EX years is', dfs[0][~dfs[0]['dp'].isna()].shape[0], (dfs[0]['dt'].iloc[-1] - dfs[0]['dt'].iloc[0]).days / 365.)
 
     data = {
         c.ALI_LTX[ii]: [dp_fstrs[ii], rp_fstrs[ii], clat_fstrs[ii], int_fstrs[ii]]
@@ -55,14 +56,14 @@ def main():
         r'Natural \newline (DetectNodes)',
         r'Natural \newline (DetectNodes)',
         '---',
-        r'Matched to \newline UNSEED\_50',
-        r'Lat: $\mathcal{U}(5°, 20°)$, \newline $dp: \mathcal{U}(15 hPa, 40 hPa)$, \newline RMW: $\mathcal{U}(150 km, 450 km)$'
+        r'Matched to \newline UNSEED',
+        r'Lat: $\mathcal{U}(5°, 20°)$, \newline $dp: \mathcal{U}(15 \text{ hPa}, 40 \text{ hPa})$, \newline RMW: $\mathcal{U}(150 \text{ km}, 450 \text{ km})$'
     ]
     descr = [
         r'Unseed all TCs \newline in warm season \newline DetectNodes thresholds \newline SLP: 4 hPa $\rightarrow$ 2 hPa, \newline DZ: 15 m $\rightarrow$ 6 m',
         r'Unseed all TCs \newline in warm season \newline Default online \newline DetectNodes thresholds \newline plus $\zeta$ threshold: \newline $8 \times 10^{-5}$ s$^{-1}$',
         r'Free-running',
-        r'Annual seed count \newline and vortex parameters \newline matched to \newline UNSEED\_50',
+        r'Annual seed count \newline and vortex parameters \newline matched to \newline UNSEED',
         r'1 seed per day \newline in warm season'
     ]
     purp = [

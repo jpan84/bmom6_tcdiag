@@ -132,7 +132,9 @@ def main():
                 custom_opts
             ).opts(
                 title=full_title,
-                title_format='{title}'
+                title_format='{title}',
+                xlabel='Longitude [$^\circ$E]',
+                ylabel='Latitude [$^\circ$N]'
             )
             row_plots.append(p)
         

@@ -90,32 +90,38 @@ def main():
        ax.set_xticks(YLOC, YLAB)
        ax.tick_params(top=True, right=True, labelbottom=True, labelleft=True)
        ax.set_xlabel('Latitude [°]')
-       ax.set_ylabel('$v\'q\'_{850}$' + ('' if ii == 1 else ' anomaly') + ' [N m$^{-2}$]')
-       ax.legend(loc='upper left')
+       ax.set_ylabel('$v\'q\'_{850}$' + ('' if ii == 1 else ' anomaly') + ' [m s$^{-1}$ kg kg$^{-1}$]')
+       #ax.legend(loc='upper left')
 
        if not ixh == CTLIX:
           ax.set_xlim(YSCL(-60), YSCL(60))
           ax.set_ylim(-1.2e-3, 1.2e-3)
 
-   # Target the extra axis
+   handles, labels = axes[0, 0].get_legend_handles_labels()
+   
    extra_ax = axes[1][1]
-   extra_ax.set_axis_off() # Completely turn off ticks, labels, and borders safely
+   extra_ax.set_axis_off()
+   
+   extra_ax.legend(handles, labels,
+                loc='center',
+                frameon=False,
+                fontsize=16)
 
-   # Create a clean solid fill box over the empty space
-   extra_ax.add_patch(plt.Rectangle((-0.1, 0.7), 1.2, 0.3, 
-                                      facecolor='#000080', 
-                                      transform=extra_ax.transAxes, 
-                                      zorder=-1))
+   ## Create a clean solid fill box over the empty space
+   #extra_ax.add_patch(plt.Rectangle((-0.1, 0.7), 1.2, 0.3, 
+   #                                   facecolor='#000080', 
+   #                                   transform=extra_ax.transAxes, 
+   #                                   zorder=-1))
 
-   # Add your centered text annotation
-   extra_ax.text(
-         0.5, 0.85, '↑ The orange line (TC R4) has been ↑\nmultiplied by 5 in panel (b) only.\nAll other lines show true values.',
-         horizontalalignment='center',
-         verticalalignment='center',
-         transform=extra_ax.transAxes,
-         fontsize=18,
-         weight='bold', c='white'
-   )
+   ## Add your centered text annotation
+   #extra_ax.text(
+   #      0.5, 0.85, '↑ The orange line (TC R4) has been ↑\nmultiplied by 5 in panel (b) only.\nAll other lines show true values.',
+   #      horizontalalignment='center',
+   #      verticalalignment='center',
+   #      transform=extra_ax.transAxes,
+   #      fontsize=18,
+   #      weight='bold', c='white'
+   #)
 
    fig.tight_layout()
    plt.savefig(f'TC_masked_VQ850.pdf', bbox_inches='tight')

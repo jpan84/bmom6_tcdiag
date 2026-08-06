@@ -31,7 +31,7 @@ def main():
       if EVNTS[ii] is None:
          continue
       selcase = climo[climo['case'] == ORDER[ii]]
-      ev_pyr = df.shape[0] / selcase['totyrs'].iloc[0] #un/seed events per year
+      ev_pyr = df.shape[0] / ((df['dt'].iloc[-1] - df['dt'].iloc[0]).days / 365.) #selcase['totyrs'].iloc[0] #un/seed events per year
       tccnt = selcase[selcase['varnm'] == 'genesis points (storm count)']
       nTCs = (tccnt['NH'] + tccnt['SH']).sum()
       dn = nTCs - tot_nTCs(climo[climo['case'] == 'ctrl']).iloc[0]
