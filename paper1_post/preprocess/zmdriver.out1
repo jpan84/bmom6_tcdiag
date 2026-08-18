@@ -1,16 +1,4 @@
 /glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
-Waiting on job launch; 5432632.casper-pbs with qsub arguments:
-    qsub  -l select=1:ncpus=16:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=06:00:00
+Waiting on job launch; 5637465.casper-pbs with qsub arguments:
+    qsub  -l select=1:ncpus=16:mem=256GB -A UCIS0005 -q casper@casper-pbs -l walltime=02:00:00
 
-['ux_zonmean.py', 'zmdriver.pthptr1', '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc', 'False', 'TAUX,PRECT,V850,Q850,V850.Q850', '-90:90:2']
-/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/atm/nff_4mps/*seedmatch*.h1i.000[6-7]*
-Traceback (most recent call last):
-File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper1_post/preprocess/ux_zonmean.py", line 23, in <module>
-ds = ux.open_mfdataset(UGRD, HPTH, chunks=dict(n_face=-1, time=1))
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/uxarray/core/api.py", line 505, in open_mfdataset
-ds = xr.open_mfdataset(paths, chunks=corrected_chunks, **kwargs)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/xarray/backends/api.py", line 1541, in open_mfdataset
-raise OSError("no files to open")
-OSError: no files to open
