@@ -32,13 +32,13 @@ def process_experiment(dr_path, ocn_base, var_name):
     print(f"Processing experiment: {dr} for variable: {var_name}")
 
     # 1. Open mask dataset lazily
-    mask_files = sorted(glob.glob(f"{mask_dir}/*.nff_4mps"))
+    mask_files = sorted(glob.glob(f"{mask_dir}/*000[6-7]*.nff_4mps"))
     ds_mask = xr.open_mfdataset(
         mask_files, chunks={"time": 30}, combine="nested", concat_dim="time"
     )
 
     # 2. Open ocean files lazily (selecting only target variable)
-    ocn_files = sorted(glob.glob(f"{ocn_dir}/*.sfc.*.nc"))
+    ocn_files = sorted(glob.glob(f"{ocn_dir}/*.sfc.000[6-7]*.nc"))
     ds_ocn = xr.open_mfdataset(
         ocn_files,
         chunks={"time": 30},
@@ -92,6 +92,6 @@ if __name__ == "__main__":
     MASK_BASE = "/glade/derecho/scratch/jpan/archive/nff_output"
     OCN_BASE = "/glade/campaign/univ/upsu0032/jpan_aquaptc"
 
-    for dr_path in sorted(glob.glob(f"{MASK_BASE}/b.e23.*")):
+    for dr_path in sorted(glob.glob(f"{MASK_BASE}/b.e23.*1229*")):
         if os.path.isdir(dr_path):
             process_experiment(dr_path, OCN_BASE, VAR_NAME)

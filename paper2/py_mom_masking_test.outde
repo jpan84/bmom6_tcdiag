@@ -3,3 +3,300 @@ nohup: ignoring input
 Waiting on job launch; 7146070.desched1 with qsub arguments:
     qsub  -l select=1:ncpus=16:mem=128GB -A UPSU0032 -q develop@desched1 -l walltime=06:00:00
 
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py:42: UserWarning: The specified chunks separate the stored chunks along dimension "time" starting at index 30. This could degrade performance. Instead, consider rechunking after loading.
+ds_ocn = xr.open_mfdataset(
+/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/dask/array/core.py:5092: PerformanceWarning: Increasing number of chunks by factor of 25
+result = blockwise(
+Processing experiment: b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed for variable: hflso
+Averaging across zonal dimension: 'xh'
+Writing output files for hflso...
+Finished b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed
+Processing experiment: b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1 for variable: hflso
+Averaging across zonal dimension: 'xh'
+Writing output files for hflso...
+Finished b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1
+Processing experiment: b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl for variable: hflso
+Averaging across zonal dimension: 'xh'
+Writing output files for hflso...
+Finished b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl
+Processing experiment: b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m for variable: hflso
+Averaging across zonal dimension: 'xh'
+Writing output files for hflso...
+Finished b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m
+Processing experiment: b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch for variable: hflso
+Traceback (most recent call last):
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/xarray/conventions.py", line 453, in decode_cf_variables
+new_vars[k] = decode_cf_variable(
+^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/xarray/conventions.py", line 294, in decode_cf_variable
+var = times.CFDatetimeCoder(use_cftime=use_cftime).decode(var, name=name)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/xarray/coding/times.py", line 1005, in decode
+dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/xarray/coding/times.py", line 214, in _decode_cf_datetime_dtype
+[first_n_items(values, 1) or [0], last_item(values) or [0]]
+^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/xarray/core/formatting.py", line 97, in first_n_items
+return np.ravel(to_duck_array(array))[:n_desired]
+^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/xarray/namedarray/pycompat.py", line 138, in to_duck_array
+return np.asarray(data)  # type: ignore[return-value]
+^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/xarray/core/indexing.py", line 580, in __array__
+return np.asarray(self.get_duck_array(), dtype=dtype)
+^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/xarray/core/indexing.py", line 583, in get_duck_array
+return self.array.get_duck_array()
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/xarray/core/indexing.py", line 657, in get_duck_array
+array = self.array[self.key]
+~~~~~~~~~~^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 103, in __getitem__
+return indexing.explicit_indexing_adapter(
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/xarray/core/indexing.py", line 1018, in explicit_indexing_adapter
+result = raw_indexing_method(raw_key.tuple)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 116, in _getitem
+array = getitem(original_array, key)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "src/netCDF4/_netCDF4.pyx", line 5079, in netCDF4._netCDF4.Variable.__getitem__
+File "src/netCDF4/_netCDF4.pyx", line 6051, in netCDF4._netCDF4.Variable._get
+File "src/netCDF4/_netCDF4.pyx", line 2164, in netCDF4._netCDF4._ensure_nc_success
+RuntimeError: NetCDF: HDF error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py", line 97, in <module>
+process_experiment(dr_path, OCN_BASE, VAR_NAME)
+File "/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper2/TC_mask_mom_var.py", line 42, in process_experiment
+ds_ocn = xr.open_mfdataset(
+^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/xarray/backends/api.py", line 1579, in open_mfdataset
+datasets = [open_(p, **open_kwargs) for p in paths1d]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/xarray/backends/api.py", line 1579, in <listcomp>
+datasets = [open_(p, **open_kwargs) for p in paths1d]
+^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/xarray/backends/api.py", line 670, in open_dataset
+backend_ds = backend.open_dataset(
+^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 681, in open_dataset
+ds = store_entrypoint.open_dataset(
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/xarray/backends/store.py", line 47, in open_dataset
+vars, attrs, coord_names = conventions.decode_cf_variables(
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/glade/u/home/jpan/miniconda3/envs/aquapux2512/lib/python3.11/site-packages/xarray/conventions.py", line 464, in decode_cf_variables
+raise type(e)(f"Failed to decode variable {k!r}: {e}") from e
+RuntimeError: Failed to decode variable 'time': NetCDF: HDF error
