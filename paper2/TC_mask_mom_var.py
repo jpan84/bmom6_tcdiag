@@ -3,6 +3,7 @@ import os
 import sys
 import dask
 import xarray as xr
+import numpy as np
 
 # Target variable (defaults to 'hflso' if not specified)
 VAR_NAME = sys.argv[1] if len(sys.argv) > 1 else "hflso"
@@ -48,7 +49,11 @@ def process_experiment(dr_path, ocn_base, var_name):
     )
 
     # 3. Direct in-memory time alignment
-    var_subset = ds_ocn[var_name].sel(time=ds_mask["time"])
+    print(ds_mask['time'])
+    print(ds_ocn['hflso']['time'])
+    shared_time = np.intersect1d(ds_mask.time, ds_ocn.time)
+    var_subset = ds_ocn[var_name].sel(time=shared_time)
+    ds_mask = ds_mask.sel(time=shared_time)
 
     # 4. Element-wise multiplication with mask
     # Note: Xarray handles broadcasting automatically even if mask uses (lat, lon)
@@ -92,6 +97,6 @@ if __name__ == "__main__":
     MASK_BASE = "/glade/derecho/scratch/jpan/archive/nff_output"
     OCN_BASE = "/glade/campaign/univ/upsu0032/jpan_aquaptc"
 
-    for dr_path in sorted(glob.glob(f"{MASK_BASE}/b.e23.*1229*")):
+    for dr_path in sorted(glob.glob(f"{MASK_BASE}/b.e23.*0702*")):
         if os.path.isdir(dr_path):
             process_experiment(dr_path, OCN_BASE, VAR_NAME)
