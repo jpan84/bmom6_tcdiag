@@ -53,14 +53,15 @@ def main():
 
    plt.rcParams['figure.figsize'] = (8, 8)
    fig, axes = plt.subplots(3, 2, sharex=True)
-   colors = plt.colormaps['inferno'](np.linspace(0.2, 0.8, 5))
+   colors = plt.colormaps['cividis'](np.linspace(0.2, 0.8, 5))
 
    for ii in range(len(totp_plt)):
-      axes[0][0].plot(YSCL(totp_plt[ii][ALAT]), totp_plt[ii], color=colors[ii])
+      axes[0][0].plot(YSCL(totp_plt[ii][ALAT]), totp_plt[ii], color=colors[ii], label=ALIA[ii])
       axes[0][0].plot(YSCL(tcsp_plt[ii][ALAT]), tcsp_plt[ii], color=colors[ii], ls='dashed')
       axes[0][0].set_ylabel('$P$ [mm d$^{-1}$]')
       axes[0][0].set_xticks(YLOC, YLAB)
       axes[0][0].set_xlim(YLOC[0], YLOC[-1])
+      axes[0][0].legend()
 
       axes[0][1].plot(YSCL(totp_plt[ii][ALAT]), tcsp_plt[ii] / totp_plt[ii], color=colors[ii], ls='dashed')
       axes[0][1].plot(YSCL(tcr4_plt[ii][ALAT]), tcr4_plt[ii], color=colors[ii], ls='dotted')
@@ -87,9 +88,61 @@ def main():
       axes[2][1].set_ylabel('Normalized moisture sink $(P-E)/CWV$ [d$^{-1}$]')
 
    [ax.tick_params(top=True, labelbottom=True, right=True) for ax in axes.ravel()]
+   [ax.set_title('(%s)' % chr(ord('a') + ii), loc='left') for ii, ax in enumerate(axes.ravel())]
    fig.tight_layout()
    plt.savefig('abs_P_E_frac.png', bbox_inches='tight')
+   plt.close()
+
+   totp_dif = [totp_plt[ii] - totp_plt[CTLIX] for ii in range(len(totp_plt))]
+   tcsp_dif = [tcsp_plt[ii] - tcsp_plt[CTLIX] for ii in range(len(tcsp_plt))]
+   tote_dif = [tote_plt[ii] - tote_plt[CTLIX] for ii in range(len(tote_plt))]
+   tcse_dif = [tcse_plt[ii] - tcse_plt[CTLIX] for ii in range(len(tcse_plt))]
+   totp_pme = [totp_dif[ii] - tote_dif[ii] for ii in range(len(totp_dif))]
+   tcsp_pme = [tcsp_dif[ii] - tcse_dif[ii] for ii in range(len(tcsp_dif))]
+
+   plt.rcParams['figure.figsize'] = (12, 6)
+   fig, axes = plt.subplots(2, 3, sharex=True)
+
+   for ii in range(len(totp_dif)):
+      if ii == CTLIX: continue
+      row = 0 if ii <= CTLIX else 1
+
+      #axes[0][0].plot(YSCL(totp_plt[ii][ALAT]), totp_dif[ii], color=colors[ii], label=ALIA[ii])
+      #axes[0][0].set_ylabel('$P$ [mm d$^{-1}$]')
+      #axes[0][0].set_xticks(YLOC, YLAB)
+      #axes[0][0].set_xlim(YLOC[0], YLOC[-1])
+      #axes[0][0].legend()
+
+      #axes[1][0].plot(YSCL(tcsp_plt[ii][ALAT]), tcsp_dif[ii], color=colors[ii], ls='dashed')
+
+      axes[row][0].plot(YSCL(totp_plt[ii][ALAT]), totp_dif[ii], color=colors[ii], label=ALIA[ii])
+      axes[row][0].plot(YSCL(tcsp_plt[ii][ALAT]), tcsp_dif[ii], color=colors[ii], ls='dashed')
+      axes[row][0].set_ylabel('$P$ [mm d$^{-1}$]')
+      axes[row][0].set_xticks(YLOC, YLAB)
+      axes[row][0].set_xlim(YLOC[0], YLOC[-1])
+      axes[row][0].legend()
+
+      axes[row][1].plot(YSCL(tote_plt[ii][ALAT]), tote_dif[ii], color=colors[ii], label=ALIA[ii])
+      axes[row][1].plot(YSCL(tcse_plt[ii][ALAT]), tcse_dif[ii], color=colors[ii], ls='dashed')
+      axes[row][1].set_ylabel('$E$ [mm d$^{-1}$]')
+      axes[row][1].set_xticks(YLOC, YLAB)
+      axes[row][1].set_xlim(YLOC[0], YLOC[-1])
+      axes[row][1].legend()
+
+      axes[row][2].plot(YSCL(totp_pme[ii][ALAT]), totp_pme[ii], color=colors[ii], label=ALIA[ii])
+      axes[row][2].plot(YSCL(tcsp_pme[ii][ALAT]), tcsp_pme[ii], color=colors[ii], ls='dashed')
+      axes[row][2].set_ylabel('$P-E$ [mm d$^{-1}$]')
+      axes[row][2].set_xticks(YLOC, YLAB)
+      axes[row][2].set_xlim(YLOC[0], YLOC[-1])
+      axes[row][2].legend()
+
+   [ax.tick_params(top=True, labelbottom=True, right=True) for ax in axes.ravel()]
+   [ax.set_title('(%s)' % chr(ord('a') + ii), loc='left') for ii, ax in enumerate(axes.ravel())]
+   [ax.axhline(0, lw=0.5, c='gray') for ax in axes.ravel()]
+   fig.tight_layout()
+   plt.savefig('dif_P_E.png', bbox_inches='tight')
    plt.show()
+   plt.close()
 
 
 
