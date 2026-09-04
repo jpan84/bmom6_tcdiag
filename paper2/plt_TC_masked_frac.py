@@ -83,14 +83,22 @@ def main():
       axes[2][0].plot(YSCL(tcse_plt[ii][ALAT]), tcsp_plt[ii] - tcse_plt[ii], color=colors[ii], ls='dashed')
       axes[2][0].set_ylabel('$P-E$ [mm d$^{-1}$]')
 
-      axes[2][1].plot(YSCL(tote_plt[ii][ALAT]), (tcsp_plt[ii] - tcse_plt[ii]) / cwv_plt[ii], color=colors[ii], ls='dashed')
-      axes[2][1].plot(YSCL(tote_plt[ii][ALAT]), (totp_plt[ii] - tote_plt[ii]) / cwv_plt[ii], color=colors[ii], ls='dotted')
-      axes[2][1].set_ylabel('Normalized moisture sink $(P-E)/CWV$ [d$^{-1}$]')
+      #axes[2][1].plot(YSCL(tote_plt[ii][ALAT]), (tcsp_plt[ii] - tcse_plt[ii]) / cwv_plt[ii], color=colors[ii], ls='dashed')
+      #axes[2][1].plot(YSCL(tote_plt[ii][ALAT]), (totp_plt[ii] - tote_plt[ii]) / cwv_plt[ii], color=colors[ii], ls='dotted')
+      #axes[2][1].set_ylabel('Normalized moisture sink $(P-E)/CWV$ [d$^{-1}$]')
 
+      axes[2][1].plot(YSCL(tote_plt[ii][ALAT]), tcsp_plt[ii] / totp_plt[ii] / tcr4_plt[ii], color=colors[ii], ls='dashed')
+      axes[2][1].plot(YSCL(tote_plt[ii][ALAT]), tcse_plt[ii] / tote_plt[ii] / tcr4_plt[ii], color=colors[ii], ls='dotted')
+      axes[2][1].axhline(1, lw=0.5, c='gray')
+      axes[2][1].set_ylabel('TC contribution fraction / TC $r_4$ coverage')
+
+   #axes[2][1].fill_between(YSCL(tote_plt[0][ALAT]), 0, 1, where=(tcr4_plt[0] <= 5e-6), transform=axes[2][1].get_xaxis_transform(), color='gray', alpha=0.3, interpolate=True)
+   axes[2][1].set_ylim(0, 10)
    [ax.tick_params(top=True, labelbottom=True, right=True) for ax in axes.ravel()]
    [ax.set_title('(%s)' % chr(ord('a') + ii), loc='left') for ii, ax in enumerate(axes.ravel())]
    fig.tight_layout()
-   plt.savefig('abs_P_E_frac.png', bbox_inches='tight')
+   plt.savefig('abs_P_E_ratios.png', bbox_inches='tight')
+   plt.show()
    plt.close()
 
    totp_dif = [totp_plt[ii] - totp_plt[CTLIX] for ii in range(len(totp_plt))]
