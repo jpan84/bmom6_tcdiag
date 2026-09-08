@@ -79,7 +79,7 @@ Same as Fig. 4
 ### **Execution Instructions**
 Run the script after setting the global var `FILI` to point to the NetCDF output from `track_dens.py`
 
-## **Fig. 7: TC lifetime max intensity**
+## **Fig. 7: TC lifetime max intensity histograms**
 **Script Location:** `/plt_lmi_psl.py`
 
 ### **Preprocessing requirements**
@@ -87,6 +87,15 @@ Run the script after setting the global var `FILI` to point to the NetCDF output
 
 ### **Execution Instructions**
 Run the script after setting the global vars `DIRI`,`FILI` to point to the parquet output from `trajSN_to_df.py`
+
+## **Fig. 7e: Potential intensity**
+**Script Location:** `/PI_vmax.py`
+
+### **Preprocessing requirements**
+* **PP2 (CAM)**: run `hy2pres_driver.py` to interpolate monthly mean h0a output from native vertical levels to pressure levels.
+
+### **Execution Instructions**
+Run the script in compute mode (i.e., with the CL arg 'compute') after setting hist\_onp to point to the pressure-level monthly files. Then run in plot mode (CL arg 'plot') to generate panel e.
 
 ## **Fig. 8: Unseeding efficacy stats**
 **Script Location:** `/efficacy_stats.py`

@@ -52,3 +52,52 @@ Parsing output operations
 Begin search operation
 ..Output will be written to cyclones_tempest.1788548563997049958XXXXXX.dat
 ..Logs will be written to ./logXXXXXX.txt
+..Done
+------------------------------------------------------------
+/glade/work/jpan/tmpTE.1788548563997049958
+Arguments:
+  --in <string> ["cyclones.1788548563997049958"] 
+  --in_list <string> [""] 
+  --in_connect <string> ["/glade/u/home/jpan/ne120np4_connect_v2.dat"] 
+  --out <string> ["/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper1_post/TC_preprocess/trajectories.txt.b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1"] 
+  --in_fmt <string> ["lon,lat,slp,wind"] 
+  --range <double> [6.000000] (degrees)
+  --mintime <string> ["3"] 
+  --time_begin <string> [""] 
+  --time_end <string> [""] 
+  --prioritize <string> [""] 
+  --min_endpoint_dist <double> [0.000000] (degrees)
+  --min_path_dist <double> [0.000000] (degrees)
+  --maxgap <string> ["3"] 
+  --threshold <string> ["wind,>=,10.0,10;lat,<=,50.0,10;lat,>=,-50.0,10"] [col,op,value,count;...]
+  --caltype <string> ["standard"] (none|standard|noleap|360_day)
+  --timefilter <string> [""] 
+  --allow_repeated_times <bool> [true] 
+  --add_velocity <bool> [false] 
+  --out_file_format <string> ["gfdl"] (gfdl|csv|csvnohead)
+  --out_seconds <bool> [false] 
+------------------------------------------------------------
+WARNING: --minlength is deprecated.  Consider using --mintime instead
+Parsing thresholds
+..wind greater than or equal to 10.000000 at least 10 time(s)
+..lat less than or equal to 50.000000 at least 10 time(s)
+..lat greater than or equal to -50.000000 at least 10 time(s)
+..Done
+Loading candidate data
+..Discrete times: 14600 (0005-02-01 06:00:00 to 0015-02-01 00:00:00)
+..Done
+Creating KD trees at each time level.. Done
+Constructing paths
+..Populating set of path segments.. Done
+..Connecting path segments.. Done
+..Done
+Filtering paths
+..Paths rejected (mintime): 5265
+..Paths rejected (minendpointdist): 0
+..Paths rejected (minpathdist): 0
+..Paths rejected (threshold): 6890
+..Total paths found: 3979
+..Done
+Writing results.. Done
+Cleanup.. Done
+------------------------------------------------------------
