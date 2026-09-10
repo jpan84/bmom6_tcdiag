@@ -14,7 +14,7 @@ NFF = int(sys.argv[4]) #operate on files in NFFRT or not
 CONS = False
 
 for ii, ar in enumerate(NFFRT if NFF else ARCHRT):
-   if not ii == 0: continue
+   #if not ii == 0: continue
 
    hpth = os.path.join(ar, TAPE)
    #esc_hpth = hpth.replace('*', r'\*').replace('[', r'\[').replace(']', r'\]') #attempted to prevent bash from expanding wildcards
@@ -24,6 +24,6 @@ for ii, ar in enumerate(NFFRT if NFF else ARCHRT):
 
    dtnow = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
 
-   proc = subprocess.Popen(f"qcmd -q casper -l walltime=06:00:00 -l select=1:ncpus=16:mem=256GB -A UCIS0005 python3 -u ux_zonmean.py\
+   proc = subprocess.Popen(f"qcmd -q develop -l walltime=01:00:00 -l select=1:ncpus=16:mem=128GB -A UPSU0032 python3 -u ux_zonmean.py\
                     {pthptr} {CAMGR} {str(CONS)} {VARS} {LATS} &> zmdriver.out_{dtnow}", shell=True)
    print(proc.args)
