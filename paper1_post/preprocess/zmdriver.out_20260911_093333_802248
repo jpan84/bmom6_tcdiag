@@ -1,0 +1,3 @@
+/glade/u/apps/opt/pbstools/util/parse_opts: line 68: arg_dict[$arg_flag]: bad array subscript
+qsub: Unknown Queue requested. Please correct or contact cislhelp@ucar.edu for assistance
+Error: error in qsub submission. Exiting ...

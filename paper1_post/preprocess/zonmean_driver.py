@@ -24,6 +24,6 @@ for ii, ar in enumerate(NFFRT if NFF else ARCHRT):
 
    dtnow = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
 
-   proc = subprocess.Popen(f"qcmd -q develop -l walltime=01:00:00 -l select=1:ncpus=16:mem=128GB -A UPSU0032 python3 -u ux_zonmean.py\
+   proc = subprocess.Popen(f"qcmd -q casper -l walltime=01:00:00 -l select=1:ncpus=16:mem=128GB -A UCIS0005 python3 -u ux_zonmean.py\
                     {pthptr} {CAMGR} {str(CONS)} {VARS} {LATS} &> zmdriver.out_{dtnow}", shell=True)
    print(proc.args)
