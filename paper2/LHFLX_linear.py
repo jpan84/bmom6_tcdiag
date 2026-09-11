@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 
 zm2d = '/glade/campaign/univ/upsu0032/jpan_aquaptc/%s/atm/uxzm_hist_h0a_noncons_-60.0_60.0_1.5_LHFLX_U10_TREFHT_QREFHT_TS_PS_TAUX_TAUY.nc'
 zm3d = '/glade/campaign/univ/upsu0032/jpan_aquaptc/%s/atm/uxzm_hist_h0a_noncons_-60.0_60.0_1.5_U_V_UU_VV.nc'
+z33d = '/glade/campaign/univ/upsu0032/jpan_aquaptc/%s/atm/uxzm_hist_h0a_noncons_-60.0_60.0_1.5_Z3.nc'
 
 def main():
    dss2d = xr.concat([xr.open_dataset(zm2d % cs).expand_dims(case=[ALIA[ii]]) for ii, cs in enumerate(CASENAMES)], dim='case')
@@ -21,12 +22,15 @@ def main():
    dss3d = dss3d.assign(MKE=0.5 * (dss3d['U']**2 + dss3d['V']**2))
    dss3d = dss3d.assign(EKE=dss3d['KE'] - dss3d['MKE'])
 
+   dssz3 = xr.concat([xr.open_dataset(z33d % cs).expand_dims(case=[ALIA[ii]]) for ii, cs in enumerate(CASENAMES)], dim='case')
+
    print(dss2d)
    print(dss3d)
 
    hy2d = dss2d.map(agg_time)
    hy3d = dss3d.map(agg_time).drop_vars('V')
    hy_v = agg_time(dss3d['V'], antisym=True)
+   hyz3 = dssz3.map(agg_time)
 
    print(hy2d)
 
@@ -50,24 +54,38 @@ def main():
    frac_qsat = dif2d['qsat'] / (hy2d['qsat'] - hy2d['QREFHT']).isel(case=CTLIX)
    frac_qa = dif2d['QREFHT'] / (hy2d['qsat'] - hy2d['QREFHT']).isel(case=CTLIX)
 
-   plt.rcParams['figure.figsize'] = (16, 4)
-   fig, axes = plt.subplots(1, 4)
+   #[plt.plot(hyz3.latitudes, hyz3['Z3'].sel(case=cs).isel(lev=-1)) for cs in hyz3.case]
+   #plt.show()
 
-   for ii, ax in enumerate(axes):
-      ax.plot(dif2d.latitudes, frac2d['LHFLX'].isel(case=ii), lw=3, c='black', label='LHF')
-      ax.plot(dif2d.latitudes, frac2d['U10'].isel(case=ii), lw=1, c='green', label='U10')
+   plt.rcParams['figure.figsize'] = (16, 8)
+   fig, axes = plt.subplots(2, 4)
+
+   for ii in range(axes.shape[-1]):
+      axes[0][ii].plot(dif2d.latitudes, frac2d['LHFLX'].isel(case=ii), lw=3, c='black', label='LHF')
+      axes[0][ii].plot(dif2d.latitudes, frac2d['U10'].isel(case=ii), lw=1, c='blue', label='U10')
+      axes[0][ii].plot(dif2d.latitudes, (frac_qsat + frac_qa).isel(case=ii), lw=1, c='brown', label='sat_def')
+      axes[0][ii].legend()
+
       #ax.plot(dif2d.latitudes, frac3d['WSPD'].isel(case=ii, lev=-1), lw=2, c='blue', label='UBOT')
-      ax.plot(dif2d.latitudes, 0.5 * frac2d['MAGTAU'].isel(case=ii), lw=1, c='red', label='TAU')
+      axes[1][ii].plot(dif2d.latitudes, frac2d['U10'].isel(case=ii), lw=1, c='blue', label='U10')
+      axes[1][ii].plot(dif2d.latitudes, 0.5 * frac2d['MAGTAU'].isel(case=ii), lw=1, c='red', label='TAU')
       #ax.plot(dif3d.latitudes, 0.5 * (frac_eke.isel(case=ii, lev=-1) + frac_mke.isel(case=ii, lev=-1)), c='purple', label='total KE')
       #ax.plot(dif3d.latitudes, 0.5 * frac_mke.isel(case=ii, lev=-1), c='purple', ls='dashed', label='MKE')
-      #ax.plot(dif3d.latitudes, 0.5 * frac_eke.isel(case=ii, lev=-1), c='purple', ls='dotted', label='EKE')
+      axes[1][ii].plot(dif3d.latitudes, 0.5 * frac_eke.isel(case=ii, lev=-1), c='purple', ls='dotted', label='EKE')
 
       #print((frac_qsat + frac_qa).isel(case=ii))
-      ax.plot(dif2d.latitudes, (frac_qsat + frac_qa).isel(case=ii), lw=1, c='brown', label='sat_def')
+      if ii == 3:
+         for ln in list(axes[0][ii].lines) + list(axes[1][ii].lines):
+            ln.set_ydata(ln.get_ydata() / 5)
 
-      plt.legend()
-      ax.axhline(0, lw=0.5, c='gray')
-      #ax.set_xlim(5, 40)
+      axes[1][ii].legend()
+      axes[0][ii].axhline(0, lw=0.5, c='gray')
+      axes[1][ii].axhline(0, lw=0.5, c='gray')
+
+      axes[0][ii].set_xlim(-10, 35)
+      axes[1][ii].set_xlim(-10, 35)
+      axes[0][ii].set_ylim(-.06, .08)
+      axes[1][ii].set_ylim(-.06, .08)
 
    fig.tight_layout()
    plt.show()
