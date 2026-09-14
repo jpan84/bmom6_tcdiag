@@ -18,21 +18,22 @@ import sznl_funcs
 import pltsettings
 
 ### hist file params
-OUTDIR = 'linevslat_h0a_diff_5exp_inprog'
+OUTDIR = 'linevslat_h0a_diff_5exp'
 ARCHV = '/glade/derecho/scratch/jpan/archive/'
 HISTS = 'atm/hist/*.h0a.*.nc'
-CASES = ['/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m/', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/', '/glade/derecho/scratch/jpan/archive/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/']
+CASES = ['/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250702_unseed2hPa6m/', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250415_unseed/', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250417_ctrl/', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.251229_seedmatch/', '/glade/campaign/univ/upsu0032/jpan_aquaptc/b.e23.BMOM.ne120np4_sx0.66av1.aqua.production.250416_seed1x1/']
 ALIASES = ['UNSEED_EX', 'UNSEED', 'CTRL', 'SEED', 'SEED_EX']
 camgrid = '/glade/p/cesmdata/inputdata/share/scripgrids/ne120np4_pentagons_100310.nc'
 
 DO_DIFF = True
+HALFYR = True #aggregate JJA and SON into JJASON
 
 zmlats = (-90, 90, 0.5)
 LATLAB = np.array([-90., -60., -50., -40., -30., -20, -10, 0., 10., 20., 30., 40., 50., 60., 90.])
 lncolors = ['blue', 'orange']
 #TODO: allow diffing between cases and selecting of months/seasons
 SKIP = {'AEROD_v', 'area', 'areawt', 'lat', 'lon'}
-USER_DEF = {'RESTOM', 'PRECT', 'NCF', 'FLUS', 'LWAHU', 'SWAHU', 'PALB'}
+USER_DEF = {'FNT', 'FNS', 'PRECT', 'NCF', 'FLUS', 'LWAHU', 'SWAHU', 'PALB'}
 
 PNLMAP = {0: 1, 1: 2, 2: 3, 3: 0, 4: 2, 5: 4} #produce the horseshoe subplot order
 
@@ -85,6 +86,8 @@ def main():
       sznzm = [sznl_funcs.monthly2sznl(da) for da in monzm] #shape (season, ncol)
       sznzm = [sznl_funcs.stack_hemi_sznl(da) for da in sznzm]
       sinlat = np.sin(np.deg2rad(sznzm[0]['latitudes']))
+      if HALFYR:
+         sznzm = [da.mean(dim='season', keepdims=True).assign_coords(season=['JJASON']) for da in sznzm]
 
       CTLIX = 2
       if DO_DIFF:
@@ -148,8 +151,10 @@ def main():
 def udef(ds, dv):
    if dv == 'PRECT':
       return ds['PRECC'] + ds['PRECL']
-   if dv == 'RESTOM':
+   if dv == 'FNT':
       return ds['FSNT'] - ds['FLNT']
+   if dv == 'FNS':
+      return ds['FSNS'] - ds['FLNS']
    if dv == 'NCF':
       return ds['LWCF'] + ds['SWCF']
    if dv == 'FLUS':
