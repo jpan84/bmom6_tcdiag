@@ -6,10 +6,13 @@ import uxarray as ux
 import xarray as xr
 import numpy as np
 from sznl_funcs import stack_hemi_sznl, monthly2sznl, agg_time
-import matplotlib.pyplot as plt
 
-h0 = '/glade/campaign/univ/upsu0032/jpan_aquaptc/%s/atm/hist/*.h0a.0009-1*.nc'
-FILO = 'test_MMC_native.nc'
+import matplotlib.pyplot as plt
+import matplotlib.colors as colors
+import matplotlib.ticker as mticker
+
+h0 = '/glade/campaign/univ/upsu0032/jpan_aquaptc/%s/atm/hist/*.h0a.*.nc'
+FILO = 'MMC_native_15y.nc'
 
 def main_compute():
    dss = [ux.open_mfdataset(CAMGR, h0 % cs).expand_dims(case=[ALIA[ii]]) for ii, cs in enumerate(CASENAMES)]
@@ -64,12 +67,50 @@ def main_compute():
 
 
 def main_plot():
+   FILO = 'test_MMC_native.nc'
    ds = xr.open_dataset(FILO)
 
-   test_plot = ds['MMC_SF'].mean(dim=['time', 'case'])
+   #test_plot = ds['MMC_SF'].mean(dim=['time', 'case'])
 
-   plt.contourf(test_plot['latitudes'], test_plot['plev'], test_plot.T)
-   plt.colorbar()
+   #plt.contourf(test_plot['latitudes'], test_plot['plev'], test_plot.T)
+   #plt.colorbar()
+   #plt.show()
+
+   hy = ds['MMC_SF'].mean(dim='time') #test placeholder
+   #hy = agg_time(ds['MMC_SF'], antisym=True)
+
+   print('Plotting streamfunctions...')
+   plt.rc('font', size=16)
+   plt.rcParams['figure.figsize'] = (30, 12)
+   contourfkwargs = {'cmap': 'bwr', 'levels': 2.**np.arange(-2, 7, 1), 'norm': colors.SymLogNorm(2.**-1)} #coolwarm for diff
+   contourfkwargs['levels'] = np.concatenate((-contourfkwargs['levels'][::-1], contourfkwargs['levels']))
+   contourkwargs = {'colors': 'black', 'levels': 2.**np.arange(-2, 7, 1)}
+   contourkwargs['levels'] = np.concatenate((-contourkwargs['levels'][::-1], contourkwargs['levels']))
+   clabelkwargs = {'inline': 1, 'fontsize': 10, 'colors': 'black', 'fmt': '%.1f'}
+   subplot_kw = dict(xlim=(-1, 1), ylim=(100, 1000), yscale='log')
+   fig, axes = plt.subplots(2, 3, layout='constrained', sharey=True, subplot_kw=subplot_kw)
+
+   hy /= 1e10
+
+   for ii, ax in enumerate(axes.ravel()[:-1]):
+      CSF = ax.contourf(np.sin(np.deg2rad(hy['latitudes'])), hy['plev'] / 100., hy.isel(case=ii).data.T, **contourfkwargs)
+      CS1 = ax.contour(np.sin(np.deg2rad(hy['latitudes'])), hy['plev'] / 100., hy.isel(case=ii).data.T, **contourkwargs) 
+      if ii == 0:
+         ax.yaxis.set_minor_formatter(mticker.ScalarFormatter())
+         ax.yaxis.set_major_formatter(mticker.ScalarFormatter())
+         ax.set_ylabel('Pressure [hPa]')
+         ax.set_yticks(np.arange(100, 1001, 100))
+         cb = plt.colorbar(CSF, ax=axes)
+         cbt = cb.get_ticks()
+         cbt = np.concatenate((cbt[:cbt.size // 2 + 1], -cbt[:cbt.size // 2 + 1][::-1]))
+         cb.set_ticks(cbt)
+         cb.set_ticklabels([(('%d' % t) if abs(t) >= 1 else t) for t in cbt])
+         ax.invert_yaxis()
+      #ax.set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB.astype(np.int_))
+
+      #ax.set_title('%s (10$^{%d}$ kg s$^{-1}$)' % (plottitles[sfi], expo))
+      ax.set_xlabel('Latitude [°]')
+
    plt.show()
 
 
