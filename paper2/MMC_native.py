@@ -9,6 +9,7 @@ from sznl_funcs import stack_hemi_sznl, monthly2sznl, agg_time
 import matplotlib.pyplot as plt
 
 h0 = '/glade/campaign/univ/upsu0032/jpan_aquaptc/%s/atm/hist/*.h0a.0009-1*.nc'
+FILO = 'test_MMC_native.nc'
 
 def main_compute():
    dss = [ux.open_mfdataset(CAMGR, h0 % cs).expand_dims(case=[ALIA[ii]]) for ii, cs in enumerate(CASENAMES)]
@@ -44,7 +45,7 @@ def main_compute():
 
    cum = vdp_zm_ilev.cumsum('ilev').chunk({'ilev': -1})
    p_ilev_zm = p_ilev_zm.chunk({'ilev': -1})
-   print(p_ilev_zm.isel(ilev=-1).max().values, p_ilev_zm.isel(ilev=-1).min().values)
+   #print(p_ilev_zm.isel(ilev=-1).max().values, p_ilev_zm.isel(ilev=-1).min().values)
 
    cum_p = xr.apply_ufunc(
            myint, cum, p_ilev_zm,
@@ -58,10 +59,22 @@ def main_compute():
 
    print(cum_p)
 
-   cum_p.to_dataset.to_netcdf('test_MMC_native.nc')
+   mmc_sf = cum_p * 2 * np.pi * c.a_e * np.cos(np.deg2rad(cum_p['latitudes'])) / c.g
+   mmc_sf.to_dataset(name='MMC_SF').to_netcdf(FILO)
 
-   exit()
+
+def main_plot():
+   ds = xr.open_dataset(FILO)
+
+   test_plot = ds['MMC_SF'].mean(dim=['time', 'case'])
+
+   plt.contourf(test_plot['latitudes'], test_plot['plev'], test_plot.T)
+   plt.colorbar()
+   plt.show()
 
 
 if __name__ == '__main__':
-   main_compute()
+   if len(sys.argv) == 1:
+      main_compute()
+   elif sys.argv[1] == 'plot':
+      main_plot()
