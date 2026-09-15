@@ -3,3 +3,5 @@ nohup: ignoring input
 Waiting on job launch; 5930529.casper-pbs with qsub arguments:
     qsub  -l select=1:ncpus=16:mem=128GB -A UCIS0005 -q casper@casper-pbs -l walltime=04:00:00
 
+=>> PBS: job killed: walltime 14421 exceeded limit 14400
+Terminated
