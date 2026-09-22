@@ -20,14 +20,22 @@ See paper1 repo for the following categories of tools:
 
 ### **Preprocessing requirements**
 * **PP1**: run `par-track_driver.py` and `trajSN_to_df.py` to obtain TC trajectories. Run `nff\_driver.py` with `PRECT` as a filtvar to generate TC masks and masked precip.
-* **PP2**: run `zonmean_driver.py` with `VARS = 'SST'` and `TAPE = 'atm/hist/*.h1i.*.nc'` to obtain (sub)daily zonal-mean SSTs
+* **PP2**: run `zonmean_driver.py` with `VARS = 'PRECT'` and `TAPE = 'atm/hist/*.h1i.*.nc'`. Run the script again with `VARS = 'TC_R4,PRECT'` and `TAPE = 'atm/nff_4mps/*.h1i.*.nff_4mps'`
+* **PP2A**: run both scripts
 
 ### **Execution Instructions**
-Run the script after configuring the following variables at the top of the file:
-
-* **`DIRO`**: Output directory where the generated figures will be saved.
+Run the script after pointing `TOTP` to the zonal-mean precip, `TCSP` to the zonal-mean TC masks and masked precip, `TOTE` to the zonal-mean ocean evaporation, and `TCSE` to the zonal-mean masked evaporation.
 
 ## **Figs. 2, 4: 850 hPa eddy moisture flux absolute and difference line plots, contribution fractions**
+**Script Location:** `/vpqp_decomp.py`
+
+### **Preprocessing requirements**
+* **PP1**: run `par-track_driver.py` and `trajSN_to_df.py` to obtain TC trajectories. Run `nff\_driver.py` with `V850`,`Q850` as filtvars. Then run `nff\_driver.py` again with invert=True so that the inverted mask is applied to those fields.
+* **PP2**: run `zonmean_driver.py` with `VARS = 'V'` and `TAPE = 'atm/hist/*.h1i.*.nc'`. Run the script again with `VARS = 'TC_R4,PRECT'` and `TAPE = 'atm/nff_4mps/*.h1i.*.nff_4mps'`
+* **PP2A**: run both scripts
+
+### **Execution Instructions**
+Run the script after pointing `TOTP` to the zonal-mean precip, `TCSP` to the zonal-mean TC masks and masked precip, `TOTE` to the zonal-mean ocean evaporation, and `TCSE` to the zonal-mean masked evaporation.
 
 ####################################################################################################################
 
