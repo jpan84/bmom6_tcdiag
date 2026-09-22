@@ -71,7 +71,9 @@ def main():
       axes[1][ii].plot(dif2d.latitudes, 0.5 * frac2d['MAGTAU'].isel(case=ii), lw=1, c='red', label='TAU')
       #ax.plot(dif3d.latitudes, 0.5 * (frac_eke.isel(case=ii, lev=-1) + frac_mke.isel(case=ii, lev=-1)), c='purple', label='total KE')
       #ax.plot(dif3d.latitudes, 0.5 * frac_mke.isel(case=ii, lev=-1), c='purple', ls='dashed', label='MKE')
+
       axes[1][ii].plot(dif3d.latitudes, 0.5 * frac_eke.isel(case=ii, lev=-1), c='purple', ls='dotted', label='EKE')
+      #axes[1][ii].plot(dif3d.latitudes, 0.5 * frac3d['EKE'].isel(case=ii, lev=-1), c='purple', ls='dotted', label='EKE')
 
       #print((frac_qsat + frac_qa).isel(case=ii))
       if ii == 3:
@@ -88,6 +90,7 @@ def main():
       axes[1][ii].set_ylim(-.06, .08)
 
    fig.tight_layout()
+   plt.savefig('LHFLX_placeholder.pdf')
    plt.show()
 
 def es(T):

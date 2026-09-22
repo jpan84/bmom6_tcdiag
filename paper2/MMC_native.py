@@ -1,6 +1,6 @@
 import sys
 sys.path.append('/glade/u/home/jpan/aquaptc/bmom6_tcdiag/paper1_post')
-from paths import ARCHRT, ALIA, CTLIX, CASENAMES, CAMGR
+from paths import ARCHRT, ALIA, CTLIX, CASENAMES, CAMGR, IXHORS
 import consts as c
 import uxarray as ux
 import xarray as xr
@@ -11,8 +11,12 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 import matplotlib.ticker as mticker
 
-h0 = '/glade/campaign/univ/upsu0032/jpan_aquaptc/%s/atm/hist/*.h0a.*.nc'
-FILO = 'MMC_native_15y.nc'
+h0 = '/glade/campaign/univ/upsu0032/jpan_aquaptc/%s/atm/hist/*.h0a.001[0-9]*.nc'
+FILO = 'MMC_native_0010-0019.nc'
+
+YSCL = lambda lat: np.sin(np.deg2rad(lat))
+YLAB = np.arange(-90, 91, 10)
+YLOC = YSCL(YLAB)
 
 def main_compute():
    dss = [ux.open_mfdataset(CAMGR, h0 % cs).expand_dims(case=[ALIA[ii]]) for ii, cs in enumerate(CASENAMES)]
@@ -67,7 +71,6 @@ def main_compute():
 
 
 def main_plot():
-   FILO = 'test_MMC_native.nc'
    ds = xr.open_dataset(FILO)
 
    #test_plot = ds['MMC_SF'].mean(dim=['time', 'case'])
@@ -76,8 +79,8 @@ def main_plot():
    #plt.colorbar()
    #plt.show()
 
-   hy = ds['MMC_SF'].mean(dim='time') #test placeholder
-   #hy = agg_time(ds['MMC_SF'], antisym=True)
+   #hy = ds['MMC_SF'].mean(dim='time') #test placeholder
+   hy = agg_time(ds['MMC_SF'], antisym=True)
 
    print('Plotting streamfunctions...')
    plt.rc('font', size=16)
@@ -92,9 +95,16 @@ def main_plot():
 
    hy /= 1e10
 
-   for ii, ax in enumerate(axes.ravel()[:-1]):
-      CSF = ax.contourf(np.sin(np.deg2rad(hy['latitudes'])), hy['plev'] / 100., hy.isel(case=ii).data.T, **contourfkwargs)
-      CS1 = ax.contour(np.sin(np.deg2rad(hy['latitudes'])), hy['plev'] / 100., hy.isel(case=ii).data.T, **contourkwargs) 
+   for ii, ax in enumerate(axes.ravel()):
+      ix = IXHORS[ii]
+      toplt = hy.isel(case=ix)
+      contourfkwargs['cmap'] = 'coolwarm'
+      if ix != CTLIX:
+         toplt = (hy.isel(case=ix) - hy.isel(case=CTLIX)) * 10
+         contourfkwargs['cmap'] = 'bwr'
+
+      CSF = ax.contourf(np.sin(np.deg2rad(hy['latitudes'])), hy['plev'] / 100., toplt.data.T, **contourfkwargs)
+      CS1 = ax.contour(np.sin(np.deg2rad(hy['latitudes'])), hy['plev'] / 100., hy.isel(case=ix).data.T, **contourkwargs) 
       if ii == 0:
          ax.yaxis.set_minor_formatter(mticker.ScalarFormatter())
          ax.yaxis.set_major_formatter(mticker.ScalarFormatter())
@@ -106,11 +116,13 @@ def main_plot():
          cb.set_ticks(cbt)
          cb.set_ticklabels([(('%d' % t) if abs(t) >= 1 else t) for t in cbt])
          ax.invert_yaxis()
-      #ax.set_xticks(np.sin(np.deg2rad(LATLAB)), labels=LATLAB.astype(np.int_))
+      ax.set_xticks(YLOC, labels=[yl if abs(yl) <= 60 else '' for yl in YLAB])
 
       #ax.set_title('%s (10$^{%d}$ kg s$^{-1}$)' % (plottitles[sfi], expo))
       ax.set_xlabel('Latitude [°]')
 
+   #fig.tight_layout()
+   plt.savefig(FILO + '.svg', bbox_inches='tight')
    plt.show()
 
 
