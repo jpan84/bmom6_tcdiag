@@ -26,13 +26,30 @@ PP2A: new for paper 2 because some high-freqency variables for masking analyses 
 ### **Execution Instructions**
 Run the script after pointing `TOTP` to the zonal-mean precip, `TCSP` to the zonal-mean TC masks and masked precip, `TOTE` to the zonal-mean ocean evaporation, and `TCSE` to the zonal-mean masked evaporation.
 
-## **Figs. 2, 4: 850 hPa eddy moisture flux absolute and difference line plots, contribution fractions**
+## **Figs. 2, 4: 850 hPa eddy moisture flux absolute and difference line plots**
 **Script Location:** `/vpqp_decomp.py`
 
 ### **Preprocessing requirements**
 * **PP1**: run `par-track_driver.py` and `trajSN_to_df.py` to obtain TC trajectories. Run `nff_driver.py` with `V850`,`Q850` as filtvars. Then run `nff_driver.py` again with invert=True so that the inverted mask is applied to those fields.
-* **PP2**: run `zonmean_driver.py` on `VARS = 'V850,Q850,V850.Q850'` for 1) the full fields, 2) the TC-masked fields, and 3) the fields that have had the inverted masks applied.
+* **PP2**: run `zonmean_driver.py` on high-frequency `VARS = 'V850,Q850,V850.Q850'` for 1) the full fields, 2) the TC-masked fields, and 3) the fields that have had the inverted masks applied.
 
 ### **Execution Instructions**
 Run the script after pointing totfil, tcsfil, and bkgfil to the respective zonal-mean files generated in preprocessing.
 
+## **Fig. 5: surface latent heat flux response decomposition**
+**Script Location:** `/LHFLX_linear.py`
+
+### **Preprocessing requirements**
+* **PP2**: run `zonmean_driver.py` on `TAPE = 'atm/hist/*.h0a.*.nc'` for 2D vars `VARS = 'LHFLX,U10,QREFHT,TS,PS,TAUX,TAUY'` and 3D vars `VARS = 'U,V,UU,VV'`.
+
+### **Execution Instructions**
+Run the script after pointing zm2d and zm3d to the respective zonal-mean files generated in preprocessing.
+
+## **Fig. 6: MMC Eulerian mean streamfunction**
+**Script Location:** `/LHFLX_linear.py`
+
+### **Preprocessing requirements**
+None
+
+### **Execution Instructions**
+Point h0 to the monthly-mean model output and set FILO to the desired outfile. The script integrates the mass flux `v*dp` on native levels before interpolating to pressure.
